@@ -31,7 +31,6 @@ var _ourindatabasejs = require('./src/lib/ourin-database.js');
 
 var _ourinschedulerjs = require('./src/lib/ourin-scheduler.js');
 var _ouringroupprotectionjs = require('./src/lib/ourin-group-protection.js');
-var _ourinsholatschedulerjs = require('./src/lib/ourin-sholat-scheduler.js');
 var _ourinnotifschedulerjs = require('./src/lib/ourin-notif-scheduler.js');
 var _ourinautojpmjs = require('./src/lib/ourin-auto-jpm.js');
 var _ourinmemorymonitorjs = require('./src/lib/ourin-memory-monitor.js');
@@ -378,7 +377,6 @@ async function main() {
         _ourinschedulerjs.startSewaChecker.call(void 0, sock);
         _ourinschedulerjs.initScheduler.call(void 0, _configjs2.default, sock);
         _ourinautojpmjs.initAutoJpmScheduler.call(void 0, sock);
-        _ourinsholatschedulerjs.initSholatScheduler.call(void 0, sock);
         _ourinnotifschedulerjs.initNotifScheduler.call(void 0, sock);
         try {
           const { initSahurCron } =

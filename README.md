@@ -48,85 +48,82 @@ El Ourin 3. 5 es la versión de la actualización que integeria las característ
 
 ---
 
-## 📂 Struktur Direktori
+## 📂 Estructura del proyecto
 
-Estructuras bajo Ourin 3. 5 se celebran 100 % sin cambiar la arquitectura aslinya:
+Ourin 3.5 conserva al 100 % la arquitectura original:
 
 ```
 OURIN 3.5/
-├── assets/                  # Asset visual, font, audio, dan gambar bot
-├── case/                    # Handler case command utama (case/ourin.js)
-├── config.js                # Konfigurasi bot, owner, session, dan pairing
-├── data/                    # Dataset pendukung (kamus, json, dsb.)
-├── database/                # Penyimpanan lokal (lowdb / JSON storage)
-├── index.js                 # Entry point bot
-├── package.json             # Manifest dependency (CommonJS)
-├── plugins/                 # 770+ Plugin modular terbagi dalam 37 kategori
-│   ├── ai/                  # AI & LLM chat (GPT, Gemini, CharacterAI)
-│   ├── anime/               # Fitur informasi & gambar anime
-│   ├── asupan/              # Konten media asupan
-│   ├── cek/                 # Fitur cek/tes & fun validator
-│   ├── clan/                # Sistem clan & guild
-│   ├── convert/             # Media converter (stiker, audio, bass boost)
-│   ├── download/            # Media downloader (YT, TT, IG, FB, Pin)
-│   ├── fun/                 # Game teks & hiburan
-│   ├── game/                # Game interaktif (Blackjack, Tebak, Werewolf)
-│   ├── group/               # Manajemen grup & proteksi (antivirtex, antilink)
-│   ├── islamic/             # Fitur religi Islam (Adzan, Doa, Zakat)
-│   ├── main/                # Menu utama, help, ping, dan informasi bot
-│   ├── owner/               # Perintah khusus owner & channel tools
-│   ├── rpg/                 # Sistem game RPG terintegrasi
-│   ├── search/              # Pencarian web, lagu, video, BMKG gempa
-│   ├── tools/               # Alat bantu (amprem, viuprem, reactch, pomodoro)
-│   └── user/                # Verifikasi, profil, dan level user
-└── src/                     # Core engine
-    ├── connection.js        # WhatsApp socket connection (cantarelllaa)
-    ├── handler.js           # Central message dispatcher & middleware
-    └── lib/                 # Modul internal pendukung
+├── assets/                  # Recursos visuales, fuentes, audio e imágenes
+├── case/                    # Manejadores de comandos principales (case/ourin.js)
+├── config.js                # Configuración del bot, dueño, sesión y pairing
+├── data/                    # Datos de apoyo (diccionarios, json, etc.)
+├── database/                # Almacenamiento local (lowdb / JSON)
+├── index.js                 # Punto de entrada del bot
+├── package.json             # Dependencias (CommonJS)
+├── plugins/                 # 632 plugins en 31 categorías
+│   ├── ai/                  # IA y chat con LLM (GPT, Gemini, CharacterAI)
+│   ├── anime/               # Información e imágenes de anime
+│   ├── asupan/              # Contenido multimedia
+│   ├── cek/                 # Consultas y validadores
+│   ├── clan/                # Sistema de clanes
+│   ├── convert/             # Conversor multimedia (stickers, audio, bass boost)
+│   ├── download/            # Descargas (YT, TT, IG, FB, Pinterest)
+│   ├── fun/                 # Juegos de texto y entretenimiento
+│   ├── group/               # Gestión y protección de grupos (antilink, antivirtex)
+│   ├── main/                # Menú principal, ayuda, ping e información
+│   ├── owner/               # Comandos exclusivos del dueño
+│   ├── search/              # Búsquedas web, música, video y clima
+│   ├── tools/               # Utilidades (viuprem, reactch, pomodoro)
+│   └── user/                # Registro, perfil y niveles
+└── src/                     # Núcleo del bot
+    ├── connection.js        # Conexión con WhatsApp (Cantarella)
+    ├── handler.js           # Distribuidor central de mensajes y middleware
+    └── lib/                 # Módulos internos
 ```
 
 ---
 
-#🚀 Guia Instalasi & Pengoperasian
+## 🚀 Guía de instalación y uso
 
-# # # 1. Condiciones del sistema
-- * Nodo.xo 22.x( Recomendaciones: Nodo.
-* * FFmpeg * *: Instalado en el sistema ( )`ffmpeg - versión`)
-* Git * * * Interned Connection * *
+### 1. Requisitos
+- Node.js 22.x (recomendado)
+- FFmpeg instalado en el sistema (`ffmpeg -version`)
+- Git y conexión a internet
 
-### 2. Instalasi Dependensi
-Ejecute el siguiente comando en la raíz siga el proxy:
+### 2. Instalar dependencias
+Ejecuta en la raíz del proyecto:
 ```bash
-npm install --legacy-peer-deps
+npm install
 ```
 
-# 3 Configuración del Esposo (`config.`)
-Abre archivo`config.`Y una especie de subliminal:
+### 3. Configurar el bot (`config.js`)
+Abre `config.js` y completa tus datos:
 ```javascript
 module.exports = {
   owner: {
-    name: "Nama Anda",
-    number: ["6281234567890"], // Nomor WhatsApp owner (tanpa + atau 0)
+    name: "Tu nombre",
+    number: ["5491112345678"], // WhatsApp del dueño (sin + ni 0)
   },
   session: {
-    pairingNumber: "6281234567890", // Nomor bot untuk Pairing Code
-    usePairingCode: true,           // true = Pairing Code, false = QR Code
+    pairingNumber: "5491112345678", // Número del bot para el Pairing Code
+    usePairingCode: true,           // true = código, false = QR
   },
   bot: {
     name: "OURIN 3.5 DELUXE",
     version: "3.5",
-    developer: "Your Name",
+    developer: "Tu nombre",
   },
   // ...
 };
 ```
 
-# 4.
+### 4. Arrancar
 ```bash
-# Menjalankan langsung:
+# Inicio normal
 npm start
 
-# Atau dengan node langsung:
+# O directamente con Node
 node index.js
 ```
 

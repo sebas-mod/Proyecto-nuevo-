@@ -1,14 +1,13 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _ourinschedulerjs = require('../../src/lib/ourin-scheduler.js');
-var _ourinsholatschedulerjs = require('../../src/lib/ourin-sholat-scheduler.js');
 var _ourindatabasejs = require('../../src/lib/ourin-database.js');
 var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
 const pluginConfig = {
     name: 'startschedule',
     alias: ['startscheduler', 'schedstart', 'resumeschedule'],
     category: 'owner',
-    description: 'Replaying el programador absoluto o todo',
-    usage: '.startschedule <nama|all>',
-    example: '.startschedule sholat',
+    description: 'Reinicia un programador o todos',
+    usage: '.startschedule <nombre|all>',
+    example: '.startschedule alquiler',
     isOwner: true,
     isPremium: false,
     isGroup: false,
@@ -33,42 +32,14 @@ async function handler(m, { sock, args }) {
 • \`groupschedule\` - Group Schedule
 • \`alquiler\`- Alquiler de cheques
 • \`messages\` - Scheduled Messages
-• \`sholat\` - Sholat Scheduler
 • \`ahl\`- Todo el schedler
 
 *Example:*
-\`.startschedule sholat\`
+\`.startschedule alquiler\`
 \`.startschedule all\``;
             
             await m.reply(helpText);
             return;
-        }
-        
-        if (target === 'sholat') {
-            const db = _ourindatabasejs.getDatabase.call(void 0, );
-            const wasEnabled = db.setting('autoSholat');
-            
-            if (wasEnabled) {
-                await m.reply(`*El programador de Sholat ya está en estado activo*`);
-                return;
-            }
-            
-            _ourinsholatschedulerjs.initSholatScheduler.call(void 0, sock);
-            db.setting('autoSholat', true);
-            
-            await m.reply(`▶️ *sᴄʜᴇᴅᴜʟᴇʀ ᴅɪᴍᴜʟᴀɪ*
-
-> Scheduler: *Sholat Scheduler*
-> Estado:✅Activo
-
-Para permitir que una notificación de tiempo de desplegable sea enviada al grupo que active está función _`);
-            return;
-        }
-        
-        if (target === 'all') {
-            _ourinsholatschedulerjs.initSholatScheduler.call(void 0, sock);
-            const db = _ourindatabasejs.getDatabase.call(void 0, );
-            db.setting('autoSholat', true);
         }
         
         const result = _ourinschedulerjs.startSchedulerByName.call(void 0, target, sock);

@@ -20,23 +20,23 @@ async function handler(m) {
                     
     let desc = ''
     if (percent >= 90) {
-        desc = 'WIBU SEJATI! Ara ara~ 🎌'
+        desc = '¡OTAKU DE VERDAD! Ara ara~ 🎌'
     } else if (percent >= 70) {
-        desc = 'Wibu parah! Kimochi~ 😍'
+        desc = 'Otaku total, qué nivel~ 😍'
     } else if (percent >= 50) {
-        desc = 'Lumayan wibu 🌸'
+        desc = 'Bastante otaku 🌸'
     } else if (percent >= 30) {
-        desc = 'Sedikit wibu 😊'
+        desc = 'Un poco otaku 😊'
     } else {
-        desc = 'Bukan wibu, normal! 😎'
+        desc = 'No eres otaku, eres normal 😎'
     }
     
     let txt = mentioned === m.sender ? `Hola @${mentioned.split('@')[0]}
     
-Su tasa de empresaria${percent}%*
-\`\`\`${desc}\`\`\`` : `Quieres revisar el nivel empresarial${mentioned.split('@')[0]} yak? 
+Su nivel de otaku es del *${percent}%*
+\`\`\`${desc}\`\`\`` : `¿Quieres ver el nivel de otaku de @${mentioned.split('@')[0]}? 
     
-Su tasa de empresario es tan grande${percent}%*
+Su nivel de otaku es del *${percent}%*
 \`\`\`${desc}\`\`\``
     
     await m.reply(txt, { mentions: [mentioned] })

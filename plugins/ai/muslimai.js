@@ -6,7 +6,7 @@ const pluginConfig = {
     category: 'ai',
     description: 'AI para preguntar sobre Islam y AlQUrano',
     usage: '.muslimai <pertanyaan>',
-    example: '.muslimai Apa itu sholat?',
+    example: '.muslimai ¿Qué es el ayuno?',
     isOwner: false,
     isPremium: false,
     isGroup: false,

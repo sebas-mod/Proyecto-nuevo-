@@ -1061,7 +1061,7 @@ ${readmore}${s}`
           95: "⛈️ Badai Petir"
         }
 
-        async function weatherMenu(city = "Jakarta") {
+        async function weatherMenu(city = "Buenos Aires") {
           try {
             const geo = await _axios2.default.get(
               `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(city)}&count=1`
@@ -1234,7 +1234,7 @@ ${readmore}${s}`
           95: "⛈️ Badai Petir"
         }
 
-        async function weatherMenu(city = "Jakarta") {
+        async function weatherMenu(city = "Buenos Aires") {
           try {
             const geo = await _axios2.default.get(
               `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(city)}&count=1`
@@ -1610,7 +1610,7 @@ I'm ${botName}, your intelligent assistant powered by ${_optionalChain([_configj
         let cuacaStr = "Cerah";
         let suhuStr = "30°C";
         try {
-          const { data } = await _axios2.default.get("https://wttr.in/Jakarta?format=%C|%t", { timeout: 3000 });
+          const { data } = await _axios2.default.get("https://wttr.in/Buenos+Aires?format=%C|%t", { timeout: 3000 });
           if (data) {
             const parts = data.split('|');
             if (parts.length === 2) {

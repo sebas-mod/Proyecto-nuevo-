@@ -1,7 +1,5 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _ourinschedulerjs = require('../../src/lib/ourin-scheduler.js');
-var _ourinsholatschedulerjs = require('../../src/lib/ourin-sholat-scheduler.js');
 var _ourindatabasejs = require('../../src/lib/ourin-database.js');
-var _ourinsholatapijs = require('../../src/lib/ourin-sholat-api.js');
 var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
 const pluginConfig = {
     name: 'cekschedule',
@@ -22,8 +20,6 @@ const pluginConfig = {
 async function handler(m, { sock }) {
     try {
         const status = _ourinschedulerjs.getFullSchedulerStatus.call(void 0, );
-        const db = _ourindatabasejs.getDatabase.call(void 0, );
-        const sholatEnabled = db.setting('autoSholat') || false;
 
         let text = `📊 *sᴄʜᴇᴅᴜʟᴇʀ sᴛᴀᴛᴜs*\n\n`;
 
@@ -48,47 +44,11 @@ async function handler(m, { sock }) {
             text += `\n`;
         }
 
-        const sholatIcon = sholatEnabled ? '✅' : '❌';
-        text += `${sholatIcon} *Sholat Scheduler*\n`;
-        text += `   └ Key: \`sholat\`\n`;
-        text += `   └Aviso de tiempo de choque (real time )\n`;
-
-        if (sholatEnabled) {
-            const kotaSetting = db.setting('autoSholatKota') || { id: '1301', nama: 'KOTA JAKARTA' };
-            text += `   └Ubicación:${kotaSetting.nama}\n`;
-
-            try {
-                const { schedule } = await _ourinsholatapijs.getTodaySchedule.call(void 0, kotaSetting.id);
-                const times = _ourinsholatapijs.extractPrayerTimes.call(void 0, schedule);
-                const now = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Jakarta' }));
-                const currentTime = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
-
-                let nextSholat = null;
-                let nextTime = null;
-
-                for (const [name, time] of Object.entries(times)) {
-                    if (time > currentTime && time !== '-') {
-                        nextSholat = name.charAt(0).toUpperCase() + name.slice(1);
-                        nextTime = time;
-                        break;
-                    }
-                }
-
-                if (!nextSholat) {
-                    nextSholat = 'Imsak';
-                    nextTime = times.imsak;
-                }
-
-                text += `   └ Next: ${nextSholat} (${nextTime} WIB)\n`;
-            } catch (e) {
-                text += `   └*El poderoso tonto del mundo*\n`;
-            }
-        }
 
         text += `\n`;
         text += `━━━━━━━━━━━━━━━━━━━\n`;
-        text += `✅Activo:${status.summary.totalActive + (sholatEnabled ? 1 : 0)}\n`;
-        text += `❌Inactivo:${status.summary.totalInactive + (!sholatEnabled ? 1 : 0)}\n\n`;
+        text += `✅Activo: ${status.summary.totalActive}\n`;
+        text += `❌Inactivo: ${status.summary.totalInactive}\n\n`;
 
         text += `> Usa\`- Detenga la hora.<key>\`para stop\n`;
         text += `> Usa\`- Horario.<key>\`para start`;

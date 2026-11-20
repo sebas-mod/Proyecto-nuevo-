@@ -303,7 +303,7 @@ async function handler(m, { sock, db }) {
             0: "☀️ Cerah", 1: "🌤️ Cerah Berawan", 2: "⛅ Berawan", 3: "☁️ Mendung", 45: "🌫️ Berkabut", 48: "🌫️ Kabut Tebal", 51: "🌦️ Gerimis", 61: "🌧️ Hujan Ringan", 63: "🌧️ Hujan", 65: "⛈️ Hujan Lebat", 80: "🌦️ Hujan Lokal", 95: "⛈️ Badai Petir"
           }
 
-          async function weatherMenu(city = "Jakarta") {
+          async function weatherMenu(city = "Buenos Aires") {
             try {
               const geo = await _axios2.default.get(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(city)}&count=1`)
               const loc = _optionalChain([geo, 'access', _12 => _12.data, 'access', _13 => _13.results, 'optionalAccess', _14 => _14[0]])
@@ -500,7 +500,7 @@ async function handler(m, { sock, db }) {
           0: "☀️ Cerah", 1: "🌤️ Cerah Berawan", 2: "⛅ Berawan", 3: "☁️ Mendung", 45: "🌫️ Berkabut", 48: "🌫️ Kabut Tebal", 51: "🌦️ Gerimis", 61: "🌧️ Hujan Ringan", 63: "🌧️ Hujan", 65: "⛈️ Hujan Lebat", 80: "🌦️ Hujan Lokal", 95: "⛈️ Badai Petir"
         }
 
-        async function weatherMenu(city = "Jakarta") {
+        async function weatherMenu(city = "Buenos Aires") {
           try {
             const geo = await _axios2.default.get(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(city)}&count=1`)
             const loc = _optionalChain([geo, 'access', _25 => _25.data, 'access', _26 => _26.results, 'optionalAccess', _27 => _27[0]])
@@ -569,7 +569,7 @@ async function handler(m, { sock, db }) {
           0: "☀️ Cerah", 1: "🌤️ Cerah Berawan", 2: "⛅ Berawan", 3: "☁️ Mendung", 45: "🌫️ Berkabut", 48: "🌫️ Kabut Tebal", 51: "🌦️ Gerimis", 61: "🌧️ Hujan Ringan", 63: "🌧️ Hujan", 65: "⛈️ Hujan Lebat", 80: "🌦️ Hujan Lokal", 95: "⛈️ Badai Petir"
         }
 
-        async function weatherMenu(city = "Jakarta") {
+        async function weatherMenu(city = "Buenos Aires") {
           try {
             const geo = await _axios2.default.get(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(city)}&count=1`)
             const loc = _optionalChain([geo, 'access', _34 => _34.data, 'access', _35 => _35.results, 'optionalAccess', _36 => _36[0]])

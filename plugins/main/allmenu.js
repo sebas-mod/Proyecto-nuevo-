@@ -313,7 +313,7 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
           0: "☀️ Cerah", 1: "🌤️ Cerah Berawan", 2: "⛅ Berawan", 3: "☁️ Mendung", 45: "🌫️ Berkabut", 48: "🌫️ Kabut Tebal", 51: "🌦️ Gerimis", 61: "🌧️ Hujan Ringan", 63: "🌧️ Hujan", 65: "⛈️ Hujan Lebat", 80: "🌦️ Hujan Lokal", 95: "⛈️ Badai Petir"
         }
 
-        async function weatherMenu(city = "Jakarta") {
+        async function weatherMenu(city = "Buenos Aires") {
           try {
             const geo = await _axios2.default.get(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(city)}&count=1`)
             const loc = _optionalChain([geo, 'access', _27 => _27.data, 'access', _28 => _28.results, 'optionalAccess', _29 => _29[0]])
@@ -382,7 +382,7 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
           0: "☀️ Cerah", 1: "🌤️ Cerah Berawan", 2: "⛅ Berawan", 3: "☁️ Mendung", 45: "🌫️ Berkabut", 48: "🌫️ Kabut Tebal", 51: "🌦️ Gerimis", 61: "🌧️ Hujan Ringan", 63: "🌧️ Hujan", 65: "⛈️ Hujan Lebat", 80: "🌦️ Hujan Lokal", 95: "⛈️ Badai Petir"
         }
 
-        async function weatherMenu(city = "Jakarta") {
+        async function weatherMenu(city = "Buenos Aires") {
           try {
             const geo = await _axios2.default.get(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(city)}&count=1`)
             const loc = _optionalChain([geo, 'access', _36 => _36.data, 'access', _37 => _37.results, 'optionalAccess', _38 => _38[0]])

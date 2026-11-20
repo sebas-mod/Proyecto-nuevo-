@@ -1,5 +1,4 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _ourinschedulerjs = require('../../src/lib/ourin-scheduler.js');
-var _ourinsholatschedulerjs = require('../../src/lib/ourin-sholat-scheduler.js');
 var _ourindatabasejs = require('../../src/lib/ourin-database.js');
 var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
 const pluginConfig = {
@@ -7,8 +6,8 @@ const pluginConfig = {
     alias: ['stopscheduler', 'schedstop', 'pauseschedule'],
     category: 'owner',
     description: 'Parar el programador absoluto o todo',
-    usage: '.stopschedule <nama|all>',
-    example: '.stopschedule sholat',
+    usage: '.stopschedule <nombre|all>',
+    example: '.stopschedule alquiler',
     isOwner: true,
     isPremium: false,
     isGroup: false,
@@ -33,42 +32,14 @@ async function handler(m, { sock, args }) {
 • \`groupschedule\` - Group Schedule
 • \`alquiler\`- Alquiler de cheques
 • \`messages\` - Scheduled Messages
-• \`sholat\` - Sholat Scheduler
 • \`ahl\`- Todo el schedler
 
 *Example:*
-\`.stopschedule sholat\`
+\`.stopschedule alquiler\`
 \`.stopschedule all\``;
             
             await m.reply(helpText);
             return;
-        }
-        
-        if (target === 'sholat') {
-            const db = _ourindatabasejs.getDatabase.call(void 0, );
-            const wasEnabled = db.setting('autoSholat');
-            
-            if (!wasEnabled) {
-                await m.reply(`*El programador de Sholat está en estado de desactivación*`);
-                return;
-            }
-            
-            _ourinsholatschedulerjs.stopSholatScheduler.call(void 0, );
-            db.setting('autoSholat', false);
-            
-            await m.reply(`🛑 *sᴄʜᴇᴅᴜʟᴇʀ ᴅɪʜᴇɴᴛɪᴋᴀɴ*
-
-> Scheduler: *Sholat Scheduler*
-> Estado:❌Detenido
-
-*Usarlo*\`- ¿Qué?\`para reactivar _`);
-            return;
-        }
-        
-        if (target === 'all') {
-            _ourinsholatschedulerjs.stopSholatScheduler.call(void 0, );
-            const db = _ourindatabasejs.getDatabase.call(void 0, );
-            db.setting('autoSholat', false);
         }
         
         const result = _ourinschedulerjs.stopSchedulerByName.call(void 0, target);

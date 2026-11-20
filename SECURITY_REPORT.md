@@ -28,7 +28,7 @@ Cada uso no verificado y el intento de ejecutar el comando será bloqueado y rec
 ```text
 ACCESS DENIED — FOLLOW REQUIRED
 
-Untuk menggunakan seluruh fitur Ourin 3.5, kamu wajib mengikuti kedua saluran resmi kami.
+Para usar todas las funciones de Ourin 3.5, debes seguir nuestros dos canales oficiales.
 
 CHANNEL 1:
 https://whatsapp.com/channel/0029VaBOlsv002TEjlntTE2D
