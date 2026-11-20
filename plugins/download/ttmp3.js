@@ -1,7 +1,7 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _tiktokjs = require('../../src/scraper/tiktok.js'); var _tiktokjs2 = _interopRequireDefault(_tiktokjs);
 var _axios = require('axios'); var _axios2 = _interopRequireDefault(_axios);
 var _fluentffmpeg = require('fluent-ffmpeg'); var _fluentffmpeg2 = _interopRequireDefault(_fluentffmpeg);
-var _ffmpeg = require('@ffmpeg-installer/ffmpeg'); var _ffmpeg2 = _interopRequireDefault(_ffmpeg);
+var _ffmpeg = require('../../src/lib/almiku-ffmpeg.js'); var _ffmpeg2 = _interopRequireDefault(_ffmpeg);
 var _almikucontextjs = require('../../src/lib/almiku-context.js');
 _fluentffmpeg2.default.setFfmpegPath(_ffmpeg2.default.path);
 

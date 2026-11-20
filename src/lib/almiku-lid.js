@@ -49,6 +49,8 @@ process.on("SIGINT", () => {
 });
 process.on("uncaughtException", (err) => {
   savePersistentCache();
+  // No silenciar el error: sin esto el bot se apagaba sin decir por qué.
+  console.error("[almiku-lid] uncaughtException:", (err && err.stack) || err);
 });
 
 /**
