@@ -22,7 +22,7 @@ async function handler(m, { sock }) {
     const isImage = m.isImage || (m.quoted && m.quoted.type === 'imageMessage')
     
     if (!isImage) {
-        return m.reply(`🎭*ꜰɪɢᴜʀᴇSᴛʏʟᴇ*\n\nâ a Ksently / réplica imágenes para convertir a estilo Figura\n\n\`${m.prefix}tofigure\``)
+        return m.reply(`🎭*ꜰɪɢᴜʀᴇSᴛʏʟᴇ*\n\nRespondé a una imagen para convertirla a estilo figura\n\n\`${m.prefix}tofigure\``)
     }
     
     m.react('🕕')

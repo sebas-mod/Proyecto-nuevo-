@@ -4,7 +4,7 @@ const pluginConfig = {
     name: 'tomanga',
     alias: ['manga', 'mangafy', 'mangastyle'],
     category: 'ai',
-    description: 'Ubah foto menjadi gaya manga Jepang',
+    description: 'Convierte una foto a estilo manga japonés',
     usage: '.tomanga (reply/kirim gambar)',
     example: '.tomanga',
     isOwner: false,
@@ -28,7 +28,7 @@ async function handler(m, { sock }) {
     if (!isImage) {
         return m.reply(
             `📖 *ᴛᴏ ᴍᴀɴɢᴀ*\n\n` +
-            `# Kuply / respuestas imágenes para convertir a gaya manga\n\n` +
+            `Respondé a una imagen para convertirla a estilo manga\n\n` +
             `\`${m.prefix}tomanga\``
         )
     }

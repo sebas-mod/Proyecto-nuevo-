@@ -5,7 +5,7 @@ const pluginConfig = {
     name: 'toaudio',
     alias: ['tomp3', 'videotoaudio', 'extractaudio'],
     category: 'tools',
-    description: 'Mengubah video/voice note menjadi audio MP3',
+    description: 'Convierte video o nota de voz en audio MP3',
     usage: '.toaudio (reply/caption video/vn)',
     example: '.toaudio',
     isOwner: false,

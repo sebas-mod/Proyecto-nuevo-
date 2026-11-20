@@ -7,7 +7,7 @@ var _almikuloggerjs = require('./almiku-logger.js');
 - Array alias para el comando
 * @ proprie{string}categoría - enchufe de categoría (propietario, principal, utilidad, diversión, dll )
 * @ proprie{string}descripción - Decryption short comando
-* @ proprie{string}Uage - Mando de uso de cara
+ * @property {string} usage - Modo de uso del comando
 * @ proprie{string}examp - comando de uso de la palabra usuario
 * @ proprie{boolean}iisOwner - Es un dueño especial del Comando
 * @ proprie{boolean}isPremium - Es el usuario de estreno de las especies de comandos

@@ -154,7 +154,7 @@ async function handler(m, { sock, db }) {
       }
     } catch (error) {
       await m.reply(
-        `❌ *ᴇʀʀᴏʀ*\n\n` + `*Wah ho pom pom pom pom pom pom pom @ pom pom @ pom pom pom pom \n` + `> _${error.message}_`,
+        `❌ *ᴇʀʀᴏʀ*\n\n` + `*Ocurrió un error inesperado.\n` + `> _${error.message}_`,
       );
     }
     return;
@@ -175,7 +175,7 @@ async function handler(m, { sock, db }) {
     try {
       buffer = await m.quoted.download();
       if (!buffer) {
-        await m.reply(`❌Gagalm tomó medios.`);
+        await m.reply(`❌ No se pudo obtener el archivo.`);
         return;
       }
       const fileType = await _filetype.fileTypeFromBuffer.call(void 0, buffer);
@@ -208,7 +208,7 @@ async function handler(m, { sock, db }) {
     try {
       buffer = await m.download();
       if (!buffer) {
-        await m.reply(`❌Gagalm tomó medios.`);
+        await m.reply(`❌ No se pudo obtener el archivo.`);
         return;
       }
       const fileType = await _filetype.fileTypeFromBuffer.call(void 0, buffer);

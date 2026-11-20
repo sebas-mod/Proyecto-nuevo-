@@ -6,7 +6,7 @@ const pluginConfig = {
     name: 'ganti-almiku-demote.jpg',
     alias: ['gantialmikudemote', 'setalmikudemote'],
     category: 'owner',
-    description: 'Imagen Cambia nuestrain - demote.',
+    description: 'Cambia la imagen de almiku-demote del bot.',
     usage: '.ganti-almiku-demote.jpg (responde o envía una imagen)',
     example: '.ganti-almiku-demote.jpg',
     isOwner: true,
@@ -20,16 +20,22 @@ const pluginConfig = {
 
 async function handler(m, { sock }) {
     const isImage = m.isImage || (m.quoted && m.quoted.type === 'imageMessage')
-    if (!isImage) return m.reply(`🖼ɢᴀɴᴛɪAL MIKU Degradar.\n\n# Ksently / réplica imágenes el cambio\nArchivo: Activos / imágenes / nuestrain - demoté.`)
+    if (!isImage) return m.reply(`🖼 *Cambiar almiku-demote*
+
+Respondé a una imagen o enviá una foto para reemplazarla.`)
     try {
         let buffer = m.quoted && m.quoted.isMedia ? await m.quoted.download() : await m.download()
-        if (!buffer) return m.reply('❌Paso de descarga de imagen')
-        await m.reply(`⏳La jaula subió una foto..`)
+        if (!buffer) return m.reply('❌ No se pudo descargar el archivo.')
+        await m.reply(`⏳ Subiendo el archivo nuevo...`)
         try {
             const newUrl = await _almikuuploaderjs.updateAssetUrl.call(void 0, 'almiku-demote', buffer, 'almiku-demote.jpg')
-            m.reply(`✅*ʙᴇʀʜᴀSɪʟ*\n\nEzabar almiku - degradar. Jpg ha sido transferido a la nueva URL:\n•${newUrl}\n" Config has been updated as a reality "!`)
+            m.reply(`✅ *Listo*
+
+El archivo almiku-demote fue actualizado.
+•${newUrl}
+¡La configuración ya quedó guardada!`)
         } catch (e) {
-            m.reply(`❌Gagalm subió la imagen:${e.message}`)
+            m.reply(`❌ No se pudo subir el archivo: ${e.message}`)
         }
     } catch (error) {
         await m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName))

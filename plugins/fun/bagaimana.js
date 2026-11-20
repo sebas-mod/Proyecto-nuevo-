@@ -4,7 +4,7 @@
     category: 'fun',
     description: 'Pregunta bot ¿qué tal algo?',
     usage: '.bagaimana <pertanyaan>',
-    example: '.bagaimana cara jadi sukses?',
+    example: '.bagaimana ¿cómo ser exitoso?',
     isOwner: false,
     isPremium: false,
     isGroup: false,

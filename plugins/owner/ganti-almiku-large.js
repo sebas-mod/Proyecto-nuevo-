@@ -5,7 +5,7 @@ const pluginConfig = {
     name: 'almiku-large',
     alias: ['setalmikularge', 'gantialmikularge'],
     category: 'owner',
-    description: 'Preset: Cambia image almiku. Jpg, serta almiku - v7 horange almiku - v11. Jpg una vez',
+    description: 'Cambia la imagen de almiku del bot.',
     usage: '.almiku-large (responde o envía una imagen)',
     example: '.almiku-large',
     isOwner: true,
@@ -21,7 +21,9 @@ async function handler(m, { sock }) {
     const isImage = m.isImage || (m.quoted && m.quoted.type === 'imageMessage')
     
     if (!isImage) {
-        return m.reply(`🖼ᴀʟ ᴍɪᴋᴜ ʟᴀʀɢᴇ ᴘʀᴇSᴇᴛ*\n\nEscoger / responder imágenes para reemplazar grandes fotos ( almiku. jpg, almiku - v8. jpg, almiku - v10.\nSólo asegúrate de que la imagen sea deseada.`)
+        return m.reply(`🖼 *Cambiar almiku*
+
+Respondé a una imagen o enviá una foto para reemplazarla.`)
     }
     
     await m.react('🕕')
@@ -36,7 +38,7 @@ async function handler(m, { sock }) {
         
         if (!buffer) {
             await m.react('❌')
-            return m.reply(`❌Paso de descarga de imagen`)
+            return m.reply(`❌ No se pudo subir el archivo: ${e.message}`)
         }
         
         const targetImages = [
@@ -56,7 +58,11 @@ async function handler(m, { sock }) {
         }
         
         await m.react('✅')
-        m.reply(`✅*ʙᴇʀʜᴀSɪʟ*\n\nA Imagen-grande, sustituido con éxito de una manera que ' no es posible.\n# Crashing:${targetImages.join(', ')}\nReinicie el bot si el cuadro no cambia.`)
+        m.reply(`✅ *Listo*
+
+El archivo almiku fue actualizado.
+•${newUrl}
+¡La configuración ya quedó guardada!`)
         
     } catch (error) {
         await m.react('☢')

@@ -6,9 +6,9 @@ const pluginConfig = {
     name: 'ganti-almiku-v8.jpg',
     alias: ['gantialmikuv8', 'setalmikuv8'],
     category: 'owner',
-    description: 'Imagen Cambia almiku - v8.',
+    description: 'Cambia la imagen de almiku-v8 del bot.',
     usage: '.ganti-almiku-v8.jpg (responde o envía una imagen)',
-    example: '.ganti-almiku-welcome.jpg',
+    example: '.ganti-almiku-v8.jpg',
     isOwner: true,
     isPremium: false,
     isGroup: false,
@@ -22,7 +22,9 @@ async function handler(m, { sock }) {
     const isImage = m.isImage || (m.quoted && m.quoted.type === 'imageMessage')
     
     if (!isImage) {
-        return m.reply(`🖼ɢᴀɴᴛɪ ᴀʟ ᴍɪᴋᴜ-ᴠOcho.ᴊᴘɢ*\n\n# Ksently / réplica imágenes para reemplazar\nâ a Archivo: activos / imágenes / almiku - v9.`)
+        return m.reply(`🖼 *Cambiar almiku-v8*
+
+Respondé a una imagen o enviá una foto para reemplazarla.`)
     }
     
     try {
@@ -34,15 +36,19 @@ async function handler(m, { sock }) {
         }
         
         if (!buffer) {
-            return m.reply(`❌Paso de descarga de imagen`)
+            return m.reply('❌ No se pudo descargar el archivo.')
         }
         
-        await m.reply(`⏳La jaula subió una foto..`)
+        await m.reply(`⏳ Subiendo el archivo nuevo...`)
         try {
             const newUrl = await _almikuuploaderjs.updateAssetUrl.call(void 0, 'almiku-v8', buffer, 'almiku-v8.jpg')
-            m.reply(`✅*ʙᴇʀʜᴀSɪʟ*\n\nEstoGambar almiku - v8. Jpg se ha convertido en una nueva URL:\n•${newUrl}\n" Config has been updated as a reality "!`)
+            m.reply(`✅ *Listo*
+
+El archivo almiku-v8 fue actualizado.
+•${newUrl}
+¡La configuración ya quedó guardada!`)
         } catch (e) {
-            m.reply(`❌Gagalm subió la imagen:${e.message}`)
+            m.reply(`❌ No se pudo subir el archivo: ${e.message}`)
         }
     } catch (error) {
         await m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName))

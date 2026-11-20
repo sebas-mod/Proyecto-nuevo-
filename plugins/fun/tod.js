@@ -41,7 +41,7 @@ const dares = [
   "¡Chota tu mantán ahora, di que lo siento aún te amo y luego captura de pantalla y envíalo al grupo!",
   "Pakai foto profil wajah jelekmu selama 1 jam penuh!",
   "Me encanta tanto... y lo dejo ir por 30 minutos.",
-  "Ksena VN mujer que Mewing sigma skibidi con un tono series a grupo.",
+  "Hacé de chica de novela visual haciendo mewing sigma skibidi en el grupo.",
   "Las cinco pegatinas más absurdas que tienes en este grupo ahora mismo.",
   "Etiqueta uno de los adminidores grupo y diga a su culo feo hoy.",
   "Tu bio doc se convirtió en una mentira. Yo era un imbécil por un día.",

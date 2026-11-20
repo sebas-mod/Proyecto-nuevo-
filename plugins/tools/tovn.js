@@ -5,7 +5,7 @@ const pluginConfig = {
     name: 'tovn',
     alias: ['tovoicenote', 'toptt', 'audiotovn'],
     category: 'tools',
-    description: 'Mengubah audio/video menjadi voice note',
+    description: 'Convierte audio o video en nota de voz',
     usage: '.tovn (reply/caption audio/video)',
     example: '.tovn',
     isOwner: false,
@@ -59,7 +59,7 @@ async function handler(m, { sock }) {
             `❌ *ɢᴀɢᴀʟ*\n\n` +
             `¡No hay audios detectables!\n\n` +
             `*Como usarlo:*\n` +
-            `DR. Ksenaudio / video + leyenda\`${m.prefix}tovn\`\n` +
+            `Respondé a un audio o video con un texto\`${m.prefix}tovn\`\n` +
             `Responder audio / video con\`${m.prefix}tovn\``
         )
         return

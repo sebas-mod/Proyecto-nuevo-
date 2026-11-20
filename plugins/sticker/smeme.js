@@ -15,7 +15,7 @@ const pluginConfig = {
   category: "sticker",
   description: "Cree una pegatina.",
   usage: ".smeme <top>|<bottom>",
-  example: ".smeme Ketika|Kamu Lupa",
+  example: ".smeme cuando|me olvido",
   isOwner: false,
   isPremium: false,
   isGroup: false,

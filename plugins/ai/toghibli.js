@@ -22,7 +22,7 @@ async function handler(m, { sock }) {
     const isImage = m.isImage || (m.quoted && m.quoted.type === 'imageMessage')
     
     if (!isImage) {
-        return m.reply(`🎨*ɢʜɪʙʟɪSᴛʏʟᴇ*\n\n# Kuply / respuestas imágenes para convertir a Ghibli\n\n\`${m.prefix}toghibli\``)
+        return m.reply(`🎨*ɢʜɪʙʟɪSᴛʏʟᴇ*\n\nRespondé a una imagen para convertirla a estilo Ghibli\n\n\`${m.prefix}toghibli\``)
     }
     
     m.react('🕕')

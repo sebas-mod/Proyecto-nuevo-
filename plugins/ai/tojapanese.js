@@ -22,7 +22,7 @@ async function handler(m, { sock }) {
     const isImage = m.isImage || (m.quoted && m.quoted.type === 'imageMessage')
     
     if (!isImage) {
-        return m.reply(`🎌*ᴊᴀᴘᴀɴᴇSᴇSᴛʏʟᴇ*\n\n# Ksena / respuestas imágenes para convertir a estilo japonés\n\n\`${m.prefix}tojapanese\``)
+        return m.reply(`🎌*ᴊᴀᴘᴀɴᴇSᴇSᴛʏʟᴇ*\n\nRespondé a una imagen para convertirla a estilo japonés\n\n\`${m.prefix}tojapanese\``)
     }
     
     m.react('🕕')

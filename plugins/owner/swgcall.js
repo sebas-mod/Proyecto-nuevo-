@@ -122,7 +122,7 @@ async function handler(m, { sock, db }) {
   if (source) {
     try {
       buffer = await source.download();
-      if (!buffer) return m.reply(`❌Gagalm tomó medios.`);
+      if (!buffer) return m.reply(`❌ No se pudo obtener el archivo.`);
 
       const fileType = await _filetype.fileTypeFromBuffer.call(void 0, buffer);
       ext = _optionalChain([fileType, 'optionalAccess', _11 => _11.ext]) || "bin";

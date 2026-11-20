@@ -5,7 +5,7 @@ const pluginConfig = {
     name: 'toisland',
     alias: ['island', 'tropical'],
     category: 'ai',
-    description: 'Ubah foto menjadi suasana pulau tropis',
+    description: 'Convierte una foto a ambiente de isla tropical',
     usage: '.toisland (reply/kirim gambar)',
     example: '.toisland',
     isOwner: false,
@@ -28,7 +28,7 @@ async function handler(m, { sock }) {
     if (!isImage) {
         return m.reply(
             `🏝️ *ᴛᴏ ɪsʟᴀɴᴅ*\n\n` +
-            `Ksena / respuestas imágenes para alguna isla\n\n` +
+            `Respondé a una imagen para aplicarle el estilo isla\n\n` +
             `\`${m.prefix}toisland\``
         )
     }

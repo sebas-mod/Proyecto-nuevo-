@@ -189,7 +189,7 @@ async function gantiAssetAnswerHandler(m, sock) {
 
     try {
         const newPath = await _almikuuploaderjs.updateAssetUrl.call(void 0, selectedKey, session.buffer, filename);
-        await m.reply(`✅*Exito*\n\n• Asset •${selectedKey}* ha sido cambiado a:\n•${newPath}\n" Config has been updated as a reality "!`);
+        await m.reply(`✅ *Éxito*\n\nEl recurso *${selectedKey}* fue actualizado:\n•${newPath}\n¡La configuración ya quedó guardada!`);
         delete global.gantiAssetSessions[m.chat];
         await m.react('✅');
     } catch (e) {

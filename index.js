@@ -171,7 +171,7 @@ let srcWatcher = null;
 function startSrcWatcher(srcPath) {
   if (srcWatcher) srcWatcher.close();
 
-  _almikuloggerjs.logger.system("dev", "Pantauan hot-reload buat src udah jalan bosku");
+  _almikuloggerjs.logger.system("dev", "Hot-reload de src activo");
 
   srcWatcher = _fs2.default.watch(srcPath, { recursive: true }, (eventType, filename) => {
     if (!filename || !filename.endsWith(".js")) return;

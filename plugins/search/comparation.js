@@ -208,7 +208,7 @@ async function comparationAnswerHandler(m, sock) {
 
             if (!resData || !resData.status || !resData.data) {
                 await m.react("❌");
-                await m.reply(`Gagalm obtuvo la comparación de datos.`);
+                await m.reply(`❌ No se pudo obtener la comparación de datos.`);
                 return true;
             }
 

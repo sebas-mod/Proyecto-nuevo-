@@ -6,7 +6,7 @@ const pluginConfig = {
     name: 'ganti-almiku-levelup.jpg',
     alias: ['gantialmikulevelup', 'setalmikulevelup'],
     category: 'owner',
-    description: 'Imagen Cambia nuestrain - nivelup.',
+    description: 'Cambia la imagen de almiku-levelup del bot.',
     usage: '.ganti-almiku-levelup.jpg (responde o envía una imagen)',
     example: '.ganti-almiku-levelup.jpg',
     isOwner: true,
@@ -20,16 +20,22 @@ const pluginConfig = {
 
 async function handler(m, { sock }) {
     const isImage = m.isImage || (m.quoted && m.quoted.type === 'imageMessage')
-    if (!isImage) return m.reply(`🖼ɢᴀɴᴛɪ¿Qué?\n\n# Ksently / réplica imágenes para reemplazar\nâ a Archivo: activos / imágenes / nuestrain - nivelup.`)
+    if (!isImage) return m.reply(`🖼 *Cambiar almiku-levelup*
+
+Respondé a una imagen o enviá una foto para reemplazarla.`)
     try {
         let buffer = m.quoted && m.quoted.isMedia ? await m.quoted.download() : await m.download()
-        if (!buffer) return m.reply('❌Paso de descarga de imagen')
-        await m.reply(`⏳La jaula subió una foto..`)
+        if (!buffer) return m.reply('❌ No se pudo descargar el archivo.')
+        await m.reply(`⏳ Subiendo el archivo nuevo...`)
         try {
             const newUrl = await _almikuuploaderjs.updateAssetUrl.call(void 0, 'almiku-levelup', buffer, 'almiku-levelup.jpg')
-            m.reply(`✅*ʙᴇʀʜᴀSɪʟ*\n\nEstoGambar almiku - nivelup. Jpg ha sido transferido a la nueva URL:\n•${newUrl}\n" Config has been updated as a reality "!`)
+            m.reply(`✅ *Listo*
+
+El archivo almiku-levelup fue actualizado.
+•${newUrl}
+¡La configuración ya quedó guardada!`)
         } catch (e) {
-            m.reply(`❌Gagalm subió la imagen:${e.message}`)
+            m.reply(`❌ No se pudo subir el archivo: ${e.message}`)
         }
     } catch (error) {
         await m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName))

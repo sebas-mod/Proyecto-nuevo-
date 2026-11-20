@@ -44,8 +44,8 @@ async function handler(m, { sock }) {
             `├┈┈⬡「 📝 *ᴅᴀғᴛᴀʀ ʜᴀᴅɪʀ* 」\n` +
             `${list}\n` +
             `╰┈┈┈┈┈┈┈┈⬡\n\n` +
-            `> _Ketik *${m.prefix}absen * for _ presence\n` +
-            `> _Ketik *${m.prefix}cekabsen * para ver _ lista`,
+            ` > _Escribí *${m.prefix}absen* para marcar presencia_\n` +
+            `> _Escribí *${m.prefix}cekabsen* para ver la lista_`,
             { mentions: absen.peserta })
 }
 exports.config = pluginConfig; exports.handler = handler;

@@ -26,7 +26,7 @@ async function handler(m, { sock }) {
         let help = `🔍* ANIMME QUE ES ESTO?\n\n`
         help += `La característica inteligente para conocer el título Anime es sólo de una captura de pantalla o un corte de la imagen!\n\n`
         help += `*Como usarlo:*\n`
-        help += `- Imagen de Ksena adegan anime con capción *${m.prefix}animeapaini*\n`
+        help += `- Imagen de una escena de anime con el texto *${m.prefix}animeapaini*\n`
         help += `- O una respuesta.${m.prefix}animeapaini*\n\n`
         help += `⚠* Nota: ] El vídeo no es compatible, sólo una imagen / captura de pantalla sólo ya!`
         return m.reply(help);

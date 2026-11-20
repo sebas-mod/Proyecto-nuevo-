@@ -41,7 +41,7 @@ async function handler(m) {
     const text = _optionalChain([m, 'access', _ => _.text, 'optionalAccess', _2 => _2.trim, 'call', _3 => _3()]);
     
     if (!text) {
-        return m.reply(`⭐*ʀᴀᴛᴇ*\n\n¡Esto es algo para afilar!\n\n*Ejemplo:*\nDios mío. ¡Calta mi cara!`);
+        return m.reply(`⭐ *rate*\n\nPuntuá a alguien del 1 al 100.\n\n*Ejemplo:*\n${m.prefix}rate @usuario`);
     }
     
     const rating = ratings[Math.floor(Math.random() * ratings.length)];

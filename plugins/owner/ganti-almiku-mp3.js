@@ -6,7 +6,7 @@ const pluginConfig = {
     name: 'ganti-almiku.mp3',
     alias: ['gantialmikuaudio', 'setalmikuaudio'],
     category: 'owner',
-    description: 'Ganti audio almiku.mp3',
+    description: 'Cambia el audio de almiku-mp3 del bot.',
     usage: '.ganti-almiku.mp3 (responde o envía un audio)',
     example: '.ganti-almiku.mp3',
     isOwner: true,
@@ -22,7 +22,9 @@ async function handler(m, { sock }) {
     const isAudio = m.type === 'audioMessage' || (m.quoted && m.quoted.type === 'audioMessage')
     
     if (!isAudio) {
-        return m.reply(`🎵*ɢᴀɴᴛɪ ᴀʟ ᴍɪᴋᴜ.ᴍᴘ3 *\n\nKsena / respuesta audio para reemplazar\nâ a Archivo: activos / audio / nuestroin. â a`)
+        return m.reply(`🎵 *Cambiar almiku-mp3*
+
+Respondé a un audio o enviá uno nuevo para reemplazarlo.`)
     }
     
     try {
@@ -34,15 +36,19 @@ async function handler(m, { sock }) {
         }
         
         if (!buffer) {
-            return m.reply(`❌Descarga pegajosa audios`)
+            return m.reply('❌ No se pudo descargar el archivo.')
         }
         
-        await m.reply(`⏳La jaula subió una foto..`)
+        await m.reply(`⏳ Subiendo el archivo nuevo...`)
         try {
             const newUrl = await _almikuuploaderjs.updateAssetUrl.call(void 0, 'almiku-mp3', buffer, 'almiku.mp3')
-            m.reply(`✅*ʙᴇʀʜᴀSɪʟ*\n\nEz Archivo almiku. MP3 ha sido transferido a la nueva URL:\n•${newUrl}\n" Config has been updated as a reality "!`)
+            m.reply(`✅ *Listo*
+
+El archivo almiku-mp3 fue actualizado.
+•${newUrl}
+¡La configuración ya quedó guardada!`)
         } catch (e) {
-            m.reply(`❌Archivo cargado de Gagalm:${e.message}`)
+            m.reply(`❌ No se pudo subir el archivo: ${e.message}`)
         }
     } catch (error) {
         await m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName))

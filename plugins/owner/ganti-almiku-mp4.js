@@ -6,7 +6,7 @@ const pluginConfig = {
     name: 'ganti-almiku.mp4',
     alias: ['gantialmikuvideo', 'setalmikuvideo'],
     category: 'owner',
-    description: 'Ganti video almiku.mp4',
+    description: 'Cambia el video de almiku-mp4 del bot.',
     usage: '.ganti-almiku.mp4 (responde o envía un video)',
     example: '.ganti-almiku.mp4',
     isOwner: true,
@@ -22,7 +22,9 @@ async function handler(m, { sock }) {
     const isVideo = m.type === 'videoMessage' || (m.quoted && m.quoted.type === 'videoMessage')
     
     if (!isVideo) {
-        return m.reply(`🎬*ɢᴀɴᴛɪ ᴀʟ ᴍɪᴋᴜ.ᴍᴘ4 *\n\nKsena / respuesta vídeo para reemplazar\nâ a Archivo: activos / video / almiku. â a mp4 â a`)
+        return m.reply(`🎬 *Cambiar almiku-mp4*
+
+Respondé a un video o enviá uno nuevo para reemplazarlo.`)
     }
     
     try {
@@ -34,15 +36,19 @@ async function handler(m, { sock }) {
         }
         
         if (!buffer) {
-            return m.reply(`❌Video de descarga de descargas`)
+            return m.reply('❌ No se pudo descargar el archivo.')
         }
         
-        await m.reply(`⏳La jaula subió una foto..`)
+        await m.reply(`⏳ Subiendo el archivo nuevo...`)
         try {
             const newUrl = await _almikuuploaderjs.updateAssetUrl.call(void 0, 'almiku-mp4', buffer, 'almiku.mp4')
-            m.reply(`✅*ʙᴇʀʜᴀSɪʟ*\n\n" Archivo almiku. ". " mp4 has been transferred to the new URL:\n•${newUrl}\n" Config has been updated as a reality "!`)
+            m.reply(`✅ *Listo*
+
+El archivo almiku-mp4 fue actualizado.
+•${newUrl}
+¡La configuración ya quedó guardada!`)
         } catch (e) {
-            m.reply(`❌Archivo cargado de Gagalm:${e.message}`)
+            m.reply(`❌ No se pudo subir el archivo: ${e.message}`)
         }
     } catch (error) {
         await m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName))

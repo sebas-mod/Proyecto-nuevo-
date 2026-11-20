@@ -66,7 +66,7 @@ async function handler(m, { sock }) {
     if (!isMedia && !caption) {
         return m.reply(
             `📤 *UPLOAD SALURAN*\n\n` +
-            `Ksena / respuesta media con caption:\n` +
+            `Respondé a un archivo multimedia con un texto:\n` +
             `  \`${m.prefix}upch 12xxx@newsletter <teks opsional>\`\n\n` +
             `*Support:*\n` +
             `  🖼️ Gambar\n` +

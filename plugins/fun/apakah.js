@@ -24,7 +24,7 @@ const answers = [
     'No quizas.',
     'Entonces, ¿quién sabe?',
     'Menurutku sih iya.',
-    'Wah, kayaknya nggak deh.',
+    'Mmm, creo que no.',
     'Claro, ¿por qué no?',
     'No lo sé, prueba otro.',
     '¡Dios mío, tiene que ser!',

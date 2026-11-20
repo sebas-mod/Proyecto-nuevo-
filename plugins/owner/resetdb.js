@@ -39,7 +39,7 @@ async function handler(m, { sock }) {
             `> • Data clan\n` +
             `••Todas las estadísticas\n\n` +
             `╭┈┈⬡「 ⚠️ *ᴋᴏɴғɪʀᴍᴀsɪ* 」\n` +
-            `┃Ketik: *. resetdb confirmación *\n` +
+            `┃Escribí: *.resetdb confirmar*\n` +
             `┃en 60 segundos\n` +
             `╰┈┈┈┈┈┈┈┈⬡\n\n` +
             `•❌¡Está acción está fuera de la mesa!`

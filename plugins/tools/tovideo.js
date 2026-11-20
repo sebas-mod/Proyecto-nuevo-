@@ -10,7 +10,7 @@ const pluginConfig = {
     name: 'tovideo',
     alias: ['tovid', 'stickertovideo', 'giftomp4', 'webmtomp4'],
     category: 'tools',
-    description: 'Mengubah sticker animasi menjadi video MP4',
+    description: 'Convierte un sticker animado en video MP4',
     usage: '.tovideo (reply/caption sticker animasi)',
     example: '.tovideo',
     isOwner: false,

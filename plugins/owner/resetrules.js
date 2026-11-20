@@ -22,7 +22,7 @@ function handler(m) {
     
     m.reply(
         `✅ *ʙᴏᴛ ʀᴜʟᴇs ᴅɪʀᴇsᴇᴛ*\n\n` +
-        `Ezrules bot logrânc restabblecerse a predeterminado!\n` +
+        `✅ Las reglas del bot volvieron a los valores predeterminados.\n` +
         `> Escribe\`${m.prefix}rules\`para ver.`
     )
 }

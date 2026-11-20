@@ -24,7 +24,7 @@ async function handler(m, { sock }) {
 
   if (!isImage) {
     return m.reply(
-      `🖤*ʙʟᴀᴄᴋSᴛʏʟᴇ*\n\nKsena / respuestas imágenes\n\n\`${m.prefix}toblack\``,
+      `🖤*ʙʟᴀᴄᴋSᴛʏʟᴇ*\n\nRespondé a una imagen\n\n\`${m.prefix}toblack\``,
     );
   }
 

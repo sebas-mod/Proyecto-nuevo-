@@ -20,14 +20,14 @@ async function handler(m, { sock }) {
         try {
             buffer = await m.quoted.download()
         } catch (e) {
-            await m.reply(`❌Gagalm toma fotos.`)
+            await m.reply(`❌ No se pudo obtener la foto.`)
             return
         }
     } else if (m.isImage) {
         try {
             buffer = await m.download()
         } catch (e) {
-            await m.reply(`❌Gagalm toma fotos.`)
+            await m.reply(`❌ No se pudo obtener la foto.`)
             return
         }
     }

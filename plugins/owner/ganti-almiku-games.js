@@ -6,7 +6,7 @@ const pluginConfig = {
     name: 'ganti-almiku-games.jpg',
     alias: ['gantigames', 'setalmikugames'],
     category: 'owner',
-    description: 'Imagen Cambia nuestrain juegos.',
+    description: 'Cambia la imagen de almiku-games del bot.',
     usage: '.ganti-almiku-games.jpg (responde o envía una imagen)',
     example: '.ganti-almiku-games.jpg',
     isOwner: true,
@@ -22,7 +22,9 @@ async function handler(m, { sock }) {
     const isImage = m.isImage || (m.quoted && m.quoted.type === 'imageMessage')
     
     if (!isImage) {
-        return m.reply(`🖼ɢᴀɴᴛɪ ᴀʟ ᴍɪᴋᴜ-ɢᴀᴍᴇs.ᴊᴘɢ*\n\n# Ksently / réplica imágenes para reemplazar\nArchivo: activos / imágenes / nuestroin - juegos.`)
+        return m.reply(`🖼 *Cambiar almiku-games*
+
+Respondé a una imagen o enviá una foto para reemplazarla.`)
     }
     
     try {
@@ -34,15 +36,19 @@ async function handler(m, { sock }) {
         }
         
         if (!buffer) {
-            return m.reply(`❌Paso de descarga de imagen`)
+            return m.reply('❌ No se pudo descargar el archivo.')
         }
         
-        await m.reply(`⏳La jaula subió una foto..`)
+        await m.reply(`⏳ Subiendo el archivo nuevo...`)
         try {
             const newUrl = await _almikuuploaderjs.updateAssetUrl.call(void 0, 'almiku-games', buffer, 'almiku-games.jpg')
-            m.reply(`✅*ʙᴇʀʜᴀSɪʟ*\n\nLa imagen de juegos de Al Miku (.jpg) fue actualizada a la nueva URL:\n•${newUrl}\n" Config has been updated as a reality "!`)
+            m.reply(`✅ *Listo*
+
+El archivo almiku-games fue actualizado.
+•${newUrl}
+¡La configuración ya quedó guardada!`)
         } catch (e) {
-            m.reply(`❌Gagalm subió la imagen:${e.message}`)
+            m.reply(`❌ No se pudo subir el archivo: ${e.message}`)
         }
     } catch (error) {
         await m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName))

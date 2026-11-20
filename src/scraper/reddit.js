@@ -49,7 +49,7 @@ async function RedditDL(redditUrl) {
       };
     }
 
-    return { status: false, error: "Gagalm recogió datos" };
+    return { status: false, error: "No se pudieron obtener los datos" };
   } catch (e) {
     return { status: false, error: e.message };
   }

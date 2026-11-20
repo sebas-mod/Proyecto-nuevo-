@@ -4,7 +4,7 @@ const pluginConfig = {
     name: 'tocartoon',
     alias: ['cartoon', 'cartoonify', 'tooncartoon'],
     category: 'ai',
-    description: 'Ubah foto menjadi gaya kartun',
+    description: 'Convierte una foto a estilo dibujo animado',
     usage: '.tocartoon (reply/kirim gambar)',
     example: '.tocartoon',
     isOwner: false,
@@ -27,7 +27,7 @@ async function handler(m, { sock }) {
     if (!isImage) {
         return m.reply(
             `🎬 *ᴛᴏ ᴄᴀʀᴛᴏᴏɴ*\n\n` +
-            `# Kuply / respuestas imágenes para convertir a gaya dibujos animados\n\n` +
+            `Respondé a una imagen para convertirla a dibujo animado\n\n` +
             `\`${m.prefix}tocartoon\``
         )
     }

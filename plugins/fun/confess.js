@@ -69,7 +69,7 @@ async function handler(m, { sock }) {
   }
 
   if (message.length > 1000) {
-    return m.reply(`Wah pesannya kepanjangan hermano! Maksimal 1000 caracter si biar bacanya no pusing. 📜`);
+    return m.reply(`¡Uh, el mensaje es demasiado largo! Máximo 1000 caracteres para que se pueda leer. 📜`);
   }
 
   const confessText = `💌* ¡Hay un servicio secreto hecho por usted! >💌\n\n` +

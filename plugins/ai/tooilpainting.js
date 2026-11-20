@@ -4,7 +4,7 @@ const pluginConfig = {
     name: 'tooilpainting',
     alias: ['oilpainting', 'tooil', 'oil'],
     category: 'ai',
-    description: 'Ubah foto menjadi gaya lukisan minyak (oil painting)',
+    description: 'Convierte una foto a pintura al óleo',
     usage: '.tooilpainting (reply/kirim gambar)',
     example: '.tooilpainting',
     isOwner: false,
@@ -27,7 +27,7 @@ async function handler(m, { sock }) {
     if (!isImage) {
         return m.reply(
             `🖼️ *ᴛᴏ ᴏɪʟ ᴘᴀɪɴᴛɪɴɢ*\n\n` +
-            `# Kuply / réplica imágenes para convertirse en gaya artículos\n\n` +
+            `Respondé a una imagen para convertirla en pintura al óleo\n\n` +
             `\`${m.prefix}tooilpainting\``
         )
     }

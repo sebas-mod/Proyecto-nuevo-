@@ -2,7 +2,7 @@
     name: 'styleteks',
     alias: ['fancytext', 'font', 'gaya', 'tulisan', 'fontstyle'],
     category: 'tools',
-    description: 'Mengubah teks biasa menjadi berbagai gaya tulisan keren (fancy text).',
+    description: 'Convierte texto normal en distintos estilos de letra (fancy text).',
     usage: '.styleteks <teks>',
     example: '.styleteks Halo Dunia',
     isOwner: false,
