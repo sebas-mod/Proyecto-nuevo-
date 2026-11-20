@@ -1,7 +1,7 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _ytsearch = require('yt-search'); var _ytsearch2 = _interopRequireDefault(_ytsearch);
 var _almiku = require('almiku');
 var _axios = require('axios'); var _axios2 = _interopRequireDefault(_axios);
-var _sharp = require('sharp'); var _sharp2 = _interopRequireDefault(_sharp);
+var _sharp = require('../../src/lib/almiku-image.js'); var _sharp2 = _interopRequireDefault(_sharp);
 var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
 
 const pluginConfig = {

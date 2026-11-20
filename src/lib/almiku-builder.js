@@ -33,7 +33,7 @@ const VERSION = '4.6';
 
 var _almiku = require('almiku');
 var _crypto = require('crypto'); var _crypto2 = _interopRequireDefault(_crypto);
-var _sharp = require('sharp'); var _sharp2 = _interopRequireDefault(_sharp);
+var _sharp = require('./almiku-image.js'); var _sharp2 = _interopRequireDefault(_sharp);
 var _fluentffmpeg = require('fluent-ffmpeg'); var _fluentffmpeg2 = _interopRequireDefault(_fluentffmpeg);
 var _stream = require('stream');
 

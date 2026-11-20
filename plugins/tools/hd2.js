@@ -2,7 +2,7 @@
 var _formdata = require('form-data'); var _formdata2 = _interopRequireDefault(_formdata);
 var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
 var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
-var _sharp2 = require('sharp'); var _sharp3 = _interopRequireDefault(_sharp2);
+var _sharp2 = require('../../src/lib/almiku-image.js'); var _sharp3 = _interopRequireDefault(_sharp2);
 
 const pluginConfig = {
   name: "hd2",

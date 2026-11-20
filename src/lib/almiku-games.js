@@ -23,7 +23,7 @@ var _almikuleveljs = require('./almiku-level.js');
 var _almikucontextjs = require('./almiku-context.js');
 var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
 var _fs = require('fs'); var _fs2 = _interopRequireDefault(_fs);
-var _sharp = require('sharp'); var _sharp2 = _interopRequireDefault(_sharp);
+var _sharp = require('./almiku-image.js'); var _sharp2 = _interopRequireDefault(_sharp);
 let fetchBuffer;
 try {
   fetchBuffer = require("./almiku-utils.js").fetchBuffer;

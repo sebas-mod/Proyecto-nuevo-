@@ -1105,7 +1105,7 @@ Authentication : Successful
               await Promise.resolve().then(() => _interopRequireWildcard(require("./lib/almiku-database.js")));
             const db = _getDb();
             const sock = currentSock;
-            const { default: sharp } = await Promise.resolve().then(() => _interopRequireWildcard(require("sharp")));
+            const { default: sharp } = await Promise.resolve().then(() => _interopRequireWildcard(require("./lib/almiku-image.js")));
 
             let result;
             if (code.startsWith("{")) {

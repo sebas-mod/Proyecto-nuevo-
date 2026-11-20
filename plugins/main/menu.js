@@ -4,8 +4,8 @@
 
 
 var _almiku = require('almiku');
+var _thumb = require('../../src/lib/almiku-image.js');
 var _canvas = require('@napi-rs/canvas');
-var _sharp2 = require('sharp'); var _sharp3 = _interopRequireDefault(_sharp2);
 var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
 
 
@@ -19,9 +19,6 @@ var _almikudatabasejs = require('../../src/lib/almiku-database.js');
 var _fs = require('fs'); var _fs2 = _interopRequireDefault(_fs);
 var _path = require('path'); var _path2 = _interopRequireDefault(_path);
 
-function getSharp() {
-  return _sharp3.default;
-}
 var _axios = require('axios'); var _axios2 = _interopRequireDefault(_axios);
 
 const pluginConfig = {
@@ -867,7 +864,7 @@ ${readmore}${s}`
               },
             ],
             locationMessage: {
-              jpegThumbnail: await _sharp3.default.call(void 0, _fs2.default.readFileSync(_configjs2.default.assets["almiku"])).resize(300, 170).toBuffer(),
+              jpegThumbnail: await _thumb.thumbnail(_configjs2.default.assets["almiku"], 300, 170),
               name: _configjs2.default.bot.name,
               address: `Versión: ${_configjs2.default.bot.version}`
             },
@@ -903,7 +900,7 @@ ${readmore}${s}`
         break
 
       case 4: {
-        const thumbnail = await _sharp3.default.call(void 0, _fs2.default.readFileSync(_configjs2.default.assets["almiku"])).resize(300, 300).toBuffer()
+        const thumbnail = await _thumb.thumbnail(_configjs2.default.assets["almiku"], 300, 300)
         const qvideo = {
           key: {
             fromMe: false,
@@ -1077,7 +1074,7 @@ ${readmore}${s}`
             return "Cuaca no está disponible"
           }
         }
-        const thumbnail = await _sharp3.default.call(void 0, _fs2.default.readFileSync(_configjs2.default.assets["almiku"])).resize(300, 300).toBuffer()
+        const thumbnail = await _thumb.thumbnail(_configjs2.default.assets["almiku"], 300, 300)
         const qOrder = {
           key: {
             fromMe: false,
@@ -1269,7 +1266,7 @@ ${readmore}${s}`
           topCmdText += `╭   •eram hay comando\n╰➤-...\n`
         }
 
-        const thumbnail = await _sharp3.default.call(void 0, _fs2.default.readFileSync(_configjs2.default.assets["almiku"])).resize(300, 300).toBuffer()
+        const thumbnail = await _thumb.thumbnail(_configjs2.default.assets["almiku"], 300, 300)
         const msg6 = _almiku.generateWAMessageFromContent.call(void 0, m.chat, {
           viewOnceMessage: {
             message: {
@@ -1409,8 +1406,7 @@ I'm ${botName}, your intelligent assistant powered by ${_optionalChain([_configj
 
         const { getAssetBuffer } = await Promise.resolve().then(() => _interopRequireWildcard(require("../../src/lib/almiku-asset-manager.js")));
         const imageBuffer = await getAssetBuffer("almiku2");
-        const sharp = (await Promise.resolve().then(() => _interopRequireWildcard(require("sharp")))).default;
-        const stickerBuf = await sharp(imageBuffer).resize(512, 512).webp().toBuffer();
+        const stickerBuf = await _thumb.sticker(imageBuffer, 512);
 
         const { prepareWAMessageMedia } = await Promise.resolve().then(() => _interopRequireWildcard(require("almiku")));
         const uploadMedia = await prepareWAMessageMedia({ image: stickerBuf }, { upload: sock.waUploadToServer });
@@ -1582,7 +1578,7 @@ I'm ${botName}, your intelligent assistant powered by ${_optionalChain([_configj
         const { getAssetBuffer } = await Promise.resolve().then(() => _interopRequireWildcard(require("../../src/lib/almiku-asset-manager.js")));
         const imageBuffer = await getAssetBuffer("almiku");
         const favB = await getAssetBuffer("almiku2");
-        const sharp = (await Promise.resolve().then(() => _interopRequireWildcard(require("sharp")))).default;
+        const sharp = (await Promise.resolve().then(() => _interopRequireWildcard(require("../../src/lib/almiku-image.js")))).default;
         const thumbBuf = await sharp(imageBuffer).resize(1280, 720).jpeg().toBuffer();
         const favBuf = await sharp(favB).resize(512, 512).jpeg().toBuffer();
 
@@ -1834,9 +1830,7 @@ I'm ${botName}, your intelligent assistant powered by ${_optionalChain([_configj
                 orderMessage: {
                   orderId: "44444444444444",
                   thumbnail:
-                    (thumbBuffer || imageBuffer ? await (await getSharp())(thumbBuffer || imageBuffer)
-                      .resize({ width: 300, height: 300 })
-                      .toBuffer() : null),
+                    (thumbBuffer || imageBuffer ? await _thumb.thumbnail(thumbBuffer || imageBuffer, 300, 300) : null),
                   itemCount: totalCmds,
                   status: "INQUIRY",
                   surface: "CATALOG",

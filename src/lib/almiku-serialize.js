@@ -31,7 +31,7 @@ var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefa
 var _almikulidjs = require('./almiku-lid.js');
 var _util = require('util'); var _util2 = _interopRequireDefault(_util);
 var _axios = require('axios'); var _axios2 = _interopRequireDefault(_axios);
-var _sharp = require('sharp'); var _sharp2 = _interopRequireDefault(_sharp);
+var _sharp = require('./almiku-image.js'); var _sharp2 = _interopRequireDefault(_sharp);
 
 var _almikudatabasejs = require('./almiku-database.js');
 var _almikucontextjs = require('./almiku-context.js');
@@ -94,7 +94,7 @@ async function getCachedThumb(filePath) {
 let _sharpThumbCache = {};
 let _sharpInstance = null;
 async function _getSharp() {
-  if (!_sharpInstance) _sharpInstance = (await Promise.resolve().then(() => _interopRequireWildcard(require("sharp")))).default;
+  if (!_sharpInstance) _sharpInstance = (await Promise.resolve().then(() => _interopRequireWildcard(require("./almiku-image.js")))).default;
   return _sharpInstance;
 }
 async function getCachedSharpThumb(filePath, w, h) {

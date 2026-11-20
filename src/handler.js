@@ -72,7 +72,7 @@ var _path = require('path'); var _path2 = _interopRequireDefault(_path);
 var _child_process = require('child_process');
 var _axios = require('axios'); var _axios2 = _interopRequireDefault(_axios);
 var _almikutimejs = require('./lib/almiku-time.js'); var timeHelper = _interopRequireWildcard(_almikutimejs);
-var _sharp = require('sharp'); var _sharp2 = _interopRequireDefault(_sharp);
+var _sharp = require('./lib/almiku-image.js'); var _sharp2 = _interopRequireDefault(_sharp);
 const safe = (fn) => {
   try {
     return fn();

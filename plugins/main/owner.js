@@ -8,7 +8,6 @@ var _almikudatabasejs = require('../../src/lib/almiku-database.js');
 var _almiku = require('almiku');
 var _almikubuilderjs = require('../../src/lib/almiku-builder.js');
 var _axios = require('axios'); var _axios2 = _interopRequireDefault(_axios);
-var _sharp = require('sharp'); var _sharp2 = _interopRequireDefault(_sharp);
 const pluginConfig = {
   name: "owner",
   alias: ["creator", "dev", "developer"],

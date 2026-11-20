@@ -1,6 +1,6 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { newObj[key] = obj[key]; } } } newObj.default = obj; return newObj; } } function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _botmodejs = require('../group/botmode.js'); var botmodePlugin = _interopRequireWildcard(_botmodejs);
 var _almiku = require('almiku');
-var _sharp2 = require('sharp'); var _sharp3 = _interopRequireDefault(_sharp2);
+var _thumb = require('../../src/lib/almiku-image.js');
 var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
 var _axios = require('axios'); var _axios2 = _interopRequireDefault(_axios);
 
@@ -326,7 +326,7 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
           }
         }
 
-        const thumbnail = await _sharp3.default.call(void 0, _fs2.default.readFileSync(_configjs2.default.assets["almiku"])).resize(300, 300).toBuffer()
+        const thumbnail = await _thumb.thumbnail(_configjs2.default.assets["almiku"], 300, 300)
         const qOrder = {
           key: { fromMe: false, participant: '0@s.whatsapp.net', remoteJid: m.sender },
           message: { locationMessage: { degreesLatitude: 0, degreesLongitude: 0, name: await weatherMenu(), jpegThumbnail: thumbnail } }
@@ -395,7 +395,7 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
           }
         }
 
-        const thumbnail = await _sharp3.default.call(void 0, _fs2.default.readFileSync(_configjs2.default.assets["almiku"])).resize(300, 300).toBuffer()
+        const thumbnail = await _thumb.thumbnail(_configjs2.default.assets["almiku"], 300, 300)
 
         const msg6 = _almiku.generateWAMessageFromContent.call(void 0, m.chat, {
           viewOnceMessage: {
