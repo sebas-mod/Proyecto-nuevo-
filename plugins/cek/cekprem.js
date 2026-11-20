@@ -17,7 +17,7 @@ const pluginConfig = {
 }
 
 function formatDate(ts) {
-    return new Date(ts).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })
+    return new Date(ts).toLocaleDateString('es-AR', { day: 'numeric', month: 'long', year: 'numeric' })
 }
 
 async function handler(m) {
@@ -70,8 +70,8 @@ async function handler(m) {
 
     if (user) {
         txt += `⚡Energía: *${user.energi === -1 ? '∞' : (_nullishCoalesce(user.energi, () => ( 0)))}*\n`
-        txt += `💰Monedas: *${user.koin === -1 ? '∞' : (_nullishCoalesce(user.koin, () => ( 0))).toLocaleString('id-ID')}*\n`
-        txt += `⭐ Exp: *${(_nullishCoalesce(user.exp, () => ( 0))).toLocaleString('id-ID')}*\n`
+        txt += `💰Monedas: *${user.koin === -1 ? '∞' : (_nullishCoalesce(user.koin, () => ( 0))).toLocaleString('es-AR')}*\n`
+        txt += `⭐ Exp: *${(_nullishCoalesce(user.exp, () => ( 0))).toLocaleString('es-AR')}*\n`
         txt += `📊 Level: *${_nullishCoalesce(user.level, () => ( 1))}*\n`
     }
 

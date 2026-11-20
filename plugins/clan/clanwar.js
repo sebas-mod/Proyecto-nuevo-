@@ -149,18 +149,18 @@ async function handler(m) {
 
     let txt = `⚔️ *WAR RESULT*\n\n`
     txt += `${myE} *${myClan.name}*  vs  *${enemyClan.name}* ${enE}\n`
-    txt += `💪 ${myPower.toLocaleString('id-ID')}  vs  ${enemyPower.toLocaleString('id-ID')}\n`
+    txt += `💪 ${myPower.toLocaleString('es-AR')}  vs  ${enemyPower.toLocaleString('es-AR')}\n`
     txt += `${bar}\n\n`
     txt += `${winnerE} *${winnerClan.name} WINS!*\n\n`
 
     if (isWin) {
         txt += `🎁 Reward per member:\n`
-        txt += `+Rp ${myR.koinWin.toLocaleString('id-ID')} · +${myR.expWin.toLocaleString('id-ID')} EXP · +${myR.energiWin} Energi\n`
-        txt += `+${REWARDS.clanExpWin.toLocaleString('id-ID')} Clan EXP`
+        txt += `+Rp ${myR.koinWin.toLocaleString('es-AR')} · +${myR.expWin.toLocaleString('es-AR')} EXP · +${myR.energiWin} Energi\n`
+        txt += `+${REWARDS.clanExpWin.toLocaleString('es-AR')} Clan EXP`
     } else {
         txt += `😔 Konsolasi per member:\n`
-        txt += `+Rp ${myR.koinLose.toLocaleString('id-ID')} · +${myR.expLose.toLocaleString('id-ID')} EXP · +${myR.energiLose} Energi\n`
-        txt += `+${REWARDS.clanExpLose.toLocaleString('id-ID')} Clan EXP`
+        txt += `+Rp ${myR.koinLose.toLocaleString('es-AR')} · +${myR.expLose.toLocaleString('es-AR')} EXP · +${myR.energiLose} Energi\n`
+        txt += `+${REWARDS.clanExpLose.toLocaleString('es-AR')} Clan EXP`
     }
 
     await m.reply(txt)

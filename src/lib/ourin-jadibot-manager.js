@@ -470,7 +470,7 @@ async function startJadibot(sock, m, userJid, usePairing = true) {
               `✅ *ᴊᴀᴅɪʙᴏᴛ ᴛᴇʀʜᴜʙᴜɴɢ*\n\n` +
               `• 📱 Número: *@${id}*\n` +
               `> 🟢 Status: *Online*\n` +
-              `• ⏱️ Inicio: *${new Date().toLocaleTimeString("id-ID")}*\n\n` +
+              `• ⏱️ Inicio: *${new Date().toLocaleTimeString("es-AR")}*\n\n` +
               `¡Está activo y listo para recibir órdenes!\n\n` +
               `> ℹ️ Escribe \`${m.prefix || "."}stopjadibot\` para detener`,
             mentions: [userJid],

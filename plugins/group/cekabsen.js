@@ -27,9 +27,9 @@ async function handler(m, { sock }) {
     );
   }
   const absen = global.absensi[chatId];
-  const now = _momenttimezone2.default.call(void 0, ).tz("Asia/Jakarta");
+  const now = _momenttimezone2.default.call(void 0, ).tz("America/Argentina/Buenos_Aires");
   const dateStr = now.format("D MMMM YYYY");
-  const createdDate = _momenttimezone2.default.call(void 0, absen.createdAt).tz("Asia/Jakarta");
+  const createdDate = _momenttimezone2.default.call(void 0, absen.createdAt).tz("America/Argentina/Buenos_Aires");
   const timeStr = createdDate.format("HH:mm");
   let list = "┃Ver algo tan absurdo";
   if (absen.peserta.length > 0) {

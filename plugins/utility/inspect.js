@@ -44,7 +44,7 @@ async function handler(m, { sock }) {
                 `╭┈┈⬡「 📊 *ᴅᴇᴛᴀɪʟ* 」\n` +
                 `┃ 📝 ɴᴀᴍᴇ: *${groupInfo.subject}*\n` +
                 `┃ 🆔 ɪᴅ: \`${groupInfo.id}\`\n` +
-                `┃ 📅 ᴄʀᴇᴀᴛᴇᴅ: ${new Date(groupInfo.creation * 1000).toLocaleString('id-ID')}\n`
+                `┃ 📅 ᴄʀᴇᴀᴛᴇᴅ: ${new Date(groupInfo.creation * 1000).toLocaleString('es-AR')}\n`
 
             if (groupInfo.owner) {
                 teks += `┃ 👑 ᴄʀᴇᴀᴛᴏʀ: @${groupInfo.owner.split('@')[0]}\n`
@@ -96,7 +96,7 @@ async function handler(m, { sock }) {
                 `┃ 🆔 ɪᴅ: \`${channelInfo.id}\`\n` +
                 `┃ 📌 sᴛᴀᴛᴇ: ${_optionalChain([channelInfo, 'access', _8 => _8.state, 'optionalAccess', _9 => _9.type]) || '-'}\n` +
                 `┃ 📝 ɴᴀᴍᴇ: *${_optionalChain([channelInfo, 'access', _10 => _10.thread_metadata, 'optionalAccess', _11 => _11.name, 'optionalAccess', _12 => _12.text]) || '-'}*\n` +
-                `┃ 📅 ᴄʀᴇᴀᴛᴇᴅ: ${new Date((_optionalChain([channelInfo, 'access', _13 => _13.thread_metadata, 'optionalAccess', _14 => _14.creation_time]) || 0) * 1000).toLocaleString('id-ID')}\n` +
+                `┃ 📅 ᴄʀᴇᴀᴛᴇᴅ: ${new Date((_optionalChain([channelInfo, 'access', _13 => _13.thread_metadata, 'optionalAccess', _14 => _14.creation_time]) || 0) * 1000).toLocaleString('es-AR')}\n` +
                 `┃ 👥 sᴜʙsᴄʀɪʙᴇʀs: ${_optionalChain([channelInfo, 'access', _15 => _15.thread_metadata, 'optionalAccess', _16 => _16.subscribers_count]) || 0}\n` +
                 `┃ ✅ ᴠᴇʀɪꜰɪᴄᴀᴛɪᴏɴ: ${_optionalChain([channelInfo, 'access', _17 => _17.thread_metadata, 'optionalAccess', _18 => _18.verification]) || '-'}\n` +
                 `╰┈┈⬡\n\n` +

@@ -1,7 +1,7 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _momenttimezone = require('moment-timezone'); var _momenttimezone2 = _interopRequireDefault(_momenttimezone);
-const TIMEZONE = 'Asia/Jakarta'
+const TIMEZONE = 'America/Argentina/Buenos_Aires'
 
-_momenttimezone2.default.locale('id')
+_momenttimezone2.default.locale('es')
 
 function now() {
     return _momenttimezone2.default.tz(TIMEZONE)

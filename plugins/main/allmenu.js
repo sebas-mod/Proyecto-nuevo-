@@ -143,7 +143,7 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
   const devName = _optionalChain([botConfig, 'access', _17 => _17.bot, 'optionalAccess', _18 => _18.developer]) || "Ell";
   const botVersion = _optionalChain([botConfig, 'access', _19 => _19.bot, 'optionalAccess', _20 => _20.version]) || "11.0.0";
   const pushName = m.pushName || "User";
-  const timeNow = new Date().toLocaleTimeString('id-ID', { timeZone: 'Asia/Jakarta' }).replace(/\./g, ':');
+  const timeNow = new Date().toLocaleTimeString('es-AR', { timeZone: 'America/Argentina/Buenos_Aires' }).replace(/\./g, ':');
 
   txt += `✦ *Información del usuario*\n`;
   txt += `• Nombre : ${pushName}\n`;
@@ -153,7 +153,7 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
   txt += `• Nombre : ${botName}\n`;
   txt += `• Funciones : ${totalFeatures}\n`;
   txt += `• Versión : ${botVersion}\n`;
-  txt += `• Hora : ${timeNow} WIB\n\n`;
+  txt += `• Hora : ${timeNow} ART\n\n`;
   txt += `✦ *Ventajas*\n`;
   txt += `• Fast response\n`;
   txt += `• Stable system\n`;

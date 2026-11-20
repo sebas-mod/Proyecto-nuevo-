@@ -17,7 +17,7 @@ const pluginConfig = {
 }
 
 function formatDate(ts) {
-    return new Date(ts).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })
+    return new Date(ts).toLocaleDateString('es-AR', { day: 'numeric', month: 'long', year: 'numeric' })
 }
 
 async function handler(m) {
@@ -58,7 +58,7 @@ async function handler(m) {
     txt += `📊Restante: *${remaining > 0 ? remaining + ' hari' : '⚠️ Expired'}*\n`
     if (user) {
         txt += `⚡Energía: *${user.energi === -1 ? '∞' : (_nullishCoalesce(user.energi, () => ( 0)))}*\n`
-        txt += `💰Monedas: *${user.koin === -1 ? '∞' : (_nullishCoalesce(user.koin, () => ( 0))).toLocaleString('id-ID')}*\n`
+        txt += `💰Monedas: *${user.koin === -1 ? '∞' : (_nullishCoalesce(user.koin, () => ( 0))).toLocaleString('es-AR')}*\n`
     }
 
     await m.reply(txt, { mentions: [jid] })

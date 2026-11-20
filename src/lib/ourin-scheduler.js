@@ -7,7 +7,7 @@ var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefa
 
 const scheduledTasks = new Map();
 const activeCronJobs = new Map();
-const TZ = "Asia/Jakarta";
+const TZ = "America/Argentina/Buenos_Aires";
 
 function getMsUntilTime(hour, minute = 0) {
   const now = _momenttimezone2.default.tz(TZ);
@@ -463,7 +463,7 @@ async function startGroupScheduleChecker(sock) {
                 "not_announcement",
               );
               await groupScheduleSock.sendMessage(groupId, {
-                text: `🔓*ᴀᴜᴛᴏ ᴏᴘᴇɴ*\n\nY Grupo 's en una motocicleta.\n> Tiempo:${currentTime} WIB`,
+                text: `🔓*ᴀᴜᴛᴏ ᴏᴘᴇɴ*\n\nY Grupo 's en una motocicleta.\n> Tiempo:${currentTime} ART`,
               });
               notifiedGroups.add(notifyKey);
               _ourinloggerjs.logger.success(
@@ -501,7 +501,7 @@ async function startGroupScheduleChecker(sock) {
                 "announcement",
               );
               await groupScheduleSock.sendMessage(groupId, {
-                text: `🔒*ᴀᴜᴛᴏ ᴄʟᴏSᴇ*\n\nEl Grupo hap srrado a la línea de automatización está bajo control.\n> Tiempo:${currentTime} WIB`,
+                text: `🔒*ᴀᴜᴛᴏ ᴄʟᴏSᴇ*\n\nEl Grupo hap srrado a la línea de automatización está bajo control.\n> Tiempo:${currentTime} ART`,
               });
               notifiedGroups.add(notifyKey);
               _ourinloggerjs.logger.success(

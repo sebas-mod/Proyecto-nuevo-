@@ -25,7 +25,7 @@ function resolvePlaceholders(
   groupOwner,
   prefix,
 ) {
-  const now = _momenttimezone2.default.call(void 0, ).tz("Asia/Jakarta");
+  const now = _momenttimezone2.default.call(void 0, ).tz("America/Argentina/Buenos_Aires");
   const dayNames = {
     Sunday: "Minggu",
     Monday: "Senin",
@@ -112,7 +112,7 @@ Los mejores deseos para ella.`,
   const emoji = emojis[Math.floor(Math.random() * emojis.length)];
   const header = headers[Math.floor(Math.random() * headers.length)];
   const username = _optionalChain([participant, 'optionalAccess', _5 => _5.split, 'call', _6 => _6("@"), 'access', _7 => _7[0]]) || "User";
-  const now = _momenttimezone2.default.call(void 0, ).tz("Asia/Jakarta");
+  const now = _momenttimezone2.default.call(void 0, ).tz("America/Argentina/Buenos_Aires");
   const dayNames = {
     Sunday: "Minggu",
     Monday: "Senin",

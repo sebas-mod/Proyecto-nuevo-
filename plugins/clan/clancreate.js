@@ -41,7 +41,7 @@ async function handler(m) {
         return m.reply(
             `⚔️ *CREATE CLAN*\n\n` +
             `¡Abran clan y levanten las fotos!\n\n` +
-            `Coste: *Rp${CLAN_CREATE_COST.toLocaleString('id-ID')}*\n` +
+            `Coste: *Rp${CLAN_CREATE_COST.toLocaleString('es-AR')}*\n` +
             `Maxnombre: *${MAX_CLAN_NAME}caracter*\n\n` +
             `*. clancreate DragonSlayer *`
         )
@@ -69,8 +69,8 @@ async function handler(m) {
     if ((user.koin || 0) < CLAN_CREATE_COST) {
         return m.reply(
             `❌Kain no es suficiente\n\n` +
-            `Necesito: *Rp${CLAN_CREATE_COST.toLocaleString('id-ID')}*\n` +
-            `Tener: *Rp${(user.koin || 0).toLocaleString('id-ID')}*`
+            `Necesito: *Rp${CLAN_CREATE_COST.toLocaleString('es-AR')}*\n` +
+            `Tener: *Rp${(user.koin || 0).toLocaleString('es-AR')}*`
         )
     }
 
@@ -101,7 +101,7 @@ async function handler(m) {
         `*${clanName}*\n` +
         `Leader: @${m.sender.split('@')[0]}\n` +
         `Status: Open · 1/50 members\n\n` +
-        `_-Rp ${CLAN_CREATE_COST.toLocaleString('id-ID')}_\n\n` +
+        `_-Rp ${CLAN_CREATE_COST.toLocaleString('es-AR')}_\n\n` +
         `Invitar amigo: *. claninvite @ usuario *\n` +
         `O share id: *${clanId}*`,
         { mentions: [m.sender] }

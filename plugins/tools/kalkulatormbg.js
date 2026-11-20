@@ -81,7 +81,7 @@ function hitungMBG(uang) {
 }
 
 function formatRupiah(angka) {
-  const formatted = angka.toLocaleString('id-ID');
+  const formatted = angka.toLocaleString('es-AR');
   return angka < 1000 ? `${formatted}Plata` : `Rp ${formatted}`;
 }
 
@@ -113,7 +113,7 @@ async function handler(m, { args }) {
     contentTxt += `_ ( Basado en las diseminaciones ~ Rp${(data.pengeluaran / 1000000000).toFixed(1)}Mil millones/el)_\n\n`;
     
     contentTxt += `🍱* Como porsi maya:\n`;
-    contentTxt += `${data.porsi.toLocaleString('id-ID')} porsi (@ Rp 15.000/porsi)\n\n`;
+    contentTxt += `${data.porsi.toLocaleString('es-AR')} porsi (@ Rp 15.000/porsi)\n\n`;
 
     contentTxt += `📊* Debate de Pai indonesio: *\n`;
     contentTxt += `🏢UMR DKI Jakarta ( Rp 5, 4 Jt / mes ):${data.gajiIndonesia.dki}\n`;

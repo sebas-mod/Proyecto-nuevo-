@@ -2,7 +2,7 @@
 var _ourinloggerjs = require('./ourin-logger.js');
 var _cron = require('cron');
 
-const TZ = 'Asia/Jakarta'
+const TZ = 'America/Argentina/Buenos_Aires'
 
 let sock = null
 const notifCronJobs = new Map()

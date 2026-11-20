@@ -31,7 +31,7 @@ Ojalá betah yahh, en grupo @
 Para el propietario:
 Interruptor de entrada abajo con.<text>`
  function parsePlaceholders(text, m, groupMeta) {
-    const now = _momenttimezone2.default.call(void 0, ).tz('Asia/Jakarta')
+    const now = _momenttimezone2.default.call(void 0, ).tz('America/Argentina/Buenos_Aires')
     const dateStr = now.format('D MMMM YYYY')
     const timeStr = now.format('HH:mm')
     

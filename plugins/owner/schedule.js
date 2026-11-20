@@ -618,7 +618,7 @@ function buildListText(tasks, header = null) {
     text += `• *${getTaskTitle(task)}*\n`;
     text += `  🆔 ${task.id}\n`;
     text += `  🏷️ ${getTaskCategory(task)}\n`;
-    text += `  ⏰ ${formatClock(task.hour, task.minute)} WIB\n`;
+    text += `  ⏰ ${formatClock(task.hour, task.minute)} ART\n`;
     text += `  📍 ${getTaskTargetLabel(task)}\n`;
     text += `  🔄 ${task.repeat ? "Harian" : "Sekali"}\n`;
     text += `  🕕 ${_ourinschedulerjs.formatTimeRemaining.call(void 0, msUntil)} lagi\n`;
@@ -635,7 +635,7 @@ function buildDetailText(task) {
 🆔 ID: \`${task.id}\`
 🏷️ Categoría:${getTaskCategory(task)}
 📝 Judul: ${getTaskTitle(task)}
-⏰Tiempo:${formatClock(task.hour, task.minute)} WIB
+⏰Tiempo:${formatClock(task.hour, task.minute)} ART
 📍 Objetivo: ${getTaskTargetLabel(task)}
 🔄 Mode: ${task.repeat ? "Harian" : "Sekali"}
 🕕 Next run: ${_ourinschedulerjs.formatTimeRemaining.call(void 0, msUntil)}otra vez
@@ -671,7 +671,7 @@ async function handler(m, { sock, args }) {
 🆔 ID: \`${id}\`
 🏷️ Categoría:${parsed.category}
 📝 Judul: ${parsed.title}
-⏰Tiempo:${parsed.label} WIB
+⏰Tiempo:${parsed.label} ART
 📍 Objetivo: ${parsed.target.label}
 🔄 Mode: ${parsed.repeat ? "Harian" : "Sekali"}
 🕕 Next run: ${_ourinschedulerjs.formatTimeRemaining.call(void 0, msUntil)}otra vez
@@ -713,7 +713,7 @@ ${truncateText(parsed.customText, 180)}`);
 ⚡ Preset: ${parsed.presetKey}
 🏷️ Categoría:${parsed.category}
 📝 Judul: ${parsed.title}
-⏰Tiempo:${parsed.label} WIB
+⏰Tiempo:${parsed.label} ART
 📍 Objetivo: ${parsed.target.label}
 🔄 Mode: ${parsed.repeat ? "Harian" : "Sekali"}
 🕕 Next run: ${_ourinschedulerjs.formatTimeRemaining.call(void 0, msUntil)}otra vez
@@ -763,7 +763,7 @@ ${truncateText(parsed.customText, 180)}`);
 🆔 ID: \`${task.id}\`
 🏷️ Categoría:${parsed.category}
 📝 Judul: ${parsed.title}
-⏰Tiempo:${parsed.label} WIB
+⏰Tiempo:${parsed.label} ART
 📍 Objetivo: ${parsed.target.label}
 🔄 Mode: ${parsed.repeat ? "Harian" : "Sekali"}
 🕕 Next run: ${_ourinschedulerjs.formatTimeRemaining.call(void 0, msUntil)}otra vez

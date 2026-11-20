@@ -182,7 +182,7 @@ function buildRewardPreview(user) {
     return `🎁*Estado Bono*\nYa reclamaste tu bono de registro.\n*No puedes reclamarlo dos veces.*`;
   }
 
-  return `🎁 Bono de registro\n•💰+${rewards.koin.toLocaleString("id-ID")} Koin\n> ⚡ +${rewards.energi} Energi\n> ⭐ +${rewards.exp.toLocaleString("id-ID")} EXP`;
+  return `🎁 Bono de registro\n•💰+${rewards.koin.toLocaleString("es-AR")} Koin\n> ⚡ +${rewards.energi} Energi\n> ⭐ +${rewards.exp.toLocaleString("es-AR")} EXP`;
 }
 
 function buildConfirmationRewardBlock(user) {
@@ -192,7 +192,7 @@ function buildConfirmationRewardBlock(user) {
     return `╭┈┈⬡「 🎁*ʙᴏɴᴜs •」\n┃Ya reclamaste tu bono de registro\n┃No puedes reclamarlo dos veces\n╰┈┈┈┈┈┈┈┈⬡`;
   }
 
-  return `╭┈┈⬡「 🎁 *ʀᴇᴡᴀʀᴅs* 」\n┃ 💰 +${rewards.koin.toLocaleString("id-ID")} Koin\n┃ ⚡ +${rewards.energi} Energi\n┃ ⭐ +${rewards.exp.toLocaleString("id-ID")} EXP\n╰┈┈┈┈┈┈┈┈⬡`;
+  return `╭┈┈⬡「 🎁 *ʀᴇᴡᴀʀᴅs* 」\n┃ 💰 +${rewards.koin.toLocaleString("es-AR")} Koin\n┃ ⚡ +${rewards.energi} Energi\n┃ ⭐ +${rewards.exp.toLocaleString("es-AR")} EXP\n╰┈┈┈┈┈┈┈┈⬡`;
 }
 
 function buildSuccessRewardBlock(alreadyClaimedReward) {
@@ -202,7 +202,7 @@ function buildSuccessRewardBlock(alreadyClaimedReward) {
     return `╭┈┈⬡「 🎁*ʙᴏɴᴜs •」\n┃Bono de registro ya reclamado\n┃No hay bonos adicionales esta vez\n╰┈┈┈┈┈┈┈┈⬡`;
   }
 
-  return `╭┈┈⬡「 🎁 *ʀᴇᴡᴀʀᴅs* 」\n┃ 💰 +${rewards.koin.toLocaleString("id-ID")} Koin\n┃ ⚡ +${rewards.energi} Energi\n┃ ⭐ +${rewards.exp.toLocaleString("id-ID")} EXP\n╰┈┈┈┈┈┈┈┈⬡`;
+  return `╭┈┈⬡「 🎁 *ʀᴇᴡᴀʀᴅs* 」\n┃ 💰 +${rewards.koin.toLocaleString("es-AR")} Koin\n┃ ⚡ +${rewards.energi} Energi\n┃ ⭐ +${rewards.exp.toLocaleString("es-AR")} EXP\n╰┈┈┈┈┈┈┈┈⬡`;
 }
 
 function buildUserDataBlock(name, age, gender) {

@@ -31,7 +31,7 @@ async function handler(m, { sock }) {
         return m.reply(`❌¡Estás fuera!`)
     }
     absen.peserta.push(m.sender)
-    const now = _momenttimezone2.default.call(void 0, ).tz('Asia/Jakarta')
+    const now = _momenttimezone2.default.call(void 0, ).tz('America/Argentina/Buenos_Aires')
     const dateStr = now.format('D MMMM YYYY')
     const list = absen.peserta
         .map((jid, i) => `┃ ${i + 1}. @${jid.split('@')[0]}`)

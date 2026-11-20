@@ -152,12 +152,12 @@ async function handler(m, { sock, db }) {
 
 ╭┈┈⬡「 ⏰ *sᴇᴛᴛɪɴɢ* 」
 ┃ ㊗ ${emoji} ᴀᴋsɪ: *${actionText}*
-┃ ㊗ ⏱️ ᴡᴀᴋᴛᴜ: *${formattedTime} WIB*
+┃ ㊗ ⏱️ ᴡᴀᴋᴛᴜ: *${formattedTime} ART*
 ┃ ㊗ 📡Sᴛᴀᴛᴜs: *🟢Activo*
 ╰┈┈⬡
 
 Grupo automatizará${action === 'open' ? 'dibuka' : 'ditutup'}_
-# Pasa cada día con el reloj #${formattedTime}* WIB._`;
+# Pasa cada día con el reloj #${formattedTime}* ART._`;
     
     await m.reply(successMsg);
 }

@@ -127,7 +127,7 @@ async function sendStoreBackup(sock) {
         const caption = 
             `🗃️ *ꜱᴛᴏʀᴇ ʙᴀᴄᴋᴜᴘ*\n\n` +
             `╭┈┈⬡「 📋 *ɪɴꜰᴏ* 」\n` +
-            `┃ 📅Tiempo:${timeHelper.formatDateTime('DD MMMM YYYY HH:mm:ss')} WIB\n` +
+            `┃ 📅Tiempo:${timeHelper.formatDateTime('DD MMMM YYYY HH:mm:ss')} ART\n` +
             `┃ 📦 Size: ${sizeDisplay}\n` +
             `┃ 📁 Files: ${backupInfo.fileCount}\n` +
             `┃ 🔖 Schema: v${SCHEMA_VERSION}\n` +

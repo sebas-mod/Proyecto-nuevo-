@@ -38,9 +38,9 @@ async function handler(m, { sock }) {
     const { jid, count } = sorted[i];
     const name = _optionalChain([group, 'access', _ => _.chatStats, 'access', _2 => _2[jid], 'optionalAccess', _3 => _3.name]) || jid.split("@")[0];
     const medal = i === 0 ? "🥇" : i === 1 ? "🥈" : i === 2 ? "🥉" : "▸";
-    txt += `${medal} @${jid.split("@")[0]} — *${count.toLocaleString("id-ID")}* pesan\n`;
+    txt += `${medal} @${jid.split("@")[0]} — *${count.toLocaleString("es-AR")}* pesan\n`;
   }
-  txt += `\n*Total Mensaje:${sorted.reduce((a, b) => a + b.count, 0).toLocaleString("id-ID")}*`;
+  txt += `\n*Total Mensaje:${sorted.reduce((a, b) => a + b.count, 0).toLocaleString("es-AR")}*`;
   const mentions = sorted.map((u) => u.jid);
   await m.reply(txt, { mentions });
 }

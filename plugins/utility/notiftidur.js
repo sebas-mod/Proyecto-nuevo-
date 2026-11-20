@@ -33,7 +33,7 @@ function handler(m) {
         info += `📌 *Status:* ${status}\n`
 
         if (existing) {
-            info += `⏰ *Jadwal:* ${existing.jadwal.map(j => `*${j}* WIB`).join(', ')}\n`
+            info += `⏰ *Jadwal:* ${existing.jadwal.map(j => `*${j}* ART`).join(', ')}\n`
         }
 
         info += `\n*📋Como usarlo:*\n`
@@ -62,7 +62,7 @@ function handler(m) {
 
         if (existing && args.length === 1) {
             _ourinnotifschedulerjs.toggleNotif.call(void 0, 'tidur', sender, chatJid, true)
-            return m.reply(`✅* Recordatorio de sueño reactivado! *🔔\n\n⏰Programado:${existing.jadwal.map(j => `*${j}*`).join(', ')} WIB`)
+            return m.reply(`✅* Recordatorio de sueño reactivado! *🔔\n\n⏰Programado:${existing.jadwal.map(j => `*${j}*`).join(', ')} ART`)
         }
 
         const timeInput = args[1]
@@ -80,7 +80,7 @@ function handler(m) {
         let reply = `✅* ¡El recordatorio de sueño es activo! ]🔔\n\n`
         reply += `⏰ *Jadwal:*\n`
         for (const j of jadwal) {
-            reply += `> 🕐 *${j}* WIB\n`
+            reply += `> 🕐 *${j}* ART\n`
         }
         reply += `\n•💡" Las notificaciones se enviarán a este gráfico todos los días ".`
 
@@ -107,7 +107,7 @@ function handler(m) {
         let reply = `✅* Tiempo de cama actualizado!✏\n\n`
         reply += `⏰*Jadwal nuevo:*\n`
         for (const j of jadwal) {
-            reply += `> 🕐 *${j}* WIB\n`
+            reply += `> 🕐 *${j}* ART\n`
         }
 
         return m.reply(reply)

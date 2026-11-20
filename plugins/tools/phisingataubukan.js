@@ -46,7 +46,7 @@ async function handler(m, { sock }) {
     info += `- Llevando al peligroso Sitio:${result.sends_to_harmful_sites ? "🚨 Ya" : "✅ Tidak"}\n`;
     info += `- Instalación de software Jahat:${result.installs_malicious_software ? "🚨 Ya" : "✅ Tidak"}\n`;
     info += `- Unusual Unauthorized:${result.uncommon_downloads ? "🚨 Ya" : "✅ Tidak"}\n\n`;
-    info += `_Terakhir dipindai: ${new Date(result.last_modified).toLocaleString("id-ID")}_`;
+    info += `_Terakhir dipindai: ${new Date(result.last_modified).toLocaleString("es-AR")}_`;
 
     await m.reply(info);
     m.react("✅");

@@ -23,7 +23,7 @@ const pluginConfig = {
 const EXP_PER_LEVEL = 10000;
 
 function formatNumber(num) {
-  return _optionalChain([num, 'optionalAccess', _2 => _2.toLocaleString, 'call', _3 => _3("id-ID")]) || "0";
+  return _optionalChain([num, 'optionalAccess', _2 => _2.toLocaleString, 'call', _3 => _3("es-AR")]) || "0";
 }
 
 function getLevelBar(current, target) {
@@ -90,7 +90,7 @@ async function handler(m, { sock }) {
   const fmtDate = (ts) => {
     if (!ts) return null;
     const d = ts instanceof Date ? ts : new Date(Number(ts) * (String(ts).length <= 10 ? 1000 : 1));
-    return isNaN(d) ? null : d.toLocaleString('id-ID');
+    return isNaN(d) ? null : d.toLocaleString('es-AR');
   };
 
   if (!user.rpg) user.rpg = {};
@@ -141,7 +141,7 @@ async function handler(m, { sock }) {
   caption += `* Estado Cuenta: *${isOwnerUser ? "👑 Owner" : isPremiumUser ? "💎 Premium" : "🆓 Free User"}\n`;
   if (user.isBanned) caption += `- * Banned: *🚫Sí (No puede contabilizar las características de los bots )\n`;
   if (user.registeredAt) {
-      caption += `* Fecha registrada: *${new Date(user.registeredAt).toLocaleDateString("id-ID")}\n`;
+      caption += `* Fecha registrada: *${new Date(user.registeredAt).toLocaleDateString("es-AR")}\n`;
   }
   if (user.clanId) caption += `- *Klan / Guild:* ${user.clanId}\n`;
   if (user.rpg && user.rpg.spouse) {
@@ -158,8 +158,8 @@ async function handler(m, { sock }) {
   caption += `- *Progress Ke Level ${user.rpg.level + 1}:*\n  ${getLevelBar(expInLevel, expNeeded)}\n  _${formatNumber(expInLevel)} / ${formatNumber(expNeeded)} XP_\n`;
 
   caption += `\n*〔 💰 ASET & KEUANGAN 〕*\n`;
-  caption += `- * Tela Tunai: *🪙Rp${_optionalChain([user, 'access', _39 => _39.koin, 'optionalAccess', _40 => _40.toLocaleString, 'call', _41 => _41("id-ID")]) || 0}_ (Se utiliza para funciones de RPG ) _\n`;
-  caption += `- * Dinero en Bork: *🏦Rp${_optionalChain([user, 'access', _42 => _42.rpg, 'optionalAccess', _43 => _43.bank, 'optionalAccess', _44 => _44.toLocaleString, 'call', _45 => _45("id-ID")]) || 0}_ (Segura de los ingresos del navegador ) _\n`;
+  caption += `- * Tela Tunai: *🪙Rp${_optionalChain([user, 'access', _39 => _39.koin, 'optionalAccess', _40 => _40.toLocaleString, 'call', _41 => _41("es-AR")]) || 0}_ (Se utiliza para funciones de RPG ) _\n`;
+  caption += `- * Dinero en Bork: *🏦Rp${_optionalChain([user, 'access', _42 => _42.rpg, 'optionalAccess', _43 => _43.bank, 'optionalAccess', _44 => _44.toLocaleString, 'call', _45 => _45("es-AR")]) || 0}_ (Segura de los ingresos del navegador ) _\n`;
   caption += `- * Energy Sosa: *⚡ ${isOwnerUser || isPremiumUser ? "∞ Tak Terbatas" : user.energi}_ (Reducido siempre que usa comando ) _\n`;
 
   caption += `\n*〔 📱QUÉ PUEDE ENFOQUE〕*\n`;

@@ -57,7 +57,7 @@ async function handler(m, { sock }) {
     txt += `📊Propietario DB: *${isInOwnerDb ? 'Ya' : 'Tidak'}*\n`
     if (user) {
         txt += `⚡Energía: *${user.energi === -1 ? '∞' : (_nullishCoalesce(user.energi, () => ( 0)))}*\n`
-        txt += `💰Monedas: *${user.koin === -1 ? '∞' : (_nullishCoalesce(user.koin, () => ( 0))).toLocaleString('id-ID')}*\n`
+        txt += `💰Monedas: *${user.koin === -1 ? '∞' : (_nullishCoalesce(user.koin, () => ( 0))).toLocaleString('es-AR')}*\n`
         txt += `⭐ Level: *${_nullishCoalesce(user.level, () => ( 1))}*\n`
     }
 

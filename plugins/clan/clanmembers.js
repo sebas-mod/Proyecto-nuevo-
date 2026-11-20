@@ -32,7 +32,7 @@ async function handler(m) {
         const memberUser = db.getUser(jid)
         const isLeader = jid === clan.leader
         const level = _optionalChain([memberUser, 'optionalAccess', _2 => _2.rpg, 'optionalAccess', _3 => _3.level]) || _optionalChain([memberUser, 'optionalAccess', _4 => _4.level]) || 1
-        const koin = (_optionalChain([memberUser, 'optionalAccess', _5 => _5.koin]) || 0).toLocaleString('id-ID')
+        const koin = (_optionalChain([memberUser, 'optionalAccess', _5 => _5.koin]) || 0).toLocaleString('es-AR')
         mentions.push(jid)
 
         const role = isLeader ? '👑' : '•'

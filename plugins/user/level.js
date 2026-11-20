@@ -90,13 +90,13 @@ async function handler(m, { sock }) {
   txt += `╭┈┈⬡「 📈 *sᴛᴀᴛs* 」\n`;
   txt += `┃ 📊 Level: *${level}*\n`;
   txt += `┃ ${role}\n`;
-  txt += `┃ 🚄 Exp: *${exp.toLocaleString("id-ID")}*\n`;
+  txt += `┃ 🚄 Exp: *${exp.toLocaleString("es-AR")}*\n`;
   txt += `┃ 📊 Progress:\n`;
   txt += `┃ ${progress}\n`;
-  txt += `┃ ${expInLevel.toLocaleString("id-ID")} / ${expNeeded.toLocaleString("id-ID")}\n`;
+  txt += `┃ ${expInLevel.toLocaleString("es-AR")} / ${expNeeded.toLocaleString("es-AR")}\n`;
   txt += `╰┈┈┈┈┈┈┈┈⬡\n\n`;
 
-  txt += `> Next level: *${expToNextLevel(exp).toLocaleString("id-ID")}exp* otra vez!`;
+  txt += `> Next level: *${expToNextLevel(exp).toLocaleString("es-AR")}exp* otra vez!`;
 
   await m.reply(txt, { mentions: [targetJid] });
 }

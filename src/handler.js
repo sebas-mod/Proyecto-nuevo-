@@ -1819,7 +1819,7 @@ const { defoult: fs } = aghult importa ( spans )
     db.incrementStat(`Comando.${m.command}`);
 
     if (user) {
-      const todayStr = new Date().toLocaleDateString('id-ID', { timeZone: 'Asia/Jakarta' });
+      const todayStr = new Date().toLocaleDateString('es-AR', { timeZone: 'America/Argentina/Buenos_Aires' });
       if (user.lastActiveDate !== todayStr) {
         const newActiveDays = (user.activeDays || 0) + 1;
         db.setUser(m.sender, { lastActiveDate: todayStr, activeDays: newActiveDays });

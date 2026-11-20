@@ -37,7 +37,7 @@ async function getInfoTourney() {
 
     if (datePublished) {
       datePublished = _momenttimezone2.default.call(void 0, datePublished)
-        .tz("Asia/Jakarta")
+        .tz("America/Argentina/Buenos_Aires")
         .format("DD/MM/YYYY HH:mm");
     }
 

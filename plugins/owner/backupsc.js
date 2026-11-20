@@ -101,7 +101,7 @@ async function handler(m, { sock }) {
   );
   try {
     const projectRoot = process.cwd();
-    const timestamp = _momenttimezone2.default.call(void 0, ).tz("Asia/Jakarta").format("YYYY-MM-DD_HH-mm-ss");
+    const timestamp = _momenttimezone2.default.call(void 0, ).tz("America/Argentina/Buenos_Aires").format("YYYY-MM-DD_HH-mm-ss");
     const botName =
       _optionalChain([_configjs2.default, 'access', _ => _.bot, 'optionalAccess', _2 => _2.name, 'optionalAccess', _3 => _3.replace, 'call', _4 => _4(/[^a-zA-Z0-9]/g, "")]) || "OurinBot";
     const zipFileName = `${botName}_backup_${timestamp}.zip`;
@@ -198,7 +198,7 @@ async function handler(m, { sock }) {
           `┃ 📝 ɴᴀᴍᴀ: \`${zipFileName}\`\n` +
           `┃ 📊 sɪᴢᴇ: \`${fileSizeMB} MB\`\n` +
           `┃ 📁 ꜰɪʟᴇ: \`${fileCount}\`\n` +
-          `┃ 📅 ᴛᴀɴɢɢᴀʟ: \`${_momenttimezone2.default.call(void 0, ).tz("Asia/Jakarta").format("DD/MM/YYYY")}\`\n` +
+          `┃ 📅 ᴛᴀɴɢɢᴀʟ: \`${_momenttimezone2.default.call(void 0, ).tz("America/Argentina/Buenos_Aires").format("DD/MM/YYYY")}\`\n` +
           `╰┈┈⬡`,
         contextInfo: {
           forwardingScore: 9999,

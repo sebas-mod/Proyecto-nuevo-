@@ -124,7 +124,7 @@ async function handler(m, context) {
       `┃ 🆔 *Device ID:* \`${result.device_id}\`\n` +
       `┃ 🏷️ *Status:* ${status}\n` +
       `┃ 🌐*Servidor:*${result.message}\n` +
-      `┃ 🕒*Tiempo:*${new Date(result.fetched_at).toLocaleString('id-ID', { timeZone: 'Asia/Jakarta' })}\n` +
+      `┃ 🕒*Tiempo:*${new Date(result.fetched_at).toLocaleString('es-AR', { timeZone: 'America/Argentina/Buenos_Aires' })}\n` +
       `╰┈┈┈┈┈┈┈┈⬡\n\n` +
       `•🔒* ¡Ahorra tu dispositivo!\n` +
       `•📱Login en:https://viu.com (elige "Login via correo")\n` +

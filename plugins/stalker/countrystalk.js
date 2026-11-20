@@ -38,7 +38,7 @@ async function handler(m, { sock, text }) {
         const name = _optionalChain([c, 'access', _3 => _3.names, 'optionalAccess', _4 => _4.common]) || text;
         const officialName = _optionalChain([c, 'access', _5 => _5.names, 'optionalAccess', _6 => _6.official]) || "-";
 
-        const population = c.population ? c.population.toLocaleString('id-ID') : "-";
+        const population = c.population ? c.population.toLocaleString('es-AR') : "-";
         const capitals = c.capitals && c.capitals.length > 0 ? c.capitals.map(cap => cap.name).join(", ") : "-";
         const currencies = c.currencies && c.currencies.length > 0 ? c.currencies.map(cur => `${cur.name} (${cur.symbol})`).join(", ") : "-";
         const languages = c.languages && c.languages.length > 0 ? c.languages.map(l => l.name).join(", ") : "-";

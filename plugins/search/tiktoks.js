@@ -72,10 +72,10 @@ async function handler(m, context) {
       `🎬 *Judul:* ${video.title || '-'}\n` +
       `👤 *Kreator:* ${video.author?.nickname || '-'} (@${video.author?.unique_id || '-'})\n` +
       `⏱️ *Duración:*${video.duration || 0} detik\n` +
-      `❤️ *Likes:* ${Number(video.digg_count || 0).toLocaleString('id-ID')}\n` +
-      `💬 *Komentar:* ${Number(video.comment_count || 0).toLocaleString('id-ID')}\n` +
-      `🔁 *Shares:* ${Number(video.share_count || 0).toLocaleString('id-ID')}\n` +
-      `👀 *Tayangan:* ${Number(video.play_count || 0).toLocaleString('id-ID')}\n\n` +
+      `❤️ *Likes:* ${Number(video.digg_count || 0).toLocaleString('es-AR')}\n` +
+      `💬 *Komentar:* ${Number(video.comment_count || 0).toLocaleString('es-AR')}\n` +
+      `🔁 *Shares:* ${Number(video.share_count || 0).toLocaleString('es-AR')}\n` +
+      `👀 *Tayangan:* ${Number(video.play_count || 0).toLocaleString('es-AR')}\n\n` +
       `*En contrabando sin marca de agua por Uurin 3*`;
 
     await sock.sendMessage(

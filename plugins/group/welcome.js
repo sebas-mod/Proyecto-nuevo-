@@ -19,7 +19,7 @@ function resolvePlaceholders(
   groupOwner,
   prefix,
 ) {
-  const now = _momenttimezone2.default.call(void 0, ).tz("Asia/Jakarta");
+  const now = _momenttimezone2.default.call(void 0, ).tz("America/Argentina/Buenos_Aires");
   const dayNames = {
     Sunday: "Minggu",
     Monday: "Senin",
@@ -106,7 +106,7 @@ Tanoshii jikan o issho ni sugoso ne~`,
   const emoji = emojis[Math.floor(Math.random() * emojis.length)];
   const header = headers[Math.floor(Math.random() * headers.length)];
   const username = _optionalChain([participant, 'optionalAccess', _5 => _5.split, 'call', _6 => _6("@"), 'access', _7 => _7[0]]) || "User";
-  const now = _momenttimezone2.default.call(void 0, ).tz("Asia/Jakarta");
+  const now = _momenttimezone2.default.call(void 0, ).tz("America/Argentina/Buenos_Aires");
   const dayNames = {
     Sunday: "Minggu",
     Monday: "Senin",
@@ -134,7 +134,7 @@ Tanoshii jikan o issho ni sugoso ne~`,
   msg += `📌 *INFO DEL GRUPO*\n`;
   msg += `• 🏠 *Nombre:* ${groupName}\n`;
   msg += `> 👥 *Member* : ${memberCount}\n`;
-  msg += `• 📅 *Fecha:* ${_momenttimezone2.default.call(void 0, ).tz("Asia/Jakarta").format("DD/MM/YYYY")}\n`;
+  msg += `• 📅 *Fecha:* ${_momenttimezone2.default.call(void 0, ).tz("America/Argentina/Buenos_Aires").format("DD/MM/YYYY")}\n`;
 
   if (groupDesc) {
     msg += `\n📝 *Descripción*\n• ❝ ${groupDesc.slice(0, 120)}${groupDesc.length > 120 ? "..." : ""} ❞\n`;

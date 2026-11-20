@@ -263,7 +263,7 @@ async function buildMenuText(
   txt += `┆   • Rango  : ${userRole}\n`;
   txt += `┆   • Modo   : ${(botConfig.mode || "public").toUpperCase()}\n`;
   txt += `┆   • Número : ${m.sender.split("@")[0]}\n`;
-  txt += `┆   • Hora   : ${timeStr} WIB\n`;
+  txt += `┆   • Hora   : ${timeStr} ART\n`;
   txt += `╰➤------------------------------\n`;
 
   txt += `*INFO DEL BOT*\n`;

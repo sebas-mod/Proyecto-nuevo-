@@ -26,7 +26,7 @@ const gc = _axios2.default.create({
   timeout: 20000,
   headers: {
     'user-agent': UA,
-    'accept-language': 'id-ID',
+    'accept-language': 'es-AR',
     'sec-ch-ua': '"Chromium";v="127", "Not)A;Brand";v="99", "Microsoft Edge Simulate";v="127", "Lemur";v="127"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Android"',

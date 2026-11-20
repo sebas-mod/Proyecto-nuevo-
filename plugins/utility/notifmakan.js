@@ -33,7 +33,7 @@ function handler(m) {
         info += `📌 *Status:* ${status}\n`
 
         if (existing) {
-            info += `⏰ *Jadwal:* ${existing.jadwal.map(j => `*${j}* WIB`).join(', ')}\n`
+            info += `⏰ *Jadwal:* ${existing.jadwal.map(j => `*${j}* ART`).join(', ')}\n`
             if (existing.menu) info += `🍴* Menú: *${existing.menu}_\n`
         }
 
@@ -63,7 +63,7 @@ function handler(m) {
 
         if (existing && args.length === 1) {
             _ourinnotifschedulerjs.toggleNotif.call(void 0, 'makan', sender, chatJid, true)
-            return m.reply(`✅>#91; ¡El recordatorio de alimentos es re activado! ]🔔\n\n⏰Programado:${existing.jadwal.map(j => `*${j}*`).join(', ')} WIB`)
+            return m.reply(`✅>#91; ¡El recordatorio de alimentos es re activado! ]🔔\n\n⏰Programado:${existing.jadwal.map(j => `*${j}*`).join(', ')} ART`)
         }
 
         const timeInput = args[1]
@@ -83,7 +83,7 @@ function handler(m) {
         reply += `⏰ *Jadwal:*\n`
         for (const j of jadwal) {
             const label = getMealLabel(j)
-            reply += `> 🕐 *${j}* WIB _(${label})_\n`
+            reply += `> 🕐 *${j}* ART _(${label})_\n`
         }
         if (menu) reply += `\n🍴* Menú: *${menu}_`
         reply += `\n\n•💡" Las notificaciones se enviarán a este gráfico todos los días ".`
@@ -113,7 +113,7 @@ function handler(m) {
         reply += `⏰*Jadwal nuevo:*\n`
         for (const j of jadwal) {
             const label = getMealLabel(j)
-            reply += `> 🕐 *${j}* WIB _(${label})_\n`
+            reply += `> 🕐 *${j}* ART _(${label})_\n`
         }
         if (menu) reply += `\n🍴* Menú: *${menu}_`
 

@@ -137,7 +137,7 @@ async function cancelOrder(orderId) {
 }
 
 function formatPrice(num) {
-    return num.toLocaleString('id-ID')
+    return num.toLocaleString('es-AR')
 }
 
 exports.isEnabled = isEnabled; exports.getApiKey = getApiKey; exports.getMarkup = getMarkup; exports.getTimeout = getTimeout; exports.getBalance = getBalance; exports.getCountries = getCountries; exports.getServices = getServices; exports.getOperators = getOperators; exports.createOrder = createOrder; exports.checkSms = checkSms; exports.cancelOrder = cancelOrder; exports.formatPrice = formatPrice;

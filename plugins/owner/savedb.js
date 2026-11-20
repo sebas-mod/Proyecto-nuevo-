@@ -29,7 +29,7 @@ async function handler(m, { sock }) {
     try {
         const stats = _fs2.default.statSync(dbPath)
         const data = _fs2.default.readFileSync(dbPath)
-        const now = _momenttimezone2.default.call(void 0, ).tz('Asia/Jakarta')
+        const now = _momenttimezone2.default.call(void 0, ).tz('America/Argentina/Buenos_Aires')
         const timestamp = now.format('YYYY-MM-DD_HH-mm-ss')
         const fileName = `db_backup_${timestamp}.json`
         await sock.sendMessage(m.chat, {
