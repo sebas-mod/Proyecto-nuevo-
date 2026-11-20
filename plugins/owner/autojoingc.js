@@ -5,7 +5,7 @@ const pluginConfig = {
   name: "autojoingc",
   alias: ["autojoin", "autojoingroup"],
   category: "owner",
-  description: "Auto join grup dari link yang terdeteksi di chat",
+  description: "Auto grupo del enace descodificado en el chat",
   usage: ".autojoingc on/off",
   example: ".autojoingc on",
   isOwner: true,
@@ -23,7 +23,7 @@ async function handler(m) {
   if (!arg || !["on", "off"].includes(arg)) {
     const current = db.setting("autoJoinGc") || false;
     return m.reply(
-      `🔗 *AUTO JOIN GROUP*\n\nStatus: *${current ? "ON ✅" : "OFF ❌"}*\n\n\`${m.prefix}autojoingc on\` — aktifkan\n\`${m.prefix}autojoingc off\` — nonaktifkan`,
+      `🔗 *AUTO JOIN GROUP*\n\nStatus: *${current ? "ON ✅" : "OFF ❌"}*\n\n\`${m.prefix}autojoingc on\` — aktifkan\n\`${m.prefix}autojoingc off\` —desactiva`,
     );
   }
   const enabled = arg === "on";
@@ -51,9 +51,9 @@ async function autoJoinDetector(m, sock) {
     } catch (e) {
       const msg = e.message || String(e);
       if (msg.includes("already") || msg.includes("participant")) {
-        await m.reply(`⚠️ Sudah ada di grup tersebut`);
+        await m.reply(`⚠Aquí está el grupo.`);
       } else if (msg.includes("expired") || msg.includes("revoked")) {
-        await m.reply(`❌ Link grup sudah expired/revoked`);
+        await m.reply(`❌Enlace grupo si expired / revoked`);
       } else {
         await m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
       }

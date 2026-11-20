@@ -5,7 +5,7 @@ const pluginConfig = {
   name: "gpt4o",
   alias: ["gpt4"],
   category: "ai",
-  description: "Chat dengan GPT-4o",
+  description: "Chat con GPT - 4o",
   usage: ".gpt4o <pertanyaan>",
   example: ".gpt4o Hai apa kabar?",
   isOwner: false,
@@ -21,7 +21,7 @@ async function handler(m, { sock }) {
   const text = m.args.join(" ");
   if (!text) {
     return m.reply(
-      `🧠 *ɢᴘᴛ-4ᴏ*\n\n> Masukkan pertanyaan\n\n\`Contoh: ${m.prefix}gpt4o Hai apa kabar?\``,
+      `🧠*ɢᴘᴛ- 4ᴏ*\n\nHe aquí una pregunta\n\n\`Ejemplo:${m.prefix}¿Cómo estás?\``,
     );
   }
 
@@ -31,7 +31,7 @@ async function handler(m, { sock }) {
     const data = `https://api.nexray.eu.cc/ai/gpt-3.5-turbo?text=${encodeURIComponent(text)}`
     const res = await fetch(data)
     const json = await res.json()
-    if (!json.status || !json.result) throw new Error("Gagal mendapatkan response")
+    if (!json.status || !json.result) throw new Error("Stunner recibe una bienvenida real")
     m.react("✅");
     await m.reply(`${json.result}`);
   } catch (error) {

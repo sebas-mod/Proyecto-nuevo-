@@ -12,7 +12,7 @@ const pluginConfig = {
     name: 'smemevid',
     alias: ['smemevideo', 'memevid'],
     category: 'sticker',
-    description: 'Membuat sticker meme dari video',
+    description: 'Crear una pegatina de un vídeo',
     usage: '.smemevid <top>|<bottom>',
     example: '.smemevid WIDTH OR HEIGHT|WHY NOT BOTH?',
     isOwner: false,
@@ -27,12 +27,12 @@ const pluginConfig = {
 async function handler(m, { sock }) {
     const isVideo = m.isVideo || (m.quoted && m.quoted.isVideo) || (m.quoted && m.quoted.type === 'videoMessage')
     if (!isVideo) {
-        return m.reply(`🎬 *ᴍᴇᴍᴇ ᴠɪᴅᴇᴏ*\n\n> Reply atau kirim video dengan caption\n\n\`Contoh: ${m.prefix}smemevid Top|Bottom\``)
+        return m.reply(`🎬*ᴍᴇᴍᴇ ᴠɪᴅᴇᴏ*\n\n# Responder o enviar un video con capción #\n\n\`Ejemplo:${m.prefix}smemevid Top|Bottom\``)
     }
 
     const input = m.args.join(' ')
     if (!input || !input.includes('|')) {
-        return m.reply(`🎬 *ᴍᴇᴍᴇ ᴠɪᴅᴇᴏ*\n\n> Format: top|bottom\n\n\`Contoh: ${m.prefix}smemevid WIDTH OR HEIGHT|WHY NOT BOTH?\``)
+        return m.reply(`🎬*ᴍᴇᴍᴇ ᴠɪᴅᴇᴏ*\n\n* Formatt: Top * Down *\n\n\`Epirame:${m.prefix}smemevid WIDTH OR HEIGHT|WHY NOT BOTH?\``)
     }
 
     const [top, bottom] = input.split('|').map(s => s.trim().toUpperCase())
@@ -49,7 +49,7 @@ async function handler(m, { sock }) {
 
         if (!mediaBuffer) {
             m.react('❌')
-            return m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> Gagal mengunduh video`)
+            return m.reply(`❌*ɢᴀɢᴀʟ*\n\n# Gafall descargar el vídeo`)
         }
 
         const tempId = Date.now()
@@ -70,7 +70,7 @@ async function handler(m, { sock }) {
 
         const metadata = await getMetadata(inputVideo)
         const videoStream = metadata.streams.find(s => s.codec_type === 'video')
-        if (!videoStream) throw new Error('Stream video tidak ditemukan')
+        if (!videoStream) throw new Error('Flujo de vídeo no encontrado')
 
         const size = 512
 
@@ -143,7 +143,7 @@ async function handler(m, { sock }) {
 
     } catch (error) {
         m.react('☢')
-        m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> Terjadi kesalahan saat memproses video`)
+        m.reply(`❌*ɢᴀɢᴀʟ*\n\nEs un error procesar el video`)
     }
 }
 

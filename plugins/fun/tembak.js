@@ -4,7 +4,7 @@ const pluginConfig = {
   name: "tembak",
   alias: ["nembak", "propose"],
   category: "fun",
-  description: "Menembak seseorang untuk pacaran",
+  description: "Dispara a alguien para un novio",
   usage: ".tembak @tag",
   example: ".tembak @628xxx",
   isOwner: false,
@@ -20,16 +20,16 @@ if (!global.tembakSessions) global.tembakSessions = {};
 
 const SESSION_TIMEOUT = 3600000;
 const romanticQuotes = [
-  "Aku bukan pilot, tapi aku bisa buat hatimu terbang tinggi bersamaku 💕",
-  "Kamu tau kenapa aku suka hujan? Karena hujan itu seperti kamu, sejuk di hati 🌧️",
-  "Kamu adalah alasan kenapa aku senyum tanpa sebab 😊",
-  "Kalau kamu bintang, aku mau jadi langit yang selalu nemenin kamu ✨",
-  "Aku gak butuh GPS, karena hatiku udah nunjuk ke arahmu 💘",
-  "Kamu tau bedanya kamu sama kopi? Kopi bikin melek, kamu bikin aku nggak bisa tidur mikirin kamu ☕",
+  "No soy piloto, pero puedo hacer que tu corazón vuele alto conmigo.💕",
+  "¿Sabes por qué amo a los hujans?🌧♪",
+  "Eres la razón por la que sonrío sin poder hacerlo.😊",
+  "Si eres una estrella, quiero ser la que siempre te ve.✨",
+  "Necesito GPS, porque mi corazón te está mostrando.💘",
+  "Sabes, eres un hombre de café, no puedes hacerlo, no puedes dejarme dormir.☕",
   "Boleh pinjam hatimu? Janji bakal dijaga selamanya 💖",
-  "Kalau cinta itu adalah lagu, kamu adalah melodi terindahnya 🎵",
-  "Aku butuh 3 hal: Matahari, Bulan, dan Kamu. Matahari untuk siang, Bulan untuk malam, Kamu untuk selamanya 🌙",
-  "Kamu adalah puzzle terakhir yang kubutuhkan untuk melengkapi hidupku 🧩",
+  "Si el amor es una canción, eres la melodía más hermosa🎵",
+  "Tres cosas que necesito: sol, luna, y tú.🌙",
+  "Eres el último rompecabezas que necesito para completar mi vida.🧩",
 ];
 
 async function handler(m, { sock }) {
@@ -53,18 +53,18 @@ async function handler(m, { sock }) {
     return m.reply(
       `⚠️ *ᴄᴀʀᴀ ᴘᴀᴋᴀɪ*\n\n` +
         `> \`${m.prefix}tembak @tag\`\n\n` +
-        `> Contoh:\n` +
+        `> Ejemplo:\n` +
         `> \`${m.prefix}tembak @628xxx\`\n` +
-        `> Reply pesan + \`${m.prefix}tembak\``,
+        `Responder mensaje +\`${m.prefix}tembak\``,
     );
   }
 
   if (targetJid === m.sender) {
-    return m.reply(`Tidak bisa menembak diri sendiri!`);
+    return m.reply(`¡No puedes dispararte!`);
   }
 
   if (targetJid === m.botNumber) {
-    return m.reply(`Bot tidak bisa pacaran!`);
+    return m.reply(`¡Ni siquiera puedo soportar al hombre que amo!`);
   }
 
   let senderData = db.getUser(m.sender) || {};
@@ -79,7 +79,7 @@ async function handler(m, { sock }) {
       return m.reply(
         `❌ *sᴜᴅᴀʜ ᴘᴜɴʏᴀ ᴘᴀsᴀɴɢᴀɴ*\n\n` +
           `Pasanganmu: @${senderData.fun.pasangan.split("@")[0]}\n` +
-          `Putus dulu sama ${partnerData.name} dengan cara: \`${m.prefix}putus\``,
+          `Putus solía ser el mismo${partnerData.name}con cara:\`${m.prefix}putus\``,
         { mentions: [senderData.fun.pasangan] },
       );
     }
@@ -111,8 +111,8 @@ async function handler(m, { sock }) {
     await m.react("💕");
     return m.reply(
       `💕 *CIE CIEE :3*\n\n` +
-        `@${m.sender.split("@")[0]} dan @${targetJid.split("@")[0]} resmi pacaran !\n\n` +
-        `Semoga langgeng yak! 💍`,
+        `@${m.sender.split("@")[0]}y @${targetJid.split("@")[0]}¡Novio oficial!\n\n` +
+        `Semoga¡¡Largo tiempo sin ver!💍`,
       { mentions: [m.sender, targetJid] },
     );
   }
@@ -134,10 +134,10 @@ async function handler(m, { sock }) {
   const ctx = _ourincontextjs.saluranCtx.call(void 0, );
   ctx.mentionedJid = [targetJid, m.sender];
   const sentMsg = await m.reply(
-    `💘 *ADA YANG NEMBAK NIHH*\n\n` +
-      `Hei @${targetJid.split("@")[0]} , kamu ditembak oleh @${m.sender.split("@")[0]} nichh\n\n` +
-      `⏱️ Berlaku *1 jam* dari sekarang\n` +
-      `gunakan: \`${m.prefix}terima\` / \`${m.prefix}tolak\``,
+    `💘* NO JUNK NIHHH*\n\n` +
+      `Hei @${targetJid.split("@")[0]}Te disparan @${m.sender.split("@")[0]} nichh\n\n` +
+      `⏱*Hagámoslo por una hora*\n` +
+      `usa: \`${m.prefix}terima\` / \`${m.prefix}tolak\``,
     { contextInfo: ctx },
   );
 
@@ -187,8 +187,8 @@ async function answerHandler(m, sock) {
     await m.react("💕");
     await m.reply(
       `💕 *WIDIHHHH, CIE CIE DITERIMA* @${sessData.shooter.split("@")[0]}\n\n` +
-        `@${m.sender.split("@")[0]} dan @${sessData.shooter.split("@")[0]} resmi pacaran\n\n` +
-        `Semoga langgeng dan bahagia 💍`,
+        `@${m.sender.split("@")[0]}y @${sessData.shooter.split("@")[0]}oficial pacaran\n\n` +
+        `Ojalá Long y feliz💍`,
       { mentions: [m.sender, sessData.shooter] },
     );
 
@@ -213,9 +213,9 @@ async function answerHandler(m, sock) {
 
     await m.react("💔");
     await m.reply(
-      `💔 *WADUHH, YANG SABAR YAK* @${sessData.shooter.split("@")[0]}\n\n` +
-        `@${m.sender.split("@")[0]} menolak @${sessData.shooter.split("@")[0]} sebagai pacarnya\n\n` +
-        `Sabar ya, masih banyak yang lain! 😢`,
+      `💔* WADUHH, JANG HAYAK * @${sessData.shooter.split("@")[0]}\n\n` +
+        `@${m.sender.split("@")[0]} menolak @${sessData.shooter.split("@")[0]}como pacarnya\n\n` +
+        `Harbans sí, hay muchos otros!😢`,
       { mentions: [m.sender, sessData.shooter] },
     );
     return true;

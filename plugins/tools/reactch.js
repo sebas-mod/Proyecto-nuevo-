@@ -4,7 +4,7 @@ const pluginConfig = {
   name: 'reactch',
   alias: ['rch', 'reactchannel', 'chreact'],
   category: 'tools',
-  description: 'Mengirim reaction emoji ke pesan WhatsApp Channel',
+  description: 'Sentencia de una reacción emoji al mensaje de Channel WhatsApp',
   usage: '.rch <url pesan channel> [emoji]',
   example: '.rch https://whatsapp.com/channel/0029VaBOlsv002TEjlntTE2D/100 👍',
   isOwner: false,
@@ -32,10 +32,10 @@ async function handler(m, context) {
 
   if (!text) {
     return m.reply(
-      `❌ *Format Salah!*\n\n` +
-        `Gunakan format:\n` +
+      `❌*Formato Incorrecto!*\n\n` +
+        `Usa formato:\n` +
         `> \`${p}${cmd} <url-pesan-channel> <emoji>\`\n\n` +
-        `Contoh:\n` +
+        `Ejemplo:\n` +
         `> \`${p}${cmd} https://whatsapp.com/channel/0029VaBOlsv002TEjlntTE2D/123 👍\``
     );
   }
@@ -52,7 +52,7 @@ async function handler(m, context) {
   let reactSuccess = false;
   let methodUsed = '';
 
-  // 1. Coba metode native cantarelllaa jika serverId tersedia dan newsletterReactMessage didukung
+  //1. Método Intenta camarellaa ingenua si el servidor está disponible y boletín informativo ReactMessage es compatible
   if (parsed.serverId && typeof sock.newsletterReactMessage === 'function') {
     try {
       let channelJid = null;
@@ -67,11 +67,11 @@ async function handler(m, context) {
         methodUsed = 'Native WhatsApp Socket (cantarelllaa)';
       }
     } catch (nativeErr) {
-      // Native socket failed, fallback to cloud API
+      //Ingenua socket falló, retroceso a la Fuego de nube
     }
   }
 
-  // 2. Fallback ke API Cloud jika native gagal atau URL tanpa serverId terpisah
+  //2. Retroceder a Fuego Cloud si la ingenua falla o URL sin servidor separado
   if (!reactSuccess) {
     try {
       const apiUrl = `https://api-cloud.my.id/tools/rchv2?link=${encodeURIComponent(targetUrl)}&emoji=${encodeURIComponent(reactionEmoji)}`;
@@ -82,20 +82,20 @@ async function handler(m, context) {
         reactSuccess = true;
         methodUsed = 'Cloud Channel API Provider';
       } else {
-        throw new Error(data.message || data.msg || 'Gagal mengirim reaction ke channel');
+        throw new Error(data.message || data.msg || 'La esterendomidad envía reacciones al Canal');
       }
     } catch (apiErr) {
-      const errMsg = apiErr.response?.data?.message || apiErr.message || 'Gagal mengirim reaction.';
-      return m.reply(`❌ *Gagal mengirim reaction ke channel:*\n> ${errMsg}`);
+      const errMsg = apiErr.response?.data?.message || apiErr.message || 'El truco envía reacciones.';
+      return m.reply(`❌* Steendom envía reacción al Canal: *\n♪${errMsg}`);
     }
   }
 
   if (reactSuccess) {
     return m.reply(
-      `✅ *REACTION CHANNEL BERHASIL!*\n\n` +
-        `📢 *Tautan:* ${targetUrl}\n` +
+      `✅> 91; REACTION CHANNEL EXPLOSIONS > 93;\n\n` +
+        `📢*Enlace:*${targetUrl}\n` +
         `💬 *Reaction:* ${reactionEmoji}\n` +
-        `⚙️ *Metode:* ${methodUsed}`
+        `⚙️ *Metodo:*${methodUsed}`
     );
   }
 }

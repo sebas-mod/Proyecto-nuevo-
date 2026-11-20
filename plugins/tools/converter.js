@@ -26,22 +26,22 @@ async function handler(m, { sock }) {
   if (!m.quoted && !m.isMedia) {
     return m.reply(
       `🔄 *ᴄᴏɴᴠᴇʀᴛᴇʀ*\n\n` +
-        `> Reply file dengan format tujuan\n\n` +
-        `*Format:*\n` +
+        `Responder Archivo con un conjunto de marcas\n\n` +
+        `*Formato:*\n` +
         `> \`${m.prefix}converter <format>\`\n\n` +
-        `*Contoh:*\n` +
+        `*Ejemplo:*\n` +
         `> \`${m.prefix}converter mp3\`\n` +
         `> \`${m.prefix}converter mp4\`\n` +
         `> \`${m.prefix}converter png\`\n\n` +
-        `*Cara pakai:*\n` +
-        `> 1. Reply file yang mau diconvert\n` +
-        `> 2. Ketik \`${m.prefix}converter <format>\``,
+        `*Como usarlo:*\n` +
+        `Responder Archivo a Conversos\n` +
+        `- Adiós.\`${m.prefix}converter <format>\``,
     );
   }
 
   if (!targetFormat) {
     return m.reply(
-      `❌ Masukkan format tujuan!\n\n> Contoh: \`${m.prefix}converter mp3\``,
+      `❌¡Entra en el forte de destino!\n\n> Ejemplo:\`${m.prefix}converter mp3\``,
     );
   }
 
@@ -51,14 +51,14 @@ async function handler(m, { sock }) {
 
   if (_optionalChain([quoted, 'optionalAccess', _6 => _6.isMedia])) {
     mediaMessage = quoted;
-    filename = _optionalChain([quoted, 'access', _7 => _7.message, 'optionalAccess', _8 => _8[quoted.type], 'optionalAccess', _9 => _9.fileName]) || `file_${Date.now()}`;
+    filename = _optionalChain([quoted, 'access', _7 => _7.message, 'optionalAccess', _8 => _8[quoted.type], 'optionalAccess', _9 => _9.fileName]) || `_ Archivos${Date.now()}`;
   } else if (m.isMedia) {
     mediaMessage = m;
-    filename = _optionalChain([m, 'access', _10 => _10.message, 'optionalAccess', _11 => _11[m.type], 'optionalAccess', _12 => _12.fileName]) || `file_${Date.now()}`;
+    filename = _optionalChain([m, 'access', _10 => _10.message, 'optionalAccess', _11 => _11[m.type], 'optionalAccess', _12 => _12.fileName]) || `_ Archivos${Date.now()}`;
   }
 
   if (!mediaMessage) {
-    return m.reply(`❌ Reply file yang mau diconvert!`);
+    return m.reply(`❌Responder Archivo a Convertires!`);
   }
 
   m.react("🕕");

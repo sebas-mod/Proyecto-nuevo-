@@ -54,7 +54,7 @@ function startDailyPruner() {
     }, PRUNE_INTERVAL)
 
     if (prunerTimer.unref) prunerTimer.unref()
-    _ourinloggerjs.logger.success('pruner', `Pembersih data usang jalan (> ${INACTIVE_THRESHOLD / 86400000} hari nonaktif, tiap ${PRUNE_INTERVAL / 3600000} jam)`)
+    _ourinloggerjs.logger.success('pruner', `Datos de la red de la calle${INACTIVE_THRESHOLD / 86400000}día libre, pase${PRUNE_INTERVAL / 3600000}hora)`)
 }
 
 function stopDailyPruner() {

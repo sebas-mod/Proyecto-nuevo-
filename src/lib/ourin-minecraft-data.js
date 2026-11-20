@@ -1,7 +1,7 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true});const biomes = {
   plains: {
     name: "🌿 Plains",
-    desc: "Dataran hijau yang tenang",
+    desc: "Bonito verde",
     listOre: [
       { name: "🪨 Cobblestone", rarity: "common", avgValue: 30, minStack: 1, maxStack: 64 },
       { name: "🟫 Dirt", rarity: "common", avgValue: 20, minStack: 1, maxStack: 64 },
@@ -18,7 +18,7 @@
   },
   desert: {
     name: "🏜️ Desert",
-    desc: "Gurun pasir yang kering",
+    desc: "Gota de arena seca",
     listOre: [
       { name: "🟨 Sand", rarity: "common", avgValue: 120, minStack: 1, maxStack: 64 },
       { name: "🟨 Sandstone", rarity: "common", avgValue: 140, minStack: 1, maxStack: 64 },
@@ -35,7 +35,7 @@
   },
   jungle: {
     name: "🌴 Jungle",
-    desc: "Hutan tropis yang lebat",
+    desc: "Tropics hutan pesado",
     listOre: [
       { name: "🪵 Jungle Wood", rarity: "common", avgValue: 100, minStack: 1, maxStack: 64 },
       { name: "🌿 Vines", rarity: "common", avgValue: 70, minStack: 1, maxStack: 32 },
@@ -51,7 +51,7 @@
   },
   taiga: {
     name: "❄️ Taiga",
-    desc: "Hutan pinus yang dingin",
+    desc: "Los pinos fríos de hutan",
     listOre: [
       { name: "🪵 Spruce Wood", rarity: "common", avgValue: 110, minStack: 1, maxStack: 64 },
       { name: "🪨 Gravel", rarity: "common", avgValue: 60, minStack: 1, maxStack: 64 },
@@ -85,7 +85,7 @@
   },
   ocean: {
     name: "🌊 Ocean",
-    desc: "Lautan dalam yang misterius",
+    desc: "Lautan en el misterioso",
     listOre: [
       { name: "🪨 Gravel", rarity: "common", avgValue: 200, minStack: 1, maxStack: 64 },
       { name: "🌿 Kelp", rarity: "common", avgValue: 150, minStack: 1, maxStack: 48 },
@@ -121,7 +121,7 @@
   },
   theend: {
     name: "🌌 The End",
-    desc: "Dimensi akhir yang suram",
+    desc: "La última dimensión de la carta",
     listOre: [
       { name: "🟨 End Stone", rarity: "common", avgValue: 2500, minStack: 1, maxStack: 64 },
       { name: "🍇 Chorus Fruit", rarity: "common", avgValue: 3000, minStack: 1, maxStack: 32 },
@@ -138,7 +138,7 @@
   },
   deepdark: {
     name: "👁️ Deep Dark",
-    desc: "Kegelapan purba yang menakutkan",
+    desc: "La oscuridad de Purba es aterradora",
     listOre: [
       { name: "🟣 Sculk", rarity: "common", avgValue: 5000, minStack: 1, maxStack: 48 },
       { name: "📡 Sculk Sensor", rarity: "common", avgValue: 6000, minStack: 1, maxStack: 16 },
@@ -157,7 +157,7 @@
   },
   ancientcity: {
     name: "🏛️ Ancient City",
-    desc: "Kota kuno yang terkutuk",
+    desc: "Coutine kuno",
     listOre: [
       { name: "⬛ Deepslate", rarity: "common", avgValue: 8000, minStack: 1, maxStack: 64 },
       { name: "🛡️ Reinforced Deepslate", rarity: "common", avgValue: 12000, minStack: 1, maxStack: 32 },
@@ -192,13 +192,13 @@ const travelRequirements = {
 }
 
 const pickaxes = {
-  woodpick: { name: "🪵 Wooden Pickaxe", luck: 0, speed: 0, comboOre: 1, fortuneBonus: 0, sellMultiplier: 0, price: 0, description: "Pickaxe kayu untuk pemula.", level: 1, maxLevel: 5, exp: 0, expToNextLevel: 80 },
-  stonepick: { name: "🪨 Stone Pickaxe", luck: 0.02, speed: 0.03, comboOre: 1, fortuneBonus: 0.01, sellMultiplier: 0.05, price: 30000, description: "Pickaxe batu, lebih kuat dari kayu.", level: 1, maxLevel: 10, exp: 0, expToNextLevel: 100 },
+  woodpick: { name: "🪵 Wooden Pickaxe", luck: 0, speed: 0, comboOre: 1, fortuneBonus: 0, sellMultiplier: 0, price: 0, description: "PickaxVamos a empezar.", level: 1, maxLevel: 5, exp: 0, expToNextLevel: 80 },
+  stonepick: { name: "🪨 Stone Pickaxe", luck: 0.02, speed: 0.03, comboOre: 1, fortuneBonus: 0.01, sellMultiplier: 0.05, price: 30000, description: "Pickaxe Stone, más fuerte que tú.", level: 1, maxLevel: 10, exp: 0, expToNextLevel: 100 },
   ironpick: { name: "⛏️ Iron Pickaxe", luck: 0.06, speed: 0.07, comboOre: 1, fortuneBonus: 0.03, sellMultiplier: 0.15, price: 300000, description: "Pickaxe besi, andalan penambang.", level: 1, maxLevel: 15, exp: 0, expToNextLevel: 120 },
-  goldpick: { name: "✨ Gold Pickaxe", luck: 0.10, speed: 0.12, comboOre: 2, fortuneBonus: 0.05, sellMultiplier: 0.25, price: 3000000, description: "Pickaxe emas, cepat tapi rapuh.", level: 1, maxLevel: 20, exp: 0, expToNextLevel: 150 },
-  diamondpick: { name: "💎 Diamond Pickaxe", luck: 0.15, speed: 0.15, comboOre: 2, fortuneBonus: 0.08, sellMultiplier: 0.40, price: 30000000, description: "Pickaxe berlian, kuat dan tahan lama.", level: 1, maxLevel: 30, exp: 0, expToNextLevel: 180 },
-  netheritepick: { name: "🔮 Netherite Pickaxe", luck: 0.25, speed: 0.22, comboOre: 3, fortuneBonus: 0.12, sellMultiplier: 0.65, price: 300000000, description: "Pickaxe netherite, kekuatan dari neraka.", level: 1, maxLevel: 40, exp: 0, expToNextLevel: 220 },
-  endpick: { name: "🌌 End Pickaxe", luck: 0.35, speed: 0.30, comboOre: 3, fortuneBonus: 0.18, sellMultiplier: 0.90, price: 3000000000, description: "Pickaxe dari dimensi akhir.", level: 1, maxLevel: 50, exp: 0, expToNextLevel: 280 },
+  goldpick: { name: "✨ Gold Pickaxe", luck: 0.10, speed: 0.12, comboOre: 2, fortuneBonus: 0.05, sellMultiplier: 0.25, price: 3000000, description: "Pickaxemas, asap pero neat.", level: 1, maxLevel: 20, exp: 0, expToNextLevel: 150 },
+  diamondpick: { name: "💎 Diamond Pickaxe", luck: 0.15, speed: 0.15, comboOre: 2, fortuneBonus: 0.08, sellMultiplier: 0.40, price: 30000000, description: "PickaxUn drool, un cepillo y hace mucho tiempo.", level: 1, maxLevel: 30, exp: 0, expToNextLevel: 180 },
+  netheritepick: { name: "🔮 Netherite Pickaxe", luck: 0.25, speed: 0.22, comboOre: 3, fortuneBonus: 0.12, sellMultiplier: 0.65, price: 300000000, description: "Pickaxe netherite, el poder del infierno.", level: 1, maxLevel: 40, exp: 0, expToNextLevel: 220 },
+  endpick: { name: "🌌 End Pickaxe", luck: 0.35, speed: 0.30, comboOre: 3, fortuneBonus: 0.18, sellMultiplier: 0.90, price: 3000000000, description: "Pickaxe de la dimensión final.", level: 1, maxLevel: 50, exp: 0, expToNextLevel: 280 },
   voidpick: { name: "🕳️ Void Pickaxe", luck: 0.50, speed: 0.42, comboOre: 4, fortuneBonus: 0.25, sellMultiplier: 1.30, price: 0, description: "Pickaxe kekosongan. (Token Store)", level: 1, maxLevel: 60, exp: 0, expToNextLevel: 350 },
   cosmicpick: { name: "🌠 Cosmic Pickaxe", luck: 0.65, speed: 0.55, comboOre: 4, fortuneBonus: 0.35, sellMultiplier: 1.80, price: 0, description: "Pickaxe kosmik, kekuatan bintang. (Token Store)", level: 1, maxLevel: 75, exp: 0, expToNextLevel: 420 },
   prestigepick: { name: "👑 Prestige Pickaxe", luck: 0.80, speed: 0.68, comboOre: 5, fortuneBonus: 0.45, sellMultiplier: 2.30, price: 0, description: "Pickaxe prestige, hadiah para legenda.", level: 1, maxLevel: 99, exp: 0, expToNextLevel: 500 },

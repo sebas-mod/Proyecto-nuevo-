@@ -3,7 +3,7 @@ const pluginConfig = {
   name: "mulaiabsen",
   alias: ["startabsen", "bukaabsen", "openabsen"],
   category: "group",
-  description: "Mulai sesi absen di grup (admin only)",
+  description: "Sesi absen en grupo ( administrador only)",
   usage: ".mulaiabsen [keterangan]",
   example: ".mulaiabsen Rapat Mingguan",
   isOwner: false,
@@ -24,9 +24,9 @@ async function handler(m, { sock }) {
   if (global.absensi[chatId]) {
     return m.reply(
       `❌ *ᴍᴀsɪʜ ᴀᴅᴀ ᴀʙsᴇɴ*\n\n` +
-        `> Masih ada sesi absen di grup ini!\n\n` +
-        `> Ketik *.hapusabsen* untuk menghapus\n` +
-        `> atau *.cekabsen* untuk melihat daftar`,
+        `¡Hay un sesi ausente en este grupo!\n\n` +
+        `*Suspesión*\n` +
+        `Para ver la lista.`,
     );
   }
 
@@ -43,14 +43,14 @@ async function handler(m, { sock }) {
   const saluranName = _optionalChain([_configjs2.default, 'access', _6 => _6.saluran, 'optionalAccess', _7 => _7.name]) || _optionalChain([_configjs2.default, 'access', _8 => _8.bot, 'optionalAccess', _9 => _9.name]) || "Ourin-AI";
 
   await m.reply(
-    `📋 *ABSEN UDAH JALAN NIHH*\n\n` +
+    `📋 *ABSEN Ya Calle NIHH*\n\n` +
       `「 📋 *ɪɴғᴏ* 」\n` +
       `📝 ${keterangan}\n` +
-      `👑 Dibuat oleh: @${m.sender.split("@")[0]}\n` +
-      `👥 Peserta: 0\n\n` +
-      `Untuk kamu yang mau ikutan absen, silahkan ketik *${m.prefix}absen*` +
-      `Untuk admin yang mau cek absen, silahkan ketik *${m.prefix}cekabsen*` +
-      `Untuk admin yang mau hapus absen, silahkan ketik *${m.prefix}hapusabsen*`,
+      `👑Hecho por: @${m.sender.split("@")[0]}\n` +
+      `👥Participante: 0\n\n` +
+      `Para aquellos que quieren seguir a Aben, quiten la axila.${m.prefix}absen*` +
+      `Para un administrador para comprobar el abseno, por favor tome la axila.${m.prefix}cekabsen*` +
+      `Para un administrador para eliminar ausencias, por favor tome la axila *${m.prefix}hapusabsen*`,
     { mentions: [m.sender] },
   );
 }

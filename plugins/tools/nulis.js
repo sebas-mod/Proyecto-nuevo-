@@ -46,22 +46,22 @@ async function handler(m, { sock }) {
   if (!text) {
     return m.reply(
       `⚠️ *ᴄᴀʀᴀ ᴘᴀᴋᴀɪ*\n\n` +
-        `> \`${m.prefix}nulis <teks>\`\n\n` +
-        `> Contoh:\n` +
-        `> \`${m.prefix}nulis Aku cinta kamu selamanya\``,
+        `> \`${m.prefix}escribiendo<teks>\`\n\n` +
+        `> Ejemplo:\n` +
+        `> \`${m.prefix}Te amo para siempre.\``,
     );
   }
   if (text.length > 500) {
-    return m.reply(`❌ *ᴛᴇᴋs ᴛᴇʀʟᴀʟᴜ ᴘᴀɴᴊᴀɴɢ*\n\n> Maksimal 500 karakter`);
+    return m.reply(`❌*ᴛᴇᴋSᴛᴇʀʟᴀʟᴜ ᴘᴀɴᴊᴀɴɢ*\n\nPara el máximo de 500.000 caracteres`);
   }
   const inputUrl = _ourinassetmanagerjs.getAssetBuffer.call(void 0, "ourin-kertas");
   if (!inputUrl) {
     return m.reply(
-      `❌ *ᴛᴇᴍᴘʟᴀᴛᴇ ᴛɪᴅᴀᴋ ᴀᴅᴀ*\n\n> File template kertas tidak ditemukan di config.assets`,
+      `❌*ᴛᴇᴍᴘʟᴀᴛᴇ ᴛɪᴅᴀᴋ ᴀᴅᴀ*\n\nEl documento del artículo no se encuentra en el contexto.`,
     );
   }
   await m.react("🕕");
-  await m.reply(`🕕 *ᴍᴇᴍᴘʀᴏsᴇs...*\n\n> Membuat tulisan tangan...`);
+  await m.reply(`🕕*ᴍᴇᴍᴘʀᴏSᴇ- Sí.\n\nPara escribir una mano.`);
   try {
     const { createCanvas, loadImage, GlobalFonts } = _canvas;
     if (!_fontRegistered) {
@@ -71,7 +71,7 @@ async function handler(m, { sock }) {
           GlobalFonts.register(fontBuf, "Zahraaa");
         }
       } catch (err) {
-        console.error("Gagal load font:", err);
+        console.error("Carga sin miedo:", err);
       }
       _fontRegistered = true;
     }

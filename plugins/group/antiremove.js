@@ -2,7 +2,7 @@
     name: 'antiremove',
     alias: ['antidelete', 'antihapus', 'ar'],
     category: 'group',
-    description: 'Mengaktifkan/menonaktifkan anti hapus pesan di grup',
+    description: 'Activar / desabollitar los mensajes cons @ - @ borra en grupo',
     usage: '.antiremove <on/off>',
     example: '.antiremove on',
     isOwner: false,
@@ -33,18 +33,18 @@ async function handler(m, { sock, db }) {
     if (action === 'on') {
         db.setGroup(m.chat, { ...group, antiremove: 'on' })
         m.react('✅')
-        await m.reply(`✅ *AntiRemove diaktifkan*\n> Pesan yang dihapus akan di-forward ulang.`)
+        await m.reply(`✅*AntiRemove activado*\nPara ordenar la remodelación de Mensaje se reformaría.`)
         return
     }
 
     if (action === 'off') {
         db.setGroup(m.chat, { ...group, antiremove: 'off' })
         m.react('❌')
-        await m.reply(`❌ *AntiRemove dinonaktifkan*`)
+        await m.reply(`❌*AntiRemove desactivado*`)
         return
     }
 
-    await m.reply(`❌ Gunakan \`.antiremove on\` atau \`.antiremove off\``)
+    await m.reply(`❌Usa\`- Antirremove on.\`o\`- Antiremove off.\``)
 }
 
 exports.config = pluginConfig; exports.handler = handler;

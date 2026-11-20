@@ -19,26 +19,26 @@ async function handler(m) {
     const db = _ourindatabasejs.getDatabase.call(void 0, )
     const user = db.getUser(m.sender)
 
-    if (!_optionalChain([user, 'optionalAccess', _ => _.clanId])) return m.reply(`❌ Kamu belum punya clan`)
+    if (!_optionalChain([user, 'optionalAccess', _ => _.clanId])) return m.reply(`❌Aún no tienes un clan.`)
     if (!db.db.data.clans) db.db.data.clans = {}
 
     const clan = db.db.data.clans[user.clanId]
-    if (!clan) return m.reply(`❌ Clan tidak ditemukan`)
+    if (!clan) return m.reply(`❌- ¿Qué?`)
 
     const target = _optionalChain([m, 'access', _2 => _2.mentionedJid, 'optionalAccess', _3 => _3[0]]) || _optionalChain([m, 'access', _4 => _4.quoted, 'optionalAccess', _5 => _5.sender])
     if (!target) {
         return m.reply(
             `📨 *CLAN INVITE*\n\n` +
-            `Tag atau reply user yang mau diundang\n\n` +
-            `Contoh: *.claninvite @user*`
+            `Tag or responder user to invite\n\n` +
+            `Ejemplo: *.claninvite @user*`
         )
     }
 
-    if (target === m.sender) return m.reply(`❌ Tidak bisa invite diri sendiri`)
+    if (target === m.sender) return m.reply(`❌No puedes invitarte a ti mismo`)
 
     const targetUser = db.getUser(target)
-    if (_optionalChain([targetUser, 'optionalAccess', _6 => _6.clanId])) return m.reply(`❌ User tersebut sudah punya clan`)
-    if (clan.members.length >= 50) return m.reply(`❌ Clan sudah penuh (50/50)`)
+    if (_optionalChain([targetUser, 'optionalAccess', _6 => _6.clanId])) return m.reply(`❌El usuario ya tiene un clan`)
+    if (clan.members.length >= 50) return m.reply(`❌- No te va a gustar esto.`)
 
     clan.members.push(target)
     db.setUser(target, { clanId: user.clanId })
@@ -48,7 +48,7 @@ async function handler(m) {
 
     await m.reply(
         `${emblem} *INVITED!*\n\n` +
-        `@${target.split('@')[0]} bergabung ke *${clan.name}*\n` +
+        `@${target.split('@')[0]}# Cucarachado a #${clan.name}*\n` +
         `Members: ${clan.members.length}/50`,
         { mentions: [m.sender, target] }
     )

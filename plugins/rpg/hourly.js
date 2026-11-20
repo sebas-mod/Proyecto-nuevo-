@@ -21,7 +21,7 @@ const pluginConfig = {
 function msToTime(duration) {
   const minutes = Math.floor((duration / (1000 * 60)) % 60);
   const seconds = Math.floor((duration / 1000) % 60);
-  return `${minutes} menit ${seconds} detik`;
+  return `${minutes}minuto${seconds}segundo`;
 }
 
 async function handler(m, { sock }) {
@@ -37,7 +37,7 @@ async function handler(m, { sock }) {
 
   if (now - lastClaim < COOLDOWN) {
     const remaining = COOLDOWN - (now - lastClaim);
-    return m.reply(`Eits, buru-buru amat kak! 😂\n\nJatah jam ini udah kamu ambil, tunggu *${msToTime(remaining)}* lagi ya baru balik ke sini! 🏃💨`);
+    return m.reply(`¡Eits, Date prisa muy hermano!😂\n\nUsted está tomando ste reloj, escaz.${msToTime(remaining)}* otra vez si nuevo balik a sini! 🏃💨`);
   }
 
   const expReward = isPremium ? 1000 : 200;
@@ -51,11 +51,11 @@ async function handler(m, { sock }) {
 
   await m.react("⏰");
 
-  let txt = `WAKTUNYA GAJIAN JAM-JAMAN! ⏰✨\n\n`;
-  txt += `Ini dia jatah kamu:\n`;
-  txt += `💸 Koin: *+Rp ${moneyReward.toLocaleString("id-ID")}*\n`;
+  let txt = `WAKTUNYA GAJIAN Hora-JAMAN! ⏰✨\n\n`;
+  txt += `Aquí viene su rafab:\n`;
+  txt += `💸Monedas: *+Rp${moneyReward.toLocaleString("id-ID")}*\n`;
   txt += `📈 EXP: *+${expReward.toLocaleString("id-ID")}*\n\n`;
-  txt += `Balik lagi 1 jam kemudian ya kak! 😘`;
+  txt += `¡Déjalo una hora más tarde, hermana!😘`;
 
   m.reply(txt);
 }

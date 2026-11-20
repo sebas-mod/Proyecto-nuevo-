@@ -68,7 +68,7 @@ const VIDEO_CONFIG = {
 async function downloadBuffer(url) {
   const res = await _nodefetch2.default.call(void 0, url);
   if (!res.ok) {
-    throw new Error(`Gagal download: ${res.status} ${res.statusText}`);
+    throw new Error(`Fallido download:${res.status} ${res.statusText}`);
   }
   return Buffer.from(await res.arrayBuffer());
 }
@@ -304,16 +304,16 @@ function escapeConcatPath(filePath) {
 function buildManifest(frames, framePaths) {
   const lines = [];
   for (let i = 0; i < frames.length; i++) {
-    lines.push(`file '${escapeConcatPath(framePaths[i])}'`);
+    lines.push(`archivo '${escapeConcatPath(framePaths[i])}'`);
     lines.push(`duration ${frames[i].duration}`);
   }
-  lines.push(`file '${escapeConcatPath(framePaths[framePaths.length - 1])}'`);
+  lines.push(`archivo '${escapeConcatPath(framePaths[framePaths.length - 1])}'`);
   return lines.join("\n");
 }
 
 async function encodeVideo(concatPath, outputPath, configObj) {
   if (configObj.outputFormat !== "mp4") {
-    throw new Error("Saat ini output hanya support mp4");
+    throw new Error("Está vez sólo genera soporte mp4");
   }
 
   const args = [
@@ -386,7 +386,7 @@ async function createBratVideo(text, template) {
 async function handler(m, { sock }) {
   const text = m.text;
   if (!text) {
-    return m.reply(`⚠️ Harap masukkan teksnya!\nContoh: \`${m.prefix}${m.command} Halo semuanya\``);
+    return m.reply(`⚠️ Por favor introduce teksnya!\nEjemplo:\`${m.prefix}${m.command}Hola a todos.\``);
   }
 
   await m.react("🕕");
@@ -407,7 +407,7 @@ async function handler(m, { sock }) {
       template = TEMPLATES.vermeil;
       isVideo = true;
     } else {
-      throw new Error("Command tidak valid");
+      throw new Error("Comando inválido");
     }
 
     const inputText = normalizeText(text);

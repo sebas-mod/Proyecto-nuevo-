@@ -21,7 +21,7 @@ async function handler(m, { sock }) {
   const uid = _optionalChain([m, 'access', _ => _.text, 'optionalAccess', _2 => _2.trim, 'call', _3 => _3()]) || m.args[0];
 
   if (!uid) {
-    return m.reply("❌ *UID Genshin-nya mana nih?*\n\nKamu harus memasukkan UID pemain Genshin Impact yang ingin di-stalk. \n\nContoh: `.genshinstalk 856012067`");
+    return m.reply("❌* ULD Genshin - where 's the aquí?\n\nDeberías poner en un Uid de Impacto Genshin que quiere ser acechado.\n\nEjemplo:`.`");
   }
 
   await m.react("🕕");
@@ -38,16 +38,16 @@ async function handler(m, { sock }) {
 
     if (!data.status || !data.result) {
       await m.react("❌");
-      return m.reply(`⚠️ *Pencarian Gagal!*\n\nUID *${uid}* tidak ditemukan atau profilnya diprivat. Pastikan UID yang kamu masukkan sudah benar ya.`);
+      return m.reply(`⚠* Gaglys buscando!\n\nULD *${uid}Asegúrese de que el Uid que entró es correcto.`);
     }
 
     const r = data.result.player_info;
     const imageUrl = data.result.image_url;
     
     let caption = `🌟 *GENSHIN IMPACT STALK* 🌟\n\n`;
-    caption += `Halo Traveler! Ini dia informasi akun untuk UID *${data.result.id}*:\n\n`;
+    caption += `Hola Traveller!${data.result.id}*:\n\n`;
     
-    caption += `👤 *INFO PEMAIN*\n`;
+    caption += `👤* 91 * * INFO INFO* *InVESTIGACIÓN* *93*\n`;
     caption += `  - Nickname: *${r.nickname || "-"}*\n`;
     caption += `  - Adventure Rank (AR): ${r.level || "-"}\n`;
     caption += `  - World Level (WL): ${r.world_level || "-"}\n`;
@@ -60,7 +60,7 @@ async function handler(m, { sock }) {
     if (r.stygian_onslaught) caption += `  - Stygian Onslaught: ${r.stygian_onslaught}\n`;
     caption += `\n`;
     
-    caption += `Gimana, statnya bagus nggak? Pamerin ke teman-temanmu yuk! 🚀`;
+    caption += `Eres tan linda, ¡eres tan linda!🚀`;
 
     if (imageUrl) {
       await sock.sendMessage(m.chat, {
@@ -76,7 +76,7 @@ async function handler(m, { sock }) {
   } catch (error) {
     console.error("[Genshin Stalk]", error.message);
     await m.react("☢");
-    m.reply("😔 *Terjadi masalah di sistem kami.* \n\nSistem gagal menarik data dari server Genshin Impact. Silakan coba beberapa saat lagi ya.");
+    m.reply("😔* Es un problema en nuestro sistema *\n\nEl sistema no pudo extraer datos del servidor de Impacto Genshin. Por favor, inténtelo de nuevo en un momento.");
   }
 }
 

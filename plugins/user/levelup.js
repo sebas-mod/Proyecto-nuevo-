@@ -29,7 +29,7 @@ function handler(m, { sock }) {
         return m.reply(
             `✅ *ʟᴇᴠᴇʟ ᴜᴘ ɴᴏᴛɪꜰ*\n\n` +
             `> Status: *ON* ✅\n` +
-            `> Kamu akan menerima notifikasi saat naik level!`
+            `- ¡Recibirá notificaciones cuando llegue al nivel!`
         )
     }
     
@@ -39,14 +39,14 @@ function handler(m, { sock }) {
         return m.reply(
             `❌ *ʟᴇᴠᴇʟ ᴜᴘ ɴᴏᴛɪꜰ*\n\n` +
             `> Status: *OFF* ❌\n` +
-            `> Notifikasi level up dinonaktifkan.`
+            `*Notificaciones nivelan discapacitadas.*`
         )
     }
     
     const status = user.settings.levelupNotif !== false ? 'ON ✅' : 'OFF ❌'
     return m.reply(
         `🔔 *ʟᴇᴠᴇʟ ᴜᴘ ɴᴏᴛɪꜰ*\n\n` +
-        `> Status saat ini: *${status}*\n\n` +
+        `♪ A Status this moment: ♪${status}*\n\n` +
         `╭┈┈⬡「 📋 *ᴜsᴀɢᴇ* 」\n` +
         `┃ > \`.levelup on\` - Aktifkan\n` +
         `┃ > \`.levelup off\` - Nonaktifkan\n` +

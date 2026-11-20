@@ -11,7 +11,7 @@ const pluginConfig = {
   name: "carifitur",
   alias: ["searchcmd", "findcmd", "cari", "search", "cf"],
   category: "main",
-  description: "Mencari fitur berdasarkan keyword dengan detail lengkap",
+  description: "Búsqueda de palabras clave basadas en keyWord @-@ con detalles completos",
   usage: ".carifitur <keyword>",
   example: ".carifitur sticker",
   isOwner: false,
@@ -79,7 +79,7 @@ async function loadAllPlugins() {
       for (const file of files) {
         try {
           const plugin = await Promise.resolve().then(() => _interopRequireWildcard(require(
-            `file://${_path2.default.join(categoryPath, file).replace(/\\/g, "/")}`
+            `archivo://${_path2.default.join(categoryPath, file).replace(/\\/g, "/")}`
           )));
           if (plugin.config && plugin.config.name) {
             plugins.push({
@@ -88,7 +88,7 @@ async function loadAllPlugins() {
                 : plugin.config.name,
               alias: plugin.config.alias || [],
               category: plugin.config.category || category,
-              description: plugin.config.description || "Tidak ada deskripsi",
+              description: plugin.config.description || "No hay descripción",
               usage: plugin.config.usage || "",
               example: plugin.config.example || "",
               isEnabled: plugin.config.isEnabled !== false,
@@ -144,7 +144,7 @@ async function handler(m, { sock }) {
       `╭┈┈⬡「 📋 *ᴄᴀʀᴀ ᴘᴀᴋᴀɪ* 」\n` +
       `┃ \`${m.prefix}carifitur <keyword>\`\n` +
       `╰┈┈⬡\n\n` +
-      `> Contoh:\n` +
+      `> Ejemplo:\n` +
       `\`${m.prefix}carifitur sticker\`\n` +
       `\`${m.prefix}carifitur download\`\n` +
       `\`${m.prefix}carifitur game\``,
@@ -201,14 +201,14 @@ async function handler(m, { sock }) {
     if (matches.length === 0) {
       m.react("❌");
       return m.reply(
-        `🔍 *ʜᴀsɪʟ ᴘᴇɴᴄᴀʀɪᴀɴ*\n\n> Tidak ditemukan fitur dengan keyword \`${keyword}\``,
+        `🔍*ʜᴀSɪʟ ᴘᴇɴᴄᴀʀɪᴀɴ*\n\n*No se encuentra característica con la palabra clave*\`${keyword}\``,
       );
     }
     const saluranId = _optionalChain([_configjs2.default, 'access', _ => _.saluran, 'optionalAccess', _2 => _2.id]) || "120363400911374213@newsletter";
     const saluranName = _optionalChain([_configjs2.default, 'access', _3 => _3.saluran, 'optionalAccess', _4 => _4.name]) || _optionalChain([_configjs2.default, 'access', _5 => _5.bot, 'optionalAccess', _6 => _6.name]) || "Ourin-AI";
     let text = `🔍 *ʜᴀsɪʟ ᴘᴇɴᴄᴀʀɪᴀɴ: "${keyword}"*\n`;
-    text += `> Ditemukan *${matches.length}* fitur\n`;
-    text += `> Pilih salah satu command di bawah:\n\n`;
+    text += `*Encontrado*${matches.length}* fitur\n`;
+    text += `Votar por uno de los comandos en el bayou:\n\n`;
     const topMatches = matches.slice(0, 15);
     for (let i = 0; i < Math.min(5, topMatches.length); i++) {
       const p = topMatches[i];
@@ -216,14 +216,14 @@ async function handler(m, { sock }) {
       if (p.isPremium) badges.push("💎");
       if (p.isOwner) badges.push("👑");
       text += `*${i + 1}. ${m.prefix}${p.name}* ${badges.join("")}\n`;
-      text += `📁 Kategori: \`${p.category}\`\n`;
+      text += `📁Categoría:\`${p.category}\`\n`;
       text += `📝 ${p.description.slice(0, 50)}${p.description.length > 50 ? "..." : ""}\n`;
       if (p.usage) text += `💡 Usage: \`${p.usage}\`\n`;
       if (p.cooldown > 0) text += `⏱️ Cooldown: ${p.cooldown}s\n`;
       text += `\n`;
     }
     if (topMatches.length > 5) {
-      text += `_+${topMatches.length - 5} hasil lainnya tersedia_`;
+      text += `_+${topMatches.length - 5}_ Otros resultados están disponibles`;
     }
     const buttons = topMatches.slice(0, 10).map((p, i) => ({
       title: `${m.prefix}${p.name}`,
@@ -244,7 +244,7 @@ async function handler(m, { sock }) {
               title: "📋 Pilih Command",
               sections: [
                 {
-                  title: `Hasil untuk "${keyword}"`,
+                  title: `*Para ser verdad*${keyword}"`,
                   rows: buttons,
                 },
               ],

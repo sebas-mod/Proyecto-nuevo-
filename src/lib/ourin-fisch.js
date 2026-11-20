@@ -184,7 +184,7 @@ function addRodExp(fischUser, rodKey, amount) {
     statsIncreased.push(`Luck +1%, Speed +1%`);
   }
   if (levelUp)
-    return `🎣 Rod *${rod.name}* naik ke level ${rod.level}!\n✨ ${statsIncreased.join(", ")}`;
+    return `🎣 Rod *${rod.name}* Hasta el nivel${rod.level}!\n✨ ${statsIncreased.join(", ")}`;
   return null;
 }
 
@@ -342,7 +342,7 @@ function applyJackpotReward(db, fischUser, sender, result) {
         user.energi = (user.energi || 0) + val;
         db.markDirty("users");
       }
-      applied = { desc: `+${val} Energi`, type };
+      applied = { desc: `+${val}Energía`, type };
       break;
     }
     case "limit": {
@@ -352,7 +352,7 @@ function applyJackpotReward(db, fischUser, sender, result) {
         user.limit = (user.limit || 0) + val;
         db.markDirty("users");
       }
-      applied = { desc: `+${val} Limit`, type };
+      applied = { desc: `+${val}Límite`, type };
       break;
     }
     case "tickets":
@@ -384,7 +384,7 @@ function applyJackpotReward(db, fischUser, sender, result) {
         user.isPremium = true;
         db.markDirty("users");
       }
-      applied = { desc: `Premium ${days} Hari!`, type };
+      applied = { desc: `Premium${days}El!`, type };
       break;
     }
     case "partner_7d":
@@ -402,7 +402,7 @@ function applyJackpotReward(db, fischUser, sender, result) {
         user.isPartner = true;
         db.markDirty("users");
       }
-      applied = { desc: `Partner ${days} Hari!`, type };
+      applied = { desc: `Partner ${days}El!`, type };
       break;
     }
     case "unlimited_energi": {
@@ -412,7 +412,7 @@ function applyJackpotReward(db, fischUser, sender, result) {
         user.energi = -1;
         db.markDirty("users");
       }
-      applied = { desc: `UNLIMITED Energi!`, type };
+      applied = { desc: `UNLIMITED Energía!`, type };
       break;
     }
     case "unlimited_limit": {
@@ -422,7 +422,7 @@ function applyJackpotReward(db, fischUser, sender, result) {
         user.limit = -1;
         db.markDirty("users");
       }
-      applied = { desc: `UNLIMITED Limit!`, type };
+      applied = { desc: `UNLIMITED Límite!`, type };
       break;
     }
     default:

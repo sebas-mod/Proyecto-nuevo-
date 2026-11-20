@@ -6,7 +6,7 @@ const pluginConfig = {
     name: 'gita',
     alias: ['gitagpt', 'bhagavadgita'],
     category: 'ai',
-    description: 'Chat dengan Gita GPT (Bhagavad Gita AI)',
+    description: 'Chat con Gita GPT ( Bhagavad Gita AI )',
     usage: '.gita <pertanyaan>',
     example: '.gita What is dharma?',
     isOwner: false,
@@ -21,7 +21,7 @@ const pluginConfig = {
 async function handler(m, { sock }) {
     const text = m.args.join(' ')
     if (!text) {
-        return m.reply(`📿 *ɢɪᴛᴀ ɢᴘᴛ*\n\n> Masukkan pertanyaan\n\n\`Contoh: ${m.prefix}gita What is dharma?\``)
+        return m.reply(`📿*ɢɪᴛᴀ ɢᴘᴛ*\n\nHe aquí una pregunta\n\n\`Ejemplo:${m.prefix}gita What is dharma?\``)
     }
 
     m.react('🕕')

@@ -55,7 +55,7 @@ class BluArchive {
         .filter((u) => u.includes(name.toLowerCase().split(" ")[0]))
         .slice(0, 5);
       throw new Error(
-        `Character "${name}" tidak ditemukan.\n\n> Mungkin maksud: ${suggestions.join(", ") || "tidak ada"}`,
+        `Character "${name}No se ha encontrado.\n\nTal vez me refiero a:${suggestions.join(", ") || "tidak ada"}`,
       );
     }
 
@@ -80,8 +80,8 @@ async function handler(m, { sock }) {
   if (!name) {
     return m.reply(
       `🎮 *ʙʟᴜᴇ ᴀʀᴄʜɪᴠᴇ ᴄʜᴀʀᴀᴄᴛᴇʀ*\n\n` +
-        `> Lihat info character Blue Archive\n\n` +
-        `> *Contoh:*\n` +
+        `Mira la información carácter Archivo Azul\n\n` +
+        `> *Ejemplo:*\n` +
         `> ${m.prefix}bluearchive-char shiroko\n` +
         `> ${m.prefix}bachar hoshino\n` +
         `> ${m.prefix}ba aru`,

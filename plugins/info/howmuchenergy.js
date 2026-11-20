@@ -5,7 +5,7 @@ const config = {
   name: "howmuchenergy",
   alias: ["cekenergi"],
   category: "info",
-  description: "Mengecek penggunaan energi banyak fitur sekaligus",
+  description: "Comprobación del uso energético de muchas características a la vez",
   usage: ".howmuchenergy <nama_fitur1> <nama_fitur2> ...",
   example: ".howmuchenergy hd jpm",
   isOwner: false,
@@ -20,14 +20,14 @@ const config = {
 async function handler(m, { sock }) {
   if (m.args.length === 0) {
     return m.reply(
-      `🔍 *PENGECEKAN ENERGI FITUR*\n\n` +
-      `Sistem untuk mengetahui berapa besar potongan energi yang dibutuhkan untuk menggunakan satu atau banyak fitur sekaligus.\n\n` +
-      `*PENGGUNAAN:*\n` +
+      `🔍> 91; INDIAN INVESTIGATING > 93;\n\n` +
+      `El sistema para saber qué es necesario un enorme pedazo de energía para usar una o varias características a la vez.\n\n` +
+      `*Uso:*\n` +
       `- *${m.prefix}howmuchenergy <nama_fitur1> <nama_fitur2> ...*\n\n` +
-      `*CONTOH PENGGUNAAN:*\n` +
+      `*Ejemplo de uso:*\n` +
       `- *${m.prefix}howmuchenergy hd jpm*\n\n` +
-      `*PENJELASAN:*\n` +
-      `Masukkan perintah beserta satu atau banyak nama fitur yang ingin kamu cek. Pisahkan dengan spasi.`
+      `*Explicación:*\n` +
+      `Insertar el comando con una o varias funciones que deseas comprobar.`
     );
   }
 
@@ -36,14 +36,14 @@ async function handler(m, { sock }) {
   const db = _ourindatabasejs.getDatabase.call(void 0, );
   const overrides = db.setting("capenergi") || {};
   
-  let responseText = `🔋 *DETAIL ENERGI FITUR*\n\n`;
+  let responseText = `🔋* DETALLES ENTERIES FIR *\n\n`;
   
   for (const cmd of m.args) {
     const targetCommand = cmd.toLowerCase();
     const plugin = _ourinpluginsjs.getPlugin.call(void 0, targetCommand);
     
     if (!plugin) {
-      responseText += `❌ *${targetCommand}* : Tidak ditemukan!\n\n`;
+      responseText += `❌ *${targetCommand}* ¡Descubierto!\n\n`;
       continue;
     }
     

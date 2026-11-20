@@ -2,7 +2,7 @@
     name: ['hapusgrup', 'deletegrup', 'delgrup'],
     alias: [],
     category: 'owner',
-    description: 'Keluar dari grup / hapus grup',
+    description: 'Quit grupo / remove grupo',
     usage: '.hapusgrup (di dalam grup) atau .hapusgrup <jid>',
     example: '.hapusgrup',
     isOwner: true,
@@ -24,9 +24,9 @@ async function handler(m, { sock }) {
     if (!targetJid || !targetJid.endsWith('@g.us')) {
         return m.reply(
             '🗑️ *ʜᴀᴘᴜs ɢʀᴜᴘ*\n\n' +
-            '> `.hapusgrup` (di dalam grup) — Keluar dari grup ini\n' +
-            '> `.hapusgrup <id_grup>` — Keluar dari grup tertentu\n\n' +
-            '⚠️ Bot akan keluar dari grup, bukan menghapus grup secara permanen'
+            '♪`- Despejen el grupo.`( dentro de la ranura )—Sal de este grupo\n' +
+            '♪`- Despejen el grupo.<id_grup>` —Dejar el grupo absoluto\n\n' +
+            '⚠*Para estar fuera del grupo, no para borrar*'
         )
     }
 
@@ -38,11 +38,11 @@ async function handler(m, { sock }) {
         await m.react('✅')
         return m.reply(
             `🗑️ *ʙᴏᴛ ᴋᴇʟᴜᴀʀ ᴅᴀʀɪ ɢʀᴜᴘ*\n\n` +
-            `> Grup: ${groupName}\n` +
+            `> Grupo:${groupName}\n` +
             `> ID: ${targetJid}`
         )
     } catch (err) {
-        return m.reply(`❌ Gagal keluar dari grup: ${err.message}`)
+        return m.reply(`❌Stubborn fuera de grupo:${err.message}`)
     }
 }
 

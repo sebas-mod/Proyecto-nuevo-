@@ -3,7 +3,7 @@ const pluginConfig = {
   name: "gacha",
   alias: ["spin", "pull", "lucky"],
   category: "rpg",
-  description: "Gacha untuk dapat hadiah random",
+  description: "Gacha para el premio al azar",
   usage: ".gacha",
   example: ".gacha",
   isOwner: false,
@@ -147,7 +147,7 @@ async function handler(m, { sock }) {
     case "balance":
       db.updateKoin(m.sender, reward.amount);
       typeEmoji = "💰";
-      rewardText = `+${reward.amount.toLocaleString()} Koin`;
+      rewardText = `+${reward.amount.toLocaleString()}Monedas`;
       break;
     case "exp":
       if (!user.rpg) user.rpg = {};
@@ -158,12 +158,12 @@ async function handler(m, { sock }) {
     case "energi":
       db.updateEnergi(m.sender, reward.amount);
       typeEmoji = "⚡";
-      rewardText = `+${reward.amount} Energi`;
+      rewardText = `+${reward.amount}Energía`;
       break;
     case "jackpot":
       db.updateKoin(m.sender, reward.amount);
       typeEmoji = "💎";
-      rewardText = `+${reward.amount.toLocaleString()} Koin`;
+      rewardText = `+${reward.amount.toLocaleString()}Monedas`;
       break;
   }
 
@@ -183,8 +183,8 @@ async function handler(m, { sock }) {
   }
 
   text += `*Rarity:* ${rarityColors[reward.rarity]}\n`;
-  text += `*Hadiah:* ${typeEmoji} ${rewardText}\n\n`;
-  text += `_Cooldown: 5 menit_`;
+  text += `*Premio:*${typeEmoji} ${rewardText}\n\n`;
+  text += `*Enfriamiento: 5 minutos*`;
 
   await m.reply(text);
 }

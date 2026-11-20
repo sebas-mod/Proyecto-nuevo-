@@ -2,7 +2,7 @@
     name: 'cekotaku',
     alias: ['otaku'],
     category: 'cek',
-    description: 'Cek tingkat otaku kamu',
+    description: 'Mira tu nivel de otku',
     usage: '.cekotaku <nama>',
     example: '.cekotaku Budi',
     isOwner: false,
@@ -25,12 +25,12 @@ async function handler(m) {
     else if (percent >= 30) desc = 'Tau anime dikit-dikit 🤔'
     else desc = 'Normie detected! 😂'
     
-    let txt = mentioned === m.sender ? `Hai @${mentioned.split('@')[0]}
+    let txt = mentioned === m.sender ? `Hola @${mentioned.split('@')[0]}
     
-Tingkat keotakuan kamu *${percent}%*
-\`\`\`${desc}\`\`\`` : `Kamu ingin ngecek tingkat keotakuan @${mentioned.split('@')[0]} yak? 
+Nivel de los músculos *${percent}%*
+\`\`\`${desc}\`\`\`` : `Quieres ver el nivel de despistidez${mentioned.split('@')[0]} yak? 
     
-Tingkat keotakuan dia sebesar *${percent}%*
+Es tan grande como un hombre${percent}%*
 \`\`\`${desc}\`\`\``
     
     await m.reply(txt, { mentions: [mentioned] })

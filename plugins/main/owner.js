@@ -13,7 +13,7 @@ const pluginConfig = {
   name: "owner",
   alias: ["creator", "dev", "developer"],
   category: "main",
-  description: "Menampilkan kontak owner bot",
+  description: "Asa de arranque de sujeción",
   usage: ".owner",
   example: ".owner",
   isOwner: false,
@@ -47,7 +47,7 @@ async function handler(m, { sock, config: botConfig }) {
       m.chat,
       {
         contacts: {
-          displayName: `Ini adalah owner kami`,
+          displayName: `Este es nuestro dueño.`,
           contacts,
         },
       },
@@ -55,17 +55,17 @@ async function handler(m, { sock, config: botConfig }) {
 
     );
     await sock.sendMessage(m.chat, {
-      text: "💬 Jika kamu memiliki pertanyaan, jangan ragu untuk bertanya, owner ramah kok"
+      text: "💬Si tiene alguna pregunta, no dude en hacer, socio. Es muy agradable."
     }, { quoted: zanne })
   } else {
-    const ownerText = `👑 *ᴏᴡɴᴇʀ ɪɴꜰᴏʀᴍᴀᴛɪᴏɴ*\n\n╭┈┈⬡「 📋 *ᴅᴇᴛᴀɪʟ* 」\n┃ ㊗ ɴᴀᴍᴀ: *${ownerNumbers.map((n) => _configjs.getOwnerName.call(void 0, n)).join(", ")}*\n┃ ㊗ ʙᴏᴛ: *${botName}*\n┃ ㊗ sᴛᴀᴛᴜs: *🟢 Online*\n╰┈┈⬡\n\n> _Jika ada pertanyaan atau kendala,_\n> _silakan hubungi owner di atas!_\n> _📞 Contact card di bawah._`;
+    const ownerText = `👑 *ᴏᴡɴᴇʀ ɪɴꜰᴏʀᴍᴀᴛɪᴏɴ*\n\n╭┈┈⬡「 📋 *ᴅᴇᴛᴀɪʟ* 」\n┃ ㊗ ɴᴀᴍᴀ: *${ownerNumbers.map((n) => _configjs.getOwnerName.call(void 0, n)).join(", ")}*\n┃ ㊗ ʙᴏᴛ: *${botName}*\n┃ ㊗Sᴛᴀᴛᴜs: *🟢Online *\n╰┈┈⬡\n\nSi hay alguna pregunta o control,\n# ¡Que llames al dueño arriba!\n¿Qué?📞La tarjeta de contacto está bautizada. _`;
 
     await m.reply(ownerText);
 
     for (const number of ownerNumbers) {
       const cleanNumber = number.replace(/[^0-9]/g, "");
 
-      const vcard = `BEGIN:VCARD\nVERSION:3.0\nFN:${_configjs.getOwnerName.call(void 0, number)} (Owner ${botName})\nTEL;type=CELL;type=VOICE;waid=${cleanNumber}:+${cleanNumber}\nEND:VCARD`;
+      const vcard = `BEGIN:VCARD\nVERSION:3.0\nFN:${_configjs.getOwnerName.call(void 0, number)}(Propietario${botName})\nTEL;type=CELL;type=VOICE;waid=${cleanNumber}:+${cleanNumber}\nEND:VCARD`;
 
       await sock.sendMessage(
         m.chat,

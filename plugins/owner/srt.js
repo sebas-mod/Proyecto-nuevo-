@@ -10,7 +10,7 @@ const pluginConfig = {
     name: 'srt',
     alias: ['shufflereplythumb', 'shufflereply'],
     category: 'owner',
-    description: 'Sistem Shuffle Reply Thumb (SRT) untuk reply random image interaktif',
+    description: 'Shuffle Respuesta Thumb ( SRT ) sistema de respuesta aleatoria imágenes interactivas',
     usage: '.srt on',
     example: '.srt on',
     isOwner: true,
@@ -40,37 +40,37 @@ async function handler(m, { sock, args }) {
         const action = _optionalChain([args, 'access', _ => _[0], 'optionalAccess', _2 => _2.toLowerCase, 'call', _3 => _3()]);
 
         if (!action) {
-            return m.reply(`🛠️ *SISTEM SHUFFLE REPLY THUMB (SRT)*\n\nSelamat datang di menu pengelolaan gambar balasan otomatis. Sistem ini memungkinkan bot untuk membalas dengan gambar *thumbnail* yang diacak secara otomatis dari koleksi yang kamu simpan.\n\nBerikut adalah daftar perintah yang tersedia:\n- *.srt on* : Mengaktifkan fitur shuffle secara global.\n- *.srt off* : Menonaktifkan fitur shuffle dan kembali ke pengaturan awal.\n- *.srt c* : Membuka sesi tangkapan gambar untuk menambahkan koleksi baru ke dalam database.\n- *.srt d* : Menutup sesi tangkapan gambar.\n- *.srt list* : Menampilkan seluruh koleksi gambar yang telah tersimpan di dalam database bot.\n- *.srt del* : Menghapus gambar dari database (Gunakan *.srt list* terlebih dahulu untuk memunculkan gambarnya, lalu *reply* salah satu gambar tersebut dengan perintah ini).`);
+            return m.reply(`🛠♪SYSTETLES SHUFFLE Responder THUMB ( SRT )♪\n\nBienvenido al menóde reprogramming ón de auto @ - @. Este permite que el bot reemplace con imágenes * minivuira * revuelto por automatización de la colección que guardas.\n\nAgut es una lista de commanños disperibles:\n- *. srt on *: Activando el shuffle @ - @ como fumbles.\n- *. srt off *: desactivar las características de la mucama y volver a la cohermentinsción tempprana.\n- *. srt c *: Bloquear captura de imagen para añadir nuevas coros a la base de datos.\n- *. srt d *: Cubre el sesi de captura de la imagen.\n- *. srt list *: Adjuntar toda la colección de imágenes almacenadas en la base de datos de arranque.\nRemoción de la imagen de la base de datos romana.`);
         }
 
         if (action === 'on') {
             db.setting('srtEnabled', true);
-            await m.reply('✅ *FITUR SRT BERHASIL DIAKTIFKAN*\n\nFitur ini telah menyala secara global. Setiap balasan bot yang mendukung *thumbnail* sekarang akan menampilkan gambar secara acak dari dalam folder shuffle yang telah dikumpulkan.');
+            await m.reply('✅* CUENTAS DE LA TRIBUNAL FUTURO *\n\nEstá característica ha sido globalizada. Cada peso @-@ basado bot consolidado ahora mostrará una imagen aleatoria de la carpeta de shuffle que se ha recogido.');
         } 
         else if (action === 'off') {
             db.setting('srtEnabled', false);
-            await m.reply('❌ *FITUR SRT BERHASIL DINONAKTIFKAN*\n\nPenggunaan *thumbnail* acak telah dimatikan. Semua balasan bot akan kembali menggunakan gambar *default* bawaan sistem.');
+            await m.reply('❌* FIRECCIÓN DE SPT PRETTY DINONACTIVE *\n\nLa miniatura aleatoria ha sido presionada. Todo el robot revierte utilizará la imagen * predeterminado con el sistema.');
         } 
         else if (action === 'c' || action === 'capture') {
             global.srtSession[m.chat] = { sender: m.sender, count: 0 };
             const totalImages = countShuffleImages();
-            await m.reply(`📸 *SESI TANGKAPAN GAMBAR DIMULAI*\n\nSilakan kirimkan gambar satu per satu secara terus menerus ke dalam obrolan ini. Bot akan membaca setiap gambar tersebut dan langsung menyimpannya secara otomatis ke dalam sistem *database shuffle*.\n\n- Total gambar tersimpan saat ini: *${totalImages}*\n- Jika semua gambar sudah selesai dikirimkan, hentikan sesi dengan perintah \`${m.prefix}srt d\`.`);
+            await m.reply(`📸* El período de sesiones provisional*\n\nPor favor envíe las imágenes una a una para seguir difundando en este chat. Esto mostrará cada imagen y delgado para almacenarlas en un sistema automatal.\n\n- La imagen total se guarda: hoy *${totalImages}*\n- Cuando todas las fotos estén terminadas, deténgase con las órdenes.\`${m.prefix}srt d\`.`);
         } 
         else if (action === 'd' || action === 'done') {
             if (!global.srtSession[m.chat] || global.srtSession[m.chat].sender !== m.sender) {
-                return m.reply('❌ Kamu sedang tidak berada di dalam sesi penangkapan gambar aktif untuk saat ini.');
+                return m.reply('❌No está en la sesión de captura activa por ahora.');
             }
             const count = global.srtSession[m.chat].count;
             delete global.srtSession[m.chat];
             const totalImages = countShuffleImages();
-            await m.reply(`✅ *SESI TANGKAPAN GAMBAR SELESAI*\n\nSesi telah dihentikan dan seluruh gambar telah diproses.\n- Total gambar baru yang ditambahkan: *${count}*\n- Total keseluruhan gambar di sistem: *${totalImages}*`);
+            await m.reply(`✅* SEGUNDA DE LA GAMBARA CLEAR*\n\nSesi ha sido suspendido y toda la imagen ha sido procesada.\n- Parte superior de la nueva imagen minada: *${count}*\n- El cuadro total del sistema: *${totalImages}*`);
         } 
         else if (action === 'list') {
-            if (!_fs2.default.existsSync(SHUFFLE_DIR)) return m.reply('❌ Belum ada satu pun gambar yang tersimpan di dalam direktori *shuffle*. Silakan lakukan penangkapan gambar terlebih dahulu.');
+            if (!_fs2.default.existsSync(SHUFFLE_DIR)) return m.reply('❌No hay una sola imagen almacenada en el directorio shuffle. Por favor, haga la captura más preventiva.');
             const files = _fs2.default.readdirSync(SHUFFLE_DIR).filter(f => f.endsWith('.jpg') || f.endsWith('.png') || f.endsWith('.jpeg'));
-            if (files.length === 0) return m.reply('❌ Direktori *shuffle* masih kosong. Silakan gunakan perintah tangkapan gambar untuk mulai menambahkan.');
+            if (files.length === 0) return m.reply('❌El directorio * shuffle sigue vacío. Por favor, utilice el comando de captura para añadir la imagen.');
             
-            await m.reply(`📂 *DAFTAR GAMBAR SHUFFLE*\n\nSistem menemukan *${files.length}* gambar yang tersimpan. Sedang memproses dan merangkai album untuk ditampilkan, harap tunggu sebentar.`);
+            await m.reply(`📂* Registrate Imagen SHUFFLE*\n\nEl sistema encontrado *${files.length}&#91; imagen guardada. Pitch procesamiento y secuencia de disco para mostrar, por favor espere un momento.`);
             
             try {
                 const opener = _ourin.generateWAMessageFromContent.call(void 0, 
@@ -115,13 +115,13 @@ async function handler(m, { sock, args }) {
                 }
             } catch (albumErr) {
                 console.error('Album Error:', albumErr);
-                return m.reply('❌ Terjadi kesalahan saat membuat album gambar.');
+                return m.reply('❌Fue un error hacer un álbum.');
             }
         } 
         else if (action === 'del' || action === 'delete') {
             const isImage = m.isImage || (m.quoted && m.quoted.isImage);
             if (!isImage) {
-                return m.reply('❌ *CARA MENGHAPUS GAMBAR:*\n\n1. Ketik `.srt list` untuk menampilkan seluruh koleksi gambar.\n2. Balas (*reply*) salah satu gambar yang muncul dari album tersebut dengan perintah `.srt del`.');
+                return m.reply('❌* CARA APPLAUDING Imagen: *\n\n1. Escribe`Lista de la srt.`para mostrar toda la colección de imágenes.\n2.`Srt del.`.');
             }
             
             await m.react('🕕');
@@ -133,7 +133,7 @@ async function handler(m, { sock, args }) {
                     buffer = await m.download();
                 }
             } catch (e) {
-                return m.reply('❌ Gagal mendownload gambar untuk dihapus.');
+                return m.reply('❌Steenhead descarga una imagen para capturar.');
             }
 
             if (buffer) {
@@ -143,15 +143,15 @@ async function handler(m, { sock, args }) {
 
                 if (_fs2.default.existsSync(filepath)) {
                     _fs2.default.unlinkSync(filepath);
-                    await m.reply(`✅ *GAMBAR BERHASIL DIHAPUS*\n\nGambar berhasil dihapus dari database shuffle.`);
+                    await m.reply(`✅* El más trabajado para ser desprendido *\n\nImagen logró ser hackeado de la base de datos.`);
                 } else {
-                    await m.reply('❌ *GAMBAR TIDAK DITEMUKAN*\n\nGambar ini tidak cocok dengan yang ada di dalam database shuffle (atau sudah dihapus sebelumnya).');
+                    await m.reply('❌> 91; EL MEJOR NO SON TERRENO > 93;\n\nEstá imagen no está familiarizada con el contenido de la base de datos shuffle.');
                 }
             }
             await m.react('✅');
         }
         else {
-            await m.reply(`❌ Perintah lanjutan "${action}" tidak dapat dikenali oleh sistem.`);
+            await m.reply(`❌Comando de frente${action}No puede ser interpretado por el sistema.`);
         }
         
     } catch (error) {
@@ -188,18 +188,18 @@ async function srtAnswerHandler(m, sock) {
             const filepath = _path2.default.join(SHUFFLE_DIR, filename);
 
             if (_fs2.default.existsSync(filepath)) {
-                await m.reply('⚠️ Gambar yang sama terdeteksi telah tersimpan di dalam database.');
+                await m.reply('⚠El mismo color se almacena en la base de datos.');
             } else {
                 _fs2.default.writeFileSync(filepath, buffer);
                 session.count++;
-                await m.reply(`✅ *GAMBAR BERHASIL DISIMPAN*\n\nGambar telah diamankan ke dalam penyimpanan lokal bot.\n- Total gambar ditambahkan pada sesi ini: *${session.count}*`);
+                await m.reply(`✅*El más fuerte de la luz *\n\nEl Imagen ha sido puesto en bots de almacenamiento local.\n- Los totales de la imagen se miden en está sesión: *${session.count}*`);
             }
         }
         await m.react('✅');
         return true;
     } catch (e) {
         await m.react('❌');
-        await m.reply('❌ Terjadi kesalahan fatal saat mencoba mengunduh dan menyimpan gambar tersebut.');
+        await m.reply('❌Fue una fatalidad para intentar descargar y contener la imagen.');
         return true;
     }
 }

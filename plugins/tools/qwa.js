@@ -8,7 +8,7 @@ const pluginConfig = {
     name: 'qwa',
     alias: ['quotewa', 'fakeqwa'],
     category: 'tools',
-    description: 'Membuat gambar quote WhatsApp',
+    description: 'Crear una foto de la cita de WhatsApp',
     usage: '.qwa [teks]',
     example: '.qwa Halo Dunia',
     isOwner: false,
@@ -54,7 +54,7 @@ async function handler(m, { sock }) {
         }
 
         if (!textToQuote && !mainMsg.isMedia) {
-            return m.reply(`❌ *FORMAT SALAH*\n\nKirim perintah \`.qwa <teks>\` atau reply pesan orang lain dengan \`.qwa\`.`)
+            return m.reply(`❌*Formato Incorrecto*\n\nEnvia el comando\`qwa.<teks>\`o responder el mensaje de otra persona con\`qwa.\`.`)
         }
         await m.react('🕕')
         const msgTime = mainMsg.messageTimestamp ? new Date(mainMsg.messageTimestamp * 1000) : new Date()
@@ -67,7 +67,7 @@ async function handler(m, { sock }) {
                     mainImage = await _ourinuploaderjs.uploadImage.call(void 0, buffer)
                 }
             } catch (err) {
-                console.error("Gagal download/upload media utama:", err)
+                console.error("Stempele descargas / subes media uma:", err)
             }
         }
 
@@ -79,7 +79,7 @@ async function handler(m, { sock }) {
                     quotedImage = await _ourinuploaderjs.uploadImage.call(void 0, buffer)
                 }
             } catch (err) {
-                console.error("Gagal download/upload media quoted:", err)
+                console.error("Stempellard descargas / subidas media citada:", err)
             }
         }
 
@@ -119,14 +119,14 @@ async function handler(m, { sock }) {
         })
         await sock.sendMessage(m.chat, {
             image: Buffer.from(res.data),
-            caption: `✅ Berhasil membuat quote WhatsApp!`
+            caption: `✅¡Funciónó en la punta de WhatsApp!`
         }, { quoted: m })
 
         await m.react('✅')
     } catch (error) {
         console.error("Error QWA:", error)
         await m.react('❌')
-        m.reply(`❌ *GAGAL MEMBUAT QUOTE*\n\n> Terjadi kesalahan atau API sedang bermasalah.`)
+        m.reply(`❌# No se pudo crearQUONESS *\n\nIce un ernor o una Fuego en una situación.`)
     }
 }
 

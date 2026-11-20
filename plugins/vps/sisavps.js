@@ -55,11 +55,11 @@ async function handler(m, { sock }) {
         
         let txt = `📊 *ᴋᴜᴏᴛᴀ ᴅɪɢɪᴛᴀʟᴏᴄᴇᴀɴ*\n\n`
         txt += `╭─────────────\n`
-        txt += `┃ 📦 Limit: *${dropletLimit}* droplet\n`
+        txt += `┃ 📦Límite: *${dropletLimit}* droplet\n`
         txt += `┃ ✅ Terpakai: *${dropletsUsed}* droplet\n`
-        txt += `┃ 📋 Sisa: *${dropletsRemaining}* droplet\n`
+        txt += `┃ 📋Restante: *${dropletsRemaining}* droplet\n`
         txt += `╰─────────────\n\n`
-        txt += `> 👤 Email: ${account.email}\n`
+        txt += `♪👤Correo:${account.email}\n`
         txt += `> ✅ Status: ${account.status}`
         
         await m.reply(txt)

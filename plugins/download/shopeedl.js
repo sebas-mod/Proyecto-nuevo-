@@ -4,7 +4,7 @@ const pluginConfig = {
   name: "shopeedl",
   alias: ["shopeevideo", "shopeevid"],
   category: "download",
-  description: "Download video dari Shopee",
+  description: "Descargar video de Shoppee",
   usage: ".shopeedl <url>",
   example: ".shopeedl https://shopee.co.id/universal-link/video/...",
   isOwner: false,
@@ -22,7 +22,7 @@ async function extract(url) {
   const form = new FormData();
   form.append("url", url);
 
-  const res = await fetch(`${BASE_URL}/api/extract`, {
+  const res = await fetch(`${BASE_URL}/fuego/extraza de traza`, {
     method: "POST",
     body: form,
   });
@@ -55,7 +55,7 @@ async function handler(m, { sock }) {
     const data = await extract(url);
     if (!data || !data.streams_array || data.streams_array.length === 0) {
       await m.react("❌");
-      return m.reply("⚠️ Gagal mengekstrak video. Pastikan link video Shopee sudah benar dan bersifat publik.");
+      return m.reply("⚠Asegúrese de que los enlaces de vídeo son correctos y de grado público.");
     }
 
     const best = bestStream(data.streams_array);
@@ -64,7 +64,7 @@ async function handler(m, { sock }) {
     let caption = `🛍️ *SHOPEE VIDEO DOWNLOADER* 🛍️\n\n`;
     if (data.username) caption += `*Username:* ${data.username}\n`;
     caption += `*Kualitas:* ${best.quality}\n`;
-    caption += `\n> Dibuat oleh bot kesayanganmu`;
+    caption += `\n*Hecho por tus botas favoritas*`;
 
     await sock.sendMessage(m.chat, {
       video: { url: videoUrl },
@@ -76,7 +76,7 @@ async function handler(m, { sock }) {
   } catch (error) {
     console.error("[Shopee DL]", error.message);
     await m.react("☢");
-    m.reply("😔 Gagal mengunduh video dari Shopee.");
+    m.reply("😔Gagaldogging video de Shoppee.");
   }
 }
 

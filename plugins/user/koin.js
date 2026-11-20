@@ -28,7 +28,7 @@ async function handler(m, { sock }) {
     const db = _ourindatabasejs.getDatabase.call(void 0, )
     
     let targetJid = m.sender
-    let targetName = m.pushName || 'Kamu'
+    let targetName = m.pushName || 'Tu'
     
     if (m.quoted) {
         targetJid = m.quoted.sender
@@ -43,10 +43,10 @@ async function handler(m, { sock }) {
     
     const isSelf = targetJid === m.sender
     
-    let text = `*〔 💰 KOIN INFO 〕*\n\n`
+    let text = `*〔 💰INFO COIN〕*\n\n`
 
 text += `*〔 👤 User 〕* ${targetName}\n`
-text += `*〔 💰 Koin 〕* ${koinDisplay}\n`
+text += `*〔 💰Monedas〕*${koinDisplay}\n`
 const isOwner = _configjs2.default.isOwner(targetJid) ? 'Owner' : ''
 const isPremium = user.isPremium ? 'Premium' : 'Free'
 
@@ -54,9 +54,9 @@ text += `*〔 💎 Status 〕* ${isOwner || isPremium}\n`
 
 if (isSelf) {
   text += `\n*〔 🛒 SHOP 〕*\n`
-  text += `• \`.buyenergi <jml>\` (1 = 100 koin)\n`
-  text += `• \`.buyfitur\` (1 = 3000 koin)\n`
-  text += `\n_🎮 Main game untuk dapat koin!_`
+  text += `• \`. buyenergi<jml>\`( 1 = 100 monedas )\n`
+  text += `• \`. buyfinitur.\`( 1 = 30.000 monedas )\n`
+  text += `\n¿Qué?🎮Juego principal para conseguir la moneda!`
 }
     
     await m.reply(text)

@@ -56,7 +56,7 @@ async function extractAudioFromVideo(videoUrl) {
   });
 
   if (!fs.existsSync(outputFile) || fs.statSync(outputFile).size <= 0) {
-    throw new Error("Gagal mengekstrak audio TikTok");
+    throw new Error("Stebuli extrae el audio de audio de TikTok");
   }
 
   return {
@@ -85,12 +85,12 @@ async function handler(m, { sock }) {
 ┃ ㊗ ᴜsᴀɢᴇ: \`${m.prefix}ttmp3 <url>\`
 ╰┈┈⬡
 
-> Contoh: ${m.prefix}ttmp3 https://vt.tiktok.com/xxx`,
+> Ejemplo:${m.prefix}ttmp3 https://vt.tiktok.com/xxx`,
     );
   }
 
   if (!url.match(/tiktok\.com|vt\.tiktok/i)) {
-    return m.reply("❌ URL tidak valid. Gunakan link TikTok.");
+    return m.reply("❌Uplink no es válido, utilice los enlaces TikTok.");
   }
 
   m.react("🕕");
@@ -106,7 +106,7 @@ async function handler(m, { sock }) {
         result.downloads.find((d) => d.type === "nowatermark");
 
       if (!_optionalChain([videoDownload, 'optionalAccess', _5 => _5.url])) {
-        throw new Error("Audio TikTok tidak ditemukan.");
+        throw new Error("Audio TikTok no fue encontrado.");
       }
 
       const extractedAudio = await extractAudioFromVideo(videoDownload.url);

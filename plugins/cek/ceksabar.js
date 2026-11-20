@@ -2,7 +2,7 @@
     name: 'ceksabar',
     alias: ['sabar', 'patience'],
     category: 'cek',
-    description: 'Cek tingkat kesabaran kamu',
+    description: 'Compruebe su nivel de paciencia.',
     usage: '.ceksabar <nama>',
     example: '.ceksabar Budi',
     isOwner: false,
@@ -25,12 +25,12 @@ async function handler(m) {
     else if (percent >= 30) desc = 'Kadang emosian dikit 😅'
     else desc = 'Gampang marah nih... 😤'
     
-    let txt = mentioned === m.sender ? `Hai @${mentioned.split('@')[0]}
+    let txt = mentioned === m.sender ? `Hola @${mentioned.split('@')[0]}
     
-Tingkat kesabaran kamu *${percent}%*
-\`\`\`${desc}\`\`\`` : `Kamu ingin ngecek tingkat kesabaran @${mentioned.split('@')[0]} yak? 
+Tu paciencia es alta${percent}%*
+\`\`\`${desc}\`\`\`` : `Quieres comprobar el nivel de paciencia${mentioned.split('@')[0]} yak? 
     
-Tingkat kesabaran dia sebesar *${percent}%*
+Es tan impaciente como uno grande${percent}%*
 \`\`\`${desc}\`\`\``
     
     await m.reply(txt, { mentions: [mentioned] })

@@ -5,7 +5,7 @@ const pluginConfig = {
     name: 'cekidch',
     alias: ['idch', 'channelid', 'infoch', 'channelinfo'],
     category: 'tools',
-    description: 'Cek ID dan info lengkap channel dari link',
+    description: 'Verificar ID e información completa Canal de enlaces',
     usage: '.cekidch <link channel>',
     example: '.cekidch https://whatsapp.com/channel/xxxxx',
     isOwner: false,
@@ -36,15 +36,15 @@ async function handler(m, { sock }) {
 
     if (!text) {
         return m.reply(
-            `ℹ️ *INFORMASI PENGGUNAAN*\n\n` +
-            `Silakan masukkan link channel WhatsApp yang ingin Anda cek informasinya secara detail.\n\n` +
-            `*CONTOH PENGGUNAAN:*\n` +
+            `*Usando información*\n\n` +
+            `Por favor, introduzca el enlace al Canal WhatsApp que desea comprobar la información en detalle.\n\n` +
+            `*Ejemplo de uso:*\n` +
             `• \`${m.prefix}cekidch https://whatsapp.com/channel/xxxxx\``
         )
     }
 
     if (!text.includes('https://whatsapp.com/channel/')) {
-        return m.reply(`❌ *LINK TIDAK VALID*\n\nPastikan link yang Anda masukkan adalah link channel WhatsApp yang sah dan benar.`)
+        return m.reply(`❌* Enlaza el ruido*\n\nAsegúrese de que los enlaces que ha introducido son los enlaces de sash y de Channel ChanksApp verdaderos.`)
     }
 
     m.react('🕕')
@@ -54,7 +54,7 @@ async function handler(m, { sock }) {
 
         if (!_optionalChain([metadata, 'optionalAccess', _4 => _4.id])) {
             m.react('❌')
-            return m.reply(`❌ *CHANNEL TIDAK DITEMUKAN*\n\nMaaf, sistem tidak dapat menemukan informasi dari channel tersebut. Mungkin link sudah kedaluwarsa atau channel telah dihapus.`)
+            return m.reply(`❌CHANNEL NO FOUND\n\nLo sentimos, el sistema no puede encontrar información del Canal. Tal vez los enlaces han pasado o el Canal ha sido hackeado.`)
         }
 
         const chName = metadata.name || 'Unknown'
@@ -68,28 +68,28 @@ async function handler(m, { sock }) {
         const descPreview = chDesc.length > 120 ? chDesc.slice(0, 120) + '...' : chDesc
 
         const infoText =
-            `Berikut adalah detail informasi lengkap mengenai channel yang Anda cari:\n\n` +
+            `Aguit es un detalle completo de la información relativa al canal que buscas:\n\n` +
             `*RINCIAN CHANNEL:*\n` +
-            `• Nama: *${chName}*\n` +
+            `•Nombre: *${chName}*\n` +
             `• ID Channel: \`${chId}\`\n` +
             `• Subscriber: *${formatSubs(chSubs)}*\n` +
             `• Status: *${chVerified}*\n` +
-            `• Dibuat Pada: *${chCreated}*\n\n` +
-            `*DESKRIPSI:*\n` +
+            `• Creado En: *${chCreated}*\n\n` +
+            `*Descripción:*\n` +
             `${descPreview}`
 
         const buttons = [
             {
                 name: 'cta_copy',
                 buttonParamsJson: JSON.stringify({
-                    display_text: '📋 Ambil ID Saluran nya',
+                    display_text: '📋Ambulad su identificación.',
                     copy_code: chId
                 })
             },
             {
                 name: 'cta_url',
                 buttonParamsJson: JSON.stringify({
-                    display_text: '🔗 Buka Channel nya',
+                    display_text: '🔗Su canal Abre',
                     url: text
                 })
             }

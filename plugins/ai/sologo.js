@@ -5,7 +5,7 @@ const pluginConfig = {
   name: "sologo",
   alias: ["ailogo", "bikinlogo"],
   category: "ai",
-  description: "Membuat logo menggunakan AI dari teks (prompt)",
+  description: "Creación de logos usando AI de texto (propont )",
   usage: ".sologo <prompt>",
   example: ".sologo Kucing lucu warna biru",
   isOwner: false,
@@ -21,7 +21,7 @@ async function handler(m, { sock }) {
   const prompt = _optionalChain([m, 'access', _ => _.text, 'optionalAccess', _2 => _2.trim, 'call', _3 => _3()]) || m.args.join(" ");
 
   if (!prompt) {
-    return m.reply("❌ Masukkan deskripsi logo yang ingin dibuat.\n\nContoh: `.sologo robot keren warna merah`");
+    return m.reply("❌Ponga en una descripción del logo para hacer.\n\nEjemplo:`Un robot de sodio.`");
   }
 
   await m.react("🕕");
@@ -38,7 +38,7 @@ async function handler(m, { sock }) {
     const data = res.data;
     if (!data.status || !data.result || data.result.length === 0) {
       await m.react("❌");
-      return m.reply("⚠️ AI gagal membuat logo. Coba gunakan prompt (deskripsi) yang lain.");
+      return m.reply("⚠Prueba con otro aviso.");
     }
 
     const logo = data.result[0];
@@ -46,7 +46,7 @@ async function handler(m, { sock }) {
     const caption = `🎨 *SOLOGO AI* 🎨\n\n` +
       `*Prompt:* ${prompt}\n` +
       `*Judul:* ${logo.title}\n` +
-      `*Deskripsi:* ${logo.desc}\n` +
+      `*Descripción:*${logo.desc}\n` +
       `*Tipe:* ${logo.logo_type || "origin"}`;
 
     await sock.sendMessage(m.chat, {
@@ -59,7 +59,7 @@ async function handler(m, { sock }) {
   } catch (error) {
     console.error("[SoLogo AI]", error.message);
     await m.react("☢");
-    m.reply("😔 Terjadi kesalahan saat memproses permintaan ke AI.");
+    m.reply("😔Fue un error procesar la AI.");
   }
 }
 

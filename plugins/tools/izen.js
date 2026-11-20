@@ -20,10 +20,10 @@ const pluginConfig = {
 async function handler(m, { args, sock }) {
   if (!args[0]) {
     let txt = `🔗 *SKIPLINK BYPASS* 🔗\n\n`;
-    txt += `Halo kak! Punya link yang ribet ngelewatin iklan? Sini aku bantu lewatin biar langsung ke tujuan akhir!\n\n`;
-    txt += `*Cara Pakai:*\n`;
+    txt += `¿Hao hermana! El enlace Tener es difícil de perder el anuncio? Por eso he venido para asegurarme de ir al final!\n\n`;
+    txt += `*Como usarlo:*\n`;
     txt += `👉 \`${m.prefix}izen <link>\`\n\n`;
-    txt += `*Contoh:*\n`;
+    txt += `*Ejemplo:*\n`;
     txt += `👉 \`${m.prefix}izen https://sfl.gl/xxxxx\``;
     return m.reply(txt);
   }
@@ -35,20 +35,20 @@ async function handler(m, { args, sock }) {
     const json = await res.json();
     
     if (!_optionalChain([json, 'access', _ => _.data, 'optionalAccess', _2 => _2.result, 'optionalAccess', _3 => _3.result])) {
-       return m.reply("❌ Waduh kak, gagal ngelewatin link-nya nih! Coba link lain ya.");
+       return m.reply("❌Hermana, lo siento.");
     }
     
-    let txt = `✅ *BERHASIL BYPASS LINK!* ✅\n\n`;
-    txt += `*Link Asli:* \n`;
+    let txt = `✅> 91; SALVANDO EL SALVID > 93;✅\n\n`;
+    txt += `*Enlace Asli:*\n`;
     txt += `🔗 ${args[0]}\n\n`;
-    txt += `*Hasil Bypass:* \n`;
+    txt += `*Resultado Bypass:*\n`;
     txt += `🚀 ${json.data.result.result}\n\n`;
-    txt += `Semoga ngebantu ya kak! ✨`;
+    txt += `¡Por favor, ayúdame!✨`;
     
     await m.reply(txt);
     await m.react("✅");
   } catch (e) {
-    m.reply(`❌ Maaf kak, terjadi kesalahan sistem! 😭\nError: ${e.message}`);
+    m.reply(`❌Lo siento hermano, ¡ha habido un error!😭\nError:${e.message}`);
   }
 }
 

@@ -1,17 +1,17 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }/**
  * Credits & Thanks to
- * Developer = Lucky Archz ( Zann )
- * Lead owner = HyuuSATAN
- * Owner = Keisya
+* Desarrollo = Lucchy Archz ( Zann )
+* Propietario principal: PESUSUATAN
+* Propietario = Keisya
  * Designer = Danzzz
  * Wileys = Penyedia baileys
- * Penyedia API
+* proveedor de Fuego
  * Penyedia Scraper
  * 
- * JANGAN HAPUS/GANTI CREDITS & THANKS TO
- * JANGAN DIJUAL YA MEK
+* DEFENSE Elimina / GANIT CREDITS TO THANKS
+* DORNESS SALE YA MEK
  * 
- * Saluran Resmi Ourin:
+* Oficial Ourin Saluran:
  * https://whatsapp.com/channel/0029VbB37bgBfxoAmAlsgE0t 
  */
 

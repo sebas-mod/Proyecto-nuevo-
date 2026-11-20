@@ -6,7 +6,7 @@ const pluginConfig = {
   name: "ttp",
   alias: ["texttopicture"],
   category: "maker",
-  description: "Membuat stiker keren dari teks",
+  description: "Crear una pegatina fresca del texto",
   usage: ".ttp <teks>",
   example: ".ttp Hai Cantik",
   isOwner: false,
@@ -22,7 +22,7 @@ async function handler(m, { sock }) {
   const text = m.args.join(" ") || _optionalChain([m, 'access', _ => _.text, 'optionalAccess', _2 => _2.trim, 'call', _3 => _3()]);
 
   if (!text) {
-    return m.reply("❌ *Waduh, teksnya mana nih?*\n\nKamu harus memasukkan teks yang ingin dijadikan stiker.\n\nContoh: `.ttp Hai Cantik`");
+    return m.reply("❌¿Dónde está el texto?\n\nTienes que poner en los textos que las pegatinas quieren hacer.\n\nEjemplo:`*Eres hermosa*`");
   }
 
   await m.react("🕕");
@@ -47,7 +47,7 @@ async function handler(m, { sock }) {
   } catch (err) {
     console.error("[TTP Maker]", err.message);
     await m.react("☢");
-    m.reply("😔 *Terjadi masalah di sistem kami.* \n\nSistem gagal menghubungi server pembuat stiker. Silakan coba beberapa saat lagi ya.");
+    m.reply("😔* Es un problema en nuestro sistema *\n\nEl sistema no pudo contactar con el servidor de pegatina.");
   }
 }
 

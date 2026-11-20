@@ -4,7 +4,7 @@ const pluginConfig = {
     name: 'jadibot',
     alias: ['jadibotqr', 'becomebot', 'bot'],
     category: 'main',
-    description: 'Jadikan nomor kamu menjadi bot (Pairing Code / QR)',
+    description: 'Así que tu número se convierte en una bota.QR )',
     usage: '.jadibot atau .jadibot qr',
     example: '.jadibot',
     isOwner: false,
@@ -18,13 +18,13 @@ const pluginConfig = {
 
 async function handler(m, { sock }) {
     const sender = m.sender
-    if (!sender) return m.reply('❌ Gagal mengidentifikasi nomor kamu')
+    if (!sender) return m.reply('❌Stunner ID \'d su número')
 
     if (_ourinjadibotmanagerjs.isJadibotActive.call(void 0, sender)) {
         return m.reply(
             `⚠️ *ᴊᴀᴅɪʙᴏᴛ ꜱᴜᴅᴀʜ ᴀᴋᴛɪꜰ*\n\n` +
-            `> Nomor kamu sudah menjadi bot\n` +
-            `> Ketik \`${m.prefix}stopjadibot\` untuk menghentikan`
+            `# Número You 've become a bot\n` +
+            `> Escribe\`${m.prefix}Stopkebot\`para detener`
         )
     }
 
@@ -34,13 +34,13 @@ async function handler(m, { sock }) {
     if (useQR) {
         await m.reply(
             `🤖 *ᴊᴀᴅɪʙᴏᴛ — Qʀ ᴍᴏᴅᴇ*\n\n` +
-            `> Menyiapkan koneksi...\n` +
-            `> Scan QR Code yang akan dikirim`
+            `" Prepare the connection. "\n` +
+            `> EscaneaQCódigo R para enviar`
         )
     } else {
         await m.reply(
             `🤖 *ᴊᴀᴅɪʙᴏᴛ — ᴘᴀɪʀɪɴɢ ᴄᴏᴅᴇ*\n\n` +
-            `> Menyiapkan koneksi...`
+            `" Prepare the connection. "`
         )
     }
 
@@ -50,7 +50,7 @@ async function handler(m, { sock }) {
         await m.reply(
             `❌ *ᴊᴀᴅɪʙᴏᴛ ɢᴀɢᴀʟ*\n\n` +
             `> ${e.message || 'Terjadi kesalahan'}\n\n` +
-            `Coba lagi dalam beberapa menit.`
+            `Inténtalo de nuevo en unos minutos.`
         )
     }
 }

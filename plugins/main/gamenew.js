@@ -2,7 +2,7 @@
   name: 'gamenew',
   alias: ['newgame', 'youhugame'],
   category: 'main',
-  description: 'Menu game Youhu untuk Ourin',
+  description: 'Menú Youhu juego para Ourin',
   usage: '.gamenew',
   example: '.gamenew',
   isOwner: false,
@@ -16,7 +16,7 @@
 
 async function handler(m) {
   const p = m.prefix || '.';
-  return m.reply(`╭─「 🎮 GAME CENTER 」
+  return m.reply(`╭─「 🎮CENTER DEL JUEGO」
 │
 │  01  ♟️  Chess
 │      └─ ${p}chess

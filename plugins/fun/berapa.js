@@ -2,7 +2,7 @@
     name: 'berapa',
     alias: ['howmuch', 'howmany'],
     category: 'fun',
-    description: 'Tanya bot berapa sesuatu',
+    description: 'Pregunta bot what \'s something',
     usage: '.berapa <pertanyaan>',
     example: '.berapa umur jodohku?',
     isOwner: false,
@@ -34,7 +34,7 @@ const answers = [
     'Cuma sedikit.',
     'Tak terhitung!',
     'Hmm, sekitar 10-an.',
-    'Lebih dari yang kamu kira!',
+    '¡Más de lo que piensas!',
     'Gak tau ah, males'
 ];
 
@@ -42,7 +42,7 @@ async function handler(m) {
     const text = _optionalChain([m, 'access', _ => _.text, 'optionalAccess', _2 => _2.trim, 'call', _3 => _3()]);
     
     if (!text) {
-        return m.reply(`🔢 *ʙᴇʀᴀᴘᴀ*\n\n> Masukkan pertanyaan!\n\n*Contoh:*\n> .berapa umur jodohku?`);
+        return m.reply(`🔢*ʙᴇʀᴀᴘᴀ*\n\n¡Disfruta de la pregunta!\n\n*Ejemplo:*\nSí. ¿Cuál es mi primer compañero?`);
     }
     
     const answer = answers[Math.floor(Math.random() * answers.length)];

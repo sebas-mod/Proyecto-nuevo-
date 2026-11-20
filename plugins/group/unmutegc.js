@@ -5,7 +5,7 @@ const pluginConfig = {
   name: "unmutegc",
   alias: ["unmutegrup", "unmutebot", "unblockbot", "unlockbot"],
   category: "group",
-  description: "Buka blokir command bot untuk member di grup",
+  description: "Y la forma en que rodas, un paciente",
   usage: ".unmutegc",
   example: ".unmutegc",
   isOwner: false,
@@ -25,20 +25,20 @@ async function handler(m, { sock }) {
 
   if (!groupData.mutegc) {
     return m.reply(
-      `🔊 *Mute GC Tidak Aktif*\n\n` +
-        `> Member sudah bisa menggunakan command bot di grup ini`
+      `🔊* Mute GC Inactive *\n\n` +
+        `*Ya puedes usar el bot de comando en este grupo*`
     );
   }
 
   db.setGroup(m.chat, { mutegc: false });
   const ctx = _ourincontextjs.saluranCtx.call(void 0, );
-  const groupName = _optionalChain([m, 'access', _ => _.groupMetadata, 'optionalAccess', _2 => _2.subject]) || "grup ini";
+  const groupName = _optionalChain([m, 'access', _ => _.groupMetadata, 'optionalAccess', _2 => _2.subject]) || "este grupo";
 
   return m.reply(
-    `🔊 *Mute GC Nonaktif*\n\n` +
-      `> Grup: *${groupName}*\n` +
-      `> Member sekarang bisa menggunakan command bot lagi\n\n` +
-      `_Ketik *${m.prefix}mutegc* untuk memblokir kembali_`,
+    `🔊* Mute GC Nonactive *\n\n` +
+      `*${groupName}*\n` +
+      `*Ahora podría usar un bot de comando otra vez*\n\n` +
+      `# Tickety #${m.prefix}mutegc * para bloquear de nuevo _`,
     { contextInfo: ctx }
   );
 }

@@ -71,7 +71,7 @@ function handler(m, { sock }) {
     }
     
     if (!hasAccess(m.sender, m.isOwner, legacyData)) {
-        return m.reply(`❌ *ᴀᴋsᴇs ᴅɪᴛᴏʟᴀᴋ*\n\n> Fitur ini hanya untuk Owner atau Owner Panel.`)
+        return m.reply(`❌*ᴀᴋSᴇSᴅɪᴛᴏʟᴀᴋ*\n\nEstá cosa de Función es para el Propietario o Panel de Propietario.`)
     }
     
     if (!legacyData.sellers) {
@@ -84,7 +84,7 @@ function handler(m, { sock }) {
     
     if (isList) {
         if (legacyData.sellers.length === 0) {
-            return m.reply(`📋 *ᴅᴀꜰᴛᴀʀ sᴇʟʟᴇʀ/ʀᴇsᴇʟʟᴇʀ*\n\n> Belum ada seller terdaftar.`)
+            return m.reply(`📋*ᴅᴀꜰᴛᴀʀSᴇʟʟᴇʀ/ʀᴇSᴇʟʟᴇʀ*\n\nPara ver si hay un vendedor registrado.`)
         }
         
         let txt = `📋 *ᴅᴀꜰᴛᴀʀ sᴇʟʟᴇʀ/ʀᴇsᴇʟʟᴇʀ*\n\n`
@@ -92,7 +92,7 @@ function handler(m, { sock }) {
         legacyData.sellers.forEach((s, i) => {
             txt += `${i + 1}. \`${s}\`\n`
         })
-        txt += `\n> _Seller bisa create server (1gb-10gb v1/v2/v3)_`
+        txt += `\nVendedor podría crear servidor ( 1gb - 10gb v1 / v2 / v3 ) _`
         return m.reply(txt)
     }
     
@@ -112,20 +112,20 @@ function handler(m, { sock }) {
             `⚠️ *ᴄᴀʀᴀ ᴘᴀᴋᴀɪ*\n\n` +
             `> \`${m.prefix}${cmd} @user\`\n` +
             `> \`${m.prefix}${cmd} 628xxx\`\n` +
-            `> Reply pesan user`
+            `Responder mensaje usuario`
         )
     }
     
     if (isAdd) {
         if (legacyData.sellers.includes(targetUser)) {
-            return m.reply(`❌ \`${targetUser}\` sudah menjadi seller.`)
+            return m.reply(`❌ \`${targetUser}\`Ya es un vendedor.`)
         }
         
         let roleChanged = ''
         const ownerIdx = (legacyData.ownerPanels || []).indexOf(targetUser)
         if (ownerIdx !== -1) {
             legacyData.ownerPanels.splice(ownerIdx, 1)
-            roleChanged = `\n> ⚡ Auto-downgrade dari Owner Panel ke Seller`
+            roleChanged = `\n♪⚡Auto @-@ downgrade de Oinner Panel a Vendedor`
         }
         
         legacyData.sellers.push(targetUser)
@@ -137,18 +137,18 @@ function handler(m, { sock }) {
                 `╭┈┈⬡「 📋 *ᴅᴇᴛᴀɪʟ* 」\n` +
                 `┃ 📱 ɴᴏᴍᴏʀ: \`${targetUser}\`\n` +
                 `┃ 🏷️ sᴛᴀᴛᴜs: \`Seller/Reseller\`\n` +
-                `┃ 🔓 ᴀᴋsᴇs: \`Create Server (1gb-10gb v1-v3)\`\n` +
+                `┃ 🔓 ᴀᴋSᴇs:\`Crear servidor ( 1gb - 10gb v1 - v3 )\`\n` +
                 `┃ 📊 ᴛᴏᴛᴀʟ: \`${legacyData.sellers.length}\` seller\n` +
                 `╰┈┈⬡${roleChanged}`
             )
         } else {
-            return m.reply(`❌ Gagal menyimpan ke database`)
+            return m.reply(`❌Mantenerse pegajoso en la base de datos`)
         }
     }
     
     if (isDel) {
         if (!legacyData.sellers.includes(targetUser)) {
-            return m.reply(`❌ \`${targetUser}\` bukan seller.`)
+            return m.reply(`❌ \`${targetUser}\`no es seller.`)
         }
         
         legacyData.sellers = legacyData.sellers.filter(s => s !== targetUser)
@@ -157,11 +157,11 @@ function handler(m, { sock }) {
             m.react('✅')
             return m.reply(
                 `✅ *sᴇʟʟᴇʀ ᴅɪʜᴀᴘᴜs*\n\n` +
-                `> Nomor: \`${targetUser}\`\n` +
+                `> Número:\`${targetUser}\`\n` +
                 `> Total: *${legacyData.sellers.length}* seller`
             )
         } else {
-            return m.reply(`❌ Gagal menyimpan ke database`)
+            return m.reply(`❌Mantenerse pegajoso en la base de datos`)
         }
     }
 }

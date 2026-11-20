@@ -1,7 +1,7 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { newObj[key] = obj[key]; } } } newObj.default = obj; return newObj; } } function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; } function _nullishCoalesce(lhs, rhsFn) { if (lhs != null) { return lhs; } else { return rhsFn(); } } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }/***
   @ Base: https://chatgpt.com/
   @ Author: Shannz
-  @ Note: Access chatgpt without login, support continuing chat, streaming, web search, and uploading images.
+@ Nota: Accesschatgnt sin login, softe chats continuos, streaming, búsquida web, y subiendo imágenes.
 ***/
 
 var _crypto = require('crypto'); var _crypto2 = _interopRequireDefault(_crypto);
@@ -36,7 +36,7 @@ if (!_perf) {
   }
 
   async send(message, opts = {}) {
-    if (!_optionalChain([message, 'optionalAccess', _ => _.trim, 'call', _2 => _2()])) throw new Error("Pesan tidak boleh kosong.");
+    if (!_optionalChain([message, 'optionalAccess', _ => _.trim, 'call', _2 => _2()])) throw new Error("Mensaje no puede estar vacío.");
 
     const {
       conversationId = null,
@@ -98,7 +98,7 @@ if (!_perf) {
 
   async _uploadImage(filePath, ctx = {}) {
     if (!_fs2.default.existsSync(filePath)) {
-      throw new Error(`File tidak ditemukan: ${filePath}`);
+      throw new Error(`El archivo no se encuentra:${filePath}`);
     }
 
     const fileBuffer = _fs2.default.readFileSync(filePath);
@@ -121,7 +121,7 @@ if (!_perf) {
 
     const { upload_url, file_id } = registerRes;
     if (!upload_url || !file_id) {
-      throw new Error(`Gagal mendaftar file: ${JSON.stringify(registerRes)}`);
+      throw new Error(`Stunner lista archivo:${JSON.stringify(registerRes)}`);
     }
 
     const uploadRes = await _fetch(upload_url, {
@@ -135,7 +135,7 @@ if (!_perf) {
     });
 
     if (!uploadRes.ok) {
-      throw new Error(`Upload blob gagal: HTTP ${uploadRes.status}`);
+      throw new Error(`La carga de bloques falló: HTTP${uploadRes.status}`);
     }
 
     const processBody = {
@@ -264,7 +264,7 @@ if (!_perf) {
     const initToken = "gAAAAAC" + this._encodeConfig(initCfg);
 
     const prepareRes = await _fetch(
-      `${this.baseUrl}/backend-anon/sentinel/chat-requirements/prepare`,
+      `${this.baseUrl}/ backend - anon / sentinel / chat - peticiones / preparar`,
       {
         method: "POST",
         headers: this._headers(),
@@ -291,7 +291,7 @@ if (!_perf) {
     if (turnstile) finalizeBody.turnstile = turnstile;
 
     const finalizeRes = await _fetch(
-      `${this.baseUrl}/backend-anon/sentinel/chat-requirements/finalize`,
+      `${this.baseUrl}/ backend - anon / sentinel / chat - peticiones / finalize`,
       {
         method: "POST",
         headers: this._headers(),
@@ -354,7 +354,7 @@ if (!_perf) {
         parts: [
           {
             content_type: "image_asset_pointer",
-            asset_pointer: `file-service://${image.fileId}`,
+            asset_pointer: `archivo-service://${image.fileId}`,
             size_bytes: image.sizeBytes,
             width: image.width,
             height: image.height,
@@ -552,10 +552,10 @@ function buildPrompt({ message, instruction = "", history = [] }) {
     parts.push(
       [
         "IKUTI INSTRUKSI SISTEM BERIKUT SECARA KETAT.",
-        "Jangan ringkas, jangan abaikan, dan jangan ubah format tag yang diminta.",
-        "Jika instruksi sistem meminta tag seperti [ACTION:...] atau [RICH:...], keluarkan persis format itu.",
-        "Jangan bungkus jawaban dengan markdown code fence kecuali memang isi RICH:CODE yang diminta.",
-        "Jangan jelaskan aturan. Langsung jawab sesuai instruksi.",
+        "No corto, no se ignoran, y no cambie la etiqueta de formulario solicitada.",
+        "Si las instrucciones del sistema piden etiquetas como SnarACTION:.",
+        "No envuelva la respuesta con la cerca de código de marcado a menos que el contenido del RICH: pidió CODE.",
+        "No explique las reglas, el cielo está en consonancia con las instrucciones.",
         "",
         "SYSTEM INSTRUCTION:",
         instruction.trim(),
@@ -575,20 +575,20 @@ function buildPrompt({ message, instruction = "", history = [] }) {
       .join("\n");
 
     if (formattedHistory) {
-      parts.push(`RIWAYAT PERCAKAPAN:\n${formattedHistory}`);
+      parts.push(`Historial PERCAKAPAN:\n${formattedHistory}`);
     }
   }
 
   parts.push(
     [
-      "PESAN USER SAAT INI:",
+      "SUSER cuando esto es:",
       String(message || "").trim(),
       "",
       "ATURAN OUTPUT:",
       "- Pertahankan format tag spesial secara persis bila dibutuhkan.",
-      "- Jangan ubah [ACTION:TYPE param=value] menjadi variasi lain.",
-      "- Jangan ubah [RICH:TYPE]...[/RICH:TYPE] menjadi markdown biasa.",
-      "- Jangan tambahkan pagar kode ``` di awal atau akhir jawaban.",
+      "- No lo convierta en otra variedad.",
+      "- No trate de ser un marcador regular.",
+      "- No pongas la valla de código.```Al principio o al final del día.",
     ].join("\n"),
   );
 

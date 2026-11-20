@@ -2,7 +2,7 @@
     name: 'cekintrovert',
     alias: ['introvert'],
     category: 'cek',
-    description: 'Cek tingkat introvert kamu',
+    description: 'Compruebe su nivel de introvertido',
     usage: '.cekintrovert <nama>',
     example: '.cekintrovert Budi',
     isOwner: false,
@@ -19,18 +19,18 @@ async function handler(m) {
     const mentioned = m.mentionedJid[0] || m.sender
                     
     let desc = ''
-    if (percent >= 90) desc = 'Rumah adalah surga! Stay home~ 🏠'
+    if (percent >= 90) desc = 'Quédate en casa🏠'
     else if (percent >= 70) desc = 'Social battery terbatas 🔋'
     else if (percent >= 50) desc = 'Ambivert, balance~ ⚖️'
     else if (percent >= 30) desc = 'Cukup social butterfly 🦋'
     else desc = 'Extrovert mode ON! 🎉'
     
-    let txt = mentioned === m.sender ? `Hai @${mentioned.split('@')[0]}
+    let txt = mentioned === m.sender ? `Hola @${mentioned.split('@')[0]}
     
-Tingkat keintrovertan kamu *${percent}%*
-\`\`\`${desc}\`\`\`` : `Kamu ingin ngecek tingkat keintrovertan @${mentioned.split('@')[0]} yak? 
+Tu tasa introvertida *${percent}%*
+\`\`\`${desc}\`\`\`` : `Quieres ver el nivel de introvertido${mentioned.split('@')[0]} yak? 
     
-Tingkat keintrovertan dia sebesar *${percent}%*
+Es tan grande como un introvertido.${percent}%*
 \`\`\`${desc}\`\`\``
     
     await m.reply(txt, { mentions: [mentioned] })

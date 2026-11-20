@@ -4,7 +4,7 @@ const pluginConfig = {
     name: 'birthdaylist',
     alias: ['bdaylist', 'listultah', 'ultahlist'],
     category: 'user',
-    description: 'Lihat daftar ulang tahun member',
+    description: 'Mira la lista de los cumpleaños de vídeo',
     usage: '.birthdaylist',
     example: '.birthdaylist',
     isOwner: false,
@@ -42,8 +42,8 @@ async function handler(m, { sock }) {
     if (birthdays.length === 0) {
         return m.reply(
             `❌ *ᴛɪᴅᴀᴋ ᴀᴅᴀ ᴅᴀᴛᴀ*\n\n` +
-            `> Belum ada member yang set birthday\n\n` +
-            `> Gunakan: .setbirthday DD-MM`
+            `No hay fotos que pongan a luzDay\n\n` +
+            `Desocupados: setbirthday DD @-@ MMs`
         )
     }
     
@@ -75,7 +75,7 @@ async function handler(m, { sock }) {
     }
     
     if (birthdays.length > 15) {
-        text += `┃ ... dan ${birthdays.length - 15} lainnya\n`
+        text += `┃... y${birthdays.length - 15} lainnya\n`
     }
     
     text += `╰┈┈┈┈┈┈┈┈⬡\n\n`

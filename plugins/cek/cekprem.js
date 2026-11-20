@@ -45,32 +45,32 @@ async function handler(m) {
     const isConfigOwner = _configjs2.default.isOwner(targetNumber)
 
     if (!premData && !isConfigPrem && !isConfigOwner) {
-        return m.reply(`❌ @${targetNumber} bukan premium`, { mentions: [jid] })
+        return m.reply(`❌ @${targetNumber}No es una prima.`, { mentions: [jid] })
     }
 
     const user = db.getUser(jid)
     const now = Date.now()
 
-    let txt = `💎 *DETAIL PREMIUM*\n\n`
+    let txt = `💎* PREMUM DE DETALLES*\n\n`
     txt += `👤 User: @${targetNumber}\n`
 
     if (isConfigOwner) {
-        txt += `🏷️ Role: *👑 Owner (Permanent)*\n`
+        txt += `🏷*👑Propietario (Permanent)*\n`
     } else if (typeof premData === 'string' || !_optionalChain([premData, 'optionalAccess', _16 => _16.expired])) {
-        txt += `🏷️ Role: *💎 Premium (Permanent)*\n`
+        txt += `🏷️ Role: *💎Premium ( Permanent ) *\n`
     } else {
         const remaining = Math.ceil((premData.expired - now) / (1000 * 60 * 60 * 24))
         const totalDays = premData.addedAt ? Math.ceil((premData.expired - premData.addedAt) / (1000 * 60 * 60 * 24)) : '?'
-        txt += `📛 Nama: *${premData.name || 'Unknown'}*\n`
-        txt += `📅 Mulai: *${premData.addedAt ? formatDate(premData.addedAt) : 'Unknown'}*\n`
+        txt += `📛Nombre: *${premData.name || 'Unknown'}*\n`
+        txt += `📅Empieza: *${premData.addedAt ? formatDate(premData.addedAt) : 'Unknown'}*\n`
         txt += `⏳ Expired: *${formatDate(premData.expired)}*\n`
-        txt += `🗓️ Durasi: *${totalDays} hari*\n`
-        txt += `📊 Sisa: *${remaining > 0 ? remaining + ' hari' : '⚠️ Expired'}*\n`
+        txt += `🗓Duración${totalDays}el*\n`
+        txt += `📊Restante: *${remaining > 0 ? remaining + ' hari' : '⚠️ Expired'}*\n`
     }
 
     if (user) {
-        txt += `⚡ Energi: *${user.energi === -1 ? '∞' : (_nullishCoalesce(user.energi, () => ( 0)))}*\n`
-        txt += `💰 Koin: *${user.koin === -1 ? '∞' : (_nullishCoalesce(user.koin, () => ( 0))).toLocaleString('id-ID')}*\n`
+        txt += `⚡Energía: *${user.energi === -1 ? '∞' : (_nullishCoalesce(user.energi, () => ( 0)))}*\n`
+        txt += `💰Monedas: *${user.koin === -1 ? '∞' : (_nullishCoalesce(user.koin, () => ( 0))).toLocaleString('id-ID')}*\n`
         txt += `⭐ Exp: *${(_nullishCoalesce(user.exp, () => ( 0))).toLocaleString('id-ID')}*\n`
         txt += `📊 Level: *${_nullishCoalesce(user.level, () => ( 1))}*\n`
     }

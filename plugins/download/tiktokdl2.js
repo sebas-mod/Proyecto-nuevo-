@@ -23,7 +23,7 @@ async function getToken() {
 async function fetchTikTok(url, csrf, cookie) {
     const res = await _axios2.default.post(
         'https://savett.cc/en1/download',
-        `csrf_token=${encodeURIComponent(csrf)}&url=${encodeURIComponent(url)}`,
+        `Token Crftuse =${encodeURIComponent(csrf)}&url=${encodeURIComponent(url)}`,
         { headers: { ...headers, Cookie: cookie } }
     )
     return res.data
@@ -124,12 +124,12 @@ async function handler(m, { sock }) {
             `╭┈┈⬡「 🎵 *ᴛɪᴋᴛᴏᴋ ᴅᴏᴡɴʟᴏᴀᴅ* 」\n` +
             `┃ ㊗ ᴜsᴀɢᴇ: \`${m.prefix}tiktok2 <url>\`\n` +
             `╰┈┈⬡\n\n` +
-            `> Contoh: ${m.prefix}tiktok2 https://vt.tiktok.com/xxx`
+            `> Ejemplo:${m.prefix}tiktok2 https://vt.tiktok.com/xxx`
         )
     }
 
     if (!url.match(/tiktok\.com|vt\.tiktok/i)) {
-        return m.reply('❌ URL tidak valid. Gunakan link TikTok.')
+        return m.reply('❌Uplink no es válido, utilice los enlaces TikTok.')
     }
 
     m.react('⏱️')
@@ -138,7 +138,7 @@ async function handler(m, { sock }) {
         const result = await savett(url)
 
         const caption =
-            `✅ *Done kak*\n\n` +
+            `✅*Done hermano*\n\n` +
             `👤 *${result.username || '-'}*\n` +
             `👁️ Views: ${result.views || '-'} | ❤️ Likes: ${result.likes || '-'}\n` +
             `� Comments: ${result.comments || '-'} | 🔗 Shares: ${result.shares || '-'}\n` +
@@ -169,7 +169,7 @@ async function handler(m, { sock }) {
         }
 
         if (result.type === 'photo' && result.slides.length > 0) {
-            await m.reply(`📸 *Mengirim ${result.slides.length} slide...*`)
+            await m.reply(`📸*Enviando${result.slides.length} slide...*`)
 
             const mediaList = []
             for (let i = 0; i < result.slides.length; i++) {
@@ -191,7 +191,7 @@ async function handler(m, { sock }) {
             }
 
             if (mediaList.length === 0) {
-                throw new Error('Gagal mengunduh gambar slide')
+                throw new Error('Descarga pegajosa imagen de diapositiva')
             }
 
             const opener = _ourin.generateWAMessageFromContent.call(void 0, 
@@ -250,7 +250,7 @@ async function handler(m, { sock }) {
         }
 
         if (result.mp3.length > 0) {
-            m.reply(`🍀 *NOTE*\n> Konten ini tidak memiliki video/slide, mengirim audio saja...`)
+            m.reply(`🍀# No\nA este contenido no tiene vídeo / diapositiva, enviar un audio solamente..`)
             await sock.sendMessage(
                 m.chat,
                 {
@@ -263,7 +263,7 @@ async function handler(m, { sock }) {
             return
         }
 
-        throw new Error('Tidak ada media yang dapat diunduh')
+        throw new Error('No hay grano que pueda descargarse')
 
     } catch (err) {
         console.error('[TikTokDL2] Error:', err)

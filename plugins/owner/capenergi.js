@@ -5,7 +5,7 @@ const config = {
   name: "capenergi",
   alias: ["setenergi"],
   category: "owner",
-  description: "Mengubah potongan energi banyak fitur sekaligus",
+  description: "Cambiar el corte energético de muchas características a la vez.",
   usage: ".capenergi <nama_fitur1> <nama_fitur2> ... <jumlah>",
   example: ".capenergi hd fakedev 5",
   isOwner: true,
@@ -20,16 +20,16 @@ const config = {
 async function handler(m, { sock }) {
   if (m.args.length < 2) {
     return m.reply(
-      `⚙️ *SISTEM CAP ENERGI*\n\n` +
-      `Sistem untuk mengubah secara dinamis jumlah energi yang dipotong untuk banyak fitur sekaligus.\n\n` +
-      `*PENGGUNAAN:*\n` +
+      `⚙♪ SISTETS CAP Energía ♪\n\n` +
+      `El sistema de modificación dinámica se dibuja en energía para muchas características a la vez.\n\n` +
+      `*Uso:*\n` +
       `- *${m.prefix}capenergi <nama_fitur1> <nama_fitur2> ... <jumlah>*\n\n` +
-      `*CONTOH PENGGUNAAN:*\n` +
-      `- *${m.prefix}capenergi hd jpm 5* (Fitur HD & JPM memotong 5 energi)\n` +
-      `- *${m.prefix}capenergi hd 0* (Fitur HD menjadi gratis energi)\n\n` +
-      `*PENJELASAN:*\n` +
-      `1. Masukkan satu atau banyak nama fitur yang ingin diubah.\n` +
-      `2. Di akhiran (kata terakhir) harus berupa ANGKA (jumlah potongan energi).`
+      `*Ejemplo de uso:*\n` +
+      `- *${m.prefix}Capenergi hd jpm 5 * ( FITR HD TO JPM para cortar 5 energías )\n` +
+      `- *${m.prefix}hd n0 capenergi * (la fuente HD se convierte en energía gradiente )\n\n` +
+      `*Explicación:*\n` +
+      `Ponga una o varias características en la fuente que desea cambiar.\n` +
+      `2. El fin debe ser un nuevo número de fragmentos de energía.`
     );
   }
 
@@ -37,7 +37,7 @@ async function handler(m, { sock }) {
   const cost = parseInt(rawCost);
   
   if (isNaN(cost) || cost < 0) {
-    return m.reply(`❌ *GAGAL*\n\nJumlah energi (di argumen paling akhir) harus berupa angka 0 atau lebih.`);
+    return m.reply(`❌*Fallido*\n\nLa cantidad de energía (en el último argumento ) debe ser cero o más.`);
   }
 
   const commands = m.args.slice(0, -1);
@@ -66,15 +66,15 @@ async function handler(m, { sock }) {
 
   await m.react("✅");
   
-  let msg = `✅ *POTONGAN ENERGI BERHASIL DIUBAH*\n\n`;
+  let msg = `✅* Descuento ENTIVE STATONS DEPRECATE *\n\n`;
   if (successList.length > 0) {
-    msg += `*Berhasil diubah jadi ${cost} Energi:*\n${successList.map(f => `- ${f}`).join("\n")}\n\n`;
+    msg += `* Vale la pena convertirlo en${cost}Energía:*\n${successList.map(f => `- ${f}`).join("\n")}\n\n`;
   }
   if (failedList.length > 0) {
-    msg += `*Gagal (Tidak ditemukan):*\n${failedList.map(f => `- ${f}`).join("\n")}\n\n`;
+    msg += `* Impresionantemente (no se encuentra ):\n${failedList.map(f => `- ${f}`).join("\n")}\n\n`;
   }
   
-  msg += `_Pengaturan tersimpan ke dalam database dan langsung berlaku._`;
+  msg += `Para dejar toda la base de datos y la gestión de datos.`;
   return m.reply(msg.trim());
 }
 

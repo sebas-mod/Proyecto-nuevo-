@@ -69,9 +69,9 @@ async function handler(m, { sock }) {
 
     if (!isUnlimited && effectiveUnlimited) {
         return m.reply(
-            `⚡ *INFORMASI*\n` +
-            `@${targetJid.split('@')[0]} sudah memiliki energi *∞ Unlimited*\n` +
-            `Tidak perlu menambahkan energi lagi`,
+            `⚡*Información*\n` +
+            `@${targetJid.split('@')[0]}ya tiene energía *∞Unlimited *\n` +
+            `No es necesario añadir más energía`,
             { mentions: [targetJid] }
         )
     }
@@ -81,7 +81,7 @@ async function handler(m, { sock }) {
 
         await m.react('✅')
         await m.reply(
-            `✅ *Energi @${targetJid.split('@')[0]} sekarang unlimited / tidak terbatas*`,
+            `✅*Energía @${targetJid.split('@')[0]}Ahora ilimitado. *`,
             { mentions: [targetJid] }
         )
     } else {
@@ -89,7 +89,7 @@ async function handler(m, { sock }) {
 
         await m.react('✅')
         await m.reply(
-            `✅ Energi *@${targetJid.split('@')[0]}* berhasil di tambahkan sebanyak *${formatNumber(amount)}*!\nSekarang dia mempunyai *${formatNumber(newEnergi)}* energi`,
+            `✅Energía *@${targetJid.split('@')[0]}* Sucesivamente en el parque tanto *${formatNumber(amount)}*\nAhora el mempunyai *${formatNumber(newEnergi)}* energía`,
             { mentions: [targetJid] }
         )
     }

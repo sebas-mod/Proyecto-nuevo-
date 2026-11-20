@@ -4,7 +4,7 @@ const pluginConfig = {
     name: 'acc',
     alias: ['accall', 'joinrequest', 'reqjoin'],
     category: 'group',
-    description: 'Kelola permintaan masuk grup (accept/reject)',
+    description: 'Kelola input grupo ( accept / return )',
     usage: '.acc <list|approve|reject> [all|nomor]',
     example: '.acc approve all',
     isOwner: false,
@@ -54,7 +54,7 @@ async function handler(m, { sock }) {
 
         if (!_optionalChain([pendingList, 'optionalAccess', _10 => _10.length])) {
             await m.react('📭')
-            return m.reply(`📭 Tidak ada permintaan masuk yang tertunda.`)
+            return m.reply(`📭No se retrasa la solicitud de entrada.`)
         }
 
         if (sub === 'list') {
@@ -73,7 +73,7 @@ async function handler(m, { sock }) {
                 text += `   🕐 ${time}\n\n`
             }
 
-            text += `> Gunakan \`${m.prefix}acc approve all\` atau \`${m.prefix}acc reject all\``
+            text += `> Usa \`${m.prefix}acc acerca de todos\`o\`${m.prefix}acc reject all\``
 
             const mentions = pendingList.map(r => r.jid)
             await m.react('📋')
@@ -93,9 +93,9 @@ async function handler(m, { sock }) {
             const label = action === 'approve' ? 'Diterima' : 'Ditolak'
             await m.react('✅')
             return m.reply(
-                `✅ *${label.toUpperCase()} SEMUA*\n\n` +
-                `> ✅ Berhasil: ${success}\n` +
-                `> ❌ Gagal: ${failed}\n` +
+                `✅ *${label.toUpperCase()}Todo*\n\n` +
+                `♪✅Exito:${success}\n` +
+                `♪❌Fallido:${failed}\n` +
                 `> 📊 Total: ${results.length}`
             )
         }
@@ -105,9 +105,9 @@ async function handler(m, { sock }) {
         if (!indices.length) {
             await m.react('❌')
             return m.reply(
-                `❌ Nomor tidak valid.\n\n` +
-                `> Gunakan \`${m.prefix}acc list\` untuk melihat daftar.\n` +
-                `> Contoh: \`${m.prefix}acc ${action} 1|2|3\``
+                `❌El número no es válido.\n\n` +
+                `> Usa \`${m.prefix}acc lista\`para ver la lista.\n` +
+                `> Ejemplo:\`${m.prefix}acc ${action} 1|2|3\``
             )
         }
 
@@ -135,7 +135,7 @@ async function handler(m, { sock }) {
         return m.reply(
             `📋 *ʜᴀsɪʟ ${label.toUpperCase()}*\n\n` +
             text + `\n` +
-            `> ✅ ${successCount}/${targets.length} berhasil`
+            `> ✅ ${successCount}/${targets.length}exito`
         )
     } catch (error) {
         await m.react('☢')

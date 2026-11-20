@@ -4,7 +4,7 @@ const pluginConfig = {
   name: "delsewa",
   alias: ["sewadel", "hapussewa", "removesewa"],
   category: "owner",
-  description: "Hapus grup dari whitelist sewa",
+  description: "Quitar grupo de la lista blanca de alquiller",
   usage: ".delsewa <link/id grup>",
   example: ".delsewa https://chat.whatsapp.com/xxx",
   isOwner: true,
@@ -43,30 +43,30 @@ async function handler(m, { sock }) {
   if (!input) {
     if (!m.isGroup) {
       return m.reply(
-        `📝 *HAPUS SEWA*\n\n` +
-          `Dari private: *${m.prefix}delsewa <link/id>*\n` +
-          `Dari grup: ketik *${m.prefix}delsewa* langsung di grup\n\n` +
-          `Contoh:\n` +
+        `📝*Elimina Alquiler*\n\n` +
+          `De primate: *${m.prefix}delsewa <link/id>*\n` +
+          `De grupo: axila *${m.prefix}delsewa* langsung di grup\n\n` +
+          `Ejemplo:\n` +
           `• ${m.prefix}delsewa https://chat.whatsapp.com/xxx\n` +
           `• ${m.prefix}delsewa 120363xxx\n\n` +
-          `⚠️ Jika sewabot aktif, bot akan otomatis keluar dari grup yang dihapus`,
+          `⚠Si el vehículo está activo, las botas se autogestionarán para salir del grupo en el que se ha metido.`,
       );
     }
     groupId = m.chat;
   } else {
     const result = await resolveGroupId(sock, input);
     if (!result)
-      return m.reply(`❌ Link tidak valid atau grup tidak ditemukan`);
+      return m.reply(`❌El enlace no es válido o grupo no se encuentra`);
     groupId = result.id;
     groupName = result.name;
   }
 
-  if (!groupId) return m.reply(`❌ Tidak dapat menentukan grup`);
+  if (!groupId) return m.reply(`❌Incapacidad para establecer el grupo`);
 
   const sewaData = db.db.data.sewa.groups[groupId];
   if (!sewaData)
     return m.reply(
-      `❌ Grup tidak terdaftar dalam sistem sewa\n\nLihat daftar: *${m.prefix}listsewa*`,
+      `❌Grup no está registrado en el sistema de alquiler\n\nMira la lista: *${m.prefix}listsewa*`,
     );
 
   groupName = groupName || sewaData.name || groupId.split("@")[0];
@@ -76,14 +76,14 @@ async function handler(m, { sock }) {
 
   await m.react("✅");
   await m.reply(
-    `✅ *SEWA DIHAPUS*\n\nGrup: *${groupName}*\nID: ${groupId.split("@")[0]}`,
+    `✅*Alquiler Eliminado*\n\nGrupo: *${groupName}*\nID: ${groupId.split("@")[0]}`,
   );
 
   if (db.db.data.sewa.enabled) {
     try {
       await sock.sendText(
         groupId,
-        `⛔ Grup ini telah dihapus dari whitelist sewa.\nBot akan meninggalkan grup.\n\nHubungi owner untuk sewa ulang.`,
+        `⛔Este Grupo ha sido intercept de la lista blanca de alquiller.\nLamento haber dejado al grupo.\n\nLlamar al dueño para un renombrado.`,
         null,
         {
           contextInfo: _ourincontextjs.saluranCtx.call(void 0, ),

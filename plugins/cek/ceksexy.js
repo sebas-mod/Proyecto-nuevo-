@@ -2,7 +2,7 @@
     name: 'ceksexy',
     alias: ['sexy', 'hot'],
     category: 'cek',
-    description: 'Cek seberapa sexy kamu',
+    description: 'Compruebe cuántas vecesxy tu',
     usage: '.ceksexy <nama>',
     example: '.ceksexy Budi',
     isOwner: false,
@@ -31,12 +31,12 @@ async function handler(m) {
         desc = 'Mungkin cute bukan sexy 😅'
     }
     
-    let txt = mentioned === m.sender ? `Hai @${mentioned.split('@')[0]}
+    let txt = mentioned === m.sender ? `Hola @${mentioned.split('@')[0]}
     
-Tingkat kesexyan kamu *${percent}%*
-\`\`\`${desc}\`\`\`` : `Kamu ingin ngecek tingkat kesexyan @${mentioned.split('@')[0]} yak? 
+Nivel kesexTú${percent}%*
+\`\`\`${desc}\`\`\`` : `Quieres revisar el nivelxYan @${mentioned.split('@')[0]} yak? 
     
-Tingkat kesexyan dia sebesar *${percent}%*
+Nivel kesexY es tan grande${percent}%*
 \`\`\`${desc}\`\`\``
     
     await m.reply(txt, { mentions: [mentioned] })

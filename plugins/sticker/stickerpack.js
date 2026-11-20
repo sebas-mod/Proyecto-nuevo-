@@ -13,7 +13,7 @@ const pluginConfig = {
   name: "stickerpack",
   alias: ["sp", "stickersearch", "searchsticker"],
   category: "sticker",
-  description: "Cari dan kirim sticker pack",
+  description: "Busca y enviar un paquete de pegatina",
   usage: ".stickerpack <query>",
   example: ".stickerpack anime",
   isOwner: false,
@@ -95,12 +95,12 @@ async function handler(m, { sock }) {
   if (!query) {
     return m.reply(
       `── .✦ 𝗦𝗧𝗜𝗖𝗞𝗘𝗥 𝗣𝗔𝗖𝗞 ✦. ── 𝜗ৎ\n\n` +
-        `Cari dan kirim sticker pack!\n\n` +
-        `╭─〔 Cara Pakai 〕───⬣\n` +
+        `¡Busca y envía un paquete de pegatinas!\n\n` +
+        `╭─〔Como usarlo〕───⬣\n` +
         `│  ✦ ${m.prefix}stickerpack <query>\n` +
         `╰──────────────⬣\n\n` +
         `*${m.prefix}stickerpack anime*\n` +
-        `*${m.prefix}stickerpack cat*\n\n` +
+        `*${m.prefix}Cabina de palos\n\n` +
         `.☘︎ ݁˖`,
     );
   }
@@ -114,7 +114,7 @@ async function handler(m, { sock }) {
     if (!search.status || !_optionalChain([search, 'access', _6 => _6.data, 'optionalAccess', _7 => _7.length])) {
       await m.react("✘");
       return m.reply(
-        `── .✦ ──\n\n> Tidak ada sticker pack untuk: *${query}* .☘︎ ݁˖`,
+        `──.✦ ──\n\n*No hay paquetes de pegatinas para: *${query}* .☘︎ ݁˖`,
       );
     }
 
@@ -124,11 +124,11 @@ async function handler(m, { sock }) {
 
     if (!detail.status || !_optionalChain([detail, 'access', _8 => _8.stickers, 'optionalAccess', _9 => _9.length])) {
       await m.react("✘");
-      return m.reply(`── .✦ ──\n\n> Gagal mengambil detail sticker pack .☘︎ ݁˖`);
+      return m.reply(`──.✦ ──\n\nPara gafl tomar un detalle de la caja de pegatina.☘♪˖`);
     }
 
     await m.reply(
-      `── .✦ ──\n\n> Mengunduh *${randPick.name}*\n> ${Math.min(detail.stickers.length, MAX_STICKERS)} sticker .☘︎ ݁˖`,
+      `──.✦ ──\n\nContrabando *${randPick.name}*\n> ${Math.min(detail.stickers.length, MAX_STICKERS)} sticker .☘︎ ݁˖`,
     );
 
     const limited = detail.stickers.slice(0, MAX_STICKERS);
@@ -147,11 +147,11 @@ async function handler(m, { sock }) {
 
     if (!stickerBuffers.length) {
       await m.react("✘");
-      return m.reply(`── .✦ ──\n\n> Gagal mendownload sticker .☘︎ ݁˖`);
+      return m.reply(`──.✦ ──\n\n*Ganas de descarga de saltos.*☘♪˖`);
     }
 
     const packname = randPick.name || _optionalChain([_configjs2.default, 'access', _10 => _10.sticker, 'optionalAccess', _11 => _11.packname]) || "Ourin-AI";
-    const author = _optionalChain([_configjs2.default, 'access', _12 => _12.bot, 'optionalAccess', _13 => _13.developer]) || _optionalChain([_configjs2.default, 'access', _14 => _14.sticker, 'optionalAccess', _15 => _15.author]) || "Bot";
+    const author = _optionalChain([_configjs2.default, 'access', _12 => _12.bot, 'optionalAccess', _13 => _13.developer]) || _optionalChain([_configjs2.default, 'access', _14 => _14.sticker, 'optionalAccess', _15 => _15.author]) || "♪";
 
     try {
       await sock.sendStickerPack(m.chat, stickerBuffers, m, {
@@ -166,7 +166,7 @@ async function handler(m, { sock }) {
     } catch (packErr) {
       console.error("[StickerPack] Pack send failed:", packErr.message);
       await m.reply(
-        `── .✦ ──\n\n> Pack gagal, mengirim satu per satu... .☘︎ ݁˖`,
+        `──.✦ ──\n\n♪ Pack fail, enviar uno a la vez. ♪☘♪˖`,
       );
 
       let sent = 0;
@@ -198,11 +198,11 @@ async function handler(m, { sock }) {
       if (sent > 0) {
         await m.react("✓");
         await m.reply(
-          `── .✦ ──\n\n> Berhasil kirim *${sent}* sticker dari *${packname}* .☘︎ ݁˖`,
+          `──.✦ ──\n\n♪ Trabajar mi manera ♪${sent}* Pegatina que *${packname}* .☘︎ ݁˖`,
         );
       } else {
         await m.react("✘");
-        await m.reply(`── .✦ ──\n\n> Gagal mengirim sticker .☘︎ ݁˖`);
+        await m.reply(`──.✦ ──\n\n- Sí.☘♪˖`);
       }
     }
   } catch (error) {

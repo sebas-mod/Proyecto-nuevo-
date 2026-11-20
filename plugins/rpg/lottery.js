@@ -5,7 +5,7 @@ const pluginConfig = {
   name: "lottery",
   alias: ["gacha", "spin", "undian"],
   category: "rpg",
-  description: "Gacha/lottery untuk hadiah random",
+  description: "Gacha / lotería para un regalo al azar",
   usage: ".lottery <1/10>",
   example: ".lottery 10",
   isOwner: false,
@@ -56,17 +56,17 @@ async function handler(m, { sock }) {
 
   if ((user.koin || 0) < totalCost) {
     return m.reply(
-      `💸 *UANG LU KURANG BUAT GACHA!* 💸\n\n` +
-        `Harga Gacha: *Rp ${GACHA_COST.toLocaleString()}/Tarikan*\n` +
+      `💸¡MONEY LINE MAKES GACH!💸\n\n` +
+        `Precio Gacha: * Rp${GACHA_COST.toLocaleString()}/Tarikan*\n` +
         `Total Kebutuhan: *Rp ${totalCost.toLocaleString()} (${pulls}x)*\n\n` +
-        `Sisa Duit Lu Cuma: *Rp ${(user.koin || 0).toLocaleString()}*. Kerja dulu mendingan!`
+        `Restante Dinero Lu Cuma: * Rp${(user.koin || 0).toLocaleString()}*. ¡Trabaja primero para jugar!`
     );
   }
 
   user.koin -= totalCost;
 
   await m.react("🎰");
-  await m.reply(`✨ Lampu Disko menyala... Tabung Gacha berputar hebat... Menarik *${pulls}x* hadiah! 🎁✨`);
+  await m.reply(`✨ Lámpara Disko menyala... Tabung Gacha berputar increíble... Menarik *${pulls}x* premio!🎁✨`);
   await new Promise((r) => setTimeout(r, 2500));
 
   const results = [];
@@ -109,9 +109,9 @@ async function handler(m, { sock }) {
     grouped[r.item].totalQty += r.finalQty;
   }
 
-  let txt = `🎉 *BAMMM!!! TABUNG TERBUKA!!* 🎉\n\n`;
-  txt += `Tarik *${pulls}x* | Keluarin Duit: *Rp ${totalCost.toLocaleString()}*\n\n`;
-  txt += `*🎁 HASIL GACHA LU:* \n`;
+  let txt = `🎉 *BAMMM!!! TABUNG Abierto!!* 🎉\n\n`;
+  txt += `Retirar *${pulls}x* Sal del Dinero: * Rp${totalCost.toLocaleString()}*\n\n`;
+  txt += `*🎁GACH GACA LU: *\n`;
 
   let hasRare = false;
   let hasLegendary = false;
@@ -128,14 +128,14 @@ async function handler(m, { sock }) {
     if (["legendary", "mythic"].includes(item.rarity)) hasLegendary = true;
   }
 
-  txt += `\n📈 *Bonus EXP:* +${totalExp} ✨\n`;
+  txt += `\n📈* Bono EXP: * +${totalExp} ✨\n`;
 
   if (hasLegendary) {
-    txt += `\n🌟🌟 *WOOOYYY!!! LU DAPET ITEM LEGENDARY!! HOKI SEUMUR HIDUP KEPAKE!!* 🌟🌟`;
+    txt += `\n🌟🌟> 91; ¡WOOOYY!!! &#91; gritando > 93; > gritando > 91; gritando > 93; > 91; gritando > 93;🌟🌟`;
   } else if (hasRare) {
-    txt += `\n✨ *Wihh mayan dapet barang langka bro!*`;
+    txt += `\n✨* Wih mayan dapet raro hermano!`;
   } else {
-    txt += `\n🥲 *Ampas... Kebanyakan dapet barang rongsok.*`;
+    txt += `\n🥲* Ampas.. la mayoría de ellos en la basura. *`;
   }
 
   await m.react(hasLegendary ? "🌟" : hasRare ? "🎉" : "✅");

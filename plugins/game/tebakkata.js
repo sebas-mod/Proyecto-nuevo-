@@ -4,7 +4,7 @@ _ouringamesjs.games.register('tebakkata', {
     alias: ['tk', 'guessword'],
     emoji: '📝',
     title: 'TEBAK KATA',
-    description: 'Tebak kata dari petunjuk'
+    description: 'Adivina la palabra de la pista'
 })
 
 const { config: pluginConfig, handler, answerHandler } = _ouringamesjs.games.createPlugin('tebakkata')

@@ -2,7 +2,7 @@
     name: 'cekrezeki',
     alias: ['rezeki', 'fortune'],
     category: 'cek',
-    description: 'Cek tingkat rezeki kamu hari ini',
+    description: 'Compruebe el nivel para proporcionarle hoy',
     usage: '.cekrezeki <nama>',
     example: '.cekrezeki Budi',
     isOwner: false,
@@ -20,17 +20,17 @@ async function handler(m) {
                     
     let desc = ''
     if (percent >= 90) desc = 'Rezeki melimpah! Jackpot! 💰🎉'
-    else if (percent >= 70) desc = 'Rezeki lancar hari ini~ 💵'
+    else if (percent >= 70) desc = 'El rezeki de hoy es tan alto ~💵'
     else if (percent >= 50) desc = 'Rezeki cukup, bersyukurlah 🙏'
     else if (percent >= 30) desc = 'Rezeki pas-pasan 😅'
-    else desc = 'Sabar ya, rezeki akan datang~ 🫂'
+    else desc = 'Me alegro de que hayas venido.🫂'
     
-    let txt = mentioned === m.sender ? `Hai @${mentioned.split('@')[0]}
+    let txt = mentioned === m.sender ? `Hola @${mentioned.split('@')[0]}
     
-Tingkat kerezekian kamu *${percent}%*
-\`\`\`${desc}\`\`\`` : `Kamu ingin ngecek tingkat kerezekian @${mentioned.split('@')[0]} yak? 
+Su etapa @-@ cambio de imagen *${percent}%*
+\`\`\`${desc}\`\`\`` : `Quieres comprobar el nivel de la tienda${mentioned.split('@')[0]} yak? 
     
-Tingkat kerezekian dia sebesar *${percent}%*
+Es tan grande como un remolque.${percent}%*
 \`\`\`${desc}\`\`\``
     
     await m.reply(txt, { mentions: [mentioned] })

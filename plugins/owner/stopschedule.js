@@ -6,7 +6,7 @@ const pluginConfig = {
     name: 'stopschedule',
     alias: ['stopscheduler', 'schedstop', 'pauseschedule'],
     category: 'owner',
-    description: 'Menghentikan scheduler tertentu atau semua',
+    description: 'Parar el programador absoluto o todo',
     usage: '.stopschedule <nama|all>',
     example: '.stopschedule sholat',
     isOwner: true,
@@ -29,12 +29,12 @@ async function handler(m, { sock, args }) {
 \`.stopschedule <nama>\`
 
 *Available schedulers:*
-• \`limitreset\` - Daily Limit Reset
+• \`límite\`- Investigación de Límites de Dairy
 • \`groupschedule\` - Group Schedule
-• \`sewa\` - Sewa Checker
+• \`alquiler\`- Alquiler de cheques
 • \`messages\` - Scheduled Messages
 • \`sholat\` - Sholat Scheduler
-• \`all\` - Semua scheduler
+• \`ahl\`- Todo el schedler
 
 *Example:*
 \`.stopschedule sholat\`
@@ -49,7 +49,7 @@ async function handler(m, { sock, args }) {
             const wasEnabled = db.setting('autoSholat');
             
             if (!wasEnabled) {
-                await m.reply(`ℹ️ Sholat Scheduler sudah dalam keadaan nonaktif`);
+                await m.reply(`*El programador de Sholat está en estado de desactivación*`);
                 return;
             }
             
@@ -59,9 +59,9 @@ async function handler(m, { sock, args }) {
             await m.reply(`🛑 *sᴄʜᴇᴅᴜʟᴇʀ ᴅɪʜᴇɴᴛɪᴋᴀɴ*
 
 > Scheduler: *Sholat Scheduler*
-> Status: ❌ Dihentikan
+> Estado:❌Detenido
 
-_Gunakan \`.startschedule sholat\` untuk mengaktifkan kembali_`);
+*Usarlo*\`- ¿Qué?\`para reactivar _`);
             return;
         }
         
@@ -77,13 +77,13 @@ _Gunakan \`.startschedule sholat\` untuk mengaktifkan kembali_`);
             await m.reply(`🛑 *sᴄʜᴇᴅᴜʟᴇʀ ᴅɪʜᴇɴᴛɪᴋᴀɴ*
 
 > Scheduler: *${result.name}*
-> Status: ❌ Dihentikan
+> Estado:❌Detenido
 
-_Gunakan \`.startschedule ${target}\` untuk mengaktifkan kembali_`);
+*Usarlo*\`.startschedule ${target}\`para reactivar _`);
         } else {
-            await m.reply(`❌ Scheduler tidak ditemukan atau sudah nonaktif
+            await m.reply(`❌No se encuentra o ya está deshabilitado
 
-Gunakan \`.stopschedule\` untuk melihat daftar scheduler`);
+Usa\`- Detenga la hora.\`para ver la lista de programadores`);
         }
     } catch (error) {
         console.error('[StopSchedule Error]', error);

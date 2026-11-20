@@ -5,7 +5,7 @@ const pluginConfig = {
   name: "blacksmith",
   alias: ["tempa", "forge", "pandai"],
   category: "rpg",
-  description: "Tempa senjata dan armor dari material",
+  description: "*La armadura y armadura del material*",
   usage: ".blacksmith <item>",
   example: ".blacksmith sword",
   isOwner: false,
@@ -41,8 +41,8 @@ async function handler(m, { sock }) {
   const itemName = _optionalChain([args, 'access', _ => _[0], 'optionalAccess', _2 => _2.toLowerCase, 'call', _3 => _3()]);
 
   if (!itemName) {
-    let txt = `Halo petualang! Selamat datang di tempat Pandai Besi! 🔨⚒️\nAda yang bisa kubantu tempa hari ini?\n\n`;
-    txt += `*Daftar Senjata & Armor:*\n`;
+    let txt = `Bienvenido al lugar Pandai Bessi!🔨⚒♪\n¿Puedo ayudarte hoy?\n\n`;
+    txt += `* Lista de armas con armadura:\n`;
 
     for (const [key, recipe] of Object.entries(RECIPES)) {
       const mats = Object.entries(recipe.materials)
@@ -51,16 +51,16 @@ async function handler(m, { sock }) {
       txt += `\n*${recipe.name}*\n`;
       txt += `📦 Bahan: ${mats}\n`;
       txt += `📈 EXP: +${recipe.exp}\n`;
-      txt += `👉 Ketik: \`.blacksmith ${key}\`\n`;
+      txt += `👉Escribe:\`Herreros.${key}\`\n`;
     }
-    txt += `\n💡 *Tips:* Materialnya bisa dicari lewat \`.mining\` atau \`.hunt\` lho!`;
+    txt += `\n💡* Consejos: * Los materiales pueden ser buscados\`. minería\`o\`. Caza\`¡Iho!`;
 
     return m.reply(txt);
   }
 
   const recipe = RECIPES[itemName];
   if (!recipe) {
-    return m.reply(`Hadeh, panduan bikin apaan tuh? Nggak ada di catatanku kak! 😂\nCek list yang bener pake \`.blacksmith\` ya!`);
+    return m.reply(`¡No estoy en mi cuaderno!😂\nLista de verificación de la pata\`Herreros.\`si!`);
   }
 
   const missingMaterials = [];
@@ -72,11 +72,11 @@ async function handler(m, { sock }) {
   }
 
   if (missingMaterials.length > 0) {
-    return m.reply(`Eits, bahannya belum cukup buat nempa *${recipe.name}* nih! 😭\n\nKekurangannya:\n${missingMaterials.join("\n")}\n\nKumpulin dulu deh, baru balik ke sini! 🏃💨`);
+    return m.reply(`Eits, the material is 't enough for a pipe.${recipe.name}* aquí!😭\n\nKekurangannya:\n${missingMaterials.join("\n")}\n\nKumpulin antes, nuevo balik a sini! 🏃💨`);
   }
 
   await m.react("🔨");
-  await m.reply(`Ting! Ting! Cshhh... 🔥🔨\nMenempa logam untuk membuat *${recipe.name}*... Prosesnya bakal sedikit makan waktu!`);
+  await m.reply(`¡Ting!🔥🔨\nMetal forjado para hacer *${recipe.name}... el proceso es un poco de comida!`);
   await new Promise((r) => setTimeout(r, 4000));
 
   for (const [material, needed] of Object.entries(recipe.materials)) {
@@ -92,12 +92,12 @@ async function handler(m, { sock }) {
 
   await m.react("✅");
 
-  let txt = `TEMPAAN BERHASIL KAK! ⚔️🛡️\n\n`;
-  txt += `Gila, hasilnya rapi banget! Ini barang buatan tangan kita:\n`;
-  txt += `🔨 Item: *${recipe.name}*\n`;
-  txt += `📊 Jumlah: *+${resultQty}*\n`;
+  let txt = `¡El tiroteo está sucediendo!⚔♪🛡♪\n\n`;
+  txt += `Gila,¡el resultado es un Mucho!\n`;
+  txt += `🔨Objeto: *${recipe.name}*\n`;
+  txt += `📊Cantidad: *+${resultQty}*\n`;
   txt += `📈 EXP Crafting: *+${recipe.exp}*\n\n`;
-  txt += `Siap buat dipake berantem nih! 😎🔥`;
+  txt += `¡Prepárense para luchar!😎🔥`;
 
   return m.reply(txt);
 }

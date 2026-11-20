@@ -19,7 +19,7 @@ async function handler(m) {
     const quote = _ouringamedatajs.getRandomItem.call(void 0, 'bucin.json');
     
     if (!quote) {
-        await m.reply('❌ Data tidak tersedia!');
+        await m.reply('❌¡Datos no disponibles!');
         return;
     }
     

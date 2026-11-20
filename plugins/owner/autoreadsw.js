@@ -37,7 +37,7 @@ async function handler(m) {
         await m.react('✅')
         return m.reply(
             `✅ *ᴀᴜᴛᴏ ʀᴇᴀᴅ sᴛᴏʀʏ ᴀᴋᴛɪꜰ*\n\n` +
-            `> Bot akan otomatis membaca semua story WA`
+            `♪ Para la automatización leer todas las historias de la WA ♪`
         )
     }
 
@@ -48,7 +48,7 @@ async function handler(m) {
         return m.reply(`❌ *ᴀᴜᴛᴏ ʀᴇᴀᴅ sᴛᴏʀʏ ᴅɪᴍᴀᴛɪᴋᴀɴ*`)
     }
 
-    return m.reply(`❌ Gunakan \`on\` atau \`off\``)
+    return m.reply(`❌Usa\`on\`o\`apagado\``)
 }
 
 exports.config = pluginConfig; exports.handler = handler;

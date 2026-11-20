@@ -5,13 +5,13 @@ var _path = require('path'); var _path2 = _interopRequireDefault(_path);
 var _fs = require('fs'); var _fs2 = _interopRequireDefault(_fs);
 var _ourinhttpjs = require('../../src/lib/ourin-http.js');
 var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
-const NEOXR_APIKEY = _optionalChain([_configjs2.default, 'access', _ => _.APIkey, 'optionalAccess', _2 => _2.neoxr]) || "Milik-Bot-OurinMD";
+const NEOXR_APIKEY = _optionalChain([_configjs2.default, 'access', _ => _.APIkey, 'optionalAccess', _2 => _2.neoxr]) || "Millik - Eurinprobable";
 
 const pluginConfig = {
   name: "pixeldraindl",
   alias: ["pddl", "pixeldrain", "pddownload"],
   category: "download",
-  description: "Download file dari Pixeldrain",
+  description: "Descarga de archivo de Pixeldrin",
   usage: ".pixeldraindl <url>",
   example: ".pixeldraindl https://pixeldrain.com/u/xxxxx",
   cooldown: 15,
@@ -26,10 +26,10 @@ async function handler(m, { sock }) {
   if (!url || !url.includes("pixeldrain.com")) {
     return m.reply(
       `📥 *ᴘɪxᴇʟᴅʀᴀɪɴ ᴅᴏᴡɴʟᴏᴀᴅ*\n\n` +
-        `> Download file dari Pixeldrain\n\n` +
-        `*Format:*\n` +
+        `♪ Down in the field of Pi ♪xeldrin\n\n` +
+        `*Formato:*\n` +
         `> \`${m.prefix}pixeldraindl <url>\`\n\n` +
-        `*Contoh:*\n` +
+        `*Ejemplo:*\n` +
         `> \`${m.prefix}pixeldraindl https://pixeldrain.com/u/xxxxx\``,
     );
   }
@@ -43,7 +43,7 @@ async function handler(m, { sock }) {
     if (!_optionalChain([data, 'optionalAccess', _6 => _6.status]) || !_optionalChain([data, 'optionalAccess', _7 => _7.data])) {
       m.react("❌");
       return m.reply(
-        "❌ *ɢᴀɢᴀʟ*\n\n> File tidak ditemukan atau link tidak valid",
+        "❌*ɢᴀɢᴀʟ*\n\nEl archivo no se encuentra o el enlace no es válido",
       );
     }
 
@@ -72,7 +72,7 @@ async function handler(m, { sock }) {
       })
     } else if (sizeInMB > 100) {
       await m.reply(
-        `⚠️ *ꜰɪʟᴇ ᴛᴇʀʟᴀʟᴜ ʙᴇsᴀʀ*\n\n> File ${file.size} terlalu besar untuk dikirim\n> Gunakan link download di atas`,
+        `⚠♪ꜰɪʟᴇ ᴛᴇʀʟᴀʟᴜ ʙᴇSᴀʀ*\n\n> Archivo${file.size}Desiado grande para enviar\nDescarga de enlaces Gunwild en la parte superior`,
       );
     }
 

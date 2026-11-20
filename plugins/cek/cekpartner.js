@@ -41,7 +41,7 @@ async function handler(m) {
     const jid = targetNumber + '@s.whatsapp.net'
 
     if (!info) {
-        return m.reply(`❌ @${targetNumber} bukan partner`, { mentions: [jid] })
+        return m.reply(`❌ @${targetNumber}no es partner`, { mentions: [jid] })
     }
 
     const now = Date.now()
@@ -51,14 +51,14 @@ async function handler(m) {
 
     let txt = `🤝 *DETAIL PARTNER*\n\n`
     txt += `👤 User: @${targetNumber}\n`
-    txt += `📛 Nama: *${info.name || 'Unknown'}*\n`
-    txt += `📅 Mulai: *${info.addedAt ? formatDate(info.addedAt) : 'Unknown'}*\n`
+    txt += `📛Nombre: *${info.name || 'Unknown'}*\n`
+    txt += `📅Empieza: *${info.addedAt ? formatDate(info.addedAt) : 'Unknown'}*\n`
     txt += `⏳ Expired: *${formatDate(info.expired)}*\n`
-    txt += `🗓️ Durasi: *${totalDays} hari*\n`
-    txt += `📊 Sisa: *${remaining > 0 ? remaining + ' hari' : '⚠️ Expired'}*\n`
+    txt += `🗓Duración${totalDays}el*\n`
+    txt += `📊Restante: *${remaining > 0 ? remaining + ' hari' : '⚠️ Expired'}*\n`
     if (user) {
-        txt += `⚡ Energi: *${user.energi === -1 ? '∞' : (_nullishCoalesce(user.energi, () => ( 0)))}*\n`
-        txt += `💰 Koin: *${user.koin === -1 ? '∞' : (_nullishCoalesce(user.koin, () => ( 0))).toLocaleString('id-ID')}*\n`
+        txt += `⚡Energía: *${user.energi === -1 ? '∞' : (_nullishCoalesce(user.energi, () => ( 0)))}*\n`
+        txt += `💰Monedas: *${user.koin === -1 ? '∞' : (_nullishCoalesce(user.koin, () => ( 0))).toLocaleString('id-ID')}*\n`
     }
 
     await m.reply(txt, { mentions: [jid] })

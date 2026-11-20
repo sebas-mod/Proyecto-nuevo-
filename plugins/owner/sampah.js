@@ -21,7 +21,7 @@ async function handler(m) {
     const tempPath = _path2.default.join(process.cwd(), 'temp')
 
     if (!_fs2.default.existsSync(tempPath)) {
-        return m.reply('❌ Folder temp tidak ditemukan!')
+        return m.reply('❌¡Torreta de la flor no encontrada!')
     }
 
     await m.react('🗑️')
@@ -30,7 +30,7 @@ async function handler(m) {
         const files = _fs2.default.readdirSync(tempPath)
 
         if (!files.length) {
-            return m.reply('📁 Folder temp sudah kosong!')
+            return m.reply('📁¡La tempestad de la carpeta está vacía!')
         }
 
         let deleted = 0
@@ -45,7 +45,7 @@ async function handler(m) {
         await m.react('✅')
         await m.reply(
             `🗑️ *TEMP CLEANED!*\n\n` +
-            `> Total file/folder dihapus: *${deleted}*`
+            `* Total archivo / carpeta diupus:*${deleted}*`
         )
 
     } catch (error) {

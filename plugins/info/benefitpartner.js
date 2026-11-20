@@ -3,7 +3,7 @@ const pluginConfig = {
     name: 'benefitpartner',
     alias: ['partnerbenefits', 'keuntunganpartner'],
     category: 'info',
-    description: 'Lihat keuntungan menjadi partner bot',
+    description: 'Mira la ventaja de ser un bot de socio',
     usage: '.benefitpartner',
     example: '.benefitpartner',
     isOwner: false,
@@ -20,37 +20,37 @@ async function handler(m) {
     const prefix = m.prefix || '.'
 
     let txt = `🤝 *BENEFIT PARTNER*\n\n`
-    txt += `Keuntungan menjadi partner ${_optionalChain([_configjs2.default, 'access', _ => _.bot, 'optionalAccess', _2 => _2.name]) || 'Bot'}:\n\n`
+    txt += `La ventaja de ser un socio${_optionalChain([_configjs2.default, 'access', _ => _.bot, 'optionalAccess', _2 => _2.name]) || 'Bot'}:\n\n`
 
-    txt += `🔓 *Akses Fitur*\n`
-    txt += `├ Semua fitur premium terbuka\n`
-    txt += `├ Energi & koin unlimited\n`
-    txt += `├ Akses command owner tertentu\n`
+    txt += `🔓*Akses Función*\n`
+    txt += `├Todos los locales de la prima están abiertos\n`
+    txt += `├ Energía & monedas unlimited\n`
+    txt += `├Propietario de mando de acusado específico\n`
     txt += `└ Prioritas support\n\n`
 
     txt += `📦 *Panel Pterodactyl*\n`
-    txt += `├ Bisa create server sendiri\n`
+    txt += `├Puede crear servidor en sí\n`
     txt += `├ Akses panel management\n`
-    txt += `└ Bisa jualan panel (reseller)\n\n`
+    txt += `└Peel seller 's Nose.\n\n`
 
-    txt += `💎 *Bonus*\n`
-    txt += `├ +200.000 EXP saat aktivasi\n`
-    txt += `├ +20.000 Koin saat aktivasi\n`
+    txt += `💎*Bono*\n`
+    txt += `├+ 200. 000 EXP durante la activación\n`
+    txt += `├+ 20. 000 Tela durante la actividad\n`
     txt += `├ Badge partner di profil\n`
     txt += `└ Akses early feature\n\n`
 
-    txt += `💰 *Cara Jadi Partner*\n`
-    txt += `├ Hubungi owner: ${_optionalChain([_configjs2.default, 'access', _3 => _3.owner, 'optionalAccess', _4 => _4.name]) || 'Owner'}\n`
-    txt += `├ Durasi: 30/60/90 hari\n`
-    txt += `└ Command: \`${prefix}addpartner\` (owner only)\n\n`
+    txt += `💰* Cara So Partners *\n`
+    txt += `├Contacta propietario:${_optionalChain([_configjs2.default, 'access', _3 => _3.owner, 'optionalAccess', _4 => _4.name]) || 'Owner'}\n`
+    txt += `├Duración: 30 / 60 / 90 días\n`
+    txt += `└Comando:\`${prefix}addpartner\`(propietario only)\n\n`
 
-    txt += `📋 *Command Partner*\n`
-    txt += `├ \`${prefix}cekpartner\` — Cek status partner\n`
-    txt += `├ \`${prefix}cekprem\` — Cek status premium\n`
-    txt += `├ \`${prefix}cekowner\` — Cek role user\n`
-    txt += `└ \`${prefix}listpartner\` — Daftar partner\n\n`
+    txt += `📋*Comando Partner*\n`
+    txt += `├ \`${prefix}cekpartner\` —Check statuspartner\n`
+    txt += `├ \`${prefix}cekprem\` —Verificación de estado Premium\n`
+    txt += `├ \`${prefix}ckowner\` — Comprueba role user\n`
+    txt += `└ \`${prefix}listpartner\` —Registrate partner\n\n`
 
-    txt += `> _Hubungi owner untuk info lebih lanjut_`
+    txt += `*Propietario de Contacta para el próximo campo*`
 
     await m.reply(txt)
 }

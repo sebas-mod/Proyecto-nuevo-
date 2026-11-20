@@ -21,7 +21,7 @@ async function handler(m)  {
     const sessionsPath = _path2.default.join(process.cwd(), 'storage', 'sessions')
     
     if (!_fs2.default.existsSync(sessionsPath)) {
-        return m.reply(`❌ Folder sessions tidak ditemukan!`)
+        return m.reply(`❌¡Los más sesgados no encontrados!`)
     }
     
     await m.react('🗑️')
@@ -30,7 +30,7 @@ async function handler(m)  {
         const files = _fs2.default.readdirSync(sessionsPath)
         
         if (files.length === 0) {
-            return m.reply(`📁 Folder sessions sudah kosong!`)
+            return m.reply(`📁¡Los más sensuales de la carpeta están vacíos!`)
         }
         
         let deleted = 0
@@ -58,14 +58,14 @@ async function handler(m)  {
         await m.reply(
             `╭┈┈⬡「 🗑️ *ᴄʟᴇᴀʀ sᴇssɪᴏɴs* 」
 ┃
-┃ ㊗ ᴅᴇʟᴇᴛᴇᴅ: *${deleted}* file
-┃ ㊗ sᴋɪᴘᴘᴇᴅ: *${skipped}* file
-┃ ㊗ ɴᴏᴛᴇ: creds.json tidak dihapus
+┃ ㊗ ᴅᴇʟᴇᴛᴇᴅ: *${deleted}* archivo
+┃ ㊗ sᴋɪᴘᴘᴇᴅ: *${skipped}* archivo
+┃ ㊗ ɴᴏᴛᴇ- Credos. Json no cubierto.
 ┃
 ╰┈┈⬡
 
-> _Session files berhasil dibersihkan!_
-> _Restart bot jika diperlukan._`
+*Los archivos de sesión se han despejado!
+Reinicial bot cuando sea necesario.`
         )
         
     } catch (error) {

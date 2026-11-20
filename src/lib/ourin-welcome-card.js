@@ -190,7 +190,7 @@ async function createWideDiscordCard(
   ctx.font = "900 60px Arial";
   const nameMetric = ctx.measureText(username);
 
-  // Bikin gradient khusus untuk teks
+  //Bikinis gradient specials for the text
   const gradient = ctx.createLinearGradient(
     textX,
     0,
@@ -204,7 +204,7 @@ async function createWideDiscordCard(
   ctx.fillText(username, textX, 220);
   ctx.fillStyle = "#a0a0a0";
   ctx.font = "24px Arial";
-  ctx.fillText(`Bergabung ke: ${groupName}`, textX, 260);
+  ctx.fillText(`Unirse a: ${groupName}`, textX, 260);
 
   ctx.fillStyle = "#ffffff";
   ctx.font = "bold 20px Arial";
@@ -337,7 +337,7 @@ async function createGoodbyeCard(username, avatarUrl, groupName, memberCount) {
 
   ctx.fillStyle = "#c0a0a0";
   ctx.font = "24px Arial";
-  ctx.fillText(`Meninggalkan: ${groupName}`, textX, 260);
+  ctx.fillText(`Saliendo: ${groupName}`, textX, 260);
 
   ctx.fillStyle = "#ffcccc";
   ctx.font = "bold 20px Arial";
@@ -436,7 +436,7 @@ async function createWelcomeCardV4(
   ctx.lineWidth = 5;
   ctx.stroke();
 
-  // Text Info
+  //Text Info
   const textStart = 300;
 
   // Welcome Label
@@ -557,7 +557,7 @@ async function createGoodbyeCardV4(
   ctx.lineWidth = 5;
   ctx.stroke();
 
-  // Text Info
+  //Text Info
   const textStart = 300;
 
   // Goodbye Label

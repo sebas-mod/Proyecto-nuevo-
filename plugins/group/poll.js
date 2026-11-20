@@ -2,7 +2,7 @@
     name: 'poll',
     alias: ['voting', 'vote', 'survei'],
     category: 'group',
-    description: 'Buat polling/voting di grup',
+    description: 'Polling / voting booth in grupo',
     usage: '.poll <pertanyaan> | <opsi1>, <opsi2>, ...',
     example: '.poll Makan apa? | Nasi Goreng, Mie Ayam, Bakso',
     isOwner: false,
@@ -20,14 +20,14 @@ async function handler(m, { sock }) {
     if (!text || text.trim() === '') {
         await m.reply(
             `⚠️ *ᴠᴀʟɪᴅᴀsɪ ɢᴀɢᴀʟ*\n\n` +
-            `> Format tidak valid!\n\n` +
-            `*Format:*\n` +
-            `> \`.poll pertanyaan | opsi1, opsi2\`\n\n` +
-            `*Contoh:*\n` +
-            `> \`.poll Makan siang apa? | Nasi Goreng, Mie Ayam\`\n\n` +
-            `*Opsi tambahan:*\n` +
-            `> \`.poll multi | pertanyaan | opsi1, opsi2, opsi3, dst\`\n` +
-            `> (untuk pilihan ganda)`
+            `¡Fata no es válida!\n\n` +
+            `*Formato:*\n` +
+            `♪\`- Encuesta. Pregunta. Epopsi1, opciones.\`\n\n` +
+            `*Ejemplo:*\n` +
+            `♪\`¿Qué pasa?\`\n\n` +
+            `*Opsi adicional:*\n` +
+            `♪\`.poll multi | pregunta | opsi1, opsi2, opsi3, dst\`\n` +
+            `Soop (para selección de ganda )`
         );
         return;
     }
@@ -43,7 +43,7 @@ async function handler(m, { sock }) {
     if (parts.length < 2) {
         await m.reply(
             `⚠️ *ᴠᴀʟɪᴅᴀsɪ ɢᴀɢᴀʟ*\n\n` +
-            `> Format: \`pertanyaan | opsi1, opsi2, ...\``
+            `> Formato:\`Pregunta a opsi1, opciones,.\``
         );
         return;
     }
@@ -54,7 +54,7 @@ async function handler(m, { sock }) {
     if (options.length < 2) {
         await m.reply(
             `⚠️ *ᴠᴀʟɪᴅᴀsɪ ɢᴀɢᴀʟ*\n\n` +
-            `> Minimal 2 opsi pilihan!`
+            `Soomal 2 opciones!`
         );
         return;
     }
@@ -62,7 +62,7 @@ async function handler(m, { sock }) {
     if (options.length > 12) {
         await m.reply(
             `⚠️ *ᴠᴀʟɪᴅᴀsɪ ɢᴀɢᴀʟ*\n\n` +
-            `> Maksimal 12 opsi pilihan!`
+            `¡Al máximo de 12 opciones!`
         );
         return;
     }
@@ -70,14 +70,14 @@ async function handler(m, { sock }) {
     if (question.length > 255) {
         await m.reply(
             `⚠️ *ᴠᴀʟɪᴅᴀsɪ ɢᴀɢᴀʟ*\n\n` +
-            `> Pertanyaan terlalu panjang!\n` +
-            `> Maksimal 255 karakter.`
+            `¡A la pregunta es demasiado!\n` +
+            `Al máximo 255 caracteres.`
         );
         return;
     }
     
     try {
-        const pollMsg = `✅ Success membuat poll`;
+        const pollMsg = `✅El éxito hace que la encuesta`;
         
         await m.reply(pollMsg, { mentions: [m.sender] });
         
@@ -92,7 +92,7 @@ async function handler(m, { sock }) {
     } catch (error) {
         await m.reply(
             `❌ *ᴇʀʀᴏʀ*\n\n` +
-            `> Gagal membuat poll.\n` +
+            `- Lo siento.\n` +
             `> _${error.message}_`
         );
     }

@@ -11,7 +11,7 @@
           ╚═════╝  ╚═════╝ ╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝
 ```
 
-**Next-Generation Multi-Device WhatsApp Bot**  
+*xt - Generation Multi - Device WhatsApp * *
 *Full CommonJS (CJS) • Cantarelllaa Baileys Core • Enhanced Feature Set • Security Channel Protection*
 
 </div>
@@ -20,37 +20,37 @@
 
 ## 🌟 Ringkasan Rilis v3.5
 
-Ourin 3.5 adalah versi pembaruan menyeluruh yang mengintegrasikan fitur-fitur pilihan dari multi-arsitektur ke dalam satu kesatuan native Ourin yang stabil, cepat, dan terorganisir.
+El Ourin 3. 5 es la versión de la actualización que integeria las características - la calide de la electrión de la arquitectura multi
 
-### 🔑 Sorotan Utama:
+#🔑Sorotan Principal:
 1. **Full CommonJS Architecture (CJS)**:
-   - 100% source code menggunakan syntax standar CommonJS (`require` / `module.exports`).
-   - Tidak ada ketergantungan rapuh pada experimental ESM loaders.
-   - Kompatibilitas tinggi dengan ekosistem Node.js v22+.
+- Código fuente 100 % utiliza sintaxisxCommonJS standby (en inglés)`solicitud`/`Es un módulo.xpuertos`).
+- No hay dependencia de e.xpersianas cargadoras de ESM.
+- Compatibilidad alta con sistema de nodos. Js v22 +.
 2. **WhatsApp Core: `cantarelllaa` (v1.1.18)**:
-   - Dukungan penuh untuk fitur modern WhatsApp: newsletter/channel reactions, community groups, ephemeral messages, dan interactive buttons.
-3. **Fitur Prioritas Termigrasi & Teruji**:
-   - **Alight Motion Premium (`.amprem`)**: Generate link aktivasi dan auto-claim magic link Alight Motion Premium.
-   - **React WhatsApp Channel (`.rch` / `.reactch`)**: Kirim reaksi emoji ke pesan WhatsApp Channel menggunakan socket native cantarelllaa dengan failover Cloud API.
-   - **Viu Premium (`.viuprem`)**: Pembuatan akun Viu Premium gratis terikat hardware Device ID.
-4. **Keamanan Sentral: Wajib Follow 2 Saluran WhatsApp**:
-   - Middleware terpusat yang memverifikasi keanggotaan pengguna di 2 channel resmi Ourin sebelum memberikan akses ke seluruh perintah bot.
-   - Fail-closed security architecture dengan mekanisme verifikasi resmi `.verif` dan pengecualian otomatis untuk Owner & Admin.
-5. **Koleksi Fitur Baru**:
-   - **Blackjack Casino Multiplayer (`.bj`)**: Meja kasino blackjack multipemain lengkap dengan dealer otomatis, hit, stand, dan double.
-   - **Peringatan & Radar Gempa BMKG (`.cekgempa`)**: Data gempa real-time M5.0+, gempa dirasakan, dan peta shakemap langsung dari BMKG.
-   - **Kamus Bahasa Daerah Indonesia (`.kamusdaerah`)**: Terjemahan bahasa daerah (Jawa, Sunda, Minang, Bali, dsb.) dua arah.
-   - **Kalkulator Zakat Syariah (`.zakat`)**: Zakat penghasilan, maal, emas, dan fitrah sesuai ketentuan BAZNAS.
-   - **Timer Produktivitas Pomodoro (`.pomodoro`)**: Manajemen waktu belajar/kerja 4 siklus fokus dan istirahat otomatis.
-   - **Anti Virtex & Crash Group (`.antivirtex`)**: Deteksi dan penghapusan otomatis karakter crash/virtex.
-   - **Audio Bass Booster (`.bass`)**: Equalizer bass boost via ffmpeg untuk voice note & audio.
-   - **TikTok Video Search (`.tiktoks`)**: Pencarian dan pengunduhan video TikTok tanpa watermark.
+- Apoyo está lleno para las características modernas WhatsApp: newsletter / reacciones de canal, grupos comunitarios, mensajes efímeros, y botones interactivos.
+3. * * Función Priority Mimigated To Test * *:
+* * Bright Motion Premium ( Blue Motion Premium )`Lo siento.`) * *: Generar actividad de enlacce y auto - regenerar enlacce mágico Brace Motion Premium.
+* * Reactúa el Canal de WhatsApp (en inglés)`rch.`/`Reatch.`* *: Ksender reaccionar emoji al mensje WhatsApp Channel la cinterelingua de socket con la Fuego Coud de failover.
+* * Viu Premium ( * Viu Premium ( *`- Dios mío.`* *: Realización de Viu Premium Gratic Cuenta de identificán ón de dispasitivos adjuntos de hardware.
+4. **Seguridad Sentral: Obligatorio Follow 2 Saluran WhatsApp**:
+- Middleware se comprometió que verifica la membresía de uso en dos canales oficiales Ourin antes de dar las acciones a todo el comando de arranque.
+- Fail - arquitectura de seguridad cerrada con verificación mecánica oficial`- El verif.`Y una excepción automática para el propietario y el administrador.
+* * * Nueva función Collection * *:
+* * Blackjack Casino Multiplayer ( *`- Lo siento.`* *: full @-@ en multijugador negro @-@ jack con distribuidores automáticos, hits, stands, y doble.
+* * * Una advertencia al BMW @-@ Containing Rator (`- ¿Qué?`) * *: Real @-@ tamañod data @-@ time M5. 0 +, construir @-@ up está contenido, y peta shakefire lassung de BMKG.
+* Chestnuts Bahasa Zona Indonesia ( * Capis Bahaah Bazaar)`.kamusdaerah`) * *; traducción de arah ( yadda, Sunda, Minang, Bali, dga arah. )
+" Calculadora Zakat Shera ( * )`- Nose.`Zakat de ingremos, maal, oro y libifera como una orden BAZNAS.
+* * * Timer Productivitas Pomodoro ( * Timmer Producivitas of Pomodoro ()`- pomodoro.`) * *: Estudio de Hynememen 4 ciclos de trabajo enfocar y descansar de forma automática.
+- * Anti Virtex*Crash Grop*`- Antivirte.x`* *: Detección y representación de personajes de choque / virtex.
+* * Audio Bass Boster ( *`. bajo`* *: Bota de bajo de igualante vía ffmpeg para la nota de voz xingo.
+- * TikTok Video Search ( * TikTok Video Search )`Tiktox.`* * * *: Búsqueda y descarga de videos de TikTok sin marcas de agua.
 
 ---
 
 ## 📂 Struktur Direktori
 
-Struktur bawaan Ourin 3.5 dipertahankan 100% tanpa mengubah arsitektur aslinya:
+Estructuras bajo Ourin 3. 5 se celebran 100 % sin cambiar la arquitectura aslinya:
 
 ```
 OURIN 3.5/
@@ -88,21 +88,21 @@ OURIN 3.5/
 
 ---
 
-## 🚀 Panduan Instalasi & Pengoperasian
+#🚀 Guia Instalasi & Pengoperasian
 
-### 1. Persyaratan Sistem
-- **Node.js**: Versi 20.x atau 22.x (Rekomendasi: Node.js v22+)
-- **FFmpeg**: Terpasang di sistem (`ffmpeg -version`)
-- **Git** & **Internet Connection**
+# # # 1. Condiciones del sistema
+- * Nodo.xo 22.x( Recomendaciones: Nodo.
+* * FFmpeg * *: Instalado en el sistema ( )`ffmpeg - versión`)
+* Git * * * Interned Connection * *
 
 ### 2. Instalasi Dependensi
-Jalankan perintah berikut di root folder project:
+Ejecute el siguiente comando en la raíz siga el proxy:
 ```bash
 npm install --legacy-peer-deps
 ```
 
-### 3. Konfigurasi Bot (`config.js`)
-Buka file `config.js` dan sesuaikan pengaturan dasar:
+# 3 Configuración del Esposo (`config.`)
+Abre archivo`config.`Y una especie de subliminal:
 ```javascript
 module.exports = {
   owner: {
@@ -122,7 +122,7 @@ module.exports = {
 };
 ```
 
-### 4. Menjalankan Bot
+# 4.
 ```bash
 # Menjalankan langsung:
 npm start
@@ -133,15 +133,15 @@ node index.js
 
 ---
 
-## 🔒 Sistem Keamanan: Saluran WhatsApp
+#🔒Sistema de seguridad: Sect de WhatsApp · Voces globales
 
-Untuk menjaga integritas komunitas resmi, bot dilengkapi middleware pemeriksaan saluran resmi:
+Para mantener la integridad oficial de la comunidad, el bot está equipado con el canal oficial de control de midleware:
 - **Channel 1:** `https://whatsapp.com/channel/0029VaBOlsv002TEjlntTE2D`
 - **Channel 2:** `https://whatsapp.com/channel/0029Vb8xSqi0AgWJaiZ9Qm16`
 
-Pengguna baru yang belum terverifikasi akan dibatasi hingga mereka mengikuti kedua saluran dan mengetik `.verif`. Owner dan admin grup memiliki hak pengecualian otomatis (bypass).
+Los nuevos usuarios unverificados serán sellados por la naranja. Ellos siguen el canal y ellos saben.`- El verif.`Propietario y administrador grupo tienen autoemotriz.
 
 ---
 
 ## 📄 Lisensi & Hak Cipta
-Project Ourin 3.5 dikembangkan untuk keperluan otomasi pesan WhatsApp berbasis CommonJS berkinerja tinggi.
+Proyecto Ourin 3. 5 está listo para el procesamiento automático @-@.

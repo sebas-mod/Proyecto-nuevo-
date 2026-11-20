@@ -29,8 +29,8 @@ async function handler(m, { sock }) {
     if (!targetUser) {
         await m.reply(
             `⚠️ *ᴄᴀʀᴀ ᴘᴀᴋᴀɪ*\n\n` +
-            `> Reply pesan user + \`${m.prefix}resetwarn\`\n` +
-            `> Atau: \`${m.prefix}resetwarn @user\``
+            `# Responder orden #\`${m.prefix}resetwarn\`\n` +
+            `> O:\`${m.prefix}resetwarn @user\``
         )
         return
     }
@@ -42,7 +42,7 @@ async function handler(m, { sock }) {
     const targetName = targetUser.split('@')[0]
     
     if (!warnings[targetUser] || warnings[targetUser].length === 0) {
-        await m.reply(`✅ @${targetName} tidak memiliki warning.`, { mentions: [targetUser] })
+        await m.reply(`✅ @${targetName}no tiene advertencia.`, { mentions: [targetUser] })
         return
     }
     
@@ -52,9 +52,9 @@ async function handler(m, { sock }) {
     
     await m.reply(
         `✅ *ᴡᴀʀɴɪɴɢ ᴅɪʀᴇsᴇᴛ*\n` +
-        `Warning @${targetName} berhasil direset!\n` +
-        `Sebelumnya: *${prevCount}/${maxWarns}*\n` +
-        `Sekarang: *0/${maxWarns}*`,
+        `Warning @${targetName}exito restablecido!\n` +
+        `Anterior: *${prevCount}/${maxWarns}*\n` +
+        `Ahora: *0/${maxWarns}*`,
         { mentions: [targetUser] }
     )
 }

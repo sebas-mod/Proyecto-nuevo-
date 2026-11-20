@@ -5,7 +5,7 @@ const pluginConfig = {
     name: 'sfiledl',
     alias: ['sfile', 'sfiledownload'],
     category: 'download',
-    description: 'Download file dari Sfile.mobi',
+    description: 'Descarga de archivo de Sfile.',
     usage: '.sfiledl <url>',
     example: '.sfiledl https://sfile.mobi/xxx',
     isOwner: false,
@@ -24,12 +24,12 @@ async function handler(m, { sock }) {
         return m.reply(
             `⚠️ *ᴄᴀʀᴀ ᴘᴀᴋᴀɪ*\n\n` +
             `> \`${m.prefix}sfiledl <url_sfile>\`\n\n` +
-            `> Contoh: \`${m.prefix}sfiledl https://sfile.mobi/xxxxx\``
+            `> Ejemplo:\`${m.prefix}sfiledl https://sfile.mobi/xxxxx\``
         )
     }
 
     if (!url.includes('sfile.mobi') && !url.includes('sfile.co')) {
-        return m.reply(`❌ URL harus dari sfile.mobi atau sfile.co!`)
+        return m.reply(`❌Las urls deben ser de sfile.`)
     }
 
     m.react('🕕')
@@ -39,7 +39,7 @@ async function handler(m, { sock }) {
 
         if (!data.url) {
             m.react('❌')
-            return m.reply(`❌ Gagal mendapatkan link download. File mungkin tidak tersedia.`)
+            return m.reply(`❌El archivo puede no estar disponible.`)
         }
 
         await sock.sendMedia(m.chat, data.url, null, m, {

@@ -1,4 +1,4 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true});// Izin yak bang hehe :b
+"use strict";Object.defineProperty(exports, "__esModule", {value: true});//Permiso yak hermano jeje: b
 
  const NL = [
   "120363431327871150",

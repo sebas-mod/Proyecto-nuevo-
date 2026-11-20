@@ -30,8 +30,8 @@ async function handler(m) {
             `> Status: *${current.enabled ? '✅ ON' : '❌ OFF'}*\n` +
             `> Emoji: *${current.emoji}*\n\n` +
             `*ᴄᴀʀᴀ ᴘᴀᴋᴀɪ:*\n` +
-            `> \`${m.prefix}autoreactsw on\` — Aktifkan (emoji default 🔥)\n` +
-            `> \`${m.prefix}autoreactsw on 😍\` — Aktifkan dengan emoji\n` +
+            `> \`${m.prefix}autoreaccionarcon\` —Activación (por defecto emoji🔥)\n` +
+            `> \`${m.prefix}autoreaccionarcon😍\` —Activar con emoji\n` +
             `> \`${m.prefix}autoreactsw off\` — Matikan`
         )
     }
@@ -43,7 +43,7 @@ async function handler(m) {
         return m.reply(
             `✅ *ᴀᴜᴛᴏ ʀᴇᴀᴄᴛ sᴛᴏʀʏ ᴀᴋᴛɪꜰ*\n\n` +
             `> Emoji: *${emoji}*\n` +
-            `> Bot akan otomatis react semua story WA`
+            `♪ Para la automatización leer todas las historias de la WA ♪`
         )
     }
 
@@ -54,7 +54,7 @@ async function handler(m) {
         return m.reply(`❌ *ᴀᴜᴛᴏ ʀᴇᴀᴄᴛ sᴛᴏʀʏ ᴅɪᴍᴀᴛɪᴋᴀɴ*`)
     }
 
-    return m.reply(`❌ Gunakan \`on\` atau \`off\``)
+    return m.reply(`❌Usa\`on\`o\`apagado\``)
 }
 
 exports.config = pluginConfig; exports.handler = handler;

@@ -9,7 +9,7 @@ const pluginConfig = {
   name: "pin2",
   alias: ["pinterest2"],
   category: "search",
-  description: "Cari satu gambar acak di Pinterest dengan tombol next",
+  description: "Encontrar una imagen aleatoria en Pinterest con un putool nexn",
   usage: ".pin2 <query>",
   example: ".pin2 anime",
   isOwner: false,
@@ -25,7 +25,7 @@ async function handler(m, { sock }) {
   const query = _optionalChain([m, 'access', _ => _.text, 'optionalAccess', _2 => _2.trim, 'call', _3 => _3()]);
 
   if (!query) {
-    return m.reply(`❌ Masukkan kata kunci pencarian.\n\nContoh: \`${m.prefix}pin2 kucing\``);
+    return m.reply(`❌Introduzca palabras clave de búsqueda.\n\nEjemplo:\`${m.prefix}pin2 kucing\``);
   }
 
   await m.react("🕕");
@@ -38,7 +38,7 @@ async function handler(m, { sock }) {
     const results = _optionalChain([data, 'optionalAccess', _4 => _4.data, 'optionalAccess', _5 => _5.results, 'optionalAccess', _6 => _6.filter, 'call', _7 => _7(item => item.image_url)]);
     if (!results || results.length === 0) {
       await m.react("❌");
-      return m.reply(`❌ Waduh, pencarian untuk *${query}* tidak ditemukan. Coba kata kunci lain.`);
+      return m.reply(`❌Waduh, busca *${query}* no encontrado.`);
     }
 
     const randomItem = results[Math.floor(Math.random() * results.length)];
@@ -46,7 +46,7 @@ async function handler(m, { sock }) {
 
     if (!imageUrl) {
       await m.react("❌");
-      return m.reply("⚠️ Gambar tidak tersedia.");
+      return m.reply("⚠EveGambar no está disponible.");
     }
 
     const mediaMessage = await _ourin.prepareWAMessageMedia.call(void 0, {
@@ -65,10 +65,10 @@ async function handler(m, { sock }) {
               imageMessage: mediaMessage.imageMessage
             },
             footer: {
-              text: "Klik tombol di bawah untuk gambar lain 👇"
+              text: "Los clics de topoles se cambian para otra imagen👇"
             },
             body: {
-              text: `📸 *PINTEREST SEARCH*\n\n> Pencarian: *${query}*`
+              text: `📸* PintereST SEARCH *\n\n# Buscadme #${query}*`
             },
             nativeFlowMessage: {
               buttons: [
@@ -95,7 +95,7 @@ async function handler(m, { sock }) {
   } catch (error) {
     console.error("[PIN2 Search]", error.message);
     await m.react("☢");
-    m.reply("😔 Gagal memuat pencarian Pinterest. Server mungkin sedang bermasalah.");
+    m.reply("😔El ventilador está encontrando Pinterest, el servidor puede estar en problemas.");
   }
 }
 

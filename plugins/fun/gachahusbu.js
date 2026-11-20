@@ -7,7 +7,7 @@ const pluginConfig = {
   name: ["gachahusbu", "husbuaction", "tinggalinhusbu", "husbuku", "suamiku"],
   alias: ["gachasuami"],
   category: "fun",
-  description: "Gacha husbu impianmu, rebut hatinya, dan jadikan dia pasanganmu!",
+  description: "Gacha hushbu tus sueños, tu odio @-@ buts, y así es tu compañero!",
   usage: ".gachahusbu | .husbuku | .tinggalinhusbu",
   example: ".gachahusbu",
   isOwner: false,
@@ -51,7 +51,7 @@ const husbuPool = [
   { name: "Tartaglia (Childe)", age: 21, height: "185 cm", weight: "74 kg", tier: "Epic", keyword: "Tartaglia Genshin aesthetic", weightChance: 15 },
   { name: "Neuvillette", age: 500, height: "188 cm", weight: "75 kg", tier: "Epic", keyword: "Neuvillette aesthetic icon", weightChance: 15 },
   { name: "Jing Yuan", age: 700, height: "185 cm", weight: "75 kg", tier: "Epic", keyword: "Jing Yuan honkai star rail aesthetic", weightChance: 15 },
-  { name: "Dan Heng", age: 25, height: "180 cm", weight: "70 kg", tier: "Epic", keyword: "Dan Heng IL aesthetic icon", weightChance: 15 },
+  { name: "Dan Heng", age: 25, height: "180 cm", weight: "70 kg", tier: "Epic", keyword: "Y el icono estético Heng IL", weightChance: 15 },
   { name: "Aventurine", age: 22, height: "183 cm", weight: "73 kg", tier: "Epic", keyword: "Aventurine honkai star rail aesthetic", weightChance: 15 },
   { name: "Kaeluc (Kaeya)", age: 22, height: "186 cm", weight: "75 kg", tier: "Epic", keyword: "Kaeya Genshin aesthetic", weightChance: 15 },
 
@@ -130,27 +130,27 @@ async function sendHusbuMessage(m, sock, husbu, textContent, customButtons = nul
       buttons = [
         { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "🫂 Peluk Punggungnya", id: `${m.prefix}husbuaction peluk` }) },
         { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "💋 Cium Pipinya", id: `${m.prefix}husbuaction cium` }) },
-        { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "🛏️ Tidur Bareng", id: `${m.prefix}husbuaction tidur` }) },
+        { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "🛏️ Tidur Bareng", id: `${m.prefix}husbuaction duerme` }) },
         { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "🛁 Mandi Bareng", id: `${m.prefix}husbuaction mandi` }) },
       ];
     } else {
       if (!husbu.married) {
         buttons = [
           { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "💍 Terima Lamarannya", id: `${m.prefix}husbuaction nikah` }) },
-          { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "💝 Minta Uang Belanja", id: `${m.prefix}husbuaction hadiah` }) },
+          { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "💝Compras Dinero Inga", id: `${m.prefix}husbuaction premio` }) },
         ];
       } else {
         buttons = [
-          { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "👨‍👩‍👦 Habiskan Waktu Bersama", id: `${m.prefix}husbuaction mesra` }) },
+          { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "👨‍👩‍👦Pasa tiempo con", id: `${m.prefix}husbuaction mesra` }) },
           { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "💌 Goda Suamimu", id: `${m.prefix}husbuaction rayu` }) },
         ];
       }
     }
   }
 
-  let footerText = "❤️ Buat dia luluh dan jatuh cinta padamu!";
-  if (customButtons) footerText = "💭 Dia menunggu jawabanmu...";
-  else if (husbu.married) footerText = "❤️ Kamu adalah istrinya yang sah!";
+  let footerText = "❤¡Para golpearlo sucio y enamorarse de ti!";
+  if (customButtons) footerText = "💭Espera su respuesta.";
+  else if (husbu.married) footerText = "❤¡A ti es la esposa de los vivos!";
 
   const msg = _ourin.generateWAMessageFromContent.call(void 0, m.chat, {
     viewOnceMessage: {
@@ -185,25 +185,25 @@ async function handler(m, { sock }) {
   const cmd = m.command.toLowerCase();
   if (cmd === "husbuku" || cmd === "suamiku") {
     if (!user.husbu) {
-      return m.reply(`⚠️ *Kamu belum memiliki husbu!*\nSilakan ketik *${m.prefix}gachahusbu* untuk memulainya!`);
+      return m.reply(`⚠¡No tienes el Hubbu todavía!\nPor favor, sólo da un paso.${m.prefix}¡Gachahushbu para empezar!`);
     }
     m.react("🕕");
     const husbu = user.husbu;
     let statusPernikahan = husbu.married ? "Telah Menikah 💍" : "Pendekatan 💖";
-    const textContent = `📸 *STATUS HUSBU KAMU* 📸\n\n` +
-      `💖 *Nama Lengkap:* ${husbu.name}\n` +
-      `🎂 *Usia:* ${husbu.age} tahun\n` +
+    const textContent = `📸> 91; STATUS HUSHAND YOU > 93;📸\n\n` +
+      `💖*Nombre Lengkap:*${husbu.name}\n` +
+      `🎂*Edad:*${husbu.age} tahun\n` +
       `💎 *Tier:* ${husbu.tier}\n` +
       `💞 *Affection:* ${husbu.affection}/100\n` +
       `💍 *Status:* ${statusPernikahan}\n\n` +
-      `Lanjutkan interaksi dengan memilih salah satu aksi kencan di bawah ini!`;
+      `Continuar las interacciones eligiendo una de las acciones @-@ weenie en este swab!`;
 
     m.react("✅");
     return await sendHusbuMessage(m, sock, husbu, textContent, null);
   }
   if (cmd === "tinggalinhusbu") {
     if (!user.husbu) {
-      return m.reply(`⚠️ *Kamu bahkan belum punya husbu!* Cari dulu gih!`);
+      return m.reply(`⚠¡Ni siquiera tienes marido todavía!`);
     }
 
     const husbuName = user.husbu.name;
@@ -220,40 +220,40 @@ async function handler(m, { sock }) {
 
     m.react("💔");
     return m.reply(
-      `💔 *KAMU MENCAMPAKKAN ${husbuName.toUpperCase()}!*\n\n` +
-      `Kamu mengembalikan barang-barangnya dan memintanya untuk pergi. ` +
-      `Dia menatapmu dengan mata kecewa yang mendalam, berbalik tanpa sepatah kata pun, lalu menghilang di tengah hujan.\n\n` +
-      `Kalian kini resmi berpisah.`
+      `💔*Tu MENCAMPAKKAN${husbuName.toUpperCase()}!*\n\n` +
+      `Le devuelves sus cosas y le pides que se vaya.` +
+      `Te mira con un ojo profundo, gira sin una palabra, y luego desaparece en el medio de los hujani.\n\n` +
+      `Está oficialmente separado.`
     );
   }
   if (cmd === "gachahusbu" || cmd === "gachasuami") {
     if (user.husbu) {
       m.react("😡");
-      let pesanStatus = user.husbu.married ? "Dia sudah menjadi suamimu!" : "Dia sedang berusaha meluluhkan hatimu!";
+      let pesanStatus = user.husbu.married ? "Dia sudah menjadi suamimu!" : "¡Está tratando de derretir tu corazón!";
       return m.reply(
-        `⚠️ *Kamu sudah memiliki Husbu!*\n\n` +
-        `Nama: *${user.husbu.name}*\n` +
+        `⚠- * ¡Ya tienes a Husbu!\n\n` +
+        `Nombre: *${user.husbu.name}*\n` +
         `Tier: *${user.husbu.tier}*\n` +
         `Affection: *${user.husbu.affection}/100*\n\n` +
-        `Jangan serakah! Jaga husbu yang kamu miliki sekarang. ${pesanStatus} Ketik *${m.prefix}husbuku* untuk berinteraksi dengannya.`
+        `No seas malo, ahora eres una hushmother.${pesanStatus}Escribe *${m.prefix}Mi marido para interactuar con ella.`
       );
     }
 
     const sub = (m.args[0] || "").toLowerCase();
 
     if (sub !== "start") {
-      const panduan = `💕 *SISTEM GACHA HUSBU* 💕\n\n` +
-        `Simulasi kencan virtual interaktif untuk mendapatkan laki-laki anime idamanmu! Tarik perhatiannya, buat dia jatuh cinta, dan nikahi dia!\n\n` +
-        `*PENGGUNAAN COMMAND:*\n` +
-        `• *${m.prefix}gachahusbu* — Membuka menu panduan ini\n` +
-        `• *${m.prefix}husbuku* — Membuka panel interaksi dengan husbumu\n` +
-        `• *${m.prefix}tinggalinhusbu* — Mencampakkan husbu dan mereset status\n\n` +
-        `*PENJELASAN ALUR CERITA:*\n` +
-        `1. Tekan tombol **Mulai Gacha** di bawah untuk memanggil cowok terganteng ke kehidupanmu.\n` +
-        `2. Akan ada 3 Fase Hubungan berdasarkan Poin Cinta (Affection).\n` +
-        `3. *Fase Pendekatan (< 80)*: Pilih rute kencan! Setiap pilihanmu akan memengaruhi perasaannya padamu.\n` +
-        `4. *Fase Intim (80 - 99)*: Kalau dia sudah nyaman, interaksi yang lebih mesra akan terbuka. Tapi jangan kelewat batas sebelum waktunya, atau dia bakal *ilfeel*!\n` +
-        `5. *Fase Menikah (100)*: Buat dia bertekuk lutut dan melamarmu untuk mendapatkan *Reward Eksklusif* berupa koin dan limit!`;
+      const panduan = `💕# 91 # SISTEM GACA # Oh, Dios mío #💕\n\n` +
+        `Las simulaciones de kencan alienígenas son interactivas para conseguir su anime masculino!\n\n` +
+        `*Uso Comando:*\n` +
+        `• *${m.prefix}gachahushbu *—Respaldar este menú de scouting\n` +
+        `• *${m.prefix}Husbuku—Rompe el panel interactuando con su hushbus.\n` +
+        `• *${m.prefix}No te metas en esto, mamá.—Desplazar el estado de husmu y restablecer\n\n` +
+        `A91; EXPLOSION ALLENDS CERITA:\n` +
+        `Uno, pon tu dedo en el botón, vas a ser arrastrado de vuelta a tu vida.\n` +
+        `2, 3 fases de la sociedad del amor\n` +
+        `Tres.\n` +
+        `Cuatro.\n` +
+        `Cinco.`;
 
       const msg = _ourin.generateWAMessageFromContent.call(void 0, m.chat, {
         viewOnceMessage: {
@@ -261,10 +261,10 @@ async function handler(m, { sock }) {
             messageContextInfo: { deviceListMetadata: {}, deviceListMetadataVersion: 2 },
             interactiveMessage: {
               body: { text: panduan },
-              footer: { text: "Tekan tombol di bawah untuk memanggil calon jodohmu!" },
+              footer: { text: "Peel @-@ puffle in the bayou to call your soul mate 's clone!" },
               nativeFlowMessage: {
                 buttons: [
-                  { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "🎲 Panggil Husbando Sekarang!", id: `${m.prefix}gachahusbu start` }) }
+                  { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "🎲¡Llama a Husbando ahora!", id: `${m.prefix}gachahusbu start` }) }
                 ]
               }
             }
@@ -287,14 +287,14 @@ async function handler(m, { sock }) {
       user.husbu = husbu;
       db.setUser(m.sender, user);
 
-      const textContent = `🎉 *KYAAA! KAMU MENDAPATKAN HUSBANDO BARU!* 🎉\n\n` +
-        `💖 *Nama Lengkap:* ${husbu.name}\n` +
-        `🎂 *Usia:* ${husbu.age} tahun\n` +
-        `📏 *Tinggi Badan:* ${husbu.height}\n` +
-        `⚖️ *Berat Badan:* ${husbu.weight}\n` +
+      const textContent = `🎉¡Tienes un nuevo hitbando!🎉\n\n` +
+        `💖*Nombre Lengkap:*${husbu.name}\n` +
+        `🎂*Edad:*${husbu.age} tahun\n` +
+        `📏*Alto Badan:*${husbu.height}\n` +
+        `⚖Pesado Badan:${husbu.weight}\n` +
         `💎 *Tier:* ${husbu.tier}\n` +
         `💞 *Affection:* ${husbu.affection}/100\n\n` +
-        `Silakan pilih interaksi di bawah ini untuk memulai PDKT. Jawab dengan hati-hati agar perasaannya padamu semakin dalam!`;
+        `Por favor seleccione interacciones en está bañera para honrar el GDKT.`;
 
       m.react("✅");
       await sendHusbuMessage(m, sock, husbu, textContent, null);
@@ -308,7 +308,7 @@ async function handler(m, { sock }) {
   if (cmd === "husbuaction") {
     if (!user.husbu) {
       m.react("❌");
-      return m.reply(`Kamu belum memiliki husbu! Silakan ketik *${m.prefix}gachahusbu* untuk mendapatkan husbando pertamamu.`);
+      return m.reply(`¡No tienes el Hushma todavía!${m.prefix}Gachahushbu para conseguir su primer marido.`);
     }
 
     const action = (m.args[0] || "").toLowerCase();
@@ -316,33 +316,33 @@ async function handler(m, { sock }) {
     let responseText = "";
     let affectionChange = 0;
     if (action === "jalanjalan") {
-      return sendHusbuMessage(m, sock, husbu, `Kamu dan *${husbu.name}* sedang jalan berdua. Dia terlihat bosan. Ingin membawanya kemana?`, [
+      return sendHusbuMessage(m, sock, husbu, `Tú y...${husbu.name}He 's been looking bored.`, [
         { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "🌳 Ke Taman Piknik", id: `${m.prefix}husbuaction kencan_taman` }) },
         { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "🎢 Ke Taman Bermain", id: `${m.prefix}husbuaction kencan_mall` }) }
       ]);
     }
     if (action === "kafe") {
-      return sendHusbuMessage(m, sock, husbu, `*${husbu.name}* mentraktirmu di kafe favoritnya. Saat memesan kopi, dia menanyakan selera minumanmu.`, [
-        { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "☕ Kopi Pahit", id: `${m.prefix}husbuaction kencan_kopi` }) },
+      return sendHusbuMessage(m, sock, husbu, `*${husbu.name}* mentraktirmu en kafe favoritnya. Cuando memesan cafe, el menanyakan selera minumanmu.`, [
+        { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "☕ Kopi Pahit", id: `${m.prefix}Husbuction DANJANAKOJI` }) },
         { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "🍓 Strawberry Milk", id: `${m.prefix}husbuaction kencan_matcha` }) }
       ]);
     }
     if (action === "bioskop") {
-      return sendHusbuMessage(m, sock, husbu, `Kalian pergi nonton ke bioskop. Dia menyuruhmu memilih filmnya. Film apa yang kamu pilih?`, [
+      return sendHusbuMessage(m, sock, husbu, `Bioscopio egual, él recoge su peícula.`, [
         { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "💥 Film Action", id: `${m.prefix}husbuaction kencan_romantis` }) },
         { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "👻 Film Horor", id: `${m.prefix}husbuaction kencan_horor` }) }
       ]);
     }
     if (action === "belanja") {
-      return sendHusbuMessage(m, sock, husbu, `Kalian pergi ke pusat perbelanjaan. *${husbu.name}* menawarkan membelikan sesuatu untukmu. Kamu minta apa?`, [
-        { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "👕 Jaket Keren Pasangan", id: `${m.prefix}husbuaction kencan_baju` }) },
+      return sendHusbuMessage(m, sock, husbu, `Ustedes vayan al centro comercial.${husbu.name}* Ofrézcale algo.`, [
+        { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "👕 Jaket Keren Pasangan", id: `${m.prefix}Husbuction Drench attire` }) },
         { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "💍 Cincin Mewah", id: `${m.prefix}husbuaction kencan_perhiasan` }) }
       ]);
     }
     const rejectIntimate = async () => {
       husbu.affection -= (Math.floor(Math.random() * 30) + 30);
       if (husbu.affection < 0) husbu.affection = 0;
-      let outText = `💢 *HENTIKAN!* Kamu bertindak terlalu agresif di saat perasaannya masih samar! *${husbu.name}* menepis tanganmu dengan wajah marah dan kecewa! "Kamu menganggapku apa?!" bentaknya.`;
+      let outText = `💢¡Estás actuando agresivo cuando sus sentimientos siguen siendo samar!${husbu.name}" Ponga sus manos en sus brazos con la cara y la boca en su pecho ".`;
       await processAffection(outText, husbu.affection);
     };
 
@@ -351,97 +351,97 @@ async function handler(m, { sock }) {
     }
 
     if (action === "peluk") {
-      return sendHusbuMessage(m, sock, husbu, `Kamu melihat punggung lebar *${husbu.name}*. Kesempatan bagus, kamu memeluknya! Di bagian mana?`, [
-        { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "🤗 Peluk Pinggangnya", id: `${m.prefix}husbuaction intim_belakang` }) },
-        { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "💪 Pegang Tangannya Erat", id: `${m.prefix}husbuaction intim_depan` }) }
+      return sendHusbuMessage(m, sock, husbu, `Miras la espalda grande${husbu.name}* Buena oportunidad, ¡lo estás tocando!`, [
+        { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "🤗 Peluk Pinggangnya", id: `${m.prefix}Husbuction intikalakan` }) },
+        { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "💪 Pegang Tangannya Erat", id: `${m.prefix}Husbuction intikau delante` }) }
       ]);
     }
     if (action === "cium") {
-      return sendHusbuMessage(m, sock, husbu, `Wajahnya sangat dekat menatapmu dengan tajam. Kamu memberanikan diri menciumnya. Di mana?`, [
+      return sendHusbuMessage(m, sock, husbu, `Está tan cerca de mirarte con ojos tan agudos.`, [
         { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "😚 Cium Pipinya", id: `${m.prefix}husbuaction intim_kening` }) },
         { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "💋 Cium Bibirnya", id: `${m.prefix}husbuaction intim_bibir` }) }
       ]);
     }
     if (action === "tidur") {
-      return sendHusbuMessage(m, sock, husbu, `Malam larut, kalian berada di kamar berdua. Dia menarikmu ke pelukannya. Apa reaksimu?`, [
+      return sendHusbuMessage(m, sock, husbu, `El malamstanc, usted está en la misma habitación, que le está tirando en sus brazos.`, [
         { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "🫂 Senderan di Dadanya", id: `${m.prefix}husbuaction intim_kelon` }) },
-        { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "🔥 Balas Dengan Gairah", id: `${m.prefix}husbuaction intim_panas` }) }
+        { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "🔥Responde con Gairah", id: `${m.prefix}Husbuction intimaxpanas` }) }
       ]);
     }
     if (action === "mandi") {
-      return sendHusbuMessage(m, sock, husbu, `*${husbu.name}* menarikmu masuk ke kamar mandi bersamanya. Wajahnya tersenyum menggoda. Apa yang kamu lakukan?`, [
+      return sendHusbuMessage(m, sock, husbu, `*${husbu.name}" Tirándote al baño con ella, su cuerpo esmiró. " ¿Qué estás haciendo?`, [
         { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "🛁 Membasuh Punggungnya", id: `${m.prefix}husbuaction intim_punggung` }) },
-        { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "🧼 Usap Dadanya yang Bidang", id: `${m.prefix}husbuaction intim_bahu` }) }
+        { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "🧼Ukup Dadya 's Field", id: `${m.prefix}husbuaction intim_bahu` }) }
       ]);
     }
 
     if (action === "kencan_taman") {
       affectionChange = Math.floor(Math.random() * 10) + 10;
-      responseText = `🌳 *${husbu.name}* sangat menikmati angin sejuk dan menghabiskan waktu dengan tiduran di pangkuanmu di taman.`;
+      responseText = `🌳 *${husbu.name}* tanto como el viento @-@ llenado y mercado tiempo durmiendo en su vuelta en el escenario.`;
     }
     else if (action === "kencan_mall") {
       affectionChange = Math.floor(Math.random() * 15) + 10;
-      responseText = `🎢 Bermain di taman bermain ternyata sangat seru baginya! *${husbu.name}* memenangkan boneka beruang besar dan memberikannya padamu.`;
+      responseText = `🎢Jugar en taman jugar ternata muy: caroling para su culo!${husbu.name}* Gana una muñeca grande y dáselo.`;
     }
     else if (action === "kencan_kopi") {
       affectionChange = Math.floor(Math.random() * 10) + 10;
-      responseText = `☕ "Pilihan yang elegan," pujinya padamu. Kalian meminum kopi pahit sambil mengobrol seru, dia terlihat sangat nyaman mengobrol denganmu.`;
+      responseText = `☕Ustedes toman un sorbo de la olla de patty, se ve muy cómodo hablando con usted.`;
     }
     else if (action === "kencan_matcha") {
       affectionChange = -(Math.floor(Math.random() * 10) + 5);
-      responseText = `🍓 Dia membelikanmu minuman manis, tapi rupanya obrolan kalian sedikit kurang nyambung. Dia tampak agak bosan dan diam saja.`;
+      responseText = `🍓Te compró una menta, pero eres un poco menos @-@ bellied, y parece aburrido y simplemente no dice nada.`;
     }
     else if (action === "kencan_romantis") {
       affectionChange = Math.floor(Math.random() * 15) + 10;
-      responseText = `💥 Nonton film action adalah hal favoritnya! Sepanjang film dia memegang tanganmu dengan erat karena terlalu seru.`;
+      responseText = `💥¡La peelícula es lo que más le gusta!`;
     }
     else if (action === "kencan_horor") {
       affectionChange = Math.floor(Math.random() * 5) + 5;
-      responseText = `👻 *JUMPSCARE!* Kamu refleks melompat memeluknya. Dia sedikit tertawa tapi kemudian mendekapmu untuk melindungimu dari rasa takut.`;
+      responseText = `👻Se ríe un poco, pero luego se acerca a ti para protegerte del miedo.`;
     }
     else if (action === "kencan_baju") {
       affectionChange = Math.floor(Math.random() * 15) + 10;
-      responseText = `👕 Dia membelikanmu jaket couple yang sangat cocok! Dia tersenyum bangga melihatmu memakai pakaian kembar dengannya.`;
+      responseText = `👕¡Te compró un par de gatos muy lindos!`;
     }
     else if (action === "kencan_perhiasan") {
       affectionChange = -(Math.floor(Math.random() * 10) + 10);
-      responseText = `💍 "Uangku tidak sebanyak itu bulan ini," keluhnya sambil mendesah berat. Dia menolak membelikannya dan merasa kamu terlalu materialistis.`;
+      responseText = `💍Lo compró y sintió que eras demasiado materialista.`;
     }
     else if (action === "intim_belakang") {
       affectionChange = Math.floor(Math.random() * 10) + 10;
-      responseText = `🤗 Dia terkejut saat kamu memeluk pinggangnya dari belakang, namun telinganya memerah. Dia mengelus tanganmu pelan.`;
+      responseText = `🤗Se sorprendió cuando le tocó la cintura de atrás, y su marido estaba muriendo, y él tomó su mano y la sacó de su boca.`;
     }
     else if (action === "intim_depan") {
       affectionChange = Math.floor(Math.random() * 15) + 10;
-      responseText = `💪 Kamu memegang tangannya dengan erat. Dia tersenyum lembut dan balik menggenggam tanganmu sambil menatap matamu dalam-dalam.`;
+      responseText = `💪Usted sostiene su mano fuerte, ella sonríe suavemente y luego ella agarra su mano mientras mira a sus ojos.`;
     }
     else if (action === "intim_kening") {
       affectionChange = Math.floor(Math.random() * 10) + 5;
-      responseText = `😚 Kamu mengecup pipinya. Dia terkekeh pelan dan membalas mengecup keningmu dengan sangat hangat.`;
+      responseText = `😚Estás besando sus mejillas, me ama y te está dando una taza caliente de tu frente.`;
     }
     else if (action === "intim_bibir") {
       affectionChange = Math.floor(Math.random() * 20) + 10;
-      responseText = `💋 Kamu mencium bibirnya secara mendadak. Dia membulatkan matanya sesaat sebelum menarik pinggangmu dan membalas lumatannya dengan ganas.`;
+      responseText = `💋Hueles la garganta tan baja, que perderá sus matans un segundo antes de que te arroje en la cintura y la responda en ferviente.`;
     }
     else if (action === "intim_kelon") {
       affectionChange = Math.floor(Math.random() * 15) + 10;
-      responseText = `🫂 Kamu merebahkan kepala di dadanya yang bidang. Dia mengelus rambutmu perlahan sambil membisikkan betapa berartinya dirimu baginya.`;
+      responseText = `🫂Estás rompiendo la cabeza en un jardín loco, te está agarrando el pelo mientras hablas de cómo te sientes.`;
     }
     else if (action === "intim_panas") {
       affectionChange = Math.floor(Math.random() * 20) + 15;
-      responseText = `🔥 Kamu menatap matanya dengan penuh gairah. Dia menyeringai tipis, "Kau yang memintanya..." ucapnya dengan suara serak yang seksi sebelum menerkammu.`;
+      responseText = `🔥Usted mira sus ojos con un gran corazón, ella ataca a sus propinas, usted le pide que la ame con una voz alta, sexy antes de que ella te golpee.`;
     }
     else if (action === "intim_punggung") {
       affectionChange = Math.floor(Math.random() * 10) + 10;
-      responseText = `🛁 Kamu membasuh punggungnya perlahan. Sentuhan tanganmu membuatnya rileks dan ia menghembuskan napas lega sambil memejamkan mata.`;
+      responseText = `🛁La lavas lentamente, el toque de tu mano lo hace regar y sopla el aliento de la lega sapil a través de los ojos.`;
     }
     else if (action === "intim_bahu") {
       affectionChange = Math.floor(Math.random() * 15) + 15;
-      responseText = `🧼 Saat kamu mengusap dadanya yang bidang, dia menarik napas tajam dan meraih tanganmu. "Kau sengaja menggodaku, ya?" bisiknya.`;
+      responseText = `🧼Cuando usted tiene las manos desnudas, respira profundamente y sacude la mano.`;
     }
     else if (action === "nikah") {
-      if (husbu.affection < 100) return m.reply(`⚠️ Poin affection belum mencapai 100! Tunggu sampai dia benar-benar melamarmu!`);
-      if (husbu.married) return m.reply(`⚠️ Kalian kan sudah menikah!`);
+      if (husbu.affection < 100) return m.reply(`⚠¡Espera a que te lo haya propuesto!`);
+      if (husbu.married) return m.reply(`⚠¡Estás casado!`);
 
       husbu.married = true;
       user.limit = (user.limit || 0) + 5000;
@@ -452,23 +452,23 @@ async function handler(m, { sock }) {
       user.fun.pasangan = husbuJid;
       db.setUser(husbuJid, { fun: { pasangan: m.sender }, name: husbu.name });
 
-      responseText = `💍 *KAMU RESMI MENERIMA LAMARAN ${husbu.name.toUpperCase()}!* 💍\n\nDia berlutut di hadapanmu sambil menyodorkan cincin berlian yang indah, "Maukah kau menjadi istriku selamanya?" tanyanya. Saat kamu mengangguk, dia langsung menggendong dan menciummu penuh kebahagiaan!\n\nSebagai Nafkah pertama darinya, kamu mendapatkan:\n- ⚡ 5000 Limit/Energi\n- 💰 100,000 Saldo/Koin\n\nStatus kamu di fitur \`.cekpacar\` kini resmi berpasangan dengannya!`;
+      responseText = `💍* You Oficial RECEPTED THE LAMARAN${husbu.name.toUpperCase()}*💍\n\n¿Te está mirando mientras empuja el anillo del hermoso diamante, donde vas a ser mi esposa para siempre?\n\nComo su primer aliento, usted consigue:\n-⚡5000 Límite/Energía\n-💰100, 000 Saldo / Kain\n\nSus giras están en la función.\`Mira al novio.\`¡El par oficial con él!`;
       affectionChange = 0;
     }
     else if (action === "hadiah") {
-      if (husbu.affection < 100) return m.reply(`⚠️ Suamimu sedang sibuk bekerja, jangan diganggu!`);
+      if (husbu.affection < 100) return m.reply(`⚠Escucha, estoy ocupado, no me molestes!`);
       affectionChange = 0;
       user.koin = (user.koin || 0) + 5000;
-      responseText = `💝 *${husbu.name}* memberikan kartu kreditnya kepadamu sambil tersenyum, "Pakai saja sepuasnya, Sayang."\nKamu mendapatkan 💰 5,000 Koin dari suamimu!`;
+      responseText = `💝 *${husbu.name}* Te y una tarjeta de crédito y sonríe, y lo llevan todo lo que puedas, buscaño.\nTu obteniendo💰5, 000 Monedas de mi marido!`;
     }
     else if (["mesra", "rayu"].includes(action)) {
-      if (!husbu.married) return m.reply(`Aksi ini hanya untuk pasangan suami istri!`);
+      if (!husbu.married) return m.reply(`¡Este truco es para marido y mujer!`);
       affectionChange = 0;
-      responseText = `👨‍👩‍👦 Kalian berdua menikmati makan malam romantis yang damai. Tatapan cintanya tidak pernah luntur, dia sangat bersyukur memilikimu sebagai istrinya.`;
+      responseText = `👨‍👩‍👦Ustedes dos disfrutan de una cena romántica pacífica, un aspecto de amor nunca vuelve.`;
     }
     else {
       m.react("❓");
-      return m.reply(`Aksi tidak dikenali. Silakan gunakan interaksi pada tombol.`);
+      return m.reply(`Acciones sin jugar, por favor utilice la interacción en el puffle.`);
     }
 
     async function processAffection(customResponseText, currentAffectionVal) {
@@ -483,7 +483,7 @@ async function handler(m, { sock }) {
       if (affectionChange === 0) affectionText = `💞 *Affection:* ${husbu.affection}/100`;
 
       if (husbu.affection <= 0) {
-        const leavingText = `💔 *${husbu.name.toUpperCase()} MENINGGALKANMU SELAMANYA!* 💔\n\n${finalResponseText}\n\n${affectionText}\n\nKarena kasih sayangnya padamu telah benar-benar habis (mencapai 0), dia mengemasi seluruh barang-barangnya. Saat kamu mencoba menahannya, dia menepis tanganmu. "Hubungan kita cukup sampai di sini," ucapnya dingin sebelum pergi. Kamu telah kehilangan suamimu! Silakan cari husbu lain jika hatimu sudah siap.\n*(Ketik ${m.prefix}gachahusbu untuk memulai ulang)*`;
+        const leavingText = `💔 *${husbu.name.toUpperCase()} MENINGGALKANMU SELAMANYA!* 💔\n\n${finalResponseText}\n\n${affectionText}\n\nDebido a que su amor por usted ha desaparecido completamente, ha estado empaquetando sus bolsas, cuando usted está tratando de retenerlo, él tiene la mano.\n*(Escribe${m.prefix}* Gachahushbu para reiniciar *`;
 
         if (husbu.married) {
           const husbuJid = 'husbu_' + husbu.name.replace(/\s+/g, '') + '@s.whatsapp.net';

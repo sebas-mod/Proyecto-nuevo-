@@ -51,8 +51,8 @@ function slashThrough(text) { return text.split("").join("̷") + "̷"; }
 async function handler(m, { text, sock }) {
     const contohTeks = "Zann";
     let helpMsg = `✨ *FANCY TEXT GENERATOR* ✨\n\n`;
-    helpMsg += `Ubah teks biasamu menjadi gaya tulisan yang unik dan keren!\n\n`;
-    helpMsg += `🔮 *DAFTAR GAYA FONT:*\n`;
+    helpMsg += `Su maquillaje de texto ordinario se ha convertido en un único, fresco de escritura hickey!\n\n`;
+    helpMsg += `🔮* Lista de las FONT STARTER: *\n`;
 
     const allStyles = [...Object.keys(FONTS), "Strike Through", "Underline", "Slash Through"];
 
@@ -70,10 +70,10 @@ async function handler(m, { text, sock }) {
         helpMsg += `🔹 *${name}* ➔ ${preview}\n`;
     });
 
-    helpMsg += `\n*CARA PENGGUNAAN:*\n`;
-    helpMsg += `- Ketik \`${m.prefix}styleteks <Nama Font> | <Teks>\`\n`;
-    helpMsg += `- Contoh: \`${m.prefix}styleteks Cursive | Ini tulisan keren\`\n\n`;
-    helpMsg += `_Pastikan mengetikkan nama font sesuai daftar di atas (boleh huruf kecil/besar) dan gunakan garis lurus (|) sebagai pemisah!_`;
+    helpMsg += `\n*Como usarlo:*\n`;
+    helpMsg += `- Escribe\`${m.prefix}styleteks <Nama Font> | <Teks>\`\n`;
+    helpMsg += `- Ejemplo:\`${m.prefix}Estilos rústicos.\`\n\n`;
+    helpMsg += `APOPER PAPPING FIT PIT NUMBER ON THE TAPER (hagamos pequeño / grande ) y use el garis set como mezclador!`;
 
     if (!text || !text.includes('|')) {
         return m.reply(helpMsg);
@@ -88,7 +88,7 @@ async function handler(m, { text, sock }) {
 
         if (!teksAsli) {
             await m.react('❌');
-            return m.reply(`❌ *TEKS KOSONG*\n\nJangan lupa masukkan teks yang ingin diubah setelah garis lurus.\nContoh: \`${m.prefix}styleteks Cursive | Halo Dunia\``);
+            return m.reply(`❌*Texto Vacio*\n\nNo se olvide de introducir un texto que desee cambiarse después de la línea recta.\nEjemplo:\`${m.prefix}Estilos de curvas @ Hola Usa\``);
         }
 
         let hasil = "";
@@ -117,7 +117,7 @@ async function handler(m, { text, sock }) {
 
         if (!found) {
             await m.react('❌');
-            return m.reply(`❌ *FONT TIDAK DITEMUKAN*\n\nGaya font *${parts[0].trim()}* tidak terdaftar.\nSilakan ketik \`${m.prefix}styleteks\` untuk melihat daftar font yang tersedia.`);
+            return m.reply(`❌NO FONDO\n\nEstilo de fuente *${parts[0].trim()}* no registrado.\nPor favor escribe\`${m.prefix}estilos\`para ver la lista de fuentes disponibles.`);
         }
 
         await sock.sendMessage(m.chat, {
@@ -139,7 +139,7 @@ async function handler(m, { text, sock }) {
     } catch (e) {
         console.error(e);
         await m.react('❌');
-        m.reply(`❌ *GAGAL MENGUBAH TEKS*\n\nMaaf, sistem sedang mengalami gangguan saat mencoba mengubah gaya teksmu.`);
+        m.reply(`❌* Fallido SPITTING Texa *\n\nLo siento, el megaba teniendo un espíritu mientras intentaba camiar su texa.`);
     }
 }
 

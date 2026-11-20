@@ -24,7 +24,7 @@ async function handler(m, { sock }) {
   if (!query) {
     return m.reply(
       `🎧 *MURROTTAL*\n\n` +
-        `> Masukkan nama surah\n\n` +
+        `" Ingrese el nombre de Sura "\n\n` +
         `\`Contoh: ${m.prefix}murrotal al fatihah\`\n` +
         `\`Contoh: ${m.prefix}murrotal ar rahman\``,
     );
@@ -54,7 +54,7 @@ async function handler(m, { sock }) {
 
     if (!find || !find.audio) {
       m.react("❌");
-      return m.reply(`❌ Surah *${query}* tidak ditemukan`);
+      return m.reply(`❌ Surah *${query}* not found`);
     }
 
     m.react("✅");

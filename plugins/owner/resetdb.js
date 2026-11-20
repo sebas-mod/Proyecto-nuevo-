@@ -23,7 +23,7 @@ if (!global.resetDbPending) global.resetDbPending = {}
 
 async function handler(m, { sock }) {
     if (!_configjs2.default.isOwner(m.sender)) {
-        return m.reply('❌ *Owner Only!*')
+        return m.reply('❌*Propietario Only!*')
     }
     
     const confirm = _optionalChain([m, 'access', _ => _.args, 'optionalAccess', _2 => _2[0], 'optionalAccess', _3 => _3.toLowerCase, 'call', _4 => _4()])
@@ -33,23 +33,23 @@ async function handler(m, { sock }) {
         
         return m.reply(
             `⚠️ *ᴘᴇʀɪɴɢᴀᴛᴀɴ!*\n\n` +
-            `> Ini akan menghapus SEMUA data:\n` +
+            `Esto borrará los datos:\n` +
             `> • Data user\n` +
             `> • Data group\n` +
             `> • Data clan\n` +
-            `> • Semua statistik\n\n` +
+            `♪•Todas las estadísticas\n\n` +
             `╭┈┈⬡「 ⚠️ *ᴋᴏɴғɪʀᴍᴀsɪ* 」\n` +
-            `┃ Ketik: *.resetdb confirm*\n` +
-            `┃ dalam 60 detik\n` +
+            `┃Ketik: *. resetdb confirmación *\n` +
+            `┃en 60 segundos\n` +
             `╰┈┈┈┈┈┈┈┈⬡\n\n` +
-            `> ❌ Aksi ini TIDAK BISA dibatalkan!`
+            `♪❌¡Está acción está fuera de la mesa!`
         )
     }
     
     const pending = global.resetDbPending[m.sender]
     if (!pending || (Date.now() - pending) > 60000) {
         delete global.resetDbPending[m.sender]
-        return m.reply(`❌ Timeout! Ketik *.resetdb* ulang untuk memulai.`)
+        return m.reply(`❌¡Tiempo fuera!`)
     }
     
     delete global.resetDbPending[m.sender]
@@ -92,7 +92,7 @@ async function handler(m, { sock }) {
             `┃ 👥 Groups: ${groupCount}\n` +
             `┃ ⚔️ Clans: ${clanCount}\n` +
             `╰┈┈┈┈┈┈┈┈⬡\n\n` +
-            `> Backup disimpan di:\n` +
+            `*Retrocedido en:*\n` +
             `> \`${_path2.default.basename(backupPath)}\``
         )
         

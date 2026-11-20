@@ -2,7 +2,7 @@
     name: 'setbio',
     alias: ['setbiobot', 'setstatus', 'setabout'],
     category: 'tools',
-    description: 'Mengubah bio/status bot',
+    description: 'Reforma de bio / estado de bot',
     usage: '.setbio <bio baru>',
     example: '.setbio Bot WhatsApp by Lucky Archz',
     isOwner: true,
@@ -20,8 +20,8 @@ async function handler(m, { sock }) {
     if (!newBio && _optionalChain([m, 'access', _4 => _4.args, 'optionalAccess', _5 => _5.length]) === 0) {
         await m.reply(
             `⚠️ *ᴄᴀʀᴀ ᴘᴀᴋᴀɪ*\n\n` +
-            `> \`${m.prefix}setbio Bio bot baru\`\n` +
-            `> \`${m.prefix}setbio clear\` - Hapus bio`
+            `> \`${m.prefix}setbio\`\n` +
+            `> \`${m.prefix}setbio claro\`- Feliz bio.`
         )
         return
     }
@@ -31,7 +31,7 @@ async function handler(m, { sock }) {
     if (bioToSet.length > 139) {
         await m.reply(
             `⚠️ *ᴠᴀʟɪᴅᴀsɪ*\n\n` +
-            `> Bio maksimal 139 karakter.`
+            `> Bio maksimal 139 caracter.`
         )
         return
     }
@@ -42,19 +42,19 @@ async function handler(m, { sock }) {
         if (bioToSet) {
             await m.reply(
                 `✅ *ʙɪᴏ ʙᴏᴛ ᴅɪᴜʙᴀʜ*\n\n` +
-                `> Bio bot sekarang:\n` +
+                `* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\n` +
                 `> _${bioToSet}_`
             )
         } else {
             await m.reply(
                 `✅ *ʙɪᴏ ʙᴏᴛ ᴅɪʜᴀᴘᴜs*\n\n` +
-                `> Bio bot berhasil dihapus!`
+                `- Sí, bueno, el bot entró!`
             )
         }
     } catch (error) {
         await m.reply(
             `❌ *ɢᴀɢᴀʟ*\n\n` +
-            `> Tidak dapat mengubah bio bot.\n` +
+            `No puede cambiar los bots bio.\n` +
             `> _${error.message}_`
         )
     }

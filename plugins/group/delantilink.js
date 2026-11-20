@@ -3,7 +3,7 @@ const pluginConfig = {
     name: 'delantilink',
     alias: ['delalink', 'delblocklink', 'remantilink'],
     category: 'group',
-    description: 'Menghapus link dari daftar antilink',
+    description: 'Eliminar los enlaces de la lista de antivínculos',
     usage: '.delantilink <domain/pattern>',
     example: '.delantilink tiktok.com',
     isOwner: false,
@@ -25,15 +25,15 @@ function handler(m) {
         const antilinkList = groupData.antilinkList || []
         
         if (antilinkList.length === 0) {
-            return m.reply(`📋 Daftar antilink kosong!`)
+            return m.reply(`📋¡La lista de antivínculos!`)
         }
         
         let txt = `🔗 *ᴅᴀꜰᴛᴀʀ ᴀɴᴛɪʟɪɴᴋ*\n\n`
         antilinkList.forEach((l, i) => {
             txt += `> ${i + 1}. \`${l}\`\n`
         })
-        txt += `\n> Total: *${antilinkList.length}* link`
-        txt += `\n\n\`${m.prefix}delantilink <domain>\` untuk hapus`
+        txt += `\n> Total: *${antilinkList.length}* enlace`
+        txt += `\n\n\`${m.prefix}delantilinks<domain>\`para elimina`
         
         return m.reply(txt)
     }
@@ -44,7 +44,7 @@ function handler(m) {
     const index = antilinkList.findIndex(l => l === link)
     
     if (index === -1) {
-        return m.reply(`⚠️ Link \`${link}\` tidak ditemukan di daftar antilink!`)
+        return m.reply(`⚠️ Enlace\`${link}\`No, no se encuentra en la lista de antivínculos!`)
     }
     
     antilinkList.splice(index, 1)
@@ -52,8 +52,8 @@ function handler(m) {
     
     m.reply(
         `✅ *ᴀɴᴛɪʟɪɴᴋ ᴅɪʜᴀᴘᴜs*\n\n` +
-        `> Link: \`${link}\`\n` +
-        `> Sisa: *${antilinkList.length}* link`
+        `> Enlace:\`${link}\`\n` +
+        `Restante: *${antilinkList.length}* enlace`
     )
 }
 

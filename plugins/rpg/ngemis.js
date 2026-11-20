@@ -5,7 +5,7 @@ const pluginConfig = {
   name: "ngemis",
   alias: ["minta", "gembel"],
   category: "rpg",
-  description: "Ngemis di jalanan dengan peluang dapat Nasi Bungkus (Tambah stamina)",
+  description: "\" Los lodos en la calle con un abrazo pueden ser negados la flor. \"",
   usage: ".ngemis",
   example: ".ngemis",
   isOwner: false,
@@ -27,12 +27,12 @@ async function handler(m, { sock }) {
   user.rpg.stamina = _nullishCoalesce(user.rpg.stamina, () => ( 100));
 
   if (user.rpg.stamina < staminaCost) {
-    return m.reply(`Tenaga habis buat melas! 🥺\n\nNgemis butuh *${staminaCost} Stamina*, sisa stamina kamu *${user.rpg.stamina}*. Nggak kuat mangap lagi... 💔`);
+    return m.reply(`¡Cálmate para un baño!🥺\n\nButh @-@ nemis *${staminaCost}La resistencia, la restante te contamina${user.rpg.stamina}*. fuerte de no colgó de nuevo..💔`);
   }
 
   user.rpg.stamina -= staminaCost;
   await m.react("🤲");
-  await m.reply(`Pak, bu, minta sedekahnya sedikit... 🥺\nBerharap ada dermawan lewat di perempatan ini... 🚶‍♂️`);
+  await m.reply(`Señor, señora, pida un poco más cerca.🥺\nEn este trimestre se espera un pase generoso.🚶‍♂♪`);
   await new Promise(r => setTimeout(r, 3000));
 
   const gacha = Math.random();
@@ -41,12 +41,12 @@ async function handler(m, { sock }) {
     const heal = Math.floor(Math.random() * 20) + 10;
     user.rpg.stamina = Math.min(100, user.rpg.stamina + heal);
     await m.react("🍱");
-    return m.reply(`ALHAMDULILLAH DIKASIH NASI PADANG! 🍱✨\n\nAda bapak-bapak baik hati yang ngasih kamu bungkus nasi sisa rapet!\n💖 Stamina bertambah: *+${heal}*\n💵 Uang didapat: 0\n\nWah, perut kenyang hati senang! 🥰`);
+    return m.reply(`¡¡AlhAMDUILLAH arrancó ese Arroz de PAGE!🍱✨\n\n¡Ez caballero comunitario que te dio una bolsa de reretes de restante de arroz!\n💖Stalina crecifield: * +${heal}*\n💵- ¡Oh!\n\n¡Wow, mi corazón está lleno de diversión!🥰`);
   }
 
   if (gacha > 0.9) {
     await m.react("💢");
-    return m.reply(`DIUSIR PREMAN PASAR! 💢\n\n"Woi, ini lapak gue! Pergi lo!"\nKamu lari ketakutan tanpa dapet sepeser pun...\n⚡ Stamina: -${staminaCost}\n\nSusah banget nyari lahan ngemis jaman sekarang! 😭`);
+    return m.reply(`PRESIDENTE💢\n\n¡Hey, soy yo, eres tú!\nHuiste sin siquiera un centavo de miedo.\n⚡STAMINA:${staminaCost}\n\n¡Te voy a encontrar ahora!😭`);
   }
 
   const earning = Math.floor(Math.random() * 3000) + 500;
@@ -55,7 +55,7 @@ async function handler(m, { sock }) {
   await _ourinleveljs.addExpWithLevelCheck.call(void 0, sock, m, db, user, expGain);
 
   await m.react("✅");
-  m.reply(`HASIL NGEMIS HARI INI! 🤲✨\n\n💵 Pendapatan Receh: *+Rp ${earning.toLocaleString("id-ID")}*\n📈 EXP: *+${expGain}*\n⚡ Stamina: -${staminaCost}\n\nBersyukur atas nikmat hari ini, walau receh yang penting halal! 🙏`);
+  m.reply(`¡NGEMIS ha tenido HARL Este!🤲✨\n\n💵Recibimiento Retorno: * + Rp${earning.toLocaleString("id-ID")}*\n📈 EXP: *+${expGain}*\n⚡ Stamina: -${staminaCost}\n\n¡Gracias por las bendiciones de hoy, por la importante ocasión de pago!🙏`);
 }
 
 exports.config = pluginConfig; exports.handler = handler;

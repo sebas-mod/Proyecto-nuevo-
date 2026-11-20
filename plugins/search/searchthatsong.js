@@ -6,7 +6,7 @@ const pluginConfig = {
   name: "searchthatsong",
   alias: ["sts", "carilagu"],
   category: "search",
-  description: "Mencari detail sebuah lagu dari lirik atau potongan kata",
+  description: "Buscar detalles de una canción de lirik o corte de palabras",
   usage: ".searchthatsong <potongan lirik>",
   example: ".searchthatsong ku menangis membayangkan",
   isOwner: false,
@@ -73,7 +73,7 @@ function _extractSessionId(setCookieArr) {
 
 async function _routePreview(query, sessionCookie = "") {
   const headers = sessionCookie ? { Cookie: sessionCookie } : {};
-  const res = await _vyrRequest("POST", `${_BASE}/api/search/route-preview`, { query }, headers);
+  const res = await _vyrRequest("POST", `${_BASE}/fuego/search/route-preview`, { query }, headers);
   if (res.status !== 200) throw new Error(`request failed [rp] status=${res.status}`);
   const sid = _extractSessionId(res.headers["set-cookie"]);
   return { route: res.data, sessionId: sid };
@@ -115,7 +115,7 @@ async function handler(m, { sock }) {
   const query = m.args.join(" ") || _optionalChain([m, 'access', _ => _.text, 'optionalAccess', _2 => _2.trim, 'call', _3 => _3()]);
 
   if (!query) {
-    return m.reply("❌ Masukkan potongan lirik atau nama lagu yang ingin dicari.\n\nContoh: `.sts ku menangis membayangkan`");
+    return m.reply("❌Ponga una rebanada de lirik o un nombre de canción para buscar.\n\nEjemplo:`Mis pts están llorando.`");
   }
 
   await m.react("🕕");
@@ -125,14 +125,14 @@ async function handler(m, { sock }) {
 
     if (!result.song) {
       await m.react("❌");
-      return m.reply("⚠️ Lagu tidak ditemukan. Coba gunakan lirik yang lebih spesifik.");
+      return m.reply("⚠Prueba un licor más específico.");
     }
 
     let caption = `🎵 *SEARCH THAT SONG* 🎵\n\n`;
     caption += `*Judul:* ${result.song}\n`;
     if (result.artist) caption += `*Artis:* ${result.artist}\n`;
     if (result.album) caption += `*Album:* ${result.album}\n`;
-    if (result.year) caption += `*Tahun:* ${result.year}\n`;
+    if (result.year) caption += `*Año:*${result.year}\n`;
     if (result.genre) caption += `*Genre:* ${result.genre}\n`;
     if (result.youtubeUrl) caption += `*YouTube:* ${result.youtubeUrl}\n`;
     if (result.relevantChunk) caption += `\n*Match:* ${result.relevantChunk}\n`;
@@ -163,7 +163,7 @@ async function handler(m, { sock }) {
   } catch (error) {
     console.error("[SearchThatSong]", error.message);
     await m.react("☢");
-    m.reply("😔 Terjadi kesalahan saat mencari lagu. Server mungkin sedang bermasalah.");
+    m.reply("😔El servidor puede estar teniendo un problema.");
   }
 }
 

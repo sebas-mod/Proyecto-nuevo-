@@ -40,7 +40,7 @@ async function checkPrompt(prompt) {
 
 async function getResult(sessionHash, eventId) {
   const res = await _axios2.default.get(
-    `${SPACE_URL}/gradio_api/queue/data?session_hash=${sessionHash}`,
+    `${SPACE_URL}/gradio_api/queue/datos?session_hash=${sessionHash}`,
     {
       timeout: 180000,
       responseType: "stream",
@@ -60,7 +60,7 @@ async function getResult(sessionHash, eventId) {
       if (done) return;
       done = true;
       res.data.destroy();
-      reject(new Error("Timeout menunggu hasil"));
+      reject(new Error("Timeout espera resultados"));
     }, 180000);
 
     res.data.on("data", (chunk) => {
@@ -84,7 +84,7 @@ async function getResult(sessionHash, eventId) {
 
           if (json.msg === "process_completed") {
             const url = extractUrl(json.output);
-            if (!url) throw new Error("URL hasil tidak ditemukan");
+            if (!url) throw new Error("URL de resultados no encontradas");
 
             done = true;
             clearTimeout(timer);
@@ -94,7 +94,7 @@ async function getResult(sessionHash, eventId) {
           }
 
           if (json.msg === "process_failed") {
-            throw new Error("Generate gagal");
+            throw new Error("Generate fallido");
           }
         } catch (err) {
           done = true;
@@ -117,7 +117,7 @@ async function getResult(sessionHash, eventId) {
       if (done) return;
       done = true;
       clearTimeout(timer);
-      reject(new Error("Stream selesai tanpa hasil"));
+      reject(new Error("Corriente terminada sin resultado"));
     });
   });
 }
@@ -136,7 +136,7 @@ function extractUrl(output) {
   const path = text.match(/\/tmp\/gradio\/[^"'\\\s]+?\.(webp|png|jpg|jpeg)/);
 
   if (path) {
-    return `${SPACE_URL}/gradio_api/file=${path[0]}`;
+    return `${SPACE_URL}/gradio_api/archivo=${path[0]}`;
   }
 
   return "";
@@ -147,7 +147,7 @@ async function Txt2Img2(prompt) {
     const check = await checkPrompt(prompt);
 
     if (check.flagged) {
-      return { status: false, code: 400, prompt, error: "Prompt terdeteksi tidak aman" };
+      return { status: false, code: 400, prompt, error: "Propulsión insegura detectada" };
     }
 
     if (check.rateLimited) {
@@ -157,7 +157,7 @@ async function Txt2Img2(prompt) {
     const sessionHash = _nodecrypto2.default.randomBytes(8).toString("hex");
 
     const joinRes = await _axios2.default.post(
-      `${SPACE_URL}/gradio_api/queue/join?`,
+      `${SPACE_URL}/ graohajir fuego / cola / unirse?`,
       {
         data: [prompt, [], "Distilled (4 steps)", 0, true, 1024, 1024, 4, 1, false],
         event_data: null,
@@ -178,7 +178,7 @@ async function Txt2Img2(prompt) {
     const eventId = _optionalChain([joinRes, 'access', _ => _.data, 'optionalAccess', _2 => _2.event_id]);
 
     if (!eventId) {
-      return { status: false, code: 500, prompt, error: "event_id tidak ditemukan" };
+      return { status: false, code: 500, prompt, error: "No lo encontraron." };
     }
 
     const url = await getResult(sessionHash, eventId);

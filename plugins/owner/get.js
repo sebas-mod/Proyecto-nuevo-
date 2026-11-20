@@ -7,7 +7,7 @@ const pluginConfig = {
   name: "get",
   alias: ["fetch", "http", "request", "curl"],
   category: "owner",
-  description: "Advanced HTTP request tool (Owner Only)",
+  description: "Herramienta de solicitud HTTP avanzada (sólo propietario )",
   usage: ".get <url> [options]",
   example:
     '.get https://api.example.com --method POST --json {"key":"value"} --header "Authorization: Bearer token"',
@@ -95,7 +95,7 @@ function parseHeaders(headerArgs) {
 
 async function handler(m, { sock }) {
   if (!_configjs2.default.isOwner(m.sender)) {
-    return m.reply("❌ *Owner Only!*");
+    return m.reply("❌*Propietario Only!*");
   }
 
   let input = _optionalChain([m, 'access', _ => _.fullArgs, 'optionalAccess', _2 => _2.trim, 'call', _3 => _3()]) || _optionalChain([m, 'access', _4 => _4.text, 'optionalAccess', _5 => _5.trim, 'call', _6 => _6()]);
@@ -146,7 +146,7 @@ async function handler(m, { sock }) {
   ];
   if (!validMethods.includes(method)) {
     return m.reply(
-      `❌ Invalid method: ${method}. Valid: ${validMethods.join(", ")}`,
+      `❌ Invalid method: ${method}VlVID:${validMethods.join(", ")}`,
     );
   }
 
@@ -240,7 +240,7 @@ async function handler(m, { sock }) {
 
     let header = `🌐 *HTTP RESPONSE*
 
-╭┈┈⬡「 📋 INFO 」
+╭┈┈⬡「 📋INFO」
 ┃ ${statusEmoji} Status: ${response.status} ${response.statusText}
 ┃ 📨 Method: ${method}
 ┃ ⏱️ Time: ${elapsed}ms
@@ -327,7 +327,7 @@ async function handler(m, { sock }) {
               mimetype: "application/json",
               caption:
                 header +
-                `\n\n📄 Pretty JSON dikirim sebagai file (${formatSize(pretty.length)})`,
+                `\n\n📄Prempy JSON envió como un archivo (${formatSize(pretty.length)})`,
             },
             { quoted: m },
           );

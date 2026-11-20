@@ -6,7 +6,7 @@ const pluginConfig = {
     name: 'deploy',
     alias: ['vercel'],
     category: 'owner',
-    description: 'Deploy HTML atau file ZIP ke Vercel',
+    description: 'HTTL Implementar o archivos ZIP a Vercel',
     usage: '.deploy <namawebsite>',
     example: '.deploy mysite',
     isOwner: true,
@@ -23,17 +23,17 @@ async function handler(m, { sock }) {
 
     if (!name || !m.quoted) {
         return m.reply(
-            `ℹ️ *INFORMASI PENGGUNAAN*\n\n` +
-            `Fitur ini digunakan untuk melakukan *deploy* (hosting) kode HTML atau file proyek lengkap (ZIP) secara langsung ke Vercel.\n\n` +
-            `*CONTOH PENGGUNAAN:*\n` +
-            `• Reply teks/kode HTML dengan perintah: \`${m.prefix}deploy namasitus\`\n` +
-            `• Reply file \`.html\` atau \`.zip\` dengan perintah: \`${m.prefix}deploy namasitus\``
+            `*Usando información*\n\n` +
+            `Está característica se utiliza para almacenar código HTTL o archivos de proyecto completos ( ZIP ) directamente en Vercel.\n\n` +
+            `*Ejemplo de uso:*\n` +
+            `•Responder texto / Código HTTML con comando:\`${m.prefix}deploy namasitus\`\n` +
+            `•Responder archivo\`- Shh.\`o\`- Dios mío.\`con comando:\`${m.prefix}deploy namasitus\``
         )
     }
 
     const token = _optionalChain([_configjs2.default, 'access', _ => _.vercel, 'optionalAccess', _2 => _2.token])
     if (!token) {
-        return m.reply(`❌ *TOKEN BELUM DIATUR*\n\nToken Vercel belum dikonfigurasi di pengaturan sistem. Silakan atur \`config.vercel.token\` terlebih dahulu.`)
+        return m.reply(`❌91; El Token YET\n\nVercel token no ha sido configrado en el control de dhat.\`config. vercel. token\`La primera vez.`)
     }
 
     m.react('🕕')
@@ -61,7 +61,7 @@ async function handler(m, { sock }) {
 
             if (filesPayload.length === 0) {
                 m.react('❌')
-                return m.reply(`❌ *FILE ZIP KOSONG*\n\nFile ZIP yang Anda unggah tidak berisi file apapun. Pastikan file ZIP tersebut berisi proyek HTML/Web statis.`)
+                return m.reply(`❌Archivo ZIP Vacio\n\nLos archivos ZIP que necesita no se limitan a ningún archivo. Asegúrese de que el archivo ZIP está listado como un contenido del proyecto estático HTTL / Web.`)
             }
         } else if (
             m.quoted.mimetype === 'text/html' ||
@@ -85,11 +85,11 @@ async function handler(m, { sock }) {
         } else {
             m.react('❌')
             return m.reply(
-                `❌ *FORMAT TIDAK DIDUKUNG*\n\n` +
-                `Sistem hanya mendukung deploy dari format berikut:\n` +
-                `• Teks kode HTML\n` +
-                `• Dokumen \`.html\`\n` +
-                `• Dokumen arsip \`.zip\``
+                `❌FAMILIA NO SE SE\n\n` +
+                `El sistema es sólo un archivo de los próximos formatos:\n` +
+                `•Pruebas de código HTTML\n` +
+                `•Documento\`- Shh.\`\n` +
+                `•Documento arsip\`- Dios mío.\``
             )
         }
 
@@ -135,18 +135,18 @@ async function handler(m, { sock }) {
                 _optionalChain([domains, 'access', _6 => _6.find, 'call', _7 => _7(d => d.name.endsWith('.vercel.app')), 'optionalAccess', _8 => _8.name]) ||
                 domain
         } catch (e) {
-            // fallback ke default domain jika gagal mengambil data domain
+            //descomposición al dominio predeterminado si no recupera datos de dominio
         }
 
         m.react('✅')
 
         await m.reply(
-            `✅ *DEPLOY BERHASIL*\n\n` +
-            `Proyek Anda telah berhasil diunggah ke Vercel dan saat ini sedang dalam proses penyebaran (building). Anda dapat segera mengaksesnya melalui tautan berikut.\n\n` +
+            `✅*DEPLOY Exito*\n\n` +
+            `Su proyecto ha llevado con éxito a Vercel y está actualmente en proceso de construcción. Usted puede acceder inmediatamente a través de la próxima lote.\n\n` +
             `*RINCIAN DEPLOY:*\n` +
-            `• Nama Proyek: *${name}*\n` +
+            `•Nombre Proyek: *${name}*\n` +
             `• Tipe Proyek: *${isZip ? 'ZIP Archive (Banyak File)' : 'Static HTML (File Tunggal)'}*\n` +
-            `• Tautan: https://${domain}`
+            `•Enlace:https://${domain}`
         )
 
     } catch (error) {
@@ -157,7 +157,7 @@ async function handler(m, { sock }) {
             _optionalChain([error, 'access', _13 => _13.response, 'optionalAccess', _14 => _14.data, 'optionalAccess', _15 => _15.message]) ||
             error.message
 
-        m.reply(`❌ *DEPLOY GAGAL*\n\nTerjadi kesalahan saat mencoba mengunggah proyek ke Vercel.\n\n*Penyebab Error:*\n> ${err}`)
+        m.reply(`❌*DEPLOY Fallido*\n\nFue un error intentar subir el proyecto a Vercel.\n\n* Sombra de error: *\n♪${err}`)
     }
 }
 

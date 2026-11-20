@@ -2,7 +2,7 @@
     name: 'antitagsw',
     alias: ['antitag', 'antistatustag'],
     category: 'group',
-    description: 'Mengaktifkan/menonaktifkan anti tag status di grup',
+    description: 'Activar / desabollitar el estaya de la etiquata en grupo',
     usage: '.antitagsw <on/off>',
     example: '.antitagsw on',
     isOwner: false,
@@ -28,11 +28,11 @@ async function handler(m, { sock, db }) {
         await m.reply(
             `📢 *ᴀɴᴛɪᴛᴀɢsᴡ sᴇᴛᴛɪɴɢs*\n\n` +
             `> Status: *${status === 'on' ? '✅ Aktif' : '❌ Nonaktif'}*\n\n` +
-            `> Fitur ini menghapus pesan tag status\n` +
+            `Este Función memoriza el estado de la etiqueta de mensaje\n` +
             `> (groupStatusMentionMessage)\n\n` +
             `\`\`\`━━━ ᴘɪʟɪʜᴀɴ ━━━\`\`\`\n` +
             `> \`${m.prefix}antitagsw on\` → Aktifkan\n` +
-            `> \`${m.prefix}antitagsw off\` → Nonaktifkan`
+            `> \`${m.prefix}antitaghap\` →Desactiva`
         )
         return
     }
@@ -41,8 +41,8 @@ async function handler(m, { sock, db }) {
         db.setGroup(groupId, { ...group, antitagsw: 'on' })
         await m.reply(
             `✅ *ᴀɴᴛɪᴛᴀɢsᴡ ᴀᴋᴛɪꜰ*\n\n` +
-            `> Anti tag status berhasil diaktifkan!\n` +
-            `> Pesan tag status akan dihapus otomatis.`
+            `¡El estado de la etiqueta anti-@ se activa!\n` +
+            `Para Mensaje el estado de la etiqueta será cubierto por la automatización.`
         )
         return
     }
@@ -51,14 +51,14 @@ async function handler(m, { sock, db }) {
         db.setGroup(groupId, { ...group, antitagsw: 'off' })
         await m.reply(
             `❌ *ᴀɴᴛɪᴛᴀɢsᴡ ɴᴏɴᴀᴋᴛɪꜰ*\n\n` +
-            `> Anti tag status berhasil dinonaktifkan.`
+            `El estado de etiqueta anti-@ es deshabilitado.`
         )
         return
     }
 
     await m.reply(
         `❌ *ᴘɪʟɪʜᴀɴ ᴛɪᴅᴀᴋ ᴠᴀʟɪᴅ*\n\n` +
-        `> Gunakan: on atau off`
+        `Uso: encendido o apagado`
     )
 }
 

@@ -1,29 +1,29 @@
-# LAPORAN KEAMANAN — SISTEM WAJIB FOLLOW SALURAN WHATSAPP
+INFORMACIÓN DE LA SEGURIDAD—ESCRITO ESCUELA SÍGUELO EN SALUAN QUÉS PUEDE
 # OURIN 3.5 ULTIMATE EDITION
 
-Tanggal: 19 November 2026
+Fecha: 19 de noviembre de 2026
 
 ---
 
-## 1. Spesifikasi Saluran Resmi
+# 1. Especificación oficial de la salutación
 
-Sistem keamanan Ourin 3.5 mewajibkan seluruh pengguna untuk mengikuti dua saluran resmi:
+El sistema de seguridad Ourin 3 requiere que todo el uso siga el canal oficial dos:
 
 1. **CHANNEL 1:**
    `https://whatsapp.com/channel/0029VaBOlsv002TEjlntTE2D`
-   Kode Saluran: `0029VaBOlsv002TEjlntTE2D`
+Código Saluran:`0029VABOlsv002TEJINTTE2D`
 
 2. **CHANNEL 2:**
    `https://whatsapp.com/channel/0029Vb8xSqi0AgWJaiZ9Qm16`
-   Kode Saluran: `0029Vb8xSqi0AgWJaiZ9Qm16`
+Código Saluran:`0029Vb8xSqi0AgWJaiZ9Qm16`
 
-Kedua URL dipertahankan secara utuh dalam source code (`src/lib/ourin-channel-security.js`).
+La embajada URL se mantiene de forma absoluta en el código fuente (`src / lib / ourin - canal - seguridad. js`).
 
 ---
 
-## 2. Pesan Akses Ditolak (Access Denied)
+# 2.
 
-Setiap pengguna yang belum diverifikasi dan mencoba menjalankan perintah akan langsung diblokir dan menerima pesan resmi berikut:
+Cada uso no verificado y el intento de ejecutar el comando será bloqueado y recibido el siguiente mensaje oficial:
 
 ```text
 ACCESS DENIED — FOLLOW REQUIRED
@@ -45,31 +45,31 @@ Akses akan diberikan setelah status follow berhasil diverifikasi.
 
 ## 3. Analisis Teknis & Keterbatasan Protokol WhatsApp
 
-Sesuai ketentuan Bagian 12:
+Orden de la Sección 12:
 - **Audit Protokol WhatsApp Newsletter:**
-  - Protokol WhatsApp Web/Multi-Device yang digunakan oleh pustaka Baileys maupun fork `cantarelllaa` **tidak menyediakan node query untuk mengecek daftar subscriber saluran secara publik**.
-  - WhatsApp menerapkan pembatasan privasi ketat: pemilik saluran sekalipun hanya dapat melihat kontak yang nomor teleponnya tersimpan di buku telepon masing-masing.
-  - Baileys/cantarelllaa hanya dapat mengambil metadata publik saluran (`subscribers_count`, `name`, `description`, `verification`) melalui fungsi `newsletterMetadata('invite', code)`.
-- **Integritas Sistem (Anti-Fake Claims):**
-  - Bot **tidak mengklaim deteksi real-time unfollow palsu** yang tidak didukung oleh protokol WhatsApp.
-  - Bot menerapkan prinsip **Fail-Closed Security**: akses secara default ditutup untuk seluruh pengguna non-owner sampai verifikasi dilakukan.
-  - Setiap verifikasi dicatat dengan masa kedaluwarsa berkala (7 hari) untuk memastikan pengguna tetap aktif di saluran resmi.
+- Prototol WhatsApp Web / Multi - Dispositivo utilizado por el unifork de Baileys`Castillo de Elinna`* * no proportion un nodo de consutta para compobar la lista de suscriptores de canales públichos.
+- WhatsApp prepara la privacidad de la pasarela: el dueño de un solo canal sólo puede ver el número de números en cada teléfono.
+- Baileys / camarellaa sólo pueden tomar canal de metadatos públicos (`Lo siento mucho.`.`nombre`.`descripción`.`Verificación`) a través de la función`newsletterMetadatos ( xenavite españa, código )`.
+* * * Sistema de Integritas ( Anti @-@ Reclamaciones de Fax ):
+* * no alegue al detective real - tiempo sin seguir falso * que no está respaldado por el protocolo WhatsApp.
+- Aplicar el principio - del Fail - Seguridad Cerrada * *: los actos como defoult se cierran para todo el uso no @-@ propietario - propietario para verificar hecho.
+- Cada verificación se registra con una fecha de caducidad de siete @-@ días para asegurarse de que el uso permanece activo en el canal oficial.
 
 ---
 
-## 4. Mekanisme Kerja Middleware Terpusat
+## 4. Mekanisme Trabaja Middleware Terpusat
 
-1. **Penyaringan Perintah:**
-   - Ditempatkan di entry point handler perintah (`src/handler.js`) sebelum eksekusi case maupun plugin.
-2. **Pengecualian Otomatis (Bypass Permissions):**
-   - **Bot Owner & Partner:** Selalu memiliki akses penuh tanpa pemblokiran.
-   - **Admin Grup:** Diberikan hak akses di dalam grup yang dikelolanya.
-   - **Perintah Verifikasi:** Perintah `.verif`, `.verify`, `.cekverif`, dan `.unverif` selalu diizinkan lewat agar pengguna dapat memproses verifikasinya.
-3. **Alur Verifikasi Pengguna:**
-   - Pengguna mengikuti kedua saluran melalui tautan resmi.
-   - Pengguna mengirim perintah `.verif`.
-   - Bot melakukan query status integritas saluran via `sock.newsletterMetadata`.
-   - Status verifikasi dicatat ke cache/database sentral.
-   - Hak akses seluruh perintah Ourin 3.5 langsung terbuka.
+* * Filtro de comandos: * *
+- Colocado en el comando de control de puntos de entrada (`src / handler. js`) antes de la ejecución de caso maupun plug.
+2. * * Autolaciones Exclusivas ( Permisos de Pasaje ): * *
+* * * El socio de jardín del propietario: * * y sin embargo tiene una acción completa sin bloquear.
+* * Administrador del grupo: * * Donó los derechos de la actuación en el grupo que había seguido.
+* * Comando de Verificación: * * Comando`- El verif.`.`- Es verv.`.`- El cecverif.`, y`Unverify.`Siempre permitido a través de los usuarios de para que para procesar verificaciones.
+3 * * * Alur Verifikasi Usurament: * *
+- Los usuarios siguen el canal secundario a través de la técnica oficial.
+- Los usuarios envían pedidos.`- El verif.`.
+- Para realizar una consulta de integridad saluran vía`*Sock.* *Boletín Metadata*`.
+- Verificación de estado registrada en caché / base de datos central.
+- Hak se acerca por todos los años 3 5 años.
 4. **Alur Pencabutan Akses (Revoke):**
-   - Owner dapat mencabut akses pengguna bermasalah kapan saja menggunakan perintah `.unverif @user`.
+- El propietario puede deshacerse de las acciones del usuario.`. unverify @ user`.

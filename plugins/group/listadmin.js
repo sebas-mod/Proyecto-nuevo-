@@ -4,7 +4,7 @@ const pluginConfig = {
     name: 'listadmin',
     alias: ['admins', 'adminlist'],
     category: 'group',
-    description: 'Menampilkan daftar admin grup',
+    description: 'Adjuntar una lista de listas de administradores de grupos',
     usage: '.listadmin',
     example: '.listadmin',
     isOwner: false,
@@ -25,7 +25,7 @@ async function handler(m, { sock }) {
         const admins = participants.filter(p => p.admin)
 
         if (admins.length === 0) {
-            await m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> Tidak ada admin di grup ini.`)
+            await m.reply(`❌*ɢᴀɢᴀʟ*\n\nNo hay ningún administrador en este grupo.`)
             return
         }
 
@@ -45,7 +45,7 @@ async function handler(m, { sock }) {
                 adminList += `\`\`\`${i + 1}. @${_ourinlidjs.getParticipantJid.call(void 0, admin).split('@')[0]}\`\`\`\n`
             })
         }
-        adminList += `\n\`Total Admin: ${admins.length}\``
+        adminList += `\n\`Total Administrador:${admins.length}\``
 
         const mentions = admins.map(a => _ourinlidjs.getParticipantJid.call(void 0, a))
 

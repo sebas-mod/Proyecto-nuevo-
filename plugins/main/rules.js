@@ -6,7 +6,7 @@ const pluginConfig = {
     name: "rules",
     alias: ["aturanbot", "botrules", "peraturanbot"],
     category: "main",
-    description: "Menampilkan rules dan aturan penggunaan bot secara lengkap",
+    description: "Asistir reglas y configuración completa del uso de arranque",
     usage: ".rules",
     example: ".rules",
     isOwner: false,
@@ -19,32 +19,32 @@ const pluginConfig = {
 }
 
 function buildDefaultRules(botName, prefix) {
-    return `📜 *PERATURAN ${botName.toUpperCase()}*
+    return `📜 *Normas ${botName.toUpperCase()}*
 
-Hai! Sebelum kamu menggunakan semua fitur yang tersedia, pastikan kamu memahami dan mematuhi peraturan berikut ini ya. Peraturan ini dibuat supaya semua pengguna bisa nyaman dan bot bisa berjalan dengan lancar.
+Si no ha utilizado todas las características disponibles, debe comprender y obedecer las reglas siguientes.
 
-🔹 *ATURAN UMUM*
+🔹*Reglas General*
 
-- Dilarang keras melakukan *spam command* secara berulang-ulang dalam waktu singkat. Sistem anti-spam aktif dan pelanggar bisa langsung dibanned otomatis oleh bot.
-- Gunakan semua fitur bot dengan *bijak dan bertanggung jawab*. Jangan menyalahgunakan fitur untuk hal-hal yang merugikan orang lain.
-- Dilarang menggunakan bot untuk menyebarkan *konten SARA, ujaran kebencian, atau konten ilegal* dalam bentuk apapun.
-- *Hormati sesama pengguna* bot. Jangan menggunakan fitur untuk mengganggu, membully, atau merugikan pengguna lain.
-- Jangan mengirimkan *konten NSFW* di grup tanpa persetujuan admin grup terlebih dahulu.
+- El commando de spam emexepetivo en poco tiempo.
+- Usa todas las botas con sabio y responsable.
+- Usaba las botas para difundir el contenido de SARA, las historias de odio, o el contenido ilegal en cualquier snap.
+- * El respeto por el uso de las botas, no utilice la función de interferir, ser redondo o desatar otro uso.
+- No envíe un contenido de la NSFW en un grupo sin su primer acuerdo de grupo de administradores.
 
-🔹 *ATURAN PENGGUNAAN FITUR*
+🔹> 91; Cátedra de la UUACIÓN DE LA FUTURA > 93;
 
-- Setiap penggunaan command membutuhkan *energi*. Gunakan energi kamu dengan bijak supaya tidak cepat habis.
-- Fitur *premium* hanya bisa diakses oleh pengguna yang sudah berlangganan. Ketik *${prefix}benefitpremium* untuk info lengkap.
-- Jika menemukan *bug atau error*, segera laporkan ke owner bot melalui *${prefix}owner*. Jangan disalahgunakan.
-- Dilarang melakukan *request fitur yang tidak masuk akal* atau memaksa owner untuk menambahkan fitur tertentu.
+- Cualquier uso del comando requiere energía.
+- Premium sólo puede ser manejado por un uso prolgado.${prefix}Benefitpremium para información completa.
+- Si encuentras un zumbido o error, reporta inmediatamente al propietario de la bota a través de.${prefix}- No me malinterpretes.
+- Hizo una función de solicitud no sensorial o utilizó al propietario para agregar una característica específica.
 
-🔹 *KONSEKUENSI PELANGGARAN*
+🔹*KONSEKUENSI Infraccion*
 
-- Pelanggaran ringan akan mendapat *peringatan* dari admin atau owner
-- Pelanggaran berat atau berulang dapat mengakibatkan *banned permanen* dari penggunaan bot
-- Owner berhak memutuskan sanksi tanpa pemberitahuan terlebih dahulu
+- Advertencia de mala calidad de administrador o propietario
+- La corrupción o la repetición se puede esperar * prohibido permanen * del uso del bot
+- El titular tiene derecho a decidir sin su aviso previo.
 
-_Dengan menggunakan bot ini, kamu dianggap sudah membaca dan menyetujui seluruh peraturan di atas._`
+Con estas botas puestas, se supone que debe leer y leer todas las reglas en la parte superior.`
 }
 
 async function handler(m, { sock }) {
@@ -56,7 +56,7 @@ async function handler(m, { sock }) {
     if (customRules && typeof customRules === "string" && customRules.trim().length > 0) {
         rulesText = customRules
     } else if (Array.isArray(customRules) && customRules.length > 0) {
-        rulesText = `📜 *PERATURAN ${botName.toUpperCase()}*\n\n`
+        rulesText = `📜 *Normas ${botName.toUpperCase()}*\n\n`
         customRules.forEach((rule, i) => {
             rulesText += `${i + 1}. ${rule}\n`
         })

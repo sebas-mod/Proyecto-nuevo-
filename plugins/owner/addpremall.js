@@ -5,7 +5,7 @@ const pluginConfig = {
     name: 'addpremall',
     alias: ['addpremiumall', 'setpremall'],
     category: 'owner',
-    description: 'Menambahkan semua member grup ke premium',
+    description: 'Añadir todas las fotos de grupo a prima',
     usage: '.addprem all',
     example: '.addprem all',
     isOwner: true,
@@ -23,7 +23,7 @@ async function handler(m, { sock }) {
         const participants = groupMeta.participants || []
         
         if (participants.length === 0) {
-            return m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> Tidak ada member di grup ini`)
+            return m.reply(`❌*ɢᴀɢᴀʟ*\n\n*No hay foto en este grupo*`)
         }
         
         await m.react('🕕')
@@ -69,7 +69,7 @@ async function handler(m, { sock }) {
             `┃ ⏭️ sᴜᴅᴀʜ ᴘʀᴇᴍɪᴜᴍ: \`${alreadyPremCount}\`\n` +
             `┃ 💎 ᴛᴏᴛᴀʟ ᴘʀᴇᴍɪᴜᴍ: \`${db.data.premium.length}\`\n` +
             `╰┈┈⬡\n\n` +
-            `> Grup: ${groupMeta.subject}`
+            `> Grupo:${groupMeta.subject}`
         )
         
     } catch (error) {

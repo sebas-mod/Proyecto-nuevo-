@@ -68,16 +68,16 @@ async function handler(m) {
     const user = db.getUser(m.sender)
     const targetClanId = _optionalChain([m, 'access', _7 => _7.text, 'optionalAccess', _8 => _8.trim, 'call', _9 => _9()])
 
-    if (!_optionalChain([user, 'optionalAccess', _10 => _10.clanId])) return m.reply(`❌ Kamu belum punya clan`)
+    if (!_optionalChain([user, 'optionalAccess', _10 => _10.clanId])) return m.reply(`❌Aún no tienes un clan.`)
 
     if (!targetClanId) {
         return m.reply(
             `⚔️ *CLAN WAR*\n\n` +
-            `Tantang clan lain untuk berperang!\n\n` +
-            `Contoh: *.clanwar clan_123456*\n` +
-            `Cek ID: *.clanleaderboard*\n\n` +
-            `Syarat: Minimal 3 member per clan\n` +
-            `Cooldown: 1 jam`
+            `¡Otro desafío a la guerra!\n\n` +
+            `*. clanwar clankhank12346 *\n` +
+            `Comprobación de id: *. clanleaderboard *\n\n` +
+            `Süat: Mínimo 3 foto por clan\n` +
+            `Refrigeración: 1 hora`
         )
     }
 
@@ -88,11 +88,11 @@ async function handler(m) {
         || Object.values(db.db.data.clans).find(c => c.name.toLowerCase() === targetClanId.toLowerCase())
         || Object.values(db.db.data.clans).find(c => c.id.toLowerCase() === targetClanId.toLowerCase())
 
-    if (!myClan) return m.reply(`❌ Clan kamu tidak ditemukan`)
-    if (!enemyClan) return m.reply(`❌ Clan lawan tidak ditemukan`)
-    if (user.clanId === targetClanId) return m.reply(`❌ Tidak bisa war melawan clan sendiri`)
-    if (myClan.members.length < 3) return m.reply(`❌ Clan kamu butuh minimal 3 member`)
-    if (enemyClan.members.length < 3) return m.reply(`❌ Clan lawan butuh minimal 3 member`)
+    if (!myClan) return m.reply(`❌No se encuentra.`)
+    if (!enemyClan) return m.reply(`❌- La forma en que estás mirando... - # La forma en que estás mirando #`)
+    if (user.clanId === targetClanId) return m.reply(`❌No puede la guerra contra un clan por sí mismo`)
+    if (myClan.members.length < 3) return m.reply(`❌Necesitas tener un mínimo de 3 disparos`)
+    if (enemyClan.members.length < 3) return m.reply(`❌Burke oponente necesita un mínimo de 3 fotos`)
 
     const myPower = calculatePower(db, myClan)
     const enemyPower = calculatePower(db, enemyClan)

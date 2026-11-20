@@ -4,7 +4,7 @@ const pluginConfig = {
   name: "petshop",
   alias: ["tokopet", "buypet", "belipet"],
   category: "rpg",
-  description: "Beli pet dari toko",
+  description: "Comprar mascotas de la tienda",
   usage: ".petshop <buy> <pet>",
   example: ".petshop buy cat",
   isOwner: false,
@@ -17,7 +17,7 @@ const pluginConfig = {
 };
 
 const PETS_FOR_SALE = {
-  cat: { name: "🐱 Kucing", price: 5000, desc: "Bawa hoki (Luck tinggi, Attack sedang)" },
+  cat: { name: "🐱 Kucing", price: 5000, desc: "Hockey Bawa (Alta la suerte, medio de ataque )" },
   dog: { name: "🐕 Anjing", price: 6000, desc: "Penjaga setia (Attack tinggi, Defense bagus)" },
   bird: { name: "🐦 Burung", price: 4500, desc: "Lincah & Hoki (Luck sangat tinggi)" },
   fish: { name: "🐟 Ikan", price: 3000, desc: "Murah meriah (Bawa keberuntungan)" },
@@ -36,37 +36,37 @@ function handler(m) {
   const petKey = _optionalChain([args, 'access', _4 => _4[1], 'optionalAccess', _5 => _5.toLowerCase, 'call', _6 => _6()]);
 
   if (!action || action !== "buy") {
-    let txt = `Halo Petualang! Selamat datang di Toko Hewan Peliharaan 🐾🏪\n`;
-    txt += `Pilih teman petualanganmu yang lucu-lucu ini!\n\n`;
+    let txt = `¡Bienvenido a Tienda Animal Petrans!🐾🏪\n`;
+    txt += `¡Elija su ridículo amigo de aventura!\n\n`;
     
-    txt += `*Daftar Peliharaan:*\n`;
+    txt += `*Registrate Peliharaan:*\n`;
     for (const [key, pet] of Object.entries(PETS_FOR_SALE)) {
       txt += `\n*${pet.name}*\n`;
-      txt += `💰 Harga: Rp ${pet.price.toLocaleString()}\n`;
+      txt += `💰Precio: Rp${pet.price.toLocaleString()}\n`;
       txt += `📝 Sifat: ${pet.desc}\n`;
       txt += `👉 Adopsi: \`.petshop buy ${key}\`\n`;
     }
     
-    txt += `\n\n💰 *Uang Kamu:* Rp ${(user.koin || 0).toLocaleString()}`;
+    txt += `\n\n💰* Dinero You: * Rp${(user.koin || 0).toLocaleString()}`;
     return m.reply(txt);
   }
 
   if (action === "buy") {
     if (!petKey) {
-      return m.reply(`Hayo, mau adopsi hewan apa nih? Sebutin jenisnya dong! 😂\nContoh: \`${m.prefix}petshop buy cat\``);
+      return m.reply(`¿Qué clase de adopción te gustaría?😂\nEjemplo:\`${m.prefix}petshop buy cat\``);
     }
 
     if (user.rpg.pet) {
-      return m.reply(`Waduh kak, kamu kan udah punya peliharaan! 😭\nKasihan nanti dia cemburu. Lepas dulu peliharaan lamamu atau coba sistem kawin silang (\`.breeding\`).`);
+      return m.reply(`¡Tienes una mascota!😭\nDeja ir a tu antigua mascota o prueba el sistema de matrimonio cruzado.\`. rompiendo\`).`);
     }
 
     const petToBuy = PETS_FOR_SALE[petKey];
     if (!petToBuy) {
-      return m.reply(`Maaf kak, hewan jenis itu lagi kosong atau emang nggak dijual di sini! ❌\nCek daftarnya lagi pake \`${m.prefix}petshop\``);
+      return m.reply(`Lo siento hermano, el genio está vacío o un ladrón está vendiendo aquí!❌\nVerifique la lista de nuevo,\`${m.prefix}petshop\``);
     }
 
     if ((user.koin || 0) < petToBuy.price) {
-      return m.reply(`Aduh uangnya kurang nih buat biaya adopsi kak! 😭\nTotal biayanya Rp ${petToBuy.price.toLocaleString()} tapi uang kakak cuma Rp ${(user.koin || 0).toLocaleString()}`);
+      return m.reply(`Aduh uangnya menos aquí crea coste adopsi hermano! 😭\nTotales ordinarios de Rp${petToBuy.price.toLocaleString()}Pero el nombre de mi hermano es Rp${(user.koin || 0).toLocaleString()}`);
     }
 
     user.koin -= petToBuy.price;
@@ -83,10 +83,10 @@ function handler(m) {
     db.save();
 
     return m.reply(
-      `SELAMAT! 🎉🎉\n\n` +
-        `Kamu resmi mengadopsi *${petToBuy.name}*!\n` +
-        `💰 Biaya Adopsi: *Rp -${petToBuy.price.toLocaleString()}*\n\n` +
-        `Dia udah gak sabar pengen jalan-jalan sama kamu. Jangan lupa kasih makan dan cek statusnya pakai \`${m.prefix}pet\` ya! 🐾✨`
+      `Felicidades!🎉🎉\n\n` +
+        `Usted es adoptado oficialmente *${petToBuy.name}*!\n` +
+        `💰Coste Adopsi: * Rp-${petToBuy.price.toLocaleString()}*\n\n` +
+        `Quiere salir contigo, no olvides comer y comprobar su estado.\`${m.prefix}pet\` ya! 🐾✨`
     );
   }
 }

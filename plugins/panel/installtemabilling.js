@@ -4,7 +4,7 @@ const pluginConfig = {
     name: 'installtemabilling',
     alias: ['installthemabilling', 'temabilling'],
     category: 'panel',
-    description: 'Install tema Billing untuk panel Pterodactyl via SSH',
+    description: 'Instalar el tema de facturación para el panel de Pterodactilo',
     usage: '.installtemabilling <ip>|<password>',
     example: '.installtemabilling 192.168.1.1|secretpass',
     isOwner: true,
@@ -71,7 +71,7 @@ function handler(m) {
 
     const parts = text.split('|')
     if (parts.length < 2) {
-        return m.reply(`❌ Format salah! Gunakan: \`ip|password\``)
+        return m.reply(`❌ Formato incorrecto! Usa: \`* Contraseña*\``)
     }
 
     const ipvps = parts[0].trim()
@@ -106,7 +106,7 @@ function handler(m) {
 
             m.react('✅')
             await m.reply(
-                `╭┈┈⬡「 ✅ *ᴛᴇᴍᴀ ʙɪʟʟɪɴɢ* 」\n┃ ㊗ sᴛᴀᴛᴜs: *Terinstall*\n┃ ㊗ ɪᴘ: ${ipvps}\n╰┈┈⬡\n\n> _Tema Billing + dependencies berhasil diinstall!_`
+                `╭┈┈⬡「 ✅ *ᴛᴇᴍᴀ ʙɪʟʟɪɴɢ* 」\n┃ ㊗ sᴛᴀᴛᴜs: *Terinstall*\n┃ ㊗ ɪᴘ: ${ipvps}\n╰┈┈⬡\n\n*Tema Billing + dependientes instalados con éxito!`
             )
         } catch (err) {
             m.react('☢')
@@ -116,7 +116,7 @@ function handler(m) {
         }
     }).on('error', (err) => {
         m.react('❌')
-        m.reply(`❌ Koneksi gagal!\n\n> IP atau Password tidak valid.`)
+        m.reply(`❌Conexión fallido!\n\nAkeiP o Passard es inválido.`)
     }).connect(connSettings)
 }
 

@@ -39,9 +39,9 @@ async function handler(m, { sock }) {
 
     db.save();
 
-    let txt = `HACKING SUKSES!! 💻💵\n\n`;
-    txt += `Mesin ATM ngeluarin duit kayak air terjun! Lu langsung kabur bawa koper penuh duit.\n\n`;
-    txt += `💰 Hasil Bobol: *+Rp ${stolen.toLocaleString("id-ID")}*\n`;
+    let txt = `¡Recoge sus pantalones!💻💵\n\n`;
+    txt += `Mesin ATM ngeluarin dinero kayak agua terjun! Lu langsung kabur bawa koper lleno dinero.\n\n`;
+    txt += `💰Boob Preset: * + Rp${stolen.toLocaleString("id-ID")}*\n`;
     txt += `📈 EXP Kriminal: *+${expGain}*`;
 
     await m.reply(txt);
@@ -55,9 +55,9 @@ async function handler(m, { sock }) {
     db.save();
 
     let txt = `NGIIING NGIING!! ALARM BUNYI!! 🚨🚓\n\n`;
-    txt += `Sialan, mesinnya error dan polisi langsung ngepung dari segala arah!\n`;
-    txt += `Lu dipentung pake tongkat polisi terus dipaksa bayar denda.\n\n`;
-    txt += `💸 Denda Pidana: *-Rp ${actualFine.toLocaleString("id-ID")}*\n`;
+    txt += `¡Mierda, la máquina frita y la policía están agitando todo!\n`;
+    txt += `Usted 're a cop @-@ battered pad and kept a phagar multa on your back.\n\n`;
+    txt += `💸Pidania fina: * - Rp${actualFine.toLocaleString("id-ID")}*\n`;
     txt += `🤕 Memar Kena Pentung: *-15 HP*`;
 
     await m.reply(txt);

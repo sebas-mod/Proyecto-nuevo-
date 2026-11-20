@@ -51,17 +51,17 @@ async function handler(m, { sock }) {
     if (!isAudio) {
         return m.reply(
             `🎤 *ᴛʀᴀɴsᴋʀɪᴘ*\n\n` +
-            `> Reply voice note atau audio untuk mengonversi ke teks\n` +
-            `> Contoh: reply VN → ketik \`${m.prefix}transkrip\``
+            `Responder nota de voz o audio para convertir al texto\n` +
+            `> Ejemplo: responder VN →escribe\`${m.prefix}transkrip\``
         );
     }
     const groqKey = _optionalChain([_configjs2.default, 'access', _ => _.APIkey, 'optionalAccess', _2 => _2.groq]);
     if (!groqKey) {
         return m.reply(
             `❌ *ɢᴀɢᴀʟ*\n\n` +
-            `> API Key Groq belum diatur\n` +
+            `♪ Tener llave gema todavía no establecido\n` +
             `> Set di config.js → APIkey.groq\n` +
-            `> Gratis di https://console.groq.com`
+            `* Grated in*https://console.groq.com`
         );
     }
     m.react('🎤');
@@ -73,7 +73,7 @@ async function handler(m, { sock }) {
         const buffer = await quoted.download();
         if (!buffer || buffer.length < 1000) {
             m.react('❌');
-            return m.reply('❌ Audio terlalu kecil atau gagal diunduh');
+            return m.reply('❌Audio es pequeño o no se contrapone');
         }
         _fs2.default.writeFileSync(inputFile, buffer);
         await convertToWav(inputFile, wavFile);
@@ -81,7 +81,7 @@ async function handler(m, { sock }) {
         const text = await transcribeWithGroq(wavBuffer, groqKey);
         if (!text || text.trim() === '') {
             m.react('❌');
-            return m.reply('❌ Tidak dapat mendeteksi suara. Pastikan audio jelas dan tidak terlalu pendek.');
+            return m.reply('❌No pude detectar sonidos.');
         }
         const duration = Math.ceil(buffer.length / 4000);
         await m.reply(
@@ -102,7 +102,7 @@ async function handler(m, { sock }) {
             return m.reply('❌ API Key Groq invalid. Cek config.js → APIkey.groq');
         }
         if (_optionalChain([error, 'access', _5 => _5.response, 'optionalAccess', _6 => _6.status]) === 429) {
-            return m.reply('❌ Rate limit Groq tercapai. Coba lagi nanti.');
+            return m.reply('❌Prueba el límite Groq fue expuesto.');
         }
         m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
     } finally {

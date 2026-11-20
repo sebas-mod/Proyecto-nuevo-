@@ -2,7 +2,7 @@ PROYEK OURIN
 
 ━━━━━━━━━━━━━━━━━━
 
-Pemilik & Pencipta Proyek
+Propietario & Pencipta Proyek
 
 ↳ Zann
 
@@ -10,7 +10,7 @@ REMAKE SCRIPT
 
 ↳ FALLZX INFINITY 
 
-Pengembang SC
+Desarrollador SC
 
 ↳ Aji
 
@@ -18,10 +18,10 @@ Pemimpin Staf Bug
 
 ↳ Hyuuokkotsu
 
-Pengembang SC Bug
+SC Bugs Desarrollador
 
 ↳ Aqeel
 
 ━━━━━━━━━━━━━━━━━━
 
-Terima kasih kepada semua yang telah menggunakan ourin
+Gracias a todos los que han usado nuestro

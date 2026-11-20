@@ -23,13 +23,13 @@ async function handler(m, { sock }) {
         return m.reply(
             `⚠️ *ᴄᴀʀᴀ ᴘᴀᴋᴀɪ*\n\n` +
             `> \`${m.prefix}lkdl <url>\`\n\n` +
-            `> Contoh:\n` +
+            `> Ejemplo:\n` +
             `> \`${m.prefix}lkdl https://likee.video/@xxx\``
         )
     }
     
     if (!url.match(/likee\.(video|com)/i)) {
-        return m.reply(`❌ URL tidak valid. Gunakan link Likee.`)
+        return m.reply(`❌Uplink no es válido.`)
     }
     
     await m.react('🕕')
@@ -38,13 +38,13 @@ async function handler(m, { sock }) {
         const data = await _likeejs2.default.call(void 0, url)
         
         if (!data) {
-            return m.reply(`❌ Gagal mengambil video. Coba link lain.`)
+            return m.reply(`❌Gagal tomó el video, otro Cobalink.`)
         }
         
         const videoUrl = data.without_watermark || data.with_watermark
         
         if (!videoUrl) {
-            return m.reply(`❌ Video tidak ditemukan.`)
+            return m.reply(`❌El vídeo no fue encontrado.`)
         }
         
         await sock.sendMedia(m.chat, videoUrl, null, m, {

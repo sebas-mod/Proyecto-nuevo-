@@ -3,8 +3,8 @@
 _ouringamesjs.games.register('tebakgambar', {
     alias: ['tg', 'guessimage'],
     emoji: '🖼️',
-    title: 'TEBAK GAMBAR',
-    description: 'Tebak kata dari gambar',
+    title: 'TEBAK Imagen',
+    description: 'Adivina la palabra de la imagen',
     timeout: 90000,
     hasImage: true,
     questionField: null,

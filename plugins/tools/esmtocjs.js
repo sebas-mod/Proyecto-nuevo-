@@ -128,11 +128,11 @@ async function handler(m, { sock }) {
         return m.reply(
             `🔄 *ᴇsᴍ ᴛᴏ ᴄᴊs ᴄᴏɴᴠᴇʀᴛᴇʀ*\n\n` +
             `> Convert ES Modules ke CommonJS\n\n` +
-            `> *Cara pakai:*\n` +
-            `> Reply kode ESM dengan ${m.prefix}esmtocjs\n\n` +
-            `> *Contoh ESM:*\n` +
+            `*Oh, oh, oh, oh, oh *\n` +
+            `# Responder code ESM with${m.prefix}esmtocjs\n\n` +
+            `> *Ejemplo ESM:*\n` +
             `> \`import axios from 'axios'\`\n` +
-            `> \`export default function() {}\``
+            `♪\`exfunción por defecto del puerto ( ){}\``
         )
     }
 

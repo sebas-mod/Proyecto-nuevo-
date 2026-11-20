@@ -9,7 +9,7 @@ const pluginConfig = {
   name: "playcall",
   alias: ["telepon", "call"],
   category: "search",
-  description: "Putar musik dari YouTube lewat telpon",
+  description: "Apaga la música del teléfono de YouTube",
   usage: ".playcall <query>",
   example: ".playcall komang",
   cooldown: 15,
@@ -20,10 +20,10 @@ const pluginConfig = {
 async function handler(m, { sock, text }) {
   const query = _optionalChain([m, 'access', _ => _.text, 'optionalAccess', _2 => _2.trim, 'call', _3 => _3()]);
   if (!query)
-    return m.reply(`🎵 *ᴘʟᴀʏ ᴄᴀʟʟ*\n\n> Masukkan judul lagunya\n\`Contoh: ${m.prefix}playcall surat cinta untuk starla\``);
+    return m.reply(`🎵*ᴘʟᴀʏ ᴄᴀʟʟ*\n\n# Ponga el dildo @-@ en @-@ el poste @-@\n\`Ejemplo:${m.prefix}carta de playcall amor a Starla\``);
 
   if (!global.voipClient) {
-    return m.reply("Fitur panggilan suara tidak diaktifkan (VoipClient belum ready).");
+    return m.reply("La llamada de sonido no está activada ( VoipClient, pero realy ).");
   }
 
   m.react("📞");
@@ -32,14 +32,14 @@ async function handler(m, { sock, text }) {
     console.log("[PlayCall] Searching for:", query);
     
     const search = await _ytsearch2.default.call(void 0, query);
-    if (!search.videos.length) throw new Error("Video tidak ditemukan");
+    if (!search.videos.length) throw new Error("No se encontró vídeo");
     const video = search.videos[0];
     
     const res = await _axios2.default.get(`https://api.azbry.com/api/download/ytmp3?url=${encodeURIComponent(video.url)}`, { timeout: 60000 });
     const data = res.data;
     
     if (!data.status || !data.result || !data.result.download) {
-       throw new Error("Gagal mengambil audio dari API");
+       throw new Error("Steenaltook una audiencia de API");
     }
     
     await m.react("🕕")
@@ -59,9 +59,9 @@ async function handler(m, { sock, text }) {
     const targetNumber = m.sender.split("@")[0];
 
     if (m.isGroup) {
-      await m.reply(`_📞 Panggilan grup tidak didukung oleh library saat ini. Memanggil nomormu secara privat (${targetNumber})..._`);
+      await m.reply(`¿Qué?📞Las llamadas de grupo no son compatibles por la biblioteca hoy.${targetNumber})..._`);
     } else {
-      await m.reply(`_📞 Memanggil nomormu (${targetNumber})..._`);
+      await m.reply(`¿Qué?📞Llame a su número (${targetNumber})..._`);
     }
 
     call = await global.voipClient.call(targetNumber, {
@@ -70,12 +70,12 @@ async function handler(m, { sock, text }) {
     });
 
     call.on("connected", () => {
-      m.reply(`✅ *TERHUBUNG*\nLagu *${video.title}* sedang diputar di telpon!`);
+      m.reply(`✅ *TERHUBUNG*\nLagu *${video.title}* ¡Está al teléfono!`);
     });
 
     call.on("ended", (reason) => {
       if (_fs2.default.existsSync(tmpFile)) _fs2.default.unlinkSync(tmpFile);
-      m.reply(`📵 Panggilan diakhiri: ${reason}`);
+      m.reply(`📵Llamada diakhiri:${reason}`);
     });
 
     call.on("error", (err) => {
@@ -85,7 +85,7 @@ async function handler(m, { sock, text }) {
   } catch (err) {
     console.error("[PlayCall]", err);
     m.react("😭");
-    m.reply(`Gagal menelpon / memainkan lagu: ${err.message}`);
+    m.reply(`Llamas de gagalphone / interpreta canciones:${err.message}`);
   }
 }
 

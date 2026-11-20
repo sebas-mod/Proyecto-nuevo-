@@ -18,7 +18,7 @@ const pluginConfig = {
   category: "owner",
   description: "Kelola premium users",
   usage:
-    ".addprem <nomor/@tag> [hari]\n.delprem <nomor/@tag>\n.listprem\n.cekprem <nomor/@tag>",
+    "- ¿Qué?<nomor/@tag>[el]\n- Dios.<nomor/@tag>\n- Escucha.\n- Lo siento.<nomor/@tag>",
   example: ".addprem 6281234567890 30",
   isOwner: true,
   isPremium: false,
@@ -65,10 +65,10 @@ async function handler(m, { sock, jadibotId, isJadibot }) {
       const jbPremiums = _ourinjadibotdatabasejs.getJadibotPremiums.call(void 0, jadibotId);
       if (jbPremiums.length === 0) {
         return m.reply(
-          `💎 Belum ada premium di jadibot ini\nGunakan \`${m.prefix}addprem\` untuk menambah`,
+          `💎Aún no, hay una prima en este kriot.\nUsa\`${m.prefix}*Y voy a estar aquí*\`para anadiendo`,
         );
       }
-      let txt = `💎 *DAFTAR PREMIUM JADIBOT* — ${jadibotId}\n\n`;
+      let txt = `💎* PREMUM DASTAR JEDBOT *— ${jadibotId}\n\n`;
       const mentions = jbPremiums
         .map((p) => (typeof p === "string" ? p : p.jid))
         .map(toMentionJid)
@@ -78,14 +78,14 @@ async function handler(m, { sock, jadibotId, isJadibot }) {
         const number = String(num || "").replace(/[^0-9]/g, "");
         txt += `${i + 1}. @${number}\n`;
       });
-      txt += `\nTotal: *${jbPremiums.length}* premium`;
+      txt += `\nTotal: *${jbPremiums.length}* Premium`;
       return m.reply(txt, { mentions });
     }
 
     if (db.data.premium.length === 0) {
-      return m.reply(`💎 Belum ada premium terdaftar`);
+      return m.reply(`💎Aún no es una prima registrada.`);
     }
-    let txt = `💎 *DAFTAR PREMIUM*\n\n`;
+    let txt = `💎* Regisomebody Premium *\n\n`;
     const now = Date.now();
     const mentions = db.data.premium
       .map((p) => (typeof p === "string" ? p : p.id))
@@ -106,7 +106,7 @@ async function handler(m, { sock, jadibotId, isJadibot }) {
       const number = String(num || "").replace(/[^0-9]/g, "");
       txt += `${i + 1}. @${number} — ${status}\n`;
     });
-    txt += `\nTotal: *${db.data.premium.length}* premium`;
+    txt += `\nTotal: *${db.data.premium.length}* Premium`;
     return m.reply(txt, { mentions });
   }
 
@@ -114,7 +114,7 @@ async function handler(m, { sock, jadibotId, isJadibot }) {
 
   if (!targetNumber) {
     return m.reply(
-      `💎 *${isAdd ? "ADD" : "DEL"} PREMIUM*\n\nMasukkan nomor atau tag user\n\`Contoh: ${m.prefix}${cmd} 6281234567890\``,
+      `💎 *${isAdd ? "ADD" : "DEL"}Premium *\n\nInsertar nútáo etiqueta de usuario\n\`Epirame:${m.prefix}${cmd} 6281234567890\``,
     );
   }
 
@@ -123,7 +123,7 @@ async function handler(m, { sock, jadibotId, isJadibot }) {
   }
 
   if (targetNumber.length < 10 || targetNumber.length > 15) {
-    return m.reply(`❌ Format nomor tidak valid`);
+    return m.reply(`❌Número de formato es inválido`);
   }
 
   if (isJadibot && jadibotId) {
@@ -131,19 +131,19 @@ async function handler(m, { sock, jadibotId, isJadibot }) {
       if (_ourinjadibotdatabasejs.addJadibotPremium.call(void 0, jadibotId, targetNumber)) {
         await m.react("💎");
         return m.reply(
-          `✅ Berhasil menambahkan *${targetNumber}* sebagai premium jadibot`,
+          `✅♪ Trabajar para añadir ♪${targetNumber}* Como un jabot premium`,
         );
       } else {
-        return m.reply(`❌ \`${targetNumber}\` sudah premium di Jadibot ini`);
+        return m.reply(`❌ \`${targetNumber}\`Es una prima en este Skebot`);
       }
     } else if (isDel) {
       if (_ourinjadibotdatabasejs.removeJadibotPremium.call(void 0, jadibotId, targetNumber)) {
         await m.react("✅");
         return m.reply(
-          `✅ Berhasil menghapus *${targetNumber}* dari premium jadibot`,
+          `✅Resultado de la memorización${targetNumber}* del jabot premium`,
         );
       } else {
-        return m.reply(`❌ \`${targetNumber}\` bukan premium di Jadibot ini`);
+        return m.reply(`❌ \`${targetNumber}\`No es una prima en este Sabiot`);
       }
     }
     return;
@@ -155,7 +155,7 @@ async function handler(m, { sock, jadibotId, isJadibot }) {
     );
 
     let durationMs = 30 * 24 * 60 * 60 * 1000;
-    let durationLabel = "30 hari";
+    let durationLabel = "30 el";
     
     const timeArg = _optionalChain([m, 'access', _13 => _13.args, 'optionalAccess', _14 => _14.find, 'call', _15 => _15((a) => /^\d+(h|hari|j|jam|m|menit|d|detik)?$/i.test(a))]);
     if (timeArg) {
@@ -165,16 +165,16 @@ async function handler(m, { sock, jadibotId, isJadibot }) {
         const unit = match[2] || "h";
         if (unit === "d" || unit === "detik") {
           durationMs = val * 1000;
-          durationLabel = `${val} detik`;
+          durationLabel = `${val}segundo`;
         } else if (unit === "m" || unit === "menit") {
           durationMs = val * 60 * 1000;
-          durationLabel = `${val} menit`;
+          durationLabel = `${val}minuto`;
         } else if (unit === "j" || unit === "jam") {
           durationMs = val * 60 * 60 * 1000;
-          durationLabel = `${val} jam`;
+          durationLabel = `${val}hora`;
         } else {
           durationMs = val * 24 * 60 * 60 * 1000;
-          durationLabel = `${val} hari`;
+          durationLabel = `${val}el`;
         }
       }
     }
@@ -228,7 +228,7 @@ async function handler(m, { sock, jadibotId, isJadibot }) {
 
     await m.react("💎");
     return m.reply(
-      `✅ Berhasil ${existingIndex !== -1 ? "memperpanjang" : "menambahkan"} premium *${targetNumber}* selama *${durationLabel}*\nExpired: *${formatDate(newExpired)}*`,
+      `✅Exito${existingIndex !== -1 ? "memperpanjang" : "menambahkan"} premium *${targetNumber}* selama *${durationLabel}*\nExpired: *${formatDate(newExpired)}*`,
     );
   } else if (isDel) {
     const index = db.data.premium.findIndex((p) =>
@@ -236,7 +236,7 @@ async function handler(m, { sock, jadibotId, isJadibot }) {
     );
 
     if (index === -1) {
-      return m.reply(`❌ *${targetNumber}* bukan premium`);
+      return m.reply(`❌ *${targetNumber}* no una prima`);
     }
 
     db.data.premium.splice(index, 1);
@@ -250,7 +250,7 @@ async function handler(m, { sock, jadibotId, isJadibot }) {
 
     db.save();
     await m.react("✅");
-    return m.reply(`✅ Berhasil menghapus *${targetNumber}* dari premium`);
+    return m.reply(`✅Resultado de la memorización${targetNumber}* del estreno`);
   }
 }
 

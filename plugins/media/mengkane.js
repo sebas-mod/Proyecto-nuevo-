@@ -28,14 +28,14 @@ async function handler(m, { sock }) {
     if (command === 'mengkane' || !command.startsWith('mengkane')) {
         return m.reply(
             `🎵 *ᴍᴇɴɢᴋᴀɴᴇ ᴍᴜsɪᴄ*\n\n` +
-            `> Tersedia: mengkane1 - mengkane52\n` +
-            `> Contoh: \`${m.prefix}mengkane1\``
+            `Sentimental: right 1 - right 52\n` +
+            `> Ejemplo:\`${m.prefix}mengkane1\``
         )
     }
     
     const num = parseInt(command.replace('mengkane', ''))
     if (isNaN(num) || num < 1 || num > 52) {
-        return m.reply(`❌ Pilihan tidak valid. Gunakan mengkane1 sampai mengkane52.`)
+        return m.reply(`❌Elección inválida. Use el número 1 hasta que se trate de 52.`)
     }
     m.react('🕕')
     let sound

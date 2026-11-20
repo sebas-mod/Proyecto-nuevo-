@@ -7,7 +7,7 @@ const pluginConfig = {
   name: "toblack",
   alias: ["black", "hitamkan", "hitam", "tohitam"],
   category: "ai",
-  description: "Ubah gambar ke skin tone lebih gelap",
+  description: "Editar imágenes para la piel más glaze",
   usage: ".toblack (reply gambar)",
   example: ".toblack",
   isOwner: false,
@@ -24,7 +24,7 @@ async function handler(m, { sock }) {
 
   if (!isImage) {
     return m.reply(
-      `🖤 *ʙʟᴀᴄᴋ sᴛʏʟᴇ*\n\n> Kirim/reply gambar\n\n\`${m.prefix}toblack\``,
+      `🖤*ʙʟᴀᴄᴋSᴛʏʟᴇ*\n\nKsena / respuestas imágenes\n\n\`${m.prefix}toblack\``,
     );
   }
 
@@ -40,7 +40,7 @@ async function handler(m, { sock }) {
 
     if (!buffer) {
       m.react("❌");
-      return m.reply(`❌ Gagal mendownload gambar`);
+      return m.reply(`❌Paso de descarga de imagen`);
     }
 
     const result = await _seaartjs.live3d.call(void 0, buffer, PROMPT);

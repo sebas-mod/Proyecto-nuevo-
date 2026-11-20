@@ -6,7 +6,7 @@ const pluginConfig = {
   name: "carigrup",
   alias: ["searchgrup", "findgrup", "grupwa"],
   category: "search",
-  description: "Cari grup WhatsApp berdasarkan keyword",
+  description: "Busca grupo WhatsApp es una palabra clave",
   usage: ".carigrup <keyword>",
   example: ".carigrup gb isian",
   isOwner: false,
@@ -23,7 +23,7 @@ async function handler(m, { sock }) {
 
   if (!text) {
     return m.reply(
-      `🔍 *ᴄᴀʀɪ ɢʀᴜᴘ ᴡᴀ*\n\n> Masukkan keyword pencarian\n\n\`Contoh: ${m.prefix}carigrup gb isian\``,
+      `🔍*ᴄᴀʀɪ ɢʀᴜᴘ ᴡᴀ*\n\n*Pon una llave buscando*\n\n\`Ejemplo:${m.prefix}carigrup gb isian\``,
     );
   }
 
@@ -35,14 +35,14 @@ async function handler(m, { sock }) {
 
     if (!data.status || !_optionalChain([data, 'access', _ => _.data, 'optionalAccess', _2 => _2.groups, 'optionalAccess', _3 => _3.length])) {
       m.react("❌");
-      return m.reply(`❌ Tidak ditemukan grup untuk keyword *${text}*`);
+      return m.reply(`❌No se encuentra grupo para palabra clave *${text}*`);
     }
 
     const groups = data.data.groups;
     let result =
       `🔍 *ᴄᴀʀɪ ɢʀᴜᴘ ᴡᴀ*\n\n` +
       `📌 Keyword: *${data.data.query}*\n` +
-      `📊 Total: *${data.data.total}* grup ditemukan\n`;
+      `📊 Total: *${data.data.total}* grupo Found\n`;
 
     groups.forEach((g, i) => {
       result +=

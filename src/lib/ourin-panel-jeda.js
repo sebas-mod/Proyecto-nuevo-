@@ -8,9 +8,9 @@ function formatTime(ms) {
     const minutes = Math.floor(seconds / 60)
     const hours = Math.floor(minutes / 60)
     
-    if (hours > 0) return `${hours} jam ${minutes % 60} menit`
-    if (minutes > 0) return `${minutes} menit ${seconds % 60} detik`
-    return `${seconds} detik`
+    if (hours > 0) return `${hours}hora${minutes % 60}minuto`
+    if (minutes > 0) return `${minutes}minuto${seconds % 60}segundo`
+    return `${seconds}segundo`
 }
 
 function checkPanelJeda(m) {
@@ -31,9 +31,9 @@ function checkPanelJeda(m) {
             allowed: false,
             remaining: remaining,
             message: `⏱️ *ᴊᴇᴅᴀ ᴀᴋᴛɪꜰ*\n\n` +
-                `> Mohon tunggu *${formatTime(remaining)}* sebelum membuat panel lagi.\n\n` +
-                `> _Jeda ini berlaku untuk semua user._\n` +
-                `> _Gunakan \`.cekjeda\` untuk cek status._`
+                `Por favor, espera${formatTime(remaining)}* antes de hacer otro panel.\n\n` +
+                `*Estos picos son buenos para todos los usuarios.*\n` +
+                `*La pistola será*\`- Cekjeda.\`para los estados de verificación. _`
         }
     }
     

@@ -4,7 +4,7 @@ const pluginConfig = {
   name: "game",
   alias: ["togglegame"],
   category: "group",
-  description: "Mengaktifkan atau menonaktifkan fitur game di grup",
+  description: "Activar o desactivar las funciones de juego en grupo",
   usage: ".game <on/off>",
   example: ".game on",
   isOwner: false,
@@ -22,11 +22,11 @@ async function handler(m, { sock }) {
 
   if (args !== "on" && args !== "off") {
     return m.reply(
-      `🎮 *FITUR GAME GRUP*\n\n` +
-        `Gunakan perintah ini untuk mengatur akses member ke fitur game.\n\n` +
-        `• *${m.prefix}game on* - Member bisa main game\n` +
-        `• *${m.prefix}game off* - Member tidak bisa main game\n\n` +
-        `*Catatan:* Admin tetap bisa mengakses game meskipun dimatikan.`,
+      `🎮* FRANURA JUEGO GRUPP *\n\n` +
+        `Utilice este comando para configurar la foto de acción en la función de juego.\n\n` +
+        `• *${m.prefix}- ♪ Dame en ♪ - ♪ Puede jugar juego ♪\n` +
+        `• *${m.prefix}- # Dame de encima # - # No puedo jugar #\n\n` +
+        `* Catalán: * Admin todavía puede acceder al juego aunque presionado.`,
     );
   }
 
@@ -36,7 +36,7 @@ async function handler(m, { sock }) {
   const isEnable = args === "on";
 
   if (group.game === isEnable) {
-    return m.reply(`🎮 Fitur game sudah *${isEnable ? "AKTIF" : "NONAKTIF"}* di grup ini.`);
+    return m.reply(`🎮Los fusibles del juego están en pie${isEnable ? "AKTIF" : "NONAKTIF"}* en este grupo.`);
   }
 
   group.game = isEnable;
@@ -44,10 +44,10 @@ async function handler(m, { sock }) {
 
   await m.react("✅");
   return m.reply(
-    `✅ Berhasil *${isEnable ? "MENGAKTIFKAN" : "MENONAKTIFKAN"}* fitur game di grup ini!\n\n` +
+    `✅Exito *${isEnable ? "MENGAKTIFKAN" : "MENONAKTIFKAN"}* Las características del juego en este grupo!\n\n` +
     (isEnable
-      ? `Member sekarang bisa menggunakan semua perintah di menu game.`
-      : `Member tidak akan bisa menggunakan perintah game lagi.`),
+      ? `Ahora puedes usar todas las órdenes en el menú del juego.`
+      : `Ya no puedo usar órdenes de juego.`),
   );
 }
 

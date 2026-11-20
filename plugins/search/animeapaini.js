@@ -7,7 +7,7 @@ const pluginConfig = {
     name: "animeapaini",
     alias: ["whatanime", "animesearch", "sauceanime", "searchanime", "anime-checker", "animechecker"],
     category: "search",
-    description: "Identifikasi judul anime dari gambar/screenshot",
+    description: "Identificador de cabecera de anime de la imagen / captura de pantalla",
     usage: ".animeapaini (reply gambar)",
     example: ".animeapaini",
     isOwner: false,
@@ -23,12 +23,12 @@ async function handler(m, { sock }) {
     const isImage = m.isImage || (m.quoted && m.quoted.type === "imageMessage");
 
     if (!isImage) {
-        let help = `🔍 *ANIME APA INI?*\n\n`
-        help += `Fitur cerdas untuk mengetahui judul anime hanya dari sebuah screenshot atau potongan gambar!\n\n`
-        help += `*Cara Penggunaan:*\n`
-        help += `- Kirim gambar adegan anime dengan caption *${m.prefix}animeapaini*\n`
-        help += `- Atau balas (reply) gambar adegan anime dengan perintah *${m.prefix}animeapaini*\n\n`
-        help += `⚠️ *Catatan:* Video tidak didukung, hanya gambar/screenshot saja ya!`
+        let help = `🔍* ANIMME QUE ES ESTO?\n\n`
+        help += `La característica inteligente para conocer el título Anime es sólo de una captura de pantalla o un corte de la imagen!\n\n`
+        help += `*Como usarlo:*\n`
+        help += `- Imagen de Ksena adegan anime con capción *${m.prefix}animeapaini*\n`
+        help += `- O una respuesta.${m.prefix}animeapaini*\n\n`
+        help += `⚠> 91; Nota: &#93; El vídeo no es compatible, sólo una imagen / captura de pantalla sólo ya!`
         return m.reply(help);
     }
 
@@ -44,7 +44,7 @@ async function handler(m, { sock }) {
 
         if (!buffer) {
             await m.react("❌");
-            return m.reply(`Maaf, sistem gagal mengunduh gambar yang kamu berikan. Silakan coba kirim ulang gambarnya!`);
+            return m.reply(`Lo sentimos, el sistema no pudo descargar la imagen que dibujaste.`);
         }
 
         const form = new (0, _formdata2.default)();
@@ -58,7 +58,7 @@ async function handler(m, { sock }) {
         const data = response.data;
         if (!data || !data.status || !data.result || !data.result.full_matches) {
             await m.react("❌");
-            return m.reply(`Maaf, judul anime tidak ditemukan. Coba dengan screenshot adegan yang lebih jelas atau karakter yang lebih spesifik.`);
+            return m.reply(`Lo sentimos, Anime header no fue encontrado. Intenta con un adegan de captura de pantalla más obvio o caracteres más específicos.`);
         }
 
         await m.react("✅");
@@ -74,7 +74,7 @@ async function handler(m, { sock }) {
         txt += `🇯🇵 *Judul Asli:* ${resObj.title_native || match.anilist.title.native}\n`;
         txt += `📺 *Episode:* ${resObj.episode || match.episode}\n`;
         txt += `📊 *Kemiripan:* ${similarity}%\n`;
-        txt += `🔞 *Dewasa (18+):* ${resObj.is_adult ? 'Ya' : 'Tidak'}\n\n`;
+        txt += `🔞* Adultos ( 18 + ):${resObj.is_adult ? 'Ya' : 'Tidak'}\n\n`;
         txt += `🔗 *Detail Anilist:*\n${match.anilist.siteUrl || `https://anilist.co/anime/${match.anilist.id}`}`;
 
         if (resObj.image_preview || match.image) {

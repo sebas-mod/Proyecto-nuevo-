@@ -19,10 +19,10 @@ const pluginConfig = {
 async function handler(m, { sock }) {
     const text = _optionalChain([m, 'access', _ => _.text, 'optionalAccess', _2 => _2.split, 'call', _3 => _3('|')])
     const [ link, kata, jumlah ] = text
-    if(!link) return m.reply(`*LINK NGL NYA MANA ??*\nContoh: \`${_optionalChain([m, 'optionalAccess', _4 => _4.prefix])}spamngl https://ngl.link/xxxx | hai | 10`)
-    if(!kata) return m.reply(`*KATA KATA NYA MANA ??*\n\nContoh: \`${_optionalChain([m, 'optionalAccess', _5 => _5.prefix])}spamngl https://ngl.link/xxxx | hai | 10`)
-    if(!jumlah) return m.reply(`*JUMLAH NYA MANA ??*\n\nContoh: \`${_optionalChain([m, 'optionalAccess', _6 => _6.prefix])}spamngl https://ngl.link/xxxx | hai | 10`)
-    if(isNaN(jumlah)) return m.reply(`*JUMLAH NYA HARUS ANGKA*\n\nContoh: \`${_optionalChain([m, 'optionalAccess', _7 => _7.prefix])}spamngl https://ngl.link/xxxx | hai | 10`)
+    if(!link) return m.reply(`* Enlace NGL De él MANA *\nEpirame:\`${_optionalChain([m, 'optionalAccess', _4 => _4.prefix])}spamngl https://ngl.link/xxxx♪ 10 ♪`)
+    if(!kata) return m.reply(`> 91; The SAME Palabra MANA > 93;\n\nEjemplo:\`${_optionalChain([m, 'optionalAccess', _5 => _5.prefix])}spamngl https://ngl.link/xxxx♪ 10 ♪`)
+    if(!jumlah) return m.reply(`(Cantidad MANA MANA )\n\nEjemplo:\`${_optionalChain([m, 'optionalAccess', _6 => _6.prefix])}spamngl https://ngl.link/xxxx♪ 10 ♪`)
+    if(isNaN(jumlah)) return m.reply(`* El SUPLIO DE NUMOU DE De él Debe *\n\nEpirame:\`${_optionalChain([m, 'optionalAccess', _7 => _7.prefix])}spamngl https://ngl.link/xxxx♪ 10 ♪`)
     m.react('🎴')
     
     try {
@@ -34,7 +34,7 @@ async function handler(m, { sock }) {
         }
         await m.react('✅')
         await sock.sendMessage(m.chat, {
-            text: `✅ *DONE*\n\nBerhasil mengirim spam NGL Message!\nTarget: ${link}\nPesan: ${kata} (${jumlah}x)`
+            text: `✅NO\n\n¡Funciónín bien para el Spam mensje NGL!\nMetas:${link}\nPesan: ${kata} (${jumlah}x)`
         }, { quoted: m })
         
     } catch (error) {

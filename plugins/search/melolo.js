@@ -6,7 +6,7 @@ const pluginConfig = {
   name: "melolo",
   alias: ["melolodrama", "dramamelolo"],
   category: "search",
-  description: "Cari daftar drama pendek berdasarkan kategori dari Melolo",
+  description: "Busque una lista de dramas demencia basados en el caegori de Melolo",
   usage: ".melolo <category>",
   example: ".melolo fantasy",
   isOwner: false,
@@ -53,7 +53,7 @@ async function fetchMelolo(category) {
   });
 
   if (!_optionalChain([data, 'optionalAccess', _6 => _6.status]) || !_optionalChain([data, 'optionalAccess', _7 => _7.data])) {
-    throw new Error(_optionalChain([data, 'optionalAccess', _8 => _8.message]) || "Hasil Melolo tidak ditemukan");
+    throw new Error(_optionalChain([data, 'optionalAccess', _8 => _8.message]) || "No se encontró el nombre de Meolo.");
   }
 
   return data;
@@ -64,12 +64,12 @@ async function handler(m, { sock }) {
 
   if (!category) {
     return m.reply(
-      `🎭 *MELOLO DRAMA*\n\n> Contoh:\n\`${m.prefix}melolo fantasy\``,
+      `🎭MELO DRAMA\n\n> Ejemplo:\n\`${m.prefix}melolo fantasy\``,
     );
   }
 
   if (!_optionalChain([_configjs2.default, 'access', _12 => _12.APIkey, 'optionalAccess', _13 => _13.covenant])) {
-    return m.reply("❌ API key covenant tidak dikonfigurasi!");
+    return m.reply("❌Coven API clave no configurado!");
   }
 
   m.react("🔍");
@@ -81,7 +81,7 @@ async function handler(m, { sock }) {
     if (items.length === 0) {
       m.react("❌");
       return m.reply(
-        `❌ Tidak ditemukan hasil Melolo untuk kategori: ${category}`,
+        `❌No se han encontrado resultados en Melolo para la categoría:${category}`,
       );
     }
 
@@ -89,7 +89,7 @@ async function handler(m, { sock }) {
     caption += `🌿 *Category:* ${category}\n`;
     caption += `📦 *Total:* ${items.length}\n`;
     caption += `💳 *Cost:* ${_nullishCoalesce(_optionalChain([result, 'optionalAccess', _14 => _14.usage, 'optionalAccess', _15 => _15.cost]), () => ( "-"))}\n`;
-    caption += `🔋 *Sisa Credit:* ${_nullishCoalesce(_optionalChain([result, 'optionalAccess', _16 => _16.usage, 'optionalAccess', _17 => _17.remaining]), () => ( "-"))}\n\n`;
+    caption += `🔋*Restante Credit:*${_nullishCoalesce(_optionalChain([result, 'optionalAccess', _16 => _16.usage, 'optionalAccess', _17 => _17.remaining]), () => ( "-"))}\n\n`;
 
     items.forEach((item, index) => {
       caption += `*${index + 1}.* ${trimText(item.title, 70)}\n`;

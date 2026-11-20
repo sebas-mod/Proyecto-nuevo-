@@ -5,7 +5,7 @@ const pluginConfig = {
     name: ['qrcustom', 'qrcode', 'qr'],
     alias: [],
     category: 'tools',
-    description: 'Generate QR code custom dengan logo',
+    description: 'GenerarQCódigo R personalizado con logo',
     usage: '.qrcustom <url>',
     example: '.qrcustom https://wa.me/628xxx',
     isOwner: false,
@@ -45,9 +45,9 @@ async function handler(m, { sock }) {
         return m.reply(
             `⚠️ *ᴄᴀʀᴀ ᴘᴀᴋᴀɪ*\n\n` +
             `> \`${m.prefix}qrcustom <url/text>\`\n\n` +
-            `*Contoh:*\n` +
+            `*Ejemplo:*\n` +
             `> \`${m.prefix}qrcustom https://wa.me/628xxx\`\n\n` +
-            `💡 Reply gambar untuk custom logo di tengah QR`
+            `💡Imagen de respuesta para logotipo personalizado en el centroQR`
         )
     }
     
@@ -74,7 +74,7 @@ async function handler(m, { sock }) {
             params.append('image', imageUrl)
         }
         
-        const apiUrl = `${BASE_URL}/api/v1/tools/qrcustom?${params.toString()}`
+        const apiUrl = `${BASE_URL}/fuego/v1/tools/qrcustom?${params.toString()}`
         
         await sock.sendMessage(m.chat, {
             image: { url: apiUrl },

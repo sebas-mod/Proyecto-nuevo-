@@ -3,7 +3,7 @@ const pluginConfig = {
     name: 'jadwalgroup',
     alias: ['schedulegroup', 'jdwlgrup', 'autoopenclose'],
     category: 'group',
-    description: 'Jadwal buka/tutup grup otomatis',
+    description: 'Loop de grupo automático',
     usage: '.jadwalgroup <open/close> <HH:MM>',
     example: '.jadwalgroup open 06:00',
     isOwner: false,
@@ -58,11 +58,11 @@ async function handler(m, { sock, db }) {
 🔓 ᴏᴘᴇɴ: *${openTime || 'Tidak aktif'}*
 🔒 ᴄʟᴏsᴇ: *${closeTime || 'Tidak aktif'}*
 
-*Cara Penggunaan:*
+*Como usarlo:*
 \`.jadwalgroup open 06:00\`
 \`.jadwalgroup close 22:00\`
-\`.jadwalgroup hapus open\`
-\`.jadwalgroup hapus close\``;
+\`- Los promotores están creciendo.\`
+\`- Promocionamiento, eliminar el cierre.\``;
         
         await m.reply(scheduleInfo);
         return;
@@ -74,8 +74,8 @@ async function handler(m, { sock, db }) {
         if (type !== 'open' && type !== 'close') {
             await m.reply(
                 `⚠️ *ᴠᴀʟɪᴅᴀsɪ ɢᴀɢᴀʟ*\n\n` +
-                `> Gunakan: \`.jadwalgroup hapus open\`\n` +
-                `> atau: \`.jadwalgroup hapus close\``
+                `> Usa: \`- Los promotores están creciendo.\`\n` +
+                `> o:\`- Promocionamiento, eliminar el cierre.\``
             );
             return;
         }
@@ -88,7 +88,7 @@ async function handler(m, { sock, db }) {
             
             await m.reply(
                 `✅ *ʙᴇʀʜᴀsɪʟ*\n\n` +
-                `> Jadwal *buka grup* otomatis telah dihapus.`
+                `El grupo abre ha sido hackeado.`
             );
         } else {
             delete group.scheduleClose;
@@ -96,7 +96,7 @@ async function handler(m, { sock, db }) {
             
             await m.reply(
                 `✅ *ʙᴇʀʜᴀsɪʟ*\n\n` +
-                `> Jadwal *tutup grup* otomatis telah dihapus.`
+                `El horario del grupo ha sido hackeado.`
             );
         }
         return;
@@ -105,8 +105,8 @@ async function handler(m, { sock, db }) {
     if (action !== 'open' && action !== 'close') {
         await m.reply(
             `⚠️ *ᴠᴀʟɪᴅᴀsɪ ɢᴀɢᴀʟ*\n\n` +
-            `> Action harus \`open\` atau \`close\`!\n\n` +
-            `> *Contoh:*\n` +
+            `*La acción debe*\`abierto\`o\`cerrado\`!\n\n` +
+            `> *Ejemplo:*\n` +
             `> \`.jadwalgroup open 06:00\`\n` +
             `> \`.jadwalgroup close 22:00\``
         );
@@ -116,9 +116,9 @@ async function handler(m, { sock, db }) {
     if (!time) {
         await m.reply(
             `⚠️ *ᴠᴀʟɪᴅᴀsɪ ɢᴀɢᴀʟ*\n\n` +
-            `> Waktu harus diisi!\n\n` +
-            `> *Format:* \`HH:MM\` (24 jam)\n` +
-            `> *Contoh:* \`.jadwalgroup ${action} 08:00\``
+            `¡A tiempo debe ser llenado!\n\n` +
+            `> *Formato:*\`HH: MMM\`(24 hora)\n` +
+            `> *Ejemplo:*\`- Promueve el crecimiento.${action} 08:00\``
         );
         return;
     }
@@ -127,9 +127,9 @@ async function handler(m, { sock, db }) {
     if (!parsed) {
         await m.reply(
             `⚠️ *ᴠᴀʟɪᴅᴀsɪ ɢᴀɢᴀʟ*\n\n` +
-            `> Format waktu tidak valid!\n\n` +
-            `> *Format:* \`HH:MM\` (24 jam)\n` +
-            `> *Contoh:* \`06:00\`, \`22:30\`, \`08:15\``
+            `¡El tiempo de formación de Fata no es válido!\n\n` +
+            `> *Formato:*\`HH: MMM\`(24 hora)\n` +
+            `> *Ejemplo:*\`06: 00\`.\`22: 30\`.\`8: 15\``
         );
         return;
     }
@@ -153,11 +153,11 @@ async function handler(m, { sock, db }) {
 ╭┈┈⬡「 ⏰ *sᴇᴛᴛɪɴɢ* 」
 ┃ ㊗ ${emoji} ᴀᴋsɪ: *${actionText}*
 ┃ ㊗ ⏱️ ᴡᴀᴋᴛᴜ: *${formattedTime} WIB*
-┃ ㊗ 📡 sᴛᴀᴛᴜs: *🟢 Aktif*
+┃ ㊗ 📡Sᴛᴀᴛᴜs: *🟢Activo*
 ╰┈┈⬡
 
-> _Grup akan otomatis ${action === 'open' ? 'dibuka' : 'ditutup'}_
-> _setiap hari pada jam *${formattedTime}* WIB._`;
+Grupo automatizará${action === 'open' ? 'dibuka' : 'ditutup'}_
+# Pasa cada día con el reloj #${formattedTime}* WIB._`;
     
     await m.reply(successMsg);
 }

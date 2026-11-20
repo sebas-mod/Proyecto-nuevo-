@@ -23,20 +23,20 @@ async function handler(m, { sock }) {
         try {
             video = await m.quoted.download()
         } catch (e) {
-            return m.reply(`❌ Gagal download video dari quoted.`)
+            return m.reply(`❌Stempelldownloads video de citado.`)
         }
     } else if (m.isVideo) {
         try {
             video = await m.download()
         } catch (e) {
-            return m.reply(`❌ Gagal download video.`)
+            return m.reply(`❌Steenaldownloads video.`)
         }
     }
     
     if (!video) {
         return m.reply(
             `⚠️ *ᴄᴀʀᴀ ᴘᴀᴋᴀɪ*\n\n` +
-            `> Kirim *video* atau *balas video* lalu ketik:\n` +
+            `*Klido * video * o * video de las ballas * y luego las axilas:\n` +
             `> \`${m.prefix}ptvch\``
         )
     }
@@ -54,7 +54,7 @@ async function handler(m, { sock }) {
         })
         
         await m.react('✅')
-        return m.reply(`✅ *sᴜᴋsᴇs*\n\n> Video berhasil dikirim ke channel sebagai PTV.`)
+        return m.reply(`✅*ᴜᴋSᴇs ♪\n\n- Así que, es un éxito.`)
         
     } catch (err) {
         return m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName))

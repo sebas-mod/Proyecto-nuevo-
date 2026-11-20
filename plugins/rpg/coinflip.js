@@ -27,9 +27,9 @@ async function handler(m, { sock }) {
 
   if (!choice || (choice !== "heads" && choice !== "tails" && choice !== "h" && choice !== "t")) {
     return m.reply(
-      `🪙 *Tebak Koin Bandar* 🪙\n\n` +
-        `Pilih gambar Garuda (Heads) atau Angka (Tails)!\n\n` +
-        `*Cara Main:*\n` +
+      `🪙Supongo que Tela Bandar🪙\n\n` +
+        `¡Elija un Garuda (cabezas) o un número!\n\n` +
+        `*Cara Juega:*\n` +
         `👉 \`.coinflip heads <taruhan>\`\n` +
         `👉 \`.coinflip tails <taruhan>\``
     );
@@ -40,7 +40,7 @@ async function handler(m, { sock }) {
   }
 
   if ((user.koin || 0) < bet) {
-    return m.reply(`Mana koin lu? Di kantong sisa *Rp ${(user.koin || 0).toLocaleString("id-ID")}* doang, sok mau taruhan *Rp ${bet.toLocaleString("id-ID")}*! 😜`);
+    return m.reply(`Mana monedas lu? En kantong restante *Rp ${(user.koin || 0).toLocaleString("id-ID")}* solo, sok quiere positar *${bet.toLocaleString("id-ID")}*! 😜`);
   }
 
   user.koin -= bet;
@@ -49,23 +49,23 @@ async function handler(m, { sock }) {
   const result = Math.random() < 0.5 ? "heads" : "tails";
   const emoji = result === "heads" ? "🦅" : "🪙";
 
-  await _ourincontextjs.sendRpgPreview.call(void 0, sock, m.chat, `*CLING!* Koin emas dilempar tinggi ke udara... berputar-putar... 🪙✨`, "🪙 COINFLIP", "Flipping!", { quoted: m });
+  await _ourincontextjs.sendRpgPreview.call(void 0, sock, m.chat, `*CLING!* Monedas oro dilempar alto a udara... berputar-reproduce... 🪙✨`, "🪙 COINFLIP", "Flipping!", { quoted: m });
   await new Promise((r) => setTimeout(r, 2500));
 
   const isWin = userChoice === result;
 
-  let txt = `*PLAK!* Bandar menutup koin di tangannya! 👋\n\n`;
+  let txt = `¡El distribuidor tenía una moneda en la mano!👋\n\n`;
   txt += `Tebakan Lu: *${userChoice.toUpperCase()}*\n`;
-  txt += `Koin Menunjukkan: *${result.toUpperCase()}* ${emoji}\n\n`;
+  txt += `Monedas Menunjukkan: *${result.toUpperCase()}* ${emoji}\n\n`;
 
   if (isWin) {
     const winnings = bet * 2;
     user.koin = (user.koin || 0) + winnings;
     txt += `🎉 *MANTAP! TEBAKAN LU BENER!*\n`;
-    txt += `💰 Cuan: *+Rp ${winnings.toLocaleString("id-ID")}*`;
+    txt += `💰Ganancia: *+Rp${winnings.toLocaleString("id-ID")}*`;
   } else {
-    txt += `🤣 *HAHAHA! LU SALAH TEBAK!*\n`;
-    txt += `💸 Koin ditarik bandar: *-Rp ${bet.toLocaleString("id-ID")}*`;
+    txt += `🤣 *HAHAHA! LU Incorrecto TEBAK!*\n`;
+    txt += `💸Tela en el vendador: * - Rp${bet.toLocaleString("id-ID")}*`;
   }
 
   db.save();

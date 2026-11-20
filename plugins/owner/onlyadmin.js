@@ -3,7 +3,7 @@ const pluginConfig = {
     name: 'onlyadmin',
     alias: ['selfadmin', 'publicadmin', 'adminonly'],
     category: 'owner',
-    description: 'Hanya admin grup yang bisa akses command bot',
+    description: 'Sólo administrador del grupo puede aplicar comando bot',
     usage: '.onlyadmin on/off',
     example: '.onlyadmin on',
     isOwner: true,
@@ -22,7 +22,7 @@ async function handler(m) {
         if (current) {
             db.setting('onlyAdmin', false)
             await m.react('❌')
-            return m.reply('❌ *ᴏɴʟʏᴀᴅᴍɪɴ ɴᴏɴᴀᴋᴛɪꜰ*\n\n> Bot bisa diakses semua orang')
+            return m.reply('❌*ᴏɴʟʏᴀᴅᴍɪɴ ɴᴏɴᴀᴋᴛɪꜰ*\n\n*Para ser llevado por todos los hombres*')
         }
         db.setting('onlyAdmin', true)
         db.setting('selfAdmin', false)
@@ -31,11 +31,11 @@ async function handler(m) {
         return m.reply(
             '✅ *ᴏɴʟʏᴀᴅᴍɪɴ ᴀᴋᴛɪꜰ*\n\n' +
             '╭┈┈⬡「 🔒 *ᴀᴋsᴇs* 」\n' +
-            '┃ ✅ Admin grup\n' +
-            '┃ ✅ Owner bot\n' +
+            '┃ ✅Administrador del grupo\n' +
+            '┃ ✅Propietario bot\n' +
             '┃ ❌ Member biasa\n' +
             '╰┈┈⬡\n\n' +
-            '> Gunakan `.onlyadmin off` untuk menonaktifkan'
+            '> Usa`Sólo adicto a apagar.`para desactivando'
         )
     }
 
@@ -43,7 +43,7 @@ async function handler(m) {
         if (current) {
             db.setting('onlyAdmin', false)
             await m.react('❌')
-            return m.reply('❌ *ᴏɴʟʏᴀᴅᴍɪɴ ɴᴏɴᴀᴋᴛɪꜰ*\n\n> Bot bisa diakses semua orang')
+            return m.reply('❌*ᴏɴʟʏᴀᴅᴍɪɴ ɴᴏɴᴀᴋᴛɪꜰ*\n\n*Para ser llevado por todos los hombres*')
         }
         db.setting('onlyAdmin', true)
         db.setting('selfAdmin', false)
@@ -52,12 +52,12 @@ async function handler(m) {
         return m.reply(
             '✅ *ᴏɴʟʏᴀᴅᴍɪɴ ᴀᴋᴛɪꜰ*\n\n' +
             '╭┈┈⬡「 🔒 *ᴀᴋsᴇs* 」\n' +
-            '┃ ✅ Admin grup\n' +
-            '┃ ✅ Owner bot\n' +
+            '┃ ✅Administrador del grupo\n' +
+            '┃ ✅Propietario bot\n' +
             '┃ ✅ Private chat (semua)\n' +
-            '┃ ❌ Member biasa di grup\n' +
+            '┃ ❌- Sí, es un grupo regular.\n' +
             '╰┈┈⬡\n\n' +
-            '> Gunakan `.onlyadmin off` untuk menonaktifkan'
+            '> Usa`Sólo adicto a apagar.`para desactivando'
         )
     }
 
@@ -65,15 +65,15 @@ async function handler(m) {
         return m.reply(
             `🔒 *ᴏɴʟʏᴀᴅᴍɪɴ*\n\n` +
             `> Status: ${current ? '✅ Aktif' : '❌ Nonaktif'}\n\n` +
-            `*Penggunaan:*\n` +
+            `*Uso:*\n` +
             `> \`.onlyadmin on\` — Aktifkan\n` +
             `> \`.onlyadmin off\` — Nonaktifkan\n\n` +
-            `_Hanya admin grup, owner, dan private chat yang bisa akses bot_`
+            `Sólo administrador del grupo, propietario, y chat primate que puede conseguir bot`
         )
     }
 
     if (args === 'on') {
-        if (current) return m.reply('⚠️ OnlyAdmin sudah aktif.')
+        if (current) return m.reply('⚠Y sólo Admin está activo.')
         db.setting('onlyAdmin', true)
         db.setting('selfAdmin', false)
         db.setting('publicAdmin', false)
@@ -81,22 +81,22 @@ async function handler(m) {
         return m.reply(
             '✅ *ᴏɴʟʏᴀᴅᴍɪɴ ᴀᴋᴛɪꜰ*\n\n' +
             '╭┈┈⬡「 🔒 *ᴀᴋsᴇs* 」\n' +
-            '┃ ✅ Admin grup\n' +
-            '┃ ✅ Owner bot\n' +
+            '┃ ✅Administrador del grupo\n' +
+            '┃ ✅Propietario bot\n' +
             '┃ ✅ Private chat (semua)\n' +
-            '┃ ❌ Member biasa di grup\n' +
+            '┃ ❌- Sí, es un grupo regular.\n' +
             '╰┈┈⬡'
         )
     }
 
     if (args === 'off') {
-        if (!current) return m.reply('⚠️ OnlyAdmin sudah nonaktif.')
+        if (!current) return m.reply('⚠Y sólo Admin ha sido desactivado.')
         db.setting('onlyAdmin', false)
         await m.react('❌')
-        return m.reply('❌ *ᴏɴʟʏᴀᴅᴍɪɴ ɴᴏɴᴀᴋᴛɪꜰ*\n\n> Bot bisa diakses semua orang')
+        return m.reply('❌*ᴏɴʟʏᴀᴅᴍɪɴ ɴᴏɴᴀᴋᴛɪꜰ*\n\n*Para ser llevado por todos los hombres*')
     }
 
-    return m.reply('❌ Argumen tidak valid. Gunakan: `on` atau `off`')
+    return m.reply('❌Discusiones inválidas. Uso:`on`o`apagado`')
 }
 
 exports.config = pluginConfig; exports.handler = handler;

@@ -18,7 +18,7 @@ const pluginConfig = {
 
 async function handler(m, { sock }) {
     if (m.args.length < 3) {
-        return m.reply(`🏥 *ᴘᴏᴛᴇɴsɪ ᴘᴇɴʏᴀᴋɪᴛ*\n\n> Format: tgl bln thn\n\n\`Contoh: ${m.prefix}potensipenyakit 12 05 1998\``)
+        return m.reply(`🏥*ᴘᴏᴛᴇɴSɪ ᴘᴇɴʏᴀᴋɪᴛ*\n\n> Formato: tgl bln thn\n\n\`Ejemplo:${m.prefix}potensipenyakit 12 05 1998\``)
     }
     
     const [tgl, bln, thn] = m.args
@@ -31,12 +31,12 @@ async function handler(m, { sock }) {
         
         if (!_optionalChain([data, 'optionalAccess', _ => _.status]) || !_optionalChain([data, 'optionalAccess', _2 => _2.data])) {
             m.react('❌')
-            return m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> Gagal menganalisa`)
+            return m.reply(`❌*ɢᴀɢᴀʟ*\n\n# Poderoso, analícelo #`)
         }
         
         const result = data.data
         const response = `🏥 *ᴘᴏᴛᴇɴsɪ ᴘᴇɴʏᴀᴋɪᴛ*\n\n` +
-            `> Tanggal: *${tgl}-${bln}-${thn}*\n\n` +
+            `> Fecha: *${tgl}-${bln}-${thn}*\n\n` +
             `📊 *ᴇʟᴇᴍᴇɴ:*\n${result.sektor}\n\n` +
             `⚠️ *ᴘᴏᴛᴇɴsɪ:*\n${result.elemen}\n\n` +
             `> _${result.catatan}_`

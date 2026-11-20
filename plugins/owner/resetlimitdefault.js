@@ -4,7 +4,7 @@ const pluginConfig = {
     name: 'resetlimitdefault',
     alias: ['defaultlimitreset'],
     category: 'owner',
-    description: 'Reset default limit ke config asli',
+    description: 'Reiniciar el límite predeterminado a asli config',
     usage: '.resetlimitdefault',
     example: '.resetlimitdefault',
     isOwner: true,
@@ -24,8 +24,8 @@ async function handler(m, { sock }) {
     
     await m.reply(
         `✅ *ʙᴇʀʜᴀsɪʟ*\n\n` +
-        `> Default limit direset ke config: \`${configDefault}\`\n` +
-        `> User baru akan mendapat limit dari config`
+        `* Límite predeterminado reajuste a config:\`${configDefault}\`\n` +
+        `*Nuevo usuario obtendrá límite de config*`
     )
 }
 

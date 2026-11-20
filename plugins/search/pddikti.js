@@ -5,7 +5,7 @@ const pluginConfig = {
   name: "pddikti",
   alias: ["dikti", "carimahasiswa"],
   category: "search",
-  description: "Cari data Mahasiswa, Dosen, PT, dan Prodi dari PDDIKTI",
+  description: "Datos de Busca dhakapan, Dosen, PT, y Prodi de PDDDDlCTI",
   usage: ".pddikti <mode> <query>",
   example: ".pddikti all Gibran Khalil\n.pddikti detail <id_mahasiswa>",
   cooldown: 15,
@@ -41,7 +41,7 @@ async function pddikti(input) {
       const mhsId = typeof _optionalChain([input, 'optionalAccess', _3 => _3.mahasiswaId]) === "string" ? input.mahasiswaId.trim() : "";
       if (!mhsId) {
         return { Status: false, Code: 400, Input: input, Result: null,
-          Error: "Field 'mahasiswaId' wajib untuk mode 'detail'. Ambil dari hasil search mhs (field 'id')." };
+          Error: "Tomar de los resultados de los mhs (campo megid )." };
       }
       const data = await pddiktiGet(`/detail/mhs/${encodeURIComponent(mhsId)}`);
       const message = _optionalChain([data, 'optionalAccess', _4 => _4.nama])
@@ -71,7 +71,7 @@ async function pddikti(input) {
 
     if (!query) {
       return { Status: false, Code: 400, Input: input, Result: null,
-        Error: "Kata kunci pencarian wajib (nama, NIM, NIDN, dll)." };
+        Error: "Palabras clave requieren (nombre, NIM, NIDN, dll )." };
     }
     if (query.length < 3) {
       return { Status: false, Code: 400, Input: input, Result: null,
@@ -80,16 +80,16 @@ async function pddikti(input) {
 
     let path;
     switch (mode) {
-      case "all":   path = `/pencarian/all/${encodeURIComponent(query)}`; break;
+      case "all":   path = `/búsqueda/all/${encodeURIComponent(query)}`; break;
       case "mhs":
       case "mahasiswa":
-        path = `/pencarian/mhs/${encodeURIComponent(query)}`; break;
-      case "dosen": path = `/pencarian/dosen/${encodeURIComponent(query)}`; break;
-      case "pt":    path = `/pencarian/pt/${encodeURIComponent(query)}`; break;
-      case "prodi": path = `/pencarian/prodi/${encodeURIComponent(query)}`; break;
+        path = `/búsqueda/mhs/${encodeURIComponent(query)}`; break;
+      case "dosen": path = `/búsqueda/dosen/${encodeURIComponent(query)}`; break;
+      case "pt":    path = `/búsqueda/pt/${encodeURIComponent(query)}`; break;
+      case "prodi": path = `/búsqueda/prodi/${encodeURIComponent(query)}`; break;
       default:
         return { Status: false, Code: 400, Input: input, Result: null,
-          Error: `Unknown mode '${mode}'. Pakai: all | mhs | dosen | pt | prodi | detail` };
+          Error: `Unknown mode '${mode}'. Usar: all | mhs | dosen | pt | prodi | detail` };
     }
 
     const data = await pddiktiGet(path);
@@ -103,7 +103,7 @@ async function pddikti(input) {
       return {
         Status: true, Code: 200, Input: input,
         Result: {
-          message: `🔍 ${total} hasil untuk "${query}" (${mhs.length} mhs, ${dosen.length} dosen, ${pt.length} pt, ${prodi.length} prodi)`,
+          message: `🔍 ${total}el resultado del odio${query}" (${mhs.length} mhs, ${dosen.length} dosen, ${pt.length} pt, ${prodi.length} prodi)`,
           query,
           totalCount: total,
           mahasiswa: mhs,
@@ -119,8 +119,8 @@ async function pddikti(input) {
       Status: true, Code: 200, Input: input,
       Result: {
         message: items.length > 0
-          ? `🔍 ${items.length} hasil ${mode} untuk "${query}"`
-          : `🔍 Gak ada hasil ${mode} untuk "${query}"`,
+          ? `🔍 ${items.length}resultado${mode}para "${query}"`
+          : `🔍No tiene resultados${mode}para "${query}"`,
         query,
         mode,
         count: items.length,
@@ -142,14 +142,14 @@ async function handler(m, { args }) {
   if (args.length === 0) {
     return m.reply(
       `🎓 *PDDIKTI SEARCH*\n\n` +
-      `> Mode pencarian:\n` +
+      `* Búsqueda en modo:*\n` +
       `- \`.pddikti all <query>\`\n` +
       `- \`.pddikti mhs <nama/NIM>\`\n` +
       `- \`.pddikti dosen <nama/NIDN>\`\n` +
       `- \`.pddikti pt <nama_kampus>\`\n` +
       `- \`.pddikti prodi <nama_prodi>\`\n` +
       `- \`.pddikti detail <id_mahasiswa>\`\n\n` +
-      `*Contoh:* \`.pddikti mhs Gibran Rakabuming\``
+      `*Ejemplo:*\`.pddikti mhs Gibran Rakabuming\``
     );
   }
 
@@ -170,15 +170,15 @@ async function handler(m, { args }) {
       
       const r = res.Result;
       let txt = `🎓 *DETAIL MAHASISWA*\n\n`;
-      txt += `- 📝 Nama          : *${r.nama}*\n`;
+      txt += `-📝Nombre: *${r.nama}*\n`;
       txt += `- 🆔 NIM           : *${r.nim}*\n`;
       txt += `- 👤 Jenis Kelamin : *${_nullishCoalesce(r.jenisKelamin, () => ( "-"))}*\n`;
       txt += `- 🎓 Jenjang       : *${r.jenjang}*\n`;
       txt += `- 📚 Prodi         : *${r.prodi}*\n`;
       txt += `- 🏛️ Perguruan T.  : *${r.namaPt}*\n`;
-      txt += `- 📅 Tgl Masuk     : *${r.tanggalMasuk}*\n`;
+      txt += `-📅Mapsuk Tgl: *${r.tanggalMasuk}*\n`;
       txt += `- 📊 Status        : *${r.statusSaatIni}*\n`;
-      txt += `- 💼 Jenis Daftar  : *${r.jenisDaftar}*\n`;
+      txt += `-💼Lista de genios: *${r.jenisDaftar}*\n`;
       
       m.react("✅");
       return m.reply(txt);
@@ -214,7 +214,7 @@ async function handler(m, { args }) {
         txt += `\n`;
       }
       if (pt.length) {
-        txt += `🏛️ *PERGURUAN TINGGI (top 3):*\n`;
+        txt += `🏛(Altísimo @-@ PITCHED ):\n`;
         for (const p of pt) txt += `- ${p.nama} (${_nullishCoalesce(_nullishCoalesce(p.nama_singkat, () => ( p.sinkatan_pt)), () => ( "-"))})\n`;
         txt += `\n`;
       }
@@ -235,13 +235,13 @@ async function handler(m, { args }) {
           txt += `- 📚 ${item.nama_prodi} @ ${item.nama_pt}\n\n`;
         } else if (mode === "pt") {
           txt += `*#${i + 1} ${item.nama} (${_nullishCoalesce(item.nama_singkat, () => ( "-"))})*\n`;
-          txt += `- Kode: ${_nullishCoalesce(item.kode, () => ( "-"))}\n\n`;
+          txt += `- Código:${_nullishCoalesce(item.kode, () => ( "-"))}\n\n`;
         } else if (mode === "prodi") {
           txt += `*#${i + 1} ${item.nama}*\n`;
           txt += `- @ ${_nullishCoalesce(item.nama_pt, () => ( "-"))}\n\n`;
         }
       }
-      if (r.count > 10) txt += `> ... +${r.count - 10} hasil lainnya.\n`;
+      if (r.count > 10) txt += `> ... +${r.count - 10}resultado otros.\n`;
     }
     
     m.react("✅");

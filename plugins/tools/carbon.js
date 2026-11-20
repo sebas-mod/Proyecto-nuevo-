@@ -5,7 +5,7 @@ const pluginConfig = {
     name: "carbon",
     alias: ["carbonify", "carboncode"],
     category: "tools",
-    description: "Membuat gambar kode dengan tampilan carbon style",
+    description: "Crear un código de dibujo con una pantalla de estilo carbono",
     usage: ".carbon <kode>",
     example: '.carbon console.log("Hello World")',
     isOwner: false,
@@ -63,12 +63,12 @@ async function handler(m, { sock }) {
     if (!text) {
         return m.reply(
             `🖥️ *CARBON CODE*\n\n` +
-            `Fitur ini mengubah teks kode program kamu menjadi gambar cantik ala Carbon\n\n` +
-            `*Cara pakai:*\n` +
+            `Está característica convierte el código del programa. Te estás convirtiendo en una hermosa imagen de carbono.\n\n` +
+            `*Como usarlo:*\n` +
             `> \`${m.prefix}carbon <kode>\`\n` +
-            `> Atau kamu bisa reply pesan yang berisi kode\n\n` +
-            `*Contoh:*\n` +
-            `> \`${m.prefix}carbon console.log("Halo")\``
+            `Y usted puede responder mensajes que contienen código.\n\n` +
+            `*Ejemplo:*\n` +
+            `> \`${m.prefix}carbon console.log("Hola")\``
         )
     }
 
@@ -105,7 +105,7 @@ async function handler(m, { sock }) {
 
         const imageUrl = _optionalChain([res, 'access', _3 => _3.data, 'optionalAccess', _4 => _4.screenshot, 'optionalAccess', _5 => _5.url]) || null
 
-        if (!imageUrl) throw new Error("Gagal generate carbon gambar")
+        if (!imageUrl) throw new Error("Imágenes de carbono de generación Bold")
 
         await sock.sendMedia(m.chat, imageUrl, null, m, {
             type: "image"

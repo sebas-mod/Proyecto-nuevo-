@@ -3,7 +3,7 @@ const pluginConfig = {
     name: 'templateplugin',
     alias: ['tplplugin', 'plugin-template'],
     category: 'owner',
-    description: 'Generate plugin template (Owner Only)',
+    description: 'Generar plantilla de plug ( Oferta solamente )',
     usage: '.templateplugin',
     example: '.templateplugin',
     isOwner: true,
@@ -28,15 +28,15 @@ const pluginConfig = {
     isGroup: false,
     isPrivate: false,
     cooldown: 3,
-    energi: 1,
+energía: 1,
     isEnabled: true
 }
 async function handler(m, { sock }) {
     try {
-        await m.reply('This is an example plugin!')
+await m. respuesta ( xis es un ex¡Enchufe amplio!
     } catch (error) {
         console.error('Example Plugin Error:', error)
-        await m.reply('❌ *GAGAL*\\n\\n> ' + error.message)
+await m.responder('❌*Fallido*\\n\\n
     }
 }
 export { pluginConfig as config, handler }

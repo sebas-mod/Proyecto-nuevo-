@@ -1,7 +1,7 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
 /**
- * @file plugins/owner/self.js
- * @description Plugin untuk mengaktifkan mode self (hanya owner & bot)
+* @ llenar plugins / propietario / yo.
+* @ descripción Plugin para habilitar el modo de auto (sólo el arquero propietario )
  */
 var _ourindatabasejs = require('../../src/lib/ourin-database.js');
 var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
@@ -9,7 +9,7 @@ const pluginConfig = {
     name: 'self',
     alias: ['selfmode', 'private-mode'],
     category: 'owner',
-    description: 'Mengaktifkan mode self (hanya owner & bot yang bisa akses)',
+    description: 'Modo de autos en condiciones de vida (sólo los propietarios de Anjabot pueden realmente funcionar )',
     usage: '.self',
     example: '.self',
     isOwner: true,
@@ -22,27 +22,27 @@ const pluginConfig = {
 };
 
 /**
- * Handler untuk command self
+* Handler to comando self
  */
 async function handler(m, { sock }) {
     try {
         const isRealOwner = validateOwner(m);
         if (!isRealOwner) {
-            return await m.reply('🚫 *ᴀᴋsᴇs ᴅɪᴛᴏʟᴀᴋ*\n\n> Hanya owner yang bisa mengubah mode bot!');
+            return await m.reply('🚫*ᴀᴋSᴇSᴅɪᴛᴏʟᴀᴋ*\n\n- ¡Sólo el dueño puede cambiar el bot de modo!');
         }
         const currentMode = _configjs2.default.mode;
         if (currentMode === 'self') {
-            return await m.reply('ℹ️ Bot sudah dalam mode *self*');
+            return await m.reply('*Ya en un modo* *yo*');
         }
         _configjs2.default.mode = 'self';
         const db = _ourindatabasejs.getDatabase.call(void 0, );
         db.setting('botMode', 'self');
         
         const responseText = `🔒 *ᴍᴏᴅᴇ sᴇʟꜰ ᴀᴋᴛɪꜰ*\n\n` +
-            `> Bot sekarang hanya merespon:\n` +
-            `> • Owner bot\n` +
-            `> • Bot sendiri (fromMe)\n\n` +
-            `_Gunakan .public untuk membuka akses_`;
+            `Sí, ahora es sólo una llamada telefónica:\n` +
+            `♪•Propietario bot\n` +
+            `♪•Vive por ti mismo (de mí)\n\n` +
+            `Desempleado. Público para abrir un accesorio`;
         await m.reply(responseText);
         console.log(`[Mode] Changed to SELF by ${m.pushName} (${m.sender})`);
     } catch (error) {
@@ -52,7 +52,7 @@ async function handler(m, { sock }) {
 }
 
 /**
- * Validasi owner dengan multiple checks
+* Propietario de validaciones con múltiples cheques
  */
 function validateOwner(m) {
     if (!m.isOwner) return false;

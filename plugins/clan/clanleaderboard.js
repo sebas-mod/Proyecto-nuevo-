@@ -31,7 +31,7 @@ async function handler(m) {
 
     const clans = Object.values(db.db.data.clans)
     if (clans.length === 0) {
-        return m.reply(`🏰 Belum ada clan terdaftar\n\nBuat: *.clancreate <nama>*`)
+        return m.reply(`🏰Aún no no registered clan\n\nCrea: *.clancreate<nama>*`)
     }
 
     clans.sort((a, b) => {
@@ -57,7 +57,7 @@ async function handler(m) {
         txt += `   ${rank} Lv.${clan.level || 1} · ${clan.wins || 0}W/${clan.losses || 0}L (${winRate}%) · 👥 ${clan.members.length}\n\n`
     })
 
-    txt += `Total *${clans.length}* clan terdaftar`
+    txt += `Total *${clans.length}* clan listado`
 
     await m.reply(txt)
 }

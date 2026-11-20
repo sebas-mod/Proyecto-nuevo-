@@ -25,10 +25,10 @@ function formatAfkDuration(ms) {
   const hours = Math.floor(minutes / 60);
   const days = Math.floor(hours / 24);
 
-  if (days > 0) return `${days} hari ${hours % 24} jam`;
-  if (hours > 0) return `${hours} jam ${minutes % 60} menit`;
-  if (minutes > 0) return `${minutes} menit`;
-  return `${seconds} detik`;
+  if (days > 0) return `${days}el${hours % 24}hora`;
+  if (hours > 0) return `${hours}hora${minutes % 60}minuto`;
+  if (minutes > 0) return `${minutes}minuto`;
+  return `${seconds}segundo`;
 }
 
 function checkPermission(m, pluginConfig) {
@@ -54,7 +54,7 @@ function checkPermission(m, pluginConfig) {
   if (pluginConfig.isOwner && !m.isOwner && !hasAccess) {
     return {
       allowed: false,
-      reason: _optionalChain([_configjs2.default, 'access', _ => _.messages, 'optionalAccess', _2 => _2.ownerOnly]) || "🚫 Owner only!",
+      reason: _optionalChain([_configjs2.default, 'access', _ => _.messages, 'optionalAccess', _2 => _2.ownerOnly]) || "🚫Propietario only!",
     };
   }
 
@@ -101,7 +101,7 @@ function checkPermission(m, pluginConfig) {
   ) {
     return {
       allowed: false,
-      reason: _optionalChain([_configjs2.default, 'access', _9 => _9.messages, 'optionalAccess', _10 => _10.adminOnly]) || "👮 Admin grup only!",
+      reason: _optionalChain([_configjs2.default, 'access', _9 => _9.messages, 'optionalAccess', _10 => _10.adminOnly]) || "👮¡¡Amin grupo sólo!",
     };
   }
 
@@ -109,7 +109,7 @@ function checkPermission(m, pluginConfig) {
     return {
       allowed: false,
       reason:
-        _optionalChain([_configjs2.default, 'access', _11 => _11.messages, 'optionalAccess', _12 => _12.botAdminOnly]) || "🤖 Bot harus menjadi admin grup!",
+        _optionalChain([_configjs2.default, 'access', _11 => _11.messages, 'optionalAccess', _12 => _12.botAdminOnly]) || "🤖¡Para ser un grupo de administración!",
     };
   }
 
@@ -120,7 +120,7 @@ function checkPermission(m, pluginConfig) {
         if (!m.isAdmin && !m.isOwner && !hasAccess) {
           return {
             allowed: false,
-            reason: "🎮 Fitur Game sedang dinonaktifkan di grup ini oleh Admin!",
+            reason: "🎮La función de juego está siendo activada en este grupo por Admin!",
           };
         }
       }
@@ -128,7 +128,7 @@ function checkPermission(m, pluginConfig) {
         if (!m.isAdmin && !m.isOwner && !hasAccess) {
           return {
             allowed: false,
-            reason: "⚔️ Fitur RPG sedang dinonaktifkan di grup ini oleh Admin!",
+            reason: "⚔¡El RPG está siendo activado en este grupo por Admin!",
           };
         }
       }
@@ -161,10 +161,10 @@ function checkMode(m, getActiveJadibots) {
         `💤 *ʙᴏᴛ sᴇᴅᴀɴɢ ᴀꜰᴋ*\n\n` +
         `╭┈┈⬡「 📋 *ɪɴꜰᴏ* 」\n` +
         `┃ 📝 ᴀʟᴀsᴀɴ: \`${botAfk.reason || "AFK"}\`\n` +
-        `┃ ⏱️ sᴇᴊᴀᴋ: \`${duration}\` yang lalu\n` +
+        `┃ ⏱️ sᴇᴊᴀᴋ: \`${duration}\`que luego\n` +
         `╰┈┈⬡\n\n` +
-        `> Bot tidak bisa menerima perintah saat ini\n` +
-        `> Mohon tunggu sampai owner mengaktifkan kembali`,
+        `*No puedo tomar órdenes está vez*\n` +
+        `Por favor, espere hasta que el propietario reactiva.`,
     };
   }
 
@@ -181,10 +181,10 @@ function checkMode(m, getActiveJadibots) {
         isOnlyThisGroup: true,
         onlyThisGroupMessage:
           `🔒 *Akses Ditolak*\n\n` +
-          `Maaf, saat ini bot kami hanya bisa diakses dan digunakan secara eksklusif di Grup Utama (*${onlyThisGroup.name}*).\n\n` +
-          `Silakan bergabung ke grup utama kami melalui tautan berikut:\n` +
+          `Lo sentimos, nuestro bot sólo está siendo acentuado y utilizado exclusivamente en Grupo prima.${onlyThisGroup.name}*).\n\n` +
+          `Por favor, únase a nuestro grupo principal a través del próximo lote:\n` +
           `🔗 ${onlyThisGroup.link}\n\n` +
-          `Setelah bergabung, Anda bebas menggunakan semua fitur bot. Terima kasih!`
+          `Después de una pelea, usted era libre de usar todas las características.`
       };
     }
   }
@@ -217,12 +217,12 @@ function checkMode(m, getActiveJadibots) {
         hasJadibots: true,
         jadibotMessage:
           `🤖 *ᴍᴏᴅᴇ ᴘʀɪᴠᴀᴛᴇ*\n\n` +
-          `Bot utama sedang dalam mode private.\n` +
-          `Kamu bisa menggunakan bot turunan kami:\n\n` +
+          `Yafmuma está en un modo primate.\n` +
+          `Puedes usar las botas por la espalda:\n\n` +
           `╭┈┈⬡「 📱 *ʙᴏᴛ ᴛᴇʀsᴇᴅɪᴀ* 」\n` +
           `${jadibotList}` +
           `╰┈┈⬡\n\n` +
-          `> Pilih salah satu bot di atas untuk akses fitur.`,
+          `Elija una de las botas en la parte superior para la función de acción.`,
         jadibotMentions: mentions,
       };
     }

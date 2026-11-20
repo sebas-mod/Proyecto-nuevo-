@@ -11,7 +11,7 @@ const pluginConfig = {
   name: "tourl",
   alias: ["upload", "catbox", "url"],
   category: "tools",
-  description: "Upload media ke multiple host dan dapatkan URL",
+  description: "Subir los medios a múltiples host y obtener URL",
   usage: ".tourl (reply/kirim media)",
   example: ".tourl",
   isOwner: false,
@@ -50,7 +50,7 @@ async function uploadToCatbox(buffer, filename) {
     timeout: 30000,
   });
 
-  if (!res.ok) throw new Error("Catbox gagal");
+  if (!res.ok) throw new Error("Catboxfallido");
   const url = await res.text();
   if (!url.startsWith("http")) throw new Error("Invalid response");
   return { host: "Catbox", url, expires: "Permanent" };
@@ -75,7 +75,7 @@ async function uploadToLitterbox(buffer, filename) {
     },
   );
 
-  if (!res.ok) throw new Error("Litterbox gagal");
+  if (!res.ok) throw new Error("Litterboxfallido");
   const url = await res.text();
   if (!url.startsWith("http")) throw new Error("Invalid response");
   return { host: "Litterbox", url, expires: "72 jam" };
@@ -95,7 +95,7 @@ async function uploadTo0x0_alt(buffer, filename) {
     timeout: 30000,
   });
 
-  if (!res.ok) throw new Error("Uguu gagal");
+  if (!res.ok) throw new Error("Uguu fallido");
   const data = await res.json();
   if (!_optionalChain([data, 'optionalAccess', _2 => _2.data, 'optionalAccess', _3 => _3.url])) throw new Error("Invalid response");
 
@@ -104,7 +104,7 @@ async function uploadTo0x0_alt(buffer, filename) {
 
 async function uploadToImgDrop(buffer, filename) {
   const data = await _imgdropjs2.default.call(void 0, buffer, filename);
-  if (!data.status || !data.url) throw new Error("ImgDrop gagal");
+  if (!data.status || !data.url) throw new Error("ImgDrop fallido");
   return { host: "ImgDrop", url: data.url, expires: "Unknown" };
 }
 
@@ -122,7 +122,7 @@ async function uploadToQuax(buffer, filename) {
     timeout: 60000,
   });
 
-  if (!res.ok) throw new Error("Qu.ax gagal");
+  if (!res.ok) throw new Error("Qu.xfallido");
   const data = await res.json();
 
   if (!_optionalChain([data, 'optionalAccess', _4 => _4.success]) || !Array.isArray(data.files) || !_optionalChain([data, 'access', _5 => _5.files, 'access', _6 => _6[0], 'optionalAccess', _7 => _7.url])) {
@@ -135,16 +135,16 @@ async function uploadToQuax(buffer, filename) {
 async function uploadToTermai(buffer) {
   const ext = await detectExt(buffer, "bin");
   const form = new (0, _formdata2.default)();
-  form.append("file", buffer, { filename: `file.${ext}` });
+  form.append("file", buffer, { filename: `archivo.${ext}` });
 
-  const res = await _nodefetch2.default.call(void 0, `${termaiDomain}/api/upload?key=${termaiKey}`, {
+  const res = await _nodefetch2.default.call(void 0, `${termaiDomain}/fuego/upload?key=${termaiKey}`, {
     method: "POST",
     body: form,
     headers: form.getHeaders(),
     timeout: 120000,
   });
 
-  if (!res.ok) throw new Error("Termai gagal");
+  if (!res.ok) throw new Error("Termai fallido");
   const data = await res.json();
 
   if (!_optionalChain([data, 'optionalAccess', _8 => _8.status]) || !_optionalChain([data, 'optionalAccess', _9 => _9.path])) {
@@ -174,7 +174,7 @@ async function uploadToPone(buffer, filename) {
     timeout: 60000,
   });
 
-  if (!res.ok) throw new Error("Pone gagal");
+  if (!res.ok) throw new Error("Pone fallido");
   const data = await res.json();
   const url = _optionalChain([data, 'optionalAccess', _10 => _10.files, 'optionalAccess', _11 => _11[0], 'optionalAccess', _12 => _12.url, 'optionalAccess', _13 => _13.replaceAll, 'call', _14 => _14("\\/", "/")]) || null;
   if (!_optionalChain([data, 'optionalAccess', _15 => _15.success]) || !url) throw new Error("Invalid response");
@@ -201,7 +201,7 @@ async function uploadToKappa(buffer, filename) {
     timeout: 60000,
   });
 
-  if (!res.ok) throw new Error("Kappa gagal");
+  if (!res.ok) throw new Error("Kappa fallido");
   const raw = await res.text();
   const data = JSON.parse(raw);
   const url = _optionalChain([data, 'optionalAccess', _16 => _16.link]) || null;
@@ -233,7 +233,7 @@ async function uploadToUploadEe(buffer, filename) {
 
   const idBody = await idRes.text();
   const idMatch = idBody.match(/startUpload\("([^"]+)"/);
-  if (!idMatch) throw new Error("Upload ID tidak ditemukan");
+  if (!idMatch) throw new Error("Uplad id no encontrado");
   const uploadId = idMatch[1];
 
   const form = new (0, _formdata2.default)();
@@ -272,7 +272,7 @@ async function uploadToUploadEe(buffer, filename) {
   const srcMatch = html.match(/id=["']file_src["'][^>]*value=["']([^"']+)["']/i);
   const viewMatch = html.match(/View file:\s*<br\s*\/?>\s*<a href=["']?([^"'>\s]+)["']?/i);
   const rawUrl = _optionalChain([srcMatch, 'optionalAccess', _17 => _17[1]]) || _optionalChain([viewMatch, 'optionalAccess', _18 => _18[1]]) || null;
-  if (!rawUrl) throw new Error("Upload.ee gagal");
+  if (!rawUrl) throw new Error("Upload.ee fallido");
 
   let resultUrl = rawUrl.replaceAll("&amp;", "&").replaceAll("&quot;", '"');
   if (isImage) resultUrl = resultUrl.replace("/files/", "/image/").replace(/\.html$/, "");
@@ -313,7 +313,7 @@ async function uploadToLeopard(buffer, filename) {
   const html = await res.text();
   const match = html.match(/Download link:\s*<a href=([^>\s]+)>/i);
   const url = _optionalChain([match, 'optionalAccess', _19 => _19[1]]) || null;
-  if (!url) throw new Error("Leopard gagal");
+  if (!url) throw new Error("Leopard fallido");
   return { host: "Leopard", url, expires: "Permanent" };
 }
 
@@ -337,7 +337,7 @@ async function uploadToUguu(buffer, filename) {
     timeout: 120000,
   });
 
-  if (!res.ok) throw new Error("Uguu gagal");
+  if (!res.ok) throw new Error("Uguu fallido");
   const data = await res.json();
   const url = _optionalChain([data, 'optionalAccess', _20 => _20.files, 'optionalAccess', _21 => _21[0], 'optionalAccess', _22 => _22.url]) || null;
   if (!_optionalChain([data, 'optionalAccess', _23 => _23.success]) || !url) throw new Error("Invalid response");
@@ -390,7 +390,7 @@ async function uploadTo8upload(buffer, filename) {
 
   const urlMatch = (html || "").match(/https:\/\/i\.8upload\.com\/image\/[^'"<>\s]+/);
   const url = _optionalChain([urlMatch, 'optionalAccess', _24 => _24[0]]) || null;
-  if (!url) throw new Error("8upload gagal");
+  if (!url) throw new Error("8upload fallido");
   return { host: "8upload", url, expires: "Permanent" };
 }
 
@@ -412,9 +412,9 @@ async function uploadToTop4top(buffer, filename) {
     filename,
     contentType: _mimetypes2.default.lookup(filename) || "application/octet-stream",
   });
-  for (let i = 1; i <= 9; i++) form.append(`file_${i}_`, "");
+  for (let i = 1; i <= 9; i++) form.append(`_ Archivos${i}_`, "");
   form.append("submitr", "[ رفع الملفات ]");
-  for (let i = 0; i <= 9; i++) form.append(`file_${i}_`, "");
+  for (let i = 0; i <= 9; i++) form.append(`_ Archivos${i}_`, "");
 
   const res = await _nodefetch2.default.call(void 0, "https://top4top.io/index.php", {
     method: "POST",
@@ -433,7 +433,7 @@ async function uploadToTop4top(buffer, filename) {
   const urlMatch = html.match(/https:\/\/[^'"<>\s]*\/p_[^'"<>\s]*/);
   const inputMatch = html.match(/value=["'](https:\/\/[^'"]*\/p_[^'"]*)['"]/i);
   const url = _optionalChain([inputMatch, 'optionalAccess', _26 => _26[1]]) || _optionalChain([urlMatch, 'optionalAccess', _27 => _27[0]]) || null;
-  if (!url) throw new Error("Top4top gagal");
+  if (!url) throw new Error("Top4top fallido");
   return { host: "Top4top", url, expires: "Permanent" };
 }
 
@@ -456,7 +456,7 @@ async function uploadToTmpFiles(buffer, filename) {
     timeout: 120000,
   });
 
-  if (!res.ok) throw new Error("TmpFiles gagal");
+  if (!res.ok) throw new Error("TmpFiles fallido");
   const data = await res.json();
   const url = _optionalChain([data, 'optionalAccess', _28 => _28.data, 'optionalAccess', _29 => _29.url]) || null;
   if (_optionalChain([data, 'optionalAccess', _30 => _30.status]) !== "success" || !url) throw new Error("Invalid response");
@@ -475,10 +475,10 @@ async function uploadToNekohime(buffer, filename) {
     headers: form.getHeaders(),
     timeout: 120000,
   });
-  if (!res.ok) throw new Error("Nekohime gagal");
+  if (!res.ok) throw new Error("Nekohime fallido");
   const data = await res.json();
   const url = _optionalChain([data, 'optionalAccess', _31 => _31.files, 'optionalAccess', _32 => _32[0], 'optionalAccess', _33 => _33.url]) || _optionalChain([data, 'optionalAccess', _34 => _34.files, 'optionalAccess', _35 => _35.url]) || (Array.isArray(_optionalChain([data, 'optionalAccess', _36 => _36.files])) ? _optionalChain([data, 'optionalAccess', _37 => _37.files, 'access', _38 => _38[0]]) : _optionalChain([data, 'optionalAccess', _39 => _39.files]));
-  if (!url) throw new Error("Nekohime gagal");
+  if (!url) throw new Error("Nekohime fallido");
   return { host: "Nekohime", url, expires: "Permanent" };
 }
 
@@ -494,9 +494,9 @@ async function uploadToFaddlaninco(buffer, filename) {
     headers: form.getHeaders(),
     timeout: 120000,
   });
-  if (!res.ok) throw new Error("Faddlaninco gagal");
+  if (!res.ok) throw new Error("Faddlaninco fallido");
   const data = await res.json();
-  if (!data.success || !data.url) throw new Error(data.error || "Faddlaninco gagal");
+  if (!data.success || !data.url) throw new Error(data.error || "Faddlaninco fallido");
   return { host: "Faddlaninco", url: data.url, expires: "Permanent" };
 }
 
@@ -511,7 +511,7 @@ async function uploadToUnggah(buffer, filename) {
   const contentType = _mimetypes2.default.lookup(filename) || "application/octet-stream";
   const head = Buffer.from(
     `------${boundary}\r\n` +
-    `Content-Disposition: form-data; name="file"; filename="${filename}"\r\n` +
+    `Contenido - Disposición: forma - datos; nombre = Spenfield Ec; nombre de archivo =${filename}"\r\n` +
     `Content-Type: ${contentType}\r\n\r\n`
   );
   const tail = Buffer.from(`\r\n------${boundary}--\r\n`);
@@ -531,7 +531,7 @@ async function uploadToUnggah(buffer, filename) {
     timeout: 120000
   });
 
-  if (!res.ok) throw new Error("Unggah gagal");
+  if (!res.ok) throw new Error("Sube fallido");
   const data = await res.json();
   if (!_optionalChain([data, 'optionalAccess', _40 => _40.url])) throw new Error("Invalid response");
   
@@ -585,7 +585,7 @@ async function handler(m, { sock }) {
   if (_optionalChain([m, 'access', _41 => _41.quoted, 'optionalAccess', _42 => _42.message])) {
     const type = _ourin.getContentType.call(void 0, m.quoted.message);
     if (!type || type === "conversation" || type === "extendedTextMessage") {
-      return m.reply("⚠️ Kak, tolong reply ke file (gambar/video/audio/berkas) ya!");
+      return m.reply("⚠Por favor, responda al archivo.");
     }
 
     try {
@@ -596,7 +596,7 @@ async function handler(m, { sock }) {
       );
       const content = m.quoted.message[type];
       mimetype = _optionalChain([content, 'optionalAccess', _43 => _43.mimetype]) || "application/octet-stream";
-      filename = _optionalChain([content, 'optionalAccess', _44 => _44.fileName]) || `file.${getFileExtension(mimetype)}`;
+      filename = _optionalChain([content, 'optionalAccess', _44 => _44.fileName]) || `archivo.${getFileExtension(mimetype)}`;
     } catch (e) {
       return m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
     }
@@ -604,10 +604,10 @@ async function handler(m, { sock }) {
     const type = _ourin.getContentType.call(void 0, m.message);
     if (!type || type === "conversation" || type === "extendedTextMessage") {
       let txt = `📤 *MEDIA UPLOADER* 📤\n\n`;
-      txt += `Halo kak! Butuh link untuk media kamu? Aku bisa bantu uploadin ke berbagai server gratisan loh!\n\n`;
-      txt += `*Cara Pakai:*\n`;
-      txt += `👉 Kirim media dengan caption \`${m.prefix}tourl\`\n`;
-      txt += `👉 Atau reply media yang udah ada dengan \`${m.prefix}tourl\``;
+      txt += `¡Hola hermano!\n\n`;
+      txt += `*Como usarlo:*\n`;
+      txt += `👉Ksenmedia con caption\`${m.prefix}tourl\`\n`;
+      txt += `👉O réplica media que ya está con\`${m.prefix}tourl\``;
       return m.reply(txt);
     }
 
@@ -619,7 +619,7 @@ async function handler(m, { sock }) {
       );
       const content = m.message[type];
       mimetype = _optionalChain([content, 'optionalAccess', _45 => _45.mimetype]) || "application/octet-stream";
-      filename = _optionalChain([content, 'optionalAccess', _46 => _46.fileName]) || `file.${getFileExtension(mimetype)}`;
+      filename = _optionalChain([content, 'optionalAccess', _46 => _46.fileName]) || `archivo.${getFileExtension(mimetype)}`;
     } catch (e) {
       return m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
     }
@@ -645,18 +645,18 @@ async function handler(m, { sock }) {
 
   if (results.length === 0) {
     await m.react("❌");
-    return m.reply(`❌ Aduh kak, semuanya pada error pas upload!\n\n> Gagal di server: ${failed.join(", ")}`);
+    return m.reply(`❌¡Ouch hermano, todo en los errores pas upead!\n\n# Crawling in the servatory:${failed.join(", ")}`);
   }
 
-  let text = `🚀 *UPLOAD BERHASIL!* 🚀\n\n`;
-  text += `Yeay! Media kamu udah berhasil di-upload ke server awan. Silakan pilih linknya dan salin pakai tombol di bawah ya kak! ✨\n\n`;
+  let text = `🚀*UPLOAD Exito!*🚀\n\n`;
+  text += `Sí, ha hecho bien en el servador nube, por favor selecciona el enlacce y cohaklas tecis de la olla.✨\n\n`;
 
   let contentTxt = "";
   results.forEach((r, i) => {
     const status = r.expires === "Permanent" ? "∞ Permanen" : r.expires;
-    contentTxt += `☁️ *Server :* ${r.host}\n`;
+    contentTxt += `☁Servidor${r.host}\n`;
     contentTxt += `⏳ *Expired :* ${status}\n`;
-    contentTxt += `🔗 *Link :*\n`;
+    contentTxt += `🔗*Enlace:*\n`;
     contentTxt += `${r.url}`;
     if (i < results.length - 1) contentTxt += `\n\n`;
   });
@@ -664,7 +664,7 @@ async function handler(m, { sock }) {
   text += contentTxt.split("\n").map(line => `${line}`).join("\n");
 
   if (failed.length > 0) {
-    text += `\n\n⚠️ _Fyi kak, ada yang gagal di server: ${failed.join(", ")}_`;
+    text += `\n\n⚠*Fyi hermana, someone 's failing in the servidor:${failed.join(", ")}_`;
   }
 
   try {
@@ -697,7 +697,7 @@ async function handler(m, { sock }) {
               buttons: results.slice(0, 5).map((r, i) => ({
                 name: "cta_copy",
                 buttonParamsJson: JSON.stringify({
-                  display_text: `📋 Salin Link ${r.host}`,
+                  display_text: `📋Copia Enlace${r.host}`,
                   id: `copy_${i}`,
                   copy_code: r.url
                 })

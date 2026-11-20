@@ -2,7 +2,7 @@
     name: ['star', 'bintang'],
     alias: [],
     category: 'owner',
-    description: 'Beri/hapus bintang pada pesan',
+    description: 'Agregar / Eliminar estrellas a mensajes',
     usage: '.star (reply pesan) atau .star hapus (reply pesan)',
     example: '.star',
     isOwner: true,
@@ -15,8 +15,8 @@ async function handler(m, { sock }) {
     if (!m.quoted) {
         return m.reply(
             '⭐ *sᴛᴀʀ ᴍᴇssᴀɢᴇ*\n\n' +
-            '> `.star` (reply pesan) — Beri bintang\n' +
-            '> `.star hapus` (reply pesan) — Hapus bintang'
+            '♪`Estrella.`(responder mensaje)—Da estrella\n' +
+            '♪`.star elimina`(responder mensaje)—Elimina estrella'
         )
     }
 
@@ -34,11 +34,11 @@ async function handler(m, { sock }) {
         await m.react('⭐')
         return m.reply(
             unstar
-                ? '❌ *Bintang dihapus dari pesan*'
-                : '⭐ *Pesan ditandai bintang*'
+                ? '❌* Los flecos se desmontan del mensaje *'
+                : '⭐* Mensaje está marcado por las estrellas *'
         )
     } catch (err) {
-        return m.reply(`❌ Gagal: ${err.message}`)
+        return m.reply(`❌Fallido:${err.message}`)
     }
 }
 

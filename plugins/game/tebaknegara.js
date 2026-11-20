@@ -4,7 +4,7 @@ _ouringamesjs.games.register('tebaknegara', {
     alias: ['tn', 'guesscountry'],
     emoji: '🌍',
     title: 'TEBAK NEGARA',
-    description: 'Tebak nama negara'
+    description: 'Supongo que el nombre del estado.'
 })
 
 const { config: pluginConfig, handler, answerHandler } = _ouringamesjs.games.createPlugin('tebaknegara')

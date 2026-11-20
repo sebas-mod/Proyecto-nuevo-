@@ -5,7 +5,7 @@ const pluginConfig = {
   name: "breeding",
   alias: ["breed", "kawin", "petbreed"],
   category: "rpg",
-  description: "Breeding pets untuk mendapat pet baru",
+  description: "Alimentar mascotas para conseguir nuevas mascotas",
   usage: ".breeding @user",
   example: ".breeding @user",
   isOwner: false,
@@ -53,49 +53,49 @@ async function handler(m, { sock }) {
   if (!mentioned) {
     return m.reply(
       `💕 *Peternakan & Kawin Silang* 💕\n\n` +
-        `Sistem ini ngebolehin peliharaan kamu kawin sama peliharaan player lain!\nSiapa tau dapet keturunan langka! ✨\n\n` +
+        `Este sistema permite a tus mascotas casarse con otro jugador de mascotas!\n¡Quién sabe lo raro!✨\n\n` +
         `*Cara Pemakaian:*\n` +
         `👉 \`${m.prefix}breeding @user_target\`\n\n` +
-        `*Syarat:* \n` +
-        `1. Kamu & Target sama-sama punya pet\n` +
-        `2. Kedua pet minimal Level 5\n` +
-        `3. Biaya persalinan: *Rp 3.000*`
+        `*Requisito:*\n` +
+        `Tendrás una coincidencia con una mascota.\n` +
+        `2. Segundo pet minimal Nivel 5\n` +
+        `3. Coste persalinan: *Rp 3.000*`
     );
   }
 
   if (mentioned === m.sender) {
-    return m.reply(`Hayo, mau kawin sama diri sendiri? Nggak bisa dong! Tag temanmu! 😂❌`);
+    return m.reply(`¿Quieres casarte?😂❌`);
   }
 
   if (!user.rpg.pet) {
-    return m.reply(`Kamu aja belum punya peliharaan kak! Beli dulu sana di \`${m.prefix}petshop\` 😭`);
+    return m.reply(`¡No tienes mascotas todavía, hermana!\`${m.prefix}petshop\` 😭`);
   }
 
   const partner = db.getUser(mentioned);
   if (!_optionalChain([partner, 'optionalAccess', _5 => _5.rpg, 'optionalAccess', _6 => _6.pet])) {
-    return m.reply(`Target yang kamu tag ternyata nggak punya peliharaan! Kasihan pet kamu dicuekin. 💔`);
+    return m.reply(`¡El objetivo que pusiste tiene una mascota!💔`);
   }
 
   const myPet = user.rpg.pet;
   const partnerPet = partner.rpg.pet;
 
   if ((myPet.level || 1) < 5) {
-    return m.reply(`Pet kamu masih terlalu bocil buat kawin! Minimal *Level 5* kak (Sekarang Level ${myPet.level || 1}). 🐣`);
+    return m.reply(`¡Todavía estás demasiado ocupado para casarte!${myPet.level || 1}). 🐣`);
   }
 
   if ((partnerPet.level || 1) < 5) {
-    return m.reply(`Pet pasanganmu masih terlalu kecil buat dikawinin! Minimal *Level 5* kak (Sekarang Level ${partnerPet.level || 1}). 🐣`);
+    return m.reply(`¡La tienda de campaña de su pareja es todavía demasiado pequeña para comprarla!${partnerPet.level || 1}). 🐣`);
   }
 
   const breedingCost = 3000;
   if ((user.koin || 0) < breedingCost) {
-    return m.reply(`Uang kamu nggak cukup buat bayar dokter hewan kak! Butuh Rp ${breedingCost.toLocaleString()}. 😭`);
+    return m.reply(`No tiene suficiente dinero para un médico.${breedingCost.toLocaleString()}. 😭`);
   }
 
   user.koin -= breedingCost;
 
   await m.react("💕");
-  await m.reply(`Cieee, ${PET_NAMES[myPet.type]} kamu sama ${PET_NAMES[partnerPet.type]} temenmu lagi berduaan nih... 💕✨\nTunggu bentar ya, dokternya lagi meriksa persalinan!`);
+  await m.reply(`Cieee, ${PET_NAMES[myPet.type]}tu igual${PET_NAMES[partnerPet.type]} temenmu otra vez berduaan aquí... 💕✨\n¡Espera un minuto, el médico está teniendo un bebé!`);
   await new Promise((r) => setTimeout(r, 4000));
 
   const breedKey = [myPet.type, partnerPet.type].sort().join("+");
@@ -124,18 +124,18 @@ async function handler(m, { sock }) {
 
   await m.react(isRare ? "🎉" : "✅");
 
-  let txt = `AWWW!! ADA KELAHIRAN BARU! 🍼✨\n\n`;
+  let txt = `¡Hay una nueva pérdida!🍼✨\n\n`;
   if (isRare) {
     txt += `🎉 *LUCKY!! KETURUNAN LANGKA!!* 🎉\n`;
   }
   
-  txt += `Selamat! Kamu berhasil menetaskan bayi:\n`;
+  txt += `¡Felicidades!\n`;
   txt += `🐣 Spesies: *${PET_NAMES[resultPetType]}*\n\n`;
   
-  txt += `Dapat EXP *+${expReward}*\n`;
-  txt += `Biaya Bersalin: *Rp -${breedingCost.toLocaleString()}*\n\n`;
+  txt += `Obtener EXP * +${expReward}*\n`;
+  txt += `Maliya Estado...${breedingCost.toLocaleString()}*\n\n`;
   
-  txt += `*(Bayi peliharaanmu disimpan ke dalam Pet Storage. Total simpananmu: ${user.rpg.petStorage.length} ekor)*`;
+  txt += `* ( La mastota de Bebe se almacena en el almacenamiento de la mella.${user.rpg.petStorage.length} ekor)*`;
 
   return m.reply(txt, { mentions: [m.sender, mentioned] });
 }

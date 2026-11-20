@@ -32,9 +32,9 @@ function handler(m, { sock }) {
             `> TikTok, Instagram, Facebook\n` +
             `> YouTube, Twitter/X\n` +
             `> Telegram, Discord\n\n` +
-            `*Penggunaan:*\n` +
+            `*Uso:*\n` +
             `> \`${m.prefix}autodl on\` - Aktifkan\n` +
-            `> \`${m.prefix}autodl off\` - Nonaktifkan`
+            `> \`${m.prefix}autodl off\`- Desactiva`
         )
     }
     
@@ -43,7 +43,7 @@ function handler(m, { sock }) {
         m.react('✅')
         return m.reply(
             `✅ *ᴀᴜᴛᴏ ᴅᴏᴡɴʟᴏᴀᴅ ᴀᴋᴛɪꜰ*\n\n` +
-            `> Kirim link sosmed dan bot akan auto download!\n` +
+            `Ksenglink sembrado y bot se descarga automáticamente!\n` +
             `> Support: TikTok, IG, FB, YouTube, Twitter/X`
         )
     }
@@ -54,7 +54,7 @@ function handler(m, { sock }) {
         return m.reply(`❌ *ᴀᴜᴛᴏ ᴅᴏᴡɴʟᴏᴀᴅ ɴᴏɴᴀᴋᴛɪꜰ*`)
     }
     
-    return m.reply(`❌ *ᴀʀɢᴜᴍᴇɴ ᴛɪᴅᴀᴋ ᴠᴀʟɪᴅ*\n\n> Gunakan: \`on\` atau \`off\``)
+    return m.reply(`❌*ᴀʀɢᴜᴍᴇɴ ᴛɪᴅᴀᴋ ᴠᴀʟɪᴅ*\n\n> Usa:\`on\`o\`apagado\``)
 }
 
 exports.config = pluginConfig; exports.handler = handler;

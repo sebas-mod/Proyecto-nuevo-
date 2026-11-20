@@ -4,7 +4,7 @@ const pluginConfig = {
   name: "shop",
   alias: ["beli", "jual", "toko", "store", "buy", "sell"],
   category: "rpg",
-  description: "Beli dan jual item RPG",
+  description: "Comprar y vender artículo RPG",
   usage: ".shop <buy/sell> <item> <jumlah>",
   example: ".shop buy potion 1",
   isOwner: false,
@@ -68,14 +68,14 @@ async function handler(m, { sock }) {
   const action = _optionalChain([args, 'access', _ => _[0], 'optionalAccess', _2 => _2.toLowerCase, 'call', _3 => _3()]);
 
   if (!action || (action !== "buy" && action !== "sell")) {
-    let txt = `🏪 *Toko Kelontong RPG* ✨\n\n`;
-    txt += `Halo kak! Selamat datang di toko kelontong.\nMau beli potion atau jual barang rongsokan nih? 😂\n\n`;
+    let txt = `🏪* Tienda Kelontong RPG *✨\n\n`;
+    txt += `Bienvenido a la tienda de comestibles.\n¿Quieres comprar un pop o una cadena de basura?😂\n\n`;
     
-    txt += `*Cara Transaksi:* 💸\n`;
-    txt += `Ketik \`.shop buy <nama> <jumlah>\` buat beli.\n`;
-    txt += `Ketik \`.shop sell <nama> <jumlah>\` buat jual.\n\n`;
+    txt += `*Cara Transacción:*💸\n`;
+    txt += `Escribe\`Compra compra.<nama> <jumlah>\`crea compra.\n`;
+    txt += `Escribe\`. Venta de tienda<nama> <jumlah>\`crea vende.\n\n`;
 
-    txt += `*🛍️ Barang yang Dijual (BUY):*\n`;
+    txt += `*🛍SONNY SALE\n`;
     for (const [key, item] of Object.entries(ITEMS)) {
       if (item.type === "buyable") {
         txt += `${item.name}: *Rp ${item.price.toLocaleString("id-ID")}*\n`;
@@ -83,7 +83,7 @@ async function handler(m, { sock }) {
     }
     txt += `\n`;
 
-    txt += `*💰 Barang yang Diterima (SELL):*\n`;
+    txt += `*💰Recibido Barrera ( SILL ): *\n`;
     for (const [key, item] of Object.entries(ITEMS)) {
       if (item.type === "sellable") {
         txt += `${item.name}: *Rp ${item.price.toLocaleString("id-ID")}*\n`;
@@ -97,19 +97,19 @@ async function handler(m, { sock }) {
   const amount = parseInt(args[2]) || 1;
 
   if (!itemKey || !ITEMS[itemKey]) {
-    return m.reply(`Aduh kak, barang *${args[1] || "itu"}* nggak ada di daftar! 😭❌\nCoba cek lagi list barangnya ketik \`.shop\` ya.`);
+    return m.reply(`Aduh hermano, articulo${args[1] || "itu"}* No, está en la lista!😭❌\nIntente revisar nuevamente la lista de las cosas que tiene.\`. Tienda\`si.`);
   }
 
   const item = ITEMS[itemKey];
 
   if (action === "buy") {
     if (item.type !== "buyable") {
-      return m.reply(`Hayo lho kak, barang *${item.name}* ini khusus buat dijual, nggak bisa dibeli! 🫣❌`);
+      return m.reply(`Hao lho hermano, articulo${item.name}* Es un especial para la venta, no puede comprar!🫣❌`);
     }
 
     const totalCost = item.price * amount;
     if ((user.koin || 0) < totalCost) {
-      return m.reply(`Yahh, koin kamu kurang nih kak buat beli *${amount}x ${item.name}*! 😭😭\nKoin kamu: *Rp ${(user.koin || 0).toLocaleString("id-ID")}*\nKurang *Rp ${(totalCost - (user.koin || 0)).toLocaleString("id-ID")}* lagi. Nyari duit dulu gih! 💸🏃💨`);
+      return m.reply(`Bueno, tu moneda no vale la pena comprar.${amount}x ${item.name}*😭😭\nKain you: * Rp${(user.koin || 0).toLocaleString("id-ID")}*\nKurang *Rp ${(totalCost - (user.koin || 0)).toLocaleString("id-ID")}" Y pagar primero el dinero ".💸🏃💨`);
     }
 
     user.koin = (user.koin || 0) - totalCost;
@@ -117,19 +117,19 @@ async function handler(m, { sock }) {
     user.inventory[itemKey] = (user.inventory[itemKey] || 0) + amount;
 
     db.save();
-    return m.reply(`MAKASIH BANYAK KAK! 🎉✨\n\nKamu berhasil borong:\n🛒 Item: *${amount}x ${item.name}*\n💸 Total Bayar: *Rp ${totalCost.toLocaleString("id-ID")}*\n\nDitunggu kedatangannya lagi ya! 💖🛍️`);
+    return m.reply(`¡Pensaste en muchos niños!🎉✨\n\nTienes el canguro:\n🛒Objeto: *${amount}x ${item.name}*\n💸TOTAL Bayard: * Rp${totalCost.toLocaleString("id-ID")}*\n\nEsperado kedatangannya otra vez si! 💖🛍♪`);
   }
 
   if (action === "sell") {
     if (item.type !== "sellable") {
-      return m.reply(`Maaf kak, toko kita nggak nerima barang *${item.name}* ini! Nggak laku dijual lagi soalnya 😂❌`);
+      return m.reply(`Lo siento hermano, nuestra tienda te espera${item.name}* This, the talk sold again😂❌`);
     }
 
     const userInventory = user.inventory || {};
     const userStock = userInventory[itemKey] || 0;
 
     if (userStock < amount) {
-      return m.reply(`Loh kak, barangnya kurang nih! 🫣\nKamu cuma punya *${userStock}x ${item.name}*, masa mau jual *${amount}*? Jangan ngibul dong! 😂❌`);
+      return m.reply(`Hermano, ¡las cosas no son lo suficientemente buenas!🫣\nAcabas de tener...${userStock}x ${item.name}*, tiempo para ganar *${amount}No te pongas tan alto y poderoso en mí!😂❌`);
     }
 
     const totalProfit = item.price * amount;
@@ -139,7 +139,7 @@ async function handler(m, { sock }) {
     user.koin = (user.koin || 0) + totalProfit;
 
     db.save();
-    return m.reply(`CINGG! UANG MASUK! 💰✨\n\nKamu berhasil ngejual:\n📦 Item: *${amount}x ${item.name}*\n🤑 Total Dapat: *Rp ${totalProfit.toLocaleString("id-ID")}*\n\nMakasih ya udah cuci gudang di sini! 🎉💖`);
+    return m.reply(`Amor, dinero, dinero, dinero, dinero, dinero.💰✨\n\nHiciste un gran trabajo:\n📦Objeto: *${amount}x ${item.name}*\n🤑Total Get: * Rp${totalProfit.toLocaleString("id-ID")}*\n\n¡Gracias por la casa de la piscina!🎉💖`);
   }
 }
 

@@ -28,7 +28,7 @@ async function handler(m, { sock }) {
     if (!isImage) {
         return m.reply(
             `🎨 *ᴛᴏ ᴀɴɪᴍᴇ*\n\n` +
-            `> Kirim/reply gambar untuk diubah ke gaya anime\n\n` +
+            `â a Ktently / réplica de imágenes para convertir a gaya Anime\n\n` +
             `\`${m.prefix}toanime\``
         )
     }
@@ -43,7 +43,7 @@ async function handler(m, { sock }) {
         
         if (!buffer) {
             m.react('❌')
-            return m.reply(`❌ Gagal mendownload gambar`)
+            return m.reply(`❌Paso de descarga de imagen`)
         }
         
         await m.react('🕕')

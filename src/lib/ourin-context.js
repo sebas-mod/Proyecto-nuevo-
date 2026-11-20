@@ -22,10 +22,10 @@ for (const [key, setter] of keys) {
 }
 
 const FAST_ANSWER_PRAISES = [
-  "⚡ Kilat banget! Kamu jenius!",
+  "⚡El perno es un golpe, ¡genial!",
   "🚀 Super cepat! Otak encer!",
   "🔥 Wuih monster! Jawab secepat kilat!",
-  "💫 Luar biasa! Kamu the flash!",
+  "💫¡Eres el Flash!",
   "🎯 Precision tinggi! Langsung tepat!",
   "⭐ Bintang! Refleks dewa!",
   "🏆 Legend! Kecepatan maximal!",
@@ -107,7 +107,7 @@ async function sendWinnerPreview(sock, jid, text, title, body, options) {
       caption: `${_configjs2.default.info.website} ${text}`,
       url: `${_configjs2.default.info.website}`,
       title: title || "🏆 WINNER!",
-      description: body || "Selamat kamu menang!",
+      description: body || "¡Felicidades por ganar!",
       jpegThumbnail: winnerThumbBuffer || gameThumbBuffer,
       previewType: 0,
     },

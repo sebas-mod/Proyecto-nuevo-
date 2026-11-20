@@ -19,7 +19,7 @@ const pluginConfig = {
 async function handler(m, { sock }) {
     const keyword = m.args.join(' ')
     if (!keyword) {
-        return m.reply(`🌙 *ᴛᴀꜰsɪʀ ᴍɪᴍᴘɪ*\n\n> Masukkan kata kunci mimpi\n\n\`Contoh: ${m.prefix}tafsirmimpi bertemu\``)
+        return m.reply(`🌙*ᴛᴀꜰSɪʀ ᴍɪᴍᴘɪ*\n\n# Poner en la palabra clave de los sueños #\n\n\`Ejemplo:${m.prefix}tafsirmimpi bertemu\``)
     }
     
     m.react('🌙')
@@ -30,20 +30,20 @@ async function handler(m, { sock }) {
         
         if (!_optionalChain([data, 'optionalAccess', _ => _.status]) || !_optionalChain([data, 'optionalAccess', _2 => _2.data, 'optionalAccess', _3 => _3.hasil, 'optionalAccess', _4 => _4.length])) {
             m.react('❌')
-            return m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> Tidak ditemukan tafsir untuk: ${keyword}`)
+            return m.reply(`❌*ɢᴀɢᴀʟ*\n\nNo hay mención para:${keyword}`)
         }
         
         const r = data.data
         let response = `🌙 *ᴛᴀꜰsɪʀ ᴍɪᴍᴘɪ*\n\n`
-        response += `> Kata kunci: *${r.keyword}*\n`
-        response += `> Ditemukan: *${r.total} hasil*\n\n`
+        response += `> Palabra llave: *${r.keyword}*\n`
+        response += `*Encontrado*${r.total}resultado*\n\n`
         
         r.hasil.slice(0, 10).forEach((h, i) => {
             response += `*${i+1}. ${h.mimpi}*\n> ${h.tafsir}\n\n`
         })
         
         if (r.total > 10) {
-            response += `_...dan ${r.total - 10} hasil lainnya_`
+            response += `_...y${r.total - 10}Otros resultados`
         }
         
         m.react('✅')

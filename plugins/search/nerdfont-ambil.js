@@ -72,7 +72,7 @@ function formatNumber(num) {
 async function handler(m, { sock }) {
   const query = _optionalChain([m, 'access', _2 => _2.text, 'optionalAccess', _3 => _3.trim, 'call', _4 => _4(), 'optionalAccess', _5 => _5.toLowerCase, 'call', _6 => _6()]);
   if (!query)
-    return m.reply(`*NERD FONT*\n\n> Masukan nama font yang ingin didownload`);
+    return m.reply(`( ERD FONT )\n\n*Baja un nombre de fuente para divertirse*`);
   try {
     const res = await nerdfonts();
     const data = res.find(
@@ -92,7 +92,7 @@ async function handler(m, { sock }) {
         .resize(50, 50)
         .toBuffer(),
       caption: `*Done*
-Jika kamu ingin mendownload lagi, ketik ${m.prefix}nerdfont lagi`,
+Si quieres descargar de nuevo, amigo.${m.prefix}nerdfont otra vez`,
     });
   } catch (err) {
     return m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));

@@ -2,7 +2,7 @@
     name: 'delpp',
     alias: ['delprofilebot', 'delppbot', 'hapusppbot'],
     category: 'tools',
-    description: 'Menghapus foto profil bot',
+    description: 'Borrar las fotos del perfil de bot',
     usage: '.delpp',
     example: '.delpp',
     isOwner: true,
@@ -18,7 +18,7 @@ async function handler(m, { sock }) {
     try {
         const botJid = _optionalChain([sock, 'access', _ => _.user, 'optionalAccess', _2 => _2.id])
         if (!botJid) {
-            await m.reply(`❌ Bot JID tidak ditemukan.`)
+            await m.reply(`❌- No lo encuentro`)
             return
         }
         
@@ -26,12 +26,12 @@ async function handler(m, { sock }) {
         
         await m.reply(
             `✅ *ᴘᴘ ʙᴏᴛ ᴅɪʜᴀᴘᴜs*\n\n` +
-            `> Foto profil bot berhasil dihapus!`
+            `¡La foto del perfil de bot fue interceptada con éxito!`
         )
     } catch (error) {
         await m.reply(
             `❌ *ɢᴀɢᴀʟ*\n\n` +
-            `> Tidak dapat menghapus foto bot.\n` +
+            `No se puede olvidar las botas.\n` +
             `> _${error.message}_`
         )
     }

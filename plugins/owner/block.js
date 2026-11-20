@@ -4,7 +4,7 @@ const pluginConfig = {
     name: ['block', 'blokir'],
     alias: [],
     category: 'owner',
-    description: 'Blokir nomor WhatsApp',
+    description: 'Números de bloque WhatsApp',
     usage: '.block <nomor/reply/mention>',
     example: '.block 628xxx',
     isOwner: true,
@@ -22,7 +22,7 @@ async function handler(m, { sock }) {
         targetJid = m.quoted.sender || m.quoted.participant
     } else if (m.args[0]) {
         let num = m.args[0].replace(/[^0-9]/g, '')
-        if (!num) return m.reply('❌ Nomor tidak valid.')
+        if (!num) return m.reply('❌El número no es válido.')
         targetJid = num + '@s.whatsapp.net'
     } else if (!m.isGroup) {
         targetJid = m.chat
@@ -32,15 +32,15 @@ async function handler(m, { sock }) {
         return m.reply(
             '⚠️ *ᴄᴀʀᴀ ᴘᴀᴋᴀɪ*\n\n' +
             '> `.block 628xxx` — Blokir via nomor\n' +
-            '> `.block` (reply pesan) — Blokir pengirim\n' +
-            '> `.block @mention` — Blokir yang di-mention\n' +
-            '> `.block` (di private chat) — Blokir user ini'
+            '♪`- Bloque.`(responder mensaje)—Bloqueo\n' +
+            '♪`. bloque @ mención` —Bloquear el uno en @-@ mención\n' +
+            '♪`- Bloque.`(en la charla primaria )—Bloquear este usuario'
         )
     }
 
     const botJid = _optionalChain([sock, 'access', _3 => _3.user, 'optionalAccess', _4 => _4.id, 'optionalAccess', _5 => _5.split, 'call', _6 => _6(':'), 'access', _7 => _7[0]]) + '@s.whatsapp.net'
     if (targetJid === botJid) {
-        return m.reply('❌ Tidak bisa blokir nomor bot sendiri.')
+        return m.reply('❌No puede bloquear sus propios números de bot.')
     }
 
     try {
@@ -48,8 +48,8 @@ async function handler(m, { sock }) {
         await m.react('🚫')
         return m.reply(
             `🚫 *ɴᴏᴍᴏʀ ᴅɪʙʟᴏᴋɪʀ*\n\n` +
-            `> Target: @${targetJid.split('@')[0]}\n` +
-            `> Gunakan \`.unblock\` untuk membuka blokir`,
+            `> Objetivo: @${targetJid.split('@')[0]}\n` +
+            `> Usa\`. desbloquear.\`para bloquear`,
             { mentions: [targetJid] }
         )
     } catch (err) {

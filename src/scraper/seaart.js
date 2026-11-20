@@ -61,7 +61,7 @@ async function live3d(
   );
 
   if (!_optionalChain([data, 'optionalAccess', _ => _.status]) || !_optionalChain([data, 'optionalAccess', _2 => _2.data, 'optionalAccess', _3 => _3.result_url])) {
-    throw new Error("Gagal mengedit gambar menggunakan nanobanana.");
+    throw new Error("Gagali editando la imagen usando nanobanana.");
   }
 
   const imgResponse = await _axios2.default.get(data.data.result_url, { responseType: "arraybuffer" });
@@ -84,7 +84,7 @@ async function fluxImage(message, ratio = "1:1") {
 
   const data = r.data;
   if (!_optionalChain([data, 'optionalAccess', _4 => _4.status]) || !_optionalChain([data, 'optionalAccess', _5 => _5.result, 'optionalAccess', _6 => _6.url])) {
-    throw new Error(_optionalChain([data, 'optionalAccess', _7 => _7.message]) || _optionalChain([data, 'optionalAccess', _8 => _8.error]) || "Gagal membuat gambar");
+    throw new Error(_optionalChain([data, 'optionalAccess', _7 => _7.message]) || _optionalChain([data, 'optionalAccess', _8 => _8.error]) || "Los luchadores hacen fotos");
   }
 
   return data.result;

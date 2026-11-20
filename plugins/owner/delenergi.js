@@ -42,20 +42,20 @@ async function handler(m, { sock }) {
     if (!targetJid || amount <= 0) {
         return m.reply(
             `⚡ *ᴅᴇʟ ᴇɴᴇʀɢɪ*\n\n` +
-            `> \`.delenergi <jumlah>\` - dari diri sendiri\n` +
-            `> \`.delenergi <jumlah> @user\` - dari user\n\n` +
+            `♪\`- Delenergi.<jumlah>\`- de ti mismo.\n` +
+            `♪\`- Delenergi.<jumlah>@ usuario\`- del usuario\n\n` +
             `\`Contoh: ${m.prefix}delenergi 50\``
         )
     }
     
     if (amount <= 0) {
-        return m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> Jumlah harus lebih dari 0`)
+        return m.reply(`❌*ɢᴀɢᴀʟ*\n\nEsto debe ser más de 0`)
     }
     
     const user = db.getUser(targetJid)
     
     if (!user) {
-        return m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> User tidak ditemukan di database`)
+        return m.reply(`❌*ɢᴀɢᴀʟ*\n\n*El usuario no fue encontrado en la base de datos*`)
     }
     
     if (user.energi === -1) {

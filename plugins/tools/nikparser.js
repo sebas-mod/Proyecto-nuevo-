@@ -5,7 +5,7 @@ const pluginConfig = {
   name: "nikparser",
   alias: ["nik", "ceknik"],
   category: "tools",
-  description: "Parse dan validasi NIK KTP",
+  description: "NIC PARSES AND VISITATIONS KTP",
   usage: ".nikparser <16 digit NIK>",
   example: ".nikparser 3517072109020003",
   cooldown: 10,
@@ -59,8 +59,8 @@ async function handler(m, { sock }) {
   if (!nik || nik.length !== 16) {
     return m.reply(
       `🪪 *ɴɪᴋ ᴘᴀʀꜱᴇʀ*\n\n` +
-        `- Parse dan validasi NIK KTP 🇮🇩\n` +
-        `- Masukkan 16 digit angka NIK\n\n` +
+        `- NlK Parse and Values KTP🇮🇩\n` +
+        `- Introduce 16 digit número NIK\n\n` +
         `\`${m.prefix}nikparser 3517072109020003\``,
     );
   }
@@ -81,8 +81,8 @@ async function handler(m, { sock }) {
       m.react("❌");
       return m.reply(
         `🪪 *ɴɪᴋ ᴛɪᴅᴀᴋ ᴠᴀʟɪᴅ*\n\n` +
-          `- NIK yang kamu masukkan tidak valid\n` +
-          `- Pastikan 16 digit angka benar`,
+          `- El NIC que entraste fue inválido.\n` +
+          `- Asegúrese de que 16 dígitos son correctos.`,
       );
     }
 
@@ -101,13 +101,13 @@ async function handler(m, { sock }) {
     m.reply(
       `🪪 *ɴɪᴋ ᴘᴀʀꜱᴇʀ*\n\n` +
         `- *NIK* → \`${data.raw}\`\n` +
-        `- *Valid* → ✅ Valid\n` +
-        `- *Tanggal Lahir* → ${bFormatted}\n` +
+        `- Valide→ ✅Valide\n` +
+        `- Fecha de Lahir→ ${bFormatted}\n` +
         `- *Jenis Kelamin* → ${genderEmoji} ${_optionalChain([data, 'access', _5 => _5.gender, 'optionalAccess', _6 => _6.charAt, 'call', _7 => _7(0), 'access', _8 => _8.toUpperCase, 'call', _9 => _9()]) + _optionalChain([data, 'access', _10 => _10.gender, 'optionalAccess', _11 => _11.slice, 'call', _12 => _12(1)])}\n` +
-        `- *Provinsi* → ${provNama}\n` +
-        `- *Kab/Kota* → Kode \`${data.kabupatenKotaId}\`\n` +
-        `- *Kecamatan* → Kode \`${data.kecamatanId}\`\n` +
-        `- *Kode Unik* → \`${data.uniqcode}\``,
+        `- *Provincia*→ ${provNama}\n` +
+        `- *Kab/Ciudad*→Código\`${data.kabupatenKotaId}\`\n` +
+        `- * Suspensión*→Código\`${data.kecamatanId}\`\n` +
+        `- Código Único→ \`${data.uniqcode}\``,
     );
   } catch (e) {
     console.log(e);

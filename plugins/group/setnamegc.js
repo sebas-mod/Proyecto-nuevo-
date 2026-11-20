@@ -2,7 +2,7 @@
     name: 'setnamegc',
     alias: ['setnamegrup', 'setgcname', 'setnamegroup', 'setnamagrup'],
     category: 'group',
-    description: 'Mengubah nama grup',
+    description: 'Cambiar el nombre del grupo',
     usage: '.setnamegc <nama baru>',
     example: '.setnamegc Grup Keren',
     isOwner: false,
@@ -22,7 +22,7 @@ async function handler(m, { sock }) {
     if (!newName) {
         await m.reply(
             `⚠️ *ᴄᴀʀᴀ ᴘᴀᴋᴀɪ*\n\n` +
-            `> \`${m.prefix}setnamegc Nama Grup Baru\``
+            `> \`${m.prefix}Zombre gc Nomre Grupo Nuevo\``
         )
         return
     }
@@ -30,7 +30,7 @@ async function handler(m, { sock }) {
     if (newName.length < 1 || newName.length > 100) {
         await m.reply(
             `⚠️ *ᴠᴀʟɪᴅᴀsɪ*\n\n` +
-            `> Nama grup harus 1-100 karakter.`
+            `El apellido grupo debe ser de 1 a 100 segundos.`
         )
         return
     }
@@ -39,12 +39,12 @@ async function handler(m, { sock }) {
         await sock.groupUpdateSubject(m.chat, newName)
         
         await m.reply(
-            `✅ Berhasil mengubah nama grup menjadi *${newName}*`
+            `✅Resultando la renombración grupo en${newName}*`
         )
     } catch (error) {
         await m.reply(
             `❌ *ɢᴀɢᴀʟ*\n\n` +
-            `> Tidak dapat mengubah nama grup.\n` +
+            `No puede cambiar el nombre del grupo.\n` +
             `> _${error.message}_`
         )
     }

@@ -37,12 +37,12 @@ async function handler(m, { sock }) {
     const userData = db.getUser(targetJid) || {}
     
     if (!_optionalChain([userData, 'access', _3 => _3.fun, 'optionalAccess', _4 => _4.pasangan])) {
-        const nama = isOther ? `@${targetJid.split('@')[0]}` : 'Kamu'
+        const nama = isOther ? `@${targetJid.split('@')[0]}` : 'Tu'
         await m.react('💔')
         return m.reply(
             `💔 *sᴛᴀᴛᴜs ʜᴜʙᴜɴɢᴀɴ*\n\n` +
-            `*${nama}* tidak punya pasangan.\n` +
-            `TIP: Cari pasangan dulu dengan \`${m.prefix}tembak @tag\``,
+            `*${nama}* no tiene par.\n` +
+            `Primero consigue un par.\`${m.prefix}tembak @tag\``,
             { mentions: isOther ? [targetJid] : [] }
         )
     }
@@ -50,21 +50,21 @@ async function handler(m, { sock }) {
     const partnerJid = userData.fun.pasangan
     const partnerData = db.getUser(partnerJid) || {}
     const isMutual = _optionalChain([partnerData, 'access', _5 => _5.fun, 'optionalAccess', _6 => _6.pasangan]) === targetJid
-    const nama = isOther ? `@${targetJid.split('@')[0]}` : 'Kamu'
+    const nama = isOther ? `@${targetJid.split('@')[0]}` : 'Tu'
     if (isMutual) {
         await m.react('💕')
         await m.reply(
             `💕 *sᴛᴀᴛᴜs ʜᴜʙᴜɴɢᴀɴ*\n\n` +
-            `*${nama}* sedang pacaran dengan @${partnerJid.split('@')[0]}! 🥳`,
+            `*${nama}* en una cita con @${partnerJid.split('@')[0]}! 🥳`,
             { mentions: [targetJid, partnerJid] }
         )
     } else {
         await m.react('💭')
         await m.reply(
             `💭 *sᴛᴀᴛᴜs ʜᴜʙᴜɴɢᴀɴ*\n\n` +
-            `*${nama}* lagi pdkt sama @${partnerJid.split('@')[0]}\n` +
+            `*${nama}* again pdkt same @${partnerJid.split('@')[0]}\n` +
             `Status: *Digantung* 😅\n\n` +
-            `Menunggu jawaban...`,
+            `Esperar respuesta...`,
             { mentions: [targetJid, partnerJid] }
         )
     }

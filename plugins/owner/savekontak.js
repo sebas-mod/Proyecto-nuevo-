@@ -2,7 +2,7 @@
     name: "savekontak",
     alias: ["sv", "svkontak"],
     category: "owner",
-    description: "Menyimpan kontak dari grup menjadi file VCF",
+    description: "Configuración de los contactos del archivo grupo a VCF",
     usage: ".savekontak <nama>",
     example: ".savekontak Fulan",
     isOwner: true,
@@ -27,15 +27,15 @@ async function handler(m, { sock, args }) {
             if (chats[target]) {
                 groups.push(chats[target]);
             } else {
-                return m.reply("❌ Grup tidak ditemukan.");
+                return m.reply("❌Grup no fue encontrado.");
             }
         }
 
         if (groups.length === 0) {
-            return m.reply("❌ Bot tidak berada di grup mana pun.");
+            return m.reply("❌No en el grupo en ningún lado.");
         }
 
-        m.reply(`⏳ Sedang mengekstrak kontak dari ${groups.length} grup...`);
+        m.reply(`⏳El rango extrae el contacto desde${groups.length}grupo...`);
 
         let vcards = "";
         let count = 0;
@@ -59,19 +59,19 @@ async function handler(m, { sock, args }) {
         }
 
         if (count === 0) {
-            return m.reply("❌ Tidak ada kontak yang bisa diekstrak.");
+            return m.reply("❌No hay contacto que se pueda extraer.");
         }
 
         await sock.sendMessage(m.chat, {
             document: Buffer.from(vcards, "utf8"),
-            fileName: `${baseName}_${count}_Kontak.vcf`,
+            fileName: `${baseName}_${count}- Sí, Contak.`,
             mimetype: "text/vcard",
-            caption: `✅ *Berhasil mengekstrak ${count} kontak ke dalam VCF.*`
+            caption: `✅*Exito mengekstrak${count}contacto con VCF. *`
         }, { quoted: m });
 
         await sock.sendMessage(m.chat, {
             contacts: {
-                displayName: `${count} Kontak`,
+                displayName: `${count}Contacto`,
                 contacts: contactArray
             }
         }, { quoted: m });
@@ -84,45 +84,45 @@ async function handler(m, { sock, args }) {
     const groupList = Object.values(chats);
 
     if (groupList.length === 0) {
-        return m.reply("❌ Bot tidak berada di grup mana pun.");
+        return m.reply("❌No en el grupo en ningún lado.");
     }
 
     const sections = [
         {
-            title: "Daftar Grup",
+            title: "Registrate Grupo",
             rows: groupList.map(g => ({
                 header: "",
                 title: g.subject,
-                description: `Anggota: ${_optionalChain([g, 'access', _ => _.participants, 'optionalAccess', _2 => _2.length]) || 0}`,
+                description: `Miembro:${_optionalChain([g, 'access', _ => _.participants, 'optionalAccess', _2 => _2.length]) || 0}`,
                 id: `${m.prefix}savekontak get ${g.id} ${baseName}`
             }))
         }
     ];
 
     await sock.sendMessage(m.chat, {
-        text: `📇 *SISTEM SAVE KONTAK (VCF)*\n\n` +
-            `Sistem ekstraksi kontak otomatis dari grup yang diikuti bot.\n` +
-            `Nama Base: *${baseName}*\n\n` +
-            `*PENGGUNAAN:*\n` +
-            `• *${m.prefix || "."}savekontak <nama>* — Menyimpan dengan nama kustom\n` +
-            `• *${m.prefix || "."}savekontak* — Menyimpan dengan nama default "User"\n\n` +
-            `*PENJELASAN ALUR PENGGUNAAN:*\n` +
-            `1. Pilih grup spesifik dari tombol *Pilih Grup* di bawah, atau klik *Semua Grup* untuk mengekstrak kontak secara global.\n` +
-            `2. Bot akan mengumpulkan nomor peserta dan mengabaikan nomor bot sendiri.\n` +
-            `3. Hasil akan dikirim berupa file dokumen (*.vcf*) beserta list kontak WhatsApp agar bisa langsung disave.`,
+        text: `📇* SISTEM SAVE CONTAK ( VCF) *\n\n` +
+            `The exacerbate system of the roup that the bot 's following.\n` +
+            `Nombre de la base: *${baseName}*\n\n` +
+            `*Uso:*\n` +
+            `• *${m.prefix || "."}savekongak<nama>*—Contener con el nombre personalizado\n` +
+            `• *${m.prefix || "."}Savekonkak *—Contener con el nombre predeterminado\n\n` +
+            `*Explicación ALUR Uso:*\n` +
+            `1. Elija las minificiones del grupo de la cúanga * Elija Grupo * en los crumps, o klick * todos grupo * para exTraigan los contrats globales.\n` +
+            `Dos, la primera persona que se pierda el primer orden de la primera ronda será la primera que perder.\n` +
+            `3. El documento será enviado con un archivo ( *. vcf * ) junto con una lista de { tp Ag se puede perder.`,
         footer: "Powered by ReviewBot",
         interactiveButtons: [
             {
                 name: "single_select",
                 buttonParamsJson: JSON.stringify({
-                    title: "Pilih Grup",
+                    title: "Elige Grupo",
                     sections
                 })
             },
             {
                 name: "quick_reply",
                 buttonParamsJson: JSON.stringify({
-                    display_text: "Semua Grup",
+                    display_text: "Todo Grupo",
                     id: `${m.prefix}savekontak get all ${baseName}`
                 })
             }

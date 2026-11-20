@@ -87,38 +87,38 @@ async function handler(m, { sock }) {
     );
   if (!chId)
     return m.reply(
-      `❌ Saluran belum diatur. Gunakan \`--idch <id>\` atau atur di config.js`,
+      `❌El canal no ha sido establecido.\`- Iitch.<id>\`o el arreglo en config.`,
     );
 
   m.react("🔎");
   try {
     const { videos } = await _ytsearch2.default.call(void 0, q);
     const video = pickVideo({ videos });
-    if (!video) return m.reply(`❌ Video tidak ditemukan`);
+    if (!video) return m.reply(`❌No se encontró vídeo`);
 
     const ytChannel = _optionalChain([video, 'access', _11 => _11.author, 'optionalAccess', _12 => _12.name]) || _optionalChain([video, 'access', _13 => _13.author, 'optionalAccess', _14 => _14.username]) || "Unknown";
     
     const res = await _axios2.default.get(`https://api.azbry.com/api/download/ytmp3?url=${encodeURIComponent(video.url)}`, { timeout: 60000 });
     const data = res.data;
     if (!data.status || !data.result || !data.result.download) {
-       throw new Error("Gagal mengambil audio dari API");
+       throw new Error("Steenaltook una audiencia de API");
     }
 
     let info = `🎵 *NOW PLAYING (SALURAN)*\n\n`;
     info += `📌 *Judul:* ${video.title}\n\n`;
     info += `*DETAIL*\n`;
     info += `👤 Channel: *${ytChannel}*\n`;
-    info += `⏱️ Durasi: *${video.duration.timestamp}*\n`;
+    info += `⏱Duración${video.duration.timestamp}*\n`;
     info += `👀 Views: *${formatViews(video.views)}*\n`;
     info += `📅 Upload: *${video.ago}*\n`;
     info += `🆔 ID: \`${video.videoId}\`\n\n`;
     if (video.description) {
       const desc = video.description.substring(0, 150).replace(/\n/g, " ");
-      info += `*Deskripsi:*\n_${desc}${video.description.length > 150 ? "..." : ""}_\n\n`;
+      info += `*Descripción:*\n¿Qué?${desc}${video.description.length > 150 ? "..." : ""}_\n\n`;
     }
     info += `📡 Saluran: \`${chId}\`\n`;
     info += `🔗 ${video.url}\n\n`;
-    info += `_⏳ mengirim audio ke saluran, harap tunggu..._`;
+    info += `¿Qué?⏳enviar un público al canal, por favor espere.`;
 
     await sock.sendMedia(m.chat, video.thumbnail, info, m, { type: "image" });
 
@@ -129,7 +129,7 @@ async function handler(m, { sock }) {
 
     if (mp3Buf.length < 50000) throw new Error("Audio terlalu kecil");
     const opusBuf = await toOggOpus(mp3Buf);
-    if (opusBuf.length < 10000) throw new Error("Konversi opus gagal");
+    if (opusBuf.length < 10000) throw new Error("La conversión de Opus falló");
     const title = video.title;
 
     const waveform = generateWaveform(opusBuf);
@@ -140,7 +140,7 @@ async function handler(m, { sock }) {
       waveform: Array.from(waveform),
     });
     m.react("✅");
-    m.reply(`✅ *${title}* berhasil dikirim ke saluran`);
+    m.reply(`✅ *${title}* Sucesivamente enviado al canal`);
   } catch (e) {
     console.error("[PlayCh]", e);
     m.react("☢");

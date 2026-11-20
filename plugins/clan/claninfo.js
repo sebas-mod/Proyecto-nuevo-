@@ -38,9 +38,9 @@ async function handler(m) {
 
     if (!clanId) {
         return m.reply(
-            `❌ Kamu belum punya clan\n\n` +
-            `Buat: *.clancreate <nama>*\n` +
-            `Gabung: *.clanjoin <id>*`
+            `❌Aún no tienes un clan.\n\n` +
+            `Crea: *.clancreate<nama>*\n` +
+            `Unirse: *.clanjoin<id>*`
         )
     }
 
@@ -49,7 +49,7 @@ async function handler(m) {
     const clan = db.db.data.clans[clanId]
         || Object.values(db.db.data.clans).find(c => c.name.toLowerCase() === clanId.toLowerCase())
         || Object.values(db.db.data.clans).find(c => c.id.toLowerCase() === clanId.toLowerCase())
-    if (!clan) return m.reply(`❌ Clan tidak ditemukan`)
+    if (!clan) return m.reply(`❌- ¿Qué?`)
 
     const totalGames = (clan.wins || 0) + (clan.losses || 0)
     const winRate = totalGames > 0
@@ -67,7 +67,7 @@ async function handler(m) {
         `┌ 👑 Leader · @${clan.leader.split('@')[0]}\n` +
         `├ 👥 Members · ${clan.members.length}/50\n` +
         `├ 🔓 Status · ${clan.isOpen ? 'Open' : 'Closed'}\n` +
-        `└ 📅 Dibuat · ${new Date(clan.createdAt).toLocaleDateString('id-ID')}\n\n` +
+        `└ 📅Creado· ${new Date(clan.createdAt).toLocaleDateString('id-ID')}\n\n` +
         `⚔️ *War Stats*\n` +
         `${clan.wins || 0}W · ${clan.losses || 0}L · ${winRate}% WR\n\n` +
         `_${clan.description || 'Belum ada deskripsi'}_\n\n` +

@@ -2,7 +2,7 @@
     name: 'cekcreative',
     alias: ['creative', 'kreatif'],
     category: 'cek',
-    description: 'Cek tingkat kreativitas kamu',
+    description: 'Compruebe su nivel de creatividad',
     usage: '.cekcreative <nama>',
     example: '.cekcreative Budi',
     isOwner: false,
@@ -25,12 +25,12 @@ async function handler(m) {
     else if (percent >= 30) desc = 'Biasa aja sih 🤔'
     else desc = 'Kurang imajinasi nih 😅'
     
-    let txt = mentioned === m.sender ? `Hai @${mentioned.split('@')[0]}
+    let txt = mentioned === m.sender ? `Hola @${mentioned.split('@')[0]}
     
-Tingkat kecreativean kamu *${percent}%*
-\`\`\`${desc}\`\`\`` : `Kamu ingin ngecek tingkat kecreativean @${mentioned.split('@')[0]} yak? 
+Tu cansado @-@ ass rate *${percent}%*
+\`\`\`${desc}\`\`\`` : `Usted quiere comprobar los niveles de ansiedad @${mentioned.split('@')[0]} yak? 
     
-Tingkat kecreativean dia sebesar *${percent}%*
+Es tan grande como el nivel de un hombre.${percent}%*
 \`\`\`${desc}\`\`\``
     
     await m.reply(txt, { mentions: [mentioned] })

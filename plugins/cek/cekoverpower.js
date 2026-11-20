@@ -2,7 +2,7 @@
     name: 'cekoverpower',
     alias: ['overpower', 'op'],
     category: 'cek',
-    description: 'Cek tingkat overpower kamu',
+    description: 'Compruebe su nivel de energía',
     usage: '.cekoverpower <nama>',
     example: '.cekoverpower Budi',
     isOwner: false,
@@ -23,14 +23,14 @@ async function handler(m) {
     else if (percent >= 70) desc = 'Kuat banget nih! 💪'
     else if (percent >= 50) desc = 'Lumayan strong~ 😎'
     else if (percent >= 30) desc = 'Biasa aja sih 🤔'
-    else desc = 'Masih perlu latihan 📝'
+    else desc = 'Es muy malo que necesites practicar.📝'
     
-    let txt = mentioned === m.sender ? `Hai @${mentioned.split('@')[0]}
+    let txt = mentioned === m.sender ? `Hola @${mentioned.split('@')[0]}
     
-Tingkat keoverpoweran kamu *${percent}%*
-\`\`\`${desc}\`\`\`` : `Kamu ingin ngecek tingkat keoverpoweran @${mentioned.split('@')[0]} yak? 
+Tu tasa de sobrepoderamiento *${percent}%*
+\`\`\`${desc}\`\`\`` : `Quieres revisar el nivel de potencia${mentioned.split('@')[0]} yak? 
     
-Tingkat keoverpoweran dia sebesar *${percent}%*
+Nivel keoverpoweran el sebesar *${percent}%*
 \`\`\`${desc}\`\`\``
     
     await m.reply(txt, { mentions: [mentioned] })

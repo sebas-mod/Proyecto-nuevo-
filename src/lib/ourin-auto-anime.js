@@ -240,7 +240,7 @@ async function notifyAndSend(sock, groupIds, linkObj, meta) {
             })
             coverBuffer = Buffer.from(res.data)
         } catch (e) {
-            console.log(`[AutoAnime-Winbu] ⚠️ Cover gagal: ${e.message}`)
+            console.log(`AutoAnime⚠Cubierta falló:${e.message}`)
         }
     }
 
@@ -253,8 +253,8 @@ async function notifyAndSend(sock, groupIds, linkObj, meta) {
     for (const gid of groupIds) {
         try {
             const msgPayload = coverBuffer
-                ? { image: coverBuffer, caption, footer: 'Klik tombol di bawah untuk download video 👇' }
-                : { text: caption, footer: 'Klik tombol di bawah untuk download video 👇' }
+                ? { image: coverBuffer, caption, footer: 'Los clics de cancellos se bashed para descargas de vídeo👇' }
+                : { text: caption, footer: 'Los clics de cancellos se bashed para descargas de vídeo👇' }
 
             await sock.sendMessage(gid, {
                 ...msgPayload,
@@ -300,7 +300,7 @@ async function runCheck() {
     }
 
     if (animeList.length === 0) {
-        console.log('[AutoAnime-Winbu] Tidak ada anime')
+        console.log('# No Anime #')
         return
     }
 

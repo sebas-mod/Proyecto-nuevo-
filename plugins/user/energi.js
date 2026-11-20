@@ -25,7 +25,7 @@ async function handler(m, { sock }) {
     const db = _ourindatabasejs.getDatabase.call(void 0, )
     
     let targetJid = m.sender
-    let targetName = m.pushName || 'Kamu'
+    let targetName = m.pushName || 'Tu'
     
     if (m.quoted) {
         targetJid = m.quoted.sender
@@ -56,23 +56,23 @@ async function handler(m, { sock }) {
     const isSelf = targetJid === m.sender
     
     let userStatus = 'Free'
-    if (isOwner) userStatus = 'Owner'
+    if (isOwner) userStatus = 'Propietario'
     else if (user.isPremium) userStatus = 'Premium'
     if (!energiEnabled) userStatus += ' (Energi OFF)'
     
-    let text = `*〔 ⚡ ENERGI INFO 〕*\n\n`
+    let text = `*〔 ⚡ENERGÍA INFO〕*\n\n`
 
 text += `*〔 👤 User 〕* ${targetName}\n`
-text += `*〔 ⚡ Energi 〕* ${energiDisplay}\n`
+text += `*〔 ⚡Energía〕*${energiDisplay}\n`
 text += `*〔 💎 Status 〕* ${userStatus}\n\n`
     
     if (!energiEnabled) {
-        text += `🔌 Sistem energi dinonaktifkan — semua command gratis`
+        text += `🔌Sistema de energía desactivada—todos los comandos grated`
     } else if (isSelf && !isUnlimited && finalEnergi < 10) {
-        text += `⚠️ Energi hampir habis!\n`
-        text += `Gunakan \`.buyenergi\` untuk beli`
+        text += `⚠️ Energía casi agotado!\n`
+        text += `Usa\`. buyenergi\`para compra`
     } else if (isUnlimited) {
-        text += `✨ Energi unlimited aktif!`
+        text += `✨¡Energía ilimitada activada!`
     }
     
     await m.reply(text)

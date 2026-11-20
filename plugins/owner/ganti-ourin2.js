@@ -6,7 +6,7 @@ const pluginConfig = {
     name: 'ganti-ourin2.jpg',
     alias: ['gantiourin2', 'setourin2'],
     category: 'owner',
-    description: 'Ganti gambar ourin2.jpg',
+    description: 'Imagen Cambia nuestrain2.',
     usage: '.ganti-ourin2.jpg (reply/kirim gambar)',
     example: '.ganti-ourin2.jpg',
     isOwner: true,
@@ -22,7 +22,7 @@ async function handler(m, { sock }) {
     const isImage = m.isImage || (m.quoted && m.quoted.type === 'imageMessage')
     
     if (!isImage) {
-        return m.reply(`🖼️ *ɢᴀɴᴛɪ ᴏᴜʀɪɴ2.ᴊᴘɢ*\n\n> Kirim/reply gambar untuk mengganti\n> File: assets/images/ourin2.jpg`)
+        return m.reply(`🖼♪ɢᴀɴᴛɪ ᴏᴜʀɪɴ2.ᴊᴘɢ*\n\n# Ksently / réplica imágenes para reemplazar\nâ TM a Archivo: activos / imágenes / nuestrasins.`)
     }
     
     try {
@@ -34,15 +34,15 @@ async function handler(m, { sock }) {
         }
         
         if (!buffer) {
-            return m.reply(`❌ Gagal mendownload gambar`)
+            return m.reply(`❌Paso de descarga de imagen`)
         }
         
-        await m.reply(`⏳ Sedang mengupload gambar...`)
+        await m.reply(`⏳La jaula subió una foto..`)
         try {
             const newUrl = await _ourinuploaderjs.updateAssetUrl.call(void 0, 'ourin2', buffer, 'ourin2.jpg')
-            m.reply(`✅ *ʙᴇʀʜᴀsɪʟ*\n\n> Gambar ourin2.jpg telah diganti ke URL baru:\n> ${newUrl}\n> Config telah diupdate secara realtime!`)
+            m.reply(`✅*ʙᴇʀʜᴀSɪʟ*\n\nEstoGambar ourins. Jpg ha sido transferido a la nueva URL:\n♪${newUrl}\n" Config has been updated as a reality "!`)
         } catch (e) {
-            m.reply(`❌ Gagal mengupload gambar: ${e.message}`)
+            m.reply(`❌Gagalm subió la imagen:${e.message}`)
         }
     } catch (error) {
         await m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName))

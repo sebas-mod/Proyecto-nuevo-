@@ -2,7 +2,7 @@
     name: 'cekbucin',
     alias: ['bucin'],
     category: 'cek',
-    description: 'Cek seberapa bucin kamu',
+    description: 'Comprueba la dificultad que te ha costado.',
     usage: '.cekbucin <nama>',
     example: '.cekbucin Budi',
     isOwner: false,
@@ -31,12 +31,12 @@ async function handler(m) {
         desc = 'Santai aja, gak bucin 😎'
     }
     
-    let txt = mentioned === m.sender ? `Hai @${mentioned.split('@')[0]}
+    let txt = mentioned === m.sender ? `Hola @${mentioned.split('@')[0]}
     
-Tingkat kebucinan kamu *${percent}%*
-\`\`\`${desc}\`\`\`` : `Kamu ingin ngecek tingkat kebucinan @${mentioned.split('@')[0]} yak? 
+Tus malos modales${percent}%*
+\`\`\`${desc}\`\`\`` : `Quieres revisar los malos niveles${mentioned.split('@')[0]} yak? 
     
-Tingkat kebucinan dia sebesar *${percent}%*
+Nivel kebucinan el sebesar *${percent}%*
 \`\`\`${desc}\`\`\``
     
     await m.reply(txt, { mentions: [mentioned] })

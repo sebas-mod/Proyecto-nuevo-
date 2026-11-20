@@ -20,7 +20,7 @@ const VARIANTS = {
   v1: {
     id: 1,
     name: "ALLMENU BASIC",
-    desc: "ini mengikuti dari setreply",
+    desc: "Viene del set.",
     emoji: "📝",
   },
   v2: {
@@ -32,7 +32,7 @@ const VARIANTS = {
   v5: {
     id: 5,
     name: "ALLMENU NATIVEFLOW",
-    desc: "Tampilan native flow premium dengan video & cuaca",
+    desc: "Apareciendo prima de flujo ingenuo con video dhamca",
     emoji: "✨",
   },
   v6: {
@@ -50,7 +50,7 @@ async function handler(m, { sock, db }) {
   if (variant) {
     const selected = VARIANTS[variant];
     if (!selected) {
-      await m.reply(`❌ *VARIANT TIDAK VALID*\n\nGunakan: *v1*, *v2*, *v5*, atau *v6*`);
+      await m.reply(`❌* VARIANT TIGHT VALID*\n\nUso: * v1 *, * v2 *, * v5 *, o * v6 *`);
       return;
     }
 
@@ -58,7 +58,7 @@ async function handler(m, { sock, db }) {
     await db.save();
 
     await m.reply(
-      `✅ *ALLMENU VARIANT DIUBAH*\n\n` +
+      `✅* ALLMENU VARIANT USED *\n\n` +
       `${selected.emoji} *V${selected.id} — ${selected.name}*\n` +
       `_${selected.desc}_`,
     );
@@ -89,15 +89,15 @@ async function handler(m, { sock, db }) {
 
   const bodyText =
     `📋📑 *ALLMENU VARIANT*\n\n` +
-    `Atur tampilan allmenu yang menampilkan seluruh daftar perintah bot dalam satu halaman 📖✨\n` +
-    `Variant aktif saat ini: *V${current} — ${_optionalChain([VARIANTS, 'access', _6 => _6[`v${current}`], 'optionalAccess', _7 => _7.name]) || "Unknown"}* 🎯\n\n` +
-    `*PENJELASAN VARIANT:*\n\n` +
-    `- *V1 Simple Text* 📝 — Daftar perintah ditampilkan sebagai text biasa tanpa gambar atau contextInfo, paling ringan dan cepat dimuat\n\n` +
-    `- *V2 Image + Context* 🖼️ — Gambar header allmenu + full contextInfo dengan label forwarded newsletter, tampilan standar yang informatif\n\n` +
-    `- *V3 Document* 📄 — Allmenu dikirim sebagai file document dengan thumbnail kecil dan verified quoted reply, terlihat seperti file resmi\n\n` +
-    `- *V4 Interactive Button* 🔘 — Pesan interaktif dengan tombol single_select untuk memilih kategori dan quick_reply untuk navigasi, tampilan modern\n\n` +
-    `- *V5 NativeFlow* ✨ — NativeFlow message dengan limited_time_offer badge dan interactive buttons, tampilan paling premium dan eye-catching\n\n` +
-    `> Pilih variant allmenu dari tombol di bawah 👇`;
+    `La pantalla allmenu muestra toda la lista de comandos de arranque en una página.📖✨\n` +
+    `Variable actual: * V${current} — ${_optionalChain([VARIANTS, 'access', _6 => _6[`v${current}`], 'optionalAccess', _7 => _7.name]) || "Unknown"}* 🎯\n\n` +
+    `*Explicación VARIANT:*\n\n` +
+    `- * V1 Simple Text ♪📝 —Lista de comandos se llamaxno imagen regular o contextInfo, mareo y rápido @-@ presionado\n\n` +
+    `- * V2 Imágenes + Context ♪🖼♪—Imagen cabezal allmenu + conte completoxtfo con boletines informativos, pantalla estandarizada informativa\n\n` +
+    `- * V3 Doucuments *📄 —Allmenu envió como documento de llenado con miniatura pequeña y verificar respuesta de citas, visto como archivo remi\n\n` +
+    `- * Botón Interactivo V4 *🔘 —Mensaje interactivo con pinguol de un soloxecto para seleccionar categoría y rapidogreply para la navegación, pantalla moderna\n\n` +
+    `- * V5 NativeFlow *✨ —Mensaje de flujo de Native con límite\n\n` +
+    `# Elige la variante allmenu de putool en el crudo #👇`;
 
   await sock.sendButton(
     m.chat,

@@ -21,7 +21,7 @@ async function handler(m, { sock }) {
   const username = _optionalChain([m, 'access', _ => _.text, 'optionalAccess', _2 => _2.trim, 'call', _3 => _3()]) || m.args[0];
 
   if (!username) {
-    return m.reply("❌ *Waduh, username Pinterest-nya belum dimasukkan!*\n\nKamu harus mengetikkan username Pinterest yang ingin di-stalk. \n\nContoh: `.pintereststalk dims`");
+    return m.reply("❌* Waduh, the username Pinterest has 't been included yet! *\n\nUsted tiene que escribir en el nombre de usuario de pinterest que quiere ser acechado.\n\nEjemplo:`.`");
   }
 
   await m.react("🕕");
@@ -38,31 +38,31 @@ async function handler(m, { sock }) {
 
     if (!data.status || !data.result) {
       await m.react("❌");
-      return m.reply(`⚠️ *Pencarian Gagal!*\n\nUsername *${username}* tidak ditemukan di Pinterest. Pastikan penulisannya sudah benar ya.`);
+      return m.reply(`⚠* Gaglys buscando!\n\nNombre de usuario *${username}* No se encuentra en Pinterest.`);
     }
 
     const r = data.result;
     
-    let caption = `📌 *PINTEREST STALK - PROFILE INFO* 📌\n\n`;
-    caption += `Halo! Ini dia hasil pencarian profil untuk username *@${r.username}*:\n\n`;
+    let caption = `📌* PATTEREST STALK - PROFILE INFO *📌\n\n`;
+    caption += `Aquí viene la búsqueda de perfil para el nombre de usuario.${r.username}*:\n\n`;
     
-    caption += `👤 *INFO PROFIL*\n`;
-    caption += `  - Nama Lengkap: *${r.full_name || "-"}*\n`;
+    caption += `👤* 91 * * * ProFILE INFO * 93 *\n`;
+    caption += `- Nombre completo: *${r.full_name || "-"}*\n`;
     caption += `  - Username: @${r.username}\n`;
     caption += `  - Bio: ${r.bio || "-"}\n`;
-    caption += `  - Tipe Akun: ${r.account_type || "-"}\n`;
-    caption += `  - Akun Dibuat: ${r.created_at || "-"}\n\n`;
+    caption += `- Tipe Cuenta:${r.account_type || "-"}\n`;
+    caption += `- Hecho por Cuenta:${r.created_at || "-"}\n\n`;
     
     caption += `📊 *STATISTIK*\n`;
-    caption += `  - Pengikut (Followers): ${_optionalChain([r, 'access', _4 => _4.stats, 'optionalAccess', _5 => _5.followers]) || 0}\n`;
-    caption += `  - Diikuti (Following): ${_optionalChain([r, 'access', _6 => _6.stats, 'optionalAccess', _7 => _7.following]) || 0}\n`;
+    caption += ` - Seguidores (Followers): ${_optionalChain([r, 'access', _4 => _4.stats, 'optionalAccess', _5 => _5.followers]) || 0}\n`;
+    caption += `- Seguido (Sigue):${_optionalChain([r, 'access', _6 => _6.stats, 'optionalAccess', _7 => _7.following]) || 0}\n`;
     caption += `  - Total Pin: ${_optionalChain([r, 'access', _8 => _8.stats, 'optionalAccess', _9 => _9.pins]) || 0}\n`;
     caption += `  - Total Board: ${_optionalChain([r, 'access', _10 => _10.stats, 'optionalAccess', _11 => _11.boards]) || 0}\n\n`;
     
-    caption += `🔗 *LINK PROFIL*\n`;
+    caption += `🔗*Enlace Perfil*\n`;
     caption += `  - ${r.profile_url}\n\n`;
 
-    caption += `Suka mengumpulkan inspirasi dari Pinterest ya? Pamerin ke temanmu yuk! 🚀`;
+    caption += `Eres el que inspiró a Pinterest, ¿no es así?🚀`;
 
     const imageUrl = _optionalChain([r, 'access', _12 => _12.image, 'optionalAccess', _13 => _13.original]) || _optionalChain([r, 'access', _14 => _14.image, 'optionalAccess', _15 => _15.large]) || _optionalChain([r, 'access', _16 => _16.image, 'optionalAccess', _17 => _17.medium]) || _optionalChain([r, 'access', _18 => _18.image, 'optionalAccess', _19 => _19.small]);
 
@@ -80,7 +80,7 @@ async function handler(m, { sock }) {
   } catch (error) {
     console.error("[Pinterest Stalk]", error.message);
     await m.react("☢");
-    m.reply("😔 *Terjadi masalah di sistem kami.* \n\nSistem gagal menarik data dari server Pinterest. Silakan coba beberapa saat lagi ya.");
+    m.reply("😔* Es un problema en nuestro sistema *\n\nEl sistema no pudo extraer datos del servidor Pinterest.");
   }
 }
 

@@ -491,7 +491,7 @@ async function extendSocket(sock) {
     } else if (isUrlObject(source)) data = { url: source.url };
     else
       throw new Error(
-        "Source harus berupa Buffer, URL string, path file, object { url }, atau payload media",
+        "Fuente debe haber hecho Buffer, URL string, path file, objeto { url }, o payload media",
       );
     const mediaType = options.type || options.mediaType;
     const captionField = caption != null ? { caption } : {};
@@ -650,7 +650,7 @@ async function extendSocket(sock) {
     if (id === "0@s.whatsapp.net") return "WhatsApp";
     const botId = _optionalChain([sock, 'access', _26 => _26.user, 'optionalAccess', _27 => _27.id, 'optionalAccess', _28 => _28.split, 'call', _29 => _29(":"), 'access', _30 => _30[0]]) + "@s.whatsapp.net";
     if (id === botId)
-      return _optionalChain([sock, 'access', _31 => _31.user, 'optionalAccess', _32 => _32.name]) || _optionalChain([sock, 'access', _33 => _33.user, 'optionalAccess', _34 => _34.verifiedName]) || "Bot";
+      return _optionalChain([sock, 'access', _31 => _31.user, 'optionalAccess', _32 => _32.name]) || _optionalChain([sock, 'access', _33 => _33.user, 'optionalAccess', _34 => _34.verifiedName]) || "♪";
     let v = _optionalChain([sock, 'access', _35 => _35.store, 'optionalAccess', _36 => _36.contacts, 'optionalAccess', _37 => _37[id]]) || {};
     if (v.name) return v.name;
     if (v.notify) return v.notify;

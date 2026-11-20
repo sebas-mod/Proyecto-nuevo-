@@ -5,7 +5,7 @@ const pluginConfig = {
   name: "garden",
   alias: ["kebun", "farm", "tanam"],
   category: "rpg",
-  description: "Berkebun dan panen tanaman",
+  description: "Jardinería y cultivos",
   usage: ".garden <plant/harvest/status>",
   example: ".garden plant carrot",
   isOwner: false,
@@ -47,34 +47,34 @@ async function handler(m, { sock }) {
   const cropName = _optionalChain([args, 'access', _4 => _4[1], 'optionalAccess', _5 => _5.toLowerCase, 'call', _6 => _6()]);
 
   if (!action || !["plant", "harvest", "status", "buy"].includes(action)) {
-    let txt = `Halo Juragan Kebun! 👨‍🌾🌻\n`;
-    txt += `Pusat informasi kebun pribadimu nih.\n\n`;
+    let txt = `¡Hao Juagan Soil!👨‍🌾🌻\n`;
+    txt += `Enfóquese en su información personal del jardín.\n\n`;
     
-    txt += `*Menu Kebun:*\n`;
-    txt += `• \`${m.prefix}garden status\` - Cek kondisi kebun\n`;
-    txt += `• \`${m.prefix}garden buy <tanaman> <jumlah>\` - Beli bibit\n`;
-    txt += `• \`${m.prefix}garden plant <tanaman>\` - Tanam bibit di tanah kosong\n`;
-    txt += `• \`${m.prefix}garden harvest\` - Panen semua yang udah matang\n\n`;
+    txt += `* Menú de soledad: *\n`;
+    txt += `• \`${m.prefix}garden estado\`- Revisa el clima de jardín\n`;
+    txt += `• \`${m.prefix}jardín comprar<tanaman> <jumlah>\`- Compra algunas judías.\n`;
+    txt += `• \`${m.prefix}planta de jardín<tanaman>\`- Jabón en el campo acogedor.\n`;
+    txt += `• \`${m.prefix}cosecha de jardín\`- Cosecha a todos los elegantes.\n\n`;
 
-    txt += `*Daftar Bibit Tersedia:*\n`;
+    txt += `* Lista de Biblings enviados: *\n`;
     for (const [key, crop] of Object.entries(CROPS)) {
       txt += `\n*${crop.name}*\n`;
-      txt += `⏳ Waktu Tumbuh: ${formatTime(crop.growTime)}\n`;
-      txt += `💰 Harga Jual: Rp ${crop.sellPrice} | 🌱 Harga Bibit: Rp ${crop.seedPrice}\n`;
-      txt += `👉 Beli: \`.garden buy ${key}\`\n`;
+      txt += `⏳Tiempo Tumbuh:${formatTime(crop.growTime)}\n`;
+      txt += `💰Precio Vende: Rp${crop.sellPrice}♪🌱Bial Precio:${crop.seedPrice}\n`;
+      txt += `👉Compra:\`- Comprar jardín.${key}\`\n`;
     }
     return m.reply(txt);
   }
 
   if (action === "status") {
     const garden = user.rpg.garden;
-    let txt = `Cek Lahan Kebun... 🚜🌱\n\n`;
-    txt += `*Kapasitas Tanah:* ${garden.plots.length} dari ${garden.maxPlots} terisi.\n\n`;
+    let txt = `" Chest Land of Solitude ".🚜🌱\n\n`;
+    txt += `* Capacidad solar: *${garden.plots.length}de${garden.maxPlots} terisi.\n\n`;
 
     if (garden.plots.length === 0) {
-      txt += `Waduh, kebun kamu masih gersang kak! 🏜️\nBuruan beli bibit terus \`${m.prefix}garden plant <nama>\` biar hijau lagi!`;
+      txt += `¡Todavía eres un jardín, hermano!🏜♪\nBuruan compra el bibit y sigue adelante\`${m.prefix}planta de jardín<nama>\`¡Déjame volver a ver!`;
     } else {
-      txt += `*Daftar Lahan:*\n`;
+      txt += `*Registrate Lahan:*\n`;
       for (let i = 0; i < garden.plots.length; i++) {
         const plot = garden.plots[i];
         const crop = CROPS[plot.crop];
@@ -91,19 +91,19 @@ async function handler(m, { sock }) {
 
   if (action === "buy") {
     if (!cropName) {
-      return m.reply(`Hayo, mau beli bibit apaan? Namanya belum ditulis kak! 😂\nContoh: \`${m.prefix}garden buy carrot 5\``);
+      return m.reply(`Hayo, ¿qué estás haciendo?😂\nEjemplo:\`${m.prefix}garden buy carrot 5\``);
     }
 
     const crop = CROPS[cropName];
     if (!crop) {
-      return m.reply(`Bibit itu nggak dijual di toko tani kita kak! ❌\nCek listnya lagi pake \`${m.prefix}garden\``);
+      return m.reply(`Esa semilla no se vende en nuestra tienda de bronceado, hermana!❌\nLa lista de verificación está llegando.\`${m.prefix}garden\``);
     }
 
     const qty = Math.max(1, parseInt(args[2]) || 1);
     const totalCost = crop.seedPrice * qty;
 
     if ((user.koin || 0) < totalCost) {
-      return m.reply(`Eits, uang kamu kurang kak! 😭\nTotal belanjanya Rp ${totalCost.toLocaleString()}, tapi koin kamu sisa Rp ${(user.koin || 0).toLocaleString()}.`);
+      return m.reply(`Eits, no estás cortado.😭\nEl artículo de la compra es Rp${totalCost.toLocaleString()}, pero tu tela sigue siendo Rp${(user.koin || 0).toLocaleString()}.`);
     }
 
     user.koin -= totalCost;
@@ -111,26 +111,26 @@ async function handler(m, { sock }) {
     user.inventory[seedKey] = (user.inventory[seedKey] || 0) + qty;
     db.save();
 
-    return m.reply(`Makasih udah belanja di Toko Tani! 🛒🌱\n\nKamu beli *${qty}x Bibit ${crop.name}*\nTotal Bayar: *Rp ${totalCost.toLocaleString()}*\n\nJangan lupa ditanam ya pake \`${m.prefix}garden plant ${cropName}\`!`);
+    return m.reply(`¡Está comprando en Tienda Tani!🛒🌱\n\nCompras${qty}x Bibit ${crop.name}*\nTOTAL Bayard: * Rp${totalCost.toLocaleString()}*\n\nNo olvides ponerte en el suelo,\`${m.prefix}garden plant ${cropName}\`!`);
   }
 
   if (action === "plant") {
     if (!cropName) {
-      return m.reply(`Tanah udah siap, tapi bibit apa yang mau ditanam nih? 🌱\nContoh: \`${m.prefix}garden plant carrot\``);
+      return m.reply(`El útero está listo, pero ¿qué semillas te gustaría plantar?🌱\nEjemplo:\`${m.prefix}garden plant carrot\``);
     }
 
     const crop = CROPS[cropName];
     if (!crop) {
-      return m.reply(`Tanaman itu nggak ada di buku panduan tani kak! ❌`);
+      return m.reply(`¡Está planta no está en el puesto de mi madre!❌`);
     }
 
     if (user.rpg.garden.plots.length >= user.rpg.garden.maxPlots) {
-      return m.reply(`Waduh, lahannya udah penuh semua! 🚜💨\nKamu harus panen dulu atau *upgrade* kebunmu!`);
+      return m.reply(`El viento, el viento está lleno de ellos!🚜💨\n¡Tienes que calentar o más tu jardín!`);
     }
 
     const seedKey = `${cropName}seed`;
     if ((user.inventory[seedKey] || 0) < 1) {
-      return m.reply(`Kamu nggak punya bibit *${crop.name}* nih kak! 😭\nBeli dulu gih di \`${m.prefix}garden buy ${cropName}\``);
+      return m.reply(`No tienes frijoles.${crop.name}¡Hermano!😭\nComprar primero vamos in\`${m.prefix}garden buy ${cropName}\``);
     }
 
     user.inventory[seedKey]--;
@@ -142,7 +142,7 @@ async function handler(m, { sock }) {
     });
     db.save();
 
-    return m.reply(`Sipp! Bibit *${crop.name}* udah ditanam di tanah! 🌱💦\nJangan lupa disiram (eh, otomatis sih), tinggal tunggu *${formatTime(crop.growTime)}* buat panen ya!`);
+    return m.reply(`Sipp! Bibit *${crop.name}* ¡El suelo está sembrado!🌱💦\nNo se olvide de que se utilice ( eh, automatización ), sólo espere *${formatTime(crop.growTime)}¡Hazlo una cosecha!`);
   }
 
   if (action === "harvest") {
@@ -153,7 +153,7 @@ async function handler(m, { sock }) {
     });
 
     if (readyPlots.length === 0) {
-      return m.reply(`Hadeh, belum ada yang mateng kak! Sabar dikit napa 😂\nCek waktunya pake \`${m.prefix}garden status\``);
+      return m.reply(`Hadeh, nadie es demasiado tarde todavía!😂\nCompruebe el tiempo @-@ out,\`${m.prefix}garden status\``);
     }
 
     let totalExp = 0;
@@ -177,12 +177,12 @@ async function handler(m, { sock }) {
 
     await m.react("✅");
     return m.reply(
-      `HOREE! PANEN TIBA! 🚜🌾✨\n\n` +
-        `Hasil kerja kerasmu terbayarkan. Ini yang kamu dapet:\n` +
+      `HOREE! PANEN Llegar! 🚜🌾✨\n\n` +
+        `Tu trabajo duro se paga.\n` +
         harvestedItems.join("\n") +
         `\n\n` +
-        `📈 Bonus EXP Tani: *+${totalExp}*\n\n` +
-        `Buruan tanam lagi biar makin tajir! 💸`
+        `📈Bono EXP Tani: * +${totalExp}*\n\n` +
+        `¡Más buruanes de granja para hacer comida!💸`
     );
   }
 }

@@ -3,7 +3,7 @@ const pluginConfig = {
     name: 'slowmode',
     alias: ['slow', 'setslowmode'],
     category: 'group',
-    description: 'Slowmode grup — batasi kecepatan pesan member',
+    description: 'Slowmode grupo—límite de entrada de mensaje de carga',
     usage: '.slowmode <on/off/onlycommand> [detik]',
     example: '.slowmode on 30',
     isOwner: false,
@@ -27,7 +27,7 @@ const PRESETS = {
 }
 
 const MODES = {
-    all: 'Semua pesan + command dihapus',
+    all: 'Todos los mensajes + comando están cifrados',
     onlycommand: 'Command di-silent, chat biasa tetap jalan',
 }
 
@@ -50,21 +50,21 @@ async function handler(m, { sock }) {
             `🐢 *SLOWMODE*\n\n` +
             `Status: ${enabled ? `✅ ON (${delay}s)` : '❌ OFF'}\n` +
             `Mode: *${mode}*\n\n` +
-            `*Penggunaan:*\n` +
-            `*.slowmode on 30* — semua pesan + command\n` +
-            `*.slowmode onlycommand 30* — command only\n` +
+            `*Uso:*\n` +
+            `*Voy a estar bien* *Voy a estar bien*—todos los mensajes + comando\n` +
+            `*. lentomode only comandard 30 *—comando only\n` +
             `*.slowmode off* — nonaktifkan\n\n` +
             `*Preset:*\n${presetList}\n\n` +
             `*Mode:*\n` +
-            `  *all* — hapus semua pesan saat delay\n` +
-            `  *onlycommand* — silent command, chat bebas\n\n` +
-            `_Admin & owner tidak terpengaruh_`
+            `* ahl *—eliminar todos los mensajes en demora\n` +
+            `* Solo commando *—silenciosa orden, chat gratuito\n\n` +
+            `*Aminencia* *El dueño no está afectado*`
         )
     }
 
     if (subCmd === 'off') {
         db.setGroup(m.chat, { ...groupData, slowmode: { enabled: false } })
-        return m.reply(`✅ Slowmode *dinonaktifkan*`)
+        return m.reply(`✅Slowmode *desactivado*`)
     }
 
     let mode = 'all'
@@ -83,7 +83,7 @@ async function handler(m, { sock }) {
     } else {
         delay = parseInt(subCmd)
         if (isNaN(delay)) {
-            return m.reply(`❌ Gunakan *.slowmode on 30* atau *.slowmode onlycommand 30*`)
+            return m.reply(`❌Uso *. lento en 30 * o *. lentomode sólo comandd 30 *`)
         }
     }
 
@@ -96,7 +96,7 @@ async function handler(m, { sock }) {
     }
 
     if (delay < 5 || delay > 600) {
-        return m.reply(`❌ Delay harus antara 5–600 detik`)
+        return m.reply(`❌El retraso debe estar en la quinta.–600 segundo`)
     }
 
     db.setGroup(m.chat, {
@@ -109,11 +109,11 @@ async function handler(m, { sock }) {
     const modeDesc = MODES[mode]
 
     await m.reply(
-        `✅ Slowmode *aktif*\n\n` +
-        `Delay: *${delay} detik*${label}\n` +
+        `✅Slowmode *activo*\n\n` +
+        `Delay: *${delay}segundo*${label}\n` +
         `Mode: *${mode}*\n` +
         `${modeDesc}\n\n` +
-        `_Admin & owner tidak terpengaruh_`
+        `*Aminencia* *El dueño no está afectado*`
     )
 }
 

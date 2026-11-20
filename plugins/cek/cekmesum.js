@@ -2,7 +2,7 @@
   name: "cekmesum",
   alias: ["mesum"],
   category: "cek",
-  description: "Cek seberapa mesum kamu",
+  description: "Compruebe cuánto se siente.",
   usage: ".cekmesum <nama>",
   example: ".cekmesum Budi",
   isOwner: false,
@@ -28,18 +28,18 @@ async function handler(m) {
   } else if (percent >= 30) {
     desc = "Sedikit mesum 🙈";
   } else {
-    desc = "Polos dan suci! 😇";
+    desc = "¡Polos y suci!😇";
   }
 
   let txt =
     mentioned === m.sender
-      ? `Hai @${mentioned.split("@")[0]}
+      ? `Hola @${mentioned.split("@")[0]}
     
-Tingkat kemesuman kamu *${percent}%*
+Tu nivel de camisa *${percent}%*
 \`\`\`${desc}\`\`\``
-      : `Kamu ingin ngecek tingkat kemesuman @${mentioned.split("@")[0]} yak? 
+      : `Quieres revisar el nivel de sudor${mentioned.split("@")[0]} yak? 
     
-Tingkat kemesuman dia sebesar *${percent}%*
+Es una camisa alta tan grande como un arma${percent}%*
 \`\`\`${desc}\`\`\``;
 
   await m.reply(txt, { mentions: [mentioned] });

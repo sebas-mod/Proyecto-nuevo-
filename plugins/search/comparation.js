@@ -3,7 +3,7 @@ var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefa
 var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
 var _ourindatabasejs = require('../../src/lib/ourin-database.js');
 
-const NEOXR_APIKEY = _optionalChain([_configjs2.default, 'access', _ => _.APIkey, 'optionalAccess', _2 => _2.neoxr]) || "Milik-Bot-OurinMD";
+const NEOXR_APIKEY = _optionalChain([_configjs2.default, 'access', _ => _.APIkey, 'optionalAccess', _2 => _2.neoxr]) || "Millik - Eurinprobable";
 
 const pluginConfig = {
     name: "advance-comparation",
@@ -26,11 +26,11 @@ const VALID_TYPES = ["phone", "tablet", "laptop", "cpu", "gpu", "soc"];
 async function handler(m, { sock, args, text }) {
     if (!args || args.length === 0) {
         return m.reply(`📊 *ADVANCE COMPARATION*\n\n` +
-            `Gunakan perintah berikut untuk membandingkan perangkat:\n` +
+            `Utilice el siguiente comando para comparar dispositivos:\n` +
             `> *.bandingkan-device <tipe> <query>*\n\n` +
-            `*Tipe yang tersedia:*\n` +
+            `* Consejo enviado: *\n` +
             VALID_TYPES.map(t => `> - ${t}`).join("\n") + `\n\n` +
-            `*Contoh:* .bandingkan-device phone samsung s24`);
+            `* DESHHH: *. appeal - device phone samsung s24`);
     }
 
     let type = "phone";
@@ -42,7 +42,7 @@ async function handler(m, { sock, args, text }) {
     }
 
     if (!query.trim()) {
-        return m.reply(`Ketik nama perangkat yang mau dicari!\nContoh: .bandingkan-device phone samsung s24`);
+        return m.reply(`¡El nombre de la trampa para buscar!\nSujeto:. apelación --división teléfono samsung s24`);
     }
 
     await m.react("🕕");
@@ -53,12 +53,12 @@ async function handler(m, { sock, args, text }) {
 
         if (!resData || !resData.status || !resData.data || resData.data.length === 0) {
             await m.react("❌");
-            return m.reply(`Perangkat "${query}" tidak ditemukan.`);
+            return m.reply(`Dispositivo "${query}No se ha encontrado.`);
         }
 
         const maxResults = Math.min(resData.data.length, 10);
-        let listTxt = `📊 *PENCARIAN DEVICE 1: ${query.toUpperCase()}*\n\n`;
-        listTxt += `Silahkan Pilih yang lebih spesifik:\n\n`;
+        let listTxt = `📊 *Búsqueda DEVICE 1: ${query.toUpperCase()}*\n\n`;
+        listTxt += `Por favor, elija uno más específico:\n\n`;
 
         const searchResults = [];
 
@@ -68,7 +68,7 @@ async function handler(m, { sock, args, text }) {
             listTxt += `*${i + 1}.* ${item.label}\n`;
         }
 
-        listTxt += `\n> 💡 *Kirim angka (contoh: 1)* untuk memilih perangkat pertama, atau ketik \`batal\` untuk membatalkan.`;
+        listTxt += `\n♪💡* Números de presupuesto (por ejemplo: 1 ) * para seleccionar la primera trampa, o primera trampa\`cancelar\`para cancelando.`;
 
         const db = _ourindatabasejs.getDatabase.call(void 0, );
         const user = db.getUser(m.sender);
@@ -106,7 +106,7 @@ async function comparationAnswerHandler(m, sock) {
     if (Date.now() - session.time > SESSION_TIMEOUT) {
         delete user.compare_session;
         db.save();
-        await m.reply(`⏰ *SESI KEDALUWARSA*\n\nSesi perbandingan perangkat sudah berakhir.`);
+        await m.reply(`⏰* SECIÓN DEL AGUA*\n\nLa configuración ha terminado.`);
         return true;
     }
 
@@ -116,7 +116,7 @@ async function comparationAnswerHandler(m, sock) {
     if (textLower === "batal" || textLower === "cancel") {
         delete user.compare_session;
         db.save();
-        await m.reply(`🚪 Sesi perbandingan dibatalkan.`);
+        await m.reply(`🚪El debate está fuera de las listas.`);
         return true;
     }
 
@@ -135,7 +135,7 @@ async function comparationAnswerHandler(m, sock) {
         db.save();
 
         await m.react("✅");
-        await m.reply(`Oke, kamu memilih *${selected.label}* dengan type *${session.type}* untuk device pertama.\n\nMau di bandingkan sama apa?\n\n> 💡 _Kirim teks nama perangkat kedua untuk dicari (contoh: iphone 17 pro max)_`);
+        await m.reply(`Bien, tú eliges${selected.label}* con tipo *${session.type}* para la primera desviación.\n\n¿De qué estás hablando?\n\n♪💡* Contiene el nombre del segundo dispositivo para buscar (por ejemplo: iphone 17 pro max- ¿Qué?`);
         return true;
     }
 
@@ -150,13 +150,13 @@ async function comparationAnswerHandler(m, sock) {
 
             if (!resData || !resData.status || !resData.data || resData.data.length === 0) {
                 await m.react("❌");
-                await m.reply(`Perangkat "${query}" tidak ditemukan. Silakan ketik nama perangkat lain yang ingin dicari, atau ketik \`batal\`.`);
+                await m.reply(`Dispositivo "${query}Por favor, tome otro nombre de marco para buscar, o axila\`cancelar\`.`);
                 return true;
             }
 
             const maxResults = Math.min(resData.data.length, 10);
-            let listTxt = `📊 *PENCARIAN DEVICE 2: ${query.toUpperCase()}*\n\n`;
-            listTxt += `Silahkan Pilih yang lebih spesifik:\n\n`;
+            let listTxt = `📊( DEVICE 2 búsquedas:${query.toUpperCase()}*\n\n`;
+            listTxt += `Por favor, elija uno más específico:\n\n`;
 
             const searchResults = [];
 
@@ -166,7 +166,7 @@ async function comparationAnswerHandler(m, sock) {
                 listTxt += `*${i + 1}.* ${item.label}\n`;
             }
 
-            listTxt += `\n> 💡 *Kirim angka (contoh: 1)* untuk memilih perangkat kedua, atau ketik \`batal\` untuk membatalkan.`;
+            listTxt += `\n♪💡* Cita (o piloto: 1 ) * para seleccionar segunda trampa, o izquierda\`cancelar\`para cancelando.`;
 
             session.results = searchResults;
             session.step = 3;
@@ -180,7 +180,7 @@ async function comparationAnswerHandler(m, sock) {
         } catch (error) {
             console.error("[Compare Search 2 Error]", error);
             await m.react("☢");
-            await m.reply("Terjadi kesalahan saat mencari perangkat kedua. Silakan coba lagi nanti atau ketik `batal`.");
+            await m.reply("Es un error buscar la segunda trampa. Intente de nuevo más tarde o izquierda @-@ lado de la mano.`cancelar`.");
             return true;
         }
     }
@@ -199,16 +199,16 @@ async function comparationAnswerHandler(m, sock) {
         db.save();
 
         await m.react("🔄");
-        await m.reply(`Memproses perbandingan antara:\n*1. ${device1.label}*\n*2. ${device2.label}*\n\nTunggu sebentar, data perbandingan sedang diambil...`);
+        await m.reply(`Comparación de tramitación de untara:\n* 1.${device1.label}*\n*2. ${device2.label}*\n\nEspera un minuto, se están recordando los datos del debate..`);
 
         try {
-            const compareUrl = `https://api.neoxr.eu/api/compare?item1=${encodeURIComponent(device1.name)}&item2=${encodeURIComponent(device2.name)}&type=${session.type}&apikey=${NEOXR_APIKEY}`;
+            const compareUrl = `https://api.neoxr.eu/api/compare?item1=${encodeURIComponent(device1.name)}> 91; Echoing > 93;${encodeURIComponent(device2.name)}&type=${session.type}&apikey=${NEOXR_APIKEY}`;
             const response = await _axios2.default.get(compareUrl, { timeout: 60000 });
             const resData = response.data;
 
             if (!resData || !resData.status || !resData.data) {
                 await m.react("❌");
-                await m.reply(`Gagal mendapatkan data perbandingan.`);
+                await m.reply(`Gagalm obtuvo la comparación de datos.`);
                 return true;
             }
 
@@ -243,7 +243,7 @@ async function comparationAnswerHandler(m, sock) {
                             resultTxt += `✅ ${p}\n`;
                         });
                     } else {
-                        resultTxt += `- Tidak ada data.\n`;
+                        resultTxt += `- No hay datos.\n`;
                     }
                 });
                 resultTxt += `\n`;
@@ -272,7 +272,7 @@ async function comparationAnswerHandler(m, sock) {
         } catch (error) {
             console.error("[Compare Fetch Error]", error);
             await m.react("❌");
-            await m.reply("Terjadi kesalahan saat memproses data perbandingan.");
+            await m.reply("Fue un error procesar la comparación de datos.");
             return true;
         }
     }

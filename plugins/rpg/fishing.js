@@ -5,7 +5,7 @@ const pluginConfig = {
   name: "fishing",
   alias: ["rpgfish", "mancing"],
   category: "rpg",
-  description: "Memancing untuk mendapatkan ikan (RPG)",
+  description: "Pesca para conseguir pescado ( RPG )",
   usage: ".fishing",
   example: ".fishing",
   isOwner: false,
@@ -28,13 +28,13 @@ async function handler(m, { sock }) {
   user.rpg.stamina = user.rpg.stamina || 100;
 
   if (user.rpg.stamina < staminaCost) {
-    return m.reply(`Aduh kak, stamina kamu abis nih! 😭⚡\n\nBuat mancing butuh *${staminaCost} Stamina*, tapi punya kamu sisa *${user.rpg.stamina}*.\nIstirahat dulu gih biar seger lagi! 🛌💤`);
+    return m.reply(`¡Oh hermana, tu resiscia se está enfriando!😭⚡\n\nCrema pesca buth *${staminaCost}Stamina, pero te traje un restante${user.rpg.stamina}*.\nDescanse primero. Descanse.🛌💤`);
   }
 
   user.rpg.stamina -= staminaCost;
 
   await m.react("🎣");
-  await m.reply(`Melempar kail ke air yang tenang... 🌊🎣\nSssttt, jangan berisik biar ikannya makan umpan! 🤫👀`);
+  await m.reply(`Tira el gancho en el agua tranquila.🌊🎣\nShh, no hagas eso, ¡deje que el pescado coma la olla!🤫👀`);
   await new Promise((r) => setTimeout(r, 4000));
 
   const drops = [
@@ -66,15 +66,15 @@ async function handler(m, { sock }) {
 
   await m.react("✅");
 
-  let txt = `HAPPP! Kailnya ditarik! 🎣💦\n\nWah, kamu berhasil dapetin:\n`;
+  let txt = `¡El gancho está abajo!🎣💦\n\nBueno, lo hiciste.\n`;
   if (caught.item === "trash") {
-    txt += `> ${caught.name} 🤢\nYahh dapetnya sampah kak... Lumayan lah dapet *+${expReward} EXP* pengalaman buang sampah pada tempatnya! 😂\n\n`;
+    txt += `> ${caught.name} 🤢\nSí, está llegando.${expReward} EXP* experiencia tirar sampah en tempatnya! 😂\n\n`;
   } else {
-    txt += `> *${caught.name}* 🎉✨\nAsik banget! Kamu juga dapet *+${expReward} EXP* nih!\n\n`;
+    txt += `> *${caught.name}*🎉✨\n¡También es bienvenido!${expReward}EXP* aquí!\n\n`;
   }
   
   txt += `⚡ Stamina terpakai: *-${staminaCost}*\n`;
-  txt += `\nIkan/sampahnya udah masuk ke tas (\`.inv\`) ya! Jangan lupa mancing lagi nanti! 💖🌊`;
+  txt += `\n- La basura está en la bolsa.\`- Inv.\`¡No olvides deletrearlo otra vez más tarde!💖🌊`;
 
   await m.reply(txt);
 }

@@ -15,7 +15,7 @@ const pluginConfig = {
   name: 'cekgempa',
   alias: ['infogempa', 'gempa'],
   category: 'search',
-  description: 'Informasi gempa bumi terkini dari BMKG beserta shakemap',
+  description: 'Información de la fiesta sobre el Bumi actual de BMKG con shakemouth',
   usage: '.cekgempa [m5 | dirasakan]',
   example: '.cekgempa',
   isOwner: false,
@@ -38,9 +38,9 @@ async function handler(m, context) {
       const list = LISTS[key === 'm5.0' || key === 'm5+' ? 'm5' : key];
       if (!list) {
         return m.reply(
-          `Pilihan tidak dikenal.\n\n*Format Penggunaan:*\n` +
-            `• \`${p}${command}\` (Gempa terbaru + peta shakemap)\n` +
-            `• \`${p}${command} m5\` (15 gempa M 5.0+ terbaru)\n` +
+          `Elección desconocida.\n\n*Formato Uso:*\n` +
+            `• \`${p}${command}\`(Scents más recientes + peta shakefire )\n` +
+            `• \`${p}${command}m5\` (15 gempa M 5.0+ terbaru)\n` +
             `• \`${p}${command} dirasakan\` (15 gempa dirasakan terbaru)`
         );
       }
@@ -49,31 +49,31 @@ async function handler(m, context) {
       const data = res.data?.Infogempa?.gempa;
       const items = Array.isArray(data) ? data : data ? [data] : [];
       if (!items.length) {
-        return m.reply('Data gempa belum tersedia dari server BMKG.');
+        return m.reply('Las gestas todavía no están disponibles en el servidor BMKG.');
       }
 
       const lines = items.slice(0, 15).map(
         (g, i) =>
           `*${i + 1}. M ${show(g.Magnitude)}* | ${show(g.Tanggal)} ${show(g.Jam)}\n` +
-          `   📍 Wilayah: ${show(g.Wilayah)}\n` +
+          `   📍Region:${show(g.Wilayah)}\n` +
           `   🌊 Kedalaman: ${show(g.Kedalaman)}`
       );
 
-      return m.reply(`🌋 *${list.title}*\n\n${lines.join('\n\n')}\n\n_Sumber: BMKG (Badan Meteorologi, Klimatologi, dan Geofisika)_`);
+      return m.reply(`🌋 *${list.title}*\n\n${lines.join('\n\n')}\n\nSumber: BMKG ( Badan Meteorology, Clicatology, y Geophysics ) _`);
     }
 
     const res = await axios.get(`${BASE}/autogempa.json`, { timeout: 15000 });
     const g = res.data?.Infogempa?.gempa;
     if (!g || typeof g !== 'object') {
-      return m.reply('Data gempa terbaru belum tersedia dari BMKG.');
+      return m.reply('Los datos más recientes aún no han sido disponibles en el BMKG.');
     }
 
     const caption =
-      `🌋 *INFORMASI GEMPA TERBARU (BMKG)*\n\n` +
-      `📅 *Waktu:* ${show(g.Tanggal)} ${show(g.Jam)}\n` +
+      `🌋* Nueva información sobre los miembros (BMKG) *\n\n` +
+      `📅*Tiempo:*${show(g.Tanggal)} ${show(g.Jam)}\n` +
       `💥 *Magnitudo:* ${show(g.Magnitude)}\n` +
       `🌊 *Kedalaman:* ${show(g.Kedalaman)}\n` +
-      `📍 *Lokasi:* ${show(g.Wilayah)}\n` +
+      `📍*Ubicación:*${show(g.Wilayah)}\n` +
       `🧭 *Koordinat:* ${show(g.Lintang)}, ${show(g.Bujur)}\n` +
       `⚠️ *Potensi:* ${show(g.Potensi)}\n` +
       `📢 *Dirasakan:* ${show(g.Dirasakan)}\n\n` +
@@ -99,7 +99,7 @@ async function handler(m, context) {
     return m.reply(caption);
   } catch (err) {
     console.error('[CEKGEMPA ERROR]', err.message);
-    return m.reply(`❌ Gagal mengambil data gempa BMKG: ${err.message}`);
+    return m.reply(`❌Stempeg recogió los datos de BMKG grandes:${err.message}`);
   }
 }
 

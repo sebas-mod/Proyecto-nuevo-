@@ -5,7 +5,7 @@ const pluginConfig = {
   name: "quilbot",
   alias: ["quillbot", "parafrase"],
   category: "ai",
-  description: "AI Quillbot untuk menulis ulang atau menyempurnakan kalimat",
+  description: "AIQuillbot para reescribir o reescribir calimat",
   usage: ".quilbot <teks>",
   example: ".quilbot Saya sedang makan nasi di rumah",
   isOwner: false,
@@ -21,7 +21,7 @@ async function handler(m, { sock }) {
   const text = m.args.join(" ") || _optionalChain([m, 'access', _ => _.text, 'optionalAccess', _2 => _2.trim, 'call', _3 => _3()]);
 
   if (!text) {
-    return m.reply("❌ Masukkan teks yang ingin disempurnakan.\n\nContoh: `.quilbot Saya sedang makan nasi di rumah`");
+    return m.reply("❌Ponga en el texto que desea tocar.\n\nEjemplo:`Estoy comiendo arroz en casa.`");
   }
 
   await m.react("🕕");
@@ -38,7 +38,7 @@ async function handler(m, { sock }) {
     const data = res.data;
     if (!data.status || !data.result) {
       await m.react("❌");
-      return m.reply("⚠️ Quillbot gagal memproses teks.");
+      return m.reply("⚠♪Quillbot no pudo procesar el texto.");
     }
 
     await m.reply(data.result);
@@ -47,7 +47,7 @@ async function handler(m, { sock }) {
   } catch (error) {
     console.error("[Quillbot]", error.message);
     await m.react("☢");
-    m.reply("😔 Terjadi kesalahan saat memproses teks ke Quillbot.");
+    m.reply("😔Fue un error procesar el texto aQUillbot.");
   }
 }
 

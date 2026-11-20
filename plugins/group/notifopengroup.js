@@ -2,7 +2,7 @@
     name: 'notifopengroup',
     alias: ['notifopen'],
     category: 'group',
-    description: 'Toggle notifikasi saat grup dibuka',
+    description: 'Notificaciones de la lucha cuando se abre el grupo',
     usage: '.notifopengroup on/off',
     example: '.notifopengroup on',
     isOwner: false,
@@ -16,7 +16,7 @@
 
 function handler(m, { sock, db }) {
     if (!m.isAdmin && !m.isOwner) {
-        return m.reply(`❌ Hanya admin grup yang bisa menggunakan fitur ini`)
+        return m.reply(`❌Sólo el administrador del grupo puede usar está característica`)
     }
     
     const args = _optionalChain([m, 'access', _ => _.args, 'access', _2 => _2[0], 'optionalAccess', _3 => _3.toLowerCase, 'call', _4 => _4()])
@@ -24,7 +24,7 @@ function handler(m, { sock, db }) {
     
     if (!['on', 'off'].includes(args)) {
         const status = group.notifOpenGroup === true ? '✅ Aktif' : '❌ Nonaktif'
-        return m.reply(`🔓 *ɴᴏᴛɪꜰ ᴏᴘᴇɴ ɢʀᴏᴜᴘ*\n\n> Status: ${status}\n\n*Penggunaan:*\n\`${m.prefix}notifopengroup on\` - Aktifkan\n\`${m.prefix}notifopengroup off\` - Nonaktifkan`)
+        return m.reply(`🔓 *ɴᴏᴛɪꜰ ᴏᴘᴇɴ ɢʀᴏᴜᴘ*\n\n> Status: ${status}\n\n*Uso:*\n\`${m.prefix}notifopengroup on\` - Aktifkan\n\`${m.prefix}El ruido está en el techo.\`- Desactiva`)
     }
     
     if (args === 'on') {

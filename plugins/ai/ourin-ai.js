@@ -5,7 +5,7 @@ const pluginConfig = {
   name: "ourin-ai",
   alias: ["ourinai", "ourin"],
   category: "ai",
-  description: "Chat dengan Ourin AI — Asisten bot cerdas",
+  description: "Chat con Ourin Al—Permanent astidubot",
   usage: ".ourin-ai <pertanyaan>",
   example: ".ourin-ai Apa itu Node.js?",
   isOwner: false,
@@ -22,11 +22,11 @@ async function handler(m, { sock }) {
   if (!text) {
     return m.reply(
       `🤖 *Ourin AI*\n\n` +
-        `> Asisten cerdas siap membantu\n\n` +
-        `*PENGGUNAAN:*\n` +
+        `Astif cerdas listo para ayudar\n\n` +
+        `*Uso:*\n` +
         `> *${m.prefix}ourin-ai <pertanyaan>*\n\n` +
-        `*CONTOH:*\n` +
-        `> *${m.prefix}ourin-ai Apa itu Node.js?*`
+        `*Ejemplo:*\n` +
+        `> *${m.prefix}Eres un nodo, ¿no?`
     );
   }
 

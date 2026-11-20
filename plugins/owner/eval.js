@@ -9,7 +9,7 @@ const pluginConfig = {
     name: 'eval',
     alias: ['$', 'ev', 'evaluate', '=>'],
     category: 'owner',
-    description: 'Jalankan kode JavaScript (Owner Only)',
+    description: 'Corre Javazipt ( Propietario Sólo ) código',
     usage: '=> <code> atau .$ <code>',
     example: '=> m.chat',
     isOwner: true,
@@ -25,7 +25,7 @@ const pluginConfig = {
 
 async function handler(m, { sock, store }) {
     if (!_configjs2.default.isOwner(m.sender)) {
-        return m.reply('❌ *Owner Only!*')
+        return m.reply('❌*Propietario Only!*')
     }
 
     const code = _optionalChain([m, 'access', _3 => _3.fullArgs, 'optionalAccess', _4 => _4.trim, 'call', _5 => _5()]) || _optionalChain([m, 'access', _6 => _6.text, 'optionalAccess', _7 => _7.trim, 'call', _8 => _8()])
@@ -33,8 +33,8 @@ async function handler(m, { sock, store }) {
     if (!code) {
         return m.reply(
             `⚙️ *ᴇᴠᴀʟ*\n\n` +
-            `> Masukkan kode JavaScript!\n\n` +
-            `*Contoh:*\n` +
+            `¡Pon el código jeriguito!\n\n` +
+            `*Ejemplo:*\n` +
             `> .$ 1 + 1\n` +
             `> .$ m.chat\n` +
             `> .$ db.getUser(m.sender)`

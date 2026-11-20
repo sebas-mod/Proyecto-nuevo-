@@ -22,7 +22,7 @@ async function handler(m, { sock }) {
     const zodiac = _optionalChain([m, 'access', _ => _.args, 'access', _2 => _2[0], 'optionalAccess', _3 => _3.toLowerCase, 'call', _4 => _4()])
     
     if (!zodiac || !validZodiacs.includes(zodiac)) {
-        return m.reply(`⭐ *ᴢᴏᴅɪᴀᴋ*\n\n> Masukkan nama zodiak:\n\n${validZodiacs.map(z => `• ${z}`).join('\n')}\n\n\`Contoh: ${m.prefix}zodiak aries\``)
+        return m.reply(`⭐*ᴢᴏᴅɪᴀᴋ*\n\nAquí viene el nombre del zodiaco:\n\n${validZodiacs.map(z => `• ${z}`).join('\n')}\n\n\`Contoh: ${m.prefix}zodiak aries\``)
     }
     
     m.react('⭐')
@@ -33,7 +33,7 @@ async function handler(m, { sock }) {
         
         if (!_optionalChain([data, 'optionalAccess', _5 => _5.status]) || !_optionalChain([data, 'optionalAccess', _6 => _6.data])) {
             m.react('❌')
-            return m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> Gagal mendapatkan ramalan`)
+            return m.reply(`❌*ɢᴀɢᴀʟ*\n\n*Gran profecía de conseguir*`)
         }
         
         const r = data.data

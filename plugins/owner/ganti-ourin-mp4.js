@@ -22,7 +22,7 @@ async function handler(m, { sock }) {
     const isVideo = m.type === 'videoMessage' || (m.quoted && m.quoted.type === 'videoMessage')
     
     if (!isVideo) {
-        return m.reply(`🎬 *ɢᴀɴᴛɪ ᴏᴜʀɪɴ.ᴍᴘ4*\n\n> Kirim/reply video untuk mengganti\n> File: assets/video/ourin.mp4`)
+        return m.reply(`🎬*ɢᴀɴᴛɪ ᴏᴜʀɪɴ.ᴍᴘ4 *\n\nKsena / respuesta vídeo para reemplazar\nâ a Archivo: activos / video / ourin. â a mp4 â a`)
     }
     
     try {
@@ -34,15 +34,15 @@ async function handler(m, { sock }) {
         }
         
         if (!buffer) {
-            return m.reply(`❌ Gagal mendownload video`)
+            return m.reply(`❌Video de descarga de descargas`)
         }
         
-        await m.reply(`⏳ Sedang mengupload gambar...`)
+        await m.reply(`⏳La jaula subió una foto..`)
         try {
             const newUrl = await _ourinuploaderjs.updateAssetUrl.call(void 0, 'ourin-mp4', buffer, 'ourin.mp4')
-            m.reply(`✅ *ʙᴇʀʜᴀsɪʟ*\n\n> File ourin.mp4 telah diganti ke URL baru:\n> ${newUrl}\n> Config telah diupdate secara realtime!`)
+            m.reply(`✅*ʙᴇʀʜᴀSɪʟ*\n\n" Archivo ourin. ". " mp4 has been transferred to the new URL:\n♪${newUrl}\n" Config has been updated as a reality "!`)
         } catch (e) {
-            m.reply(`❌ Gagal mengupload file: ${e.message}`)
+            m.reply(`❌Archivo cargado de Gagalm:${e.message}`)
         }
     } catch (error) {
         await m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName))

@@ -23,13 +23,13 @@ async function handler(m, { sock }) {
         return m.reply(
             `⚠️ *ᴄᴀʀᴀ ᴘᴀᴋᴀɪ*\n\n` +
             `> \`${m.prefix}svdl <url>\`\n\n` +
-            `> Contoh:\n` +
+            `> Ejemplo:\n` +
             `> \`${m.prefix}svdl https://www.snackvideo.com/@xxx/video/xxx\``
         )
     }
     
     if (!url.match(/snackvideo\.com/i)) {
-        return m.reply(`❌ URL tidak valid. Gunakan link SnackVideo.`)
+        return m.reply(`❌URL inválida.`)
     }
     
     await m.react('🕕')
@@ -38,7 +38,7 @@ async function handler(m, { sock }) {
         const data = await _btchdownloader.snackvideo.call(void 0, url)
         
         if (!_optionalChain([data, 'optionalAccess', _4 => _4.status]) || !_optionalChain([data, 'optionalAccess', _5 => _5.result, 'optionalAccess', _6 => _6.videoUrl])) {
-            return m.reply(`❌ Gagal mengambil video. Coba link lain.`)
+            return m.reply(`❌Gagal tomó el video, otro Cobalink.`)
         }
         
         const result = data.result

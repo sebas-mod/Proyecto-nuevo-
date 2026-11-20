@@ -6,7 +6,7 @@ const pluginConfig = {
     name: 'setownertype',
     alias: ['ownertype', 'ownervariant', 'ownerstyle'],
     category: 'owner',
-    description: 'Mengatur variant tampilan owner message',
+    description: 'Gestiona la pantalla de la variante del mensaje del propietario',
     usage: '.setownertype',
     example: '.setownertype',
     isOwner: true,
@@ -19,8 +19,8 @@ const pluginConfig = {
 }
 
 const VARIANTS = {
-    1: { name: 'Current Design', desc: 'Tampilan default saat ini' },
-    2: { name: 'Multiple Contact', desc: 'Kirim contact card semua owner' }
+    1: { name: 'Current Design', desc: 'Pantalla de defectos' },
+    2: { name: 'Multiple Contact', desc: 'Ksensconnect Card todos los propietarios' }
 }
 
 async function handler(m, { sock, db }) {
@@ -34,7 +34,7 @@ async function handler(m, { sock, db }) {
         await db.save()
 
         await m.reply(
-            `✅ Owner type diubah ke *V${id}*\n\n` +
+            `✅Tipo de propietario cambiado a * V${id}*\n\n` +
             `> *${VARIANTS[id].name}*\n` +
             `> _${VARIANTS[id].desc}_`
         )
@@ -54,7 +54,7 @@ async function handler(m, { sock, db }) {
     }
 
     await sock.sendMessage(m.chat, {
-        text: `🎨 *sᴇᴛ ᴏᴡɴᴇʀ ᴛʏᴘᴇ*\n\n> Type saat ini: *V${current}*\n> _${VARIANTS[current].name}_\n\n> Pilih variant owner:`,
+        text: `🎨*ᴇᴛ ᴏᴡɴᴇʀ ᴛʏᴘᴇ*\n\n* Tipo actual: * V${current}*\n> _${VARIANTS[current].name}¿Qué?\n\n* Elija el propietario de la variante:`,
         footer: _optionalChain([_configjs2.default, 'access', _4 => _4.bot, 'optionalAccess', _5 => _5.name]) || 'Ourin-AI',
         contextInfo: {
             mentionedJid: [m.sender],

@@ -17,7 +17,7 @@ async function handler(m, { sock }) {
   const text = _optionalChain([m, 'access', _ => _.text, 'optionalAccess', _2 => _2.trim, 'call', _3 => _3()]) || _optionalChain([m, 'access', _4 => _4.quoted, 'optionalAccess', _5 => _5.text, 'optionalAccess', _6 => _6.trim, 'call', _7 => _7()]);
 
   if (!text) {
-    return m.reply(`⚠️ Harap masukkan teks!\nContoh: \`${m.prefix}${m.command} Halo semua\``);
+    return m.reply(`⚠EveHarapeninthetexts!\nEjemplo:\`${m.prefix}${m.command}Hola a todos\``);
   }
 
   await m.react('🕕');
@@ -28,7 +28,7 @@ async function handler(m, { sock }) {
 
     const response = await _axios2.default.get(apiUrl);
     if (!response.data.status || !_optionalChain([response, 'access', _8 => _8.data, 'access', _9 => _9.data, 'optionalAccess', _10 => _10.url])) {
-      return m.reply('❌ Gagal membuat sticker, kemungkinan limit API habis.');
+      return m.reply('❌Los luchadores hacen pegatinas, la posibilidad de límite de API al tanto.');
     }
 
     const stickerUrl = response.data.data.url;

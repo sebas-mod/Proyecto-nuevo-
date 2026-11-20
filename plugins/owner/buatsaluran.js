@@ -27,11 +27,11 @@ async function handler(m, { sock }) {
   if (!name || name.length < 2) {
     return m.reply(
       "📢 *ʙᴜᴀᴛ sᴀʟᴜʀᴀɴ*\n\n" +
-        "> `.buatsaluran Nama Saluran`\n" +
-        "> `.buatsaluran Nama|Deskripsi`\n\n" +
+        "♪`- Por \" Saluran \"`\n" +
+        "♪`.buatsaluran Nombre|Descripción`\n\n" +
         "📝 Contoh:\n" +
-        "> `.buatsaluran Info Bot`\n" +
-        "> `.buatsaluran Info Bot|Update terbaru bot kami`",
+        "♪`- Canal de información.`\n" +
+        "♪`Haaga el canal Info para nuestro bot de actualización más reciente.`",
     );
   }
 
@@ -42,14 +42,14 @@ async function handler(m, { sock }) {
     await m.react("✅");
     return m.reply(
       `📢 *sᴀʟᴜʀᴀɴ ᴅɪʙᴜᴀᴛ*\n\n` +
-        `> Nama: ${saluranName}\n` +
-        (description ? `> Deskripsi: ${description}\n` : "") +
+        `> Nombre:${saluranName}\n` +
+        (description ? `> Descripción:${description}\n` : "") +
         `> ID: ${saluranId}\n` +
         `> Subscribers: ${_optionalChain([result, 'optionalAccess', _8 => _8.subscribers]) || 0}\n\n` +
-        `_Saluran ini bisa dikonfigurasi di config.saluran.id_`,
+        `Este canal se puede configurar en config.`,
     );
   } catch (err) {
-    return m.reply(`❌ Gagal membuat saluran: ${err.message}`);
+    return m.reply(`❌Los luchadores crean canal:${err.message}`);
   }
 }
 

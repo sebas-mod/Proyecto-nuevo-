@@ -23,10 +23,10 @@ function parseTime(str) {
 }
 
 function formatDuration(ms) {
-  if (ms < 60000) return `${Math.floor(ms / 1000)} detik`;
-  if (ms < 3600000) return `${Math.floor(ms / 60000)} menit`;
-  if (ms < 86400000) return `${Math.floor(ms / 3600000)} jam`;
-  return `${Math.floor(ms / 86400000)} hari`;
+  if (ms < 60000) return `${Math.floor(ms / 1000)}segundo`;
+  if (ms < 3600000) return `${Math.floor(ms / 60000)}minuto`;
+  if (ms < 86400000) return `${Math.floor(ms / 3600000)}hora`;
+  return `${Math.floor(ms / 86400000)}el`;
 }
 
 function getCtx() {
@@ -74,7 +74,7 @@ async function handleSession(m, sock) {
     session.step = "q2";
 
     await m.reply(
-      `✅ Detail tersimpan!\n┃ 🎁 ${title}\n┃ ⏱️ ${formatDuration(duration)}\n┃ 👥 ${winners} pemenang\n\n_Mengambil daftar grup..._`,
+      `✅Detail guardado!\n┃ 🎁 ${title}\n┃ ⏱️ ${formatDuration(duration)}\n┃ 👥 ${winners}ganador\n\n- Toma la lista de grupos.`,
     );
 
     try {
@@ -89,7 +89,7 @@ async function handleSession(m, sock) {
         {
           name: "quick_reply",
           buttonParamsJson: JSON.stringify({
-            display_text: "📍 Di grup ini",
+            display_text: "📍En este grupo",
             id: `.giveaway selectgroup ${currentGroup}`,
           }),
         },
@@ -98,7 +98,7 @@ async function handleSession(m, sock) {
       if (otherGroups.length > 0) {
         const sections = [
           {
-            title: "Pilih Grup",
+            title: "Elige Grupo",
             rows: otherGroups.slice(0, 10).map((g) => ({
               title: g.subject || g.id,
               id: `.giveaway selectgroup ${g.id}`,
@@ -108,7 +108,7 @@ async function handleSession(m, sock) {
         buttons.push({
           name: "single_select",
           buttonParamsJson: JSON.stringify({
-            title: "Pilih Grup Lain",
+            title: "Seleccionar Grupo Otro",
             sections,
           }),
         });
@@ -117,14 +117,14 @@ async function handleSession(m, sock) {
       await sock.sendButton(
         m.chat,
         null,
-        "🎁 *GIVEAWAY CREATOR*\n\nPertanyaan 2/3:\nMau jalankan giveaway di grup ini atau grup lain?",
+        "🎁* GIVEO CREATOR*\n\nPregunta 2/3:\n¿Quieres correr regalos en este grupo u otro grupo?",
         m,
-        { buttons, footer: "Pilih grup untuk giveaway" },
+        { buttons, footer: "Seleccione grupo para regalo" },
       );
     } catch (e) {
       session.groupId = currentGroup;
       session.step = "q3";
-      await m.reply("⚠️ Gagal mengambil daftar grup. Menggunakan grup ini.");
+      await m.reply("⚠Gagal lleva una lista de grupos.");
       await askPrizeDetails(m, sock, session);
     }
     return true;
@@ -156,15 +156,15 @@ async function askPrizeDetails(m, sock, session) {
       {
         text:
           "🎁 *GIVEAWAY CREATOR*\n\n" +
-          "Pertanyaan 3/3:\nBerikan detail hadiah dengan format:\n" +
-          "nama hadiah | detail hadiah\n\n" +
+          "Pregunta 3/3:\nDar detalles presentes con forma:\n" +
+          "El nombre del presente.\n\n" +
           "Contoh: Premium Account | Email: xxx@gmail.com | Password: xxx",
         contextInfo: getCtx(),
       },
       { quoted: m },
     );
   } catch (e) {
-    await m.reply("⚠️ Gagal mengirim PM. Silakan chat bot dulu lalu ulangi.");
+    await m.reply("⚠\" Por favor, sólo coja las botas y repita. \"");
     createSessions.delete(session.adminJid);
   }
 }
@@ -210,7 +210,7 @@ async function createGiveaway(session, sock, m) {
     `┃ ⏱️ ᴅᴜʀᴀsɪ: ${remaining}\n` +
     `┃ 🆔 ɪᴅ: \`${giveawayId}\`\n` +
     `╰┈┈⬡\n\n` +
-    `> Klik tombol *Join* untuk ikut giveaway!`;
+    `¡Para montar en el sorteo!`;
 
   const joinButton = [
     {
@@ -230,7 +230,7 @@ async function createGiveaway(session, sock, m) {
       null,
       {
         buttons: joinButton,
-        footer: "Klik Join untuk berpartisipasi",
+        footer: "Klik Únete para participar",
         contextInfo: getCtx(),
       },
     );
@@ -247,7 +247,7 @@ async function createGiveaway(session, sock, m) {
   await sock.sendMessage(
     session.adminJid,
     {
-      text: "✅ Giveaway berhasil dibuat! Cek pesan giveaway di grup yang dipilih.",
+      text: "✅¡Dulces creados con éxito! Compruebe los mensajes de regalo en grupo seleccionado.",
       contextInfo: getCtx(),
     },
     { quoted: m },
@@ -268,7 +268,7 @@ async function endGiveaway(giveawayId, sock, db) {
     await sock.sendMessage(giveaway.chatId, {
       text:
         `😔 *GIVEAWAY BERAKHIR*\n\n` +
-        `Giveaway *${giveaway.title}* berakhir tanpa peserta.\n\n` +
+        `Giveaway *${giveaway.title}Termina sin una participante.\n\n` +
         `╭┈┈⬡「 📋 *ɪɴꜰᴏ* 」\n` +
         `┃ 🆔 ɪᴅ: \`${giveawayId}\`\n` +
         `┃ 👥 ᴘᴇsᴇʀᴛᴀ: 0\n` +
@@ -290,7 +290,7 @@ async function endGiveaway(giveawayId, sock, db) {
   const firstWinner = giveaway.winnerList[0];
   const fakeQuoted = {
     key: {
-      id: `${Date.now()}@bot`,
+      id: `${Date.now()}@ bot`,
       remoteJid: giveaway.chatId,
       participant: firstWinner,
       fromMe: false,
@@ -314,7 +314,7 @@ async function endGiveaway(giveawayId, sock, db) {
         `┃ 🆔 ɪᴅ: \`${giveawayId}\`\n` +
         `┃ 👥 ᴘᴇsᴇʀᴛᴀ: ${giveaway.participants.length}\n` +
         `╰┈┈⬡\n\n` +
-        `> Hadiah dikirim ke private chat pemenang!`,
+        `¡El gran espectáculo se envía al gráfico primate!`,
       contextInfo: { ...getCtx(), mentionedJid: giveaway.winnerList },
     },
     { quoted: fakeQuoted },
@@ -324,7 +324,7 @@ async function endGiveaway(giveawayId, sock, db) {
     try {
       const winnerFakeQuoted = {
         key: {
-          id: `${Date.now()}@bot`,
+          id: `${Date.now()}@ bot`,
           remoteJid: giveaway.chatId,
           participant: winnerJid,
           fromMe: false,
@@ -340,7 +340,7 @@ async function endGiveaway(giveawayId, sock, db) {
         {
           text:
             `🎉 *sᴇʟᴀᴍᴀᴛ!*\n\n` +
-            `> Kamu memenangkan giveaway!\n\n` +
+            `¡Para verte ganar el regalo!\n\n` +
             `╭┈┈⬡「 📋 *ᴅᴇᴛᴀɪʟ* 」\n` +
             `┃ 🎁 ᴛɪᴛʟᴇ: \`${giveaway.title}\`\n` +
             `┃ 🏆 ʜᴀᴅɪᴀʜ: *${giveaway.prizeName}*\n` +
@@ -349,7 +349,7 @@ async function endGiveaway(giveawayId, sock, db) {
             `╭┈┈⬡「 🎁 *ᴅᴇᴛᴀɪʟ ʜᴀᴅɪᴀʜ* 」\n` +
             `${giveaway.prizeDetails || "Hubungi admin untuk detail"}\n` +
             `╰┈┈⬡\n\n` +
-            `> _Ini informasi resmi dari bot._`,
+            `Está es la información oficial del bot.`,
           contextInfo: ctx,
         },
         { quoted: winnerFakeQuoted },
@@ -393,7 +393,7 @@ const plugin = {
   name: ["giveaway", ...createCmds, ...listCmds, ...deleteCmds, ...rerollCmds],
   alias: "ga",
   category: "group",
-  description: "Sistem giveaway dengan interactive buttons",
+  description: "Sistema de desmontado con botones interactivos",
   admin: false,
 };
 
@@ -405,10 +405,10 @@ async function handler(m, { sock }) {
 
   if (createCmds.includes(cmd)) {
     if (!m.isAdmin && !m.isOwner)
-      return m.reply("⚠️ Hanya admin yang bisa membuat giveaway!");
-    if (!m.isGroup) return m.reply("⚠️ Gunakan di grup!");
+      return m.reply("⚠¡Sólo el administrador puede hacer el regalo!");
+    if (!m.isGroup) return m.reply("⚠¡Las responde están siendo folladas!");
     if (createSessions.has(m.sender))
-      return m.reply("⚠️ Kamu masih punya sesi pembuatan aktif!");
+      return m.reply("⚠- ¡Todavía tienes las líneas de energía!");
 
     createSessions.set(m.sender, {
       step: "q1",
@@ -424,11 +424,11 @@ async function handler(m, { sock }) {
 
     await m.reply(
       "🎁 *GIVEAWAY CREATOR*\n\n" +
-        "Pertanyaan 1/3:\nBerikan detail giveaway dengan format:\n" +
-        "nama | durasi | jumlah pemenang\n\n" +
+        "Pregunta 1/3:\nConfigurar un regalo detallado con formaldec:\n" +
+        "*nombre del ganador*\n\n" +
         "Contoh: Premium Account | 5m | 1\n" +
         "Durasi: 30s, 5m, 1h, 1d\n\n" +
-        "> Bot akan diam jika format salah",
+        "*Sería silencioso si el fuerte estuviera equivocado*",
     );
     return;
   }
@@ -444,7 +444,7 @@ async function handler(m, { sock }) {
     session.step = "q3";
 
     await m.reply(
-      "✅ Grup dipilih! Cek private chat untuk pertanyaan selanjutnya.",
+      "✅Grupo seleccionado! Consultar chat de privacidad para más preguntas.",
     );
     await askPrizeDetails(m, sock, session);
     return;
@@ -456,26 +456,26 @@ async function handler(m, { sock }) {
 
     const giveaways = db.setting("giveaways") || {};
     const giveaway = giveaways[giveawayId];
-    if (!giveaway) return m.reply("⚠️ Giveaway tidak ditemukan!");
-    if (giveaway.ended) return m.reply("⚠️ Giveaway sudah berakhir!");
+    if (!giveaway) return m.reply("⚠- Hola, no lo encontraron.");
+    if (giveaway.ended) return m.reply("⚠¡Dios mío!");
     if (giveaway.participants.includes(m.sender))
-      return m.reply("⚠️ Kamu sudah join!");
+      return m.reply("⚠¡Ya te has unido!");
 
     giveaway.participants.push(m.sender);
     db.setting("giveaways", giveaways);
 
     await m.react("✅");
     await m.reply(
-      `✅ @${m.sender.split("@")[0]} berhasil join giveaway! (${giveaway.participants.length} peserta)`,
+      `✅ @${m.sender.split("@")[0]}No soy un gran fan del mundo.${giveaway.participants.length}participante)`,
     );
     return;
   }
 
   if (listCmds.includes(cmd)) {
-    if (!m.isAdmin && !m.isOwner) return m.reply("⚠️ Hanya admin!");
+    if (!m.isAdmin && !m.isOwner) return m.reply("⚠¡Sólo admin!");
     const giveaways = db.setting("giveaways") || {};
     const entries = Object.values(giveaways);
-    if (entries.length === 0) return m.reply("📋 Tidak ada giveaway.");
+    if (entries.length === 0) return m.reply("📋No hay regalos.");
 
     const active = entries.filter((g) => !g.ended);
     const ended = entries.filter((g) => g.ended);
@@ -485,14 +485,14 @@ async function handler(m, { sock }) {
       text += "🟢 *Aktif:*\n";
       for (const g of active) {
         const endFmt = timeHelper.fromTimestamp(g.endTime, "DD/MM/YYYY HH:mm");
-        text += `┃ 🆔 \`${g.giveawayId}\` — ${g.title} (${g.participants.length} peserta, berakhir ${endFmt})\n`;
+        text += `┃ 🆔 \`${g.giveawayId}\` — ${g.title} (${g.participants.length}participante, berakhir${endFmt})\n`;
       }
       text += "\n";
     }
     if (ended.length > 0) {
       text += "🔴 *Berakhir:*\n";
       for (const g of ended.slice(-5)) {
-        text += `┃ 🆔 \`${g.giveawayId}\` — ${g.title} (${_optionalChain([g, 'access', _18 => _18.winnerList, 'optionalAccess', _19 => _19.length]) || 0} pemenang)\n`;
+        text += `┃ 🆔 \`${g.giveawayId}\` — ${g.title} (${_optionalChain([g, 'access', _18 => _18.winnerList, 'optionalAccess', _19 => _19.length]) || 0}ganador)\n`;
       }
     }
 
@@ -501,30 +501,30 @@ async function handler(m, { sock }) {
   }
 
   if (deleteCmds.includes(cmd)) {
-    if (!m.isAdmin && !m.isOwner) return m.reply("⚠️ Hanya admin!");
+    if (!m.isAdmin && !m.isOwner) return m.reply("⚠¡Sólo admin!");
     const giveawayId = args[0];
-    if (!giveawayId) return m.reply(`⚠️ Format: ${prefix}${cmd} GA-XXXXXX`);
+    if (!giveawayId) return m.reply(`⚠️ Formato:${prefix}${cmd} GA-XXXXXX`);
 
     const giveaways = db.setting("giveaways") || {};
-    if (!giveaways[giveawayId]) return m.reply("⚠️ Giveaway tidak ditemukan!");
+    if (!giveaways[giveawayId]) return m.reply("⚠- Hola, no lo encontraron.");
 
     delete giveaways[giveawayId];
     db.setting("giveaways", giveaways);
-    await m.reply(`✅ Giveaway \`${giveawayId}\` berhasil dihapus!`);
+    await m.reply(`✅ Giveaway \`${giveawayId}\`eliminado correctamente!`);
     return;
   }
 
   if (rerollCmds.includes(cmd)) {
-    if (!m.isAdmin && !m.isOwner) return m.reply("⚠️ Hanya admin!");
+    if (!m.isAdmin && !m.isOwner) return m.reply("⚠¡Sólo admin!");
     const giveawayId = args[0];
-    if (!giveawayId) return m.reply(`⚠️ Format: ${prefix}${cmd} GA-XXXXXX`);
+    if (!giveawayId) return m.reply(`⚠️ Formato:${prefix}${cmd} GA-XXXXXX`);
 
     const giveaways = db.setting("giveaways") || {};
     const giveaway = giveaways[giveawayId];
-    if (!giveaway) return m.reply("⚠️ Giveaway tidak ditemukan!");
-    if (!giveaway.ended) return m.reply("⚠️ Giveaway belum berakhir!");
+    if (!giveaway) return m.reply("⚠- Hola, no lo encontraron.");
+    if (!giveaway.ended) return m.reply("⚠- ¡Dios mío!");
     if (giveaway.participants.length === 0)
-      return m.reply("⚠️ Tidak ada peserta!");
+      return m.reply("⚠¡No participante!");
 
     const winnerCount = Math.min(
       giveaway.winners,
@@ -559,7 +559,7 @@ async function handler(m, { sock }) {
         await sock.sendMessage(winnerJid, {
           text:
             `🎉 *sᴇʟᴀᴍᴀᴛ!*\n\n` +
-            `> Kamu memenangkan giveaway (reroll)!\n\n` +
+            `¡Para verte ganar un regalo!\n\n` +
             `╭┈┈⬡「 📋 *ᴅᴇᴛᴀɪʟ* 」\n` +
             `┃ 🎁 ᴛɪᴛʟᴇ: \`${giveaway.title}\`\n` +
             `┃ 🏆 ʜᴀᴅɪᴀʜ: *${giveaway.prizeName}*\n` +
@@ -568,7 +568,7 @@ async function handler(m, { sock }) {
             `╭┈┈⬡「 🎁 *ᴅᴇᴛᴀɪʟ ʜᴀᴅɪᴀʜ* 」\n` +
             `${giveaway.prizeDetails || "Hubungi admin untuk detail"}\n` +
             `╰┈┈⬡\n\n` +
-            `> _Ini informasi resmi dari bot._`,
+            `Está es la información oficial del bot.`,
           contextInfo: ctx,
         });
       } catch (e) {}
@@ -578,10 +578,10 @@ async function handler(m, { sock }) {
 
   if (cmd === "giveaway") {
     await m.reply(
-      "🎁 *GIVEAWAY MENU*\n\n" +
-        `┃ ${prefix}giveawaycreate — Buat giveaway\n` +
-        `┃ ${prefix}giveawaylist — Lihat daftar\n` +
-        `┃ ${prefix}giveawaydelete — Hapus giveaway\n` +
+      "🎁* GIVEWAKE MINUTE *\n\n" +
+        `┃ ${prefix}dar un largo @-@ término crear—Crea giveaway\n` +
+        `┃ ${prefix}Lista de distribución—Mira registrate\n` +
+        `┃ ${prefix}♪ dame un descanso ♪—Elimina giveaway\n` +
         `┃ ${prefix}giveawayreroll — Reroll pemenang\n\n` +
         `> Alias: ga, gacreate, galist, gadelete, gareroll`,
     );

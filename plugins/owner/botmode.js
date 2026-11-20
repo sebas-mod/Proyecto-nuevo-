@@ -5,7 +5,7 @@ const pluginConfig = {
     name: 'botmode',
     alias: ['setmode', 'mode'],
     category: 'owner',
-    description: 'Mengatur mode bot (md/cpanel/store/pushkontak/all)',
+    description: 'Configurar el bot modelo ( md / cpanel / tormenta / pushkonak / al )',
     usage: '.botmode <mode>',
     example: '.botmode store',
     isOwner: true,
@@ -20,12 +20,12 @@ const pluginConfig = {
 const VALID_MODES = ['md', 'cpanel', 'store', 'pushkontak', 'otp', 'all']
 
 const MODE_DESCRIPTIONS = {
-    md: 'Mode default, semua fitur kecuali panel/store/pushkontak',
-    cpanel: 'Mode panel, main + group + sticker + owner + tools + panel',
-    store: 'Mode store manual, main + group + sticker + owner + store',
-    pushkontak: 'Mode pushkontak, main + group + sticker + owner + pushkontak',
-    otp: 'Mode OTP service, main + group + sticker + owner + otp',
-    all: 'Mode full, SEMUA fitur dari semua mode bisa diakses'
+    md: 'Modo predeterminado, todas las características excepto para panel / tormenta / pushkontak',
+    cpanel: 'Panel de modo, principal + grupo + pegatina + propietario + herramientas + panel',
+    store: 'Manual de almacenamiento de modo, principal + grupo + pegatina + propietario + tormenta',
+    pushkontak: 'Modo de pushkongak, principal + grupo + pegatina + propietario + pushkontak',
+    otp: 'OTP modo de servicio, principal + grupo + pegatina + propietario + otp',
+    all: 'Modo completo, las características de ablución de todos los modos se pueden actuar'
 }
 
 async function handler(m, { sock }) {
@@ -59,9 +59,9 @@ async function handler(m, { sock }) {
         txt += `╰┈┈⬡\n\n`
         
         txt += `*ꜰʟᴀɢ sᴛᴏʀᴇ:*\n`
-        txt += `> \`${m.prefix}botmode store\` - Manual order\n`
+        txt += `> \`${m.prefix}tormenta de botmodas\`- Orden manual\n`
         txt += `> \`${m.prefix}botmode md\` → Mode default\n`
-        txt += `> \`${m.prefix}botmode all\` → Semua fitur`
+        txt += `> \`${m.prefix}botmode alll\` →Todo función`
         
         await m.reply(txt)
         return
@@ -70,7 +70,7 @@ async function handler(m, { sock }) {
     if (!VALID_MODES.includes(mode)) {
         return m.reply(
             `❌ *ᴍᴏᴅᴇ ᴛɪᴅᴀᴋ ᴠᴀʟɪᴅ*\n\n` +
-            `> Mode tersedia: \`${VALID_MODES.join(', ')}\``
+            `* El modo está disponible: *\`${VALID_MODES.join(', ')}\``
         )
     }
 
@@ -97,7 +97,7 @@ async function handler(m, { sock }) {
 
     let extraInfo = ''
     if (mode === 'store' && m.isGroup) {
-        extraInfo = `\n\n📋 *Manual mode*\n> Admin perlu confirm order manual`
+        extraInfo = `\n\n📋♪Modo de Manal♪\nAkemin necesita un manual de conaffción ón de anciano`
     }
 
     await m.reply(
@@ -106,7 +106,7 @@ async function handler(m, { sock }) {
         `> ${MODE_DESCRIPTIONS[mode]}\n` +
         extraInfo +
         `\n\n` +
-        (m.isGroup ? `> _Mode grup ini juga diubah._` : `> _Mode global diubah._`)
+        (m.isGroup ? `Este grupo también fue cambiado.` : `*Modo global cambiado.*`)
     )
 
     console.log(`[BotMode] Changed to ${mode.toUpperCase()} by ${m.pushName} (${m.sender})`)

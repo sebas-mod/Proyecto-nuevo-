@@ -2,7 +2,7 @@
     name: 'stop',
     alias: ['shutdown', 'kill'],
     category: 'owner',
-    description: 'Stop bot process',
+    description: 'Top proceso de bot',
     usage: '.stop',
     example: '.stop',
     isOwner: true,
@@ -15,7 +15,7 @@
 }
 
 async function handler(m, { sock }) {
-    await m.reply('🛑 *Stopping Bot...*\n\n> Bot dimatikan. Harus dinyalakan manual dari terminal.')
+    await m.reply('🛑* Stopping up my heart.. *\n\nDebe es el manual de la terminal.')
     console.log('Stopping via command...')
     
     // Allow message to send before exit

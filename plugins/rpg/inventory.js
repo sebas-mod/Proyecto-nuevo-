@@ -56,10 +56,10 @@ async function handler(m, { sock }) {
   const user = db.getUser(m.sender);
   if (!user.inventory) user.inventory = {};
 
-  let invText = `🎒 *Isi Tas Kamu Nih Kak!* ✨\n\n`;
+  let invText = `🎒¡Tu bolsa es tu bolsa, hermano!✨\n\n`;
 
   invText += `❤️ HP: *${_optionalChain([user, 'access', _ => _.rpg, 'optionalAccess', _2 => _2.health]) || 100}*\n`;
-  invText += `💸 Koin: *${(user.koin || 0).toLocaleString("id-ID")}*\n`;
+  invText += `💸Monedas: *${(user.koin || 0).toLocaleString("id-ID")}*\n`;
   invText += `📈 EXP: *${(user.exp || 0).toLocaleString("id-ID")}*\n\n`;
 
   let hasItem = false;
@@ -104,10 +104,10 @@ async function handler(m, { sock }) {
   }
 
   if (!hasItem) {
-    invText += `Loh, tas kamu masih kosong melompong kak! 🕸️\n`;
-    invText += `Yuk main command RPG lain buat dapetin item seru! 🚀\n`;
+    invText += `¡Tu bolsa sigue vacía, hermano!🕸♪\n`;
+    invText += `¡Juguemos a otro comandante de la RPG para divertirnos!🚀\n`;
   } else {
-    invText += `Ketik *.use <nama item>* buat pake barangnya ya! 🎒💖\n`;
+    invText += `Escribe *.use<nama item>¡Haz un paquete de ellos!🎒💖\n`;
   }
 
   await m.reply(invText);

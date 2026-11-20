@@ -8,7 +8,7 @@ const pluginConfig = {
   name: "colongpp",
   alias: ["stealpp", "malingpp", "ambilpp"],
   category: "owner",
-  description: "Ambil & pakai foto profil target sebagai PP bot",
+  description: "Ambiel",
   usage: ".colongpp (reply pesan target)",
   example: ".colongpp",
   isOwner: true,
@@ -35,9 +35,9 @@ async function handler(m, { sock }) {
   if (!targetJid) {
     return m.reply(
       `🕵️ *ᴄᴏʟᴏɴɢ ᴘᴘ*\n\n` +
-        `> Reply pesan seseorang untuk mencuri PP-nya\n\n` +
+        `* Responder tiene el mensaje de alguien de robar su PP\n\n` +
         `*ᴄᴀʀᴀ:*\n` +
-        `> Reply pesan target → \`${m.prefix}colongpp\``,
+        `# Responder mensaje objetivo #→ \`${m.prefix}colongpp\``,
     );
   }
   await m.react("🕵️");
@@ -57,7 +57,7 @@ async function handler(m, { sock }) {
         timeout: 15000,
       });
       ppBuffer = Buffer.from(res.data);
-      source = "default (target tidak punya PP)";
+      source = "desafout (el objetivo no tiene PP )";
     }
     const processed = await resizeForPP(ppBuffer);
     const botJid = _optionalChain([sock, 'access', _5 => _5.user, 'optionalAccess', _6 => _6.id]);
@@ -66,7 +66,7 @@ async function handler(m, { sock }) {
     await m.react("✅");
     return m.reply(
       `✅ *ᴘᴘ ʙᴇʀʜᴀsɪʟ ᴅɪᴄᴏʟᴏɴɢ!*\n\n` +
-        `> 🎯 Target: @${targetNumber}\n` +
+        `> 🎯 Objetivo: @${targetNumber}\n` +
         `> 📸 Sumber: ${source}`,
       { mentions: [targetJid] },
     );

@@ -5,7 +5,7 @@ const pluginConfig = {
     name: 'addenergiall',
     alias: ['addenergianall', 'bonusenergiall'],
     category: 'owner',
-    description: 'Menambahkan limit/energi ke semua member grup',
+    description: 'Añadir límite / energía a todas las fotos del grupo',
     usage: '.addenergiall <jumlah>',
     example: '.addenergiall 50',
     isOwner: true,
@@ -22,14 +22,14 @@ async function handler(m, { sock }) {
         const amount = parseInt(m.args[0])
         
         if (isNaN(amount) || amount <= 0) {
-            return m.reply(`⚠️ *ᴄᴀʀᴀ ᴘᴀᴋᴀɪ*\n\n> Masukkan jumlah limit yang ingin ditambahkan.\n\n\`Contoh: ${m.prefix}addlimitall 50\``)
+            return m.reply(`⚠♪ᴄᴀʀᴀ ᴘᴀᴋᴀɪ*\n\nAquí hay una lista de límites a los que desea ser minada.\n\n\`Ejemplo:${m.prefix}addlimitall 50\``)
         }
         
         const groupMeta = m.groupMetadata
         const participants = groupMeta.participants || []
         
         if (participants.length === 0) {
-            return m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> Tidak ada member di grup ini`)
+            return m.reply(`❌*ɢᴀɢᴀʟ*\n\n*No hay foto en este grupo*`)
         }
         
         await m.react('🕕')
@@ -49,7 +49,7 @@ async function handler(m, { sock }) {
         await db.save()
         await m.react('⚡')
         await m.reply(
-           `✅ Berhasil menambahkan limit ke semua member ( Total *${successCount}* Member ) di grup *${_optionalChain([gb, 'optionalAccess', _5 => _5.subject])}*`,
+           `✅Limitación de la suma a todas las fotos ( totales *${successCount}* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *${_optionalChain([gb, 'optionalAccess', _5 => _5.subject])}*`,
             )
         
     } catch (error) {

@@ -6,7 +6,7 @@ const pluginConfig = {
     name: 'mcpedl',
     alias: ['mcpe', 'mcpesearch', 'searchmcpe'],
     category: 'search',
-    description: 'Cari map dan addon Minecraft PE dari MCPEDL',
+    description: 'Busca Mup y addon Minecraft PE de MCPEDL',
     usage: '.mcpe <query>',
     example: '.mcpe survival',
     isOwner: false,
@@ -37,7 +37,7 @@ async function fetchMcpe(query) {
     })
 
     if (!_optionalChain([data, 'optionalAccess', _3 => _3.status]) || !Array.isArray(_optionalChain([data, 'optionalAccess', _4 => _4.data, 'optionalAccess', _5 => _5.results]))) {
-        throw new Error(_optionalChain([data, 'optionalAccess', _6 => _6.message]) || 'Hasil MCPEDL tidak ditemukan')
+        throw new Error(_optionalChain([data, 'optionalAccess', _6 => _6.message]) || 'Confianza MCPEDL no encontrada')
     }
 
     return data.data
@@ -47,7 +47,7 @@ async function handler(m, { sock }) {
     const query = _optionalChain([m, 'access', _7 => _7.text, 'optionalAccess', _8 => _8.trim, 'call', _9 => _9()])
 
     if (!query) {
-        return m.reply(`🧱 *MCPEDL SEARCH*\n\n> Contoh:\n\`${m.prefix}mcpe survival\``)
+        return m.reply(`🧱* MCPEDL SEARCH *\n\n> Ejemplo:\n\`${m.prefix}mcpe survival\``)
     }
 
     m.react('🔍')
@@ -58,7 +58,7 @@ async function handler(m, { sock }) {
 
         if (items.length === 0) {
             m.react('❌')
-            return m.reply(`❌ Tidak ditemukan hasil MCPEDL untuk: ${query}`)
+            return m.reply(`❌No se han encontrado resultados MCPEDL para:${query}`)
         }
 
         let caption = '🧱 *MCPEDL SEARCH*\n\n'

@@ -4,7 +4,7 @@ const pluginConfig = {
   name: "onlygc",
   alias: ["onlygroup", "grouponly"],
   category: "owner",
-  description: "Toggle mode bot hanya di grup",
+  description: "Toggle mode bot está en grupo",
   usage: ".onlygc on/off",
   example: ".onlygc on",
   isOwner: true,
@@ -25,10 +25,10 @@ async function handler(m, { sock }) {
     return m.reply(
       `🏘️ *Only Group*\n\n` +
         `> Status: *${current ? "Aktif ✅" : "Nonaktif ❌"}*\n\n` +
-        `*PENGGUNAAN:*\n` +
-        `> *${m.prefix}onlygc on* — Bot hanya bisa diakses di grup\n` +
-        `> *${m.prefix}onlygc off* — Bot bisa diakses di mana saja\n\n` +
-        `_Jika aktif, mode Only Private akan otomatis nonaktif_`
+        `*Uso:*\n` +
+        `> *${m.prefix}sólo gc en *—# Sólo acostúmbrate a estar en el grupo #\n` +
+        `> *${m.prefix}* Sólo gc off *—*Para ser llevado a cualquier lugar*\n\n` +
+        `Si está activo, Modo Sólo Privado se autoactivará _ deshabilitado`
     );
   }
 
@@ -37,9 +37,9 @@ async function handler(m, { sock }) {
     db.setting("onlyPc", false);
     await m.react("✅");
     return m.reply(
-      `🏘️ *Only Group Aktif*\n\n` +
-        `> Bot hanya bisa diakses di grup\n` +
-        `> Mode Only Private dinonaktifkan`
+      `🏘*Solo Group Active*\n\n` +
+        `# Sólo acostúmbrate a él en el grupo #\n` +
+        `# Mode Only Private is disabled #`
     );
   }
 
@@ -47,13 +47,13 @@ async function handler(m, { sock }) {
     db.setting("onlyGc", false);
     await m.react("❌");
     return m.reply(
-      `🏘️ *Only Group Nonaktif*\n\n` +
-        `> Bot bisa diakses di mana saja`
+      `🏘*Solo Grupo no activo*\n\n` +
+        `*Para ser llevado a cualquier lugar*`
     );
   }
 
   return m.reply(
-    `❌ *Opsi Tidak Valid*\n\n> Gunakan *${m.prefix}onlygc on* atau *${m.prefix}onlygc off*`
+    `❌Opsi inválido\n\n*Uso*${m.prefix}* o *${m.prefix}onlygc off*`
   );
 }
 

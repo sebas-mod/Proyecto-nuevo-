@@ -32,7 +32,7 @@ const pluginConfig = {
   name: "swgcv2",
   alias: ["statusgrupv2"],
   category: "owner",
-  description: "Post Group Status V2 ke grup pilihan",
+  description: "Estado del grupo de correos V2 a opciones del grupo",
   usage: ".swgcv2 <teks> atau reply media",
   example: ".swgcv2 Halo semua!",
   isOwner: true,
@@ -56,13 +56,13 @@ async function handler(m, { sock, db }) {
 
     if (!pendingData) {
       await m.reply(
-        `⚠️ *Tidak ada data pending. Silakan kirim ulang media + .swgcv2*`,
+        `⚠*No hay datos pendientes. Por favor, reenviar los medios +. swgcv2*`,
       );
       return;
     }
 
     try {
-      let groupName = "Grup";
+      let groupName = "Grupo";
       try {
         const meta = await sock.groupMetadata(targetGroupId);
         groupName = meta.subject;
@@ -133,14 +133,14 @@ async function handler(m, { sock, db }) {
       const mediaType = pendingData.rawContent.text
         ? "Teks"
         : pendingData.rawContent.image
-          ? "Gambar"
+          ? "Imagen"
           : pendingData.rawContent.video
             ? "Video"
             : pendingData.rawContent.audio
               ? "Audio"
               : "Media";
 
-      const successMsg = `✅ Berhasil up sw (V2) ke grup ${groupName}`;
+      const successMsg = `✅Resultado del meg2 ( V2 ) al grupo${groupName}`;
 
       await m.reply(successMsg);
       pendingSwgcV2.delete(m.sender);
@@ -154,7 +154,7 @@ async function handler(m, { sock, db }) {
       }
     } catch (error) {
       await m.reply(
-        `❌ *ᴇʀʀᴏʀ*\n\n` + `> Gagal posting story V2.\n` + `> _${error.message}_`,
+        `❌ *ᴇʀʀᴏʀ*\n\n` + `*Wah @-@ ho @-@ pom @-@ pom @-@ pom @-@ pom @-@ pom @-@ pom @-@ pom @-@@ pom @-@ pom @-@@ pom @-@ pom @-@ pom @-@ pom @-@\n` + `> _${error.message}_`,
       );
     }
     return;
@@ -175,7 +175,7 @@ async function handler(m, { sock, db }) {
     try {
       buffer = await m.quoted.download();
       if (!buffer) {
-        await m.reply(`❌ Gagal mengambil media.`);
+        await m.reply(`❌Gagalm tomó medios.`);
         return;
       }
       const fileType = await _filetype.fileTypeFromBuffer.call(void 0, buffer);
@@ -208,7 +208,7 @@ async function handler(m, { sock, db }) {
     try {
       buffer = await m.download();
       if (!buffer) {
-        await m.reply(`❌ Gagal mengambil media.`);
+        await m.reply(`❌Gagalm tomó medios.`);
         return;
       }
       const fileType = await _filetype.fileTypeFromBuffer.call(void 0, buffer);
@@ -239,8 +239,8 @@ async function handler(m, { sock, db }) {
     await m.reply(
       `⚠️ *ᴄᴀʀᴀ ᴘᴀᴋᴀɪ*\n\n` +
       `> \`${m.prefix}swgcv2 teks\` - Story teks\n` +
-      `> Reply gambar/video/audio + \`${m.prefix}swgcv2\`\n` +
-      `> Kirim gambar/video + caption \`${m.prefix}swgcv2\``,
+      `# Responder imagen / video / audio +\`${m.prefix}swgcv2\`\n` +
+      `Para Consorver imágenes / video + leyenda\`${m.prefix}swgcv2\``,
     );
     return;
   }
@@ -258,7 +258,7 @@ async function handler(m, { sock, db }) {
     const groupList = Object.entries(groups);
 
     if (groupList.length === 0) {
-      await m.reply(`⚠️ *Bot tidak berada di grup manapun.*`);
+      await m.reply(`⚠*Sí, no estoy en un grupo de comida.*`);
       return;
     }
 
@@ -272,7 +272,7 @@ async function handler(m, { sock, db }) {
     const mediaType = rawContent.text
       ? "Teks"
       : rawContent.image
-        ? "Gambar"
+        ? "Imagen"
         : rawContent.video
           ? "Video"
           : rawContent.audio
@@ -288,8 +288,8 @@ async function handler(m, { sock, db }) {
       text:
         `📋 *ᴘɪʟɪʜ ɢʀᴜᴘ ᴜɴᴛᴜᴋ ᴘᴏsᴛ sᴛᴏʀʏ ᴠ2*\n\n` +
         `> Media: *${mediaType}*\n` +
-        `> Total Grup: *${groupList.length}*\n\n` +
-        `_Pilih grup dari daftar di bawah:_`,
+        `* Total Grupo: *${groupList.length}*\n\n` +
+        `Seleccionar grupo de la lista en el sótano: _`,
       contextInfo: {
         ..._ourincontextjs.saluranCtx.call(void 0, ),
         forwardedNewsletterMessageInfo: {
@@ -302,10 +302,10 @@ async function handler(m, { sock, db }) {
         {
           name: "single_select",
           buttonParamsJson: JSON.stringify({
-            title: "🏠 Pilih Grup",
+            title: "🏠Elige Grupo",
             sections: [
               {
-                title: "Daftar Grup",
+                title: "Registrate Grupo",
                 rows: groupRows,
               },
             ],
@@ -323,7 +323,7 @@ async function handler(m, { sock, db }) {
   } catch (error) {
     await m.reply(
       `❌ *ᴇʀʀᴏʀ*\n\n` +
-      `> Gagal mengambil daftar grup.\n` +
+      `- ¿Qué pasa?\n` +
       `> _${error.message}_`,
     );
     if (tempFile && _fs2.default.existsSync(tempFile)) {

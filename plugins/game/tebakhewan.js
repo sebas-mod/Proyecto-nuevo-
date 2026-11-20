@@ -4,7 +4,7 @@ _ouringamesjs.games.register('tebakhewan', {
     alias: ['th', 'guessanimal'],
     emoji: '🐾',
     title: 'TEBAK HEWAN',
-    description: 'Tebak nama hewan',
+    description: 'Adivina el nombre del animal',
 })
 
 const { config: pluginConfig, handler, answerHandler } = _ouringamesjs.games.createPlugin('tebakhewan')

@@ -25,14 +25,14 @@ async function handler(m) {
     if (!clanId) {
         return m.reply(
             `🏰 *JOIN CLAN*\n\n` +
-            `Masukkan ID clan!\n\n` +
-            `Contoh: *.clanjoin clan_123456*\n` +
-            `Cek ID: *.clanleaderboard*`
+            `¡Pon un clan de identificación!\n\n` +
+            `*. clanjin clanoka 123456 *\n` +
+            `Comprobación de id: *. clanleaderboard *`
         )
     }
 
     if (user.clanId) {
-        return m.reply(`❌ Kamu sudah punya clan\nKeluar dulu: *.clanleave*`)
+        return m.reply(`❌Ya tienes un clan.\nSal primero: *. clanleave *.`)
     }
 
     if (!db.db.data.clans) db.db.data.clans = {}
@@ -40,9 +40,9 @@ async function handler(m) {
     const clan = db.db.data.clans[clanId]
         || Object.values(db.db.data.clans).find(c => c.name.toLowerCase() === clanId.toLowerCase())
         || Object.values(db.db.data.clans).find(c => c.id.toLowerCase() === clanId.toLowerCase())
-    if (!clan) return m.reply(`❌ Clan tidak ditemukan`)
-    if (!clan.isOpen) return m.reply(`❌ *${clan.name}* sedang tertutup`)
-    if (clan.members.length >= MAX_MEMBERS) return m.reply(`❌ *${clan.name}* sudah penuh (${MAX_MEMBERS}/${MAX_MEMBERS})`)
+    if (!clan) return m.reply(`❌- ¿Qué?`)
+    if (!clan.isOpen) return m.reply(`❌ *${clan.name}* Está cubierto`)
+    if (clan.members.length >= MAX_MEMBERS) return m.reply(`❌ *${clan.name}* está lleno (${MAX_MEMBERS}/${MAX_MEMBERS})`)
 
     clan.members.push(m.sender)
     db.setUser(m.sender, { clanId })
@@ -52,10 +52,10 @@ async function handler(m) {
 
     await m.reply(
         `${emblem} *WELCOME!*\n\n` +
-        `@${m.sender.split('@')[0]} bergabung ke *${clan.name}*\n\n` +
+        `@${m.sender.split('@')[0]}# Cucarachado a #${clan.name}*\n\n` +
         `Leader: @${clan.leader.split('@')[0]}\n` +
         `Members: ${clan.members.length}/${MAX_MEMBERS}\n\n` +
-        `Lihat info: *.claninfo*`,
+        `Mira la información: *. claninfo *`,
         { mentions: [m.sender, clan.leader] }
     )
 }

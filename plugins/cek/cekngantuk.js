@@ -2,7 +2,7 @@
     name: 'cekngantuk',
     alias: ['ngantuk', 'sleepy'],
     category: 'cek',
-    description: 'Cek tingkat ngantuk kamu',
+    description: 'Mira tu culo somnoliento.',
     usage: '.cekngantuk <nama>',
     example: '.cekngantuk Budi',
     isOwner: false,
@@ -22,15 +22,15 @@ async function handler(m) {
     if (percent >= 90) desc = 'ZZZZZ... Tidur sana! 😴💤'
     else if (percent >= 70) desc = 'Mata 5 watt nih~ 😪'
     else if (percent >= 50) desc = 'Agak ngantuk dikit 🥱'
-    else if (percent >= 30) desc = 'Masih fresh! ☕'
+    else if (percent >= 30) desc = 'Aún fresh!☕'
     else desc = 'Melek banget! Insomnia? 👀'
     
-    let txt = mentioned === m.sender ? `Hai @${mentioned.split('@')[0]}
+    let txt = mentioned === m.sender ? `Hola @${mentioned.split('@')[0]}
     
-Tingkat kengantukan kamu *${percent}%*
-\`\`\`${desc}\`\`\`` : `Kamu ingin ngecek tingkat kengantukan @${mentioned.split('@')[0]} yak? 
+Su grado de compromiso${percent}%*
+\`\`\`${desc}\`\`\`` : `¿Quieres revisar los niveles caballerosos @${mentioned.split('@')[0]} yak? 
     
-Tingkat kengantukan dia sebesar *${percent}%*
+Es tan grande como un perro.${percent}%*
 \`\`\`${desc}\`\`\``
     
     await m.reply(txt, { mentions: [mentioned] })

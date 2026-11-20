@@ -5,7 +5,7 @@ const pluginConfig = {
     name: 'ganti-namabot',
     alias: ['setnamabot', 'setnamebot', 'gantibot'],
     category: 'owner',
-    description: 'Ganti nama bot di config.js',
+    description: 'Cambia nombre bot en config.',
     usage: '.ganti-namabot <nama baru>',
     example: '.ganti-namabot Ourin MD',
     isOwner: true,
@@ -21,7 +21,7 @@ async function handler(m, { sock, config }) {
     const newName = m.args.join(' ')
     
     if (!newName) {
-        return m.reply(`🤖 *ɢᴀɴᴛɪ ɴᴀᴍᴀ ʙᴏᴛ*\n\n> Nama saat ini: *${_optionalChain([config, 'access', _ => _.bot, 'optionalAccess', _2 => _2.name]) || '-'}*\n\n*Penggunaan:*\n\`${m.prefix}ganti-namabot <nama baru>\``)
+        return m.reply(`🤖*ɢᴀɴᴛɪ ɴᴀᴍᴀ ʙᴏᴛ*\n\nNombre actual: *${_optionalChain([config, 'access', _ => _.bot, 'optionalAccess', _2 => _2.name]) || '-'}*\n\n*Uso:*\n\`${m.prefix}cambia-namabot<nama baru>\``)
     }
     
     try {
@@ -37,7 +37,7 @@ async function handler(m, { sock, config }) {
         
         config.bot.name = newName
         
-        m.reply(`✅ *ʙᴇʀʜᴀsɪʟ*\n\n> Nama bot diganti ke: *${newName}*`)
+        m.reply(`✅*ʙᴇʀʜᴀSɪʟ*\n\nEl nombre del bot cambió a: *${newName}*`)
         
     } catch (error) {
         await m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName))

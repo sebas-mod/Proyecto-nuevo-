@@ -6,7 +6,7 @@ const pluginConfig = {
   name: "setmenu",
   alias: ["menuvariant", "menustyle"],
   category: "owner",
-  description: "Mengatur variant tampilan menu",
+  description: "Configurar la variante de visualización del menú",
   usage: ".setmenu <v1-v16>",
   example: ".setmenu v8",
   isOwner: true,
@@ -52,13 +52,13 @@ const VARIANTS = {
   v6: {
     id: 6,
     name: "LOCATION",
-    desc: "Location Message dengan Buttons",
+    desc: "Mensaje de la Locitación con Botones",
     emoji: "📍",
   },
   v7: {
     id: 7,
     name: "RA NGERTI",
-    desc: "Location Message dengan Buttons",
+    desc: "Mensaje de la Locitación con Botones",
     emoji: "📍",
   },
   v8: {
@@ -70,7 +70,7 @@ const VARIANTS = {
   v9: {
     id: 9,
     name: "BLUE NATIVE",
-    desc: "Gambar header biru + native WhatsApp menu",
+    desc: "Juego de cabeza biru + ingenuo menú WhatsApp",
     emoji: "🔵",
   },
 };
@@ -81,13 +81,13 @@ async function handler(m, { sock, db }) {
   if (variant) {
     const selected = VARIANTS[variant];
     if (!selected) {
-      await m.reply(`❌ *VARIANT TIDAK VALID*\n\nGunakan: *v1* s/d *v9*`);
+      await m.reply(`❌* VARIANT TIGHT VALID*\n\nUso: * v1 * s / d * v9 *`);
       return;
     }
     db.setting("menuVariant", selected.id);
     await db.save();
     await m.reply(
-      `✅ *MENU VARIANT DIUBAH*\n\n` +
+      `✅* MEET VARIANT was USED *\n\n` +
       `${selected.emoji} *V${selected.id} — ${selected.name}*\n` +
       `_${selected.desc}_`,
     );
@@ -109,17 +109,17 @@ async function handler(m, { sock, db }) {
     {
       name: "single_select",
       buttonParamsJson: JSON.stringify({
-        title: "🎨 Pilih Variant Menu",
-        sections: [{ title: "Daftar Variant Menu", rows }],
+        title: "🎨Seleccione Menú Variante",
+        sections: [{ title: "Lista de menús variables", rows }],
       }),
     },
   ];
 
   const bodyText =
-    `🎨🖼️ *MENU VARIANT*\n\n` +
-    `Atur tampilan menu utama bot ketika user mengetik perintah menu 📋✨\n` +
-    `Variant aktif saat ini: *V${current} — ${_optionalChain([VARIANTS, 'access', _6 => _6[`v${current}`], 'optionalAccess', _7 => _7.name]) || "Unknown"}* 🎯\n\n` +
-    `> Pilih variant menu dari tombol di bawah 👇`;
+    `🎨🖼# MEET VARIANT #\n\n` +
+    `Pulse la vista principal del menú del bot cuando el usuario escriba el comando del menú📋✨\n` +
+    `Variable actual: * V${current} — ${_optionalChain([VARIANTS, 'access', _6 => _6[`v${current}`], 'optionalAccess', _7 => _7.name]) || "Unknown"}* 🎯\n\n` +
+    `# Elige menús variantes de putool en el crud👇`;
 
   await sock.sendButton(
     m.chat,

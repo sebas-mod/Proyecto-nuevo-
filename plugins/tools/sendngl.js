@@ -21,11 +21,11 @@ async function handler(m, { sock }) {
   const [link, kata] = text;
   if (!link)
     return m.reply(
-      `*LINK NGL NYA MANA ??*\nContoh: \`${_optionalChain([m, 'optionalAccess', _4 => _4.prefix])}sendngl https://ngl.link/xxxx | hai`,
+      `* Enlace NGL De él MANA *\nEpirame:\`${_optionalChain([m, 'optionalAccess', _4 => _4.prefix])}sendnglhttps://ngl.link/xxxx| hola`,
     );
   if (!kata)
     return m.reply(
-      `*KATA KATA NYA MANA ??*\n\nContoh: \`${_optionalChain([m, 'optionalAccess', _5 => _5.prefix])}sendngl https://ngl.link/xxxx | hai`,
+      `> 91; The SAME Palabra MANA > 93;\n\nEjemplo:\`${_optionalChain([m, 'optionalAccess', _5 => _5.prefix])}sendnglhttps://ngl.link/xxxx| hola`,
     );
   m.react("🎴");
 
@@ -45,7 +45,7 @@ async function handler(m, { sock }) {
     await sock.sendMessage(
       m.chat,
       {
-        text: `✅ *DONE*\n\nBerhasil mengirim pesan!\nTarget: ${link}\nPesan: ${kata}`,
+        text: `✅* DON *\n\n¡Funciónó!\nMetas:${link}\nPesan: ${kata}`,
       },
       { quoted: m },
     );

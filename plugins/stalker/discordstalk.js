@@ -2,7 +2,7 @@
 var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
 var _ourintimejs = require('../../src/lib/ourin-time.js'); var timeHelper = _interopRequireWildcard(_ourintimejs);
 var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
-const NEOXR_APIKEY = _optionalChain([_configjs2.default, 'access', _ => _.APIkey, 'optionalAccess', _2 => _2.neoxr]) || "Milik-Bot-OurinMD";
+const NEOXR_APIKEY = _optionalChain([_configjs2.default, 'access', _ => _.APIkey, 'optionalAccess', _2 => _2.neoxr]) || "Millik - Eurinprobable";
 
 const pluginConfig = {
   name: "discordstalk",
@@ -26,13 +26,13 @@ async function handler(m, { sock }) {
   if (!userId) {
     return m.reply(
       `🎮 *ᴅɪsᴄᴏʀᴅ sᴛᴀʟᴋ*\n\n` +
-        `> Masukkan Discord User ID\n\n` +
+        `* Poner el ID de usuario de discordia*\n\n` +
         `\`Contoh: ${m.prefix}discordstalk 297574907510784000\``,
     );
   }
 
   if (!/^\d+$/.test(userId)) {
-    return m.reply(`❌ User ID harus berupa angka. Contoh: 297574907510784000`);
+    return m.reply(`❌El ID de usuario debe ser establecido en número.`);
   }
 
   m.react("🔍");
@@ -47,7 +47,7 @@ async function handler(m, { sock }) {
 
     if (!_optionalChain([res, 'access', _7 => _7.data, 'optionalAccess', _8 => _8.status]) || !_optionalChain([res, 'access', _9 => _9.data, 'optionalAccess', _10 => _10.data])) {
       m.react("❌");
-      return m.reply(`❌ User ID *${userId}* tidak ditemukan`);
+      return m.reply(`❌ User ID *${userId}* not found`);
     }
 
     const d = res.data.data;
@@ -62,7 +62,7 @@ async function handler(m, { sock }) {
       `📛 *Display Name:* ${d.global_name || "-"}\n` +
       `🔢 *Discriminator:* #${d.discriminator || "0"}\n` +
       `🆔 *User ID:* ${d.id}\n\n` +
-      `📅 *Dibuat:* ${createdDate}\n\n` +
+      `📅*Creado:*${createdDate}\n\n` +
       `> _Discord User Lookup_`;
 
     m.react("✅");

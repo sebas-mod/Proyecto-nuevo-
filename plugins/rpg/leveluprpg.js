@@ -26,19 +26,19 @@ function handler(m, { sock }) {
   if (sub === "on") {
     user.settings.rpgLevelupNotif = true;
     db.save();
-    return m.reply(`✅ *ʀᴘɢ ʟᴇᴠᴇʟ ᴜᴘ ɴᴏᴛɪꜰ*\n\n` + `> Status: *ON* ✅\n` + `> Kamu akan menerima notifikasi RPG saat naik level!`);
+    return m.reply(`✅ *ʀᴘɢ ʟᴇᴠᴇʟ ᴜᴘ ɴᴏᴛɪꜰ*\n\n` + `> Status: *ON* ✅\n` + `- Recibirá notificaciones de RPG en el momento de la noche!`);
   }
 
   if (sub === "off") {
     user.settings.rpgLevelupNotif = false;
     db.save();
-    return m.reply(`❌ *ʀᴘɢ ʟᴇᴠᴇʟ ᴜᴘ ɴᴏᴛɪꜰ*\n\n` + `> Status: *OFF* ❌\n` + `> Notifikasi RPG level up dinonaktifkan.`);
+    return m.reply(`❌ *ʀᴘɢ ʟᴇᴠᴇʟ ᴜᴘ ɴᴏᴛɪꜰ*\n\n` + `> Status: *OFF* ❌\n` + `Para nivel RPG subir Notificaciones desactivadas.`);
   }
 
   const status = user.settings.rpgLevelupNotif !== false ? "ON ✅" : "OFF ❌";
   return m.reply(
     `🔔 *ʀᴘɢ ʟᴇᴠᴇʟ ᴜᴘ ɴᴏᴛɪꜰ*\n\n` +
-      `> Status saat ini: *${status}*\n\n` +
+      `♪ A Status this moment: ♪${status}*\n\n` +
       `*📋 *ᴜsᴀɢᴇ:*
 \n` +
       `> > \`.leveluprpg on\` - Aktifkan\n` +

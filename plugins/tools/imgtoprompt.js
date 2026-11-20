@@ -1,6 +1,6 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }/**
- * @file plugins/tools/imgtoprompt.js
- * @description Plugin untuk mengubah gambar menjadi prompt AI
+* @ llenar plugins / herramientas / imgtoprompt. js
+* @ descripción Plugin para convertir la imagen a un impulso de Al
  */
 
 var _img2promptjs = require('../../src/scraper/img2prompt.js'); var _img2promptjs2 = _interopRequireDefault(_img2promptjs);
@@ -11,7 +11,7 @@ const pluginConfig = {
     name: 'imgtoprompt',
     alias: ['img2prompt', 'imagetoprompt', 'i2p'],
     category: 'tools',
-    description: 'Mengubah gambar menjadi prompt AI',
+    description: 'Convertir imágenes en IA',
     usage: '.imgtoprompt (reply gambar)',
     example: '.imgtoprompt',
     isOwner: false,
@@ -27,21 +27,21 @@ async function handler(m, { sock }) {
     try {
         const isImage = m.isImage || (m.quoted && m.quoted.isImage);
         if (!isImage) {
-            return await m.reply('❌ *ɢᴀᴍʙᴀʀ ᴅɪʙᴜᴛᴜʜᴋᴀɴ*\n\n> Reply atau kirim gambar dengan caption .imgtoprompt');
+            return await m.reply('❌*ɢᴀᴍʙᴀʀ ᴅɪʙᴜᴛᴜʜᴋᴀɴ*\n\n# Responder o enviar una foto con capción. Imtoprompt');
         }
         
-        await m.reply('🕕 *ᴍᴇᴍᴘʀᴏsᴇs ɢᴀᴍʙᴀʀ...*\n\n> Menganalisis gambar untuk menghasilkan prompt');
+        await m.reply('🕕*ᴍᴇᴍᴘʀᴏSᴇSɢᴀᴍʙᴀʀ...\n\nAnalizar imágenes para generar impulsos');
         let mediaBuffer;
         if (m.isImage && m.download) {
             mediaBuffer = await m.download();
         } else if (m.quoted && m.quoted.isImage && m.quoted.download) {
             mediaBuffer = await m.quoted.download();
         } else {
-            return await m.reply('❌ Gagal mengunduh gambar');
+            return await m.reply('❌Descarga imágenes estúpidas');
         }
         
         if (!mediaBuffer || !Buffer.isBuffer(mediaBuffer)) {
-            return await m.reply('❌ Buffer gambar tidak valid');
+            return await m.reply('❌Buffer de imagen inválida');
         }
         const tmpDir = _path2.default.join(process.cwd(), 'temp');
         if (!_fs2.default.existsSync(tmpDir)) {

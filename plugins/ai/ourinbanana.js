@@ -3,7 +3,7 @@ const pluginConfig = {
   name: "ourinbanana",
   alias: [],
   category: "ai",
-  description: "Edit gambar dengan AI menggunakan prompt",
+  description: "Editar la imagen con AI utilizando el impulso",
   usage: ".ourinbanana <prompt>",
   example: ".ourinbanana make it anime style",
   isOwner: false,
@@ -20,16 +20,16 @@ async function handler(m, { sock }) {
   if (!prompt) {
     return m.reply(
       `🍌 *OURIN BANANA SUPER*\n\n` +
-        `> Edit gambar dengan AI\n\n` +
+        `Editar imagen con AI\n\n` +
         `\`Contoh: ${m.prefix}ourinbanana make it anime style\`\n\n` +
-        `> Reply atau kirim gambar dengan caption`,
+        `# Responder o enviar una foto con capción #`,
     );
   }
 
   const isImage = m.isImage || (m.quoted && m.quoted.isImage);
   if (!isImage) {
     return m.reply(
-      `🍌 *ɴᴀɴᴏ ʙᴀɴᴀɴᴀ*\n\n> Reply atau kirim gambar dengan caption`,
+      `🍌*ɴᴀɴᴏ ʙᴀɴᴀɴᴀ*\n\n# Responder o enviar una foto con capción #`,
     );
   }
 
@@ -45,7 +45,7 @@ async function handler(m, { sock }) {
 
     if (!mediaBuffer || !Buffer.isBuffer(mediaBuffer)) {
       m.react("❌");
-      return m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> Gagal mengunduh gambar`);
+      return m.reply(`❌*ɢᴀɢᴀʟ*\n\n# Crawling pictures`);
     }
 
     const resultBuffer = await _seaartjs.live3d.call(void 0, mediaBuffer, prompt).then(
@@ -60,8 +60,8 @@ async function handler(m, { sock }) {
   } catch (error) {
     console.log(error);
     m.react("❌");
-    m.reply(`🍀 *Waduhh, sepertinya ini ada kendala*
-Silahkan coba lagi nanti, dimohon jangan spam`);
+    m.reply(`🍀Me temo que tengo control.
+Inténtelo de nuevo más tarde, por trust don`);
   }
 }
 

@@ -4,7 +4,7 @@ const pluginConfig = {
   name: 'custompayment',
   alias: ['setpayment', 'setpaytext'],
   category: 'owner',
-  description: 'Atur teks custom untuk .payment dengan placeholder',
+  description: 'La textura personalizada para. Pagos con marcador de posición.',
   usage: '.custompayment <teks> / .custompayment reset',
   isOwner: true,
   isPremium: false,
@@ -23,16 +23,16 @@ async function handler(m) {
   if (!input) {
     return m.reply(
       `📝 *CUSTOM PAYMENT TEXT*\n\n` +
-      `Teks saat ini:\n${current || '_(belum diatur, pakai default)_'}\n\n` +
-      `*PLACEHOLDER YANG TERSEDIA:*\n` +
-      `• \`{botname}\` — Nama bot\n` +
-      `• \`{owner}\` — Nama owner\n` +
-      `• \`{methods}\` — Daftar e-wallet\n` +
-      `• \`{banks}\` — Daftar bank\n` +
+      `Pruebas actuales:\n${current || '_(belum diatur, pakai default)_'}\n\n` +
+      `* PLACEHOLDER SONNY:\n` +
+      `• \`{botname}\` —El nombre del bot\n` +
+      `• \`{owner}\` —Nombre propietario\n` +
+      `• \`{methods}\` —Registrate e-wallet\n` +
+      `• \`{banks}\` —Registrate banco\n` +
       `• \`{qris}\` — Status QRIS\n\n` +
-      `*CONTOH:*\n` +
-      `> \`${m.prefix}custompayment Halo! Bayar ke {methods}\`\n\n` +
-      `> \`${m.prefix}custompayment reset\` — Kembalikan ke default`
+      `*Ejemplo:*\n` +
+      `> \`${m.prefix}custompayment Hola! Pagar a {methods}\`\n\n` +
+      `> \`${m.prefix}custompayment restablecer\` —Regresar a predeterminado`
     )
   }
 
@@ -42,7 +42,7 @@ async function handler(m) {
   }
 
   db.setting('customPaymentText', input)
-  return m.reply(`✅ Teks custom payment disimpan!\n\nPreview:\n${input}`)
+  return m.reply(`✅Tanques de pago personalizado ahorrado!\n\nVista previa:\n${input}`)
 }
 
 exports.config = pluginConfig; exports.handler = handler;

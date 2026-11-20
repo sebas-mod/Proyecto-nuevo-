@@ -24,13 +24,13 @@ async function handler(m, { sock }) {
     
     if (!data.status || !data.result || !data.result.result) {
       await m.react("❌");
-      return m.reply(`Maaf, sistem gagal mengambil daftar Top Anime.`);
+      return m.reply(`Lo siento, el sistema no pudo recuperar la lista de Anime superior.`);
     }
 
     const list = data.result.result;
     
     let txt = `🏆 *TOP ANIME CHARACTERS (WAIFU LIST)* 🏆\n\n`;
-    txt += `Berikut adalah daftar karakter terpopuler dan paling dicintai saat ini:\n\n`;
+    txt += `Aft es la lista de los personajes más populares y queridos hoy:\n\n`;
     
     const maxItems = Math.min(list.length, 10);
     
@@ -42,7 +42,7 @@ async function handler(m, { sock }) {
       txt += `- *Favorit:* ${char.favorites} | *Votes:* ${char.votes}\n\n`;
     }
     
-    txt += `_Menampilkan ${maxItems} karakter teratas._`;
+    txt += `_Menampilkan ${maxItems}caracter teratas._`;
     
     await m.react("✅");
     
@@ -55,7 +55,7 @@ async function handler(m, { sock }) {
   } catch (error) {
     console.error("[TOPANIME Plugin Error]", error);
     await m.react("❌");
-    m.reply(`Maaf, terjadi kesalahan saat menghubungi server. Silakan coba lagi.`);
+    m.reply(`Lo siento, hubo un error cuando llamamos al servidor.`);
   }
 }
 

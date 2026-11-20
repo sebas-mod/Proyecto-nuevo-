@@ -6,7 +6,7 @@ const pluginConfig = {
     name: 'ganti-pp-kosong.jpg',
     alias: ['gantippkosong', 'setppkosong'],
     category: 'owner',
-    description: 'Ganti gambar pp-kosong.jpg',
+    description: 'Pp @-@ vacio dibujo Cambia.',
     usage: '.ganti-pp-kosong.jpg (reply/kirim gambar)',
     example: '.ganti-pp-kosong.jpg',
     isOwner: true,
@@ -20,16 +20,16 @@ const pluginConfig = {
 
 async function handler(m, { sock }) {
     const isImage = m.isImage || (m.quoted && m.quoted.type === 'imageMessage')
-    if (!isImage) return m.reply(`🖼️ *ɢᴀɴᴛɪ PP-KOSONG.JPG*\n\n> Kirim/reply gambar untuk mengganti\n> File: assets/images/pp-kosong.jpg`)
+    if (!isImage) return m.reply(`🖼♪ɢᴀɴᴛɪPP-Vacio.JPG*\n\n# Ksently / réplica imágenes para reemplazar\nâ a Archivo: activos / imágenes / pp @-@ vacio.`)
     try {
         let buffer = m.quoted && m.quoted.isMedia ? await m.quoted.download() : await m.download()
-        if (!buffer) return m.reply('❌ Gagal mendownload gambar')
-        await m.reply(`⏳ Sedang mengupload gambar...`)
+        if (!buffer) return m.reply('❌Paso de descarga de imagen')
+        await m.reply(`⏳La jaula subió una foto..`)
         try {
             const newUrl = await _ourinuploaderjs.updateAssetUrl.call(void 0, 'pp-kosong', buffer, 'pp-kosong.jpg')
-            m.reply(`✅ *ʙᴇʀʜᴀsɪʟ*\n\n> Gambar pp-kosong.jpg telah diganti ke URL baru:\n> ${newUrl}\n> Config telah diupdate secara realtime!`)
+            m.reply(`✅*ʙᴇʀʜᴀSɪʟ*\n\nJpg se ha convertido en una nueva URL:\n♪${newUrl}\n" Config has been updated as a reality "!`)
         } catch (e) {
-            m.reply(`❌ Gagal mengupload gambar: ${e.message}`)
+            m.reply(`❌Gagalm subió la imagen:${e.message}`)
         }
     } catch (error) {
         await m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName))

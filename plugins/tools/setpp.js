@@ -2,7 +2,7 @@
     name: 'setpp',
     alias: ['setprofilebot', 'setppbot', 'setfotobot'],
     category: 'tools',
-    description: 'Mengubah foto profil bot',
+    description: 'Cambiar la foto del perfil de bot',
     usage: '.setpp (reply gambar)',
     example: '.setpp',
     isOwner: true,
@@ -20,22 +20,22 @@ async function handler(m, { sock }) {
         try {
             buffer = await m.quoted.download()
         } catch (e) {
-            await m.reply(`❌ Gagal mengambil gambar.`)
+            await m.reply(`❌Gagalm toma fotos.`)
             return
         }
     } else if (m.isImage) {
         try {
             buffer = await m.download()
         } catch (e) {
-            await m.reply(`❌ Gagal mengambil gambar.`)
+            await m.reply(`❌Gagalm toma fotos.`)
             return
         }
     }
     if (!buffer) {
         await m.reply(
             `⚠️ *ᴄᴀʀᴀ ᴘᴀᴋᴀɪ*\n\n` +
-            `> Reply gambar + \`${m.prefix}setpp\`\n` +
-            `> Kirim gambar + caption \`${m.prefix}setpp\``
+            `# Responder imagen +\`${m.prefix}setpp\`\n` +
+            `APOLOGIZACIÓN\`${m.prefix}setpp\``
         )
         return
     }
@@ -43,7 +43,7 @@ async function handler(m, { sock }) {
     try {
         const botJid = _optionalChain([sock, 'access', _3 => _3.user, 'optionalAccess', _4 => _4.id])
         if (!botJid) {
-            await m.reply(`❌ Bot JID tidak ditemukan.`)
+            await m.reply(`❌- No lo encuentro`)
             return
         }
         
@@ -51,12 +51,12 @@ async function handler(m, { sock }) {
         
         await m.reply(
             `✅ *ᴘᴘ ʙᴏᴛ ᴅɪᴜʙᴀʜ*\n\n` +
-            `> Foto profil bot berhasil diperbarui!`
+            `¡La foto del perfil de bot está trabajando en uno nuevo!`
         )
     } catch (error) {
         await m.reply(
             `❌ *ɢᴀɢᴀʟ*\n\n` +
-            `> Tidak dapat mengubah foto bot.\n` +
+            `No puede cambiar la foto del bot.\n` +
             `> _${error.message}_`
         )
     }

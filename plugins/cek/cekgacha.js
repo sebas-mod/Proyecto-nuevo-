@@ -2,7 +2,7 @@
     name: 'cekgacha',
     alias: ['gacha', 'luck'],
     category: 'cek',
-    description: 'Cek hoki gacha kamu',
+    description: 'Mira tu gacha de hockey',
     usage: '.cekgacha <nama>',
     example: '.cekgacha Budi',
     isOwner: false,
@@ -25,12 +25,12 @@ async function handler(m) {
     else if (percent >= 30) desc = 'Hmm... pray harder! 🙏'
     else desc = 'SIAL! Nanti aja gachanya! 💔'
     
-    let txt = mentioned === m.sender ? `Hai @${mentioned.split('@')[0]}
+    let txt = mentioned === m.sender ? `Hola @${mentioned.split('@')[0]}
     
-Tingkat kegachaan kamu *${percent}%*
-\`\`\`${desc}\`\`\`` : `Kamu ingin ngecek tingkat kegachaan @${mentioned.split('@')[0]} yak? 
+Tu nivel de gibberish${percent}%*
+\`\`\`${desc}\`\`\`` : `Quieres ver el nivel de chatter${mentioned.split('@')[0]} yak? 
     
-Tingkat kegachaan dia sebesar *${percent}%*
+Es tan grande como un aumento.${percent}%*
 \`\`\`${desc}\`\`\``
     
     await m.reply(txt, { mentions: [mentioned] })

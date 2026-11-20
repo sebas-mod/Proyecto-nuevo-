@@ -1,6 +1,6 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }/**
- * @file src/lib/stickerCommand.js
- * @description Global sticker-to-command mapping system
+* @ fill src / lib / stickerCommand. js
+* @ description Pegatina global - a - a - sistema de asignación de comandosa
  */
 
 var _fs = require('fs'); var _fs2 = _interopRequireDefault(_fs);
@@ -14,7 +14,7 @@ const STICKER_CMD_FILE = _path2.default.join(__dirname, '../../database/stickerC
 // In-memory cache
 let stickerCommands = {}
 
-// Load from file
+//La carga flle flle flle flle
 function loadStickerCommands() {
     try {
         if (_fs2.default.existsSync(STICKER_CMD_FILE)) {
@@ -27,7 +27,7 @@ function loadStickerCommands() {
     return stickerCommands
 }
 
-// Save to file
+//Guardar para llenar
 function saveStickerCommands() {
     try {
         const dir = _path2.default.dirname(STICKER_CMD_FILE)
@@ -101,7 +101,7 @@ function getQuotedStickerHash(m) {
 }
 
 /**
- * Add sticker command mapping (global)
+* Añadir la asignación de comandos de pegatina ( global )
  */
 function addStickerCommand(stickerHash, command, addedBy) {
     if (!stickerHash || !command) return false
@@ -119,7 +119,7 @@ function addStickerCommand(stickerHash, command, addedBy) {
 }
 
 /**
- * Delete sticker command
+* Eliminar el comando sticker
  */
 function deleteStickerCommand(stickerHash) {
     if (!stickerHash) return false
@@ -136,7 +136,7 @@ function deleteStickerCommand(stickerHash) {
 }
 
 /**
- * Get command for sticker
+* Obtener el comando para pegatinas
  */
 function getStickerCommand(stickerHash) {
     if (!stickerHash) return null
@@ -157,7 +157,7 @@ function listStickerCommands() {
 }
 
 /**
- * Find sticker command by command name
+*Encontró el comando sticker por nombre de comando*
  */
 function findByCommand(commandName) {
     const cmd = commandName.toLowerCase().replace(/^\./, '')
@@ -172,7 +172,7 @@ function findByCommand(commandName) {
 }
 
 /**
- * Check if message is a registered sticker command
+* Compruebe si el mensaje es un comando registrado de pegatina
  */
 function checkStickerCommand(m) {
     const hash = getStickerHash(m)

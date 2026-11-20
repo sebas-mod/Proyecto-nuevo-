@@ -5,7 +5,7 @@
  * Built for creating buttons, carousels, native flows,
  * and AI rich response payloads using Baileys with
  * fluent chaining, flexible payload customization,
- * and scalable architecture for modern bot development.
+* y arquitectura escalable para el desarrollo moderno de bots.
  *
  * Runtime:
  * - Baileys: @whiskeysockets/baileys (latest)
@@ -434,7 +434,7 @@ class Toolkit {
 
             try {
                 if (!Buffer.isBuffer(videoBuffer) || !videoBuffer.length) {
-                    return fail(new Error('videoBuffer tidak valid atau kosong'));
+                    return fail(new Error('vídeo inválido o vacío Buffer'));
                 }
 
                 const inputStream = new (0, _stream.Readable)({ read() { } });
@@ -451,7 +451,7 @@ class Toolkit {
                         let output = Buffer.concat(chunks);
 
                         if (!output.length) {
-                            return fail(new Error('Output kosong — cek format atau timestamp video'));
+                            return fail(new Error('Output vacio—formato de verificación o vídeo de timetampup'));
                         }
 
                         if (resize) {

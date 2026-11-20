@@ -26,7 +26,7 @@ async function handler(m, context) {
   const mime = (q.msg || q).mimetype || q.mimetype || '';
 
   if (!/audio/.test(mime)) {
-    return m.reply(`Balas (reply) pesan audio atau Voice Note dengan perintah: \`${p}${command}\``);
+    return m.reply(`Responder un mensaje de audio o de voz con un comando:\`${p}${command}\``);
   }
 
   const tmpDir = path.join(process.cwd(), 'database', 'tmp');
@@ -44,11 +44,11 @@ async function handler(m, context) {
       mediaBuffer = await m.quoted.download();
     }
   } catch (dlErr) {
-    return m.reply('❌ Gagal mengunduh audio. Pastikan audio masih dapat diputar.');
+    return m.reply('❌Descarga de audio, asegúrese de que los audios todavía están abiertos.');
   }
 
   if (!mediaBuffer || !Buffer.isBuffer(mediaBuffer)) {
-    return m.reply('❌ Gagal memproses buffer audio dari pesan yang di-reply.');
+    return m.reply('❌Steenaldrivesinauto de los mensajes devueltos.');
   }
 
   fs.writeFileSync(inputPath, mediaBuffer);
@@ -64,7 +64,7 @@ async function handler(m, context) {
         fs.unlinkSync(inputPath);
       } catch {}
       if (err) {
-        return m.reply('❌ Gagal mengaplikasikan efek bass boost pada audio.');
+        return m.reply('❌Stempedize aplicó un efecto bajo aumentado en un audio.');
       }
 
       const buff = fs.readFileSync(outputPath);
@@ -87,7 +87,7 @@ async function handler(m, context) {
       } catch {}
     } catch (sendErr) {
       console.error('[BASS ERROR]', sendErr.message);
-      return m.reply('❌ Terjadi kesalahan saat mengirim hasil audio.');
+      return m.reply('❌Fue un error enviar resultados de audio.');
     }
   });
 }

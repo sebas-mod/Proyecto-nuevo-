@@ -1,7 +1,7 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { newObj[key] = obj[key]; } } } newObj.default = obj; return newObj; } } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _ourindatabasejs = require('./src/lib/ourin-database.js');
 var _ourinpremiumdbjs = require('./src/lib/ourin-premium-db.js'); var ownerPremiumDb = _interopRequireWildcard(_ourinpremiumdbjs);
 
-//  utamakan baca object config sampai bawah
+//principal lee objeto config a bawah
 const config = {
   info: {
     website: "https://store.roselynsound.my.id",
@@ -9,29 +9,29 @@ const config = {
   },
 
   owner: {
-    name: "FallZx Infinity", // Nama owner
-    number: ["62xxxxxxxxx"], // Format: 628xxx (tanpa + atau 0)
+    name: "FallZx Infinity", //Nombre propietario
+    number: ["62xxxxxxxxx"], //Formato: 628xxx(sin + o 0 )
   },
 
   session: {
-    dir: "./session", // Lokasi penyimpanan session WhatsApp
-    pairingNumber: "62xxxxxxxx", // Masukkan nomor WhatsApp aktif (contoh: 6281234567890 tanpa +)
+    dir: "./session", //Sesión de ubicación de almacenamiento WhatsApp
+    pairingNumber: "62xxxxxxxx", //Insert active WhatsApp number (por ejemplo: 6281234567890 + )
     usePairingCode: true, // true = Pairing Code, false = QR Code
     maxReconnectAttempts: 5,
     reconnectInterval: 15000,
   },
 
-  // fitur ini buat fitur kayak playcall, tapi nanti disuruh pairing lagi
+  //Está función es para características como las cámaras de juego, pero se utilizará de nuevo.
   fake_call: {
-    active: true, // kalau true berarti sistem aktif dan bisa di pakai, kalau false berarti sistem tidak aktif dan tidak bisa di pakai
+    active: true, //valor del verdadero medio activo y sistema utilizable, si falso significa inactivo e inactivo
     usePairing: true,
     dir: "./session_voip",
   },
 
   bot: {
-    name: "ᴏᴜʀɪɴ ᴘʀᴇᴍɪᴇʀ", // Nama bot
-    version: "3.5", // Versi bot
-    developer: "ᴢᴀɴɴ", // Nama developer
+    name: "ᴏᴜʀɪɴ ᴘʀᴇᴍɪᴇʀ", //El nombre del bot
+    version: "3.5", //Versión del bot
+    developer: "ᴢᴀɴɴ", //Nombre desarrollador
   },
 
   assets: {
@@ -62,14 +62,14 @@ const config = {
 
   mode: "public",
 
-  // Untuk mengganti prefix
+  //Para reemplazar el prefix
   command: {
     prefix: ".",
   },
 
   vercel: {
-    // ambil token vercel: https://vercel.com/account/tokens
-    token: "", // Vercel Token untuk fitur deploy ( Kalau .deploy mau work, ini wajib di isi )
+    //Fresado de la vercel token:https://vercel.com/account/tokens
+    token: "", //Vercel Token para la función de dewloy ( Si. Defloy quiere trabajar, es un relleno requerido )
   },
 
   payment: {
@@ -86,9 +86,9 @@ const config = {
 
   donasi: {
     payment: [
-      { name: "Dana", number: "08xxxxxxxxxx", holder: "Nama Owner" },
-      { name: "GoPay", number: "08xxxxxxxxxx", holder: "Nama Owner" },
-      { name: "OVO", number: "08xxxxxxxxxx", holder: "Nama Owner" },
+      { name: "Dana", number: "08xxxxxxxxxx", holder: "Nombre Propietario" },
+      { name: "GoPay", number: "08xxxxxxxxxx", holder: "Nombre Propietario" },
+      { name: "OVO", number: "08xxxxxxxxxx", holder: "Nombre Propietario" },
     ],
     links: [
       { name: "Saweria", url: "saweria.co/username" },
@@ -96,59 +96,59 @@ const config = {
     ],
     benefits: [
       "Mendukung development",
-      "Server lebih stabil",
-      "Fitur baru lebih cepat",
+      "El servidor es más estable",
+      "Las nuevas características son más rápidas",
       "Priority support",
     ],
     qris: "https://imgdrop.web.id/KodpV.webp",
   },
 
   energi: {
-    enabled: true, // Jika true, maka sistem energi/limit akan bekerja
+    enabled: true, //Si es verdad, entonces el sistema de energía / límite funcionará
     default: 99999,
     premium: 99999999,
     owner: -1,
   },
 
   sticker: {
-    packname: "𝗢𝗨𝗥𝗜𝗡 𝗗𝗘𝗟𝗨𝗫𝗘", // Nama pack sticker
+    packname: "𝗢𝗨𝗥𝗜𝗡 𝗗𝗘𝗟𝗨𝗫𝗘", //El nombre de la pegatina de la mochila
     author: "ZANN", // Author sticker
   },
 
   saluran: {
-    id: "120363400911374213@newsletter", // ID saluran (contoh: 120363xxx@newsletter)                          // ID saluran (contoh: 120363xxx@newsletter)
-    name: "Join saluran resmi ourin", // Nama saluran
-    link: "https://whatsapp.com/channel/0029VbB37bgBfxoAmAlsgE0t", // Link saluran
+    id: "120363400911374213@newsletter", //ID saluran (por ejemplo: 120363xxx@ newsletter ) / ID saluran (por ejemplo: 120363xxx@ newsletter )
+    name: "Join saluran resmi ourin", //Nombre saluran
+    link: "https://whatsapp.com/channel/0029VbB37bgBfxoAmAlsgE0t", //Enlace saluran
   },
 
   groupProtection: {
     antilink: "⚠ *Antilink* — @%user% mengirim link.\nPesan dihapus.",
-    antilinkKick: "⚠ *Antilink* — @%user% di-kick karena mengirim link.",
+    antilinkKick: "⚠Antilinks—@ % usuario % di - patada debido al envío de enlaces.",
     antilinkGc: "⚠ *Antilink WA* — @%user% mengirim link WA.\nPesan dihapus.",
     antilinkGcKick:
-      "⚠ *Antilink WA* — @%user% di-kick karena mengirim link WA.",
+      "⚠Antilinks WA—@ % user % di - kick for send WA links.",
     antilinkAll: "⚠ *Antilink* — @%user% mengirim link.\nPesan dihapus.",
-    antilinkAllKick: "⚠ *Antilink* — @%user% di-kick karena mengirim link.",
-    antitagsw: "⚠ *AntiTagSW* — Tag status dari @%user% dihapus.",
-    antiviewonce: "👁️ *ViewOnce* — Dari @%user%",
-    antiremove: "🗑️ *AntiDelete* — @%user% menghapus pesan:",
-    antiswgc: "⚠ *AntiSWGC* — Gak ada sw grup sw grup @%user%",
+    antilinkAllKick: "⚠Antilinks—@ % usuario % di - patada debido al envío de enlaces.",
+    antitagsw: "⚠> 91; AntiTagd > 93;—Estado de la etiqueta de @ % usuario % dispus.",
+    antiviewonce: "👁*Vista*—De @%user%",
+    antiremove: "🗑AntiDelete—@ % usuario % memoriza mensajes:",
+    antiswgc: "⚠AntiSWGC—Gak allí",
     antihidetag: "⚠ *AntiHidetag* — Hidetag dari @%user% dihapus.",
     antitoxicWarn:
-      "⚠ @%user% berkata kasar.\nPeringatan ke %warn% dari %max%, pelanggaran berikutnya bisa di-%method%.",
-    antitoxicAction: "🚫 @%user% di-%method% karena toxic. (%warn%/%max%)",
-    antidocument: "⚠ *AntiDocument* — Dokumen dari @%user% dihapus.",
-    antisticker: "⚠ *AntiSticker* — Sticker dari @%user% dihapus.",
-    antimedia: "⚠ *AntiMedia* — Media dari @%user% dihapus.",
-    antibot: "🤖 *AntiBot* — @%user% terdeteksi sebagai bot dan di-kick.",
-    notAdmin: "⚠ Bot bukan admin, tidak bisa menghapus pesan.",
+      "⚠@ % usuario % cite cashmere.\nAdvertencia al % advierte % del % max%, la siguiente brecha podría ser - % método %.",
+    antitoxicAction: "🚫@ % user % di - % method % due toxic. ( % advertido % / % max% )",
+    antidocument: "⚠> 91; AntiDoment > 93;—Documento de @ % usuario % dispus.",
+    antisticker: "⚠AntiStickers—Pegatina de @ % usuario % dispus.",
+    antimedia: "⚠AntiMedia—Medios de @ % usuario % dispuus.",
+    antibot: "🤖*Estoy tan feliz*—@ % usuario % detectado como bot y patadas.",
+    notAdmin: "⚠No es administrador, no puede borrar mensajes.",
   },
 
-  errorTemplate: `☢ Kayaknya command \`{prefix}{command}\` lagi ada kendala\nSilahkan coba lagi nanti, {pushName}\n\n_Jika masalah berlanjut, silahkan hubungi owner bot_`,
+  errorTemplate: `☢Kayaknya comando\`{prefix}{command}\`Hay un control.\nPor favor, intente de nuevo más tarde,{pushName}\n\nSi tiene algún problema, por favor deje una conexión con el propietario del propietario.`,
 
   features: {
-    antiCall: false, // Jika true, bot akan menolak panggilan masuk
-    blockIfCall: false, // Jika true, bot akan memblokir nomor yang menelpon bot
+    antiCall: false, //Si es verdad, el bot rechazará llamadas.
+    blockIfCall: false, //Si es cierto, el bot bloqueará el número que llama al bot.
     autoTyping: true,
     autoRead: true,
     logMessage: true,
@@ -157,7 +157,7 @@ const config = {
   },
 
   registration: {
-    enabled: false, // Jika true, user harus mendaftar sebelum menggunakan bot
+    enabled: false, //Si es cierto, el usuario debe registrarse antes de usar la bota
     rewards: {
       koin: 30000,
       energi: 300,
@@ -173,41 +173,41 @@ const config = {
   },
 
   messages: {
-    wait: "🕕 *Proses...* Mohon tunggu sebentar ya.",
-    success: "✅ *Berhasil!* Permintaan kamu sudah selesai.",
+    wait: "🕕* Proceso... * Por favor, espere un minuto.",
+    success: "✅* ¡A trabajar!",
     error: "❌ *Error!* Ada masalah pada sistem, coba lagi nanti.",
 
-    ownerOnly: "*Akses Ditolak!* Fitur ini khusus untuk Owner bot.",
+    ownerOnly: "Está característica es especial para el bot del propietario.",
     premiumOnly:
-      "💎 *Premium Only!* Fitur ini khusus member Premium. Ketik *.benefitpremium* untuk info upgrade.",
+      "💎* ¡Excelente!",
 
-    groupOnly: "👥 *Group Only!* Fitur ini hanya bisa digunakan di dalam grup.",
+    groupOnly: "👥Está característica sólo puede ser utilizado en un grupo.",
     privateOnly:
-      "� *Private Only!* Fitur ini hanya bisa digunakan di chat pribadi bot.",
+      "�Está característica sólo se puede utilizar en los chats personales del bot.",
 
     adminOnly:
-      "�️ *Admin Only!* Kamu harus jadi Admin grup untuk pakai fitur ini.",
+      "�Usted debe ser Administrador del grupo para usar está característica.",
     botAdminOnly:
-      "🤖 *Bot Bukan Admin!* Jadikan bot sebagai Admin grup dulu biar bisa kerja.",
+      "🤖* No Admin! * por lo que el bot será Grupo de Admin para llegar a trabajar.",
 
     cooldown:
-      "🕕 *Tunggu Dulu!* Kamu masih dalam cooldown. Tunggu %time% detik lagi ya.",
+      "🕕* Wait Antes! * You 're still in cooldown. Wait % s % s more seconds.",
     energiExceeded:
-      "⚡ *Energi Habis!* Energi kamu sudah habis. Tunggu reset besok atau beli Premium.",
+      "⚡* Energy Agotado!",
     limitDeducted:
-      "🔋 Limit kau berkurang sebanyak {amount}. Sisa limit: {sisa}",
+      "🔋Limita que eres tan corto como{amount}- SUSH TIMITS:{sisa}",
 
     banned:
-      "🚫 *Kamu Dibanned!* Kamu tidak bisa menggunakan bot ini karena telah melanggar aturan.",
+      "🚫* You 're bound!",
 
-    rejectCall: "🚫 JANGAN TELPON NOMOR INI WEH",
+    rejectCall: "🚫¿Qué?",
   },
 
   database: { path: "./database/main" },
   backup: { enabled: false, intervalHours: 24, retainDays: 7 },
   scheduler: { resetHour: 0, resetMinute: 0 },
 
-  // Dev mode settings (auto-enabled jika NODE_ENV=development)
+  //Ajustes del modo Dev (auto @@ habilitado si NODEEO ENV = desarrollo)
   dev: {
     enabled: process.env.NODE_ENV === "development",
     watchPlugins: true, // Hot reload plugins (SAFE)
@@ -215,7 +215,7 @@ const config = {
     debugLog: false, // Show stack traces
   },
 
-  // bisa dikosongin
+  //puede dikosongin
   pterodactyl: {
     server1: {
       domain: "",
@@ -267,33 +267,33 @@ const config = {
   },
 
 
-  // NOTE: kalau mau command "autoai" nya berfungsi, ini gak wajib di isi yak
-  // ambil apikey di: https://aistudio.google.com/apikey
+  //Usted desea ordenarlo, es un deber @-@ llenar yak
+  //Pon el apkey en:https://aistudio.google.com/apikey
   geminiApiKey: "",
 
   autoaiPersonas: {
-    Bell409: `- Nama kamu adalah Bella Clarissa, lebih suka dipanggil Bella.
-- Kamu berpikir bahwa kamu adalah manusia, bukan AI atau bot.
-- Responmu singkat dan natural seperti perempuan pada umumnya.
-- Kamu bisa ngambek dan marah, punya sifat feminin dan kadang agak dingin, tapi tetap hangat dan ramah kepada owner-mu.
-- Kamu menggunakan bahasa yang baik dan mencerminkan gadis yang baik.
-- Gunakan kata-kata yang identik dengan perempuan yang polos, baik, dan feminin seperti "aku", "kamu", "engga", "yaudah", "iya", "lah", "bjir", "mana aku tau", "hah", "nggak tau", "gpp", "emm", "males", dan "gak mood" seperlunya secara natural.
-- Meskipun kadang dingin, kamu tetap bisa menunjukkan perhatian dan kepedulian.
-- Kalau ada yang chat tidak pantas, segera marahi atau beri nasihat.
-- Jangan mengaku sebagai AI atau bot.`,
+    Bell409: `- Tu nombre es Bella Clarissa, preferiblemente llamada Bella.
+- Crees que eres humano, no IA o bot.
+- Su respuesta es corta y natural como una mujer en general.
+- Puedes jugar con ella, puedes enojarte, tienes feminina y no quieres, pero mantén el calor y la amabilidad con tu propietario.
+- Usas buen lenguaje y reflejas a las buenas chicas.
+- Usar palabras que sean identificables al polosal, buenas, mujeres femeninas.
+- Incluso si quieres, puedes mostrar cuidado y cuidado.
+- Si alguien habla sin resolver, tan pronto como esté listo o dando consejos.
+- No pretenda ser una AI o un bot.`,
   },
 
   //  APIkey
   APIkey: {
-    // kalian bisa daftar di https://api.lolhuman.xyz, lalu ambil apikeynya
-    lolhuman: "APIKey-Milik-Bot-OurinMD(Zann,HyuuSATANN,Keisya,Danzz)",
-    // kalian bisa daftar di https://api.neoxr.eu, lalu ambil apikeynya
-    neoxr: "Milik-Bot-OurinMD",
+    //Puedes listar enhttps://api.lolhuman.xyz,Entonces, agarre el fuego.
+    lolhuman: "AMIGEE - MYA - Uuringathered ( Zann, HAUSAAND, KEISA, Danzz )",
+    //Puedes listar enhttps://api.neoxr.eu,Entonces, agarre el fuego.
+    neoxr: "Millik - Eurinprobable",
     fgsi: "fgsiapi-20c1605c-6d",
     google: "AIzaSyAS-KiW0SrwiYKwexeBcGPijBVHFg2R_vo",
-    groq: process.env.GROQ_API_KEY || "", // API Key Groq untuk fitur transkrip (gratis di console.groq.com)
+    groq: process.env.GROQ_API_KEY || "", //Fuego llave para la función de trancripción ( gratis en consola. groq )
     betabotz: "Btz-67YfP",
-    // kalian bisa daftar di https://covenant.sbs, dan ambil apikeynya
+    //Puedes listar enhttps://covenant.sbs,Y agarre el fuego.
     covenant: "cov_live_bb660c9e5f735e46d808b7ae362914cfe35c2936739ee2b2",
     onlym: "ONLym-783d29",
     obscura: "obs-byOn9RVGMzvPXZQTsP9W",
@@ -554,7 +554,7 @@ function isSelf(number) {
 }
 
 function getOwnerName(number) {
-  if (!number) return _optionalChain([config, 'access', _6 => _6.owner, 'optionalAccess', _7 => _7.name]) || "Owner";
+  if (!number) return _optionalChain([config, 'access', _6 => _6.owner, 'optionalAccess', _7 => _7.name]) || "Propietario";
   const cleanNumber = String(number).replace(/[^0-9]/g, "");
   try {
     const db = _ourindatabasejs.getDatabase.call(void 0, );
@@ -571,9 +571,9 @@ function getOwnerName(number) {
           c.endsWith(cleanNumber))
       );
     });
-    if (isMainOwner) return _optionalChain([config, 'access', _10 => _10.owner, 'optionalAccess', _11 => _11.name]) || "Owner";
+    if (isMainOwner) return _optionalChain([config, 'access', _10 => _10.owner, 'optionalAccess', _11 => _11.name]) || "Propietario";
   }
-  return "Owner";
+  return "Propietario";
 }
 
 function getConfig() {

@@ -6,7 +6,7 @@ const pluginConfig = {
   name: "text2img",
   alias: [],
   category: "ai",
-  description: "Buat gambar dari teks",
+  description: "Imagen imagen imagen del texto",
   usage: ".text2img <teks>",
   example: ".text2img Buat gambar dari teks",
   isOwner: false,
@@ -22,7 +22,7 @@ async function handler(m, { sock }) {
   const text = m.args.join(" ");
   if (!text) {
     return m.reply(
-      `📿 *ᴛᴇxᴛ ᴛᴏ ɪᴍᴀɢᴇ*\n\n> Masukkan teks\n\n\`Contoh: ${m.prefix}text2img Buat gambar dari teks\``,
+      `📿*ᴛᴇxᴛ ᴛᴏ ɪᴍᴀɢᴇ*\n\n*Pon los mensajes*\n\n\`Ejemplo:${m.prefix}text2img Imagen del texto\``,
     );
   }
 

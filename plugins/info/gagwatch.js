@@ -24,7 +24,7 @@ async function handler(m) {
 
     if (!data.status || !data.data || !data.data.stock) {
       await m.react("❌");
-      return m.reply(`Maaf, data GAG2 tidak ditemukan atau sistem sedang bermasalah.`);
+      return m.reply(`Lo sentimos, los datos GAG2 no encontrados o el sistema está en problemas.`);
     }
 
     const stock = data.data.stock;
@@ -64,7 +64,7 @@ async function handler(m) {
   } catch (error) {
     console.error("[GAG-WATCH Plugin Error]", error);
     await m.react("☢");
-    m.reply(`Terjadi kesalahan saat mengambil data GAG. Coba lagi nanti.`);
+    m.reply(`Fue un error recuperar los datos del GAG.`);
   }
 }
 

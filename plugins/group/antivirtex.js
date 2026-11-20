@@ -4,7 +4,7 @@ const pluginConfig = {
   name: 'antivirtex',
   alias: ['antivirtexgc', 'antivtxt', 'antitxtv'],
   category: 'group',
-  description: 'Hapus otomatis pesan yang mengandung virtex / karakter crash di grup',
+  description: 'Quitar el mensje de automatización que lleva virtex/ personajes de choque en grupo',
   usage: '.antivirtex on/off',
   example: '.antivirtex on',
   isAdmin: true,
@@ -61,29 +61,29 @@ async function handler(m, context) {
   if (mode === 'on') {
     if (currentStatus) {
       return m.reply(
-        `⚠️ *ANTIVIRTEX SUDAH AKTIF*\n\n` +
+        `⚠*Antiviro* *Golpéalo*\n\n` +
           `> Status: *✅ ON*\n` +
-          `> Proteksi anti virtex sudah berjalan di grup ini.`
+          `*Proyecciones de anti @-@ virte*xYa está funcionando en este grupo.`
       );
     }
     if (db.setGroup) db.setGroup(m.chat, { antivirtex: true });
     return m.reply(
-      `✅ *ANTIVIRTEX DIAKTIFKAN*\n\n` +
-        `> Pesan yang terdeteksi mengandung virtex / karakter perusak akan otomatis dihapus oleh bot.\n` +
-        `> Gunakan \`${p}antivirtex off\` untuk menonaktifkan.`
+      `✅*ANTIVIRTEX Activado*\n\n` +
+        `El mensaje detestable está embarazada de virtex- El carácter carpintería de la automatización está siendo remolcado por las botas.\n` +
+        `> Usa \`${p}antivistaxapagado\`para desactivando.`
     );
   }
 
   if (mode === 'off') {
     if (!currentStatus) {
       return m.reply(
-        `⚠️ *ANTIVIRTEX SUDAH NONAKTIF*\n\n` +
+        `⚠*Antíviro* *Te quiero, nena*\n\n` +
           `> Status: *❌ OFF*\n` +
-          `> Proteksi anti virtex tidak aktif di grup ini.`
+          `*Proyecciones de anti @-@ virte*xFuera de la red.`
       );
     }
     if (db.setGroup) db.setGroup(m.chat, { antivirtex: false });
-    return m.reply(`❌ *ANTIVIRTEX DINONAKTIFKAN*\n\n> Bot tidak akan menghapus pesan virtex lagi.`);
+    return m.reply(`❌*ANTIVIRTEX Desactivado*\n\nNunca olvidaré un mensaje virtoxotra vez.`);
   }
 
   const status = currentStatus ? '✅ AKTIF' : '❌ NONAKTIF';
@@ -93,9 +93,9 @@ async function handler(m, context) {
       `╭┈┈⬡「 📋 *STATUS* 」\n` +
       `┃ 🔔 Status: ${status}\n` +
       `╰┈┈⬡\n\n` +
-      `> *Panduan:*\n` +
-      `> \`${p}antivirtex on\` — Aktifkan proteksi\n` +
-      `> \`${p}antivirtex off\` — Nonaktifkan proteksi`
+      `> *Guia:*\n` +
+      `> \`${p}antivistaxon\` —Activa proteksi\n` +
+      `> \`${p}antivistaxapagado\` —Desactiva proteksi`
   );
 }
 

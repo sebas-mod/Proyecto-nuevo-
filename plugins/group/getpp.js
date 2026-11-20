@@ -36,7 +36,7 @@ async function handler(m, { sock }) {
         ppUrl = 'https://files.catbox.moe/ejy4ky.jpg'
     }
 
-    await sock.sendMedia(m.chat, ppUrl, `Foto profil milik @${targetNum}`, m, {
+    await sock.sendMedia(m.chat, ppUrl, `Perfil de foto de una foto @${targetNum}`, m, {
         type: 'image',
         mentions: [target]
     })

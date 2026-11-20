@@ -4,7 +4,7 @@ const pluginConfig = {
     name: 'goodbyeall',
     alias: ['gball', 'globalgoodbye', 'leaveall'],
     category: 'owner',
-    description: 'Aktifkan/nonaktifkan goodbye di semua grup',
+    description: 'Activar / desactivar el adiós en todo el grupo',
     usage: '.goodbyeall <on/off>',
     example: '.goodbyeall on',
     isOwner: true,
@@ -24,7 +24,7 @@ async function handler(m, { sock }) {
     if (!action || !['on', 'off'].includes(action)) {
         return m.reply(
             `👋 *ɢᴏᴏᴅʙʏᴇ ɢʟᴏʙᴀʟ*\n\n` +
-            `> Aktifkan/nonaktifkan goodbye di SEMUA grup sekaligus\n\n` +
+            `BUENAS DE BUENAS DE LA GRUPO KENA\n\n` +
             `╭┈┈⬡「 📋 *ᴄᴀʀᴀ ᴘᴀᴋᴀɪ* 」\n` +
             `┃ ${m.prefix}goodbyeall on\n` +
             `┃ ${m.prefix}goodbyeall off\n` +
@@ -51,19 +51,19 @@ async function handler(m, { sock }) {
             return m.reply(
                 `✅ *ɢᴏᴏᴅʙʏᴇ ɢʟᴏʙᴀʟ ᴏɴ*\n\n` +
                 `╭┈┈⬡「 📊 *ʀᴇsᴜʟᴛ* 」\n` +
-                `┃ 🌐 Total Grup: *${count}*\n` +
-                `┃ ✅ Goodbye: *AKTIF*\n` +
+                `┃ 🌐Top Grupo: *${count}*\n` +
+                `┃ ✅Goodbye: *Activo*\n` +
                 `╰┈┈┈┈┈┈┈┈⬡\n\n` +
-                `> Member yang keluar akan dikirim pesan perpisahan!`
+                `¡La fiesta de salida será enviada un mensaje de despedida!`
             )
         } else {
             return m.reply(
                 `❌ *ɢᴏᴏᴅʙʏᴇ ɢʟᴏʙᴀʟ ᴏꜰꜰ*\n\n` +
                 `╭┈┈⬡「 📊 *ʀᴇsᴜʟᴛ* 」\n` +
-                `┃ 🌐 Total Grup: *${count}*\n` +
-                `┃ ❌ Goodbye: *NONAKTIF*\n` +
+                `┃ 🌐Top Grupo: *${count}*\n` +
+                `┃ ❌Goodbye: *Inactivo*\n` +
                 `╰┈┈┈┈┈┈┈┈⬡\n\n` +
-                `> Goodbye dinonaktifkan di semua grup.`
+                `*Adiós está desactivado en todo el grupo.*`
             )
         }
     } catch (error) {

@@ -114,10 +114,10 @@ async function handler(m, { sock }) {
     if (!downloadFn) {
         return m.reply(
             `❌ *ɢᴀɢᴀʟ*\n\n` +
-            `> Tidak ada sticker yang terdeteksi!\n\n` +
-            `*Cara penggunaan:*\n` +
-            `> 1. Kirim sticker + caption \`${m.prefix}tovideo\`\n` +
-            `> 2. Reply sticker dengan \`${m.prefix}tovideo\``
+            `¡No detecten pegatinas!\n\n` +
+            `*Como usarlo:*\n` +
+            `Kpensmacker + capción\`${m.prefix}tovideo\`\n` +
+            `Responder pegatina con\`${m.prefix}tovideo\``
         )
     }
 
@@ -128,7 +128,7 @@ async function handler(m, { sock }) {
 
         if (!buffer || buffer.length === 0) {
             await m.react('❌')
-            return m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> Tidak dapat mengunduh sticker.`)
+            return m.reply(`❌*ɢᴀɢᴀʟ*\n\nNo se pueden descargar pegatinas.`)
         }
 
         const animated = isAnimatedWebp(buffer)
@@ -138,7 +138,7 @@ async function handler(m, { sock }) {
             const pngBuffer = await _sharp2.default.call(void 0, buffer).png().toBuffer()
             await sock.sendMessage(m.chat, {
                 image: pngBuffer,
-                caption: `✅ *ʙᴇʀʜᴀsɪʟ*\n\n> Sticker statis → gambar`
+                caption: `✅*ʙᴇʀʜᴀSɪʟ*\n\n*Static Sticker*→imagen`
             }, { quoted: m })
             await m.react('✅')
             return
@@ -146,14 +146,14 @@ async function handler(m, { sock }) {
         const gifBuffer = await webpToGif(buffer)
         if (!gifBuffer) {
             await m.react('❌')
-            return m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> Sticker tidak bisa dikonversi (tidak animated)`)
+            return m.reply(`❌*ɢᴀɢᴀʟ*\n\n*La pegatina no puede ser conversada*`)
         }
 
         const mp4Buffer = await gifToMp4(gifBuffer)
 
         if (!mp4Buffer || mp4Buffer.length < 100) {
             await m.react('❌')
-            return m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> Video output kosong`)
+            return m.reply(`❌*ɢᴀɢᴀʟ*\n\n*Exducciones de vídeo vacio*`)
         }
 
         await sock.sendMedia(m.chat, mp4Buffer, null, m, {

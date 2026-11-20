@@ -31,7 +31,7 @@ async function handler(m, { sock }) {
     const hours = Math.floor(remaining / (1000 * 60 * 60));
     const minutes = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
     return m.reply(
-      `🕕 *ᴄᴏᴏʟᴅᴏᴡɴ*\n\n> Kamu sudah klaim hari ini.\n> Tunggu: *${hours} jam ${minutes} menit* lagi.`,
+      `🕕*ᴄᴏᴏʟᴅᴏᴡɴ*\n\n- Sí, hoy estás a la guardia.\n> 91; Gasps &#93;${hours}hora${minutes}minuto* otra vez.`,
     );
   }
 
@@ -55,10 +55,10 @@ async function handler(m, { sock }) {
   txt += `> ${greeting}, @${m.sender.split("@")[0]}\n\n`;
   txt += `╭┈┈⬡「 🎁 *ʀᴇᴡᴀʀᴅs* 」\n`;
   txt += `┃ 🚄 Exp: *+${expReward}*\n`;
-  txt += `┃ 💰 Koin: *+${moneyReward.toLocaleString("id-ID")}*\n`;
+  txt += `┃ 💰Monedas: *+${moneyReward.toLocaleString("id-ID")}*\n`;
   txt += `┃ 🥤 Potion: *+${potionReward}*\n`;
   txt += `╰┈┈┈┈┈┈┈┈⬡\n\n`;
-  txt += `> Jangan lupa claim lagi besok!`;
+  txt += `¡No olvides la reclamación otra vez!`;
 
   await m.reply(txt, { mentions: [m.sender] });
 }

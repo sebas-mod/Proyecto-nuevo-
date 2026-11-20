@@ -5,7 +5,7 @@ const pluginConfig = {
   name: "nyapu",
   alias: ["cleaning", "bersih"],
   category: "rpg",
-  description: "Nyapu jalan, siapa tau nemu barang jatuh!",
+  description: "Dulce el camino, que sabe quién más cae!",
   usage: ".nyapu",
   example: ".nyapu",
   isOwner: false,
@@ -27,7 +27,7 @@ async function handler(m, { sock }) {
   user.rpg.stamina = _nullishCoalesce(user.rpg.stamina, () => ( 100));
 
   if (user.rpg.stamina < staminaCost) {
-    return m.reply(`Tangan pegel megang sapu terus! 😖\n\nNyapu butuh *${staminaCost} Stamina*, sisa stamina kamu *${user.rpg.stamina}*. Istirahat di bawah pohon dulu! 🌳`);
+    return m.reply(`¡La manija de bagel sigue adelante!😖\n\nNyapu necesito *${staminaCost}La resistencia, la restante te contamina${user.rpg.stamina}" Descanso en el árbol primero!🌳`);
   }
 
   user.rpg.stamina -= staminaCost;
@@ -41,7 +41,7 @@ async function handler(m, { sock }) {
     const goldFound = Math.floor(Math.random() * 50000) + 15000;
     user.koin = (user.koin || 0) + goldFound;
     await m.react("💍");
-    return m.reply(`HOKI PARAH! NEMU CINCIN EMAS JATUH! 💍✨\n\nPas lagi nyapu pinggir trotoar, kamu nemu cincin emas dan langsung dijual!\n💵 Pendapatan Kaget: *+Rp ${goldFound.toLocaleString("id-ID")}*\n⚡ Stamina: -${staminaCost}\n\nRejeki nomplok emang nggak kemana! 🥳`);
+    return m.reply(`¡¡Paráfico!💍✨\n\nCuando usted está fuera de zanahoria, usted encuentra anillos de oro y langrene en la venta!\n💵Ingremos abatidos: * + Rp${goldFound.toLocaleString("id-ID")}*\n⚡ Stamina: -${staminaCost}\n\n¡Te vas a acostar con tu pelo!🥳`);
   }
 
   const earning = Math.floor(Math.random() * 8000) + 3000;
@@ -50,7 +50,7 @@ async function handler(m, { sock }) {
   await _ourinleveljs.addExpWithLevelCheck.call(void 0, sock, m, db, user, expGain);
 
   await m.react("✅");
-  m.reply(`ALHAMDULILLAH SELESAI BERES-BERES! 🧹✨\n\n💵 Gaji Harian: *+Rp ${earning.toLocaleString("id-ID")}*\n📈 EXP: *+${expGain}*\n⚡ Stamina: -${staminaCost}\n\nBumi makin bersih dan asri! 🌍`);
+  m.reply(`¡Alhameliah SETIES BERES - BERES!🧹✨\n\n💵Día paga: * + Rp${earning.toLocaleString("id-ID")}*\n📈 EXP: *+${expGain}*\n⚡ Stamina: -${staminaCost}\n\n¡Bumi hace musgo y levadura!🌍`);
 }
 
 exports.config = pluginConfig; exports.handler = handler;

@@ -4,7 +4,7 @@ const pluginConfig = {
   name: "spotifydl",
   alias: ["spdl", "spotify-dl", "spotdl"],
   category: "download",
-  description: "Unduh lagu favoritmu langsung dari Spotify tanpa ribet!",
+  description: "Su canción favorita es de Spotify sin el cinturón!",
   usage: ".spdl <link>",
   example: ".spdl https://open.spotify.com/track/...",
   cooldown: 15,
@@ -28,7 +28,7 @@ async function handler(m, { sock }) {
 
     if (!data.status || !data.result || !data.result.url) {
       await m.react("❌");
-      return m.reply("⚠️ *Gagal mengambil lagu!* \n\nServer tidak merespon dengan tautan unduhan yang valid.");
+      return m.reply("⚠¡Aguanta para llevar la canción!\n\nServidor no responde a las cadenas de contrabando válidas.");
     }
 
     const { title, artist, url } = data.result;
@@ -46,7 +46,7 @@ async function handler(m, { sock }) {
   } catch (error) {
     console.error("[Spotify DL Error]", error);
     await m.react("❌");
-    m.reply("😔 *Terjadi kesalahan sistem saat memproses tautan Spotify tersebut.* Mohon coba lagi nanti ya!");
+    m.reply("😔* It 's a misconception when processing the Spotify Testimony. * Por favor, inténtelo de nuevo más tarde!");
   }
 }
 

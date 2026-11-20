@@ -27,10 +27,10 @@ async function handler(m, { sock }) {
     return m.reply(
       `📞 *Anti Call*\n\n` +
         `> Status: *${current ? "Aktif ✅" : "Nonaktif ❌"}*\n\n` +
-        `*PENGGUNAAN:*\n` +
+        `*Uso:*\n` +
         `> *${m.prefix}anticall on* — Aktifkan\n` +
         `> *${m.prefix}anticall off* — Nonaktifkan\n\n` +
-        `_Bot akan otomatis menolak panggilan masuk_`
+        `*A la automatización* *para negar llamadas de entrada*`
     );
   }
 
@@ -38,8 +38,8 @@ async function handler(m, { sock }) {
     db.setting("antiCall", true);
     const ctx = _ourincontextjs.saluranCtx.call(void 0, );
     return m.reply(
-      `📞 *Anti Call Aktif*\n\n` +
-        `> Bot akan otomatis menolak panggilan masuk`,
+      `📞Anti llamadas en\n\n` +
+        `*A automatización* *dice llamar a...*`,
       { contextInfo: ctx }
     );
   }
@@ -47,13 +47,13 @@ async function handler(m, { sock }) {
   if (option === "off") {
     db.setting("antiCall", false);
     return m.reply(
-      `📞 *Anti Call Nonaktif*\n\n` +
-        `> Bot tidak akan menolak panggilan masuk`
+      `📞Anti llamadas no activas\n\n` +
+        `Nunca negaré una llamada.`
     );
   }
 
   return m.reply(
-    `❌ *Opsi Tidak Valid*\n\n> Gunakan *${m.prefix}anticall on* atau *${m.prefix}anticall off*`
+    `❌Opsi inválido\n\n*Uso*${m.prefix}anticall on * or *${m.prefix}anticall off*`
   );
 }
 

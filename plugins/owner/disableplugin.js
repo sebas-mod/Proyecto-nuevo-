@@ -30,7 +30,7 @@ async function findPluginFile(pluginName) {
     for (const file of files) {
       try {
         const filePath = _path2.default.join(categoryPath, file);
-        const plugin = await Promise.resolve().then(() => _interopRequireWildcard(require(`file://${filePath.replace(/\\/g, "/")}`)));
+        const plugin = await Promise.resolve().then(() => _interopRequireWildcard(require(`archivo://${filePath.replace(/\\/g, "/")}`)));
 
         if (!plugin.config) continue;
 
@@ -57,8 +57,8 @@ async function handler(m, { sock }) {
   if (!pluginName) {
     return m.reply(
       `🔌 *ᴅɪsᴀʙʟᴇ ᴘʟᴜɢɪɴ*\n\n` +
-        `> Masukkan nama plugin yang ingin dinonaktifkan\n\n` +
-        `*Contoh:*\n` +
+        `Aquí. Ponga un nombre para que los plugins sean desactivados.\n\n` +
+        `*Ejemplo:*\n` +
         `> \`${m.prefix}disableplugin sticker\`\n` +
         `> \`${m.prefix}disableplugin tiktok\``,
     );
@@ -67,13 +67,13 @@ async function handler(m, { sock }) {
   const found = await findPluginFile(pluginName);
 
   if (!found) {
-    return m.reply(`❌ Plugin *${pluginName}* tidak ditemukan!`);
+    return m.reply(`❌ Plugin *${pluginName}* no encontrado!`);
   }
 
   const { filePath, plugin, category, file } = found;
 
   if (plugin.config.isEnabled === false) {
-    return m.reply(`⚠️ Plugin *${pluginName}* sudah dinonaktifkan!`);
+    return m.reply(`⚠️ Plugin *${pluginName}* It 's been deactivated!`);
   }
 
   try {
@@ -88,10 +88,10 @@ async function handler(m, { sock }) {
         `╭┈┈⬡「 📋 *ᴅᴇᴛᴀɪʟ* 」\n` +
         `┃ 📦 Plugin: *${plugin.config.name}*\n` +
         `┃ 📁 Category: *${category}*\n` +
-        `┃ 📄 File: *${file}*\n` +
+        `┃ 📄Archivo: *${file}*\n` +
         `┃ 🔴 Status: *Disabled*\n` +
         `╰┈┈⬡\n\n` +
-        `> Restart bot atau gunakan hot reload untuk apply.`,
+        `*Reiniciar bot o usar la recarga caliente para aplicar.*`,
     );
   } catch (error) {
     await m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));

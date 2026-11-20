@@ -8,7 +8,7 @@ const pluginConfig = {
   name: "yts",
   alias: ["ytsearch", "youtubesearch"],
   category: "search",
-  description: "Mencari video di YouTube berdasarkan kata kunci dan menampilkan detail lengkap beserta thumbnail.",
+  description: "Buscar videos en YouTube basado en palabras clave y mostrar detalles completos con la miniatura.",
   usage: ".yts <query>",
   example: ".yts lagu pop terbaru",
   isOwner: false,
@@ -22,7 +22,7 @@ const pluginConfig = {
 
 async function handler(m, { sock, text }) {
   if (!text) {
-    return m.reply("❌ *Waduh, kata kuncinya kosong!*\n\nKamu harus memasukkan kata kunci judul video yang ingin dicari ya. \n\nContoh penggunaan: `.yts lagu galau indonesia`");
+    return m.reply("❌* Wallow, dijo el kuncinkinya vacio!\n\nUsted debe poner en un vídeo @-@ contraseña líder que desea buscar.\n\nEjemplo de uso:`. yts canción de la unwinninonesia.`");
   }
 
   await m.react("🕕");
@@ -33,7 +33,7 @@ async function handler(m, { sock, text }) {
 
     if (!videos || videos.length === 0) {
       await m.react("❌");
-      return m.reply("⚠️ *Maaf banget, pencarian tidak menemukan hasil apa pun.* \n\nMungkin kata kuncinya terlalu spesifik. Coba gunakan kata kunci lain yang lebih umum ya!");
+      return m.reply("⚠Lo sentimos, pero no podemos encontrar resultados.\n\nTal vez la palabra la clave es demasiado específica.");
     }
 
     const firstVideo = videos[0];
@@ -41,21 +41,21 @@ async function handler(m, { sock, text }) {
     const imageResponse = await _axios2.default.get(firstVideo.thumbnail, { responseType: "arraybuffer" });
     const thumbnailBuffer = await _sharp2.default.call(void 0, imageResponse.data).resize(300, 170).jpeg().toBuffer();
 
-    const contentText = `✨ *HASIL PENCARIAN YOUTUBE* ✨
+    const contentText = `✨* PRESIDENTE DE SU TURNING*✨
 
-Halo! Ini dia hasil pencarian teratas yang aku temukan berdasarkan kata kunci yang kamu berikan. 
+Aquí viene los resultados de búsqueda de loto que encontré basado en las palabras clave que diste.
 
-🔎 *Kata Kunci Pencarian*: ${text}
+🔎* La búsqueda clave *:${text}
 🎬 *Judul Video*: ${firstVideo.title}
-📺 *Nama Channel*: ${firstVideo.author.name}
-⏱️ *Durasi Video*: ${firstVideo.timestamp}
-👁️ *Jumlah Penonton*: ${firstVideo.views} views
-📅 *Waktu Diunggah*: ${firstVideo.ago}
-🔗 *Tautan Video*: ${firstVideo.url}
+📺*Nombre Channel*:${firstVideo.author.name}
+⏱*Dubasi Video*${firstVideo.timestamp}
+👁️ *Cantidad Penonton*: ${firstVideo.views} views
+📅*Tiempo Subido*:${firstVideo.ago}
+🔗*Enlace Video*:${firstVideo.url}
 
-*Catatan Tambahan*: Thumbnail dari video ini sudah aku sematkan di bagian atas pesan (peta lokasi) sesuai permintaanmu. Keren kan? 😎
+Ya he hecho está nota de vídeo sobre el mensaje que solicitó.😎
 
-Pilih salah satu tombol di bawah ini untuk langsung mengunduh hasil video atau audio-nya!`;
+¡Elija uno de estos botones para la descarga o el audio!`;
 
     const content = {
       buttonsMessage: {
@@ -74,7 +74,7 @@ Pilih salah satu tombol di bawah ini untuk langsung mengunduh hasil video atau a
         locationMessage: {
           jpegThumbnail: thumbnailBuffer,
           name: firstVideo.title,
-          address: `📺 Channel: ${firstVideo.author.name} | ⏱️ Durasi: ${firstVideo.timestamp}`
+          address: `📺 Channel: ${firstVideo.author.name}♪⏱️ Duración:${firstVideo.timestamp}`
         },
         contentText: contentText,
         footerText: _configjs2.default.bot.name,
@@ -92,7 +92,7 @@ Pilih salah satu tombol di bawah ini untuk langsung mengunduh hasil video atau a
   } catch (error) {
     console.error(error);
     await m.react("❌");
-    m.reply("😔 *Aduh, sepertinya ada masalah di sistemku.* \n\nTerjadi kesalahan saat mencoba mencari video tersebut di YouTube. Mohon tunggu beberapa saat dan coba lagi nanti ya!");
+    m.reply("😔* Ouch, parece que hay un problema en mi sistema. *\n\nFue un error tratar de encontrar el video en YouTube.");
   }
 }
 

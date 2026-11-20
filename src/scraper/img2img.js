@@ -17,7 +17,7 @@ async function Uguu(buffer, filename) {
     return res.data.files[0].url;
   }
 
-  throw new Error("Upload ke Uguu gagal");
+  throw new Error("Uplad to Uguu failed");
 }
 
 async function Img2Img(prompt, imageBuffer, filename = "upload.png") {
@@ -32,7 +32,7 @@ async function Img2Img(prompt, imageBuffer, filename = "upload.png") {
   if (!pollUrl) {
     return {
       status: false,
-      error: _optionalChain([start, 'access', _10 => _10.data, 'optionalAccess', _11 => _11.error]) || "Gagal memulai proses img2img",
+      error: _optionalChain([start, 'access', _10 => _10.data, 'optionalAccess', _11 => _11.error]) || "Steenner inicia el proceso de img2img",
     };
   }
 
@@ -43,7 +43,7 @@ async function Img2Img(prompt, imageBuffer, filename = "upload.png") {
     const poll = await _axios2.default.get(pollUrl, { timeout: 30000 });
 
     if (!_optionalChain([poll, 'access', _12 => _12.data, 'optionalAccess', _13 => _13.status])) {
-      return { status: false, error: "Polling gagal" };
+      return { status: false, error: "Polling fallido" };
     }
 
     if (_optionalChain([poll, 'access', _14 => _14.data, 'access', _15 => _15.data, 'optionalAccess', _16 => _16.status]) === "Success") {
@@ -52,14 +52,14 @@ async function Img2Img(prompt, imageBuffer, filename = "upload.png") {
     }
 
     if (_optionalChain([poll, 'access', _17 => _17.data, 'access', _18 => _18.data, 'optionalAccess', _19 => _19.status]) === "Failed") {
-      return { status: false, error: "Proses img2img gagal" };
+      return { status: false, error: "Prooses img2img falló" };
     }
 
     await new Promise((r) => setTimeout(r, 2000));
   }
 
   if (!result) {
-    return { status: false, error: "Timeout menunggu hasil" };
+    return { status: false, error: "Timeout espera resultados" };
   }
 
   return { status: true, prompt, imageUrl, result };

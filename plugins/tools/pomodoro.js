@@ -12,7 +12,7 @@ const pluginConfig = {
   name: 'pomodoro',
   alias: ['pomo', 'fokus', 'stoppomodoro'],
   category: 'tools',
-  description: 'Timer produktivitas Pomodoro: fokus, istirahat, dan pengingat otomatis',
+  description: 'Temporizador de productividad Pomodoro: enfoque, descanso, y auto @-@ recordatorio',
   usage: '.pomodoro [menit_fokus] [menit_istirahat] | .pomodoro status | .pomodoro stop',
   example: '.pomodoro 25 5',
   isOwner: false,
@@ -39,9 +39,9 @@ async function handler(m, context) {
   };
 
   if (command === 'stoppomodoro' || ['stop', 'berhenti', 'batal'].includes(a)) {
-    if (!cur) return m.reply('⚠️ Tidak ada sesi Pomodoro yang sedang berjalan.');
+    if (!cur) return m.reply('⚠No hay pomdoro sesi caminando por ahí.');
     stop();
-    return m.reply('🛑 *Sesi Pomodoro dihentikan.* Istirahat yang cukup dan semangat kembali nanti!');
+    return m.reply('🛑* Sesi Pomodoro es detenido.');
   }
 
   if (['status', 'cek'].includes(a)) {
@@ -50,16 +50,16 @@ async function handler(m, context) {
         ? `🍅 *STATUS POMODORO*\n\n` +
             `┣ 📌 Fase: *${cur.phase.toUpperCase()}*\n` +
             `┣ 🔄 Sesi: *${cur.cycle}/4*\n` +
-            `┗ ⏳ Sisa Waktu: *${left(cur)}*`
-        : '⚠️ Tidak ada sesi Pomodoro yang sedang berjalan.'
+            `┗ ⏳SUSA SEKtu: *${left(cur)}*`
+        : '⚠No hay pomdoro sesi caminando por ahí.'
     );
   }
 
   if (cur) {
     return m.reply(
-      `⚠️ Sesi Pomodoro kamu masih berjalan!\n` +
-        `• Fase: *${cur.phase}* (sisa ${left(cur)})\n` +
-        `• Hentikan dengan: \`${p}pomodoro stop\``
+      `⚠¡A Sesi Pomodoro sigue caminando!\n` +
+        `• Fase: *${cur.phase}* (restante${left(cur)})\n` +
+        `•Hentikan con:\`${p}pomodoro stop\``
     );
   }
 
@@ -87,13 +87,13 @@ async function handler(m, context) {
       if (phase === 'fokus') {
         if (r.cycle >= 4) {
           runs.delete(key);
-          return say(`🍅 ${tag} 🎉 *Luar Biasa! 4 Sesi Pomodoro Selesai!*\nAmbil istirahat panjang 15-30 menit untuk merefresh pikiran.`);
+          return say(`🍅 ${tag} 🎉" N.o 91; N.o.: " El Gran Año del Año ".\nTome un descanso de 15 @-@ 30 @-@ minuto para refrescar su mente.`);
         }
-        say(`🍅 ${tag} ⏰ *Waktu Fokus Selesai!*\nSilakan istirahat *${r.brk} menit* — regangkan tubuh dan minum air.`);
+        say(`🍅 ${tag} ⏰>#91; ¡El tiempo de enfoque se ha acabado!\nPor favor, descansa.${r.brk}minuto*—Estira tu cuerpo y bebe agua.`);
         go('istirahat', r.brk);
       } else {
         r.cycle++;
-        say(`🍅 ${tag} 🔔 *Waktu Istirahat Habis!*\nMasuk ke *Sesi ${r.cycle}/4*: Fokus *${r.focus} menit*, mulai sekarang!`);
+        say(`🍅 ${tag} 🔔> 91; Tiempo para el resto de Agotado! &#93;\nVe al Sesi${r.cycle}/4*: Fokus *${r.focus}¡Minito, empieza ahora!`);
         go('fokus', r.focus);
       }
     }, min * 60000);
@@ -103,12 +103,12 @@ async function handler(m, context) {
   go('fokus', focus);
 
   return m.reply(
-    `🍅 *POMODORO TIMER DIMULAI!*\n\n` +
-      `┣ 🎯 Fokus : *${focus} menit*\n` +
-      `┣ ☕ Istirahat : *${brk} menit*\n` +
+    `🍅 *POMODORO TIMER Comenzó!*\n\n` +
+      `┣ 🎯 Fokus : *${focus}minuto*\n` +
+      `┣ ☕ Descanso: *${brk}minuto*\n` +
       `┣ 🔄 Total : 4 Siklus\n` +
-      `┗ 🔔 Notifikasi akan dikirim otomatis ke chat ini.\n\n` +
-      `_Perintah: \`${p}pomodoro status\` • \`${p}pomodoro stop\`_`
+      `┗ 🔔Las notificaciones serán enviadas a este gráfico.\n\n` +
+      `Comando:\`${p}pomodoro status\` • \`${p}pomodoro stop\`_`
   );
 }
 

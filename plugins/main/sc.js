@@ -5,7 +5,7 @@ const pluginConfig = {
     name: "sc",
     alias: ["script"],
     category: "main",
-    description: "Link script bot wa terbaru",
+    description: "Nuevo script de enlace wa bot",
     usage: ".sc",
     example: ".sc",
     isPremium: false,
@@ -21,10 +21,10 @@ const pluginConfig = {
 async function handler(m, { sock }) {
     return await sock.sendMessage(m.chat, {
         image: _ourinassetmanagerjs.getAssetBuffer.call(void 0, "ourin"),
-        caption: `🌾 Halo kak *${m.pushName}*
+        caption: `🌾 Hola hermano *${m.pushName}*
         
-Untuk asli dari bot ini, kamu bisa dapatkan melalui link, nanti kamu tinggal cari kata kunci *OURIN MD*`,
-        footer: "💬 Link ini nanti akan mengarahkan kamu ke Youtube *Zanspiw*",
+De hecho, desde estas botas, puede atravesar los enlaces y, a continuación, puede encontrar la palabra clave " OURIN MENE ".`,
+        footer: "💬Este enlace te llevará a Youtube.",
         interactiveButtons: [
             {
                 name: "cta_url",

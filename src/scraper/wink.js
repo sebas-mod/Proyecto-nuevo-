@@ -124,14 +124,14 @@ async function getMaatSign() {
   });
 
   const res = await api.get(
-    `/api/file/get_maat_sign.json?${params.toString()}`,
+    `/fuego/archivo/get_maat_sign.json?${params.toString()}`,
     {
       headers: traceHeaders(),
     },
   );
 
   if (res.status >= 400 || _optionalChain([res, 'access', _ => _.data, 'optionalAccess', _2 => _2.code]) !== 0) {
-    throw new Error(`get_maat_sign gagal: ${JSON.stringify(res.data)}`);
+    throw new Error(`get_maat_sign fallido:${JSON.stringify(res.data)}`);
   }
 
   return res.data.data;
@@ -166,7 +166,7 @@ async function getUploadPolicy(sign) {
   );
 
   if (res.status >= 400 || !Array.isArray(res.data) || !_optionalChain([res, 'access', _3 => _3.data, 'access', _4 => _4[0], 'optionalAccess', _5 => _5.qiniu])) {
-    throw new Error(`upload policy gagal: ${JSON.stringify(res.data)}`);
+    throw new Error(`política de cargas falló:${JSON.stringify(res.data)}`);
   }
 
   return res.data[0].qiniu;
@@ -198,13 +198,13 @@ async function uploadToQiniu(policy, filePath) {
 
   if (res.status >= 400) {
     throw new Error(
-      `upload qiniu gagal HTTP ${res.status}: ${typeof res.data === "string" ? res.data : JSON.stringify(res.data)}`,
+      `subidas qiniu falló HTTP${res.status}: ${typeof res.data === "string" ? res.data : JSON.stringify(res.data)}`,
     );
   }
 
   if (!_optionalChain([res, 'access', _6 => _6.data, 'optionalAccess', _7 => _7.url]) && !_optionalChain([res, 'access', _8 => _8.data, 'optionalAccess', _9 => _9.data])) {
     throw new Error(
-      `upload qiniu response tidak valid: ${JSON.stringify(res.data)}`,
+      `subidas qiniu son inválidas:${JSON.stringify(res.data)}`,
     );
   }
 
@@ -234,7 +234,7 @@ async function getVideoInfo(fileKey) {
   );
 
   if (res.status >= 400 || _optionalChain([res, 'access', _10 => _10.data, 'optionalAccess', _11 => _11.code]) !== 0) {
-    throw new Error(`video info gagal: ${JSON.stringify(res.data)}`);
+    throw new Error(`la información de vídeo falló:${JSON.stringify(res.data)}`);
   }
 
   return res.data.data;
@@ -258,7 +258,7 @@ async function startTranscode(fileKey) {
   );
 
   if (res.status >= 400 || _optionalChain([res, 'access', _12 => _12.data, 'optionalAccess', _13 => _13.code]) !== 0 || !_optionalChain([res, 'access', _14 => _14.data, 'optionalAccess', _15 => _15.data, 'optionalAccess', _16 => _16.id])) {
-    throw new Error(`transcode start gagal: ${JSON.stringify(res.data)}`);
+    throw new Error(`inicio de transcodificación:${JSON.stringify(res.data)}`);
   }
 
   return res.data.data.id;
@@ -271,14 +271,14 @@ async function queryTranscode(id) {
   });
 
   const res = await api.get(
-    `/api/file/video_trans_query.json?${params.toString()}`,
+    `/fuego/archivo/video_trans_query.json?${params.toString()}`,
     {
       headers: traceHeaders(),
     },
   );
 
   if (res.status >= 400 || _optionalChain([res, 'access', _17 => _17.data, 'optionalAccess', _18 => _18.code]) !== 0) {
-    throw new Error(`transcode query gagal: ${JSON.stringify(res.data)}`);
+    throw new Error(`la consulta trancode falló:${JSON.stringify(res.data)}`);
   }
 
   return res.data.data;
@@ -357,7 +357,7 @@ async function delivery(sourceUrl, videoTranscoded, taskName) {
   });
 
   if (res.status >= 400 || _optionalChain([res, 'access', _26 => _26.data, 'optionalAccess', _27 => _27.code]) !== 0) {
-    throw new Error(`delivery gagal: ${JSON.stringify(res.data)}`);
+    throw new Error(`delivery fallido:${JSON.stringify(res.data)}`);
   }
 
   const data = res.data.data || {};
@@ -376,7 +376,7 @@ async function queryBatch(msgId) {
   });
 
   const res = await api.get(
-    `/api/meitu_ai/query_batch.json?${params.toString()}`,
+    `/fuego/meitu_ai/query_batch.json?${params.toString()}`,
     {
       headers: {
         ...traceHeaders(),
@@ -386,7 +386,7 @@ async function queryBatch(msgId) {
   );
 
   if (res.status >= 400 || _optionalChain([res, 'access', _28 => _28.data, 'optionalAccess', _29 => _29.code]) !== 0) {
-    throw new Error(`query batch gagal: ${JSON.stringify(res.data)}`);
+    throw new Error(`query batch falló:${JSON.stringify(res.data)}`);
   }
 
   return res.data.data;
@@ -455,13 +455,13 @@ async function waitResult(firstMsgId, maxTry = 120, delayMs = 5000) {
     }
 
     if (errorCode && errorCode !== 29901 && errorCode !== 0) {
-      throw new Error(`task gagal: ${errorCode} ${errorMsg || ""}`);
+      throw new Error(`task fallido:${errorCode} ${errorMsg || ""}`);
     }
 
     await sleep(delayMs);
   }
 
-  throw new Error(`result belum selesai: ${JSON.stringify(last)}`);
+  throw new Error(`La respuesta no es completa:${JSON.stringify(last)}`);
 }
 
 async function winkEnhance(video, { filename } = {}) {
@@ -478,7 +478,7 @@ async function winkEnhance(video, { filename } = {}) {
   }
 
   if (!_nodefs2.default.existsSync(filePath)) {
-    throw new Error(`File tidak ditemukan: ${filePath}`);
+    throw new Error(`El archivo no se encuentra:${filePath}`);
   }
 
   try {
@@ -502,7 +502,7 @@ async function winkEnhance(video, { filename } = {}) {
 
     if (!firstMsgId) {
       throw new Error(
-        `delivery tidak mengembalikan msg_id: ${JSON.stringify(task.raw)}`,
+        `entrega no devuelve msgdhakid:${JSON.stringify(task.raw)}`,
       );
     }
 

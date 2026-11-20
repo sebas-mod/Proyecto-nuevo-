@@ -23,7 +23,7 @@ class ImgUpscaler {
     form.append("scaleRadio", "2");
 
     const response = await _axios2.default.post(
-      `${this.baseUrl}/api/UpscalerNew/UploadNew`,
+      `${this.baseUrl}/fuego/UpscalerNew/UploadNew`,
       form,
       {
         headers: {
@@ -39,7 +39,7 @@ class ImgUpscaler {
 
   async checkStatus(code) {
     const response = await _axios2.default.post(
-      `${this.baseUrl}/api/UpscalerNew/CheckStatusNew`,
+      `${this.baseUrl}/fuego/UpscalerNew/CheckStatusNew`,
       {
         code,
         scaleRadio: 2,

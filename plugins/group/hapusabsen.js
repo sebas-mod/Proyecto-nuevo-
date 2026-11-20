@@ -2,7 +2,7 @@
     name: 'hapusabsen',
     alias: ['deleteabsen', 'tutupabsen', 'closeabsen', 'resetabsen'],
     category: 'group',
-    description: 'Hapus/tutup sesi absen (admin only)',
+    description: 'Elimina / tup sesi absen ( admin solamente )',
     usage: '.hapusabsen',
     example: '.hapusabsen',
     isOwner: false,
@@ -23,7 +23,7 @@ async function handler(m) {
     if (!global.absensi[chatId]) {
         return m.reply(
             `❌ *ᴛɪᴅᴀᴋ ᴀᴅᴀ ᴀʙsᴇɴ*\n\n` +
-            `> Tidak ada sesi absen di grup ini!`
+            `No hay abseness sesi en este grupo!`
         )
     }
     
@@ -33,11 +33,11 @@ async function handler(m) {
     delete global.absensi[chatId]
     
     await m.reply(
-        `✅ *ABSEN DITUTUP!*\n\n` +
+        `✅*ABSEN Cerrado!*\n\n` +
         `Penyebab?\n` +
         `📝 ${absen.keterangan}\n` +
-        `👥 Total hadir: ${totalPeserta}\n\n` +
-        `Sesi absen telah dihapus.`
+        `👥Parte superior de la lista:${totalPeserta}\n\n` +
+        `La ausencia de la señal ha sido comprometida.`
     )
 }
 

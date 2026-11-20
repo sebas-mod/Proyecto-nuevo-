@@ -42,8 +42,8 @@ async function handler(m, { sock }) {
     text += `╰┈┈┈┈┈┈┈┈⬡\n\n`
     
     text += `Total: *${customWords.length + defaultWords.length}* kata\n`
-    text += `\`.addtoxic <kata>\` untuk tambah\n`
-    text += `\`.deltoxic <kata>\` untuk hapus`
+    text += `\`Addto.xic<kata>\`para anade\n`
+    text += `\`- Delto.xic<kata>\`para elimina`
     
     await m.reply(text)
 }

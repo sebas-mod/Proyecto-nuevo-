@@ -3,7 +3,7 @@ const pluginConfig = {
   name: "sellall",
   alias: ["jualsemua", "quicksell"],
   category: "rpg",
-  description: "Jual semua item yang bisa dijual sekaligus",
+  description: "Vende todos los utems que se pueden vender de inmediato",
   usage: ".sellall",
   example: ".sellall",
   isOwner: false,
@@ -60,7 +60,7 @@ async function handler(m, { sock }) {
   }
 
   if (soldItems.length === 0) {
-    return m.reply(`❌ *ᴛɪᴅᴀᴋ ᴀᴅᴀ ɪᴛᴇᴍ*\n\n> Tidak ada item yang bisa dijual!`);
+    return m.reply(`❌*ᴛɪᴅᴀᴋ ᴀᴅᴀ ɪᴛᴇᴍ*\n\n# Nadie puede venderlo!`);
   }
 
   user.koin = (user.koin || 0) + totalEarned;
@@ -74,7 +74,7 @@ async function handler(m, { sock }) {
     txt += `> ${s.item}: ${s.qty}x = Rp ${s.earned.toLocaleString("id-ID")}\n`;
   }
   if (soldItems.length > 10) {
-    txt += `> ... dan ${soldItems.length - 10} item lainnya\n`;
+    txt += `Sí, y${soldItems.length - 10}objeto otros\n`;
   }
   txt += `\n\n`;
   txt += `> 💵 Total: *Rp ${totalEarned.toLocaleString("id-ID")}*`;

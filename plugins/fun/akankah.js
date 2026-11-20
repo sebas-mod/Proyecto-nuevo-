@@ -2,7 +2,7 @@
     name: 'akankah',
     alias: ['akan', 'will'],
     category: 'fun',
-    description: 'Tanya bot akankah sesuatu terjadi',
+    description: 'Pregunta bot tendría que haber pasado algo',
     usage: '.akankah <pertanyaan>',
     example: '.akankah aku sukses?',
     isOwner: false,
@@ -15,33 +15,33 @@
 };
 
 const answers = [
-    'Ya, pasti akan terjadi!',
-    'Tidak, sepertinya tidak akan.',
-    'Mungkin akan, mungkin tidak.',
-    'InsyaAllah akan terjadi!',
+    '¡Sí, lo hará!',
+    'No, no lo creo.',
+    'Tal vez lo haga, tal vez no lo haga.',
+    '¡La voluntad de Dios se hace!',
     'Hmm, sulit diprediksi.',
     'Pasti! Yakin saja!',
     'Kayaknya nggak deh.',
-    'Akan terjadi kalau kamu mau berusaha.',
+    'Ocurrirá si lo intentas.',
     'Suatu saat nanti, pasti.',
-    'Nggak akan, maaf.',
-    'Tentu akan! Tunggu saja!',
+    'No, lo siento.',
+    '¡Espérame!',
     'Hmm, aku ragu.',
-    'Akan! Percaya sama proses!',
+    '¡Cree en el proceso!',
     'Kemungkinannya kecil.',
-    'Pasti akan, aku yakin!',
-    'Nggak akan, cari yang lain aja.',
-    'Akan, tapi butuh waktu.',
+    '¡Lo haré, estoy seguro!',
+    'No, busca otro.',
+    'Lo haré, pero tomará tiempo.',
     'InsyaAllah!',
-    'Kalau jodoh, pasti akan.',
-    'Akan terjadi di saat yang tepat!'
+    'Usted es un partido, lo hará.',
+    '¡Mercadoá en el nick del tiempo!'
 ];
 
 async function handler(m) {
     const text = _optionalChain([m, 'access', _ => _.text, 'optionalAccess', _2 => _2.trim, 'call', _3 => _3()]);
     
     if (!text) {
-        return m.reply(`🔮 *ᴀᴋᴀɴᴋᴀʜ*\n\n> Masukkan pertanyaan!\n\n*Contoh:*\n> .akankah aku sukses?`);
+        return m.reply(`🔮*ᴀᴋᴀɴᴋᴀʜ*\n\n¡Disfruta de la pregunta!\n\n*Ejemplo:*\nLo siento. ¿Lo lograré?`);
     }
     
     const answer = answers[Math.floor(Math.random() * answers.length)];

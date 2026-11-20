@@ -2,7 +2,7 @@
     name: 'open',
     alias: ['buka', 'opengroup', 'bukagroup'],
     category: 'group',
-    description: 'Membuka grup agar semua member bisa chat',
+    description: 'Abrir el para que grupo Todas las fotos pueden chatear',
     usage: '.open',
     example: '.open',
     isOwner: false,
@@ -23,8 +23,8 @@ async function handler(m, { sock }) {
         if (!groupMeta.announce) {
             await m.reply(
                 `⚠️ *ᴠᴀʟɪᴅᴀsɪ ɢᴀɢᴀʟ*\n\n` +
-                `> Grup sudah dalam keadaan \`terbuka\`.\n` +
-                `> Semua member sudah bisa mengirim pesan.`
+                `Soop ya está en el estado\`abierto\`.\n` +
+                `Todas las fotos están enviando un mensaje.`
             );
             return;
         }
@@ -33,14 +33,14 @@ async function handler(m, { sock }) {
         
         const senderNum = m.sender.split('@')[0];
         
-        const successMsg = `✅ @${senderNum} telah membuka grup ini\n_Sekarang kalian bisa mengirim pesan_`;
+        const successMsg = `✅ @${senderNum}ha abierto este grupo\nAhora puedes enviar un mensaje.`;
         
         await m.reply(successMsg, { mentions: [m.sender] });
         
     } catch (error) {
         await m.reply(
             `❌ *ᴇʀʀᴏʀ*\n\n` +
-            `> Gagal membuka grup.\n` +
+            `♪ Hacer un grupo de personas. ♪\n` +
             `> _${error.message}_`
         );
     }

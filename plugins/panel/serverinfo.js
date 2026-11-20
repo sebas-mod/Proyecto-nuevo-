@@ -48,7 +48,7 @@ function validateServerConfig(serverConfig) {
 function getAvailableServers(pteroConfig) {
     const available = []
     for (let i = 1; i <= 5; i++) {
-        const cfg = pteroConfig[`server${i}`]
+        const cfg = pteroConfig[`servidor${i}`]
         if (_optionalChain([cfg, 'optionalAccess', _3 => _3.domain]) && _optionalChain([cfg, 'optionalAccess', _4 => _4.apikey])) available.push(`v${i}`)
     }
     return available
@@ -71,8 +71,8 @@ async function handler(m, { sock }) {
         const userRole = _ourinrolescpaneljs.getUserRole.call(void 0, m.sender, serverVersion)
         return m.reply(
             `❌ *ᴀᴋsᴇs ᴅɪᴛᴏʟᴀᴋ*\n\n` +
-            `> Kamu tidak punya akses ke *${serverLabel}*\n` +
-            `> Role kamu: *${userRole || 'Tidak ada'}*`
+            `*No tienes acento*${serverLabel}*\n` +
+            `# Role you #${userRole || 'Tidak ada'}*`
         )
     }
     
@@ -85,7 +85,7 @@ async function handler(m, { sock }) {
         const available = getAvailableServers(pteroConfig)
         let txt = `⚠️ *sᴇʀᴠᴇʀ ${serverLabel} ʙᴇʟᴜᴍ ᴋᴏɴꜰɪɢ*\n\n`
         if (available.length > 0) {
-            txt += `> Server tersedia: *${available.join(', ')}*`
+            txt += `*El servidor está disponible*${available.join(', ')}*`
         }
         return m.reply(txt)
     }
@@ -94,12 +94,12 @@ async function handler(m, { sock }) {
         return m.reply(
             `⚠️ *ᴄᴀʀᴀ ᴘᴀᴋᴀɪ*\n\n` +
             `> \`${m.prefix}${m.command} serverid\`\n\n` +
-            `> Lihat ID dengan \`${m.prefix}listserver${serverVersion}\``
+            `* Mira ID con\`${m.prefix}listserver${serverVersion}\``
         )
     }
     
     try {
-        const serverRes = await _axios2.default.get(`${serverConfig.domain}/api/application/servers/${serverId}`, {
+        const serverRes = await _axios2.default.get(`${serverConfig.domain}/fuego/application/servers/${serverId}`, {
             headers: {
                 'Authorization': `Bearer ${serverConfig.apikey}`,
                 'Content-Type': 'application/json',

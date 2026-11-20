@@ -3,7 +3,7 @@ const pluginConfig = {
     name: 'top',
     alias: ['top5', 'toplist'],
     category: 'fun',
-    description: 'Random top 5 member untuk kategori tertentu',
+    description: 'Parte superior del azar de la rejilla para el cathemori, por supuesto',
     usage: '.top <kategori>',
     example: '.top orang pintar',
     isOwner: false,
@@ -20,7 +20,7 @@ async function handler(m, { sock }) {
     
     if (!kategori) {
         return m.reply(
-            `\`Contoh: ${m.prefix}top orang pintar\``
+            `\`Contoh: ${m.prefix}hombre inteligente superior\``
         )
     }
     
@@ -35,7 +35,7 @@ async function handler(m, { sock }) {
             .filter(id => id && id !== _optionalChain([sock, 'access', _6 => _6.user, 'optionalAccess', _7 => _7.id, 'optionalAccess', _8 => _8.split, 'call', _9 => _9(':'), 'access', _10 => _10[0]]) + '@s.whatsapp.net')
         
         if (members.length < 2) {
-            return m.reply(`❌ Member grup kurang dari 5 orang!`)
+            return m.reply(`❌¡Más de cinco!`)
         }
         
         const shuffled = members.sort(() => Math.random() - 0.5)

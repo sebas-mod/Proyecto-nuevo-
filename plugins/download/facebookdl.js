@@ -22,15 +22,15 @@ async function handler(m, { sock }) {
     
     if (!url) {
         return m.reply(
-            `⚠️ *CARA PAKAI*\n\n` +
+            `⚠♪ CARA PACKAI ♪\n\n` +
             `- \`${m.prefix}facebookdl <url>\`\n\n` +
-            `*Contoh:*\n` +
+            `*Ejemplo:*\n` +
             `- \`${m.prefix}fbdown https://www.facebook.com/watch?v=xxx\``
         )
     }
     
     if (!url.match(/facebook\.com|fb\.watch|fb\.com/i)) {
-        return m.reply(`❌ URL tidak valid. Gunakan link Facebook.`)
+        return m.reply(`❌URL inválida. Use enlace Facebook.`)
     }
     
     await m.react('🕕')
@@ -40,17 +40,17 @@ async function handler(m, { sock }) {
         
         if (!_optionalChain([data, 'optionalAccess', _4 => _4.status]) || !data.result || !data.result.medias || data.result.medias.length === 0) {
             await m.react('❌')
-            return m.reply(`❌ Gagal mengambil video. Coba link lain atau pastikan postingan bersifat publik.\n\n_Catatan: Sistem saat ini belum mendukung download foto Facebook, hanya video._`)
+            return m.reply(`❌Stebuli tomó otro video.\n\nNota: El sistema actual no ha descargado aún la foto de Facebook, sólo el vídeo. _`)
         }
         
-        // Find HD if available, else SD, else first item
+        //Encontrar HD si está disponible, más SD, otro elemento firme
         let video = data.result.medias.find(m => m.quality === "hd") || 
                     data.result.medias.find(m => m.quality === "sd") || 
                     data.result.medias[0];
         
         if (!video || !video.url) {
             await m.react('❌')
-            return m.reply(`❌ Video tidak ditemukan di link tersebut.\n\n_Catatan: Sistem saat ini belum mendukung download foto Facebook, hanya video._`)
+            return m.reply(`❌El vídeo no se encontró en el enlace.\n\nNota: El sistema actual no ha descargado aún la foto de Facebook, sólo el vídeo. _`)
         }
         
         let caption = `🎥 *FACEBOOK DOWNLOADER*\n\n`
@@ -59,7 +59,7 @@ async function handler(m, { sock }) {
         if (video.formattedSize) {
             caption += `*Ukuran:* ${video.formattedSize}\n`
         }
-        caption += `\n_Catatan: Fitur ini tidak mensupport postingan foto._`
+        caption += `\nNota: Está característica no admite las publicaciones de fotos. _`
 
         await sock.sendMedia(m.chat, video.url, caption, m, {
             type: 'video',

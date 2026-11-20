@@ -21,14 +21,14 @@ async function handler(m, { sock }) {
     const groupData = db.getGroup(m.chat)
     
     if (!_optionalChain([groupData, 'optionalAccess', _ => _.welcomeMsg])) {
-        return m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> Welcome message sudah default`)
+        return m.reply(`❌*ɢᴀɢᴀʟ*\n\n*El mensaje de bienvenida ha sido predeterminado*`)
     }
     
     db.setGroup(m.chat, { welcomeMsg: null })
     
     m.react('✅')
     
-    await m.reply(`✅ *ᴡᴇʟᴄᴏᴍᴇ ᴅɪʀᴇsᴇᴛ*\n\n> Kembali ke pesan default`)
+    await m.reply(`✅*ᴡᴇʟᴄᴏᴍᴇ ᴅɪʀᴇSᴇᴛ*\n\nEpce`)
 }
 
 exports.config = pluginConfig; exports.handler = handler;

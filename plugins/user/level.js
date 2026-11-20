@@ -56,7 +56,7 @@ async function handler(m, { sock }) {
   const db = _ourindatabasejs.getDatabase.call(void 0, );
 
   let targetJid = m.sender;
-  let targetName = m.pushName || "Kamu";
+  let targetName = m.pushName || "Tu";
 
   if (m.quoted) {
     targetJid = m.quoted.sender;
@@ -96,7 +96,7 @@ async function handler(m, { sock }) {
   txt += `┃ ${expInLevel.toLocaleString("id-ID")} / ${expNeeded.toLocaleString("id-ID")}\n`;
   txt += `╰┈┈┈┈┈┈┈┈⬡\n\n`;
 
-  txt += `> Next level: *${expToNextLevel(exp).toLocaleString("id-ID")} exp* lagi!`;
+  txt += `> Next level: *${expToNextLevel(exp).toLocaleString("id-ID")}exp* otra vez!`;
 
   await m.reply(txt, { mentions: [targetJid] });
 }

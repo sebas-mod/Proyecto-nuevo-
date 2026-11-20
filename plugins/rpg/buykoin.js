@@ -27,15 +27,15 @@ async function handler(m, { sock }) {
   const amountStr = args[0];
 
   if (!amountStr) {
-    let txt = `💱 *Buy Koin*\n\n`;
-    txt += `> Tukar EXP menjadi Koin!\n\n`;
+    let txt = `💱*Buy Monedas*\n\n`;
+    txt += `¡Para ser un Tukar de la EXP a Tela!\n\n`;
     txt += `*📊 Kurs:*\n`;
     txt += `> 💎 ${EXP_PER_KOIN} EXP = 1 Koin\n\n`;
-    txt += `*📋 Saldo:*\n`;
+    txt += `*📋Saldo: *\n`;
     txt += `> 🚄 EXP: *${(user.exp || 0).toLocaleString("id-ID")}*\n`;
-    txt += `> 💰 Koin: *${(user.koin || 0).toLocaleString("id-ID")}*\n\n`;
-    txt += `> Contoh: \`.buykoin 10000\`\n`;
-    txt += `> Akan menggunakan ${10000 * EXP_PER_KOIN} EXP untuk 10.000 Koin`;
+    txt += `♪💰Monedas: *${(user.koin || 0).toLocaleString("id-ID")}*\n\n`;
+    txt += `> Ejemplo:\`. buykain 10000\`\n`;
+    txt += `*Estoy usando*${10000 * EXP_PER_KOIN}EXPERIENCIA DE LA 10 000 Tela`;
 
     return m.reply(txt);
   }
@@ -48,7 +48,7 @@ async function handler(m, { sock }) {
   }
 
   if (!koinAmount || koinAmount <= 0) {
-    return m.reply(`❌ Masukkan jumlah koin yang valid!`);
+    return m.reply(`❌¡Pon el volumen de monedas válidas!`);
   }
 
   const expNeeded = koinAmount * EXP_PER_KOIN;
@@ -56,14 +56,14 @@ async function handler(m, { sock }) {
   if ((user.exp || 0) < expNeeded) {
     const maxPossible = Math.floor((user.exp || 0) / EXP_PER_KOIN);
     return m.reply(
-      `❌ *EXP tidak cukup!*\n\n` +
+      `❌> 91; ¡El gasto no es suficiente! &#93;\n\n` +
         `> Dibutuhkan: *${expNeeded.toLocaleString("id-ID")} EXP*\n` +
-        `> EXP kamu: *${(user.exp || 0).toLocaleString("id-ID")} EXP*\n\n` +
-        `> Maksimal: *${maxPossible.toLocaleString("id-ID")} Koin*`,
+        `AXO You: *${(user.exp || 0).toLocaleString("id-ID")} EXP*\n\n` +
+        `> Maksimal: *${maxPossible.toLocaleString("id-ID")}Monedas*`,
     );
   }
 
-  // Use manual user update instead of updateKoin/updateExp to do batch update
+  //Anunciar la actualización manual del usuario en lugar de la actualización / updatatexp para actualizar hacer de golpe
   // But since logic was db.setUser, let's stick to update logic here
   const newExp = (user.exp || 0) - expNeeded;
   const newKoin = (user.koin || 0) + koinAmount;
@@ -75,13 +75,13 @@ async function handler(m, { sock }) {
 
   await m.react("💱");
 
-  let txt = `💱 *Tukar Berhasil!*\n\n`;
+  let txt = `💱*Tukar Exito!*\n\n`;
   txt += `*📋 Detail:*\n`;
   txt += `> 🚄 EXP: *-${expNeeded.toLocaleString("id-ID")}*\n`;
-  txt += `> 💰 Koin: *+${koinAmount.toLocaleString("id-ID")}*\n\n`;
-  txt += `*📊 Saldo Sekarang:*\n`;
+  txt += `♪💰Monedas: *+${koinAmount.toLocaleString("id-ID")}*\n\n`;
+  txt += `*📊Saldo actual: *\n`;
   txt += `> 🚄 EXP: *${newExp.toLocaleString("id-ID")}*\n`;
-  txt += `> 💰 Koin: *${newKoin.toLocaleString("id-ID")}*`;
+  txt += `♪💰Monedas: *${newKoin.toLocaleString("id-ID")}*`;
 
   m.reply(txt);
 }

@@ -22,7 +22,7 @@ async function handler(m, { sock }) {
     const isAudio = m.type === 'audioMessage' || (m.quoted && m.quoted.type === 'audioMessage')
     
     if (!isAudio) {
-        return m.reply(`🎵 *ɢᴀɴᴛɪ ᴏᴜʀɪɴ.ᴍᴘ3*\n\n> Kirim/reply audio untuk mengganti\n> File: assets/audio/ourin.mp3`)
+        return m.reply(`🎵*ɢᴀɴᴛɪ ᴏᴜʀɪɴ.ᴍᴘ3 *\n\nKsena / respuesta audio para reemplazar\nâ a Archivo: activos / audio / nuestroin. â a`)
     }
     
     try {
@@ -34,15 +34,15 @@ async function handler(m, { sock }) {
         }
         
         if (!buffer) {
-            return m.reply(`❌ Gagal mendownload audio`)
+            return m.reply(`❌Descarga pegajosa audios`)
         }
         
-        await m.reply(`⏳ Sedang mengupload gambar...`)
+        await m.reply(`⏳La jaula subió una foto..`)
         try {
             const newUrl = await _ourinuploaderjs.updateAssetUrl.call(void 0, 'ourin-mp3', buffer, 'ourin.mp3')
-            m.reply(`✅ *ʙᴇʀʜᴀsɪʟ*\n\n> File ourin.mp3 telah diganti ke URL baru:\n> ${newUrl}\n> Config telah diupdate secara realtime!`)
+            m.reply(`✅*ʙᴇʀʜᴀSɪʟ*\n\nEz Archivo ourin. MP3 ha sido transferido a la nueva URL:\n♪${newUrl}\n" Config has been updated as a reality "!`)
         } catch (e) {
-            m.reply(`❌ Gagal mengupload file: ${e.message}`)
+            m.reply(`❌Archivo cargado de Gagalm:${e.message}`)
         }
     } catch (error) {
         await m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName))

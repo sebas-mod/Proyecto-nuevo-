@@ -35,7 +35,7 @@ const pluginConfig = {
   name: "pinpack",
   alias: ["ppack", "pinsticker", "pinsearchpack"],
   category: "sticker",
-  description: "Cari gambar Pinterest lalu jadikan sticker pack",
+  description: "Obtener un dibujo de Pinterest y luego un paquete de pegatina.",
   usage: ".pinpack <query>",
   example: ".pinpack cat",
   isOwner: false,
@@ -53,11 +53,11 @@ async function handler(m, { sock }) {
   if (!query) {
     return m.reply(
       `── .✦ 𝗣𝗜𝗡 𝗣𝗔𝗖𝗞 ✦. ── 𝜗ৎ\n\n` +
-        `Cari gambar Pinterest → jadikan sticker pack!\n\n` +
-        `╭─〔 Cara Pakai 〕───⬣\n` +
+        `Buscar imagen de Pinterest→¡Así que un paquete de pegatinas!\n\n` +
+        `╭─〔Como usarlo〕───⬣\n` +
         `│  ✦ ${m.prefix}pinpack <query>\n` +
         `╰──────────────⬣\n\n` +
-        `*${m.prefix}pinpack anime cat*\n` +
+        `*${m.prefix}pinpack anime cab *\n` +
         `*${m.prefix}pinpack aesthetic*\n\n` +
         `.☘︎ ݁˖`,
     );
@@ -71,11 +71,11 @@ async function handler(m, { sock }) {
 
     if (!results || results.length === 0) {
       await m.react("✘");
-      return m.reply(`── .✦ ──\n\n> Tidak ditemukan hasil untuk: *${query}* .☘︎ ݁˖`);
+      return m.reply(`──.✦ ──\n\n*No se encontraron resultados para:*${query}* .☘︎ ݁˖`);
     }
 
     await m.reply(
-      `── .✦ ──\n\n> Mengunduh *${results.length}* gambar dari Pinterest\n> Lalu dikonversi ke sticker pack... .☘︎ ݁˖`,
+      `──.✦ ──\n\nContrabando *${results.length}* imágenes de Pinterest\nAquí está la línea que se converge en el paquete de pegatina..☘♪˖`,
     );
 
     const stickerBuffers = [];
@@ -96,11 +96,11 @@ async function handler(m, { sock }) {
 
     if (!stickerBuffers.length) {
       await m.react("✘");
-      return m.reply(`── .✦ ──\n\n> Gagal mendownload gambar .☘︎ ݁˖`);
+      return m.reply(`──.✦ ──\n\n# Gafall download the picture. #☘♪˖`);
     }
 
     const packname = `Pinterest: ${query}`;
-    const author = _optionalChain([_configjs2.default, 'access', _9 => _9.bot, 'optionalAccess', _10 => _10.developer]) || _optionalChain([_configjs2.default, 'access', _11 => _11.sticker, 'optionalAccess', _12 => _12.author]) || "Bot";
+    const author = _optionalChain([_configjs2.default, 'access', _9 => _9.bot, 'optionalAccess', _10 => _10.developer]) || _optionalChain([_configjs2.default, 'access', _11 => _11.sticker, 'optionalAccess', _12 => _12.author]) || "♪";
 
     try {
       await sock.sendStickerPack(m.chat, stickerBuffers, m, {
@@ -108,14 +108,14 @@ async function handler(m, { sock }) {
         packname,
         publisher: author,
         author,
-        description: `Sticker pack dari Pinterest: ${query}`,
+        description: `Paquete de pegatinas de Pinterest:${query}`,
         emojis: ["❤"],
       });
       await m.react("✓");
     } catch (packErr) {
       console.error("[PinPack] Pack send failed:", packErr.message);
       await m.reply(
-        `── .✦ ──\n\n> Pack gagal, mengirim satu per satu... .☘︎ ݁˖`,
+        `──.✦ ──\n\n♪ Pack fail, enviar uno a la vez. ♪☘♪˖`,
       );
 
       let sent = 0;
@@ -147,11 +147,11 @@ async function handler(m, { sock }) {
       if (sent > 0) {
         await m.react("✓");
         await m.reply(
-          `── .✦ ──\n\n> Berhasil kirim *${sent}* sticker dari *${packname}* .☘︎ ݁˖`,
+          `──.✦ ──\n\n♪ Trabajar mi manera ♪${sent}* Pegatina que *${packname}* .☘︎ ݁˖`,
         );
       } else {
         await m.react("✘");
-        await m.reply(`── .✦ ──\n\n> Gagal mengirim sticker .☘︎ ݁˖`);
+        await m.reply(`──.✦ ──\n\n- Sí.☘♪˖`);
       }
     }
   } catch (error) {

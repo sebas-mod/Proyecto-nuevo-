@@ -5,7 +5,7 @@ const pluginConfig = {
     name: 'onlythisgrup',
     alias: ['onlythisgroup', 'lockgrup', 'lockgroup'],
     category: 'owner',
-    description: 'Bot hanya aktif di grup ini saja',
+    description: 'Para estar activo en este grupo sólo',
     usage: '.onlythisgrup',
     example: '.onlythisgrup',
     isOwner: true,
@@ -25,27 +25,27 @@ async function handler(m, { sock }) {
         if (current && (current === m.chat || current.jid === m.chat)) {
             db.setting('onlyThisGroup', null)
             db.save()
-            return m.reply(`🔓 *UNLOCKED*\n\nBot kembali aktif di semua grup secara publik.`)
+            return m.reply(`🔓* UNLOCKED *\n\nPara volver a la actividad en todos los grupos públicos.`)
         }
 
         const botNumber = sock.user.id.split(':')[0] + '@s.whatsapp.net'
         const groupMetadata = await sock.groupMetadata(m.chat).catch(() => null)
         
         if (!groupMetadata) {
-            return m.reply(`❌ Gagal mendapatkan metadata grup.`)
+            return m.reply(`❌Stemstick consigue un metadato grupo.`)
         }
 
         const participants = groupMetadata.participants
         const isBotAdmin = _optionalChain([participants, 'access', _ => _.find, 'call', _2 => _2(p => p.id === botNumber), 'optionalAccess', _3 => _3.admin]) !== null
 
         if (!isBotAdmin) {
-            return m.reply(`❌ *AKSES DITOLAK*\n\nBot harus menjadi admin di grup ini terlebih dahulu agar bisa mengambil tautan undangan (link grup).`)
+            return m.reply(`❌> 91; Cumplimiento de la ACCESO > 93;\n\nAsí que tiene que ser el administrador en este grupo que consigue tomar el enlace de invitación.`)
         }
 
         const inviteCode = await sock.groupInviteCode(m.chat).catch(() => null)
         
         if (!inviteCode) {
-            return m.reply(`❌ Gagal mengambil tautan undangan grup. Pastikan bot adalah admin yang sah.`)
+            return m.reply(`❌SteenalTook un grupo fodder, y la bota era un administrador de azarfrán.`)
         }
 
         const inviteLink = `https://chat.whatsapp.com/${inviteCode}`
@@ -59,12 +59,12 @@ async function handler(m, { sock }) {
         db.save()
 
         await m.reply(
-            `🔒 *LOCKED BERHASIL*\n\n` +
-            `Mulai sekarang, bot hanya bisa digunakan secara eksklusif di grup:\n` +
+            `🔒*LOCKED Exito*\n\n` +
+            `Empieza ahora, el bot sólo se puede utilizar exclusivamente en el grupo:\n` +
             `*${groupName}*\n\n` +
-            `Pengguna di grup lain akan diarahkan untuk bergabung melalui tautan:\n` +
+            `Los usuarios de otros grupos serán colocados para unirse a través de la takant:\n` +
             `${inviteLink}\n\n` +
-            `Ketik \`.onlythisgrup\` lagi untuk membuka kunci.`
+            `Escribe\`Sólo este grupo.\`Otra vez para abrir la cerradura.`
         )
     } catch (error) {
         console.error(error)

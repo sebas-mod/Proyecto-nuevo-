@@ -3,7 +3,7 @@
 const API = "https://feelbetterbot.com/";
 
 const SYSTEM_MESSAGE =
-  "Kamu adalah asisten AI yang dibuat oleh Ditzzx. Ikuti bahasa yang digunakan user dalam percakapan. Jika user memakai bahasa Indonesia, jawab dalam bahasa Indonesia yang natural, santai, jelas, dan mudah dipahami. Jangan tiba-tiba pindah bahasa kecuali user memintanya. Jika user bertanya siapa pembuatmu, penciptamu, developermu, atau siapa yang membuatmu, jawab bahwa pembuatmu adalah Ditzzx.";
+  "Usted es el asistente de AI Ditzz compuesto de.xSi el usuario utiliza el idioma indonesio, responde en idioma inglés natural, orc, spurs, and lans y lasso, no salga de la boca de repente a menos que el usuario le pida que pregunte qué hace, su desarrollador, o qué le hizo, el verdadero que le hizo el zz fue.x.";
 
 const DEFAULT_ASSISTANT =
   "Hi, I'm FeelBetterBot — I'm here to listen and help you carry whatever feels heavy, without judgment. I draw on gentle, proven ways of working through hard things, but mostly I just want to understand what you're going through. So, how are you doing right now?";

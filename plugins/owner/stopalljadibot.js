@@ -4,7 +4,7 @@ const pluginConfig = {
     name: 'stopalljadibot',
     alias: ['stopsemuajadibot', 'killalljadibots'],
     category: 'owner',
-    description: 'Hentikan semua jadibot yang aktif',
+    description: 'Detengan todos los jabots activos',
     usage: '.stopalljadibot',
     example: '.stopalljadibot',
     isOwner: true,
@@ -20,7 +20,7 @@ async function handler(m, { sock }) {
     const active = _ourinjadibotmanagerjs.getActiveJadibots.call(void 0, )
 
     if (active.length === 0) {
-        return m.reply(`❌ Tidak ada jadibot yang aktif`)
+        return m.reply(`❌No hay jabots activos`)
     }
 
     await m.react('🕕')
@@ -35,9 +35,9 @@ async function handler(m, { sock }) {
         await sock.sendMessage(m.chat, {
             text: `🛑 *sᴇᴍᴜᴀ ᴊᴀᴅɪʙᴏᴛ ᴅɪʜᴇɴᴛɪᴋᴀɴ*\n\n` +
                 `> 📊 Total: *${stopped.length}* jadibot\n` +
-                `> 💾 Session: *Tersimpan*\n\n` +
-                `Dihentikan: ${names}\n\n` +
-                `> Semua session disimpan dan bisa diaktifkan ulang.`,
+                `♪💾Session: *Guardado*\n\n` +
+                `Detenido:${names}\n\n` +
+                `Para todas las sesiones a ser mantenidos y reactivados.`,
             mentions: stopped.map(id => id + '@s.whatsapp.net')
         }, { quoted: m })
     } catch (error) {

@@ -5,7 +5,7 @@ const pluginConfig = {
   name: "getpaste",
   alias: ["pastebin", "getpb"],
   category: "tools",
-  description: "Ambil konten dari Pastebin",
+  description: "Contenido de Toma de Pastebin",
   usage: ".getpaste <link pastebin>",
   example: ".getpaste https://pastebin.com/Gu8RZaqv",
   isOwner: false,
@@ -47,8 +47,8 @@ async function handler(m, { sock }) {
   if (!text || !text.includes("pastebin.com")) {
     return m.reply(
       `📋 *ɢᴇᴛ ᴘᴀsᴛᴇʙɪɴ*\n\n` +
-      `> Masukkan link Pastebin yang valid\n\n` +
-      `> Contoh: \`${m.prefix}getpaste https://pastebin.com/Gu8RZaqv\``,
+      `Pon el enlace al pastebin válido\n\n` +
+      `> Ejemplo:\`${m.prefix}getpaste https://pastebin.com/Gu8RZaqv\``,
     );
   }
 

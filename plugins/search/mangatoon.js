@@ -37,7 +37,7 @@ async function fetchMangatoon(query) {
     })
 
     if (!_optionalChain([data, 'optionalAccess', _3 => _3.status]) || !_optionalChain([data, 'optionalAccess', _4 => _4.data, 'optionalAccess', _5 => _5.results])) {
-        throw new Error(_optionalChain([data, 'optionalAccess', _6 => _6.message]) || 'Hasil Mangatoon tidak ditemukan')
+        throw new Error(_optionalChain([data, 'optionalAccess', _6 => _6.message]) || 'Mangatoon no fue encontrado')
     }
 
     return data.data
@@ -47,7 +47,7 @@ async function handler(m, { sock }) {
     const query = _optionalChain([m, 'access', _7 => _7.text, 'optionalAccess', _8 => _8.trim, 'call', _9 => _9()])
 
     if (!query) {
-        return m.reply(`📚 *MANGATOON SEARCH*\n\n> Contoh:\n\`${m.prefix}mangatoon love\``)
+        return m.reply(`📚* MANGATOON SEARCH*\n\n> Ejemplo:\n\`${m.prefix}mangatoon love\``)
     }
 
     m.react('🔍')
@@ -59,7 +59,7 @@ async function handler(m, { sock }) {
 
         if (items.length === 0) {
             m.react('❌')
-            return m.reply(`❌ Tidak ditemukan komik Mangatoon untuk: ${query}`)
+            return m.reply(`❌No se encontró mangatoon para:${query}`)
         }
 
         let caption = '📚 *MANGATOON SEARCH*\n\n'

@@ -22,7 +22,7 @@ function msToTime(duration) {
   const hours = Math.floor((duration / (1000 * 60 * 60)) % 24);
   const minutes = Math.floor((duration / (1000 * 60)) % 60);
   const seconds = Math.floor((duration / 1000) % 60);
-  return `${hours} jam ${minutes} menit ${seconds} detik`;
+  return `${hours}hora${minutes}minuto${seconds}segundo`;
 }
 
 async function handler(m, { sock }) {
@@ -38,7 +38,7 @@ async function handler(m, { sock }) {
 
   if (now - lastClaim < COOLDOWN) {
     const remaining = COOLDOWN - (now - lastClaim);
-    return m.reply(`Sabar kak, jatah absen harian kamu udah diambil! 😂\n\nTunggu *${msToTime(remaining)}* lagi ya buat ambil jatah besok. Jangan serakah! 🏃💨`);
+    return m.reply(`Sabar hermano, ratah absen día que te toman!😂\n\n*Entonces, vamos*${msToTime(remaining)}¡No seas tan malo!🏃💨`);
   }
 
   const expReward = isPremium ? 5000 : 1000;
@@ -54,16 +54,16 @@ async function handler(m, { sock }) {
 
   await m.react("🎁");
 
-  let txt = `ASIKK! Gajian harian udah cair nih kak! 🎉✨\n\n`;
-  txt += `Ini jatah kamu buat hari ini:\n`;
-  txt += `💸 Koin: *+Rp ${moneyReward.toLocaleString("id-ID")}*\n`;
+  let txt = `Hermano, vas a pagar por tu día.🎉✨\n\n`;
+  txt += `Aquí está la orden que hizo hoy:\n`;
+  txt += `💸Monedas: *+Rp${moneyReward.toLocaleString("id-ID")}*\n`;
   txt += `📈 EXP: *+${expReward.toLocaleString("id-ID")}*\n`;
-  txt += `⚡ Energi: *+${energiReward}*\n\n`;
+  txt += `⚡Energía: *+${energiReward}*\n\n`;
   
   if (isPremium) {
-    txt += `👑 *Wih, bonus member Premium emang beda! Sultan mah bebas!* 😎💸`;
+    txt += `👑# 91; Wih, miembro de bonificación Premium emanang beda!😎💸`;
   } else {
-    txt += `Mau bonus lebih gede? Yuk *Upgrade Premium* kak! Biar makin kaya! 🤑💎`;
+    txt += `¿Quieres hacer un bono más grande?🤑💎`;
   }
 
   m.reply(txt);

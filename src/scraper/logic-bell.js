@@ -19,7 +19,7 @@ function buildHistoryText(history = []) {
     return "";
   }
 
-  return `Riwayat percakapan:\n${lines.join("\n")}`;
+  return `Historial percakapan:\n${lines.join("\n")}`;
 }
 
 function buildTextMessage(message, history = [], imageBuffer = null) {
@@ -31,10 +31,10 @@ function buildTextMessage(message, history = [], imageBuffer = null) {
   }
 
   if (imageBuffer) {
-    parts.push("User mengirim gambar. Jika gambar bisa dianalisis, gunakan konteks itu saat menjawab.");
+    parts.push("El usuario envía una imagen. Si la imagen puede ser analizada, utilice el contexto en la respuesta.");
   }
 
-  parts.push(`Pesan user saat ini:\n${String(message || "").trim() || "(gambar tanpa teks)"}`);
+  parts.push(`Mensaje de usuario actual:\n${String(message || "").trim() || "(gambar tanpa teks)"}`);
 
   return parts.filter(Boolean).join("\n\n");
 }
@@ -64,7 +64,7 @@ async function chat({
 
   const apiKey = _optionalChain([_configjs2.default, 'access', _7 => _7.APIkey, 'optionalAccess', _8 => _8.logicBell]);
   if (!apiKey) {
-    throw new Error("API key logicBell belum diisi.");
+    throw new Error("API clave lógica aún para llenar.");
   }
 
   const aiNames = getAiNames(aiFullName);
@@ -74,7 +74,7 @@ async function chat({
     fullainame: aiNames.fullName,
     nickainame: String(aiNickName || aiNames.nickName).trim() || aiNames.nickName,
     senderName: String(senderName || "User").trim() || "User",
-    ownerName: String(ownerName || _optionalChain([_configjs2.default, 'access', _9 => _9.owner, 'optionalAccess', _10 => _10.name]) || "Owner").trim() || "Owner",
+    ownerName: String(ownerName || _optionalChain([_configjs2.default, 'access', _9 => _9.owner, 'optionalAccess', _10 => _10.name]) || "Propietario").trim() || "Propietario",
     date: new Date().toISOString(),
     role: String(role || "Temen deket").trim() || "Temen deket",
     msgtype: imageBuffer ? "image" : "text",

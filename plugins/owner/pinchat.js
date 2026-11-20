@@ -39,7 +39,7 @@ async function handler(m, { sock }) {
         return m.reply(
             '📌 *ᴘɪɴ ᴄʜᴀᴛ*\n\n' +
             '> `.pinchat 628xxx` — Pin chat\n' +
-            '> `.pinchat` (di private chat) — Pin chat ini\n' +
+            '♪`Pinchat.`(en la charla primaria )—Esto es divertido.\n' +
             '> `.pinchat buka 628xxx` — Unpin chat'
         )
     }
@@ -50,11 +50,11 @@ async function handler(m, { sock }) {
         const target = targetJid.split('@')[0]
         return m.reply(
             pin
-                ? `📌 *ᴄʜᴀᴛ ᴅɪᴘɪɴ*\n\n> Target: ${target}`
-                : `📍 *ᴘɪɴ ᴅɪʜᴀᴘᴜs*\n\n> Target: ${target}`
+                ? `📌 *ᴄʜᴀᴛ ᴅɪᴘɪɴ*\n\n> Objetivo: ${target}`
+                : `📍 *ᴘɪɴ ᴅɪʜᴀᴘᴜs*\n\n> Objetivo: ${target}`
         )
     } catch (err) {
-        return m.reply(`❌ Gagal: ${err.message}`)
+        return m.reply(`❌Fallido:${err.message}`)
     }
 }
 

@@ -27,12 +27,12 @@ async function handler(m, { sock }) {
   user.rpg.stamina = _nullishCoalesce(user.rpg.stamina, () => ( 100));
 
   if (user.rpg.stamina < staminaCost) {
-    return m.reply(`Pompa angin macet, tangan kapalan! 🤕\n\nNambal butuh *${staminaCost} Stamina*, sisa stamina kamu *${user.rpg.stamina}*. Minum es teh dulu! 🧊`);
+    return m.reply(`Pompa viento macet, manos llamativas!🤕\n\nNambal perouh${staminaCost}La resistencia, la restante te contamina${user.rpg.stamina}* Bebe es te first!🧊`);
   }
 
   user.rpg.stamina -= staminaCost;
   await m.react("🛠️");
-  await m.reply(`Sssshh... ngecek ban bocor pakai air sabun... 🫧\nKetemu paku nancep! 📍`);
+  await m.reply(`Ssshh... comprobar el neumático plano con agua de jabón..🫧\n¡Mi reunión está llegando!📍`);
   await new Promise(r => setTimeout(r, 3000));
 
   const gacha = Math.random();
@@ -41,7 +41,7 @@ async function handler(m, { sock }) {
     const healthLoss = 15;
     user.rpg.health = Math.max(0, (_nullishCoalesce(user.rpg.health, () => ( 100))) - healthLoss);
     await m.react("💥");
-    return m.reply(`DUAAAAR! BANNYA MELEDAK! 💥😭\n\nKamu mompa kerasa kenceng dan ban truk itu meledak di depan muka!\n💔 HP berkurang: -${healthLoss}\n⚡ Stamina: -${staminaCost}\n💵 Pendapatan: 0\n\nMuka item kena asep ban, apes bener! 💀`);
+    return m.reply(`¿Qué?💥😭\n\nTu mamá está entumecida y los neumáticos son volados delante de la muka!\n💔Teléfono: -${healthLoss}\n⚡ Stamina: -${staminaCost}\n💵Ingresos: 0\n\nEl artículo de Muka tiene neumático de acetato, cerveza de aquez!💀`);
   }
 
   const earning = Math.floor(Math.random() * 20000) + 10000;
@@ -50,7 +50,7 @@ async function handler(m, { sock }) {
   await _ourinleveljs.addExpWithLevelCheck.call(void 0, sock, m, db, user, expGain);
 
   await m.react("✅");
-  m.reply(`HASIL NAMBAL BAN! 🛠️✨\n\n💵 Pendapatan: *+Rp ${earning.toLocaleString("id-ID")}*\n📈 EXP: *+${expGain}*\n⚡ Stamina: -${staminaCost}\n\nSemoga di jalan nggak bocor lagi tuh orang! 💨`);
+  m.reply(`Por favor, no seas tonto.🛠♪✨\n\n💵Ingresos: *+Rp${earning.toLocaleString("id-ID")}*\n📈 EXP: *+${expGain}*\n⚡ Stamina: -${staminaCost}\n\n¡La ojalá en el camino se rompe otra vez!💨`);
 }
 
 exports.config = pluginConfig; exports.handler = handler;

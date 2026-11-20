@@ -35,7 +35,7 @@ const pluginConfig = {
   name: allCommands,
   alias: ["unlimited"],
   category: "panel",
-  description: "Create server panel dengan spesifikasi RAM (v1-v5)",
+  description: "Crear panel servidor con especificaciones de RAM ( v1 @-@ v5 )",
   usage: ".1gbv1 username atau .1gbv2 username,628xxx",
   example: ".2gbv1 myserver,628xxx",
   isOwner: false,
@@ -124,7 +124,7 @@ async function handler(m, { sock }) {
 
   const parsed = parseCommand(m.command);
   if (!parsed) {
-    return m.reply(`❌ Format command tidak valid.`);
+    return m.reply(`❌El comando Formatt es inválido.`);
   }
 
   const { ram, server: serverVersion, serverKey } = parsed;
@@ -134,9 +134,9 @@ async function handler(m, { sock }) {
     const userRole = _ourinrolescpaneljs.getUserRole.call(void 0, m.sender, serverVersion);
     return m.reply(
       `❌ *ᴀᴋsᴇs ᴅɪᴛᴏʟᴀᴋ*\n\n` +
-      `> Kamu tidak punya akses ke *${serverVersion.toUpperCase()}*\n` +
-      `> Role kamu di ${serverVersion.toUpperCase()}: *${userRole || "Tidak ada"}*\n\n` +
-      `> Hubungi admin untuk mendapat akses.`,
+      `*No tienes acento*${serverVersion.toUpperCase()}*\n` +
+      `Tu papel en${serverVersion.toUpperCase()}: *${userRole || "Tidak ada"}*\n\n` +
+      `Haz que el administrador llame para conseguir la acción.`,
     );
   }
 
@@ -152,8 +152,8 @@ async function handler(m, { sock }) {
     const available = getAvailableServers(pteroConfig);
     let txt = `⚠️ *sᴇʀᴠᴇʀ ${serverVersion.toUpperCase()} ʙᴇʟᴜᴍ ᴋᴏɴꜰɪɢ*\n\n`;
     if (available.length > 0) {
-      txt += `> Server tersedia: *${available.join(", ")}*\n`;
-      txt += `> Contoh: \`${m.prefix}${ram}${available[0]} username\``;
+      txt += `*El servidor está disponible*${available.join(", ")}*\n`;
+      txt += `> Ejemplo:\`${m.prefix}${ram}${available[0]} username\``;
     } else {
       txt += `> Isi config pterodactyl di \`config.js\``;
     }
@@ -180,16 +180,16 @@ async function handler(m, { sock }) {
       `⚠️ *ᴄᴀʀᴀ ᴘᴀᴋᴀɪ*\n\n` +
       `> \`${m.prefix}${m.command} username\`\n` +
       `> \`${m.prefix}${m.command} username,628xxx\`\n` +
-      `> Reply/tag pesan user\n\n` +
-      `> Server: *${serverVersion.toUpperCase()}*\n` +
-      `> Role kamu: *${capitalize(userRole)}*\n` +
-      `> Server tersedia: *${available.join(", ") || "none"}*`,
+      `* Responder / etiquetar mensajes de usuario\n\n` +
+      `♪ Servidor: ♪${serverVersion.toUpperCase()}*\n` +
+      `# Role you #${capitalize(userRole)}*\n` +
+      `*El servidor está disponible*${available.join(", ") || "none"}*`,
     );
   }
 
   if (!/^[a-z0-9_]{3,16}$/.test(username)) {
     return m.reply(
-      `❌ Username hanya boleh huruf kecil, angka, underscore (3-16 karakter).`,
+      `❌El nombre de usuario sólo permitió pequeños letra, números, subrayar ( 3 @-@ 16 caracteres ).`,
     );
   }
 
@@ -204,23 +204,23 @@ async function handler(m, { sock }) {
   }
 
   if (!targetUser) {
-    return m.reply(`❌ Tidak dapat menentukan nomor target.`);
+    return m.reply(`❌No se puede determinar el número de destino.`);
   }
 
   try {
     const [onWa] = await sock.onWhatsApp(targetUser.split("@")[0]);
     if (!_optionalChain([onWa, 'optionalAccess', _40 => _40.exists])) {
       return m.reply(
-        `❌ Nomor \`${targetUser.split("@")[0]}\` tidak terdaftar di WhatsApp!`,
+        `❌Número\`${targetUser.split("@")[0]}\`no registrado en WhatsApp!`,
       );
     }
   } catch (e) {
-    return m.reply(`❌ Gagal validasi nomor WhatsApp.`);
+    return m.reply(`❌Número de validación de los combatientes WhatsApp.`);
   }
 
   const specs = RAM_SPECS[ram];
   if (!specs) {
-    return m.reply(`❌ Paket tidak ditemukan.`);
+    return m.reply(`❌El paquete no fue encontrado.`);
   }
 
   const email = `${username}@ourin.md`;
@@ -228,13 +228,13 @@ async function handler(m, { sock }) {
   const password = username + _crypto2.default.randomBytes(3).toString("hex");
   const serverLabel = serverVersion.toUpperCase();
 
-  await m.reply(`🕕 Membuat panel *${serverLabel}* untuk \`${targetUser.split("@")[0]}\`...`);
+  await m.reply(`🕕Hacer un panel *${serverLabel}* para\`${targetUser.split("@")[0]}\`...`);
 
   try {
     let userRes;
     try {
       userRes = await _axios2.default.post(
-        `${serverConfig.domain}/api/application/users`,
+        `${serverConfig.domain}/fuego/application/users`,
         {
           email,
           username,
@@ -258,7 +258,7 @@ async function handler(m, { sock }) {
     let eggRes;
     try {
       eggRes = await _axios2.default.get(
-        `${serverConfig.domain}/api/application/nests/${serverConfig.nestid}/eggs/${serverConfig.egg}`,
+        `${serverConfig.domain}/fuego/application/nests/${serverConfig.nestid}/eggs/${serverConfig.egg}`,
         {
           headers: {
             Authorization: `Bearer ${serverConfig.apikey}`,
@@ -274,7 +274,7 @@ async function handler(m, { sock }) {
     let serverRes;
     try {
       serverRes = await _axios2.default.post(
-        `${serverConfig.domain}/api/application/servers`,
+        `${serverConfig.domain}/fuego/application/servers`,
         {
           name,
           description: `Created at ${formatDate()} [${serverLabel}]`,
@@ -321,14 +321,14 @@ async function handler(m, { sock }) {
 
     const ramLabel = specs.ram === 0 ? "Unlimited" : `${specs.ram / 1000} GB`;
 
-    let detailTxt = `✅ *PANEL BERHASIL DIBUAT*\n\n`;
-    detailTxt += `🖥️ Server: *${serverLabel}*\n`;
+    let detailTxt = `✅* DESCICIONES DEL PANEL *\n\n`;
+    detailTxt += `🖥♪ Servidor: ♪${serverLabel}*\n`;
     detailTxt += `👤 Username: *${user.username}*\n`;
     detailTxt += `🔐 Password: *${password}*\n`;
     detailTxt += `💾 RAM: *${ramLabel}*\n`;
-    detailTxt += `🆔 Server ID: *${server.id}*\n`;
+    detailTxt += `🆔Servidor id: *${server.id}*\n`;
     detailTxt += `🌐 Panel: ${serverConfig.domain}\n\n`;
-    detailTxt += `⚠️ Simpan data ini, jangan bagikan ke siapapun!`;
+    detailTxt += `⚠Para estos datos Guardar, compartirlo no a nadie!`;
 
     const headerMedia = await _ourin.prepareWAMessageMedia.call(void 0, 
       { image: _ourinassetmanagerjs.getAssetBuffer.call(void 0, "ourin-v8") },
@@ -381,18 +381,18 @@ async function handler(m, { sock }) {
     await _ourinpaneljedajs.setPanelLastUsed.call(void 0, );
 
     if (targetUser !== m.sender) {
-      await m.reply(`✅ Panel *${serverLabel}* berhasil dibuat untuk \`${targetUser.split("@")[0]}\``);
+      await m.reply(`✅ Panel *${serverLabel}* Con éxito\`${targetUser.split("@")[0]}\``);
     }
   } catch (err) {
     const rawMsg = _optionalChain([err, 'optionalAccess', _41 => _41.response, 'optionalAccess', _42 => _42.data, 'optionalAccess', _43 => _43.errors, 'optionalAccess', _44 => _44[0], 'optionalAccess', _45 => _45.detail]) || _optionalChain([err, 'optionalAccess', _46 => _46.response, 'optionalAccess', _47 => _47.data, 'optionalAccess', _48 => _48.message]) || err.message;
     const errorMap = {
-      'has already been taken': `Username/email *${username}* sudah dipakai, coba username lain`,
-      'could not find': 'Egg atau nest tidak ditemukan, cek config egg/nestid',
-      'No suitable allocation': 'Tidak ada port tersedia di server, hubungi admin panel',
-      'unauthorized': 'API key tidak punya permission, buat key baru dengan semua permissions',
+      'has already been taken': `Username/correo *${username}* ya utilizado, probar otro nombre de usuario`,
+      'could not find': 'Huevo o nido no encontrado, cheque config huevo / nido',
+      'No suitable allocation': 'No hay puerto disponible en servidor, panel de administración de enlace',
+      'unauthorized': 'API key no tiene permisos, crear nuevas claves con todos los permisos',
     };
     const friendly = Object.entries(errorMap).find(([k]) => rawMsg.toLowerCase().includes(k));
-    return m.reply(`❌ *GAGAL MEMBUAT PANEL*\n\n${friendly ? friendly[1] : rawMsg}`);
+    return m.reply(`❌* Fallido MAKE PANEL*\n\n${friendly ? friendly[1] : rawMsg}`);
   }
 }
 

@@ -125,7 +125,7 @@ async function handler(m, { sock }) {
   if (!text) {
     m.react("❌");
     return m.reply(
-      `📌 Contoh: *${prefix + command} https://vt.tiktok.com/...*`,
+      `📌Ejemplo: *${prefix + command} https://vt.tiktok.com/...*`,
     );
   }
   m.react("🕕");
@@ -153,7 +153,7 @@ async function handler(m, { sock }) {
         `- Duration: ${result.duration}\n` +
         `- Uploaded: ${result.taken_at}\n` +
         `- Region: ${result.region}\n\n` +
-        `*Statistik Video:*\n` +
+        `* Estadísticas de vídeo:\n` +
         `- Views: *${result.stats.views}*\n` +
         `- Likes: *${result.stats.likes}*\n` +
         `- Comments: *${result.stats.comment}*\n` +
@@ -172,7 +172,7 @@ async function handler(m, { sock }) {
         `- Music: ${result.music_info.title} - ${result.music_info.author}\n` +
         `- Uploaded: ${result.taken_at}\n` +
         `- Region: ${result.region}\n\n` +
-        `*Statistik Konten:*\n` +
+        `* Contenido de la estadística: *\n` +
         `- Views: *${result.stats.views}*\n` +
         `- Likes: *${result.stats.likes}*\n` +
         `- Comments: *${result.stats.comment}*\n` +
@@ -191,7 +191,7 @@ async function handler(m, { sock }) {
         { quoted: m },
       );
 
-      await sock.sendButton(m.chat, null, `📸 Slide berhasil dikirim!\nTekan tombol di bawah untuk ambil music.`, m, {
+      await sock.sendButton(m.chat, null, `📸Slide successfully delivered!\nEl botón cae en la burbuja para la temporada.`, m, {
         buttons: [musicButton],
       });
     }
@@ -199,7 +199,7 @@ async function handler(m, { sock }) {
   } catch (e) {
     console.error(e);
     m.react("❌");
-    m.reply("Coba lagi nanti, atau bisa coba " + m.prefix + "tt2");
+    m.reply("Inténtalo de nuevo más tarde, o podemos intentarlo." + m.prefix + "tt2");
   }
 }
 

@@ -2,7 +2,7 @@
     name: 'setdeskgc',
     alias: ['setdesc', 'setdescgc', 'setdeskripsi', 'setdesk'],
     category: 'group',
-    description: 'Mengubah deskripsi grup',
+    description: 'Cambiar la descripción del grupo',
     usage: '.setdeskgc <deskripsi baru>',
     example: '.setdeskgc Grup untuk diskusi',
     isOwner: false,
@@ -21,8 +21,8 @@ async function handler(m, { sock }) {
     if (!m.text && _optionalChain([m, 'access', _4 => _4.args, 'optionalAccess', _5 => _5.length]) === 0) {
         await m.reply(
             `⚠️ *ᴄᴀʀᴀ ᴘᴀᴋᴀɪ*\n\n` +
-            `> \`${m.prefix}setdeskgc Deskripsi baru\`\n` +
-            `> \`${m.prefix}setdeskgc clear\` - Hapus deskripsi`
+            `> \`${m.prefix}nuevos setdeskgc Decryption\`\n` +
+            `> \`${m.prefix}setdeskgc clear\`- Quitar la descripción`
         )
         return
     }
@@ -31,7 +31,7 @@ async function handler(m, { sock }) {
     if (descToSet.length > 2048) {
         await m.reply(
             `⚠️ *ᴠᴀʟɪᴅᴀsɪ*\n\n` +
-            `> Deskripsi maksimal 2048 karakter.`
+            `Al máximo desciframiento de 2048 caracteres.`
         )
         return
     }
@@ -41,17 +41,17 @@ async function handler(m, { sock }) {
         
         if (descToSet) {
             await m.reply(
-                `✅ Deskripsi grup berhasil diperbarui!`
+                `✅¡El grupo de escrucijada es un éxito completo!`
             )
         } else {
             await m.reply(
-                `✅ Deskripsi grup berhasil dihapus!`
+                `✅¡El grupo de atraque está siendo hackeado!`
             )
         }
     } catch (error) {
         await m.reply(
             `❌ *ɢᴀɢᴀʟ*\n\n` +
-            `> Tidak dapat mengubah deskripsi grup.\n` +
+            `No puede cambiar la descripción del grupo.\n` +
             `> _${error.message}_`
         )
     }

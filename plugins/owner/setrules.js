@@ -3,7 +3,7 @@ const pluginConfig = {
     name: 'setrules',
     alias: ['setbotrules', 'setaturanbot'],
     category: 'owner',
-    description: 'Set rules/aturan bot custom',
+    description: 'Establecer reglas / reglas de bot personalizado',
     usage: '.setrules <text>',
     example: '.setrules 1. Jangan spam\n2. Hormati sesama',
     isOwner: true,
@@ -22,9 +22,9 @@ function handler(m) {
     if (!text) {
         return m.reply(
             `📝 *sᴇᴛ ʙᴏᴛ ʀᴜʟᴇs*\n\n` +
-            `> Masukkan teks rules yang baru\n\n` +
+            `*Pon nuevas reglas de texto*\n\n` +
             `\`Contoh:\`\n` +
-            `\`${m.prefix}setrules 1. Jangan spam\\n2. Hormati sesama\``
+            `\`${m.prefix}4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,\\respeta el sésamo.\``
         )
     }
     
@@ -32,8 +32,8 @@ function handler(m) {
     
     m.reply(
         `✅ *ʙᴏᴛ ʀᴜʟᴇs ᴅɪᴜᴘᴅᴀᴛᴇ*\n\n` +
-        `> Rules bot berhasil diubah!\n` +
-        `> Ketik \`${m.prefix}rules\` untuk melihat.`
+        `¡Ezacuum bot 's been reformed!\n` +
+        `> Escribe\`${m.prefix}reglas\`para ver.`
     )
 }
 

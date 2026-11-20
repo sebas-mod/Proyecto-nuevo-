@@ -22,7 +22,7 @@ async function TeraBoxDL(url) {
     }
 
     const response = await _axios2.default.post(
-      `${CONFIG.base}/telegram/bot/search/video`,
+      `${CONFIG.base}/ telegrama / bot / búsqueda / video`,
       { url },
       {
         headers: {
@@ -54,7 +54,7 @@ async function TeraBoxDL(url) {
       };
     }
 
-    return { status: false, error: "Tidak ada data ditemukan" };
+    return { status: false, error: "No se han encontrado datos" };
   } catch (e) {
     return { status: false, error: e.message };
   }

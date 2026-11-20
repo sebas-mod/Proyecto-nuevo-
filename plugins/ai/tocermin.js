@@ -28,7 +28,7 @@ async function handler(m, { sock }) {
     if (!isImage) {
         return m.reply(
             `🪞 *ᴛᴏ ᴄᴇʀᴍɪɴ*\n\n` +
-            `> Kirim/reply gambar untuk efek cermin\n\n` +
+            `Ksena / respuestas imágenes para efectos de espejo\n\n` +
             `\`${m.prefix}tocermin\``
         )
     }
@@ -45,7 +45,7 @@ async function handler(m, { sock }) {
         
         if (!buffer) {
             m.react('❌')
-            return m.reply(`❌ Gagal mendownload gambar`)
+            return m.reply(`❌Paso de descarga de imagen`)
         }
         
         const result = await _seaartjs.live3d.call(void 0, buffer, PROMPT)

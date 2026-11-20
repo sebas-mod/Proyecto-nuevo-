@@ -4,7 +4,7 @@ const pluginConfig = {
     name: 'welcomeall',
     alias: ['wcall', 'globalwelcome'],
     category: 'owner',
-    description: 'Aktifkan/nonaktifkan welcome di semua grup',
+    description: 'Activar / deshabilitar la bienvenida en todo el grupo',
     usage: '.welcomeall <on/off>',
     example: '.welcomeall on',
     isOwner: true,
@@ -24,7 +24,7 @@ async function handler(m, { sock }) {
     if (!action || !['on', 'off'].includes(action)) {
         return m.reply(
             `👋 *ᴡᴇʟᴄᴏᴍᴇ ɢʟᴏʙᴀʟ*\n\n` +
-            `> Aktifkan/nonaktifkan welcome di SEMUA grup sekaligus\n\n` +
+            `Alojamiento en el sótano de inmediato\n\n` +
             `╭┈┈⬡「 📋 *ᴄᴀʀᴀ ᴘᴀᴋᴀɪ* 」\n` +
             `┃ ${m.prefix}welcomeall on\n` +
             `┃ ${m.prefix}welcomeall off\n` +
@@ -51,19 +51,19 @@ async function handler(m, { sock }) {
             return m.reply(
                 `✅ *ᴡᴇʟᴄᴏᴍᴇ ɢʟᴏʙᴀʟ ᴏɴ*\n\n` +
                 `╭┈┈⬡「 📊 *ʀᴇsᴜʟᴛ* 」\n` +
-                `┃ 🌐 Total Grup: *${count}*\n` +
-                `┃ ✅ Welcome: *AKTIF*\n` +
+                `┃ 🌐Top Grupo: *${count}*\n` +
+                `┃ ✅Welcome: *Activo*\n` +
                 `╰┈┈┈┈┈┈┈┈⬡\n\n` +
-                `> Semua member baru akan disambut otomatis!`
+                `¡Todas las fotos nuevas serán pavimentadas automáticamente!`
             )
         } else {
             return m.reply(
                 `❌ *ᴡᴇʟᴄᴏᴍᴇ ɢʟᴏʙᴀʟ ᴏꜰꜰ*\n\n` +
                 `╭┈┈⬡「 📊 *ʀᴇsᴜʟᴛ* 」\n` +
-                `┃ 🌐 Total Grup: *${count}*\n` +
-                `┃ ❌ Welcome: *NONAKTIF*\n` +
+                `┃ 🌐Top Grupo: *${count}*\n` +
+                `┃ ❌Welcome: *Inactivo*\n` +
                 `╰┈┈┈┈┈┈┈┈⬡\n\n` +
-                `> Welcome dinonaktifkan di semua grup.`
+                `Ezelcome se activa en todo grupo.`
             )
         }
     } catch (error) {

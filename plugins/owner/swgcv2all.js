@@ -29,7 +29,7 @@ const pluginConfig = {
   name: "swgcv2all",
   alias: ["statusgrupv2all"],
   category: "owner",
-  description: "Post Group Status V2 ke SEMUA grup",
+  description: "Estado del grupo de Arnoos V2 a KKA grupo",
   usage: ".swgcv2all <teks> atau reply media",
   example: ".swgcv2all Halo semua grup!",
   isOwner: true,
@@ -55,7 +55,7 @@ async function handler(m, { sock }) {
     }
 
     if (!buffer) {
-      return m.reply("❌ Gagal mengunduh media. Silakan coba lagi.");
+      return m.reply("❌Gagaldogging los medios.");
     }
 
     const fileType = await _filetype.fileTypeFromBuffer.call(void 0, buffer);
@@ -72,17 +72,17 @@ async function handler(m, { sock }) {
         ptt: _optionalChain([m, 'access', _6 => _6.quoted, 'optionalAccess', _7 => _7.ptt]) || m.ptt || false,
       };
     } else {
-      return m.reply("❌ Format media tidak didukung untuk SW GC.");
+      return m.reply("❌Los medios de formato no son compatibles para el intercambio GC.");
     }
   } else if (text) {
     rawContent = { text: text };
   } else {
     return m.reply(
       `👋 *sᴡɢᴄᴠ2 ᴀʟʟ ɢʟᴏʙᴀʟ*\n\n` +
-      `> Kirim pesan *Status Grup V2* ke SEMUA grup sekaligus.\n\n` +
+      `Para enviar un mensaje al grupo de inmediato.\n\n` +
       `╭┈┈⬡「 📋 *ᴄᴀʀᴀ ᴘᴀᴋᴀɪ* 」\n` +
-      `┃ ${m.prefix}swgcv2all Halo semua!\n` +
-      `┃ atau reply gambar/video dengan caption ${m.prefix}swgcv2all\n` +
+      `┃ ${m.prefix}¡Todo el swgcv2all Hola!\n` +
+      `┃o respuesta / imágenes de vídeo con capción${m.prefix}swgcv2all\n` +
       `╰┈┈┈┈┈┈┈┈⬡`
     );
   }
@@ -95,10 +95,10 @@ async function handler(m, { sock }) {
 
     if (groupIds.length === 0) {
       await m.react("❌");
-      return m.reply("❌ Bot tidak berada di grup manapun.");
+      return m.reply("❌No en el grupo.");
     }
 
-    await m.reply(`⏳ *Memulai Broadcast Status Grup V2 ke ${groupIds.length} Grup...*\n\n> Proses ini mungkin memakan waktu beberapa saat.`);
+    await m.reply(`⏳* Estado de la cadena de radio Grupo V2 a${groupIds.length}Grupo...*\n\nEstá levadura Prosses podría tardar un tiempo.`);
 
     let successCount = 0;
     let failCount = 0;
@@ -172,11 +172,11 @@ async function handler(m, { sock }) {
     await m.reply(
       `✅ *sᴡɢᴄᴠ2 ᴀʟʟ sᴇʟᴇsᴀɪ*\n\n` +
       `╭┈┈⬡「 📊 *ʀᴇsᴜʟᴛ* 」\n` +
-      `┃ 🌐 Total Grup: *${groupIds.length}*\n` +
-      `┃ ✅ Sukses: *${successCount}*\n` +
-      `┃ ❌ Gagal: *${failCount}*\n` +
+      `┃ 🌐Top Grupo: *${groupIds.length}*\n` +
+      `┃ ✅Sukses: *${successCount}*\n` +
+      `┃ ❌Fallido: *${failCount}*\n` +
       `╰┈┈┈┈┈┈┈┈⬡\n\n` +
-      `> Broadcast Status Grup V2 (Ring Pink) berhasil dikirim ke semua grup!`
+      `El Grupo de Estado de la maleta V2 ( Ring Pink ) fue enviado con éxito a todo el grupo!`
     );
 
   } catch (error) {

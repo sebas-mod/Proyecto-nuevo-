@@ -60,23 +60,23 @@ async function handler(m, { sock }) {
     if (!mediaSource) {
         await m.reply(
             `❌ *ɢᴀɢᴀʟ*\n\n` +
-            `> Tidak ada video/voice note yang terdeteksi!\n\n` +
-            `*Cara penggunaan:*\n` +
-            `> 1. Kirim video + caption \`${m.prefix}toaudio\`\n` +
-            `> 2. Reply video/VN dengan \`${m.prefix}toaudio\``
+            `No hay mención del video detestable / nota de voz!\n\n` +
+            `*Como usarlo:*\n` +
+            `Ksendvideo + capción\`${m.prefix}toaudio\`\n` +
+            `Responder video / VN con\`${m.prefix}toaudio\``
         )
         return
     }
     if (!isVideo && !isPtt) {
         await m.reply(
             `⚠️ *sᴜᴅᴀʜ ᴀᴜᴅɪᴏ*\n\n` +
-            `> Media ini sudah dalam format audio.\n` +
-            `> Gunakan \`${m.prefix}tovn\` jika ingin mengubah ke voice note.`
+            `Este medio ya está en forma de audio.\n` +
+            `> Usa \`${m.prefix}tovn\`Si quieres convertir a la nota de voz.`
         )
         return
     }
 
-    await m.reply(`🕕 *ᴍᴇᴍᴘʀᴏsᴇs...*\n\n> Mengekstrak audio dari media...`)
+    await m.reply(`🕕*ᴍᴇᴍᴘʀᴏSᴇ- Sí.\n\nPara extraer un público de los medios de comunicación..`)
 
     const tempDir = _path2.default.join(process.cwd(), 'temp')
     if (!_fs2.default.existsSync(tempDir)) _fs2.default.mkdirSync(tempDir, { recursive: true })
@@ -91,8 +91,8 @@ async function handler(m, { sock }) {
         if (!buffer || buffer.length === 0) {
             await m.reply(
                 `❌ *ɢᴀɢᴀʟ*\n\n` +
-                `> Tidak dapat mengunduh media.\n` +
-                `> Media mungkin sudah tidak tersedia.`
+                `No se puede descargar los medios de comunicación.\n` +
+                `Ehemedia puede estar más allá de la reproche.`
             )
             return
         }
@@ -104,8 +104,8 @@ async function handler(m, { sock }) {
         if (!_fs2.default.existsSync(outputPath)) {
             await m.reply(
                 `❌ *ᴋᴏɴᴠᴇʀsɪ ɢᴀɢᴀʟ*\n\n` +
-                `> Gagal mengekstrak audio dari media.\n` +
-                `> Pastikan ffmpeg terinstall dengan benar.`
+                `- (Risas) - ( GASPS ) - ( GASPS )\n` +
+                `Así que asegúrese de que el ffmpeg está instalado correctamente.`
             )
             return
         }
@@ -119,7 +119,7 @@ async function handler(m, { sock }) {
     } catch (error) {
         await m.reply(
             `❌ *ᴇʀʀᴏʀ*\n\n` +
-            `> Terjadi kesalahan saat memproses.\n` +
+            `" Se ha cometido un error durante el procesamiento.\n` +
             `> _${error.message}_`
         )
     } finally {

@@ -2,7 +2,7 @@
     name: 'setppgc',
     alias: ['setprofilegc', 'setppgroup', 'setppgrup'],
     category: 'group',
-    description: 'Mengubah foto profil grup',
+    description: 'Cambiar fotos de perfil de grupo',
     usage: '.setppgc (reply gambar)',
     example: '.setppgc',
     isOwner: false,
@@ -22,33 +22,33 @@ async function handler(m, { sock }) {
         try {
             buffer = await m.quoted.download()
         } catch (e) {
-            await m.reply(`❌ Gagal mengambil gambar.`)
+            await m.reply(`❌Gagalm toma fotos.`)
             return
         }
     } else if (m.isImage) {
         try {
             buffer = await m.download()
         } catch (e) {
-            await m.reply(`❌ Gagal mengambil gambar.`)
+            await m.reply(`❌Gagalm toma fotos.`)
             return
         }
     }
     if (!buffer) {
         await m.reply(
             `⚠️ *ᴄᴀʀᴀ ᴘᴀᴋᴀɪ*\n\n` +
-            `> Reply gambar + \`${m.prefix}setppgc\`\n` +
-            `> Kirim gambar + caption \`${m.prefix}setppgc\``
+            `# Responder imagen +\`${m.prefix}setppgc\`\n` +
+            `APOLOGIZACIÓN\`${m.prefix}setppgc\``
         )
         return
     }
     try {
         await sock.updateProfilePicture(m.chat, buffer)
         await m.reply(
-            `✅ Foto profil grup berhasil diperbarui!`
+            `✅La foto del perfil de grupo fue actualizada con éxito!`
         )
     } catch (error) {
         await m.reply(
-            `❌ Gagal mengubah foto grup.\n` +
+            `❌Stebulm ciambilla foto grupo.\n` +
             `> _${error.message}_`
         )
     }

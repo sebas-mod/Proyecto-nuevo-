@@ -27,21 +27,21 @@ async function handler(m, { sock }) {
   const mentioned = _optionalChain([m, 'access', _ => _.mentionedJid, 'optionalAccess', _2 => _2[0]]) || _optionalChain([m, 'access', _3 => _3.quoted, 'optionalAccess', _4 => _4.sender]);
   if (!mentioned) {
     let txt = `⚔️ *ARENA GLADIATOR* ⚔️\n\n`;
-    txt += `Ayo tantang teman kamu untuk duel di arena kak!\n\n`;
+    txt += `¡Desafíamos a tu amigo a duelo en arena!\n\n`;
     txt += `*Cara Menantang:*\n`;
     txt += `🗡️ \`${m.prefix}arena @user\`\n`;
-    txt += `🗡️ Atau reply pesan dia dengan \`${m.prefix}arena\`\n\n`;
-    txt += `> _⚠️ Hati-hati kak, kalau kalah koin kamu bakal berkurang 20%!_`;
+    txt += `🗡*Le dije que le enviara un mensaje*\`${m.prefix}arena\`\n\n`;
+    txt += `¿Q¿Ué?⚠Para ver cuidado, hermana, si quiere que su moneda sea 20 % menos.`;
     return m.reply(txt);
   }
 
   if (mentioned === m.sender) {
-    return m.reply(`Aduh kak, masa kamu mau mukulin diri sendiri? Cari lawan yang lain yuk! 😂`);
+    return m.reply(`¿Quieres suicidarte?😂`);
   }
 
   const opponent = db.getUser(mentioned);
   if (!opponent) {
-    return m.reply(`Lawan yang kamu tag belum terdaftar di database kita nih kak!`);
+    return m.reply(`¡La fecha que etiquetaste no está registrada en nuestra base de datos todavía!`);
   }
 
   if (!opponent.rpg) opponent.rpg = {};
@@ -55,7 +55,7 @@ async function handler(m, { sock }) {
   const oppDefense = (opponent.rpg.defense || 5) + (opponent.level || 1);
 
   await m.react("⚔️");
-  await m.reply(`⚔️ *PERTARUNGAN DIMULAI!* ⚔️\n\n@${m.sender.split("@")[0]} menerjang ke arah @${mentioned.split("@")[0]}!\nSemoga berhasil ya kak! 🔥`, { mentions: [m.sender, mentioned] });
+  await m.reply(`⚔* COMMENTATOR ' s FIGHT!⚔♪\n\n@${m.sender.split("@")[0]}Arrastrar al lado @${mentioned.split("@")[0]}!\nFontcolor = " # FFFF00 " Ojalá successful si fontcolor = " # FFFF00 " hermana!🔥`, { mentions: [m.sender, mentioned] });
   await new Promise((r) => setTimeout(r, 2000));
 
   let myHp = myHealth;
@@ -68,24 +68,24 @@ async function handler(m, { sock }) {
 
     const myDmg = Math.max(5, myAttack - oppDefense + Math.floor(Math.random() * 10));
     oppHp -= myDmg;
-    battleLog.push(`🔥 Kamu melancarkan serangan kuat: *-${myDmg} HP*`);
+    battleLog.push(`🔥Estás hundiendo contra el hombro:${myDmg} HP*`);
 
     if (oppHp <= 0) break;
 
     const oppDmg = Math.max(5, oppAttack - myDefense + Math.floor(Math.random() * 10));
     myHp -= oppDmg;
-    battleLog.push(`💢 Lawan membalas dengan keras: *-${oppDmg} HP*`);
+    battleLog.push(`💢- Y te voy a ganar.${oppDmg} HP*`);
   }
 
   const isWin = myHp > oppHp;
 
-  let txt = `⚔️ *HASIL PERTARUNGAN* ⚔️\n\n`;
-  txt += `*📊 Kondisi Akhir:*\n`;
-  txt += `🧑 Kamu: *${Math.max(0, myHp)}/${myHealth} HP*\n`;
-  txt += `👤 Lawan: *${Math.max(0, oppHp)}/${oppHealth} HP*\n`;
-  txt += `🔄 Durasi: *${round} Ronde*\n\n`;
+  let txt = `⚔♪ Tengo una pelea ♪⚔♪\n\n`;
+  txt += `*📊Kondisi Final:*\n`;
+  txt += `🧑Tu: *${Math.max(0, myHp)}/${myHealth} HP*\n`;
+  txt += `👤Oponente: *${Math.max(0, oppHp)}/${oppHealth} HP*\n`;
+  txt += `🔄Duración: *${round}Ronda*\n\n`;
 
-  txt += `📜 *Cuplikan Pertarungan:*\n`;
+  txt += `📜 *Cuplikan Lucha:*\n`;
   txt += battleLog
     .slice(-6)
     .map((l) => `> ${l}`)
@@ -102,18 +102,18 @@ async function handler(m, { sock }) {
     await _ourinleveljs.addExpWithLevelCheck.call(void 0, sock, m, db, user, expReward);
 
     txt += `🏆 *KEMENANGAN TELAH DIRAIH!* 🎉\n`;
-    txt += `Wah hebat banget kak! Ini hadiah dari arena:\n`;
+    txt += `Es un regalo de Arena:\n`;
     txt += `✨ EXP: *+${expReward}*\n`;
-    txt += `💰 Koin Jarahan: *+Rp ${goldReward.toLocaleString()}*`;
+    txt += `💰Tela Jarahan: * + Rp${goldReward.toLocaleString()}*`;
 
     await m.react("🏆");
   } else {
     const goldLoss = Math.floor((user.koin || 0) * 0.2);
     user.koin = Math.max(0, (user.koin || 0) - goldLoss);
 
-    txt += `💀 *SAYANG SEKALI, KAMU KALAH...* 💔\n`;
-    txt += `Jangan sedih kak, nanti coba lagi ya!\n`;
-    txt += `💸 Koin Terjatuh: *-Rp ${goldLoss.toLocaleString()}*`;
+    txt += `💀* Desde luego, estás cagando. *💔\n`;
+    txt += `No te entristeces, hermana. ¡Lo intentaré de nuevo!\n`;
+    txt += `💸 Monedas Terjatuh: *-Rp ${goldLoss.toLocaleString()}*`;
 
     await m.react("💀");
   }

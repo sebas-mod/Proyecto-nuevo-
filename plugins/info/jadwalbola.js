@@ -18,7 +18,7 @@ const pluginConfig = {
   isEnabled: true,
 };
 
-const NEOXR_APIKEY = _optionalChain([_configjs2.default, 'access', _ => _.APIkey, 'optionalAccess', _2 => _2.neoxr]) || "Milik-Bot-OurinMD";
+const NEOXR_APIKEY = _optionalChain([_configjs2.default, 'access', _ => _.APIkey, 'optionalAccess', _2 => _2.neoxr]) || "Millik - Eurinprobable";
 
 const LEAGUE_EMOJI = {
   "liga inggris": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
@@ -53,7 +53,7 @@ async function handler(m, { sock }) {
     );
 
     if (!_optionalChain([data, 'optionalAccess', _3 => _3.status]) || !_optionalChain([data, 'optionalAccess', _4 => _4.data]) || data.data.length === 0) {
-      throw new Error("Tidak ada jadwal tersedia");
+      throw new Error("No hay control disponible");
     }
 
     let matches = data.data;
@@ -70,7 +70,7 @@ async function handler(m, { sock }) {
 
     if (matches.length === 0) {
       m.react("❌");
-      return m.reply(`❌ Tidak ditemukan jadwal untuk: \`${filter}\``);
+      return m.reply(`❌No se encuentra protegido para:\`${filter}\``);
     }
 
     const grouped = {};

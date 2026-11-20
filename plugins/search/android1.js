@@ -8,7 +8,7 @@ const pluginConfig = {
   name: "android1",
   alias: ["an1"],
   category: "search",
-  description: "Cari dan download APK MOD dari Android1",
+  description: "Busca y descarga APK MOD de Android1",
   usage: ".android1 <query>",
   example: ".android1 Subway Surfer",
   isOwner: false,
@@ -20,7 +20,7 @@ const pluginConfig = {
   isEnabled: true,
 };
 
-const NEOXR_APIKEY = _optionalChain([_configjs2.default, 'access', _ => _.APIkey, 'optionalAccess', _2 => _2.neoxr]) || "Milik-Bot-OurinMD";
+const NEOXR_APIKEY = _optionalChain([_configjs2.default, 'access', _ => _.APIkey, 'optionalAccess', _2 => _2.neoxr]) || "Millik - Eurinprobable";
 
 async function handler(m, { sock }) {
   const db = _ourindatabasejs.getDatabase.call(void 0, );
@@ -31,9 +31,9 @@ async function handler(m, { sock }) {
     return m.reply(
       `📱 *ᴀɴᴅʀᴏɪᴅ1 sᴇᴀʀᴄʜ*\n\n` +
         `╭┈┈⬡「 📋 *ᴄᴀʀᴀ ᴘᴀᴋᴀɪ* 」\n` +
-        `┃ 🔍 \`${m.prefix}android1 <query>\` - Cari APK\n` +
+        `┃ 🔍 \`${m.prefix}android1<query>\`- Busca APK\n` +
         `╰┈┈⬡\n\n` +
-        `> Contoh:\n` +
+        `> Ejemplo:\n` +
         `\`${m.prefix}android1 Subway Surfer\``,
     );
   }
@@ -50,7 +50,7 @@ async function handler(m, { sock }) {
 
     if (!_optionalChain([data, 'optionalAccess', _6 => _6.status]) || !_optionalChain([data, 'optionalAccess', _7 => _7.data, 'optionalAccess', _8 => _8.length])) {
       m.react("❌");
-      return m.reply(`❌ Tidak ditemukan hasil untuk: \`${text}\``);
+      return m.reply(`❌No se han encontrado resultados para:\`${text}\``);
     }
 
     const apps = data.data.slice(0, 10);
@@ -67,8 +67,8 @@ async function handler(m, { sock }) {
     const saluranId = _optionalChain([_configjs2.default, 'access', _9 => _9.saluran, 'optionalAccess', _10 => _10.id]) || "120363400911374213@newsletter";
     const saluranName = _optionalChain([_configjs2.default, 'access', _11 => _11.saluran, 'optionalAccess', _12 => _12.name]) || _optionalChain([_configjs2.default, 'access', _13 => _13.bot, 'optionalAccess', _14 => _14.name]) || "Ourin-AI";
 
-    let caption = `📱 Hasil dari pencarian apk mod *${text}*\n`;
-    caption += `*${apps.length}* aplikasi ditemukan\n\n`;
+    let caption = `📱El acrónimo de la búsqueda de apk mod *${text}*\n`;
+    caption += `*${apps.length}* Aplicaciones encontradas\n\n`;
 
     apps.forEach((app, i) => {
       caption += `*${i + 1}.* ${app.name}\n`;
@@ -76,7 +76,7 @@ async function handler(m, { sock }) {
       caption += `   └ ⭐ ${app.rating}/5\n\n`;
     });
 
-    caption += `> Pilih angka untuk download langsung`;
+    caption += `*Elija el número para descargar langsung*`;
 
     const buttons = apps.slice(0, 10).map((app, i) => ({
       title: `${i + 1}. ${app.name.substring(0, 20)}`,
@@ -98,7 +98,7 @@ async function handler(m, { sock }) {
               title: "Pilih APK",
               sections: [
                 {
-                  title: "APK nya",
+                  title: "El APK.",
                   rows: buttons,
                 },
               ],

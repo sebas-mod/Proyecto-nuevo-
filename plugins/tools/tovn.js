@@ -57,10 +57,10 @@ async function handler(m, { sock }) {
     if (!mediaSource) {
         await m.reply(
             `❌ *ɢᴀɢᴀʟ*\n\n` +
-            `> Tidak ada audio/video yang terdeteksi!\n\n` +
-            `*Cara penggunaan:*\n` +
-            `> 1. Kirim audio/video + caption \`${m.prefix}tovn\`\n` +
-            `> 2. Reply audio/video dengan \`${m.prefix}tovn\``
+            `¡No hay audios detectables!\n\n` +
+            `*Como usarlo:*\n` +
+            `DR. Ksenaudio / video + leyenda\`${m.prefix}tovn\`\n` +
+            `Responder audio / video con\`${m.prefix}tovn\``
         )
         return
     }
@@ -82,8 +82,8 @@ async function handler(m, { sock }) {
             await m.react('❌')
             await m.reply(
                 `❌ *ɢᴀɢᴀʟ*\n\n` +
-                `> Tidak dapat mengunduh media.\n` +
-                `> Media mungkin sudah tidak tersedia.`
+                `No se puede descargar los medios de comunicación.\n` +
+                `Ehemedia puede estar más allá de la reproche.`
             )
             return
         }
@@ -108,8 +108,8 @@ async function handler(m, { sock }) {
             await m.react('❌')
             await m.reply(
                 `❌ *ᴋᴏɴᴠᴇʀsɪ ɢᴀɢᴀʟ*\n\n` +
-                `> Gagal mengkonversi ke voice note.\n` +
-                `> Pastikan ffmpeg terinstall dengan benar.`
+                `Gafal convierte a la nota de voz.\n` +
+                `Así que asegúrese de que el ffmpeg está instalado correctamente.`
             )
             return
         }
@@ -127,7 +127,7 @@ async function handler(m, { sock }) {
         await m.react('❌')
         await m.reply(
             `❌ *ᴇʀʀᴏʀ*\n\n` +
-            `> Terjadi kesalahan saat memproses.\n` +
+            `" Se ha cometido un error durante el procesamiento.\n` +
             `> _${error.message}_`
         )
     } finally {

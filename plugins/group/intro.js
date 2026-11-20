@@ -5,7 +5,7 @@ const pluginConfig = {
     name: 'intro',
     alias: ['perkenalan', 'selamatdatang'],
     category: 'group',
-    description: 'Tampilkan pesan intro grup',
+    description: 'Mostrar mensajes de grupo intro',
     usage: '.intro',
     example: '.intro',
     isOwner: false,
@@ -17,19 +17,19 @@ const pluginConfig = {
     isEnabled: true
 }
 
-const DEFAULT_INTRO = `halo kak @user 🖐
+const DEFAULT_INTRO = `hola hermano @user 🖐
 
-Kenalan dulu yukk
-- Nama : 
-- Umur : 
-- Asal : 
+Conozcalo primero, Yuk.
+- Nombre:
+- Edad:
+- Asal:
 - Hobi : 
 - Status : 
 
-Semoga betah yahh, di grup @group
+Ojalá betah yahh, en grupo @
 
-> Untuk Owner:
-ganti intro bawaan dengan .setintro <text>`
+Para el propietario:
+Interruptor de entrada abajo con.<text>`
  function parsePlaceholders(text, m, groupMeta) {
     const now = _momenttimezone2.default.call(void 0, ).tz('Asia/Jakarta')
     const dateStr = now.format('D MMMM YYYY')
@@ -37,11 +37,11 @@ ganti intro bawaan dengan .setintro <text>`
     
     return text
         .replace(/@user/gi, `@${m.sender.split('@')[0]}`)
-        .replace(/@group/gi, _optionalChain([groupMeta, 'optionalAccess', _ => _.subject]) || 'Grup')
+        .replace(/@group/gi, _optionalChain([groupMeta, 'optionalAccess', _ => _.subject]) || 'Grupo')
         .replace(/@count/gi, _optionalChain([groupMeta, 'optionalAccess', _2 => _2.participants, 'optionalAccess', _3 => _3.length]) || '0')
         .replace(/@date/gi, dateStr)
         .replace(/@time/gi, timeStr)
-        .replace(/@desc/gi, _optionalChain([groupMeta, 'optionalAccess', _4 => _4.desc]) || 'Tidak ada deskripsi')
+        .replace(/@desc/gi, _optionalChain([groupMeta, 'optionalAccess', _4 => _4.desc]) || 'No hay descripción')
         .replace(/@botname/gi, _optionalChain([_configjs2.default, 'access', _5 => _5.bot, 'optionalAccess', _6 => _6.name]) || 'Ourin-AI')
 }
 

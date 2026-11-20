@@ -31,7 +31,7 @@ async function handler(m) {
     
     const parts = text.split('|')
     if (parts.length < 2) {
-        return m.reply(`❌ Format salah! Gunakan: \`ip|password\``)
+        return m.reply(`❌ Formato incorrecto! Usa: \`* Contraseña*\``)
     }
     
     const ipvps = parts[0].trim()
@@ -50,7 +50,7 @@ async function handler(m) {
     const ress = new (0, _ssh2.Client)()
     
     m.react('🕕')
-    await m.reply(`🕕 *ᴍᴇᴍᴘʀᴏsᴇs ᴜɴɪɴsᴛᴀʟʟ ᴛᴇᴍᴀ...*\n\n> Tunggu 1-10 menit hingga proses selesai`)
+    await m.reply(`🕕*ᴍᴇᴍᴘʀᴏSᴇSᴜɴɪɴSᴛᴀʟʟ ᴛᴇᴍᴀ...\n\n*Espera 1 - 10 minutos* *El proceso naranja está completo*`)
     
     ress.on('ready', () => {
         ress.exec(command, (err, stream) => {
@@ -63,11 +63,11 @@ async function handler(m) {
                 m.react('✅')
                 await m.reply(
                     `╭┈┈⬡「 ✅ *ᴜɴɪɴsᴛᴀʟʟ ᴛᴇᴍᴀ* 」
-┃ ㊗ sᴛᴀᴛᴜs: *Berhasil*
+┃ ㊗Sᴛᴀᴛᴜs: *Exito*
 ┃ ㊗ ɪᴘ: ${ipvps}
 ╰┈┈⬡
 
-> _Tema berhasil diuninstall!_`
+Tema desinstalado con éxito`
                 )
                 ress.end()
             }).on('data', (data) => {
@@ -83,7 +83,7 @@ async function handler(m) {
     }).on('error', (err) => {
         console.log('[SSH Error]', err)
         m.react('❌')
-        m.reply(`❌ Koneksi gagal!\n\n> IP atau Password tidak valid.`)
+        m.reply(`❌Conexión fallido!\n\nAkeiP o Passard es inválido.`)
     }).connect(connSettings)
 }
 

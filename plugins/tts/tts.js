@@ -16,7 +16,7 @@ async function handler(m, { sock }) {
   const text = _optionalChain([m, 'access', _ => _.text, 'optionalAccess', _2 => _2.trim, 'call', _3 => _3()]);
 
   if (!text) {
-    return m.reply(`🎤 *Google TTS*\n\nGunakan:\n${m.prefix}tts halo dunia`);
+    return m.reply(`🎤 *Google TTS*\n\nGunakan:\n${m.prefix}*El mundo haloh ts*`);
   }
 
   m.react("🎤");

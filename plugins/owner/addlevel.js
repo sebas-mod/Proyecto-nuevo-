@@ -39,11 +39,11 @@ async function handler(m, { sock }) {
     if (!targetJid || levels <= 0) {
         return m.reply(
             `📊 *ADD LEVEL*\n\n` +
-            `Sistem untuk menambahkan level kepada member secara instan.\n\n` +
-            `*PENGGUNAAN:*\n` +
-            `- *${m.prefix}addlevel <jumlah>* — (ke diri sendiri)\n` +
-            `- *${m.prefix}addlevel <jumlah> @user* — (ke orang lain)\n\n` +
-            `*CONTOH PENGGUNAAN:*\n` +
+            `El sistema para añadir nivel a la entrada @-@ miembro de estilo.\n\n` +
+            `*Uso:*\n` +
+            `- *${m.prefix}nivel de adición<jumlah>*— (a diri propio)\n` +
+            `- *${m.prefix}nivel de adición<jumlah>@ user *—(a otros)\n\n` +
+            `*Ejemplo de uso:*\n` +
             `- *${m.prefix}addlevel 5*\n` +
             `- *${m.prefix}addlevel 10 @user*`
         )
@@ -70,11 +70,11 @@ async function handler(m, { sock }) {
     const finalLevel = addResult.newLevel || _ourinleveljs.calculateLevel.call(void 0, user.exp)
     
     await m.reply(
-        `✅ *BERHASIL MENAMBAH LEVEL*\n\n` +
-        `Level milik *@${targetJid.split('@')[0]}* telah sukses ditambahkan sebanyak *${levels} Level*.\n\n` +
-        `*Statistik Terkini:*\n` +
-        `- Level Sekarang: *${finalLevel}*\n` +
-        `- Role Saat Ini: *${_ourinleveljs.getRole.call(void 0, finalLevel)}*\n` +
+        `✅> 91; GASPS &#93;\n\n` +
+        `Level milik *@${targetJid.split('@')[0]}* ha logrado tanto en la minería *${levels} Level*.\n\n` +
+        `* Estadísticas de Terkini: *\n` +
+        `- Nivel Ahora: *${finalLevel}*\n` +
+        `- Función Cuando It: *${_ourinleveljs.getRole.call(void 0, finalLevel)}*\n` +
         `- Total XP: *${user.exp.toLocaleString()}* XP`,
         { mentions: [targetJid] }
     )

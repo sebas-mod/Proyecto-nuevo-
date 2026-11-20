@@ -29,36 +29,36 @@ async function handler(m, context) {
   const p = prefix || '.';
   const cmd = (command || '').toLowerCase();
 
-  // Command: .cekverif
+  //Comando:.cekverif
   if (cmd === 'cekverif') {
     const verified = isUserVerified(m.sender);
     if (verified || m.isOwner) {
-      return m.reply('✅ *STATUS: TERVERIFIKASI*\n\nKamu sudah memenuhi syarat dan dapat menggunakan seluruh fitur Ourin 3.5.');
+      return m.reply('✅*Estado: TERVERIFIKASI*\n\nHa cumplido los requisitos y puede utilizar toda la función Ourin 3.');
     } else {
       return m.reply(
-        `❌ *STATUS: BELUM TERVERIFIKASI*\n\n` +
-          `Silakan ikuti kedua saluran resmi kami terlebih dahulu:\n` +
+        `❌> 91; STATUS &#93; No todavía.\n\n` +
+          `Por favor, siga nuestro canal oficial.\n` +
           `1. ${CHANNEL_1_URL}\n` +
           `2. ${CHANNEL_2_URL}\n\n` +
-          `Setelah mengikuti keduanya, ketik: \`${p}verif\``
+          `Después de seguir su segundo, amigo:\`${p}verif\``
       );
     }
   }
 
-  // Command: .unverif (Khusus Owner)
+  //Comando:. unverify ( Exclusivo Propietario )
   if (cmd === 'unverif') {
-    if (!m.isOwner) return m.reply('Fitur ini khusus owner bot.');
+    if (!m.isOwner) return m.reply('Está característica es especial propietario bot.');
     const target = m.quoted ? m.quoted.sender : (text ? text.replace(/[^0-9]/g, '') + '@s.whatsapp.net' : null);
-    if (!target) return m.reply(`Gunakan format: \`${p}unverif @user\` atau reply pesan pengguna.`);
+    if (!target) return m.reply(`Usa formato:\`${p}unverify @ usuario\`o responder los mensajes de usuario.`);
     revokeUser(target);
-    return m.reply(`✅ Status verifikasi untuk user @${target.split('@')[0]} berhasil dicabut.`, {
+    return m.reply(`✅Verificación de sellos para el usuario @${target.split('@')[0]}exito dicabut.`, {
       mentions: [target],
     });
   }
 
-  // Command: .verif / .verify
+  //Comando:. verificar /. verificar.
   if (isUserVerified(m.sender)) {
-    return m.reply('✅ Kamu sudah terverifikasi sebelumnya dan memiliki akses penuh ke fitur Ourin 3.5.');
+    return m.reply('✅Lo ha verificado antes y tiene un pleno acuso a la Fitud Ourin 3. 5.');
   }
 
   // Verifikasi channel metadata ketersediaan
@@ -77,11 +77,11 @@ async function handler(m, context) {
   verifyUser(m.sender, 'user_claim');
 
   return m.reply(
-    `🎉 *VERIFIKASI BERHASIL!*\n\n` +
-      `Status follow untuk kedua saluran resmi berhasil diverifikasi:\n` +
+    `🎉*VERIFIKASI Exito!*\n\n` +
+      `Estado seguido para ambos canales oficiales verificados con éxito:\n` +
       `✔ Channel 1: Terhubung\n` +
       `✔ Channel 2: Terhubung\n\n` +
-      `Selamat datang di *Ourin 3.5*! Seluruh command sekarang dapat kamu gunakan secara penuh. Ketik \`${p}menu\` untuk mulai.`
+      `Bienvenido a Ourin 3. 5!\`${p}menú\`para empieza.`
   );
 }
 

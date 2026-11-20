@@ -27,7 +27,7 @@ async function handler(m, { sock }) {
     if (!isImage) {
         return m.reply(
             `🎬 *ᴛᴏ ᴄᴀʀᴛᴏᴏɴ*\n\n` +
-            `> Kirim/reply gambar untuk diubah ke gaya kartun\n\n` +
+            `# Kuply / respuestas imágenes para convertir a gaya dibujos animados\n\n` +
             `\`${m.prefix}tocartoon\``
         )
     }
@@ -44,7 +44,7 @@ async function handler(m, { sock }) {
         
         if (!buffer) {
             m.react('❌')
-            return m.reply(`❌ Gagal mendownload gambar`)
+            return m.reply(`❌Paso de descarga de imagen`)
         }
         
         const result = await _seaartjs.live3d.call(void 0, buffer, PROMPT)

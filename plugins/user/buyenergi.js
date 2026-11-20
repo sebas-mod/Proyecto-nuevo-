@@ -3,7 +3,7 @@ const pluginConfig = {
     name: 'buyenergi',
     alias: ['belienergi', 'purchaseenergi', 'buyenergy'],
     category: 'user',
-    description: 'Beli energi dengan koin (1 energi = 100 koin)',
+    description: 'Comprar energía con una moneda ( 1 energía = 100 monedas )',
     usage: '.buyenergi <jumlah>',
     example: '.buyenergi 10',
     isOwner: false,
@@ -31,10 +31,10 @@ async function handler(m, { sock }) {
         return m.reply(
             `🛒 *ʙᴜʏ ᴇɴᴇʀɢɪ*\n\n` +
             `╭┈┈⬡「 💰 *ɪɴꜰᴏ* 」\n` +
-            `┃ 💵 ʜᴀʀɢᴀ: *${PRICE_PER_ENERGI}* koin/energi\n` +
+            `┃ 💵 ʜᴀʀɢᴀ: *${PRICE_PER_ENERGI}* monedas/energía\n` +
             `┃ 💰 ᴋᴏɪɴ ᴋᴀᴍᴜ: *${formatNumber(user.koin || 0)}*\n` +
             `╰┈┈⬡\n\n` +
-            `> Gunakan: \`.buyenergi <jumlah>\`\n\n` +
+            `> Usa: \`. buyenergi<jumlah>\`\n\n` +
             `\`Contoh: ${m.prefix}buyenergi 10\``
         )
     }
@@ -45,9 +45,9 @@ async function handler(m, { sock }) {
     if ((user.koin || 0) < totalPrice) {
         return m.reply(
             `❌ *ɢᴀɢᴀʟ*\n\n` +
-            `> Koin tidak cukup!\n` +
-            `> Butuh: *${formatNumber(totalPrice)}*\n` +
-            `> Kamu punya: *${formatNumber(user.koin || 0)}*`
+            `Ser Tela no es suficiente!\n` +
+            `Mierda.${formatNumber(totalPrice)}*\n` +
+            `# You 've got:${formatNumber(user.koin || 0)}*`
         )
     }
     
@@ -57,8 +57,8 @@ async function handler(m, { sock }) {
         m.react('✅')
         return m.reply(
             `✅ *ᴘᴇᴍʙᴇʟɪᴀɴ ʙᴇʀʜᴀsɪʟ*\n\n` +
-            `> Tapi kamu sudah punya unlimited energi!\n` +
-            `> Koin dikembalikan.`
+            `¡Pero ya tienes energía ilimitada!\n` +
+            `Para ser devuelto a Monedas.`
         )
     }
     

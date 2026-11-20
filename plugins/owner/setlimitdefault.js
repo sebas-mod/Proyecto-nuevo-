@@ -4,7 +4,7 @@ const pluginConfig = {
     name: 'setlimitdefault',
     alias: ['setdefaultlimit', 'limitdefault'],
     category: 'owner',
-    description: 'Set default limit untuk user baru',
+    description: 'Establecer límite predeterminado para el nuevo usuario',
     usage: '.setlimitdefault <jumlah>',
     example: '.setlimitdefault 50',
     isOwner: true,
@@ -26,16 +26,16 @@ async function handler(m, { sock }) {
         
         return m.reply(
             `📊 *sᴇᴛ ᴅᴇғᴀᴜʟᴛ ʟɪᴍɪᴛ*\n\n` +
-            `> Limit default saat ini: \`${currentDefault}\`\n\n` +
-            `*Cara pakai:*\n` +
+            `*El límite actual predeterminado: *\`${currentDefault}\`\n\n` +
+            `*Como usarlo:*\n` +
             `> \`${m.prefix}setlimitdefault <jumlah>\`\n\n` +
-            `*Contoh:*\n` +
+            `*Ejemplo:*\n` +
             `> \`${m.prefix}setlimitdefault 50\``
         )
     }
     
     if (newLimit < 1 || newLimit > 1000) {
-        return m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> Limit harus antara 1 - 1000`)
+        return m.reply(`❌*ɢᴀɢᴀʟ*\n\nEl límite de la ez debe ser entre 1 - 1000`)
     }
     
     const db = _ourindatabasejs.getDatabase.call(void 0, )
@@ -43,8 +43,8 @@ async function handler(m, { sock }) {
     
     await m.reply(
         `✅ *ʙᴇʀʜᴀsɪʟ*\n\n` +
-        `> Default limit diubah menjadi: \`${newLimit}\`\n` +
-        `> User baru akan mendapat limit ini`
+        `*El límite predeterminado se convirtió en: *\`${newLimit}\`\n` +
+        `El nuevo usuario conseguirá este límite`
     )
 }
 

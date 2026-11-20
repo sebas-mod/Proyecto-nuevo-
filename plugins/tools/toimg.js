@@ -2,7 +2,7 @@
     name: 'toimg',
     alias: ['toimage', 'stickertoimage', 'stimg'],
     category: 'tools',
-    description: 'Mengubah sticker menjadi gambar',
+    description: 'Convierta las pegatinas en imágenes',
     usage: '.toimg (reply/caption sticker)',
     example: '.toimg',
     isOwner: false,
@@ -38,10 +38,10 @@ async function handler(m, { sock }) {
     if (!mediaSource) {
         await m.reply(
             `❌ *ɢᴀɢᴀʟ*\n\n` +
-            `> Tidak ada sticker yang terdeteksi!\n\n` +
-            `*Cara penggunaan:*\n` +
-            `> 1. Kirim sticker + caption \`${m.prefix}toimg\`\n` +
-            `> 2. Reply sticker dengan \`${m.prefix}toimg\``
+            `¡No detecten pegatinas!\n\n` +
+            `*Como usarlo:*\n` +
+            `Kpensmacker + capción\`${m.prefix}toimg\`\n` +
+            `Responder pegatina con\`${m.prefix}toimg\``
         )
         return
     }
@@ -54,8 +54,8 @@ async function handler(m, { sock }) {
     if (isAnimated) {
         await m.reply(
             `⚠️ *sᴛɪᴄᴋᴇʀ ᴀɴɪᴍᴀsɪ*\n\n` +
-            `> Sticker ini adalah sticker animasi (GIF).\n` +
-            `> Gunakan \`${m.prefix}tovideo\` untuk mengubahnya.`
+            `Está pegatina es una pegatina animada.\n` +
+            `> Usa \`${m.prefix}tovideo\`para mengubahnya.`
         )
         return
     }
@@ -68,8 +68,8 @@ async function handler(m, { sock }) {
         if (!buffer || buffer.length === 0) {
             await m.reply(
                 `❌ *ɢᴀɢᴀʟ*\n\n` +
-                `> Tidak dapat mengunduh sticker.\n` +
-                `> Sticker mungkin sudah tidak tersedia.`
+                `No se pueden descargar pegatinas.\n` +
+                `La pegatina puede no estar disponible.`
             )
             return
         }
@@ -77,8 +77,8 @@ async function handler(m, { sock }) {
         if (buffer.length < 100) {
             await m.reply(
                 `❌ *ꜰɪʟᴇ ᴋᴏʀᴜᴘ*\n\n` +
-                `> File sticker tidak valid atau rusak.\n` +
-                `> Coba kirim ulang stickernya.`
+                `*Las pegatinas de archivo no son válidas ni rotas.*\n` +
+                `> Intenta envia repite stickernya.`
             )
             return
         }
@@ -90,7 +90,7 @@ async function handler(m, { sock }) {
     } catch (error) {
         await m.reply(
             `❌ *ᴇʀʀᴏʀ*\n\n` +
-            `> Terjadi kesalahan saat memproses.\n` +
+            `" Se ha cometido un error durante el procesamiento.\n` +
             `> _${error.message}_`
         )
     }

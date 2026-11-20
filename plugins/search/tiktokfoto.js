@@ -8,7 +8,7 @@ const pluginConfig = {
     name: 'tiktokfoto',
     alias: ['ttfoto', 'ttphotosearch', 'searchtiktokfoto'],
     category: 'search',
-    description: 'Cari foto TikTok dan kirim album gambar',
+    description: 'Encontrar la foto de TikTok y enviar una foto de albus',
     usage: '.tiktokfoto <query>',
     example: '.tiktokfoto cosplay',
     isOwner: false,
@@ -46,7 +46,7 @@ async function fetchTiktokFoto(query) {
     })
 
     if (!_optionalChain([data, 'optionalAccess', _3 => _3.success]) || !_optionalChain([data, 'optionalAccess', _4 => _4.data, 'optionalAccess', _5 => _5.results, 'optionalAccess', _6 => _6.length])) {
-        throw new Error(_optionalChain([data, 'optionalAccess', _7 => _7.message]) || 'Foto TikTok tidak ditemukan')
+        throw new Error(_optionalChain([data, 'optionalAccess', _7 => _7.message]) || 'Imagen de TikTok no encontrada')
     }
 
     return data.data
@@ -56,7 +56,7 @@ async function handler(m, { sock }) {
     const query = _optionalChain([m, 'access', _8 => _8.text, 'optionalAccess', _9 => _9.trim, 'call', _10 => _10()])
 
     if (!query) {
-        return m.reply(`📸 *TIKTOK FOTO SEARCH*\n\n> Contoh:\n\`${m.prefix}tiktokfoto cosplay\``)
+        return m.reply(`📸* TICKTOK FOTO SEARCH *\n\n> Ejemplo:\n\`${m.prefix}tiktokfoto cosplay\``)
     }
 
     m.react('🔍')
@@ -68,7 +68,7 @@ async function handler(m, { sock }) {
 
         if (!post || images.length === 0) {
             m.react('❌')
-            return m.reply(`❌ Tidak ditemukan foto TikTok untuk: ${query}`)
+            return m.reply(`❌No se han encontrado fotos de TikTok para:${query}`)
         }
 
         let caption = '📸 *TIKTOK FOTO SEARCH*\n\n'
@@ -104,7 +104,7 @@ async function handler(m, { sock }) {
 
         if (mediaList.length === 0) {
             m.react('❌')
-            return m.reply('❌ Gagal memuat foto TikTok')
+            return m.reply('❌Pegatina @-@ fotos de tikTok')
         }
 
         try {

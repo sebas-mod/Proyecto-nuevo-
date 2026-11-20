@@ -7,7 +7,7 @@ const pluginConfig = {
   name: "renewsewa",
   alias: ["perpanjangsewa", "extendsewa"],
   category: "owner",
-  description: "Perpanjang durasi sewa grup",
+  description: "Duración creciente del alquiller grupo",
   usage: ".renewsewa <link/id grup> <durasi>",
   example: ".renewsewa https://chat.whatsapp.com/xxx 30d",
   isOwner: true,
@@ -79,19 +79,19 @@ async function handler(m, { sock }) {
   const args = m.args;
   if (args.length < 2) {
     return m.reply(
-      `📝 *PERPANJANG SEWA*\n\n` +
-        `Format: *${m.prefix}renewsewa <link/id> <durasi>*\n\n` +
-        `*FORMAT DURASI:*\n` +
+      `📝*Renovar Alquiler*\n\n` +
+        `Formato: *${m.prefix}renewsewa <link/id> <durasi>*\n\n` +
+        `*Formato Duración:*\n` +
         `• 30i = 30 menit\n` +
         `• 12h = 12 jam\n` +
         `• 7d = 7 hari\n` +
         `• 1m = 1 bulan\n` +
         `• 1y = 1 tahun\n` +
         `• lifetime = Permanent\n\n` +
-        `*CONTOH:*\n` +
+        `*Ejemplo:*\n` +
         `• ${m.prefix}renewsewa https://chat.whatsapp.com/xxx 30d\n` +
         `• ${m.prefix}renewsewa 120363xxx 1m\n\n` +
-        `💡 Durasi ditambahkan ke sisa waktu yang ada, bukan di-reset`,
+        `💡La duración se mina al tiempo existente, no el reajuste`,
     );
   }
 
@@ -101,7 +101,7 @@ async function handler(m, { sock }) {
 
   if (!durationMs)
     return m.reply(
-      `❌ Format durasi tidak valid\nContoh: 7d, 1m, 1y, lifetime`,
+      `❌Duración de la grasa inválida\nPassah: 7d, 1m, 1y, lifetyme`,
     );
 
   await m.react("🕕");
@@ -110,7 +110,7 @@ async function handler(m, { sock }) {
     const result = await resolveGroupId(sock, input);
     if (!result) {
       await m.react("❌");
-      return m.reply(`❌ Grup tidak ditemukan`);
+      return m.reply(`❌Grup no encontrado`);
     }
 
     const { id: groupId } = result;
@@ -119,7 +119,7 @@ async function handler(m, { sock }) {
     if (!existing) {
       await m.react("❌");
       return m.reply(
-        `❌ Grup tidak terdaftar\nGunakan *${m.prefix}addsewa* untuk menambahkan`,
+        `❌Grup no está registrado\nUsa *${m.prefix}addsewa * para añadir`,
       );
     }
 
@@ -129,7 +129,7 @@ async function handler(m, { sock }) {
     } else {
       if (existing.isLifetime) {
         await m.react("❌");
-        return m.reply(`❌ Grup ini sudah Permanent, tidak perlu diperpanjang`);
+        return m.reply(`❌Este Grupo si es permanente, no hay necessidad de extierna`);
       }
       const baseTime =
         existing.expiredAt > Date.now() ? existing.expiredAt : Date.now();
@@ -149,15 +149,15 @@ async function handler(m, { sock }) {
 
     await m.react("✅");
 
-    let text = `✅ *SEWA DIPERPANJANG*\n\n`;
-    text += `Grup: *${groupName}*\n`;
-    text += `Tambahan: *${formatDuration(durationStr)}*\n`;
-    text += `Expired baru: *${expiredStr}*`;
+    let text = `✅*Alquiler DIPERPANJANG*\n\n`;
+    text += `Grupo: *${groupName}*\n`;
+    text += `Adicional: *${formatDuration(durationStr)}*\n`;
+    text += `Exnuevo pirado: *${expiredStr}*`;
 
     try {
       await sock.sendText(
         groupId,
-        `📢 Sewa bot telah diperpanjang!\n\nTambahan: *${formatDuration(durationStr)}*\nExpired baru: *${expiredStr}*`,
+        `📢¡El bot de alquiler se ha extendido!\n\nAdicional: *${formatDuration(durationStr)}*\nExnuevo pirado: *${expiredStr}*`,
         null,
         {
           contextInfo: _ourincontextjs.saluranCtx.call(void 0, ),

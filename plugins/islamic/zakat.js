@@ -1,4 +1,4 @@
-const NISAB = 85; // Nisab 85 gram emas
+const NISAB = 85; //Nisab 85 gramos de emasa
 const RATE = 0.025; // 2.5%
 
 function parseNominal(str) {
@@ -20,7 +20,7 @@ const pluginConfig = {
   name: 'zakat',
   alias: ['hitungzakat', 'kalkulatorzakat'],
   category: 'islamic',
-  description: 'Kalkulator zakat: penghasilan, maal (harta), emas, dan fitrah',
+  description: 'Calculadora zap: ingresos, maal, emas y grasas',
   usage: '.zakat <penghasilan | maal | emas | fitrah> <nominal> <harga_emas/beras>',
   example: '.zakat penghasilan 8jt 1500000',
   isOwner: false,
@@ -39,20 +39,20 @@ async function handler(m, context) {
 
   const help =
     `🕌 *KALKULATOR ZAKAT ISLAMI*\n\n` +
-    `*Format Penggunaan:*\n` +
+    `*Formato Uso:*\n` +
     `• \`${p}${command} penghasilan <gaji/bln> <harga_emas/gram>\`\n` +
-    `  _Contoh: \`${p}${command} penghasilan 8jt 1500000\`_\n\n` +
+    `> 91; Aplausos > 93;\`${p}${command} penghasilan 8jt 1500000\`_\n\n` +
     `• \`${p}${command} maal <total_harta> <harga_emas/gram>\`\n` +
-    `  _Contoh: \`${p}${command} maal 200jt 1500000\`_\n\n` +
-    `• \`${p}${command} emas <gram_emas> <harga_emas/gram>\`\n` +
-    `  _Contoh: \`${p}${command} emas 100 1500000\`_\n\n` +
+    `> 91; Aplausos > 93;\`${p}${command} maal 200jt 1500000\`_\n\n` +
+    `• \`${p}${command}oro<gram_emas> <harga_emas/gram>\`\n` +
+    `> 91; Aplausos > 93;\`${p}${command}oro 100 1500000\`¿Qué?\n\n` +
     `• \`${p}${command} fitrah <jumlah_jiwa> <harga_beras/kg>\`\n` +
-    `  _Contoh: \`${p}${command} fitrah 4 15000\`\n\n` +
-    `_Catatan: Nisab emas adalah 85 gram dengan kadar zakat 2,5%._`;
+    `> 91; Aplausos > 93;\`${p}${command} fitrah 4 15000\`\n\n` +
+    `La emasa Nisab es de 85 gramos con una tasa de 2, 5 % acat.`;
 
   if (!jenis) return m.reply(help);
 
-  const note = `\n\n_Perhitungan berdasar ketentuan fiqih umum (nisab 85 gr emas, kadar 2,5%). Untuk kepastian konsultasikan ke BAZNAS / LAZ setempat._`;
+  const note = `\n\nPara confirmar la distribución a BAZNAS / LAZ`;
 
   if (jenis === 'fitrah') {
     const jiwa = parseInt(args[1], 10);
@@ -60,12 +60,12 @@ async function handler(m, context) {
     if (!(jiwa >= 1) || !(harga > 0)) return m.reply(help);
     return m.reply(
       `🕌 *ZAKAT FITRAH*\n\n` +
-        `👥 *Jumlah Jiwa:* ${jiwa}\n` +
+        `👥*Cantidad Jiwa:*${jiwa}\n` +
         `🌾 *Kadar per Jiwa:* 2,5 kg beras\n\n` +
         `┣ Total Beras : *${jiwa * 2.5} kg*\n` +
-        `┣ Setara Uang : *${rupiah(jiwa * 2.5 * harga)}* (@ ${rupiah(harga)}/kg)\n` +
+        `┣Dinero igual: *${rupiah(jiwa * 2.5 * harga)}* (@ ${rupiah(harga)}/kg)\n` +
         `┗ Per Jiwa : ${rupiah(2.5 * harga)}\n\n` +
-        `_Ketentuan 2,5 kg beras sesuai ketetapan BAZNAS._`
+        `" Vivir en un estado de 2, 5 km por tamaño ",`
     );
   }
 
@@ -80,14 +80,14 @@ async function handler(m, context) {
     const wajib = x >= nb;
     return m.reply(
       `🕌 *ZAKAT PENGHASILAN (PROFESI)*\n\n` +
-        `💵 *Penghasilan/Bulan:* ${rupiah(x)}\n` +
-        `⚖️ *Nisab/Bulan:* ${rupiah(nb)} (85 gr emas ÷ 12 @ ${rupiah(emas)})\n\n` +
+        `💵*Penghasilan/Mes:*${rupiah(x)}\n` +
+        `⚖️ *Nisab/Mes:*${rupiah(nb)}( 85 grs de oro÷12${rupiah(emas)})\n\n` +
         (wajib
-          ? `✅ *Sudah Mencapai Nisab (Wajib Zakat)*\n` +
-            `┣ Zakat per Bulan : *${rupiah(x * RATE)}*\n` +
-            `┗ Estimasi per Tahun : *${rupiah(x * RATE * 12)}*`
-          : `❌ *Belum Mencapai Nisab*\n` +
-            `Belum diwajibkan zakat (kurang ${rupiah(nb - x)}). Tetap dianjurkan bersedekah / infak seikhlasnya.`) +
+          ? `✅* Si Apali Nisab ( Obligatorio Zakat) *\n` +
+            `┣Zakat por mes: *${rupiah(x * RATE)}*\n` +
+            `┗Estimaciones por año: *${rupiah(x * RATE * 12)}*`
+          : `❌* Aún no Capai Nisab *\n` +
+            `Aún no es requerido por zap${rupiah(nb - x)}). Tetap dianjurkan bersedekah / infak seikhlasnya.`) +
         note
     );
   }
@@ -97,11 +97,11 @@ async function handler(m, context) {
     return m.reply(
       `🕌 *ZAKAT MAAL (HARTA SIMPANAN)*\n\n` +
         `💰 *Total Harta:* ${rupiah(x)}\n` +
-        `⚖️ *Nisab:* ${rupiah(nisab)} (85 gr emas @ ${rupiah(emas)})\n\n` +
+        `⚖️ *Nisab:* ${rupiah(nisab)}( 85 grs de oro @${rupiah(emas)})\n\n` +
         (wajib
-          ? `✅ *Mencapai Nisab (Wajib Zakat jika haul 1 tahun)*\n` +
-            `┗ Zakat yang dikeluarkan : *${rupiah(x * RATE)}*`
-          : `❌ *Belum Mencapai Nisab*\n` + `Kurang ${rupiah(nisab - x)} untuk mencapai nisab harta.`) +
+          ? `✅* Nasab dhaskCapki ( Obligatorio Zakat si haul 1 yar) *\n` +
+            `┗Emitido Zakat: *${rupiah(x * RATE)}*`
+          : `❌* Aún no Capai Nisab *\n` + `Menos${rupiah(nisab - x)}Para llegar a la harta de nisab.`) +
         note
     );
   }
@@ -111,15 +111,15 @@ async function handler(m, context) {
     const wajib = gram >= NISAB;
     const totalNilai = gram * emas;
     return m.reply(
-      `🕌 *ZAKAT LOGAM MULIA (EMAS)*\n\n` +
-        `🪙 *Berat Emas:* ${gram} gram\n` +
+      `🕌> 91; ROCK LOGAM MULIE ( GOLD ) &#93;\n\n` +
+        `🪙*Pesado Oro:*${gram} gram\n` +
         `⚖️ *Nisab:* 85 gram emas\n` +
-        `💵 *Total Nilai:* ${rupiah(totalNilai)} (@ ${rupiah(emas)}/gram)\n\n` +
+        `💵*Total Valor:*${rupiah(totalNilai)} (@ ${rupiah(emas)}/gram)\n\n` +
         (wajib
-          ? `✅ *Mencapai Nisab (Wajib Zakat)*\n` +
-            `┣ Dalam bentuk gram : *${(gram * RATE).toFixed(2)} gram emas*\n` +
-            `┗ Dalam bentuk uang : *${rupiah(totalNilai * RATE)}*`
-          : `❌ *Belum Mencapai Nisab*\n` + `Kurang ${(NISAB - gram).toFixed(2)} gram emas.`) +
+          ? `✅* CaPai Nisab ( Obligatorio Zakat) *\n` +
+            `┣En el gramo de curvatura: *${(gram * RATE).toFixed(2)}gram oro*\n` +
+            `┗En el abismo del dinero: *${rupiah(totalNilai * RATE)}*`
+          : `❌* Aún no Capai Nisab *\n` + `Menos${(NISAB - gram).toFixed(2)}gram oro.`) +
         note
     );
   }

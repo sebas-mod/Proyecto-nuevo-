@@ -9,7 +9,7 @@ const pluginConfig = {
     name: allCommands,
     alias: allAliases,
     category: 'panel',
-    description: 'Hapus server dari panel (v1-v5)',
+    description: 'Servidor de panel de Elimina ( v1 @-@ v5 )',
     usage: '.delserverv1 serverid',
     example: '.delserverv2 5',
     isOwner: false,
@@ -48,7 +48,7 @@ function validateConfig(serverConfig) {
 function getAvailableServers(pteroConfig) {
     const available = []
     for (let i = 1; i <= 5; i++) {
-        const cfg = pteroConfig[`server${i}`]
+        const cfg = pteroConfig[`servidor${i}`]
         if (_optionalChain([cfg, 'optionalAccess', _3 => _3.domain]) && _optionalChain([cfg, 'optionalAccess', _4 => _4.apikey])) available.push(`v${i}`)
     }
     return available
@@ -64,8 +64,8 @@ async function handler(m, { sock }) {
         const userRole = _ourinrolescpaneljs.getUserRole.call(void 0, m.sender, serverVersion)
         return m.reply(
             `❌ *ᴀᴋsᴇs ᴅɪᴛᴏʟᴀᴋ*\n\n` +
-            `> Kamu tidak punya akses ke *${serverLabel}*\n` +
-            `> Role kamu: *${userRole || 'Tidak ada'}*`
+            `*No tienes acento*${serverLabel}*\n` +
+            `# Role you #${userRole || 'Tidak ada'}*`
         )
     }
     
@@ -78,8 +78,8 @@ async function handler(m, { sock }) {
         const available = getAvailableServers(pteroConfig)
         let txt = `⚠️ *sᴇʀᴠᴇʀ ${serverLabel} ʙᴇʟᴜᴍ ᴋᴏɴꜰɪɢ*\n\n`
         if (available.length > 0) {
-            txt += `> Server tersedia: *${available.join(', ')}*\n`
-            txt += `> Contoh: \`${m.prefix}delserver${available[0]} serverid\``
+            txt += `*El servidor está disponible*${available.join(', ')}*\n`
+            txt += `> Ejemplo:\`${m.prefix}delserver${available[0]} serverid\``
         } else {
             txt += `> Isi config pterodactyl di \`config.js\``
         }
@@ -91,13 +91,13 @@ async function handler(m, { sock }) {
         return m.reply(
             `⚠️ *ᴄᴀʀᴀ ᴘᴀᴋᴀɪ*\n\n` +
             `> \`${m.prefix}${m.command} serverid\`\n\n` +
-            `> Server tersedia: *${available.join(', ') || 'none'}*\n` +
-            `> Lihat ID dengan \`${m.prefix}listserver${serverVersion}\``
+            `*El servidor está disponible*${available.join(', ') || 'none'}*\n` +
+            `* Mira ID con\`${m.prefix}listserver${serverVersion}\``
         )
     }
     
     try {
-        const serverRes = await _axios2.default.get(`${serverConfig.domain}/api/application/servers/${serverId}`, {
+        const serverRes = await _axios2.default.get(`${serverConfig.domain}/fuego/application/servers/${serverId}`, {
             headers: {
                 'Authorization': `Bearer ${serverConfig.apikey}`,
                 'Content-Type': 'application/json',
@@ -107,7 +107,7 @@ async function handler(m, { sock }) {
         
         const server = serverRes.data.attributes
         
-        await _axios2.default.delete(`${serverConfig.domain}/api/application/servers/${serverId}`, {
+        await _axios2.default.delete(`${serverConfig.domain}/fuego/application/servers/${serverId}`, {
             headers: {
                 'Authorization': `Bearer ${serverConfig.apikey}`,
                 'Content-Type': 'application/json',
@@ -118,8 +118,8 @@ async function handler(m, { sock }) {
         return m.reply(
             `✅ *sᴇʀᴠᴇʀ ᴅɪʜᴀᴘᴜs*\n\n` +
             `> Panel: *${serverLabel}*\n` +
-            `> Server ID: \`${serverId}\`\n` +
-            `> Nama: \`${server.name}\``
+            `* Servidor id:\`${serverId}\`\n` +
+            `> Nombre:\`${server.name}\``
         )
         
     } catch (err) {

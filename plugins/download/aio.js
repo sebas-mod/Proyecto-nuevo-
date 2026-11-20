@@ -25,7 +25,7 @@ async function handler(m, { sock }) {
   if (!url) {
     return m.reply(
       `📥 *ᴀʟʟ ɪɴ ᴏɴᴇ ᴅᴏᴡɴʟᴏᴀᴅᴇʀ*\n\n` +
-        `> Download dari berbagai platform!\n\n` +
+        `*Descargos de plataforma!\n\n` +
         `╭┈┈⬡「 🌐 *ᴘʟᴀᴛꜰᴏʀᴍ* 」\n` +
         `┃ • Instagram\n` +
         `┃ • TikTok\n` +
@@ -36,12 +36,12 @@ async function handler(m, { sock }) {
         `┃ • CapCut\n` +
         `┃ • Threads / Reddit\n` +
         `╰┈┈┈┈┈┈┈┈⬡\n\n` +
-        `> *Contoh:* ${m.prefix}aio https://instagram.com/p/xxx`,
+        `> *Ejemplo:*${m.prefix}aio https://instagram.com/p/xxx`,
     );
   }
 
   if (!url.startsWith("http")) {
-    return m.reply(`❌ URL tidak valid! Harus dimulai dengan http/https`);
+    return m.reply(`❌URL inválida! Harness protagonizado por http / https`);
   }
 
   await m.react("🕕");
@@ -51,7 +51,7 @@ async function handler(m, { sock }) {
 
     if (!_optionalChain([result, 'optionalAccess', _4 => _4.media, 'optionalAccess', _5 => _5.length])) {
       await m.react("❌");
-      return m.reply(`❌ Gagal mengambil media. Pastikan URL valid.`);
+      return m.reply(`❌Steenalis tomando medios.`);
     }
 
     const ctxInfo = _ourincontextjs.saluranCtx.call(void 0, );

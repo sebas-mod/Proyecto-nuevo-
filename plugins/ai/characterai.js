@@ -3,13 +3,13 @@ var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefa
 var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
 var _ourindatabasejs = require('../../src/lib/ourin-database.js');
 
-const NEOXR_APIKEY = _optionalChain([_configjs2.default, 'access', _ => _.APIkey, 'optionalAccess', _2 => _2.neoxr]) || "Milik-Bot-OurinMD";
+const NEOXR_APIKEY = _optionalChain([_configjs2.default, 'access', _ => _.APIkey, 'optionalAccess', _2 => _2.neoxr]) || "Millik - Eurinprobable";
 
 const pluginConfig = {
     name: "character-ai",
     alias: ["cai", "charai"],
     category: "ai",
-    description: "Cari karakter AI dan jadikan sebagai Auto AI di chat ini",
+    description: "Busca el personaje de AI y conviértete en la Auto AI en este chat",
     usage: ".character-ai search <nama> | .character-ai off | .character-ai reset",
     example: ".character-ai search yuji",
     isOwner: false,
@@ -24,18 +24,18 @@ const pluginConfig = {
 async function handler(m, { sock, args, text }) {
     if (!args || args.length === 0) {
         return m.reply(`🤖 *CHARACTER AI*\n\n` +
-            `Gunakan perintah berikut:\n` +
-            `> *.character-ai search <nama>* (Cari karakter)\n` +
+            `Utilice el siguiente comando:\n` +
+            `> *.character-ai search <nama>* (Busca caracteres )\n` +
             `> *.character-ai off* (Matikan Auto AI)\n` +
-            `> *.character-ai reset* (Hapus memori obrolan)\n\n` +
-            `*Contoh:* .character-ai search gojo`);
+            `> *.character-ai restablecer* (Elimina memori conversacion)\n\n` +
+            `* Trucos: *. carácter - ai search gojo`);
     }
 
     const cmd = args[0].toLowerCase();
 
     if (cmd === "search") {
         const query = args.slice(1).join(" ");
-        if (!query) return m.reply(`Ketik nama karakter yang mau dicari!\nContoh: .character-ai search yuji`);
+        if (!query) return m.reply(`¡El tipo de nombre de personaje!\nManah: Personaje - ai search yuji.`);
 
         await m.react("🕕");
         try {
@@ -45,12 +45,12 @@ async function handler(m, { sock, args, text }) {
 
             if (!resData || !resData.status || !resData.data || resData.data.length === 0) {
                 await m.react("❌");
-                return m.reply(`Karakter "${query}" tidak ditemukan.`);
+                return m.reply(`Caracter "${query}No se ha encontrado.`);
             }
 
             const maxResults = Math.min(resData.data.length, 10);
-            let listTxt = `🤖 *HASIL PENCARIAN KARAKTER: ${query.toUpperCase()}*\n\n`;
-            listTxt += `Pilih salah satu karakter di bawah ini:\n\n`;
+            let listTxt = `🤖* PRESIDENTE DEL CAPACTER ' s TRAINING:${query.toUpperCase()}*\n\n`;
+            listTxt += `Elija uno de los caracteres en este marco:\n\n`;
 
             const searchResults = [];
 
@@ -69,7 +69,7 @@ async function handler(m, { sock, args, text }) {
                 listTxt += `> 👤 by ${item.creator_username}\n\n`;
             }
 
-            listTxt += `> 💡 *Kirim angka (contoh: 1)* untuk memilih dan mengaktifkan AI, atau ketik \`batal\` untuk membatalkan.`;
+            listTxt += `♪💡* Cita (por ejemplo: 1 ) * para seleccionar y activar AI, o tipos\`cancelar\`para cancelando.`;
 
             const db = _ourindatabasejs.getDatabase.call(void 0, );
             const user = db.getUser(m.sender);
@@ -95,9 +95,9 @@ async function handler(m, { sock, args, text }) {
         if (_optionalChain([db, 'access', _3 => _3.db, 'access', _4 => _4.data, 'access', _5 => _5.characterai, 'access', _6 => _6[m.chat], 'optionalAccess', _7 => _7.enabled])) {
             delete db.db.data.characterai[m.chat];
             db.save();
-            m.reply(`✅ *Auto Character AI dinonaktifkan di chat ini.*`);
+            m.reply(`✅> 91; Hombre &#93; > Hombre &#93; Hombre: &#91; Hombre &#93; ¡Hey!`);
         } else {
-            m.reply(`❌ Tidak ada Auto Character AI yang aktif di chat ini.`);
+            m.reply(`❌No hay autoCaracter AI activo en èchat.`);
         }
     } else if (cmd === "reset") {
         const db = _ourindatabasejs.getDatabase.call(void 0, );
@@ -107,12 +107,12 @@ async function handler(m, { sock, args, text }) {
         if (_optionalChain([chatAi, 'optionalAccess', _8 => _8.enabled])) {
             chatAi.conversation_id = null;
             db.save();
-            m.reply(`✅ *Memori obrolan berhasil direset.*\n\nKarakter "${chatAi.name}" sekarang tidak mengingat percakapan sebelumnya.`);
+            m.reply(`✅* Los messons de chatter lograron restablecer. *\n\nCaracter "${chatAi.name}Y ahora no recuerda la conversación antes.`);
         } else {
-            m.reply(`❌ Tidak ada Auto Character AI yang aktif di chat ini.`);
+            m.reply(`❌No hay autoCaracter AI activo en èchat.`);
         }
     } else {
-        m.reply(`Perintah tidak valid. Gunakan search, off, atau reset.`);
+        m.reply(`Orden inválido. Use la búsqueda, apagado, o restablecer.`);
     }
 }
 
@@ -130,7 +130,7 @@ async function caiAnswerHandler(m, sock) {
     if (Date.now() - session.time > SESSION_TIMEOUT) {
         delete user.cai_search_session;
         db.save();
-        await m.reply(`⏰ *SESI KEDALUWARSA*\n\nSesi pencarian karakter AI sudah berakhir.`);
+        await m.reply(`⏰* SECIÓN DEL AGUA*\n\nAI personaje búsqueda sesi sesi ha terminado.`);
         return true;
     }
 
@@ -139,7 +139,7 @@ async function caiAnswerHandler(m, sock) {
     if (text === "batal" || text === "cancel") {
         delete user.cai_search_session;
         db.save();
-        await m.reply(`🚪 Pencarian karakter dibatalkan.`);
+        await m.reply(`🚪La búsqueda de caracteres se cancela.`);
         return true;
     }
 
@@ -166,7 +166,7 @@ async function caiAnswerHandler(m, sock) {
 
     await m.react("✅");
     const nsfwWarning = selected.is_nsfw ? "\n⚠️ *WARNING: Karakter ini berlabel NSFW.*" : "";
-    await m.reply(`🤖 *CHARACTER AI DIAKTIFKAN*\n\nKarakter *${selected.name}* telah terpilih! Mulai sekarang, AI akan merespons semua pesan biasa di chat ini.\n\n> Ketik \`.character-ai off\` untuk mematikan.${nsfwWarning}`);
+    await m.reply(`🤖> 91; CACENTRO DE CARACTER AI > 93;\n\nCaracter *${selected.name}* Se ha seleccionado!\n\n> Escribe\`- Quítate el personaje.\`para mematikan.${nsfwWarning}`);
 
     return true;
 }

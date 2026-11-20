@@ -2,7 +2,7 @@
     name: 'cekcupu',
     alias: ['cupu', 'noob'],
     category: 'cek',
-    description: 'Cek tingkat kecupuan kamu',
+    description: 'Compruebe su nivel excepto',
     usage: '.cekcupu <nama>',
     example: '.cekcupu Budi',
     isOwner: false,
@@ -20,17 +20,17 @@ async function handler(m) {
                     
     let desc = ''
     if (percent >= 90) desc = 'CUPU PARAH! NOOB DETECTED! 🤡'
-    else if (percent >= 70) desc = 'Masih newbie nih~ 😅'
-    else if (percent >= 50) desc = 'Biasa aja lah 🤔'
+    else if (percent >= 70) desc = 'Misa newbie aquí😅'
+    else if (percent >= 50) desc = 'Ya sabes, está bien.🤔'
     else if (percent >= 30) desc = 'Cukup jago! 💪'
     else desc = 'PRO PLAYER! GG! 🏆'
     
-    let txt = mentioned === m.sender ? `Hai @${mentioned.split('@')[0]}
+    let txt = mentioned === m.sender ? `Hola @${mentioned.split('@')[0]}
     
-Tingkat kecupuan kamu *${percent}%*
-\`\`\`${desc}\`\`\`` : `Kamu ingin ngecek tingkat kecupuan @${mentioned.split('@')[0]} yak? 
+Su tasa de ahorros *${percent}%*
+\`\`\`${desc}\`\`\`` : `¿Quieres echar un vistazo al coño?${mentioned.split('@')[0]} yak? 
     
-Tingkat kecupuan dia sebesar *${percent}%*
+Tasa excepto que es tan grande${percent}%*
 \`\`\`${desc}\`\`\``
     
     await m.reply(txt, { mentions: [mentioned] })

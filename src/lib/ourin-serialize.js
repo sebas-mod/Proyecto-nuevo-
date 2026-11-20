@@ -69,7 +69,7 @@ const _thumbCache = {};
 async function getCachedThumb(filePath) {
   if (_thumbCache[filePath] !== undefined) return _thumbCache[filePath];
 
-  // Try AssetManager first if it's a known file name
+  //Pruebe Assetmanager Firma si lo hace
   const basename = filePath ? filePath.split('/').pop().split('.')[0] : null;
   if (basename) {
     const assetBuf = _ourinassetmanagerjs.getAssetBuffer.call(void 0, basename);
@@ -119,69 +119,69 @@ const PP_CACHE_TTL = 5 * 60 * 1000;
 
 /**
  * @typedef {Object} ContextInfo
- * @property {string} stanzaId - ID pesan yang di-quote
- * @property {string} participant - JID participant yang di-quote
- * @property {Object} quotedMessage - Pesan yang di-quote
- * @property {string[]} mentionedJid - Array JID yang di-mention
- * @property {boolean} isForwarded - Apakah pesan forwarded
- * @property {number} forwardingScore - Skor forwarding
- * @property {Object} externalAdReply - External ad reply (thumbnail)
+* @ proprie{string}stanzad - id message in - quote
+* @ proprie{string}participante - Los participantes del JID están en
+* @ proprie{Object}- La cita de Mensaje
+* @ promenory
+* @ proprie{boolean}isForwarded - Es el mensaje reenviado
+* @ proprie{number}Resultado de reenvío - Surging
+* @ proprie{Object}exOtros recursos @-@ ExRespuesta de la publicidad (tornilla)
  */
 
 /**
  * @typedef {Object} SerializedMessage
- * @property {string} id - ID unik pesan
- * @property {string} chat - JID chat/group
+* @ proprie{string}id - unic id mensaje
+* Perfil{string}chat @-@ chat JID / grupo
  * @property {string} sender - JID pengirim
- * @property {string} senderNumber - Nomor pengirim tanpa @s.whatsapp.net
- * @property {string} pushName - Nama display pengirim
- * @property {boolean} fromMe - Apakah pesan dari bot sendiri
- * @property {boolean} isGroup - Apakah pesan dari group
- * @property {boolean} isOwner - Apakah pengirim adalah owner
- * @property {boolean} isPremium - Apakah pengirim adalah premium user
- * @property {boolean} isBanned - Apakah pengirim dibanned
- * @property {boolean} isBot - Apakah pengirim adalah bot
- * @property {string} type - Tipe pesan
- * @property {string} body - Isi pesan text
- * @property {string} command - Command tanpa prefix
- * @property {string} prefix - Prefix yang digunakan
+* @ proprie{string}- NUMBER NUMBER
+* @ proprie{string}PushName - Nombre de la pantalla del remitente
+* @ proprie{boolean}- Es un mensaje del propio bot
+* @ proprie{boolean}- Es un mensaje del grupo
+* @ proprie{boolean}iisOwner - Es el remitente el dueño
+* Perfil{boolean}istemium - Es el remitente un usuario premiere
+* @ proprie{boolean}isBanned - Se envían discos
+* @ proprie{boolean}- ¿El remitente es el bot?
+* @ proprie{string}Tipo @-@
+* @ proprie{string}Cuerpo - ISI te messagexn
+* @ proprie{string}Comando... Comando sin prefix
+* @ proprie{string}prefix- Prefi.xque usado
  * @property {string[]} args - Array argumen
- * @property {string} text - Text setelah command
- * @property {boolean} isCommand - Apakah pesan adalah command
- * @property {boolean} isMedia - Apakah ada media
- * @property {boolean} isImage - Apakah gambar
- * @property {boolean} isVideo - Apakah video
- * @property {boolean} isAudio - Apakah audio
- * @property {boolean} isSticker - Apakah sticker
- * @property {boolean} isDocument - Apakah dokumen
- * @property {boolean} isContact - Apakah kontak
- * @property {boolean} isLocation - Apakah lokasi
- * @property {boolean} isQuoted - Apakah ada pesan yang di-quote
- * @property {Object} quoted - Objek pesan yang di-quote
- * @property {string[]} mentionedJid - Array JID yang di-mention
- * @property {Object} groupMetadata - Metadata group (jika di group)
- * @property {boolean} isAdmin - Apakah pengirim admin group
- * @property {boolean} isBotAdmin - Apakah bot adalah admin
- * @property {Function} reply - Fungsi reply text
- * @property {Function} replyWithMentions - Fungsi reply dengan mentions
- * @property {Function} replyImage - Fungsi reply gambar
- * @property {Function} replyVideo - Fungsi reply video
- * @property {Function} replyAudio - Fungsi reply audio
- * @property {Function} replySticker - Fungsi reply sticker
- * @property {Function} replyDocument - Fungsi reply dokumen
- * @property {Function} replyContact - Fungsi reply kontak
- * @property {Function} replyLocation - Fungsi reply lokasi
- * @property {Function} replyWithQuote - Fungsi reply dengan fake quote
+* @ proprie{string}texT @-@ Text después del comando
+* @ proprie{boolean}isaCommand - Es el mensaje un comando
+* @ proprie{boolean}- ¿Hay medios?
+* @ proprie{boolean}- ¿La foto?
+* @ proprie{boolean}Video - Es el vídeo
+* @ proprie{boolean}isAudio - Es un auco
+* @ proprie{boolean}- ¿Es Pegatina?
+* @ proprie{boolean}IsDocument - Es el documento
+* @ proprie{boolean}istact - Es un mango
+* @ proprie{boolean}Localización -
+* @ proprie{boolean}esQ- ¿Hay un mensaje en
+* @ proprie{Object}cita - Objeción en
+* @ promenory
+* @ proprie{Object}grupoMetadatos - Grupo de metadatos (si se trata de grupo)
+* @ proprie{boolean}isAdmin - Es el remitente del grupo de administración
+* @ proprie{boolean}IsBotAdmin - Es el bot un administrador
+* @ proprie{Function}respuesta - Fungsi respuesta texn
+* @ proprie{Function}respuesta con menciones-- respuesta Fungsi con mensiones
+* @ proprie{Function}respuestaImagage - Fungsi respuesta imagen
+* @ proprie{Function}Responder video - Fungsi respuesta video
+* @ proprie{Function}Responder Audio - Fungsi respuesta audio
+* @ proprie{Function}- Pegatina de respuesta Fungsi
+* @ proprie{Function} replyDocument - Fungsi responder documento
+* @ proprie{Function}respuesta Contacto - Fungsi respuesta conexión
+* @ proprie{Function}respuestaLocitation - Fungsi respuesta ubicación
+* @ proprie{Function}respuestaContraQuote - Respuesta Fungsi con cita fina
  * @property {Function} react - Fungsi react emoji
  * @property {Function} download - Fungsi download media
- * @property {Function} delete - Fungsi delete pesan
- * @property {Function} forward - Fungsi forward pesan
+* @ proprie{Function}borrador - Fungsi borrar mensaje
+* @ proprie{Function}mensaje de Fungsi para enano
  */
 
 /**
- * Decode JID menjadi format yang lebih bersih
- * @param {string} jid - JID yang akan di-decode
- * @returns {string|null} JID yang sudah di-decode atau null
+* Decode JID es un formador más limpio
+* @ param{string}Jid @-@ JID para ser decodificado
+* @ devuelve { cadena dknul } ya en --decodificación o nul
  */
 function decodeJid(jid) {
   if (!jid) return null;
@@ -208,10 +208,10 @@ function getMessageType(message) {
 }
 
 /**
- * Mendapatkan text/body dari berbagai tipe pesan
- * @param {Object} message - Objek pesan WhatsApp
- * @param {string} type - Tipe pesan
- * @returns {string} Text/body pesan
+# Got text / cuerpo del tipo de mensaje
+* @ param{Object}Mensaje - Mensaje de Objeciones WhatsApp
+* @ param{string}Tipo @-@
+* @ devuelves{string}Text/body mensaje
  */
 function getMessageBody(message, type) {
   if (!message || !type) return "";
@@ -261,10 +261,10 @@ function getMessageBody(message, type) {
 }
 
 /**
- * Parse command dan argumen dari body pesan
- * @param {string} body - Body pesan
- * @param {string} prefix - Prefix command
- * @returns {Object} Command info
+* Comando y argumento pares del mensaje corporal
+* @ param{string}Body @-@ Mensaje corporal
+* @ param{string}prefix- Prefi.xcomando
+* @ devuelves{Object}Información del comando
  */
 function parseCommand(body, prefix) {
   const result = {
@@ -324,9 +324,9 @@ function parseCommand(body, prefix) {
 }
 
 /**
- * Serialize quoted message dengan full context
- * @param {Object} message - Objek pesan utama
- * @param {string} type - Tipe pesan
+* Serializar el mensaje citado con el conte completoxn
+* @ param{Object}Mensaje - Objeciones del mensaje principal
+* @ param{string}Tipo @-@
  * @param {Object} sock - Socket connection
  * @param {Object[]} participants - Group participants for LID resolution
  * @param {Object} originalMsgKey - Original message key containing participantAlt
@@ -453,13 +453,13 @@ async function serializeQuotedMessage(
 }
 
 /**
- * Membuat context info untuk fake reply
+* Crear un context ingo for fake responder
  * @param {string} jid - JID pengirim palsu
- * @param {string} text - Text pesan palsu
+* @ param{string}texT @-@ Texno mensaje falso
  * @param {string} [title] - Title/judul
- * @param {string} [body] - Body tambahan
- * @param {Buffer} [thumbnail] - Thumbnail gambar
- * @returns {Object} Context info object
+* @ param{string} [body] - Body adicional
+* @ param{Buffer}# Thumbnail # # Thumbnail pictures #
+* @ devolvs{Object}Context info objeto
  */
 function createContextInfo(jid, text, title = "", body = "", thumbnail = null) {
   const contextInfo = {
@@ -480,11 +480,11 @@ function createContextInfo(jid, text, title = "", body = "", thumbnail = null) {
 }
 
 /**
- * Serialize pesan WhatsApp menjadi objek lengkap dengan full fitur
+* Serializar mensaje WhatsApp a objeto completo con características completas
  * @param {Object} sock - Socket connection Baileys
- * @param {Object} msg - Raw message dari Baileys event
- * @param {Object} [store] - Store untuk simpan data
- * @returns {Promise<SerializedMessage>} Objek pesan yang sudah di-serialize
+* @ param{Object}msg - Mensaje bruto del evento Baileys
+* @ param{Object}♪ Stor
+* @ devuelve { Promesa<SerializedMessage>Objeciones del mensaje ya serializado
  */
 async function serialize(sock, msg, store = {}) {
   if (!msg) return null;
@@ -802,9 +802,9 @@ async function serialize(sock, msg, store = {}) {
   };
 
   /**
-   * Reply text dengan opsi
-   * @param {string} text - Text untuk reply
-   * @param {Object} [options={}] - Opsi tambahan
+* Responder text con opciones
+* @ param{string}texT @-@ Text) Respuesta
+* @ param{Object}> 91; Echotions > 93;{}- Más operaciones
    * @returns {Promise<Object>} Sent message
    */
   m.reply = async (text, options = {}) => {
@@ -813,7 +813,7 @@ async function serialize(sock, msg, store = {}) {
     const formatUptime = (uptime) => {
       const hours = Math.floor((uptime % 86400) / 3600);
       const minutes = Math.floor((uptime % 3600) / 60);
-      return `${hours} JAM ${minutes} MENIT`;
+      return `${hours}Hora${minutes}Minuto`;
     };
 
     const db = _ourindatabasejs.getDatabase.call(void 0, );
@@ -913,8 +913,8 @@ async function serialize(sock, msg, store = {}) {
           url: _optionalChain([_configjs2.default, 'access', _131 => _131.info, 'optionalAccess', _132 => _132.website]) || "https://github.com",
           title: _optionalChain([_configjs2.default, 'access', _133 => _133.bot, 'optionalAccess', _134 => _134.name]) || "Ourin-AI",
           description:
-            `Pengembang: ${_configjs2.default.bot.developer} | Versi: ${_configjs2.default.bot.version}` ||
-            "WhatsApp Bot",
+            `Desarrollador:${_configjs2.default.bot.developer}Versi:${_configjs2.default.bot.version}` ||
+            "WhatsApp",
           image: thumbnail,
           previewType: 0,
         },
@@ -1003,7 +1003,7 @@ async function serialize(sock, msg, store = {}) {
                   degreesLatitude: 0,
                   degreesLongitude: 0,
                   name: _optionalChain([_configjs2.default, 'access', _145 => _145.bot, 'optionalAccess', _146 => _146.name]) || "Ourin-AI",
-                  address: "Bot Wa Multi Device",
+                  address: "♪",
                   jpegThumbnail: await _sharp2.default.call(void 0, thumbnailBuf).resize(300, 300).toBuffer(),
                 }
               },
@@ -1219,8 +1219,8 @@ async function serialize(sock, msg, store = {}) {
   };
 
   /**
-   * Reply text dengan mentions otomatis
-   * @param {string} text - Text yang berisi @nomor
+* Responder text con las mensiones automáticas
+* @ param{string}texT @-@ Texcompartido
    * @returns {Promise<Object>} Sent message
    */
   m.replyWithMentions = async (text) => {
@@ -1231,10 +1231,10 @@ async function serialize(sock, msg, store = {}) {
   };
 
   /**
-   * Reply gambar
-   * @param {Buffer|string} image - Buffer atau URL gambar
+* Imagen de la respuesta
+* @ param { Buffer { Buffer} Viewind - Buffer o imagen URL
    * @param {string} [caption=''] - Caption
-   * @param {Object} [options={}] - Opsi tambahan
+* @ param{Object}> 91; Echotions > 93;{}- Más operaciones
    * @returns {Promise<Object>} Sent message
    */
   m.replyImage = async (image, caption = "", options = {}) => {
@@ -1259,10 +1259,10 @@ async function serialize(sock, msg, store = {}) {
   };
 
   /**
-   * Reply video
-   * @param {Buffer|string} video - Buffer atau URL video
+* Responder video
+* @ param { Buffer Takenstring } video - Buffer o URL video
    * @param {string} [caption=''] - Caption
-   * @param {Object} [options={}] - Opsi tambahan
+* @ param{Object}> 91; Echotions > 93;{}- Más operaciones
    * @returns {Promise<Object>} Sent message
    */
   m.replyVideo = async (video, caption = "", options = {}) => {
@@ -1288,10 +1288,10 @@ async function serialize(sock, msg, store = {}) {
   };
 
   /**
-   * Reply audio/voice note
-   * @param {Buffer|string} audio - Buffer atau URL audio
-   * @param {boolean} [ptt=false] - Voice note atau bukan
-   * @param {Object} [options={}] - Opsi tambahan
+* Responder audio / voise note
+* @ param { Buffer Takenstring } audio - Buffer o audio URL
+* @ param{boolean}- Nota de voz o no.
+* @ param{Object}> 91; Echotions > 93;{}- Más operaciones
    * @returns {Promise<Object>} Sent message
    */
   m.replyAudio = async (audio, ptt = false, options = {}) => {
@@ -1315,9 +1315,9 @@ async function serialize(sock, msg, store = {}) {
   };
 
   /**
-   * Reply sticker
+* Responder sticker
    * @param {Buffer|string} sticker - Buffer sticker
-   * @param {Object} [options={}] - Opsi tambahan
+* @ param{Object}> 91; Echotions > 93;{}- Más operaciones
    * @returns {Promise<Object>} Sent message
    */
   m.replySticker = async (sticker, options = {}) => {
@@ -1341,11 +1341,11 @@ async function serialize(sock, msg, store = {}) {
   };
 
   /**
-   * Reply dokumen
-   * @param {Buffer|string} document - Buffer dokumen
-   * @param {string} fileName - Nama file
+* Respuesta al documento
+* @ param { Buffer Takstring } documento de amortiguación
+* @ param{string}Nombre del archivo - Nombre del archivo
    * @param {string} [mimetype] - MIME type
-   * @param {Object} [options={}] - Opsi tambahan
+* @ param{Object}> 91; Echotions > 93;{}- Más operaciones
    * @returns {Promise<Object>} Sent message
    */
   m.replyDocument = async (
@@ -1377,10 +1377,10 @@ async function serialize(sock, msg, store = {}) {
   };
 
   /**
-   * Reply kontak
-   * @param {string} number - Nomor kontak
-   * @param {string} name - Nama kontak
-   * @param {Object} [options={}] - Opsi tambahan
+* Responder contacto
+* @ param{string}Número uno en
+* @ param{string}nombre - Nombre de Conn
+* @ param{Object}> 91; Echotions > 93;{}- Más operaciones
    * @returns {Promise<Object>} Sent message
    */
   m.replyContact = async (number, name, options = {}) => {
@@ -1407,10 +1407,10 @@ END:VCARD`;
   };
 
   /**
-   * Reply lokasi
+* Responder ubicación
    * @param {number} latitude - Latitude
    * @param {number} longitude - Longitude
-   * @param {Object} [options={}] - Opsi tambahan
+* @ param{Object}> 91; Echotions > 93;{}- Más operaciones
    * @returns {Promise<Object>} Sent message
    */
   m.replyLocation = async (latitude, longitude, options = {}) => {
@@ -1431,11 +1431,11 @@ END:VCARD`;
   };
 
   /**
-   * Reply dengan fake quote
-   * @param {string} text - Text untuk reply
+* Responder con cita falsa
+* @ param{string}texT @-@ Text) Respuesta
    * @param {string} fakeJid - JID palsu
    * @param {string} fakeText - Text palsu di quote
-   * @param {Object} [options={}] - Opsi tambahan
+* @ param{Object}> 91; Echotions > 93;{}- Más operaciones
    * @returns {Promise<Object>} Sent message
    */
   m.replyWithQuote = async (text, fakeJid, fakeText, options = {}) => {
@@ -1448,7 +1448,7 @@ END:VCARD`;
       message: {
         conversation: fakeText,
       },
-      pushName: options.pushName || "Bot",
+      pushName: options.pushName || "♪",
     };
 
     return sock.sendMessage(
@@ -1473,14 +1473,14 @@ END:VCARD`;
   };
 
   /**
-   * Reply dengan thumbnail (external ad reply)
-   * @param {string} text - Text untuk reply
+* Responder con miniatura ( e)xTernal ad responder )
+* @ param{string}texT @-@ Text) Respuesta
    * @param {Object} preview - Preview options
    * @param {string} preview.title - Judul
    * @param {string} [preview.body] - Body
    * @param {Buffer} [preview.thumbnail] - Thumbnail
    * @param {string} [preview.sourceUrl] - URL sumber
-   * @param {Object} [options={}] - Opsi tambahan
+* @ param{Object}> 91; Echotions > 93;{}- Más operaciones
    * @returns {Promise<Object>} Sent message
    */
   m.replyWithPreview = async (text, preview, options = {}) => {
@@ -1499,8 +1499,8 @@ END:VCARD`;
   };
 
   /**
-   * React ke pesan
-   * @param {string} emoji - Emoji untuk react
+* Reaccionar al mensaje
+* @ param{string}emoji - Emoji para reacciones
    * @returns {Promise<Object>} Result
    */
   m.react = async (emoji) => {
@@ -1517,9 +1517,9 @@ END:VCARD`;
   };
 
   /**
-   * Download media dari pesan ini
-   * @param {string} [filename] - Nama file untuk disimpan
-   * @returns {Promise<Buffer|string>} Buffer atau path file
+* Descargar medios de comunicación de este mensaje
+* @ param{string}*Nombre de archivo* - *El nombre de archivo para salvar*
+* @ devuelve { Promesa<Buffer|string>Archivo de amortiguación o ruta
    */
   m.download = async (filename = null) => {
     if (!m.isMedia) return null;
@@ -1548,7 +1548,7 @@ END:VCARD`;
   };
 
   /**
-   * Delete pesan ini
+* Eliminar este mensaje
    * @returns {Promise<Object>} Result
    */
   m.delete = async () => {
@@ -1558,7 +1558,7 @@ END:VCARD`;
   };
 
   /**
-   * Forward pesan ke JID lain
+* Mensaje previo a otro JID
    * @param {string} jid - JID tujuan
    * @param {boolean} [forceForward=false] - Force forward label
    * @returns {Promise<Object>} Result
@@ -1571,9 +1571,9 @@ END:VCARD`;
   };
 
   /**
-   * Copy pesan ke JID lain
+* Copiar un mensaje a otro JID
    * @param {string} jid - JID tujuan
-   * @param {Object} [options={}] - Opsi tambahan
+* @ param{Object}> 91; Echotions > 93;{}- Más operaciones
    * @returns {Promise<Object>} Result
    */
   m.copy = async (jid, options = {}) => {
@@ -1603,7 +1603,7 @@ END:VCARD`;
   m.timestamp = msg.messageTimestamp;
   m.raw = msg;
 
-  // Final safeguard: jika chat belum ter-resolve dengan baik, coba resolve saat object terbuat (background fallback).
+  //Salvaguardia final: si el chat no ha sido resuelto con éxito, trate de resolverlo en objeto creado (retrocedimiento de fondo).
   if (m.chat && (_ourinlidjs.isLidConverted.call(void 0, m.chat) || _ourinlidjs.isLid.call(void 0, m.chat))) {
     _ourinlidjs.resolveFromSock.call(void 0, m.chat, sock).then((resolved) => {
       if (resolved && !_ourinlidjs.isLidConverted.call(void 0, resolved) && !_ourinlidjs.isLid.call(void 0, resolved)) {
@@ -1630,7 +1630,7 @@ function getNumber(jid) {
 
 /**
  * Create JID from number
- * @param {string} number - Nomor telepon
+* @ param{string}- Número uno.
  * @returns {string} JID
  */
 function createJid(number) {

@@ -31,7 +31,7 @@ async function handler(m, { sock }) {
     const username = _optionalChain([m, 'access', _ => _.args, 'access', _2 => _2[0], 'optionalAccess', _3 => _3.replace, 'call', _4 => _4('@', '')])
     
     if (!username) {
-        return m.reply(`🎵 *ᴛɪᴋᴛᴏᴋ sᴛᴀʟᴋ*\n\n> Masukkan username TikTok\n\n\`Contoh: ${m.prefix}tiktokstalk mrbeast\``)
+        return m.reply(`🎵*ᴛɪᴋᴛᴏᴋSᴛᴀʟᴋ*\n\n*Pon el nombre de usuario TikTok*\n\n\`Ejemplo:${m.prefix}tiktokstalk mrbeast\``)
     }
     
     m.react('🔍')
@@ -43,7 +43,7 @@ async function handler(m, { sock }) {
         
         if (!_optionalChain([res, 'access', _5 => _5.data, 'optionalAccess', _6 => _6.status]) || !_optionalChain([res, 'access', _7 => _7.data, 'optionalAccess', _8 => _8.data])) {
             m.react('❌')
-            return m.reply(`❌ Username *@${username}* tidak ditemukan`)
+            return m.reply(`❌ Username *@${username}* not found`)
         }
         
         const d = res.data.data
@@ -51,7 +51,7 @@ async function handler(m, { sock }) {
         
         const caption = `🎵 *ᴛɪᴋᴛᴏᴋ sᴛᴀʟᴋ*\n\n` +
             `👤 *Username:* @${d.username}\n` +
-            `📛 *Nama:* ${d.nickname}\n` +
+            `📛*Nombre:*${d.nickname}\n` +
             `✅ *Verified:* ${d.verified ? 'Ya' : 'Tidak'}\n` +
             `🔒 *Private:* ${d.private ? 'Ya' : 'Tidak'}\n\n` +
             `👥 *Followers:* ${shortNum(s.followers)}\n` +

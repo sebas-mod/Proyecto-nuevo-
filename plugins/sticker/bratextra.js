@@ -188,7 +188,7 @@ async function fetchBuffer(url) {
 async function handler(m, { sock }) {
   const text = m.text;
   if (!text) {
-    return m.reply(`⚠️ Harap masukkan teksnya!\nContoh: \`${m.prefix}${m.command} Halo semuanya\``);
+    return m.reply(`⚠️ Por favor introduce teksnya!\nEjemplo:\`${m.prefix}${m.command}Hola a todos.\``);
   }
 
   await m.react("🕕");
@@ -217,7 +217,7 @@ async function handler(m, { sock }) {
 
     const template = TEMPLATES[cmd];
     if (!template) {
-      throw new Error("Template tidak ditemukan");
+      throw new Error("Plantillas no encontradas");
     }
 
     if (!isFontLoaded) {

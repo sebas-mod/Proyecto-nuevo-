@@ -43,13 +43,13 @@ async function handler(m, context) {
   if (!raw) {
     const info = KEYS.map((k) => `• ${DATA[k]?.nama || k}: ${Object.keys(DATA[k]?.kata || {}).length} kata`).join('\n');
     return m.reply(
-      `📖 *KAMUS BAHASA DAERAH INDONESIA*\n\n` +
-        `*Contoh Penggunaan:*\n` +
-        `• \`${p}${command} makan\` (Cari di semua bahasa)\n` +
-        `• \`${p}${command} jawa terima kasih\` (Spesifik bahasa Jawa)\n` +
-        `• \`${p}${command} sunda nuhun\` (Cari arti kata Sunda)\n` +
-        `• \`${p}${command} list\` (Tampilkan daftar kata)\n\n` +
-        `*Bahasa Tersedia:*\n${info}`
+      `📖 *KAMUS BAHASA Zona INDONESIA*\n\n` +
+        `*Ejemplo de uso:*\n` +
+        `• \`${p}${command}come\`( Busca en todos los idiomas )\n` +
+        `• \`${p}${command}# Muchas gracias #\`(Espaciamiento especial del suelo )\n` +
+        `• \`${p}${command}sunda nuhun\`( Busca que significa palabra Sunda )\n` +
+        `• \`${p}${command}lista\`( Mostrar lista de palabras )\n\n` +
+        `*Bahasa Disponible:*\n${info}`
     );
   }
 
@@ -64,7 +64,7 @@ async function handler(m, context) {
   const q = only ? parts.slice(1).join(' ').trim() : raw;
 
   if (!q) {
-    return m.reply(`Tulis kata yang ingin dicari.\nContoh: \`${p}${command} ${only} makan\``);
+    return m.reply(`La palabra es pura.\nEjemplo:\`${p}${command} ${only} makan\``);
   }
 
   const pool = only ? [only] : KEYS;
@@ -82,7 +82,7 @@ async function handler(m, context) {
     );
 
     for (const [indo, daerah] of arah) {
-      out.push(`• *${langObj.nama}:* ${daerah} (dari bahasa Indonesia: "${indo}")`);
+      out.push(`• *${langObj.nama}:* ${daerah}(de Indonesia:${indo}")`);
     }
     for (const [indo, daerah] of balik) {
       out.push(`• *${langObj.nama}:* ${daerah} ➔ Bahasa Indonesia: "${indo}"`);
@@ -90,10 +90,10 @@ async function handler(m, context) {
   }
 
   if (!out.length) {
-    return m.reply(`❌ Kata *"${q}"* tidak ditemukan di kamus daerah. Coba kata dasar atau periksa ejaan.`);
+    return m.reply(`❌ Kata *"${q}No puede encontrarlo en la zona.`);
   }
 
-  return m.reply(`📚 *HASIL KAMUS BAHASA DAERAH:*\n\n${out.join('\n')}`);
+  return m.reply(`📚 *Resultado KAMUS BAHASA Zona:*\n\n${out.join('\n')}`);
 }
 
 module.exports = {

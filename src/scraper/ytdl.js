@@ -41,7 +41,7 @@ async function fallbackToMp3Buffer(url) {
 
     const mp3Buffer = _fs2.default.readFileSync(outputPath);
     if (!mp3Buffer.length) {
-      throw new Error("Konversi fallback ke MP3 gagal");
+      throw new Error("Conversiones de la caída a MP3 fallar");
     }
 
     return mp3Buffer;
@@ -62,7 +62,7 @@ async function ytdl(url, format = "mp3") {
     if (!videoId) {
       return {
         status: false,
-        mess: "Format URL tidak dikenali atau bukan link YouTube yang valid.",
+        mess: "El plano URL no está cargado ni no una línea de YouTube válida.",
       };
     }
 
@@ -89,7 +89,7 @@ async function ytdl(url, format = "mp3") {
     if (!_optionalChain([init, 'optionalAccess', _6 => _6.convertURL])) {
       return {
         status: false,
-        mess: "Gagal menginisialisasi server (Init failed).",
+        mess: "Steenalinitializa servidor.",
       };
     }
 
@@ -104,7 +104,7 @@ async function ytdl(url, format = "mp3") {
     if (!_optionalChain([convert, 'optionalAccess', _7 => _7.progressURL]) || !_optionalChain([convert, 'optionalAccess', _8 => _8.downloadURL])) {
       return {
         status: false,
-        mess: "Gagal mendapatkan data konversi.",
+        mess: "Gagali obtuvo los datos de convergencia.",
       };
     }
 
@@ -119,7 +119,7 @@ async function ytdl(url, format = "mp3") {
       if ((_optionalChain([data, 'optionalAccess', _9 => _9.error]) || 0) > 0) {
         return {
           status: false,
-          mess: `Error dari server: ${data.error}`,
+          mess: `Error del servidor:${data.error}`,
         };
       }
 
@@ -168,7 +168,7 @@ class Youtube {
     const result = await ytdl(url, outputFormat);
 
     if (!_optionalChain([result, 'optionalAccess', _12 => _12.status]) || !_optionalChain([result, 'optionalAccess', _13 => _13.dl])) {
-      throw new Error(_optionalChain([result, 'optionalAccess', _14 => _14.mess]) || "Gagal mengunduh konten YouTube");
+      throw new Error(_optionalChain([result, 'optionalAccess', _14 => _14.mess]) || "Descarga pegajosa contenido de YouTube");
     }
 
     return this.wrapResponse({

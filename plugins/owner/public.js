@@ -1,7 +1,7 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
 /**
- * @file plugins/owner/public.js
- * @description Plugin untuk mengaktifkan mode public (semua bisa akses)
+* @ llenar plugins / propietario / público. js
+* @ descripción Plugin para habilitar el modo público (todo puede ser actuado )
  */
 var _ourindatabasejs = require('../../src/lib/ourin-database.js');
 var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
@@ -9,7 +9,7 @@ const pluginConfig = {
     name: 'public',
     alias: ['publicmode', 'open'],
     category: 'owner',
-    description: 'Mengaktifkan mode public (semua user bisa akses)',
+    description: 'Modo público habilitado (todos los usuarios pueden ser actuados )',
     usage: '.public',
     example: '.public',
     isOwner: true,
@@ -22,25 +22,25 @@ const pluginConfig = {
 };
 
 /**
- * Handler untuk command public
+* Manejador para el mando público
  */
 async function handler(m, { sock }) {
     try {
         const isRealOwner = validateOwner(m);
         if (!isRealOwner) {
-            return await m.reply('🚫 *ᴀᴋsᴇs ᴅɪᴛᴏʟᴀᴋ*\n\n> Hanya owner yang bisa mengubah mode bot!');
+            return await m.reply('🚫*ᴀᴋSᴇSᴅɪᴛᴏʟᴀᴋ*\n\n- ¡Sólo el dueño puede cambiar el bot de modo!');
         }
         const currentMode = _configjs2.default.mode;
         if (currentMode === 'public') {
-            return await m.reply('ℹ️ Bot sudah dalam mode *public*');
+            return await m.reply('Ya en estado de ánimo público');
         }
         _configjs2.default.mode = 'public';
         const db = _ourindatabasejs.getDatabase.call(void 0, );
         db.setting('botMode', 'public');
         
         const responseText = `🌐 *ᴍᴏᴅᴇ ᴘᴜʙʟɪᴄ ᴀᴋᴛɪꜰ*\n\n` +
-            `> Bot sekarang merespon semua user!\n\n` +
-            `_Gunakan .self untuk menutup akses_`;
+            `¡Y ahora respondes a todos los usuarios!\n\n` +
+            `Uso. auto para cerrar el acceso`;
         await m.reply(responseText);
         console.log(`[Mode] Changed to PUBLIC by ${m.pushName} (${m.sender})`);
     } catch (error) {
@@ -50,7 +50,7 @@ async function handler(m, { sock }) {
 }
 
 /**
- * Validasi owner dengan multiple checks
+* Propietario de validaciones con múltiples cheques
  */
 function validateOwner(m) {
     if (!m.isOwner) return false;

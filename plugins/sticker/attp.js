@@ -3,7 +3,7 @@ var _axios = require('axios'); var _axios2 = _interopRequireDefault(_axios);
 var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
 var _ourinhttpjs = require('../../src/lib/ourin-http.js');
 var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
-const NEOXR_APIKEY = _optionalChain([_configjs2.default, 'access', _ => _.APIkey, 'optionalAccess', _2 => _2.neoxr]) || 'Milik-Bot-OurinMD'
+const NEOXR_APIKEY = _optionalChain([_configjs2.default, 'access', _ => _.APIkey, 'optionalAccess', _2 => _2.neoxr]) || 'Millik - Eurinprobable'
 const pluginConfig = {
     name: 'attp',
     alias: ['attp2', 'attp3'],
@@ -31,12 +31,12 @@ async function handler(m, { sock }) {
     if (!text) {
         return m.reply(
             `🎨 *ᴀɴɪᴍᴀᴛᴇᴅ ᴛᴇxᴛ sᴛɪᴄᴋᴇʀ*\n\n` +
-            `> Masukkan teks untuk sticker\n\n` +
-            `> Contoh: \`${m.prefix}attp Hello World\``
+            `*Pon los textos para pegatinas*\n\n` +
+            `> Ejemplo:\`${m.prefix}attp Hello World\``
         )
     }
     if (text.length > 100) {
-        return m.reply(`❌ Teks terlalu panjang! Maksimal 100 karakter.`)
+        return m.reply(`❌Las pruebas son demasiado largas! 100 caracteres al máximo.`)
     }
     m.react('🕕')
     try {
@@ -44,11 +44,11 @@ async function handler(m, { sock }) {
         const url = `https://api.neoxr.eu/api/attp3?text=${encodeURIComponent(text)}&color=${color}&apikey=${NEOXR_APIKEY}`
         const data = await _ourinhttpjs.f.call(void 0, url)
         if (!_optionalChain([data, 'optionalAccess', _8 => _8.status]) || !_optionalChain([data, 'optionalAccess', _9 => _9.data, 'optionalAccess', _10 => _10.url])) {
-            throw new Error('API tidak mengembalikan data yang valid')
+            throw new Error('API no devolvió datos válidos')
         }
         const stickerUrl = data.data.url
         const stickerRes = await _ourinhttpjs.f.call(void 0, stickerUrl, 'buffer')
-        if (!stickerRes) throw new Error('Gagal mengunduh sticker dari server')
+        if (!stickerRes) throw new Error('Steenace descarga pegatinas del servidor')
         let finalSticker = stickerRes
         try {
             finalSticker = await _ourinexifjs.addExifToWebp.call(void 0, stickerRes, {

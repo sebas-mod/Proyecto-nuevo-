@@ -5,7 +5,7 @@ const pluginConfig = {
   name: "enableplugin",
   alias: ["eplugin", "pluginenable", "onplugin"],
   category: "owner",
-  description: "Mengaktifkan kembali plugin yang dinonaktifkan",
+  description: "Reenaje de plugins desactivados",
   usage: ".enableplugin <nama_plugin>",
   example: ".enableplugin sticker",
   isOwner: true,
@@ -30,7 +30,7 @@ async function findPluginFile(pluginName) {
     for (const file of files) {
       try {
         const filePath = _path2.default.join(categoryPath, file);
-        const plugin = await Promise.resolve().then(() => _interopRequireWildcard(require(`file://${filePath.replace(/\\/g, "/")}`)));
+        const plugin = await Promise.resolve().then(() => _interopRequireWildcard(require(`archivo://${filePath.replace(/\\/g, "/")}`)));
 
         if (!plugin.config) continue;
 
@@ -57,8 +57,8 @@ async function handler(m, { sock }) {
   if (!pluginName) {
     return m.reply(
       `🔌 *ᴇɴᴀʙʟᴇ ᴘʟᴜɢɪɴ*\n\n` +
-        `> Masukkan nama plugin yang ingin diaktifkan\n\n` +
-        `*Contoh:*\n` +
+        `Aquí.\n\n` +
+        `*Ejemplo:*\n` +
         `> \`${m.prefix}enableplugin sticker\`\n` +
         `> \`${m.prefix}enableplugin tiktok\``,
     );
@@ -67,13 +67,13 @@ async function handler(m, { sock }) {
   const found = await findPluginFile(pluginName);
 
   if (!found) {
-    return m.reply(`❌ Plugin *${pluginName}* tidak ditemukan!`);
+    return m.reply(`❌ Plugin *${pluginName}* no encontrado!`);
   }
 
   const { filePath, plugin, category, file } = found;
 
   if (plugin.config.isEnabled !== false) {
-    return m.reply(`⚠️ Plugin *${pluginName}* sudah aktif!`);
+    return m.reply(`⚠️ Plugin *${pluginName}* está en!`);
   }
 
   try {
@@ -88,10 +88,10 @@ async function handler(m, { sock }) {
         `╭┈┈⬡「 📋 *ᴅᴇᴛᴀɪʟ* 」\n` +
         `┃ 📦 Plugin: *${plugin.config.name}*\n` +
         `┃ 📁 Category: *${category}*\n` +
-        `┃ 📄 File: *${file}*\n` +
+        `┃ 📄Archivo: *${file}*\n` +
         `┃ 🟢 Status: *Enabled*\n` +
         `╰┈┈⬡\n\n` +
-        `> Restart bot atau gunakan hot reload untuk apply.`,
+        `*Reiniciar bot o usar la recarga caliente para aplicar.*`,
     );
   } catch (error) {
     await m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));

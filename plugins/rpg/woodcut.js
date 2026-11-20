@@ -5,7 +5,7 @@ const pluginConfig = {
   name: "woodcut",
   alias: ["chop", "nebang", "kayu"],
   category: "rpg",
-  description: "Menebang pohon untuk mendapatkan kayu",
+  description: "Corta los árboles para llegar a ti",
   usage: ".woodcut",
   example: ".woodcut",
   isOwner: false,
@@ -28,13 +28,13 @@ async function handler(m, { sock }) {
   user.rpg.stamina = user.rpg.stamina || 100;
 
   if (user.rpg.stamina < staminaCost) {
-    return m.reply(`Tangan kamu udah lecet kak megang kapak terus! 🥵🪓\n\nNebang butuh *${staminaCost} Stamina*, kamu cuma punya *${user.rpg.stamina}*. Istirahat kek! 🛌💤`);
+    return m.reply(`¡Eres tan torpe, eres tan fuerte!🥵🪓\n\nButhh nettles *${staminaCost}Stamina, acabas de tener${user.rpg.stamina}*. ¡Resuelve abuelo!🛌💤`);
   }
 
   user.rpg.stamina -= staminaCost;
 
   await m.react("🪓");
-  await m.reply("Ctak! Ctak! Tumbangg! 🪓🌳\nMenebang pohon besar dengan sekuat tenaga...");
+  await m.reply("No, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no, no.🪓🌳\nCortar un gran árbol con un sésamo tenaz..");
   await new Promise((r) => setTimeout(r, 3000));
 
   const drops = [
@@ -66,13 +66,13 @@ async function handler(m, { sock }) {
   await m.react("✅");
 
   let txt = `POHONNYA TUMBANG! 🪓✨\n\n`;
-  txt += `Kamu mungutin barang-barang ini:\n`;
+  txt += `Podrías estar en esto:\n`;
   for (const r of results) {
     txt += `• ${r.name}: *+${r.qty}*\n`;
   }
   txt += `\n📈 EXP: *+${expGain}*\n`;
   txt += `⚡ Stamina: *-${staminaCost}*\n\n`;
-  txt += `Awas encok kak, kalau capek istirahat (\`.heal\`) ya! 🥵🍃`;
+  txt += `Awas encok hermano, klaru cansado reposo (\`Cura.\`Si!🥵🍃`;
 
   await m.reply(txt);
 }

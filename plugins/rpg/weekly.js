@@ -4,7 +4,7 @@ const pluginConfig = {
   name: "weekly",
   alias: ["mingguan"],
   category: "rpg",
-  description: "Claim hadiah mingguan (lebih besar dari daily)",
+  description: "Reclamación semanal presente (más que lácteos)",
   usage: ".weekly",
   example: ".weekly",
   isOwner: false,
@@ -30,7 +30,7 @@ async function handler(m, { sock }) {
     const remaining = lastWeekly + WEEKLY_COOLDOWN - now;
     const days = Math.floor(remaining / (1000 * 60 * 60 * 24));
     const hours = Math.floor((remaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    return m.reply(`Wah, jatah mingguan kamu udah ludes kak! 😂\n\nTunggu *${days} hari ${hours} jam* lagi ya buat gajian mingguan berikutnya! 🗓️💨`);
+    return m.reply(`¡Eres una chica grande en la clase semanal!😂\n\nEspera *${days}el${hours}¡Otra hora para el pago de la semana próxima!🗓♪💨`);
   }
 
   const expReward = Math.floor(Math.random() * 20000) + 10000;
@@ -48,11 +48,11 @@ async function handler(m, { sock }) {
   db.save();
 
   let txt = `DORRR! GAJIAN MINGGUAN CAIRRR! 🎉🎊🤑\n\n`;
-  txt += `Gila, jatah kamu minggu ini gede banget:\n`;
+  txt += `Gila, tu comando está semana es grande.\n`;
   txt += `📈 EXP: *+${expReward.toLocaleString("id-ID")}*\n`;
-  txt += `💰 Koin: *+Rp ${moneyReward.toLocaleString("id-ID")}*\n`;
+  txt += `💰Monedas: *+Rp${moneyReward.toLocaleString("id-ID")}*\n`;
   txt += `🛍️ Uncommon Crate: *+${crateReward}x*\n\n`;
-  txt += `Duitnya jangan lupa ditabung ya kak di bank (\`.bank\`)! 🏦💖`;
+  txt += `El dinero no se salva\`.banco\`!🏦💖`;
 
   await m.reply(txt);
 }

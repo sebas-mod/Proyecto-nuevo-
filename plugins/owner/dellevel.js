@@ -43,9 +43,9 @@ async function handler(m, { sock }) {
       `📊 *ᴅᴇʟ ʟᴇᴠᴇʟ*\n\n` +
         `╭┈┈⬡「 📋 *ᴜsᴀɢᴇ* 」\n` +
         `┃ > \`.dellevel <jumlah>\` - ke diri sendiri\n` +
-        `┃ > \`.dellevel <jumlah> @user\` - ke orang lain\n` +
+        `┃♪\`- Dellevel.<jumlah>@ usuario\`- A otra persona.\n` +
         `╰┈┈┈┈┈┈┈┈⬡\n\n` +
-        `> Contoh: \`${m.prefix}dellevel 5\``,
+        `> Ejemplo:\`${m.prefix}dellevel 5\``,
     );
   }
 
@@ -63,7 +63,7 @@ async function handler(m, { sock }) {
     `✅ *ʟᴇᴠᴇʟ ᴅɪᴋᴜʀᴀɴɢɪ*\n\n` +
       `╭┈┈⬡「 📋 *ᴅᴇᴛᴀɪʟ* 」\n` +
       `┃ 👤 User: @${targetJid.split("@")[0]}\n` +
-      `┃ ➖ Kurang: *-${levels} Level*\n` +
+      `┃ ➖Menos: *-${levels} Level*\n` +
       `┃ 🚄 Exp Removed: *-${expToRemove.toLocaleString("id-ID")}*\n` +
       `┃ 📊 Level: *${oldLevel} → ${newLevel}*\n` +
       `┃ ${_leveljs.getRole.call(void 0, newLevel)}\n` +

@@ -12,7 +12,7 @@ const pluginConfig = {
   name: allCommands,
   alias: allAliases,
   category: "panel",
-  description: "Buat admin panel baru (v1-v5)",
+  description: "Crea nuevo del Grupo de Personal ( v1 - v5 )",
   usage: ".cadminv1 username atau .cadminv2 username,628xxx",
   example: ".cadminv1 adminku,628xxx",
   isOwner: false,
@@ -65,7 +65,7 @@ function validateConfig(serverConfig) {
 function getAvailableServers(pteroConfig) {
   const available = [];
   for (let i = 1; i <= 5; i++) {
-    const cfg = pteroConfig[`server${i}`];
+    const cfg = pteroConfig[`servidor${i}`];
     if (_optionalChain([cfg, 'optionalAccess', _3 => _3.domain]) && _optionalChain([cfg, 'optionalAccess', _4 => _4.apikey])) available.push(`v${i}`);
   }
   return available;
@@ -81,8 +81,8 @@ async function handler(m, { sock }) {
     const userRole = _ourinrolescpaneljs.getUserRole.call(void 0, m.sender, serverVersion);
     return m.reply(
       `❌ *ᴀᴋsᴇs ᴅɪᴛᴏʟᴀᴋ*\n\n` +
-        `> Kamu tidak punya akses ke *${serverLabel}*\n` +
-        `> Role kamu: *${userRole || "Tidak ada"}*`,
+        `*No tienes acento*${serverLabel}*\n` +
+        `# Role you #${userRole || "Tidak ada"}*`,
     );
   }
 
@@ -93,10 +93,10 @@ async function handler(m, { sock }) {
     const available = getAvailableServers(pteroConfig);
     let txt = `⚠️ *sᴇʀᴠᴇʀ ${serverLabel} ʙᴇʟᴜᴍ ᴋᴏɴꜰɪɢ*\n\n`;
     if (available.length > 0) {
-      txt += `> Server tersedia: *${available.join(", ")}*\n`;
-      txt += `> Contoh: \`${m.prefix}cadmin${available[0]} username\``;
+      txt += `*El servidor está disponible*${available.join(", ")}*\n`;
+      txt += `> Ejemplo:\`${m.prefix}cadmin${available[0]} username\``;
     } else {
-      txt += `> Isi di \`config.js\` bagian \`pterodactyl.server1\``;
+      txt += `*Estoy dentro*\`config.\`Parte\`pterodactilo. Servidor1\``;
     }
     return m.reply(txt);
   }
@@ -120,14 +120,14 @@ async function handler(m, { sock }) {
       `⚠️ *ᴄᴀʀᴀ ᴘᴀᴋᴀɪ*\n\n` +
         `> \`${m.prefix}${m.command} username\`\n` +
         `> \`${m.prefix}${m.command} username,628xxx\`\n` +
-        `> Reply/mention user\n\n` +
-        `> Server tersedia: *${available.join(", ") || "none"}*`,
+        `* Responder / mencionar usuario*\n\n` +
+        `*El servidor está disponible*${available.join(", ") || "none"}*`,
     );
   }
 
   if (!/^[a-z0-9_]{3,16}$/.test(username)) {
     return m.reply(
-      `❌ Username hanya boleh huruf kecil, angka, underscore (3-16 karakter).`,
+      `❌El nombre de usuario sólo permitió pequeños letra, números, subrayar ( 3 @-@ 16 caracteres ).`,
     );
   }
 
@@ -142,29 +142,29 @@ async function handler(m, { sock }) {
   }
 
   if (!targetUser) {
-    return m.reply(`❌ Tidak dapat menentukan nomor target.`);
+    return m.reply(`❌No se puede determinar el número de destino.`);
   }
 
   try {
     const [onWa] = await sock.onWhatsApp(targetUser.split("@")[0]);
     if (!_optionalChain([onWa, 'optionalAccess', _22 => _22.exists])) {
       return m.reply(
-        `❌ Nomor \`${targetUser.split("@")[0]}\` tidak terdaftar di WhatsApp!`,
+        `❌Número\`${targetUser.split("@")[0]}\`no registrado en WhatsApp!`,
       );
     }
   } catch (e) {}
 
   const email = `${username}@gmail.com`;
-  const name = capitalize(username) + " Admin";
+  const name = capitalize(username) + "Administrador";
   const password = username + _crypto2.default.randomBytes(3).toString("hex");
 
   await m.reply(
-    `🛠️ *ᴍᴇᴍʙᴜᴀᴛ ᴀᴅᴍɪɴ ᴘᴀɴᴇʟ...*\n\n> Server: *${serverLabel}*\n> Username: \`${username}\`\n> Target: \`${targetUser.split("@")[0]}\``,
+    `🛠♪ᴍᴇᴍʙᴜᴀᴛ ᴀᴅᴍɪɴ ᴘᴀɴᴇʟ...\n\n♪ Servidor: ♪${serverLabel}*\n> Username: \`${username}\`\n> Objetivo: \`${targetUser.split("@")[0]}\``,
   );
 
   try {
     const userRes = await _axios2.default.post(
-      `${serverConfig.domain}/api/application/users`,
+      `${serverConfig.domain}/fuego/application/users`,
       {
         email,
         username,
@@ -191,18 +191,18 @@ async function handler(m, { sock }) {
     detailTxt += `┃ 🆔 \`ᴜsᴇʀ ɪᴅ\`: *${user.id}*\n`;
     detailTxt += `┃ 👤 \`ᴜsᴇʀɴᴀᴍᴇ\`: *${user.username}*\n`;
     detailTxt += `┃ 🔐 \`ᴘᴀssᴡᴏʀᴅ\`: *${password}*\n`;
-    detailTxt += `┃ 👑 \`sᴛᴀᴛᴜs\`: *Root Admin*\n`;
+    detailTxt += `┃ 👑 \`SᴛᴀᴛᴜS\`* Amontonamiento de raíz *\n`;
     detailTxt += `┃ 🗓️ \`ᴛᴀɴɢɢᴀʟ\`: *${formatDate()}*\n`;
     detailTxt += `╰───────────────\n\n`;
     detailTxt += `🌐 *ʟᴏɢɪɴ ᴘᴀɴᴇʟ:* ${serverConfig.domain}\n\n`;
-    detailTxt += `> ⚠️ Akun ini memiliki akses penuh!\n`;
-    detailTxt += `> ⚠️ Jangan bagikan ke siapapun!`;
+    detailTxt += `♪⚠¡Este Akui tiene un @-@ completo en actuación!\n`;
+    detailTxt += `♪⚠¡No lo compartas con nadie!`;
 
     await sock.sendMessage(targetUser, { text: detailTxt });
 
     if (targetUser !== m.sender) {
       await m.reply(
-        `✅ *ᴀᴅᴍɪɴ ᴘᴀɴᴇʟ ʙᴇʀʜᴀsɪʟ ᴅɪʙᴜᴀᴛ*\n\n> Server: *${serverLabel}*\n> Data telah dikirim ke \`${targetUser.split("@")[0]}\``,
+        `✅*ᴀᴅᴍɪɴ ᴘᴀɴᴇʟ ʙᴇʀʜᴀSɪʟ ᴅɪʙᴜᴀᴛ*\n\n♪ Servidor: ♪${serverLabel}*\nSe han enviado datos a\`${targetUser.split("@")[0]}\``,
       );
     }
   } catch (err) {

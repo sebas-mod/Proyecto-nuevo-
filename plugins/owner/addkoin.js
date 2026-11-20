@@ -47,7 +47,7 @@ async function handler(m, { sock }) {
         return m.reply(
             `💰 *ᴀᴅᴅ ᴋᴏɪɴ*\n\n` +
             `> \`.addkoin <jumlah>\` - ke diri sendiri\n` +
-            `> \`.addkoin <jumlah> @user\` - ke orang lain\n` +
+            `♪\`Addkain.<jumlah>@ usuario\`- A otra persona.\n` +
             `> Max: 9.000.000.000.000 (9T)\n\n` +
             `\`Contoh: ${m.prefix}addkoin 100000\``
         )
@@ -60,8 +60,8 @@ async function handler(m, { sock }) {
     if (user.koin === -1) {
         return m.reply(
             `💰 *INFORMATION*\n` +
-            `@${targetJid.split('@')[0]} sudah memiliki koin *∞ Unlimited*\n` +
-            `Tidak perlu menambahkan koin lagi`,
+            `@${targetJid.split('@')[0]}ya tiene tela∞Unlimited *\n` +
+            `No es necesario añadir más monedas`,
             { mentions: [targetJid] }
         )
     }
@@ -70,7 +70,7 @@ async function handler(m, { sock }) {
 
     await m.react('✅')
     await m.reply(
-        `✅ Berhasil menambahkan koin *@${targetJid.split('@')[0]}* sebanyak *${formatKoin(amount)}*`,
+        `✅Vale la pena una moneda.${targetJid.split('@')[0]}* sebanyak *${formatKoin(amount)}*`,
         { mentions: [targetJid] }
     )
 }

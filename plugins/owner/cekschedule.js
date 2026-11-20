@@ -7,7 +7,7 @@ const pluginConfig = {
     name: 'cekschedule',
     alias: ['cekscheduler', 'schedulerstatus', 'schedstatus'],
     category: 'owner',
-    description: 'Melihat status semua scheduler bot',
+    description: 'Mira todo el estado del programador',
     usage: '.cekschedule',
     example: '.cekschedule',
     isOwner: true,
@@ -51,11 +51,11 @@ async function handler(m, { sock }) {
         const sholatIcon = sholatEnabled ? '✅' : '❌';
         text += `${sholatIcon} *Sholat Scheduler*\n`;
         text += `   └ Key: \`sholat\`\n`;
-        text += `   └ Notifikasi waktu sholat (real-time)\n`;
+        text += `   └Aviso de tiempo de choque (real @-@ time )\n`;
 
         if (sholatEnabled) {
             const kotaSetting = db.setting('autoSholatKota') || { id: '1301', nama: 'KOTA JAKARTA' };
-            text += `   └ Lokasi: ${kotaSetting.nama}\n`;
+            text += `   └Ubicación:${kotaSetting.nama}\n`;
 
             try {
                 const { schedule } = await _ourinsholatapijs.getTodaySchedule.call(void 0, kotaSetting.id);
@@ -81,17 +81,17 @@ async function handler(m, { sock }) {
 
                 text += `   └ Next: ${nextSholat} (${nextTime} WIB)\n`;
             } catch (e) {
-                text += `   └ _Gagal memuat jadwal_\n`;
+                text += `   └*El poderoso tonto del mundo*\n`;
             }
         }
 
         text += `\n`;
         text += `━━━━━━━━━━━━━━━━━━━\n`;
-        text += `✅ Aktif: ${status.summary.totalActive + (sholatEnabled ? 1 : 0)}\n`;
-        text += `❌ Nonaktif: ${status.summary.totalInactive + (!sholatEnabled ? 1 : 0)}\n\n`;
+        text += `✅Activo:${status.summary.totalActive + (sholatEnabled ? 1 : 0)}\n`;
+        text += `❌Inactivo:${status.summary.totalInactive + (!sholatEnabled ? 1 : 0)}\n\n`;
 
-        text += `> Gunakan \`.stopschedule <key>\` untuk stop\n`;
-        text += `> Gunakan \`.startschedule <key>\` untuk start`;
+        text += `> Usa\`- Detenga la hora.<key>\`para stop\n`;
+        text += `> Usa\`- Horario.<key>\`para start`;
 
         await m.reply(text);
     } catch (error) {

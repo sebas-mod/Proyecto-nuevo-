@@ -2,7 +2,7 @@
     name: 'cekjomblo',
     alias: ['jomblo', 'single'],
     category: 'cek',
-    description: 'Cek tingkat kejombloan kamu',
+    description: 'Revisa tu nivel de la culata.',
     usage: '.cekjomblo <nama>',
     example: '.cekjomblo Budi',
     isOwner: false,
@@ -22,15 +22,15 @@ async function handler(m) {
     if (percent >= 90) desc = 'Jomblo abadi! Single is happiness~ 💔😎'
     else if (percent >= 70) desc = 'Strong independent person! 💪'
     else if (percent >= 50) desc = 'MasihPDKT mode ON 😍'
-    else if (percent >= 30) desc = 'Ada yang naksir kayaknya~ 👀'
+    else if (percent >= 30) desc = 'Alguien ha estado trabajando en ello ~👀'
     else desc = 'Soon taken! 💕'
     
-    let txt = mentioned === m.sender ? `Hai @${mentioned.split('@')[0]}
+    let txt = mentioned === m.sender ? `Hola @${mentioned.split('@')[0]}
     
-Tingkat kejombloan kamu *${percent}%*
-\`\`\`${desc}\`\`\`` : `Kamu ingin ngecek tingkat kejombloan @${mentioned.split('@')[0]} yak? 
+Tu tasa de pumloan *${percent}%*
+\`\`\`${desc}\`\`\`` : `Quieres ver el nivel de obsceno${mentioned.split('@')[0]} yak? 
     
-Tingkat kejombloan dia sebesar *${percent}%*
+Es tan grande como un tomboy${percent}%*
 \`\`\`${desc}\`\`\``
     
     await m.reply(txt, { mentions: [mentioned] })

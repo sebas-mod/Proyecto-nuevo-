@@ -20,24 +20,24 @@ const pluginConfig = {
 const VARIANTS = {
   1: {
     name: "Canvas Image",
-    desc: "Gambar canvas dengan foto profil",
+    desc: "Lona de juego con fotos de perfil",
     emoji: "🎨",
   },
   2: {
     name: "Carousel Cards",
-    desc: "Kartu carousel interaktif dengan tombol",
+    desc: "Carousel interactivo cartu con pubs",
     emoji: "🃏",
   },
   3: {
     name: "Text Only",
-    desc: "Pesan teks minimalis tanpa gambar",
+    desc: "Pessan texto imagen mínima sin minimalista",
     emoji: "📝",
   },
   4: { name: "Group", desc: "ContextInfo group style", emoji: "👥" },
-  5: { name: "Simple", desc: "Pesan teks simple + foto profile", emoji: "✨" },
+  5: { name: "Simple", desc: "Mensaje", emoji: "✨" },
   6: { name: "Video", desc: "Kirim video perkenalan", emoji: "🎥" },
-  7: { name: "Interactive Quoted", desc: "Interactive message dengan fake quoted", emoji: "💬" },
-  8: { name: "Super Simple", desc: "Pesan teks sangat singkat tanpa hiasan", emoji: "👋" },
+  7: { name: "Interactive Quoted", desc: "Mensaje interactivo con cita falsa", emoji: "💬" },
+  8: { name: "Super Simple", desc: "Texto de Mensaje es muy corto sin ninguna decoración", emoji: "👋" },
 };
 async function handler(m, { sock, db }) {
   const args = m.args || [];
@@ -48,7 +48,7 @@ async function handler(m, { sock, db }) {
     db.setting("welcomeType", id);
     await db.save();
     await m.reply(
-      `✅ *WELCOME TYPE DIUBAH*\n\n` +
+      `✅* WeLCOME TYPE USED*\n\n` +
         `${VARIANTS[id].emoji} *V${id} — ${VARIANTS[id].name}*\n` +
         `_${VARIANTS[id].desc}_`,
     );
@@ -74,18 +74,18 @@ async function handler(m, { sock, db }) {
   ];
   const bodyText =
     `👋🎨 *WELCOME TYPE*\n\n` +
-    `Atur tampilan pesan welcome saat member baru masuk grup 🚪✨\n` +
-    `Tipe aktif saat ini: *V${current} — ${VARIANTS[current].name}* 🎯\n\n` +
-    `*PENJELASAN TIPE:*\n\n` +
-    `- *V1 Canvas Image* 🎨 — Bot membuat gambar canvas otomatis berisi foto profil dan nama member yang baru join, lalu dikirim sebagai gambar\n\n` +
-    `- *V2 Carousel Cards* 🃏 — Menampilkan kartu carousel interaktif yang bisa di-swipe lengkap dengan tombol action, cocok untuk grup yang ingin tampilan modern\n\n` +
-    `- *V3 Text Only* 📝 — Pesan teks biasa tanpa gambar sama sekali, ringan dan minimalis\n\n` +
-    `- *V4 Group* 👥 — Menggunakan contextInfo bergaya group forward, tampilan rapi dengan label newsletter\n\n` +
-    `- *V5 Simple* ✨ — Pesan teks sederhana disertai foto profile member yang join, tidak terlalu mencolok namun informatif\n\n` +
-    `- *V6 Video* 🎥 — Mengirimkan video sambutan menarik dilengkapi caption selamat datang untuk member\n\n` +
-    `- *V7 Interactive Quoted* 💬 — Mengirimkan pesan interaktif dan fake quoted dari orang yang join\n\n` +
-    `- *V8 Super Simple* 👋 — Pesan teks sangat singkat tanpa hiasan (Contoh: Hai @user, welcome to grup...)\n\n` +
-    `> Pilih tipe welcome dari tombol di bawah 👇`;
+    `Mostrar mensajes de bienvenida cuando nuevas fotos entran en grupo🚪✨\n` +
+    `Consejo activo actual: * V${current} — ${VARIANTS[current].name}* 🎯\n\n` +
+    `*Explicación TIPE:*\n\n` +
+    `- * V1 Canvas Images *🎨 —Para crear imágenes de automatización de lienzos contiene fotos de perfil y nuevas fotos llamadas se unen, luego se envían como imágenes\n\n` +
+    `- * V2 Carousel Cards *🃏 —Carousel interactivo carousel que se puede completar con acción putool, coc para grupo que quiere pantalla moderna\n\n` +
+    `- * V3 Tex*Solo*📝 —El texto regular de mensaje sin imágenes en absoluto, mareos y minimalismo\n\n` +
+    `- Grupo V4👥 —Usando contextInfo ganda grupo forwarm, mostrar ordenado con una etiqueta de bahtín\n\n` +
+    `- * V5 Simple *✨ —El texto de Mensaje es simplemente desarmado con fotos de perfil que se unen, no sólo es usted capaz de acceder a la información\n\n` +
+    `- * V6 Video *🎥 —Enviar un video de la emocionante bienvenida completada saht de la captura para la foto\n\n` +
+    `- * V7 InteractiveQuoted ♪💬 —Enviar mensajes interactivos y citas falsas de unirse a la gente\n\n` +
+    `- * V8 Super Simple *👋 —Los textos de Pessan son muy cortos sin ningún hispanico ( Dzh: Hola @ usuario, bienvenido a grupo. )\n\n` +
+    `# Elige el tipo de bienvenida del charco en el bayou👇`;
   await sock.sendButton(
     m.chat,
     _ourinassetmanagerjs.getAssetBuffer.call(void 0, "ourin"),

@@ -23,13 +23,13 @@ async function handler(m, { sock }) {
 
     if (!query) {
       return m.reply(
-        `❌ *Masukkan kata kunci pencarian!*\n\n> Contoh: .pixiv rem`,
+        `❌> 91; ¡Introduzca las palabras clave de búsqueda! &#93;\n\n> Ejemplo:.pixFreno de mar`,
       );
     }
 
     await m.react("🔍");
 
-    const apikey = _optionalChain([_configjs2.default, 'access', _6 => _6.APIkey, 'optionalAccess', _7 => _7.neoxr]) || "Milik-Bot-OurinMD";
+    const apikey = _optionalChain([_configjs2.default, 'access', _6 => _6.APIkey, 'optionalAccess', _7 => _7.neoxr]) || "Millik - Eurinprobable";
     const url = `https://api.neoxr.eu/api/pixiv-search?q=${encodeURIComponent(query)}&apikey=${apikey}`;
 
     const response = await _axios2.default.get(url, { timeout: 30000 });
@@ -37,7 +37,7 @@ async function handler(m, { sock }) {
 
     if (!data.status || !data.data || data.data.length === 0) {
       await m.react("❌");
-      return m.reply(`❌ *Tidak ditemukan hasil untuk:* ${query}`);
+      return m.reply(`❌* No se han encontrado resultados para: *${query}`);
     }
 
     const results = data.data.slice(0, 10);
@@ -87,7 +87,7 @@ async function handler(m, { sock }) {
   } catch (error) {
     await m.react("☢");
     if (_optionalChain([error, 'access', _14 => _14.response, 'optionalAccess', _15 => _15.status]) === 403) {
-      return m.reply(`❌ *API Key tidak valid atau limit tercapai*`);
+      return m.reply(`❌* Fuego Key no es válido o límite es cappai *`);
     }
     m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
   }

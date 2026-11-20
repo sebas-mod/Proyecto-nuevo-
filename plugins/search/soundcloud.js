@@ -58,10 +58,10 @@ async function scSearch(q) {
 async function handler(m, { args, sock }) {
   if (!args[0]) {
     let txt = `🎵 *SOUNDCLOUD SEARCH* 🎵\n\n`;
-    txt += `Halo kak! Mau cari lagu apa hari ini?\n\n`;
-    txt += `*Cara Pakai:*\n`;
+    txt += `Oye, hermana, ¿qué canción tiene hoy?\n\n`;
+    txt += `*Como usarlo:*\n`;
     txt += `👉 \`${m.prefix}soundcloud <judul lagu>\`\n\n`;
-    txt += `*Contoh:*\n`;
+    txt += `*Ejemplo:*\n`;
     txt += `\`${m.prefix}soundcloud Only We Know\``;
     return m.reply(txt);
   }
@@ -71,10 +71,10 @@ async function handler(m, { args, sock }) {
   try {
     const data = await scSearch(args.join(" "));
     if (!data.length) {
-      return m.reply(`❌ Aduh kak, lagunya nggak ketemu nih! Coba cari dengan judul yang beda ya. 😭`);
+      return m.reply(`❌Eres un hombre muy guapo.😭`);
     }
     let thumb = _optionalChain([data, 'access', _ => _.find, 'call', _2 => _2((v) => v.artwork), 'optionalAccess', _3 => _3.artwork]) || null;
-    let txt = `🎧 *HASIL PENCARIAN SOUNDCLOUD* 🎧\n\n`;
+    let txt = `🎧* PRESIDENTE DEL SUR DE SOUDCLOD *🎧\n\n`;
     let contentTxt = "";
     const limit = Math.min(data.length, 5);
     for (let i = 0; i < limit; i++) {
@@ -88,7 +88,7 @@ async function handler(m, { args, sock }) {
     }
     txt += contentTxt.trim().split("\n").map(line => line.trim() ? `${line}` : ``).join("\n");
     txt += `\n\n`;
-    txt += `Kalo mau download lagunya, pake fitur \`${m.prefix}playsc\` aja kak! 😉`;
+    txt += `Quieres descargar lagunya, pa fusor\`${m.prefix}tiempo de juego\`solo hermano!😉`;
     if (thumb) {
       await sock.sendMedia(m.chat, thumb, txt.trim(), m, { type: "image" });
     } else {
@@ -96,7 +96,7 @@ async function handler(m, { args, sock }) {
     }
     await m.react("✅");
   } catch (e) {
-    m.reply(`❌ Maaf kak, terjadi kesalahan sistem!\nError: ${e.message}`);
+    m.reply(`❌Lo siento hermano, ¡ha habido un error!\nError:${e.message}`);
   }
 }
 

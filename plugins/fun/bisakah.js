@@ -2,7 +2,7 @@
     name: 'bisakah',
     alias: ['bisa'],
     category: 'fun',
-    description: 'Tanya bot bisakah sesuatu',
+    description: 'Pregunta bot puede hacer algo',
     usage: '.bisakah <pertanyaan>',
     example: '.bisakah aku lulus ujian?',
     isOwner: false,
@@ -15,33 +15,33 @@
 };
 
 const answers = [
-    'Bisa banget! Percaya diri aja!',
+    '¡Confíe en ti mismo!',
     'Hmm, kayaknya susah deh.',
-    'Tentu bisa! Semangat!',
-    'Nggak bisa, maaf.',
-    'Mungkin bisa, kalau usaha keras.',
-    'Pasti bisa! Jangan menyerah!',
-    'Agak susah sih, tapi bisa dicoba.',
-    'Bisa kok! Yakin deh!',
+    '¡Sí, puedes!',
+    'No, lo siento.',
+    'Tal vez podamos trabajar duro.',
+    '¡Puedes hacerlo!',
+    'Es difícil, pero vale la pena intentarlo.',
+    'No digo que no voy a decirle nada.',
     'Kayaknya nggak deh.',
-    'Bisa! Ayo buktikan!',
+    '¡Veamos lo que tenemos!',
     'Hmm... aku ragu.',
-    'Bisa banget! Gas terus!',
-    'Nggak bisa, coba yang lain.',
-    'Bisa! Percaya sama diri sendiri!',
-    'Susah, tapi bukan berarti nggak mungkin.',
-    'Absolutely! Kamu pasti bisa!',
+    '¡El barril del flete!',
+    'De ninguna manera, prueba algo más.',
+    '¡Créanse en sí mismos!',
+    'Es difícil, pero no está destinado a serlo.',
+    '¡Por supuesto!',
     'Kayaknya perlu usaha ekstra nih.',
-    'Bisa! Jangan ragukan dirimu!',
+    'Puede, no te preocupes por ti mismo.',
     'Hmm, coba lagi nanti deh.',
-    'Bisa! Aku percaya kamu!'
+    'Puede, ¡te creo!'
 ];
 
 async function handler(m) {
     const text = _optionalChain([m, 'access', _ => _.text, 'optionalAccess', _2 => _2.trim, 'call', _3 => _3()]);
     
     if (!text) {
-        return m.reply(`💪 *ʙɪsᴀᴋᴀʜ*\n\n> Masukkan pertanyaan!\n\n*Contoh:*\n> .bisakah aku lulus ujian?`);
+        return m.reply(`💪*ʙɪSᴀᴋᴀʜ*\n\n¡Disfruta de la pregunta!\n\n*Ejemplo:*\n¿Puedo tomar el examen?`);
     }
     
     const answer = answers[Math.floor(Math.random() * answers.length)];

@@ -4,7 +4,7 @@ const pluginConfig = {
   name: "tolak",
   alias: ["reject", "no", "gaktau"],
   category: "fun",
-  description: "Menolak tembakan dari seseorang",
+  description: "Rechazar el disparo de alguien",
   usage: ".tolak @tag",
   example: ".tolak @628xxx",
   isOwner: false,
@@ -17,14 +17,14 @@ const pluginConfig = {
 };
 
 const rejectionQuotes = [
-  "Sabar ya, yang lebih baik pasti datang! 🌟",
-  "Belum jodoh bukan berarti tidak ada jodoh 💪",
+  "Sabar ya, ¡mejor debe venir!🌟",
+  "\" Mating beem \" no significa que no haya coincidencia.💪",
   "Move on! Banyak ikan di laut! 🐟",
-  "Yang sabar ya, cinta sejati akan datang 💕",
-  "Jangan patah semangat, tetap semangat! 🔥",
-  "Penolakan adalah awal dari keberhasilan 💪",
-  "Masih banyak kesempatan di luar sana! ✨",
-  "Yakin masih ada yang lebih cocok buat kamu! 🌈",
+  "El paciente es, el amor del mundo está viniendo.💕",
+  "¡No rompas el espíritu, mantenlo en pie!🔥",
+  "La rechazo es el comienzo del éxito💪",
+  "¡Es muy malo que haya demasiadas posibilidades ahí fuera!✨",
+  "¡Asegúrese de que haya más de ustedes!🌈",
 ];
 
 async function handler(m, { sock }) {
@@ -52,17 +52,17 @@ async function handler(m, { sock }) {
   if (!shooterJid) {
     return m.reply(
       `⚠️ *ᴄᴀʀᴀ ᴘᴀᴋᴀɪ*\n\n` +
-        `> Reply pesan tembakan + \`${m.prefix}tolak\`\n` +
-        `> Atau \`${m.prefix}tolak @tag\``,
+        `Responder a un mensaje de disparo +\`${m.prefix}tolak\`\n` +
+        `> O\`${m.prefix}tolak @tag\``,
     );
   }
 
   if (shooterJid === m.sender) {
-    return m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> Tidak bisa menolak diri sendiri!`);
+    return m.reply(`❌*ɢᴀɢᴀʟ*\n\n¡No puede ayudarse!`);
   }
 
   if (shooterJid === m.botNumber) {
-    return m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> Bot tidak punya hati untuk ditolak!`);
+    return m.reply(`❌*ɢᴀɢᴀʟ*\n\n*No tienes corazón que ser negado!*`);
   }
 
   let shooterData = db.getUser(shooterJid) || {};
@@ -77,7 +77,7 @@ async function handler(m, { sock }) {
   ) {
     return m.reply(
       `❌ *ᴛɪᴅᴀᴋ ᴍᴇɴᴇᴍʙᴀᴋ*\n\n` +
-        `> @${shooterJid.split("@")[0]} tidak sedang menembakmu`,
+        `> @${shooterJid.split("@")[0]}No te disparo.`,
       { mentions: [shooterJid] },
     );
   }
@@ -105,9 +105,9 @@ async function handler(m, { sock }) {
   ctx.mentionedJid = [m.sender, shooterJid];
 
   await m.reply(
-    `💔 *WADUHH, YANG SABAR YAK* @${shooterJid.split("@")[0]}\n\n` +
-      `@${m.sender.split("@")[0]} menolak @${shooterJid.split("@")[0]} sebagai pacarnya\n\n` +
-      `Sabar ya, masih banyak yang lain! 😢`,
+    `💔* WADUHH, JANG HAYAK * @${shooterJid.split("@")[0]}\n\n` +
+      `@${m.sender.split("@")[0]} menolak @${shooterJid.split("@")[0]}como pacarnya\n\n` +
+      `Harbans sí, hay muchos otros!😢`,
     { contextInfo: ctx },
   );
 }

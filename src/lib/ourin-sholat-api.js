@@ -4,11 +4,11 @@ const BASE_URL = 'https://api.myquran.com/v2/sholat';
 const cache = new (0, _nodecache2.default)({ stdTTL: 86400 });
 
 async function searchKota(query) {
-    const key = `kota_${query.toLowerCase()}`;
+    const key = `Ciudad${query.toLowerCase()}`;
     const cached = cache.get(key);
     if (cached) return cached;
 
-    const { data } = await _axios2.default.get(`${BASE_URL}/kota/cari/${encodeURIComponent(query)}`, { timeout: 10000 });
+    const { data } = await _axios2.default.get(`${BASE_URL}/ciudad/busca/${encodeURIComponent(query)}`, { timeout: 10000 });
     if (_optionalChain([data, 'optionalAccess', _ => _.status]) && Array.isArray(data.data) && data.data.length > 0) {
         const result = data.data[0];
         cache.set(key, result);
@@ -21,12 +21,12 @@ async function fetchAllKota() {
     const cached = cache.get('all_kota');
     if (cached) return cached;
 
-    const { data } = await _axios2.default.get(`${BASE_URL}/kota/semua`, { timeout: 15000 });
+    const { data } = await _axios2.default.get(`${BASE_URL}/ciudad/todo`, { timeout: 15000 });
     if (_optionalChain([data, 'optionalAccess', _2 => _2.status]) && Array.isArray(data.data)) {
         cache.set('all_kota', data.data);
         return data.data;
     }
-    throw new Error('Gagal mengambil daftar kota');
+    throw new Error('El tentador toma la lista de códigos');
 }
 
 async function getTodaySchedule(kotaId) {
@@ -44,7 +44,7 @@ async function getTodaySchedule(kotaId) {
         cache.set(key, data.data);
         return data.data;
     }
-    throw new Error('Gagal mengambil jadwal sholat');
+    throw new Error('Stebuli se llevó el showdown');
 }
 
 function extractPrayerTimes(jadwalData) {

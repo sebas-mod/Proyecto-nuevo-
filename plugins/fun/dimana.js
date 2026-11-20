@@ -2,7 +2,7 @@
     name: 'dimana',
     alias: ['where', 'mana'],
     category: 'fun',
-    description: 'Tanya bot dimana sesuatu',
+    description: 'Pregunta bot donde algo',
     usage: '.dimana <pertanyaan>',
     example: '.dimana jodohku berada?',
     isOwner: false,
@@ -17,31 +17,31 @@
 const answers = [
     'Di dekatmu!',
     'Jauh di sana.',
-    'Di tempat yang tidak kamu duga.',
+    'En un lugar que no pertenece.',
     'Di hatimu.',
     'Di sekitar sini.',
     'Hmm, coba cari di kamar.',
     'Di luar sana, menunggumu.',
-    'Di tempat yang sama denganmu.',
-    'Di suatu tempat yang indah.',
+    'En el mismo lugar que tú.',
+    'En algún lugar hermoso.',
     'Di balik pintu.',
     'Di sebelah kirimu.',
     'Di depan matamu!',
     'Jauh banget, di luar negeri mungkin?',
-    'Di tempat yang penuh kenangan.',
+    'En un lugar lleno de recuerdos.',
     'Di mana-mana!',
     'Di dunia maya.',
     'Di alam mimpi.',
     'Di tempat rahasia.',
     'Hmm, susah dijelaskan lokasinya.',
-    'Di tempat yang akan membuatmu bahagia.'
+    'En un lugar que te hará feliz.'
 ];
 
 async function handler(m) {
     const text = _optionalChain([m, 'access', _ => _.text, 'optionalAccess', _2 => _2.trim, 'call', _3 => _3()]);
     
     if (!text) {
-        return m.reply(`📍 *ᴅɪᴍᴀɴᴀ*\n\n> Masukkan pertanyaan!\n\n*Contoh:*\n> .dimana jodohku berada?`);
+        return m.reply(`📍*ᴅɪᴍᴀɴᴀ*\n\n¡Disfruta de la pregunta!\n\n*Ejemplo:*\nLo siento. ¿Dónde está mi alma gemela?`);
     }
     
     const answer = answers[Math.floor(Math.random() * answers.length)];

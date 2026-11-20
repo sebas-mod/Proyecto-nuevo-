@@ -9,7 +9,7 @@ const pluginConfig = {
     name: 'ping2',
     alias: ['speed2', 'p2', 'latency2', 'sys2', 'status2'],
     category: 'main',
-    description: 'Cek performa dan status sistem bot secara real-time',
+    description: 'Compruebe la entrada y el estado de los verdaderos sistemas de bot @-@',
     usage: '.ping2',
     example: '.ping2',
     isOwner: false,
@@ -107,7 +107,7 @@ async function handler(m, { sock }) {
 
         const tableData = [
             ['WA Roundtrip', `${waRoundtrip} ms`],
-            ['Kecepatan Respon bot mu', `${totalExec} ms`],
+            ['Su velocidad @-@ respuesta bot.', `${totalExec} ms`],
             ['Status', 'Online'],
             ['Hostname', _os2.default.hostname()],
             ['Platform', `${_os2.default.platform()} ${_os2.default.arch()}`],
@@ -122,7 +122,7 @@ async function handler(m, { sock }) {
             ['Users', `${dbUsers}`],
             ['Premium', `${dbPremium}`],
             ['Groups', `${dbGroups}`],
-            ['Uptime Bot', fmtUp(process.uptime())],
+            ['Hora de subir', fmtUp(process.uptime())],
             ['Uptime Server', fmtUp(_os2.default.uptime())],
         ]
 
@@ -133,7 +133,7 @@ async function handler(m, { sock }) {
             tableData,
             m,
             {
-                headerText: `${_optionalChain([_configjs2.default, 'access', _6 => _6.bot, 'optionalAccess', _7 => _7.name]) || 'Ourin-AI'} *STATUS*\n\n- 🎄 Dibawah ini adalah statistik bot kita`,
+                headerText: `${_optionalChain([_configjs2.default, 'access', _6 => _6.bot, 'optionalAccess', _7 => _7.name]) || 'Ourin-AI'}*Estado*\n\n-🎄Está es la estática de nuestras botas.`,
                 footer: '🍃 Realtime Monitoring'
             }
         )

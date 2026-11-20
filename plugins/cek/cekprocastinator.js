@@ -2,7 +2,7 @@
     name: 'cekprocastinator',
     alias: ['procrastinator', 'nunda'],
     category: 'cek',
-    description: 'Cek tingkat suka menunda',
+    description: 'Nivel de comprobación como la pelada',
     usage: '.cekprocastinator <nama>',
     example: '.cekprocastinator Budi',
     isOwner: false,
@@ -25,12 +25,12 @@ async function handler(m) {
     else if (percent >= 30) desc = 'Cukup produktif! 💪'
     else desc = 'Disiplin tinggi! Salut! 🏆'
     
-    let txt = mentioned === m.sender ? `Hai @${mentioned.split('@')[0]}
+    let txt = mentioned === m.sender ? `Hola @${mentioned.split('@')[0]}
     
-Tingkat keprocastinatoran kamu *${percent}%*
-\`\`\`${desc}\`\`\`` : `Kamu ingin ngecek tingkat keprocastinatoran @${mentioned.split('@')[0]} yak? 
+Tu tasa de procinstinación *${percent}%*
+\`\`\`${desc}\`\`\`` : `Quieres ver el proccinador${mentioned.split('@')[0]} yak? 
     
-Tingkat keprocastinatoran dia sebesar *${percent}%*
+Es tan alto como un procinstinador como un gran${percent}%*
 \`\`\`${desc}\`\`\``
     
     await m.reply(txt, { mentions: [mentioned] })

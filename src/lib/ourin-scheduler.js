@@ -45,12 +45,12 @@ function startDailyLimitReset(options = {}) {
         const resetCount = db.resetAllEnergi(defaultLimit, -1);
         _ourinloggerjs.logger.success(
           "Scheduler",
-          `Daily limit reset complete! ${resetCount} users reset (regular: ${defaultLimit}, premium: ∞)`,
+          `Límite llanta de reubicación completo!${resetCount}usuarios restablecer ( regular:${defaultLimit}, estreno:∞)`,
         );
         db.incrementStat("dailyResets");
         db.setting("lastLimitReset", new Date().toISOString());
       } catch (error) {
-        _ourinloggerjs.logger.error("Scheduler", `Daily limit reset failed: ${error.message}`);
+        _ourinloggerjs.logger.error("Scheduler", `Reajuste límite de la láctea falló:${error.message}`);
       }
     },
     null,
@@ -61,7 +61,7 @@ function startDailyLimitReset(options = {}) {
   activeCronJobs.set("dailyLimitReset", job);
   _ourinloggerjs.logger.info(
     "Scheduler",
-    `Reset limit harian nyala jam ${String(hour).padStart(2, "0")}:${String(minute).padStart(2, "0")} (${TZ})`,
+    `Límite de reinicio del día${String(hour).padStart(2, "0")}:${String(minute).padStart(2, "0")} (${TZ})`,
   );
 }
 
@@ -183,7 +183,7 @@ function loadScheduledMessages(sock) {
         scheduleMessage(task, sock);
       }
     }
-    _ourinloggerjs.logger.info("Scheduler", `Sukses muat ${savedTasks.length} pesan terjadwal`);
+    _ourinloggerjs.logger.info("Scheduler", `Sukses carga${savedTasks.length}mensaje terjadwal`);
   } catch (error) {
     _ourinloggerjs.logger.error(
       "Scheduler",
@@ -219,12 +219,12 @@ const schedulerRegistry = {
   dailyLimitReset: {
     name: "Daily Limit Reset",
     key: "dailyLimitReset",
-    description: "Reset limit user jam 00:00",
+    description: "Reiniciar el límite de usuario a las 00: 00",
   },
   groupSchedule: {
     name: "Group Schedule",
     key: "groupSchedule",
-    description: "Auto open/close grup",
+    description: "Auto abierto / cerrado grupo",
   },
   sewaChecker: {
     name: "Sewa Checker",
@@ -234,7 +234,7 @@ const schedulerRegistry = {
   scheduledMessages: {
     name: "Schedule Planner",
     key: "scheduledMessages",
-    description: "Reminder dan jadwal bebas owner",
+    description: "Remuse y control de oficina gratuito",
   },
 };
 
@@ -259,7 +259,7 @@ function getFullSchedulerStatus() {
         name: "Daily Limit Reset",
         key: "limitreset",
         running: activeCronJobs.has("dailyLimitReset"),
-        description: "Reset limit user jam 00:00",
+        description: "Reiniciar el límite de usuario a las 00: 00",
         lastRun: db.setting("lastLimitReset") || "Never",
         stats: { totalResets: db.getStats("dailyResets") || 0 },
       },
@@ -267,7 +267,7 @@ function getFullSchedulerStatus() {
         name: "Group Schedule",
         key: "groupschedule",
         running: activeCronJobs.has("groupSchedule"),
-        description: "Auto open/close grup terjadwal",
+        description: "Auto abierto / cerrado grupo se cierra",
         lastRun: "-",
         stats: {},
       },
@@ -283,7 +283,7 @@ function getFullSchedulerStatus() {
         name: "Schedule Planner",
         key: "messages",
         running: scheduledTasks.size > 0,
-        description: "Reminder dan jadwal custom owner",
+        description: "Remuse y propietario de los recustom",
         lastRun: "-",
         stats: {
           activeMessages: scheduledTasks.size,
@@ -310,7 +310,7 @@ function stopSchedulerByName(name) {
       activeCronJobs.get("dailyLimitReset").stop();
       activeCronJobs.delete("dailyLimitReset");
       stopped = true;
-      schedulerName = "Daily Limit Reset";
+      schedulerName = "Dairy Límite Research";
     }
   }
 
@@ -363,7 +363,7 @@ function startSchedulerByName(name, sock, config = null) {
         defaultLimit: _nullishCoalesce(_optionalChain([cfg, 'access', _5 => _5.energi, 'optionalAccess', _6 => _6.default]), () => ( 25)),
       });
       started = true;
-      schedulerName = "Daily Limit Reset";
+      schedulerName = "Dairy Límite Research";
     }
   }
 
@@ -463,7 +463,7 @@ async function startGroupScheduleChecker(sock) {
                 "not_announcement",
               );
               await groupScheduleSock.sendMessage(groupId, {
-                text: `🔓 *ᴀᴜᴛᴏ ᴏᴘᴇɴ*\n\n> Grup dibuka otomatis sesuai jadwal.\n> Waktu: ${currentTime} WIB`,
+                text: `🔓*ᴀᴜᴛᴏ ᴏᴘᴇɴ*\n\nY Grupo 's en una motocicleta.\n> Tiempo:${currentTime} WIB`,
               });
               notifiedGroups.add(notifyKey);
               _ourinloggerjs.logger.success(
@@ -477,11 +477,11 @@ async function startGroupScheduleChecker(sock) {
               ) {
                 _ourinloggerjs.logger.warn(
                   "GroupSchedule",
-                  `Bot bukan admin di ${groupId}, tidak bisa buka grup`,
+                  `# Amar no es un administrador #${groupId}, can 't open group`,
                 );
                 try {
                   await groupScheduleSock.sendMessage(groupId, {
-                    text: `⚠️ *ɢᴀɢᴀʟ ᴀᴜᴛᴏ ᴏᴘᴇɴ*\n\n> Bot bukan admin, tidak bisa mengubah pengaturan grup.\n> Jadikan bot sebagai admin untuk mengaktifkan fitur ini.`,
+                    text: `⚠♪ɢᴀɢᴀʟ ᴀᴜᴛᴏ ᴏᴘᴇɴ*\n\n* No es un administrador, no puede cambiar la configuración del grupo.*\nAsí que utilicemos el bot como administrador para habilitar está característica.`,
                   });
                 } catch (e2) { }
               } else {
@@ -501,7 +501,7 @@ async function startGroupScheduleChecker(sock) {
                 "announcement",
               );
               await groupScheduleSock.sendMessage(groupId, {
-                text: `🔒 *ᴀᴜᴛᴏ ᴄʟᴏsᴇ*\n\n> Grup ditutup otomatis sesuai jadwal.\n> Waktu: ${currentTime} WIB`,
+                text: `🔒*ᴀᴜᴛᴏ ᴄʟᴏSᴇ*\n\nEl Grupo hap srrado a la línea de automatización está bajo control.\n> Tiempo:${currentTime} WIB`,
               });
               notifiedGroups.add(notifyKey);
               _ourinloggerjs.logger.success(
@@ -515,11 +515,11 @@ async function startGroupScheduleChecker(sock) {
               ) {
                 _ourinloggerjs.logger.warn(
                   "GroupSchedule",
-                  `Bot bukan admin di ${groupId}, tidak bisa tutup grup`,
+                  `# Amar no es un administrador #${groupId}, no puede cerrar el grupo`,
                 );
                 try {
                   await groupScheduleSock.sendMessage(groupId, {
-                    text: `⚠️ *ɢᴀɢᴀʟ ᴀᴜᴛᴏ ᴄʟᴏsᴇ*\n\n> Bot bukan admin, tidak bisa mengubah pengaturan grup.\n> Jadikan bot sebagai admin untuk mengaktifkan fitur ini.`,
+                    text: `⚠♪ɢᴀɢᴀʟ ᴀᴜᴛᴏ ᴄʟᴏSᴇ*\n\n* No es un administrador, no puede cambiar la configuración del grupo.*\nAsí que utilicemos el bot como administrador para habilitar está característica.`,
                   });
                 } catch (e3) { }
               } else {
@@ -546,7 +546,7 @@ async function startGroupScheduleChecker(sock) {
   activeCronJobs.set("groupSchedule", job);
   _ourinloggerjs.logger.info(
     "Scheduler",
-    "Cek jadwal grup nyala (tiap menit)",
+    "Comprueba el inicio del grupo ( minutos)",
   );
 }
 
@@ -588,7 +588,7 @@ async function startSewaChecker(sock) {
           try {
             await sewaSock.sendText(
               groupId,
-              `⏰ *SEWA BERAKHIR*\n\nMasa sewa bot di grup ini sudah habis.\nBot akan meninggalkan grup.\n\nHubungi owner untuk perpanjang sewa.`,
+              `⏰*Alquiler BERAKHIR*\n\nEl tiempo de los bots en este grupo se ha acabado.\nLamento haber dejado el grupo.\n\nLlame al propietario por mucho tiempo.`,
               null,
               {
                 contextInfo: _ourincontextjs.saluranCtx.call(void 0, ),
@@ -617,7 +617,7 @@ async function startSewaChecker(sock) {
             const minutes = Math.floor(remaining / 60000);
             await sewaSock.sendText(
               groupId,
-              `⚠️ *PERINGATAN SEWA*\n\nSisa waktu sewa tinggal *${minutes} menit*!\nSegera hubungi owner untuk perpanjang.\n\nJika tidak diperpanjang, bot akan otomatis keluar.`,
+              `⚠♪ HUMMING ♪\n\nAhorra el tiempo de alquiler *${minutes}minuto*!\nUn contacto del propietario por un período.\n\nSi no se ha extendido, las botas se automatizarán.`,
               null,
               {
                 contextInfo: _ourincontextjs.saluranCtx.call(void 0, ),
@@ -637,7 +637,7 @@ async function startSewaChecker(sock) {
             const hours = Math.floor((remaining % 86400000) / 3600000);
             await sewaSock.sendText(
               groupId,
-              `⚠️ *PERINGATAN SEWA*\n\nSisa sewa tinggal *${days}d ${hours}h*\nSegera hubungi owner untuk perpanjang.\n\nJika tidak diperpanjang, bot akan otomatis keluar.`,
+              `⚠️ *Advertencia Alquiler*\n\nRestante alquila vidas *${days}d ${hours}h\nUn contacto del propietario por un período.\n\nSi no se ha extendido, las botas se automatizarán.`,
               null,
               {
                 contextInfo: _ourincontextjs.saluranCtx.call(void 0, ),
@@ -654,11 +654,11 @@ async function startSewaChecker(sock) {
         db.db.write();
         _ourinloggerjs.logger.success(
           "Scheduler",
-          `Sewa check: ${expiredCount} expired, ${warnedCount} warned`,
+          `Alquiler check:${expiredCount} expired, ${warnedCount} warned`,
         );
       }
     } catch (error) {
-      _ourinloggerjs.logger.error("Scheduler", `Sewa check failed: ${error.message}`);
+      _ourinloggerjs.logger.error("Scheduler", `El cheque de alquiler falló:${error.message}`);
     }
   };
 
@@ -693,11 +693,11 @@ function startAutoBioChecker(sock) {
       const status = db.setting("autobio_status");
       if (!status) return;
 
-      const template = db.setting("autobio_text") || "Bot aktif | 🕒 {clock} | ⏳ {runtime}";
+      const template = db.setting("autobio_text") || "♪🕒 {clock}♪⏳ {runtime}";
 
       const clock = _momenttimezone2.default.call(void 0, ).tz(TZ).format("HH:mm");
       const runtime = formatUptime(process.uptime());
-      const botname = _optionalChain([_configjs2.default, 'access', _30 => _30.bot, 'optionalAccess', _31 => _31.name]) || "Bot";
+      const botname = _optionalChain([_configjs2.default, 'access', _30 => _30.bot, 'optionalAccess', _31 => _31.name]) || "♪";
       const version = _optionalChain([_configjs2.default, 'access', _32 => _32.bot, 'optionalAccess', _33 => _33.version]) || "1.0.0";
 
       const newBio = template
@@ -719,7 +719,7 @@ function startAutoBioChecker(sock) {
   activeCronJobs.set("autoBioChecker", {
     stop: () => clearInterval(timerId)
   });
-  _ourinloggerjs.logger.info("Scheduler", `AutoBio aktif (update tiap ${intervalMs / 1000}s)`);
+  _ourinloggerjs.logger.info("Scheduler", `Autoutilizar activo (sip de actualización${intervalMs / 1000}s)`);
 }
 
 

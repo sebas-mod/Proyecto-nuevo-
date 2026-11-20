@@ -8,7 +8,7 @@ const pluginConfig = {
   name: "cekidgc",
   alias: ["idgc", "idgrup", "groupid", "infogc", "groupinfo"],
   category: "group",
-  description: "Cek ID dan info lengkap grup",
+  description: "Identificación compleja e información cheque grupo",
   usage: ".cekidgc [link grup]",
   example: ".cekidgc https://chat.whatsapp.com/xxxxx",
   isOwner: false,
@@ -47,7 +47,7 @@ async function handler(m, { sock }) {
 
       if (!inviteCode) {
         m.react("✘");
-        return m.reply(`── .✦ ──\n\n> Link grup tidak valid .☘︎ ݁˖`);
+        return m.reply(`──.✦ ──\n\nEl enace grupo no es válido.☘♪˖`);
       }
 
       try {
@@ -56,7 +56,7 @@ async function handler(m, { sock }) {
       } catch (e) {
         m.react("✘");
         return m.reply(
-          `── .✦ ──\n\n> Link grup tidak valid atau sudah expired .☘︎ ݁˖`,
+          `──.✦ ──\n\nEnlace grupo no es válido o si exCerrada.☘♪˖`,
         );
       }
     } else if (input && input.endsWith("@g.us")) {
@@ -66,7 +66,7 @@ async function handler(m, { sock }) {
       } catch (e2) {
         m.react("✘");
         return m.reply(
-          `── .✦ ──\n\n> Tidak bisa mengakses grup tersebut .☘︎ ݁˖`,
+          `──.✦ ──\n\nNo puede acceder al grupo.☘♪˖`,
         );
       }
     } else if (m.isGroup) {
@@ -75,15 +75,15 @@ async function handler(m, { sock }) {
     } else {
       return m.reply(
         `── .✦ 𝗖𝗘𝗞 𝗜𝗗 𝗚𝗥𝗨𝗣 ✦. ── 𝜗ৎ\n\n` +
-          `> Gunakan di grup atau masukkan link grup\n\n` +
-          `> \`${m.prefix}cekidgc\` — di dalam grup\n` +
+          `Uso para grupo o igual el registro\n\n` +
+          `> \`${m.prefix}cekidgc\` —dentro del grupo\n` +
           `> \`${m.prefix}cekidgc https://chat.whatsapp.com/xxx\``,
       );
     }
 
     if (!groupMeta || !groupJid) {
       m.react("✘");
-      return m.reply(`── .✦ ──\n\n> Tidak dapat menemukan info grup .☘︎ ݁˖`);
+      return m.reply(`──.✦ ──\n\nNo se puede encontrar la inforación grupo.☘♪˖`);
     }
 
     const groupName = groupMeta.subject || "Unknown";
@@ -100,7 +100,7 @@ async function handler(m, { sock }) {
       groupDesc.length > 120 ? groupDesc.slice(0, 120) + "..." : groupDesc;
     const isRestrict = groupMeta.restrict ? "Admin Only" : "Semua Member";
     const isAnnounce = groupMeta.announce ? "Aktif" : "Nonaktif";
-    const isCommunity = groupMeta.isCommunity ? "✓ Ya" : "✘ Tidak";
+    const isCommunity = groupMeta.isCommunity ? "✓ Ya" : "✘No";
     const joinMode = groupMeta.joinApprovalMode ? "Perlu Approval" : "Bebas";
 
     let ppBuffer = null;
@@ -142,7 +142,7 @@ async function handler(m, { sock }) {
       {
         name: "cta_copy",
         buttonParamsJson: JSON.stringify({
-          display_text: "✦ Copy ID Grup",
+          display_text: "✦Copiar el Grupo ID",
           copy_code: groupJid,
         }),
       },

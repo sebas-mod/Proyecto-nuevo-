@@ -5,7 +5,7 @@ const pluginConfig = {
   name: "anticulik",
   alias: ["antikidnap", "antiileng", "anticulikgc"],
   category: "group",
-  description: "Bot otomatis keluar grup jika ditambah tanpa izin",
+  description: "Salike equiomática grupo si se añade sin permiso",
   usage: ".anticulik on/off",
   example: ".anticulik on",
   isOwner: true,
@@ -26,13 +26,13 @@ async function handler(m, { sock }) {
 
     return m.reply(
       `🛡️ *Anti Culik*\n\n` +
-        `Bot akan otomatis keluar dari grup jika ditambah oleh orang yang tidak dikenal tanpa izin.\n\n` +
+        `Los teléfonos aures fuera del grupo cuando se le añada a alguien desconocido sin permiso.\n\n` +
         `*STATUS:*\n` +
         `> Mode: *${status === "on" ? "Aktif ✅" : "Nonaktif ❌"}*\n\n` +
-        `*PENGGUNAAN:*\n` +
+        `*Uso:*\n` +
         `> *${m.prefix}anticulik on* — Aktifkan\n` +
         `> *${m.prefix}anticulik off* — Nonaktifkan\n\n` +
-        `_Jika aktif, bot hanya bisa join via *${m.prefix}join* atau ditambah oleh owner_`
+        `Si es activo, el bot sólo puede unirse a un *${m.prefix}* o ser añadido por propietario_`
     );
   }
 
@@ -40,10 +40,10 @@ async function handler(m, { sock }) {
     db.setting("anticulik", "on");
     const ctx = _ourincontextjs.saluranCtx.call(void 0, );
     return m.reply(
-      `🛡️ *Anti Culik Aktif*\n\n` +
-        `> Bot akan keluar otomatis jika ditambah tanpa izin\n` +
-        `> Satu-satunya cara bot bisa join: *${m.prefix}join* oleh owner\n\n` +
-        `_Member yang menambah bot akan diberi peringatan_`,
+      `🛡Anti @-@ Culik Active\n\n` +
+        `*Será automatizado sin permiso*\n` +
+        `Una - la única manera de que un bot se une: *${m.prefix}* por propietario\n\n` +
+        `*Eso añade más botas a la advertencia*`,
       { contextInfo: ctx }
     );
   }
@@ -51,14 +51,14 @@ async function handler(m, { sock }) {
   if (option === "off") {
     db.setting("anticulik", "off");
     return m.reply(
-      `🛡️ *Anti Culik Nonaktif*\n\n` +
-        `> Bot tidak akan keluar otomatis jika ditambah ke grup\n` +
-        `> Siapapun bisa menambahkan bot ke grup`
+      `🛡Anti @-@ Curik Nonactive\n\n` +
+        `*No saldrá automáticamente si se añade a un grupo*\n` +
+        `Cualquiera puede añadir una bota a un grupo.`
     );
   }
 
   return m.reply(
-    `❌ *Opsi Tidak Valid*\n\n> Gunakan *${m.prefix}anticulik on* atau *${m.prefix}anticulik off*`
+    `❌Opsi inválido\n\n*Uso*${m.prefix}anticulik en * o *${m.prefix}anticulik off*`
   );
 }
 
@@ -105,10 +105,10 @@ async function handleAntiCulik(event, sock, db) {
   await sock.sendMessage(event.id, {
     text:
       `🛡️ *Anti Culik*\n\n` +
-      `Minimal izin dulu ya bang, jangan asal culik 🗿\n\n` +
-      `> Bot ditambah oleh ${inviterMention} tanpa izin\n` +
-      `> Bot akan keluar dari grup ini\n\n` +
-      `_Hubungi owner untuk menambahkan bot dengan cara yang benar_`,
+      `Al menos déjame ir.🗿\n\n` +
+      `*Ser minado por*${inviterMention}sin permiso\n` +
+      `# Saldrá de este grupo #\n\n` +
+      `*El dueño de Humuki para añadir el bot a la manera correcta*`,
     contextInfo: _ourincontextjs.saluranCtx.call(void 0, ),
     mentionedJid: inviter ? [inviter] : [],
   });

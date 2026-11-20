@@ -5,7 +5,7 @@ const pluginConfig = {
   name: "dice",
   alias: ["dadu", "roll"],
   category: "rpg",
-  description: "Lempar dadu untuk gambling",
+  description: "Arranca los dados para la elaboración",
   usage: ".dice <1-6> <bet>",
   example: ".dice 6 5000",
   isOwner: false,
@@ -28,10 +28,10 @@ async function handler(m, { sock }) {
   if (!guess || guess < 1 || guess > 6) {
     return m.reply(
       `🎲 *Bandar Dadu Jalanan* 🎲\n\n` +
-        `Tebak angka yang bakal keluar! (1-6)\n\n` +
-        `*Cara Main:*\n` +
+        `¡Adivina que es el número que se ha hecho!\n\n` +
+        `*Cara Juega:*\n` +
         `👉 \`.dice <angka> <taruhan>\`\n\n` +
-        `*Contoh:*\n` +
+        `*Ejemplo:*\n` +
         `👉 \`.dice 6 5000\``
     );
   }
@@ -41,12 +41,12 @@ async function handler(m, { sock }) {
   }
 
   if ((user.koin || 0) < bet) {
-    return m.reply(`Duit lu kurang bos! Di saku cuma ada *Rp ${(user.koin || 0).toLocaleString("id-ID")}*. Jangan ngutang di mari! 😤`);
+    return m.reply(`Dinero lu menos bos! En saku cuma ada *Rp ${(user.koin || 0).toLocaleString("id-ID")}* ¡No te molestes aquí!😤`);
   }
 
   user.koin -= bet;
 
-  await _ourincontextjs.sendRpgPreview.call(void 0, sock, m.chat, `🎲 Bandar mengocok dadu di dalam mangkok kayu... *krok krok krok*...`, "🎲 DADU JALANAN", "Rolling!", { quoted: m });
+  await _ourincontextjs.sendRpgPreview.call(void 0, sock, m.chat, `🎲El banquero retuerce los dados en su tazón..`, "🎲 DADU JALANAN", "Rolling!", { quoted: m });
   await new Promise((r) => setTimeout(r, 2500));
 
   const result = Math.floor(Math.random() * 6) + 1;
@@ -54,18 +54,18 @@ async function handler(m, { sock }) {
 
   const isWin = guess === result;
 
-  let txt = `*MANGKOK DIBUKA!* 🎲💥\n\n`;
+  let txt = `*MANGKOK Abierto!*🎲💥\n\n`;
   txt += `Tebakan Lu: *${guess}*\n`;
   txt += `Mata Dadu: *${result}* ${diceEmoji}\n\n`;
 
   if (isWin) {
     const winnings = bet * 5;
     user.koin = (user.koin || 0) + winnings;
-    txt += `🎉 *GILA LU HOKI BANGET!*\n`;
-    txt += `💰 Uang Berlipat 5x: *+Rp ${winnings.toLocaleString("id-ID")}*`;
+    txt += `🎉* CRAZY LU HOKI Mucho!\n`;
+    txt += `💰Vault 5x* + Rp${winnings.toLocaleString("id-ID")}*`;
   } else {
-    txt += `🤣 *HAHAHA MAMPUS LU SALAH!*\n`;
-    txt += `💸 Duit Lu Ditarik Bandar: *-Rp ${bet.toLocaleString("id-ID")}*`;
+    txt += `🤣* HAHAHAHA MAPUS LUTTERS!\n`;
+    txt += `💸Dinero Lu Interesante Bandar: * - Rp${bet.toLocaleString("id-ID")}*`;
   }
 
   db.save();

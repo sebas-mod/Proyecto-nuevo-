@@ -4,7 +4,7 @@ const config = {
   name: "sistemenergi",
   alias: ["sistemlimit", "energimode", "limitmode"],
   category: "owner",
-  description: "Mengecek, menghidupkan, atau mematikan sistem energi secara global",
+  description: "Revise, encienda o detenga el sistema de energía globate.",
   usage: ".sistemenergi [on / off]",
   example: ".sistemenergi on",
   isOwner: true,
@@ -24,14 +24,14 @@ async function handler(m, { sock }) {
   
   if (!mode || (mode !== "on" && mode !== "off")) {
     return m.reply(
-      `🎛️ *KONTROL SISTEM ENERGI*\n\n` +
-      `Fitur kendali utama untuk menghidupkan atau mematikan seluruh sistem potongan energi bot secara global.\n\n` +
-      `*STATUS SAAT INI:*\n` +
+      `🎛♪ Controol Siststreets energise ♪\n\n` +
+      `Las principales características de control para reactivar o desactivar todo el sistema energético de los globales.\n\n` +
+      `* SITUACIÓN Cuando esto:\n` +
       `- Mode: *${currentStatus ? "AKTIF 🔋" : "NONAKTIF (UNLIMITED) ♾️"}*\n\n` +
-      `*PENGGUNAAN:*\n` +
-      `- *${m.prefix}sistemenergi on* — Menghidupkan potongan energi\n` +
-      `- *${m.prefix}sistemenergi off* — Mematikan potongan energi (Unlimited mode)\n\n` +
-      `*CONTOH PENGGUNAAN:*\n` +
+      `*Uso:*\n` +
+      `- *${m.prefix}energía del sistema en *—Cortaciones de energía viva\n` +
+      `- *${m.prefix}energía del sistema *—Detener los cortes de energía (Modo ilimitado )\n\n` +
+      `*Ejemplo de uso:*\n` +
       `- *${m.prefix}sistemenergi on*`
     );
   }
@@ -45,11 +45,11 @@ async function handler(m, { sock }) {
 
   await m.react("✅");
   return m.reply(
-    `✅ *STATUS SISTEM ENERGI BERHASIL DIUBAH*\n\n` +
-    `Sistem Energi kini telah berhasil di-*${isEnabled ? "HIDUPKAN" : "MATIKAN"}*.\n\n` +
+    `✅> 91; SISTETS ENERED STATES PRETTY &#93;\n\n` +
+    `El actual sistema energético ha logrado - *${isEnabled ? "HIDUPKAN" : "MATIKAN"}*.\n\n` +
     `*Status Terkini:*\n` +
     `- Mode: *${isEnabled ? "AKTIF 🔋" : "NONAKTIF (UNLIMITED) ♾️"}*\n\n` +
-    `_Semua perubahan sudah tersimpan dan akan segera diterapkan pada sistem bot._`
+    `Durante mucho tiempo, todos los cambios se almacenan y pronto se aplicarán al sistema de bots. _`
   );
 }
 

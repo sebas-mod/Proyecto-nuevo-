@@ -4,7 +4,7 @@ const pluginConfig = {
   name: "phisingataubukan",
   alias: ["cekphising", "checkphishing", "webphishing"],
   category: "tools",
-  description: "Cek apakah sebuah link URL merupakan web phising/berbahaya atau aman.",
+  description: "Compruebe si un enlace URL es una página web de phising / peligroso o seguro.",
   usage: ".phisingataubukan <url>",
   example: ".phisingataubukan https://google.com",
   cooldown: 10,
@@ -17,9 +17,9 @@ async function handler(m, { sock }) {
 
   if (!url) {
     return m.reply(
-      `Halo *${m.pushName}* 👋\n\n` +
-      `Silakan masukkan link URL yang ingin dicek keamanannya.\n\n` +
-      `Contoh:\n- \`${m.prefix}phisingataubukan https://google.com\``
+      `Hola *${m.pushName}* 👋\n\n` +
+      `Por favor, introduzca el enlace URL que quiere interceptar.\n\n` +
+      `Ejemplo:\n-\`${m.prefix}phisingataubukan https://google.com\``
     );
   }
 
@@ -32,20 +32,20 @@ async function handler(m, { sock }) {
 
     if (!data.status || !data.result) {
       await m.react("❌");
-      return m.reply("⚠️ Gagal mengecek URL. Pastikan link yang dimasukkan valid atau coba lagi nanti.");
+      return m.reply("⚠Asegúrese de que los enlaces válidos se añadan o prueben de nuevo más tarde.");
     }
 
     const { result } = data;
     
-    let info = `🛡️ *HASIL SCAN URL* 🛡️\n\n`;
+    let info = `🛡*##91; breathing heavily *#93; *🛡♪\n\n`;
     info += `🔗 *URL:* ${result.scanned_url}\n`;
     info += `📊 *Status:* ${result.status_description}\n\n`;
-    info += `*DETAIL SCAN:*\n`;
+    info += `*DETAIL Escanea:*\n`;
     info += `- Phising: ${result.is_phishing ? "🚨 Ya" : "✅ Tidak"}\n`;
     info += `- Mengandung Malware: ${result.contains_malware ? "🚨 Ya" : "✅ Tidak"}\n`;
-    info += `- Membawa ke Situs Berbahaya: ${result.sends_to_harmful_sites ? "🚨 Ya" : "✅ Tidak"}\n`;
-    info += `- Menginstal Software Jahat: ${result.installs_malicious_software ? "🚨 Ya" : "✅ Tidak"}\n`;
-    info += `- Unduhan Tidak Wajar: ${result.uncommon_downloads ? "🚨 Ya" : "✅ Tidak"}\n\n`;
+    info += `- Llevando al peligroso Sitio:${result.sends_to_harmful_sites ? "🚨 Ya" : "✅ Tidak"}\n`;
+    info += `- Instalación de software Jahat:${result.installs_malicious_software ? "🚨 Ya" : "✅ Tidak"}\n`;
+    info += `- Unusual Unauthorized:${result.uncommon_downloads ? "🚨 Ya" : "✅ Tidak"}\n\n`;
     info += `_Terakhir dipindai: ${new Date(result.last_modified).toLocaleString("id-ID")}_`;
 
     await m.reply(info);
@@ -54,7 +54,7 @@ async function handler(m, { sock }) {
   } catch (error) {
     console.error("[Phishing Check Error]", error);
     await m.react("❌");
-    m.reply("😔 Terjadi kesalahan sistem saat mengecek URL tersebut. Mohon coba lagi nanti.");
+    m.reply("😔Fue un error al revisar la URI.");
   }
 }
 

@@ -39,7 +39,7 @@ async function handler(m, { sock }) {
     
     const dropletId = _optionalChain([m, 'access', _6 => _6.text, 'optionalAccess', _7 => _7.trim, 'call', _8 => _8()])
     if (!dropletId) {
-        return m.reply(`⚠️ *ᴄᴀʀᴀ ᴘᴀᴋᴀɪ*\n\n> \`${m.prefix}delvps <droplet_id>\`\n\n> Gunakan \`${m.prefix}listvps\` untuk melihat ID`)
+        return m.reply(`⚠️ *ᴄᴀʀᴀ ᴘᴀᴋᴀɪ*\n\n> \`${m.prefix}delvps<droplet_id>\`\n\n> Usa \`${m.prefix}listvps\`para ver una id`)
     }
     
     await m.reply(`🗑️ *ᴍᴇɴɢʜᴀᴘᴜs ᴠᴘs...*\n\n> ID: \`${dropletId}\``)

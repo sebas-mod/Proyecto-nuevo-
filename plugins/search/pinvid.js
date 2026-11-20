@@ -12,7 +12,7 @@ var _ourin = require('ourin');
 var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
 var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
 const execAsync = _util.promisify.call(void 0, _child_process.exec);
-const NEOXR_APIKEY = _optionalChain([_configjs2.default, 'access', _ => _.APIkey, 'optionalAccess', _2 => _2.neoxr]) || "Milik-Bot-OurinMD";
+const NEOXR_APIKEY = _optionalChain([_configjs2.default, 'access', _ => _.APIkey, 'optionalAccess', _2 => _2.neoxr]) || "Millik - Eurinprobable";
 
 const pluginConfig = {
   name: "pinvid",
@@ -42,7 +42,7 @@ async function handler(m, { sock }) {
   if (!query) {
     return m.reply(
       `📌 *ᴘɪɴᴛᴇʀᴇsᴛ ᴠɪᴅᴇᴏ sᴇᴀʀᴄʜ*\n\n` +
-        `> Masukkan query pencarian\n\n` +
+        `*Pon una búsqueda en el muelle*\n\n` +
         `\`${m.prefix}pinvid anime\``,
     );
   }
@@ -59,7 +59,7 @@ async function handler(m, { sock }) {
 
     if (!_optionalChain([res, 'access', _6 => _6.data, 'optionalAccess', _7 => _7.status]) || !_optionalChain([res, 'access', _8 => _8.data, 'optionalAccess', _9 => _9.data, 'optionalAccess', _10 => _10.length])) {
       m.react("❌");
-      return m.reply(`❌ Tidak ditemukan video untuk: ${query}`);
+      return m.reply(`❌No se ha encontrado ningún video para:${query}`);
     }
 
     const videos = res.data.data.slice(0, 5);
@@ -133,7 +133,7 @@ async function handler(m, { sock }) {
 
     if (mediaList.length === 0) {
       m.react("❌");
-      return m.reply(`❌ Gagal mengunduh video`);
+      return m.reply(`❌Descarga el vídeo de forma estúpida`);
     }
 
     m.react("📤");

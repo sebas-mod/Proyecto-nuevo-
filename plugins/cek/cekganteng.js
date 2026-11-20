@@ -2,7 +2,7 @@
     name: 'cekganteng',
     alias: ['ganteng', 'handsome'],
     category: 'cek',
-    description: 'Cek seberapa ganteng kamu',
+    description: 'Compruebe cuánto está mirando.',
     usage: '.cekganteng <nama>',
     example: '.cekganteng Budi',
     isOwner: false,
@@ -31,12 +31,12 @@ async function handler(m) {
         desc = 'Mungkin inner beauty? 🤭'
     }
     
-    let txt = mentioned === m.sender ? `Hai @${mentioned.split('@')[0]}
+    let txt = mentioned === m.sender ? `Hola @${mentioned.split('@')[0]}
     
-Tingkat kegantengan kamu *${percent}%*
-\`\`\`${desc}\`\`\`` : `Kamu ingin ngecek tingkat kegantengan @${mentioned.split('@')[0]} yak? 
+Tu duro @-@ en @-@ el nivel @-@ spot${percent}%*
+\`\`\`${desc}\`\`\`` : `Quieres comprobar el nivel de ferocidad${mentioned.split('@')[0]} yak? 
     
-Tingkat kegantengan dia sebesar *${percent}%*
+Es tan alto como un hombre en sus brazos${percent}%*
 \`\`\`${desc}\`\`\``
     
     await m.reply(txt, { mentions: [mentioned] })

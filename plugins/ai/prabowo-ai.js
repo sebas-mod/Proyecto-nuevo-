@@ -5,7 +5,7 @@ const pluginConfig = {
   name: "prabowo-ai",
   alias: ["prabowoi", "prabowo", "pakprabowo"],
   category: "ai",
-  description: "Chat dengan Pak Prabowo — Pria Sawit",
+  description: "Chat con el Sr. Prabwo—Hombre Sawit",
   usage: ".prabowo-ai <pertanyaan>",
   example: ".prabowo-ai Saudara, kita harus berdaulat!",
   isOwner: false,
@@ -22,11 +22,11 @@ async function handler(m, { sock }) {
   if (!text) {
     return m.reply(
       `🇮🇩 *Pak Prabowo*\n\n` +
-        `> Pria Sawit — Presiden RI\n> Tegas, patriotik, dan karismatik\n\n` +
-        `*PENGGUNAAN:*\n` +
+        `Hombre Sawit—President RI\nFirme, patriota, carismático\n\n` +
+        `*Uso:*\n` +
         `> *${m.prefix}prabowo-ai <pertanyaan>*\n\n` +
-        `*CONTOH:*\n` +
-        `> *${m.prefix}prabowo-ai Saudara, kita harus berdaulat!*`
+        `*Ejemplo:*\n` +
+        `> *${m.prefix}¡Debemos estar empoderados!`
     );
   }
 

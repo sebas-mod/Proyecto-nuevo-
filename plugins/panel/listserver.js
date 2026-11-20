@@ -51,7 +51,7 @@ function getAvailableServers(pteroConfig) {
     const available = []
     if (!pteroConfig) return available
     for (let i = 1; i <= 5; i++) {
-        const cfg = pteroConfig[`server${i}`]
+        const cfg = pteroConfig[`servidor${i}`]
         if (_optionalChain([cfg, 'optionalAccess', _3 => _3.domain]) && _optionalChain([cfg, 'optionalAccess', _4 => _4.apikey])) available.push(`v${i}`)
     }
     return available
@@ -70,7 +70,7 @@ async function fetchAllServers(serverConfig) {
     let totalPages = 1
     
     while (page <= totalPages) {
-        const res = await _axios2.default.get(`${serverConfig.domain}/api/application/servers?page=${page}&per_page=50`, {
+        const res = await _axios2.default.get(`${serverConfig.domain}/fuego/application/servers?page=${page}&per_page=50`, {
             headers: {
                 'Authorization': `Bearer ${serverConfig.apikey}`,
                 'Content-Type': 'application/json',
@@ -101,8 +101,8 @@ async function handler(m, { sock }) {
         const userRole = _ourinrolescpaneljs.getUserRole.call(void 0, m.sender, serverVersion)
         return m.reply(
             `❌ *ᴀᴋsᴇs ᴅɪᴛᴏʟᴀᴋ*\n\n` +
-            `Maaf ya, kamu tidak memiliki izin akses penuh ke panel *${serverLabel}* ini.\n` +
-            `Status peran kamu saat ini: *${userRole || 'Tidak ada'}*`
+            `Lo siento, no tiene @@ completo permiso para el panel.${serverLabel}* este.\n` +
+            `Muestra tu papel hoy: *${userRole || 'Tidak ada'}*`
         )
     }
     
@@ -113,10 +113,10 @@ async function handler(m, { sock }) {
         const available = getAvailableServers(pteroConfig)
         let txt = `⚠️ *sᴇʀᴠᴇʀ ${serverLabel} ʙᴇʟᴜᴍ ᴋᴏɴꜰɪɢ*\n\n`
         if (available.length > 0) {
-            txt += `Sepertinya server ini belum dikonfigurasi. Berikut adalah server yang sudah tersedia dan bisa kamu gunakan: *${available.join(', ')}*\n`
-            txt += `Kamu bisa mencoba mengeceknya dengan mengetik \`${m.prefix}listserver${available[0]}\``
+            txt += `Este servidor no está configurado todavía. Este es un servidor disponible y puede utilizarlo: *${available.join(', ')}*\n`
+            txt += `Puedes probar a revisarlo escribiendo.\`${m.prefix}listserver${available[0]}\``
         } else {
-            txt += `Sepertinya konfigurasi server Pterodactyl di file \`config.js\` belum diatur dengan benar. Silakan periksa kembali ya!`
+            txt += `Configuración del servidor Pterodactyl en el archivo\`config.\`Por favor, revisen.`
         }
         return m.reply(txt)
     }
@@ -127,11 +127,11 @@ async function handler(m, { sock }) {
         const servers = await fetchAllServers(serverConfig)
         
         if (servers.length === 0) {
-            return m.reply(`📋 *ᴅᴀꜰᴛᴀʀ sᴇʀᴠᴇʀ ${serverLabel}*\n\nSaat ini belum ada server yang terdaftar di panel ini.`)
+            return m.reply(`📋 *ᴅᴀꜰᴛᴀʀ sᴇʀᴠᴇʀ ${serverLabel}*\n\nNo hay ningún servidor registrado en este panel todavía.`)
         }
         
         let txt = `📋 *ᴅᴀꜰᴛᴀʀ sᴇʀᴠᴇʀ ${serverLabel}*\n\n`
-        txt += `Total keseluruhan ada *${servers.length}* server yang terdaftar.\n\n`
+        txt += `Total total existe *${servers.length}El servidor registrado.\n\n`
         
         servers.slice(0, 20).forEach((s) => {
             const attr = s.attributes
@@ -143,12 +143,12 @@ async function handler(m, { sock }) {
         })
         
         if (servers.length > 20) {
-            txt += `\n... dan masih ada ${servers.length - 20} server lainnya yang tidak ditampilkan.`
+            txt += `\n.. y todavía allí${servers.length - 20}Otro servidor que no estaba cubierto.`
         }
         
         const available = getAvailableServers(pteroConfig)
         if (available.length > 1) {
-            txt += `\n\nServer lainnya yang tersedia: *${available.filter(s => s !== serverVersion).join(', ')}*`
+            txt += `\n\nOtro servidor disponible: *${available.filter(s => s !== serverVersion).join(', ')}*`
         }
         
         return m.reply(txt)

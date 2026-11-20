@@ -7,7 +7,7 @@ const pluginConfig = {
   name: "tam",
   alias: ["topactive", "topmember"],
   category: "group",
-  description: "Lihat top member paling aktif di grup",
+  description: "Ver la foto más activa en grupo",
   usage: ".tam <jumlah>",
   example: ".tam 10",
   isOwner: false,
@@ -24,7 +24,7 @@ async function handler(m, { sock }) {
   const db = _ourindatabasejs.getDatabase.call(void 0, );
   const limit = Math.min(Math.max(parseInt(m.text) || 10, 1), 20);
   const group = db.getGroup(m.chat) || {};
-  const chatName = group.name || "Grup";
+  const chatName = group.name || "Grupo";
   const chatStats = group.chatStats || {};
 
   const sorted = Object.entries(chatStats)
@@ -34,7 +34,7 @@ async function handler(m, { sock }) {
 
   if (!sorted.length) {
     return m.reply(
-      `📊 *ᴛᴏᴘ ᴀᴄᴛɪᴠᴇ ᴍᴇᴍʙᴇʀ*\n\n` + `- Belum ada data aktivitas di grup ini`,
+      `📊 *ᴛᴏᴘ ᴀᴄᴛɪᴠᴇ ᴍᴇᴍʙᴇʀ*\n\n` + `- Por no mencionar los datos de actividad en este grupo.`,
     );
   }
 

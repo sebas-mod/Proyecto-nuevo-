@@ -4,7 +4,7 @@ const pluginConfig = {
     name: 'birthday',
     alias: ['bday', 'ultah', 'ulangtahun'],
     category: 'user',
-    description: 'Lihat ulang tahun member',
+    description: 'Mira el miembro del cumpleaños',
     usage: '.birthday [@user]',
     example: '.birthday @user',
     isOwner: false,
@@ -25,12 +25,12 @@ async function handler(m, { sock }) {
     if (!_optionalChain([user, 'optionalAccess', _5 => _5.birthday])) {
         if (target === m.sender) {
             return m.reply(
-                `❌ Kamu belum set birthday!\n\n` +
-                `> Gunakan: ${m.prefix}setbirthday DD-MM\n` +
-                `> Contoh: ${m.prefix}setbirthday 25-12`
+                `❌¡No has fijado el cumpleaños!\n\n` +
+                `> Usa: ${m.prefix}setbirthday DD-MM\n` +
+                `> Ejemplo:${m.prefix}setbirthday 25-12`
             )
         }
-        return m.reply(`❌ User belum set birthday!`)
+        return m.reply(`❌¡El usuario no ha cumplido todavía!`)
     }
     
     const [day, month] = user.birthday.split('-').map(Number)
@@ -55,17 +55,17 @@ async function handler(m, { sock }) {
     text += `┃ 📅 ${day} ${months[month - 1]}\n`
     
     if (isToday) {
-        text += `┃ 🎉 *HARI INI ULTAH!*\n`
+        text += `┃ 🎉¡Espera que esto sea la situación!\n`
     } else {
-        text += `┃ 🕕 ${diffDays} hari lagi\n`
+        text += `┃ 🕕 ${diffDays}el otra vez\n`
     }
     
     text += `╰┈┈┈┈┈┈┈┈⬡`
     
     if (isToday) {
         text += `\n\n🎊 *HAPPY BIRTHDAY!* 🎊\n`
-        text += `> Semoga panjang umur dan\n`
-        text += `> sukses selalu! 🎉🎂`
+        text += `*Mi corazón es levantado*\n`
+        text += `" ¡El éxito siempre! "🎉🎂`
     }
     
     await m.reply(text, { mentions: [target] })

@@ -9,7 +9,7 @@ const pluginConfig = {
     name: allCommands,
     alias: allAliases,
     category: 'panel',
-    description: 'Hapus admin panel (v1-v5)',
+    description: 'Panel de administración de Elimina ( v1 - v5 )',
     usage: '.deladminv1 userid',
     example: '.deladminv2 5',
     isOwner: false,
@@ -48,7 +48,7 @@ function validateConfig(serverConfig) {
 function getAvailableServers(pteroConfig) {
     const available = []
     for (let i = 1; i <= 5; i++) {
-        const cfg = pteroConfig[`server${i}`]
+        const cfg = pteroConfig[`servidor${i}`]
         if (_optionalChain([cfg, 'optionalAccess', _3 => _3.domain]) && _optionalChain([cfg, 'optionalAccess', _4 => _4.apikey])) available.push(`v${i}`)
     }
     return available
@@ -64,8 +64,8 @@ async function handler(m, { sock }) {
         const userRole = _ourinrolescpaneljs.getUserRole.call(void 0, m.sender, serverVersion)
         return m.reply(
             `❌ *ᴀᴋsᴇs ᴅɪᴛᴏʟᴀᴋ*\n\n` +
-            `> Kamu tidak punya akses ke *${serverLabel}*\n` +
-            `> Role kamu: *${userRole || 'Tidak ada'}*`
+            `*No tienes acento*${serverLabel}*\n` +
+            `# Role you #${userRole || 'Tidak ada'}*`
         )
     }
     
@@ -76,9 +76,9 @@ async function handler(m, { sock }) {
         const available = getAvailableServers(pteroConfig)
         let txt = `⚠️ *sᴇʀᴠᴇʀ ${serverLabel} ʙᴇʟᴜᴍ ᴋᴏɴꜰɪɢ*\n\n`
         if (available.length > 0) {
-            txt += `> Server tersedia: *${available.join(', ')}*`
+            txt += `*El servidor está disponible*${available.join(', ')}*`
         } else {
-            txt += `> Isi di \`config.js\` bagian \`pterodactyl.server1\``
+            txt += `*Estoy dentro*\`config.\`Parte\`pterodactilo. Servidor1\``
         }
         return m.reply(txt)
     }
@@ -89,12 +89,12 @@ async function handler(m, { sock }) {
         return m.reply(
             `⚠️ *ᴄᴀʀᴀ ᴘᴀᴋᴀɪ*\n\n` +
             `> \`${m.prefix}${m.command} userid\`\n\n` +
-            `> Lihat user ID dengan \`${m.prefix}listadmin${serverVersion}\``
+            `♪ Mira el usuario id con\`${m.prefix}listadmin${serverVersion}\``
         )
     }
     
     try {
-        const userRes = await _axios2.default.get(`${serverConfig.domain}/api/application/users/${userId}`, {
+        const userRes = await _axios2.default.get(`${serverConfig.domain}/fuego/application/users/${userId}`, {
             headers: {
                 'Authorization': `Bearer ${serverConfig.apikey}`,
                 'Content-Type': 'application/json',
@@ -104,7 +104,7 @@ async function handler(m, { sock }) {
         
         const user = userRes.data.attributes
         
-        await _axios2.default.delete(`${serverConfig.domain}/api/application/users/${userId}`, {
+        await _axios2.default.delete(`${serverConfig.domain}/fuego/application/users/${userId}`, {
             headers: {
                 'Authorization': `Bearer ${serverConfig.apikey}`,
                 'Content-Type': 'application/json',
@@ -116,7 +116,7 @@ async function handler(m, { sock }) {
             `✅ *ᴀᴅᴍɪɴ ᴅɪʜᴀᴘᴜs [${serverLabel}]*\n\n` +
             `> User ID: \`${userId}\`\n` +
             `> Username: \`${user.username}\`\n` +
-            `> Email: \`${user.email}\``
+            `> Correo:\`${user.email}\``
         )
         
     } catch (err) {

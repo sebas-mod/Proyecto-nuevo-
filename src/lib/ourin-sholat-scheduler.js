@@ -10,20 +10,20 @@ const TZ = "Asia/Jakarta";
 
 const SHOLAT_MESSAGES = {
   imsak:
-    "🌙 *WAKTU IMSAK*\n\n> Hai Sahabat, waktu Imsak telah tiba.\n> Segera makan sahur sebelum waktu habis.",
+    "🌙*Tiempo IMSAK*\n\n\" Hola, querida, ha llegado el momento. \"\nPara Pronto comer antes de que termine la hora.",
   subuh:
-    "🌅 *WAKTU SUBUH*\n\n> Hai Sahabat, waktu Sholat Subuh telah tiba.\n> Ambilah air wudhu dan segeralah sholat.",
+    "🌅*Tiempo Madrugada*\n\n\" Hi Brother, the time of Sholat Subush has come. \"\nDisfruta del wudhu y pronto.",
   terbit:
-    "☀️ *WAKTU TERBIT*\n\n> Matahari telah terbit.\n> Selamat beraktivitas hari ini!",
+    "☀# El tiempo está cayendo #\n\nMathaari ha sido mordido.\n¡Feliz vida hoy!",
   dhuha:
-    "🌤️ *WAKTU DHUHA*\n\n> Hai Sahabat, waktu Sholat Dhuha telah tiba.\n> Jangan lupa sholat Dhuha 2-8 rakaat.",
+    "🌤♪ DHUHA TIEMPO ♪\n\n\" Hi Brother, the time of Sholat Dhuha has come. \"\nNo olvides el shalaut Dhuha 2 @-@ 8 Raakat.",
   dzuhur:
-    "🌞 *WAKTU DZUHUR*\n\n> Hai Sahabat, waktu Sholat Dzuhur telah tiba.\n> Ambilah air wudhu dan segeralah sholat.",
+    "🌞*Tiempo DZUHUR*\n\n\" Hi Brother, the time of Sholat Dhuhur has come \".\nDisfruta del wudhu y pronto.",
   ashar:
-    "🌇 *WAKTU ASHAR*\n\n> Hai Sahabat, waktu Sholat Ashar telah tiba.\n> Ambilah air wudhu dan segeralah sholat.",
+    "🌇*Tiempo ASHAR*\n\n\" Hi brother, the time of Sholat Ashar 's arrival \".\nDisfruta del wudhu y pronto.",
   maghrib:
-    "🌆 *WAKTU MAGHRIB*\n\n> Hai Sahabat, waktu Sholat Maghrib telah tiba.\n> Ambilah air wudhu dan segeralah sholat.",
-  isya: "🌙 *WAKTU ISYA*\n\n> Hai Sahabat, waktu Sholat Isya telah tiba.\n> Ambilah air wudhu dan segeralah sholat.",
+    "🌆*Tiempo MAGHRIB*\n\n\" Hi Brother, the time of Sholat Maghrib has come. \"\nDisfruta del wudhu y pronto.",
+  isya: "🌙*Tiempo ISYA*\n\n\" Hi Brother, the time of Sholat Isya has come. \"\nDisfruta del wudhu y pronto.",
 };
 
 const GAMBAR_SUASANA = {
@@ -80,7 +80,7 @@ async function loadTodaySchedule() {
     cacheDate = todayStr;
     return cachedSchedule;
   } catch (e) {
-    _ourinloggerjs.logger.error("SholatScheduler", `Gagal fetch jadwal: ${e.message}`);
+    _ourinloggerjs.logger.error("SholatScheduler", `Salto de la parrilla:${e.message}`);
     return null;
   }
 }
@@ -165,7 +165,7 @@ async function sendSholatNotifications(sholat, waktu) {
     let message = `${SHOLAT_MESSAGES[sholat] || `🕌 *WAKTU ${sholat.toUpperCase()}*`}\n\n⏰ *${waktu} WIB*\n📍 *${kotaSetting.nama}*`;
 
     if (closeGroup && isSholatTime) {
-      message += `\n\n> 🔒 _Grup ditutup ${duration} menit untuk sholat_`;
+      message += `\n\n♪🔒♪ Grupo cerrado ♪${duration}minutos para mostrar _`;
     }
 
     for (const groupId of groupList) {
@@ -234,7 +234,7 @@ async function sendSholatNotifications(sholat, waktu) {
             try {
               await sock.groupSettingUpdate(groupId, "not_announcement");
               await sock.sendMessage(groupId, {
-                text: `✅ Grup dibuka kembali setelah sholat ${sholat}.\n\n> Semoga sholat kita diterima. Aamiin 🤲`,
+                text: `✅Grup fue reabierto después de la sholat${sholat}.\n\nRecibimos nuestro Ojalá Sholat.🤲`,
                 contextInfo: {
                   forwardingScore: 9999,
                   isForwarded: true,
@@ -293,7 +293,7 @@ function initSholatScheduler(socketInstance) {
   schedulePrayerTimes();
   _ourinloggerjs.logger.info(
     "SholatScheduler",
-    "Jadwal waktu sholat otomatis udah nyala ya bosku (Realtime)",
+    "Programar el tiempo de la autodenominación por primera vez. Sí, mi jefe.",
   );
 }
 
@@ -303,7 +303,7 @@ function stopSholatScheduler() {
     dailyRefreshJob.stop();
     dailyRefreshJob = null;
   }
-  _ourinloggerjs.logger.info("SholatScheduler", "Jadwal waktu sholat udah dimatiin");
+  _ourinloggerjs.logger.info("SholatScheduler", "Programar una fecha de retraso para el retraso de la ya");
 }
 
 

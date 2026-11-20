@@ -26,12 +26,12 @@ function startTempCleaner() {
             } catch (e2) {}
         }
         if (totalCleaned > 0) {
-            _ourinloggerjs.logger.system('temp', `cleaned ${totalCleaned} file(s)`)
+            _ourinloggerjs.logger.system('temp', `cleaned ${totalCleaned}archivo(s)`)
         }
     }, CLEAN_INTERVAL)
 
     if (cleanerTimer.unref) cleanerTimer.unref()
-    _ourinloggerjs.logger.success('temp', `Bakal bersih-bersih file tiap ${CLEAN_INTERVAL / 60000} menit`)
+    _ourinloggerjs.logger.success('temp', `Bamal está limpio - archivo limpio${CLEAN_INTERVAL / 60000}minuto`)
 }
 
 function stopTempCleaner() {

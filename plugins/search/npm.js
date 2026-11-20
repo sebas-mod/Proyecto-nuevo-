@@ -22,7 +22,7 @@ async function handler(m, { sock }) {
     return m.reply(
       `⚠️ *ᴄᴀʀᴀ ᴘᴀᴋᴀɪ*\n\n` +
         `> \`${m.prefix}npm <query>\`\n\n` +
-        `> Contoh:\n` +
+        `> Ejemplo:\n` +
         `> \`${m.prefix}npm axios\``,
     );
   }
@@ -38,7 +38,7 @@ async function handler(m, { sock }) {
     if (!data.objects || data.objects.length === 0) {
       await m.react("❌");
       return m.reply(
-        `❌ *ᴛɪᴅᴀᴋ ᴅɪᴛᴇᴍᴜᴋᴀɴ*\n\n> Package "${query}" tidak ditemukan`,
+        `❌ *ᴛɪᴅᴀᴋ ᴅɪᴛᴇᴍᴜᴋᴀɴ*\n\n> Package "${query}*No se encuentra*`,
       );
     }
 

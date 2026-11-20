@@ -4,7 +4,7 @@ const pluginConfig = {
     name: 'stopdandeletejadibot',
     alias: ['deletejadibot', 'removejadibot', 'hapusjadibot'],
     category: 'owner',
-    description: 'Stop dan hapus session jadibot user secara permanen',
+    description: 'Stop and remove session so it \'s a regular user.',
     usage: '.stopdandeletejadibot @user',
     example: '.stopdandeletejadibot @628xxx',
     isOwner: true,
@@ -32,18 +32,18 @@ async function handler(m, { sock }) {
         const sessions = _ourinjadibotmanagerjs.getAllJadibotSessions.call(void 0, )
 
         if (sessions.length === 0) {
-            return m.reply(`❌ Tidak ada session jadibot tersimpan`)
+            return m.reply(`❌No se ha mantenido ninguna sesión`)
         }
 
         let txt = `🗑️ *sᴛᴏᴘ & ᴅᴇʟᴇᴛᴇ ᴊᴀᴅɪʙᴏᴛ*\n\n`
-        txt += `Pilih target dengan mention atau reply:\n\n`
+        txt += `Seleccione objetivos con mención o respuesta:\n\n`
 
         sessions.forEach((s, i) => {
             const status = s.isActive ? '🟢' : '⚫'
             txt += `${status} *${i + 1}.* @${s.id}\n`
         })
 
-        txt += `\n> Contoh: \`${m.prefix}stopdandeletejadibot @628xxx\``
+        txt += `\n> Ejemplo:\`${m.prefix}stopdandeletejadibot @628xxx\``
 
         return sock.sendMessage(m.chat, {
             text: txt,
@@ -56,7 +56,7 @@ async function handler(m, { sock }) {
     const session = sessions.find(s => s.id === id)
 
     if (!session) {
-        return m.reply(`❌ Session jadibot untuk *@${id}* tidak ditemukan`, { mentions: [target] })
+        return m.reply(`❌Sesión JERBED FOR * @${id}* not found`, { mentions: [target] })
     }
 
     await m.react('🕕')
@@ -68,10 +68,10 @@ async function handler(m, { sock }) {
 
         await sock.sendMessage(m.chat, {
             text: `🗑️ *ᴊᴀᴅɪʙᴏᴛ ᴅɪʜᴀᴘᴜs*\n\n` +
-                `> 📱 Nomor: *@${id}*\n` +
+                `♪📱Número: *@${id}*\n` +
                 `> 🗑️ Status: *Deleted*\n\n` +
-                `Session telah dihapus secara permanen.\n` +
-                `User perlu \`.jadibot\` ulang untuk membuat session baru.`,
+                `El período de sesiones se ha visto comprometido de manera de servicio.\n` +
+                `User necesita\`.\`Repetido para crear una nueva sesión.`,
             mentions: [target]
         }, { quoted: m })
     } catch (error) {

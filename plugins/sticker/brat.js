@@ -7,7 +7,7 @@ const pluginConfig = {
   name: "brat",
   alias: ["bratmenu", "bratimg", "brattext"],
   category: "sticker",
-  description: "Menu variant brat dan generator sticker brat",
+  description: "Fresco de la variante de la med y hematoma de la pegatina del generador",
   usage: ".brat | .bratimg <text>",
   example: ".bratimg Hai semua",
   isOwner: false,
@@ -78,7 +78,7 @@ function buildVariantRows(prefix, text) {
 
 async function sendBratMenu(m, sock, text) {
   const caption =
-    "🌿 *kamu mau buat brat yak, silahkan pilih variant brat tombol dibawah*";
+    "🌿* Quieres hacer una mocosa de yak, adelante y elegir una variedad de cejas y buffel brat en la capucha *";
   const buttons = [
     {
       name: "single_select",
@@ -101,7 +101,7 @@ async function sendBratMenu(m, sock, text) {
     m,
     {
       buttons,
-      footer: "Pilih variant brat favorit kamu",
+      footer: "Elija su variedad favorita de mocos.",
     },
   );
 }
@@ -117,7 +117,7 @@ async function handler(m, { sock }) {
 
   if (!text) {
     return m.reply(
-      `🖼️ *ʙʀᴀᴛ ɪᴍᴀɢᴇ*\n\n> Masukkan teks\n\n\`Contoh: ${m.prefix}bratimg Hai semua\``,
+      `🖼♪ʙʀᴀᴛ ɪᴍᴀɢᴇ*\n\n*Pon los mensajes*\n\n\`Ejemplo:${m.prefix}bratimg Hola a todos\``,
     );
   }
 

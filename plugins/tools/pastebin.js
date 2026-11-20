@@ -27,17 +27,17 @@ async function handler(m, { sock }) {
   if (!text) {
     return m.reply(
       `📋 *ᴘᴀsᴛᴇʙɪɴ ᴜᴘʟᴏᴀᴅ*\n\n` +
-        `Kirim teks untuk di-upload ke Pastebin.\n\n` +
-        `*Cara pakai:*\n` +
+        `Ksentes para subir a Pastebin.\n\n` +
+        `*Como usarlo:*\n` +
         `• \`${m.prefix}pastebin <text>\`\n` +
-        `• Reply teks dengan \`${m.prefix}pastebin\`\n\n` +
-        `> Contoh: \`${m.prefix}pastebin console.log("Hello")\``,
+        `•Texto de la respuesta\`${m.prefix}pastebin\`\n\n` +
+        `> Ejemplo:\`${m.prefix}pastebin console.log("Hello")\``,
     );
   }
 
   const api_dev_key = "h9WMT2Mn9QW-qDhvUSc-KObqAYcjI0he";
   const api_paste_code = text.trim();
-  const api_paste_name = `Paste dari ${m.pushName || "User"} - ${new Date().toLocaleDateString("id-ID")}`;
+  const api_paste_name = `Paste de${m.pushName || "User"} - ${new Date().toLocaleDateString("id-ID")}`;
 
   const data = new URLSearchParams({
     api_dev_key,
@@ -70,7 +70,7 @@ async function handler(m, { sock }) {
       `┃ 📊 ᴜᴋᴜʀᴀɴ: *${text.length} chars*\n` +
       `┃ 🔗 ʟɪɴᴋ: ${url}\n` +
       `╰┈┈⬡\n\n` +
-      `> Paste akan expired sesuai pengaturan Pastebin.`;
+      `*Pastera e*xPasta de mentukan de mariscos rojos.`;
     await _ourincontextjs.sendToolsPreview.call(void 0, 
       sock,
       m.chat,

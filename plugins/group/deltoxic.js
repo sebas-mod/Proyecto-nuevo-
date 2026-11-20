@@ -3,7 +3,7 @@ const pluginConfig = {
     name: 'deltoxic',
     alias: ['hapustoxic', 'remtoxic', 'removetoxic'],
     category: 'group',
-    description: 'Hapus kata toxic dari daftar',
+    description: 'Quitar la palabra paraxic de la lista',
     usage: '.deltoxic <kata>',
     example: '.deltoxic kata_kasar',
     isOwner: false,
@@ -23,7 +23,7 @@ async function handler(m, { sock }) {
     if (!word) {
         return m.reply(
             `🗑️ *ᴅᴇʟ ᴛᴏxɪᴄ*\n\n` +
-            `> Gunakan: \`.deltoxic <kata>\`\n\n` +
+            `> Usa: \`- Delto.xic<kata>\`\n\n` +
             `\`Contoh: ${m.prefix}deltoxic katakasar\``
         )
     }
@@ -34,7 +34,7 @@ async function handler(m, { sock }) {
     const index = toxicWords.indexOf(word)
     
     if (index === -1) {
-        return m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> Kata \`${word}\` tidak ada di daftar`)
+        return m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> Kata \`${word}\`no en la lista`)
     }
     
     toxicWords.splice(index, 1)

@@ -7,7 +7,7 @@ const pluginConfig = {
     name: 'ppcouple',
     alias: ['cp', 'ppcp'],
     category: 'random',
-    description: 'Random gambar pp couple',
+    description: 'Imagen aleatoria pp pareja',
     usage: '.ppcouple',
     isGroup: true,
     isBotAdmin: false,

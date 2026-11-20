@@ -5,7 +5,7 @@ const pluginConfig = {
   name: "terima",
   alias: ["accept", "yes"],
   category: "fun",
-  description: "Menerima tembakan dari seseorang",
+  description: "Tomar una oportunidad de alguien",
   usage: ".terima @tag",
   example: ".terima @628xxx",
   isOwner: false,
@@ -18,13 +18,13 @@ const pluginConfig = {
 };
 
 const celebrationQuotes = [
-  "Semoga langgeng sampai ke pelaminan! 💍",
-  "Dari teman jadi cinta, indahnya! 💕",
+  "¡Larga @-@ lema de término al matrimonio!💍",
+  "De amigo a amor, hermoso!💕",
   "Love is in the air! 💖",
   "Couple goals detected! 💑",
-  "Jangan lupa undang pas nikah ya! 💒",
-  "Selamat menempuh hidup berduaan! 🥰",
-  "Chemistry-nya kuat banget! 🔥",
+  "¡No olvides tu tiempo de boda!💒",
+  "¡Viva bien!🥰",
+  "¡La química es un brazalete!🔥",
   "Match made in heaven! ✨",
 ];
 
@@ -53,17 +53,17 @@ async function handler(m, { sock }) {
   if (!shooterJid) {
     return m.reply(
       `⚠️ *ᴄᴀʀᴀ ᴘᴀᴋᴀɪ*\n\n` +
-        `> Reply pesan tembakan + \`${m.prefix}terima\`\n` +
-        `> Atau \`${m.prefix}terima @tag\``,
+        `Responder a un mensaje de disparo +\`${m.prefix}terima\`\n` +
+        `> O\`${m.prefix}recibe @tag\``,
     );
   }
 
   if (shooterJid === m.sender) {
-    return m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> Tidak bisa menerima diri sendiri!`);
+    return m.reply(`❌*ɢᴀɢᴀʟ*\n\n¡No puedes tomarlo tú mismo!`);
   }
 
   if (shooterJid === m.botNumber) {
-    return m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> Bot tidak bisa pacaran!`);
+    return m.reply(`❌*ɢᴀɢᴀʟ*\n\n- ¡Sí, no puedo salir!`);
   }
 
   let shooterData = db.getUser(shooterJid) || {};
@@ -78,7 +78,7 @@ async function handler(m, { sock }) {
   ) {
     return m.reply(
       `❌ *ᴛɪᴅᴀᴋ ᴍᴇɴᴇᴍʙᴀᴋ*\n\n` +
-        `> @${shooterJid.split("@")[0]} tidak sedang menembakmu`,
+        `> @${shooterJid.split("@")[0]}No te disparo.`,
       { mentions: [shooterJid] },
     );
   }
@@ -110,8 +110,8 @@ async function handler(m, { sock }) {
 
   await m.reply(
     `💕 *WIDIHHHH, CIE CIE DITERIMA* @${shooterJid.split("@")[0]}\n\n` +
-      `@${m.sender.split("@")[0]} dan @${shooterJid.split("@")[0]} resmi pacaran\n\n` +
-      `Semoga langgeng dan bahagia 💍`,
+      `@${m.sender.split("@")[0]}y @${shooterJid.split("@")[0]}oficial pacaran\n\n` +
+      `Ojalá Long y feliz💍`,
     { contextInfo: ctx },
   );
 }

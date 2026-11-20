@@ -4,7 +4,7 @@ _ouringamesjs.games.register('tebakkalimat', {
     alias: ['tkl', 'peribahasa'],
     emoji: '📖',
     title: 'TEBAK KALIMAT',
-    description: 'Tebak kalimat atau peribahasa'
+    description: 'Adivina qué es la calibración o el proverbial.'
 })
 
 const { config: pluginConfig, handler, answerHandler } = _ouringamesjs.games.createPlugin('tebakkalimat')

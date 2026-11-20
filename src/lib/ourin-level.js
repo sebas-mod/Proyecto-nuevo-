@@ -24,14 +24,14 @@ async function checkAndNotifyLevelUp(sock, m, db, user, oldExp, newExp) {
   const { createCanvas, loadImage, GlobalFonts } =
     await Promise.resolve().then(() => _interopRequireWildcard(require("@napi-rs/canvas")));
   /**
-   * Fungsi untuk membuat gambar Level Up bertema Anime
+* Fungi para hacer un Anime @-@ temático Nivel Subir imagen
    * @param {Object} data - Data user
-   * @param {string} data.name - Nama user
-   * @param {number} data.level - Level baru yang dicapai
-   * @param {number} data.currentXp - XP saat ini
-   * @param {number} data.requiredXp - Total XP yang dibutuhkan
-   * @param {string} data.avatarUrl - URL foto profil user
-   * @param {string} data.backgroundUrl - URL gambar background anime
+* @ param{string}datos. Nombre - nombre del usuario
+* @ param{number}datos.
+* @ param{number}datos. ActualXp - XP current
+* @ param{number}datos. requeridosXp - XP totals
+* @ param{string} datos.avatarUrl - URL foto perfil user
+* @ param{string}data. backgroundUrl - URL imagen fondo anime
    */
   async function generateLevelUpCard(data) {
     const width = 800;
@@ -157,16 +157,16 @@ async function checkAndNotifyLevelUp(sock, m, db, user, oldExp, newExp) {
       ppBuffer = await sock.profilePictureUrl(m.sender, "image");
     } catch (e2) {}
 
-    const txt = `🎊 *SELAMAT @${m.sender.split("@")[0]}!*
+    const txt = `🎊*Felicidades @${m.sender.split("@")[0]}!*
 
-Level kamu bertambah ${newLevel - oldLevel}
-🥗 Level kamu sekarang *${newLevel}*
+Nivel que está creciendo${newLevel - oldLevel}
+🥗Nivel que ahora *${newLevel}*
 
-Sekarang kamu berada di rank *${role}*
+Ahora estás en el rango *${role}*
 
-Mau cek detail level? ketik _${m.prefix}level_
+¿Quieres comprobar los detalles del nivel?${m.prefix}level_
 
-Sering seringlah berinteraksi dengan bot agar level kamu bertambah!`;
+¡Acostúmbrate a interactuar con tus botas de nivel de para que creciendo!`;
 
     const contextInfo = {
       mentionedJid: [m.sender],

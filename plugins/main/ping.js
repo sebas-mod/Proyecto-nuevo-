@@ -8,7 +8,7 @@ const pluginConfig = {
   name: "ping",
   alias: ["speed", "p", "latency", "sys", "status"],
   category: "main",
-  description: "Cek performa dan status sistem bot secara real-time (Canvas Epic)",
+  description: "Compruebe la entrada y el estado de los verdaderos sistemas de bot @@ ( Canvas Epic )",
   usage: ".ping",
   example: ".ping",
   isOwner: false,
@@ -187,7 +187,7 @@ async function createEpicPingCanvas(data) {
     
     ctx.fillStyle = '#cbd5e1';
     ctx.font = 'bold 24px Courier New';
-    ctx.fillText(`STATUS: ONLINE | TERMINAL: OURIN MD`, 50, 110);
+    ctx.fillText(`Estado: ONLINE | Terminal: OURIN MD`, 50, 110);
     
     ctx.beginPath();
     ctx.moveTo(50, 130);
@@ -287,9 +287,9 @@ async function createEpicPingCanvas(data) {
 
     drawCyberBox(ctx, col3X, 610, col3Width, 140, 'UPTIME', '#ec4899');
     ctx.fillStyle = '#94a3b8'; ctx.font = 'bold 20px sans-serif';
-    ctx.fillText(`Server:`, col3X + 20, 670); ctx.fillStyle = '#ec4899'; ctx.font = 'bold 22px sans-serif'; ctx.fillText(data.upOS, col3X + 100, 670);
+    ctx.fillText(`Servidor:`, col3X + 20, 670); ctx.fillStyle = '#ec4899'; ctx.font = 'bold 22px sans-serif'; ctx.fillText(data.upOS, col3X + 100, 670);
     ctx.fillStyle = '#94a3b8'; ctx.font = 'bold 20px sans-serif';
-    ctx.fillText(`Bot:`, col3X + 20, 715);    ctx.fillStyle = '#ec4899'; ctx.font = 'bold 22px sans-serif'; ctx.fillText(data.upBot, col3X + 100, 715);
+    ctx.fillText(`> 91; Gasps &#93;`, col3X + 20, 715);    ctx.fillStyle = '#ec4899'; ctx.font = 'bold 22px sans-serif'; ctx.fillText(data.upBot, col3X + 100, 715);
 
     return canvas.toBuffer('image/png');
 }
@@ -333,31 +333,31 @@ async function handler(m, { sock }) {
 
     const caption = 
       `🏓 *PONG!* (${data.ping}ms)\n\n` +
-      `Berikut adalah detail spesifikasi dan performa server secara lengkap:\n\n` +
-      `🖥️ *INFORMASI SISTEM*\n` +
+      `Asport es una especificaciones detalladas y un servicio completo:\n\n` +
+      `🖥*SISTEMA DE INFORMACIÓN*\n` +
       `> ◦ *OS:* ${data.osType} (${data.osRel})\n` +
       `> ◦ *Platform:* ${data.osPlatform} (${data.osArch})\n` +
       `> ◦ *Hostname:* ${data.osHost}\n` +
       `> ◦ *NodeJS:* ${data.nodeVer}\n` +
       `> ◦ *Engine V8:* ${data.v8}\n\n` +
-      `💻 *INFORMASI CPU*\n` +
+      `💻*Información CPU*\n` +
       `> ◦ *Model:* ${data.cpuModel.trim()}\n` +
       `> ◦ *Cores:* ${data.cpuCores} Core(s)\n` +
       `> ◦ *Speed:* ${data.cpuSpeed} MHz\n` +
       `> ◦ *Load Avg:* ${data.load[0]} (1m), ${data.load[1]} (5m), ${data.load[2]} (15m)\n\n` +
-      `🧠 *PENGGUNAAN MEMORI*\n` +
+      `🧠 *Uso MEMORI*\n` +
       `> ◦ *Total RAM:* ${fmtSize(data.totalMem)}\n` +
       `> ◦ *Dipakai:* ${fmtSize(data.usedMem)} (${data.memPct}%)\n` +
-      `> ◦ *Sisa Bebas:* ${fmtSize(data.freeMem)}\n\n` +
+      `♪◦*Restante Bebas:*${fmtSize(data.freeMem)}\n\n` +
       `📦 *MEMORI NODEJS*\n` +
       `> ◦ *RSS:* ${fmtSize(data.memNode.rss)}\n` +
       `> ◦ *Heap Total:* ${fmtSize(data.memNode.heapTotal)}\n` +
       `> ◦ *Heap Used:* ${fmtSize(data.memNode.heapUsed)}\n` +
       `> ◦ *External:* ${fmtSize(data.memNode.external)}\n\n` +
-      `⏱️ *WAKTU AKTIF (UPTIME)*\n` +
-      `> ◦ *Uptime Server:* ${data.upOS}\n` +
-      `> ◦ *Uptime Bot:* ${data.upBot}\n\n` +
-      `Sistem berjalan stabil dan menyelesaikan kalkulasi dalam waktu eksekusi *${data.ping}ms*.`;
+      `⏱*El tiempo está encendido*\n` +
+      `♪◦*Uptime Servidor:*${data.upOS}\n` +
+      `♪◦* Tiempo de subida picado: *${data.upBot}\n\n` +
+      `El sistema es estable y completó el cálculo en el tiempo de ejecución *${data.ping}ms*.`;
 
     await sock.sendMessage(m.chat, { image: imageBuffer, caption: caption }, { quoted: m });
     await m.react("✅");

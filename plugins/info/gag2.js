@@ -5,7 +5,7 @@ const pluginConfig = {
   name: "gag2",
   alias: ["growagarden2"],
   category: "info",
-  description: "Cek stock Grow a Garden dengan fitur watch",
+  description: "Comprobación",
   usage: ".gag2 [watch] [item]",
   example: ".gag2 watch seed",
   cooldown: 15,
@@ -87,7 +87,7 @@ async function modeStock(m) {
 
 async function modeWatch(watchItems, m, sock) {
   const wants = watchItems.map((w) => w.toLowerCase());
-  await m.reply(`👀 *Watching for:* ${watchItems.join(", ")}\n> Max 5 iterations (~2.5 menit). Re-run buat extend.`);
+  await m.reply(`👀 *Watching for:* ${watchItems.join(", ")}\n- Max5 iteraciones ( ~ 2. 5 minutos ). Re @-@ ejecutar para exTiende.`);
 
   for (let i = 1; i <= 5; i++) {
     const r = await gag2Fetch();
@@ -102,7 +102,7 @@ async function modeWatch(watchItems, m, sock) {
     );
 
     if (hits.length > 0) {
-      let msg = `🎯 *[iter ${i}] FOUND ${hits.length} watched item(s)!*\n\n`;
+      let msg = `🎯 *[iter ${i}] FOUND ${hits.length}watched objeto(s)!*\n\n`;
       for (const h of hits) {
         msg += `- ${emojiForItem(h.name)} *${h.name} × ${h.quantity}*\n`;
       }
@@ -114,7 +114,7 @@ async function modeWatch(watchItems, m, sock) {
     if (i < 5) await new Promise((res) => setTimeout(res, 30000));
   }
   
-  await sock.sendMessage(m.chat, { text: `⏱️ 5 iterations done, no match. Re-run buat lanjut.` }, { quoted: m });
+  await sock.sendMessage(m.chat, { text: `⏱Cinco italiaciones, sin coincidencia.` }, { quoted: m });
 }
 
 async function handler(m, { sock, args }) {
@@ -124,7 +124,7 @@ async function handler(m, { sock, args }) {
     if (isWatch) {
       const items = args.slice(1);
       if (items.length === 0) {
-        return m.reply("❌ Masukkan nama item yang ingin dipantau. Contoh: `.gag2 watch seed apple`");
+        return m.reply("❌Ponga en el nombre del artículo que desea subir en.`. g2 ver la semilla manzana`");
       }
       m.react("✅");
       await modeWatch(items, m, sock);

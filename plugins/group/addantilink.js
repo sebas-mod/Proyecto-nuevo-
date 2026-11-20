@@ -23,10 +23,10 @@ function handler(m) {
     if (!link) {
         return m.reply(
             `🔗 *ᴀᴅᴅ ᴀɴᴛɪʟɪɴᴋ*\n\n` +
-            `> Masukkan domain/pattern link yang ingin diblokir\n\n` +
+            `* Ponga en el enlace de dominio / patrón a bloque\n\n` +
             `\`Contoh:\`\n` +
             `\`${m.prefix}addantilink tiktok.com\`\n` +
-            `\`${m.prefix}addantilink chat.whatsapp.com\`\n` +
+            `\`${m.prefix}Hay una charla de baile. whatsapp. com\`\n` +
             `\`${m.prefix}addantilink instagram.com\``
         )
     }
@@ -35,7 +35,7 @@ function handler(m) {
     const antilinkList = groupData.antilinkList || []
     
     if (antilinkList.includes(link)) {
-        return m.reply(`⚠️ Link \`${link}\` sudah ada di daftar antilink!`)
+        return m.reply(`⚠️ Enlace\`${link}\`¡Está en la lista de antivínculos!`)
     }
     
     antilinkList.push(link)
@@ -43,9 +43,9 @@ function handler(m) {
     
     m.reply(
         `✅ *ᴀɴᴛɪʟɪɴᴋ ᴅɪᴛᴀᴍʙᴀʜ*\n\n` +
-        `> Link: \`${link}\`\n` +
+        `> Enlace:\`${link}\`\n` +
         `> Total: *${antilinkList.length}* link\n\n` +
-        `> Gunakan \`${m.prefix}listantilink\` untuk melihat daftar`
+        `> Usa \`${m.prefix}listantilinks\`para ver la lista`
     )
 }
 

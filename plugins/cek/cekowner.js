@@ -4,7 +4,7 @@ const pluginConfig = {
     name: 'cekowner',
     alias: ['ownerinfo'],
     category: 'cek',
-    description: 'Cek apakah user adalah owner bot',
+    description: 'Compruebe si el usuario es el propietario del bot',
     usage: '.cekowner @user',
     example: '.cekowner',
     isOwner: false,
@@ -43,7 +43,7 @@ async function handler(m, { sock }) {
     const user = db.getUser(targetJid)
 
     const roles = []
-    if (isOwnerUser) roles.push('👑 Owner')
+    if (isOwnerUser) roles.push('👑Propietario')
     if (isPartnerUser) roles.push('🤝 Partner')
     if (isPremiumUser) roles.push('💎 Premium')
     if (roles.length === 0) roles.push('👤 Free User')
@@ -51,13 +51,13 @@ async function handler(m, { sock }) {
     const ownerList = db.data.owner || []
     const isInOwnerDb = ownerList.includes(targetNumber)
 
-    let txt = `📋 *CEK USER INFO*\n\n`
+    let txt = `📋* Comproeba USUARIO INFO *\n\n`
     txt += `👤 User: @${targetNumber}\n`
     txt += `🏷️ Role: *${roles.join(' • ')}*\n`
-    txt += `📊 Owner DB: *${isInOwnerDb ? 'Ya' : 'Tidak'}*\n`
+    txt += `📊Propietario DB: *${isInOwnerDb ? 'Ya' : 'Tidak'}*\n`
     if (user) {
-        txt += `⚡ Energi: *${user.energi === -1 ? '∞' : (_nullishCoalesce(user.energi, () => ( 0)))}*\n`
-        txt += `💰 Koin: *${user.koin === -1 ? '∞' : (_nullishCoalesce(user.koin, () => ( 0))).toLocaleString('id-ID')}*\n`
+        txt += `⚡Energía: *${user.energi === -1 ? '∞' : (_nullishCoalesce(user.energi, () => ( 0)))}*\n`
+        txt += `💰Monedas: *${user.koin === -1 ? '∞' : (_nullishCoalesce(user.koin, () => ( 0))).toLocaleString('id-ID')}*\n`
         txt += `⭐ Level: *${_nullishCoalesce(user.level, () => ( 1))}*\n`
     }
 

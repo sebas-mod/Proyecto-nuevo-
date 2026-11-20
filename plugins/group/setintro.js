@@ -3,7 +3,7 @@ const pluginConfig = {
     name: 'setintro',
     alias: ['setperkenalan', 'introset'],
     category: 'group',
-    description: 'Set pesan intro grup (admin only)',
+    description: 'Estabblecer llama intro grupo ( sólo adminiracyn )',
     usage: '.setintro <pesan>',
     example: '.setintro Selamat datang @user di @group!',
     isOwner: false,
@@ -23,17 +23,17 @@ async function handler(m) {
     if (!introText) {
         return m.reply(
             `📝 *sᴇᴛ ɪɴᴛʀᴏ*\n\n` +
-            `> Masukkan pesan intro!\n\n` +
-            `*Placeholder yang tersedia:*\n` +
-            `> @user - Nama pengguna\n` +
-            `> @group - Nama grup\n` +
-            `> @count - Jumlah member\n` +
-            `> @date - Tanggal hari ini\n` +
-            `> @time - Waktu sekarang\n` +
-            `> @desc - Deskripsi grup\n` +
-            `> @botname - Nama bot\n\n` +
-            `*Contoh:*\n` +
-            `> .setintro Selamat datang @user di grup @group! 👋`
+            `¡Aquí hay un mensaje de introducción!\n\n` +
+            `* Titular disponible: *\n` +
+            `- Nombre de usuario\n` +
+            `- Grupo - * Nombre de la explosión*\n` +
+            `- Salta en la foto.\n` +
+            `- Hoy\n` +
+            `- Hora.\n` +
+            `> @desc - Descripción grupo\n` +
+            `- *El nombre del bot*\n\n` +
+            `*Ejemplo:*\n` +
+            `Sí, Setintro Bienvenido.👋`
         )
     }
     
@@ -44,8 +44,8 @@ async function handler(m) {
     
     await m.reply(
         `✅ *ɪɴᴛʀᴏ ᴅɪsᴀᴠᴇ!*\n` +
-        `Pesan intro grup berhasil diubah.\n` +
-        `Ketik *${m.prefix}intro* untuk melihat hasilnya.`
+        `El orden de intro grupo fue alterado con éxEstá bien.\n` +
+        `Escribe *${m.prefix}Introducción para ver los resultados.`
     )
 }
 

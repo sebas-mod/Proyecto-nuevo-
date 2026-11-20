@@ -3,7 +3,7 @@ const pluginConfig = {
     name: 'autoforward',
     alias: ['autofw', 'autofwd'],
     category: 'group',
-    description: 'Auto forward pesan yang masuk ke grup ke grup ini',
+    description: 'Auto para advertir mensajes que se han conectado en grupo a grupo',
     usage: '.autoforward <on/off>',
     example: '.autoforward on',
     isOwner: false,
@@ -29,8 +29,8 @@ function handler(m, { sock }) {
             `╭┈┈⬡「 📋 *ɪɴꜰᴏ* 」\n` +
             `┃ ◦ Status: *${status}*\n` +
             `╰┈┈⬡\n\n` +
-            `> Gunakan: \`${m.prefix}autoforward on/off\`\n\n` +
-            `_Fitur ini akan meneruskan semua pesan ke grup ini_`
+            `> Usa: \`${m.prefix}autoforward on/off\`\n\n` +
+            `Está función permitirá que todos los mensajes se agrupan _`
         )
     }
     
@@ -42,7 +42,7 @@ function handler(m, { sock }) {
             `╭┈┈⬡「 ✅ *ᴀᴋᴛɪꜰ* 」\n` +
             `┃ ◦ Status: *ON*\n` +
             `╰┈┈⬡\n\n` +
-            `> _Semua pesan akan di-forward_`
+            `Todos los mensajes estarán en - forward_`
         )
     }
     
@@ -57,7 +57,7 @@ function handler(m, { sock }) {
         )
     }
     
-    return m.reply(`❌ Gunakan: on atau off`)
+    return m.reply(`❌Uso: encendido o apagado`)
 }
 
 exports.config = pluginConfig; exports.handler = handler;

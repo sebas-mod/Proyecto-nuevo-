@@ -2,7 +2,7 @@
 var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
 var _ourinhttpjs = require('../../src/lib/ourin-http.js');
 var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
-const NEOXR_APIKEY = _optionalChain([_configjs2.default, 'access', _ => _.APIkey, 'optionalAccess', _2 => _2.neoxr]) || 'Milik-Bot-OurinMD'
+const NEOXR_APIKEY = _optionalChain([_configjs2.default, 'access', _ => _.APIkey, 'optionalAccess', _2 => _2.neoxr]) || 'Millik - Eurinprobable'
 
 const pluginConfig = {
     name: 'puisi',
@@ -28,7 +28,7 @@ async function handler(m, { sock }) {
         
         if (!res.status || !_optionalChain([res, 'access', _3 => _3.data, 'optionalAccess', _4 => _4.text])) {
             m.react('❌')
-            return m.reply(`❌ Gagal mengambil puisi`)
+            return m.reply(`❌La catorcea toma el poema`)
         }
         
         const text = res.data.text

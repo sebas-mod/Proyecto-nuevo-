@@ -5,7 +5,7 @@ const pluginConfig = {
   name: "rvo",
   alias: ["readvo", "readviewonce", "readview"],
   category: "tools",
-  description: "Baca pesan sekali lihat (view once)",
+  description: "Lea un mensaje de @-@ (ver una vez )",
   usage: ".rvo (reply pesan view once)",
   example: ".rvo",
   isOwner: false,
@@ -21,12 +21,12 @@ async function handler(m, { sock }) {
   const quoted = m.quoted;
   if (!quoted) {
     return m.reply(
-      `Reply pesan sekali lihat (view once) untuk membukanya.\n\n\`Contoh: ${m.prefix}rvo\` (reply pesan view once)`,
+      `Responder ordenó a uno @-@ tiempo @-@ sólo revisión para abrirla.\n\n\`Ejemplo:${m.prefix}rvo\`(respuesta vista una vez mensaje )`,
     );
   }
 
   if (!quoted.isViewOnce && !quoted.isMedia) {
-    return m.reply("❌ Reply pesan view once (sekali lihat) untuk membukanya.");
+    return m.reply("❌Responder ordenó una vista una vez ( una vez ) para abrirla.");
   }
 
   m.react("⏱️");
@@ -40,7 +40,7 @@ async function handler(m, { sock }) {
     }
 
     const buffer = await quoted.download();
-    if (!buffer) throw new Error("Gagal download media");
+    if (!buffer) throw new Error("Descarga sin problemas medios");
 
     const caption = originalCaption ? `\`Pesan :\`\n> ${originalCaption}` : "";
 
@@ -92,7 +92,7 @@ async function handler(m, { sock }) {
     m.react("☢");
     let msg = e.message;
     if (
-      msg.includes("Gagal download") ||
+      msg.includes("Fallido download") ||
       msg.includes("decrypt") ||
       msg.includes("download") ||
       msg.includes("Timeout") ||
@@ -100,9 +100,9 @@ async function handler(m, { sock }) {
       msg.includes("Gone")
     ) {
       msg =
-        "Media sudah kadaluarsa atau sudah dihapus dari server WhatsApp.\n\n_Pesan View Once yang terlalu lama atau sering dibuka biasanya akan otomatis hangus dari sistem WhatsApp dan tidak bisa diunduh lagi._";
+        "Los medios de comunicación caducaron o ya fueron eliminados del servidor WhatsApp.\n\nTo Mensaje View Once is too old or overcast to be used for the Hando automas of the WhatsApp system and can 't be smuggled more.";
     }
-    m.reply(`❌ *Gagal Membuka View Once*\n\n> ${msg}`);
+    m.reply(`❌*Fierce hace la vista una vez*\n\n♪${msg}`);
   }
 }
 

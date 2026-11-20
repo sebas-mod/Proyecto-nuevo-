@@ -49,7 +49,7 @@ var _ourinassetmanagerjs = require('./src/lib/ourin-asset-manager.js');
 
 var _ourinloggerjs = require('./src/lib/ourin-logger.js');
 
-// agent initialized in main
+//agente inicializado en el principal
 
 const LOG_NOISE = new Set([
   "Closing",
@@ -184,7 +184,7 @@ function startSrcWatcher(srcPath) {
       reloadDebounce.delete("src_" + filename);
       const fullPath = _path2.default.join(srcPath, filename);
       if (!_fs2.default.existsSync(fullPath)) {
-        _ourinloggerjs.logger.warn("dev", `src file removed: ${filename}`);
+        _ourinloggerjs.logger.warn("dev", `src archivo removed:${filename}`);
         return;
       }
       _ourinloggerjs.logger.success("dev", `src changed: ${filename}`);
@@ -283,12 +283,12 @@ async function main() {
   const bCount = Array.isArray(savedBanned) ? savedBanned.length : 0;
   _ourinloggerjs.logger.success(
     "database",
-    `Database sukses ke-load | Mode: ${_configjs2.default.mode} | Premium: ${pCount} | Banned: ${bCount}`,
+    `El debate de datos tiene éxito${_configjs2.default.mode}* Premium:${pCount} | Banned: ${bCount}`,
   );
 
   const pluginsPath = _path2.default.join(process.cwd(), "plugins");
   const pluginCount = await _ourinpluginsjs.loadPlugins.call(void 0, pluginsPath);
-  _ourinloggerjs.logger.success("plugin", `Sukses muat ${pluginCount} plugin!`);
+  _ourinloggerjs.logger.success("plugin", `Sukses carga${pluginCount} plugin!`);
 
   if (_optionalChain([_configjs2.default, 'access', _13 => _13.dev, 'optionalAccess', _14 => _14.enabled]) && _optionalChain([_configjs2.default, 'access', _15 => _15.dev, 'optionalAccess', _16 => _16.watchPlugins]))
     startDevWatcher(pluginsPath);
@@ -300,7 +300,7 @@ async function main() {
   _ourinschedulerjs.initScheduler.call(void 0, _configjs2.default);
 
   const bootTime = Date.now() - startTime;
-  _ourinloggerjs.logger.success("boot", `Bot nyala mantap dalam ${bootTime}ms 🚀`);
+  _ourinloggerjs.logger.success("boot", `Aquí está. Es tan profundo.${bootTime}ms 🚀`);
   _ourinloggerjs.divider.call(void 0, );
   await _ourinloggerjs.spinText.call(void 0, "network", "Opening WhatsApp connection tunnel...", {
     duration: 900,
@@ -370,9 +370,9 @@ async function main() {
         try {
           await _ourinantibanjs.initializeOurinAntiban.call(void 0, sock);
         } catch (error) {
-          _ourinloggerjs.logger.error("ANTIBAN", `Gagal inisialisasi: ${error.message}`);
+          _ourinloggerjs.logger.error("ANTIBAN", `Fallido inisialisasi:${error.message}`);
         }
-        _ourinloggerjs.logConnection.call(void 0, "connected", _optionalChain([sock, 'access', _23 => _23.user, 'optionalAccess', _24 => _24.name]) || "Bot");
+        _ourinloggerjs.logConnection.call(void 0, "connected", _optionalChain([sock, 'access', _23 => _23.user, 'optionalAccess', _24 => _24.name]) || "♪");
         _ourinschedulerjs.loadScheduledMessages.call(void 0, sock);
         _ourinschedulerjs.startGroupScheduleChecker.call(void 0, sock);
         _ourinschedulerjs.startSewaChecker.call(void 0, sock);
@@ -410,15 +410,15 @@ async function main() {
             }
           }
         } catch (e) {
-          _ourinloggerjs.logger.error("JADIBOT", `Gagal memulihkan: ${e.message}`);
+          _ourinloggerjs.logger.error("JADIBOT", `Fallido memulihkan:${e.message}`);
         }
 
         const devLabel = _optionalChain([_configjs2.default, 'access', _25 => _25.dev, 'optionalAccess', _26 => _26.enabled]) ? ` ${_ourinloggerjs.c.yellow("• dev")}` : "";
         _ourinmemorymonitorjs.startMemoryMonitor.call(void 0, );
         _ourintempcleanerjs.startTempCleaner.call(void 0, );
         _ourindataprunerjs.startDailyPruner.call(void 0, );
-        _ourinloggerjs.logger.success("YEYYYY", `Semua sistem udah jalan mantap, langsug saja🚀`);
-        _ourinloggerjs.logger.success("NOTE", `Kalau ada error. mohon dimaklumi, soalnnya bukan bot bagus :)`);
+        _ourinloggerjs.logger.success("YEYYYY", `Todos los sistemas en la carretera son buenos, así que sólo langsug🚀`);
+        _ourinloggerjs.logger.success("NOTE", `Si hay error, por favor se le diga, el problema no es una buena bota: )`);
         _ourinloggerjs.divider.call(void 0, );
       }
     },

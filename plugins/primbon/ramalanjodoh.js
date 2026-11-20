@@ -18,7 +18,7 @@ const pluginConfig = {
 
 async function handler(m, { sock }) {
     if (m.args.length < 8) {
-        return m.reply(`💑 *ʀᴀᴍᴀʟᴀɴ ᴊᴏᴅᴏʜ*\n\n> Format:\nrama1 tgl1 bln1 thn1 nama2 tgl2 bln2 thn2\n\n\`Contoh:\n${m.prefix}ramalanjodoh putu 16 11 2007 keyla 1 1 2008\``)
+        return m.reply(`💑*ʀᴀᴍᴀʟᴀɴ ᴊᴏᴅᴏʜ*\n\n> Formato:\nRama1 tgl1 Bl1 thn1 nombre 2 tgl2 bn2 thn2\n\n\`Ejemplo:\n${m.prefix}ramalanjodoh putu 16 11 2007 keyla 1 1 2008\``)
     }
     
     const [nama1, tgl1, bln1, thn1, nama2, tgl2, bln2, thn2] = m.args
@@ -26,12 +26,12 @@ async function handler(m, { sock }) {
     m.react('💑')
     
     try {
-        const url = `https://api.siputzx.my.id/api/primbon/ramalanjodoh?nama1=${encodeURIComponent(nama1)}&tgl1=${tgl1}&bln1=${bln1}&thn1=${thn1}&nama2=${encodeURIComponent(nama2)}&tgl2=${tgl2}&bln2=${bln2}&thn2=${thn2}`
+        const url = `https://api.siputzx.my.id/api/primbon/ramalanjodoh?nama1=${encodeURIComponent(nama1)}&tgl1=${tgl1}&bln1=${bln1}&thn1=${thn1}Para amar nombres =${encodeURIComponent(nama2)}&tgl2=${tgl2}&bln2=${bln2}&thn2=${thn2}`
         const { data } = await _axios2.default.get(url, { timeout: 30000 })
         
         if (!_optionalChain([data, 'optionalAccess', _ => _.status]) || !_optionalChain([data, 'optionalAccess', _2 => _2.data, 'optionalAccess', _3 => _3.result])) {
             m.react('❌')
-            return m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> Gagal meramal`)
+            return m.reply(`❌*ɢᴀɢᴀʟ*\n\nGaggamal`)
         }
         
         const r = data.data.result

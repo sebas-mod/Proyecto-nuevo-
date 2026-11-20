@@ -2,7 +2,7 @@
     name: 'cekhoki',
     alias: ['hoki', 'lucky'],
     category: 'cek',
-    description: 'Cek seberapa hoki kamu',
+    description: 'Mira cuántos hockey eres.',
     usage: '.cekhoki <nama>',
     example: '.cekhoki Budi',
     isOwner: false,
@@ -31,12 +31,12 @@ async function handler(m) {
         desc = 'Sabar ya, lagi apes 😅'
     }
     
-    let txt = mentioned === m.sender ? `Hai @${mentioned.split('@')[0]}
+    let txt = mentioned === m.sender ? `Hola @${mentioned.split('@')[0]}
     
-Tingkat kehokian kamu *${percent}%*
-\`\`\`${desc}\`\`\`` : `Kamu ingin ngecek tingkat kehokian @${mentioned.split('@')[0]} yak? 
+Tu tasa de hipódromo *${percent}%*
+\`\`\`${desc}\`\`\`` : `Quieres ver el nivel de hobby${mentioned.split('@')[0]} yak? 
     
-Tingkat kehokian dia sebesar *${percent}%*
+Es tan grande como un pasatiempo.${percent}%*
 \`\`\`${desc}\`\`\``
     
     await m.reply(txt, { mentions: [mentioned] })

@@ -4,7 +4,7 @@ const pluginConfig = {
     name: 'livescore',
     alias: ['skorbola', 'livebola', 'skor'],
     category: 'info',
-    description: 'Menampilkan live score pertandingan sepak bola dari Goal.com',
+    description: 'Asistir a un juego de puntuación en vivo de fútbol de Goal.',
     usage: '.livescore',
     example: '.livescore',
     isOwner: false,
@@ -27,7 +27,7 @@ async function ambilLivescore(edisi = 'id') {
     const url = edisi === 'id' ? 'https://www.goal.com/id/livescore' : `https://www.goal.com/${edisi}/live-scores`;
     const res = await _axios2.default.get(url, { headers: _headerGacor, timeout: 15000 });
     const cocok = res.data.match(/__NEXT_DATA__" type="application\/json">(.*?)<\/script>/s);
-    if (!cocok) throw new Error('Gagal menemukan data skor');
+    if (!cocok) throw new Error('Gagalt encontró los datos de registro');
     const json = JSON.parse(cocok[1]);
     const liveScores = _optionalChain([json, 'optionalAccess', _ => _.props, 'optionalAccess', _2 => _2.pageProps, 'optionalAccess', _3 => _3.content, 'optionalAccess', _4 => _4.liveScores]);
     if (!liveScores) throw new Error('Data liveScores kosong');
@@ -39,9 +39,9 @@ async function ambilLivescore(edisi = 'id') {
 
 function _statusIndo(status) {
   const map = {
-    FIXTURE: 'Belum Mulai',
+    FIXTURE: 'Aún no Empieza',
     LIVE: 'Berlangsung',
-    FINISHED: 'Selesai',
+    FINISHED: 'Terminado',
     POSTPONED: 'Ditunda',
     CANCELLED: 'Dibatalkan',
     HALF_TIME: 'Turun Minum'
@@ -74,10 +74,10 @@ async function handler(m, { text }) {
         
         if (!rapi || rapi.length === 0) {
             await m.react('❌');
-            return m.reply(`⚽ *LIVESCORE BOLA* ⚽\n\nSaat ini tidak ada pertandingan yang sedang berlangsung atau dijadwalkan.`);
+            return m.reply(`⚽* LIVESSCORE BOLA*⚽\n\nActualmente no hay juego ni se está programando.`);
         }
         
-        let caption = `⚽ *LIVE SCORE BOLA HARI INI* ⚽\n\n`;
+        let caption = `⚽* LIVE SCORE BOLA Hoy *⚽\n\n`;
         
         let count = 0;
         for (const grup of rapi) {
@@ -109,7 +109,7 @@ async function handler(m, { text }) {
     } catch (e) {
         console.error(e);
         await m.react('❌');
-        m.reply(`❌ *GAGAL MENGAMBIL SKOR*\n\nMaaf, sistem gagal mengambil data live score saat ini. Error: _${e.message}_`);
+        m.reply(`❌* Fallido TAKE PUNACION *\n\nLo sentimos, el nei pudo recperar los datos de la pendiación en vivo actual.${e.message}_`);
     }
 }
 

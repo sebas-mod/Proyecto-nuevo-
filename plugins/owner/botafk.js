@@ -4,7 +4,7 @@ const pluginConfig = {
     name: 'botafk',
     alias: ['afkbot', 'afkmode'],
     category: 'owner',
-    description: 'Mode AFK untuk bot - bot tidak merespon command, hanya reply pesan AFK',
+    description: 'El modo AFK para el bot - el bot no responde al comando, sólo responde el mensaje AFK',
     usage: '.botafk <alasan>',
     example: '.botafk Lagi istirahat',
     isOwner: true,
@@ -33,7 +33,7 @@ async function handler(m, { sock }) {
             `┃ ⏱️ ᴅᴜʀᴀsɪ: \`${duration}\`\n` +
             `┃ 📝 ᴀʟᴀsᴀɴ: \`${currentAfk.reason || '-'}\`\n` +
             `╰┈┈⬡\n\n` +
-            `> Bot siap menerima command!`
+            `- ¡Prepárate para tomar el mando!`
         )
     } else {
         const reason = m.args.join(' ') || 'AFK'
@@ -52,12 +52,12 @@ async function handler(m, { sock }) {
             `┃ ⏰ sᴇᴊᴀᴋ: \`${_momenttimezone2.default.call(void 0, ).tz('Asia/Jakarta').format('HH:mm:ss')}\`\n` +
             `╰┈┈⬡\n\n` +
             `╭┈┈⬡「 🔒 *ᴀᴋsᴇs* 」\n` +
-            `┃ ✅ Owner bot\n` +
-            `┃ ✅ Bot sendiri (fromMe)\n` +
-            `┃ ❌ Semua user lain\n` +
+            `┃ ✅Propietario bot\n` +
+            `┃ ✅Vive por ti mismo (de mí)\n` +
+            `┃ ❌Todos los demás usuarios\n` +
             `╰┈┈⬡\n\n` +
-            `> User lain akan dapat pesan AFK\n` +
-            `> Ketik \`${m.prefix}botafk\` untuk kembali online`
+            `Ez otro usuario recibirá un mensaje AFK\n` +
+            `> Escribe\`${m.prefix}botafk\`Para volver a la línea.`
         )
     }
 }
@@ -68,10 +68,10 @@ function formatDuration(ms) {
     const hours = Math.floor(minutes / 60)
     const days = Math.floor(hours / 24)
     
-    if (days > 0) return `${days} hari ${hours % 24} jam`
-    if (hours > 0) return `${hours} jam ${minutes % 60} menit`
-    if (minutes > 0) return `${minutes} menit ${seconds % 60} detik`
-    return `${seconds} detik`
+    if (days > 0) return `${days}el${hours % 24}hora`
+    if (hours > 0) return `${hours}hora${minutes % 60}minuto`
+    if (minutes > 0) return `${minutes}minuto${seconds % 60}segundo`
+    return `${seconds}segundo`
 }
 
 exports.config = pluginConfig; exports.handler = handler;

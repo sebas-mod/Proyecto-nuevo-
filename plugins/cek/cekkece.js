@@ -2,7 +2,7 @@
     name: 'cekkece',
     alias: ['kece', 'cool'],
     category: 'cek',
-    description: 'Cek seberapa kece kamu',
+    description: 'Mira cuánto te odio.',
     usage: '.cekkece <nama>',
     example: '.cekkece Budi',
     isOwner: false,
@@ -28,15 +28,15 @@ async function handler(m) {
     } else if (percent >= 30) {
         desc = 'Sedikit kece 😊'
     } else {
-        desc = 'Biasa aja, tapi tetep keren! 🙂'
+        desc = 'Es normal, pero sigue siendo genial!🙂'
     }
     
-    let txt = mentioned === m.sender ? `Hai @${mentioned.split('@')[0]}
+    let txt = mentioned === m.sender ? `Hola @${mentioned.split('@')[0]}
     
-Tingkat kekecean kamu *${percent}%*
-\`\`\`${desc}\`\`\`` : `Kamu ingin ngecek tingkat kekecean @${mentioned.split('@')[0]} yak? 
+Nivele su decepción *${percent}%*
+\`\`\`${desc}\`\`\`` : `Quieres ver el nivel de decepción${mentioned.split('@')[0]} yak? 
     
-Tingkat kekecean dia sebesar *${percent}%*
+Tasa de su decepción como grande${percent}%*
 \`\`\`${desc}\`\`\``
     
     await m.reply(txt, { mentions: [mentioned] })

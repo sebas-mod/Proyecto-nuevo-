@@ -53,11 +53,11 @@ process.on("uncaughtException", (err) => {
 
 /**
  * Cache LID to JID mapping
- * Panggil ini saat memproses group metadata untuk menyimpan mapping
+* Llame esto mientras procesa metadatos de grupo para almacenar mapeo
  *
  * HANDLES TWO DIFFERENT STRUCTURES:
- * 1. groupMetadata.participants: { id: PN, lid: LID, admin }
- * 2. GroupHandler events:        { id: LID, phoneNumber: PN, admin }
+* 1. groupMetadata.
+* 2.
  *
  * @param {Object[]} participants - Array participant
  */
@@ -97,17 +97,17 @@ function cacheParticipantLids(participants = []) {
 
 /**
  * Get cached JID for a LID
- * @param {string} lid - LID atau LID-converted JID
- * @returns {string|null} Cached JID atau null jika tidak ada
+* @ param{string}lid - LD o LD - JID convertidos
+* @ devuelve { cadena dafu } Caché JID o nul si no
  */
 function getCachedJid(lid) {
   return lidCache.get(lid) || null;
 }
 
 /**
- * Cek apakah JID adalah format LID
- * @param {string} jid - JID untuk dicek
- * @returns {boolean} True jika LID
+* Comproba si JID es un forte LID
+* @ param{string}jid @-@ JID para interceptar
+* @ devuelves{boolean}Cierto si LD
  */
 function isLid(jid) {
   if (!jid) return false;
@@ -115,11 +115,11 @@ function isLid(jid) {
 }
 
 /**
- * Cek apakah JID adalah hasil konversi LID yang salah
- * (JID dengan suffix @s.whatsapp.net tapi nomornya adalah LID number, bukan phone number)
- * LID number biasanya: sangat panjang, tidak dimulai dengan kode negara normal
- * @param {string} jid - JID untuk dicek
- * @returns {boolean} True jika kemungkinan LID yang sudah dikonversi
+* Comproba si JID es el resultado equivocado de la convergencia LED
+* ( JID CON SUFFIx@ s. Whatsappp. Net pero el número es LED número, no número de teléfono )
+* NUMBER LED SOLO: Muy largo, no comenzó con el código de estado normal
+* @ param{string}jid @-@ JID para interceptar
+* @ devuelves{boolean}Verdadero si lo posible llevó a un LID ya conversado
  */
 function isLidConverted(jid) {
   if (!jid) return false;
@@ -261,12 +261,12 @@ function isLidConverted(jid) {
 }
 
 /**
- * Convert LID ke format JID standard
- * CATATAN: LID memiliki ID unik yang berbeda dari nomor telepon.
- * Fungsi ini hanya mengganti suffix, untuk mendapatkan nomor asli
- * gunakan resolveLidFromParticipants dengan group metadata.
- * @param {string} jid - JID yang mungkin LID
- * @returns {string} JID dalam format @s.whatsapp.net
+* Convertir LD en la forma de soporte JID
+El LID tiene un ID único que es diferente del número de teléfonos.
+* Está función sólo tiene la oportunidadx, para conseguir un número ágil
+* Use resolve Live From Participants with group metadata.
+* @ param{string}Jid @-@ JID QUE LUZ LID
+* @ devuelves{string}JID en forte @ s. whatsapp.
  */
 function lidToJid(jid) {
   if (!jid) return jid;
@@ -294,9 +294,9 @@ function lidToJidSafe(jid) {
 }
 
 /**
- * Extract nomor dari JID apapun (termasuk LID)
+* Exnúmero de pista de cualquier JID ( LOVED LID )
  * @param {string} jid - JID
- * @returns {string} Nomor telepon
+* @ devuelves{string}Número de telefono
  */
 async function extractNumber(jid) {
   if (!jid) return "";
@@ -304,14 +304,14 @@ async function extractNumber(jid) {
 }
 
 /**
- * Resolve LID atau LID-converted JID ke JID asli menggunakan group metadata
- * Participant structure dari ourin (groups.js):
- * - id: phone_number atau jid (tergantung addressingMode)
- * - lid: LID format
- * - admin: type admin
- * @param {string} jid - JID yang mungkin LID atau LID-converted
- * @param {Object[]} participants - Array participant dari group metadata
- * @returns {string} JID yang sudah resolve ke nomor asli
+* Resolve LD o LD - JID convertido a AJD asli utiliza metadatos de grupo
+* Los participantes estructuran de nuestro (grupos. js ):
+* - id: número de teléfono o jid (horgado direcciónMode )
+* - id: forma de LD
+* - admin: tipo admin
+* @ param{string}jid - JID que puede ser LD o LD - convertido
+- Aprendizaje de metadatos de grupo
+* @ devuelves{string}JID que ya ha resuelto el número de asli
  */
 function resolveLidFromParticipants(jid, participants = []) {
   if (!jid) return jid;
@@ -351,22 +351,22 @@ function resolveLidFromParticipants(jid, participants = []) {
 }
 
 /**
- * Resolve JID yang mungkin LID-converted ke JID asli
- * Fungsi ini menangani case dimana JID sudah punya @s.whatsapp.net tapi nomornya adalah LID number
- * @param {string} jid - JID untuk diresolve
- * @param {Object[]} participants - Array participant dari group metadata
- * @returns {string} JID dengan nomor telepon asli
+* Resolve JID que podría LD - convertir a Agli JID
+* Está función es el caso en el que JID ya tiene @ s.
+* @ param{string}JID para resolver
+- Aprendizaje de metadatos de grupo
+* @ devuelves{string}JID con número de teléfono original
  */
 function resolveAnyLidToJid(jid, participants = []) {
   if (!jid) return jid;
 
-  // Check cache first (penting untuk goodbye dimana participant sudah keluar)
+  //Comprobar la empresa cache ( importante para el adiós donde los participantes ya están fuera )
   const cached = getCachedJid(jid);
   if (cached) {
     return cached;
   }
 
-  // Also check LID format in cache
+  //También comprobar. forte LED en caché
   if (jid.endsWith("@s.whatsapp.net")) {
     const lidFormat = jid.replace("@s.whatsapp.net", "@lid");
     const cachedFromLid = getCachedJid(lidFormat);
@@ -443,9 +443,9 @@ function convertLidArray(jids, participants = []) {
 }
 
 /**
- * Decode JID dan kembalikan dalam format standard
- * @param {string} jid - JID untuk didecode
- * @returns {string|null} JID yang sudah didecode atau null
+* Decodificar JID y devolverlo en forma estándar
+* @ param{string}Jid - JID a decodificar
+* @ devuelve { cadena dhalul } decodificado o nul
  */
 function decodeAndNormalize(jid) {
   if (!jid) return null;
@@ -462,7 +462,7 @@ function decodeAndNormalize(jid) {
 }
 
 /**
- * Konversi participant JID dari message
+* Participante de conversión JID del mensaje
  * @param {Object} msg - Message object
  * @param {Object} sock - Socket connection
  * @returns {Promise<string>} Resolved participant JID
@@ -486,13 +486,13 @@ async function resolveParticipant(msg, sock) {
 }
 
 /**
- * Helper untuk mendapatkan JID asli dari participant (dengan group metadata)
- * Berdasarkan struktur participant dari Baileys:
- * - id: bisa LID atau JID asli
- * - jid: JID asli (nomor telepon)
- * - lid: LID untuk participant
- * @param {Object} participant - Participant object dari groupMetadata.participants
- * @returns {string} JID yang bisa digunakan untuk mention
+* Ayudante a obtener un Agli JID de participante (con metadatos de grupo)
+* Basado en la estructura de partispant de Baileys:
+* - id: podría ser LD o JID asli
+* - jid: Agli JID ( número de teléfono)
+* - id: LD para participante
+* @ param{Object}participantes - Objeto de grupoMetadatos participantes.
+* @ devuelves{string}Un posible JID por mencionar
  */
 function getParticipantJid(participant) {
   if (!participant) return "";
@@ -506,7 +506,7 @@ function getParticipantJid(participant) {
     return participant.jid;
   }
 
-  // Fallback to p.id if it's a real JID (bukan LID dan bukan LID-converted)
+  //Retroceder a p.
   if (
     participant.id &&
     !participant.id.endsWith("@lid") &&
@@ -515,13 +515,13 @@ function getParticipantJid(participant) {
     return participant.id;
   }
 
-  // Fallback: konversi LID ke format JID (ini mungkin masih salah)
+  //Fallback: Conversiones LID a JID forte (esto puede estar todavía mal )
   return lidToJid(participant.id || participant.lid || "");
 }
 
 /**
- * Convert semua participant IDs ke format yang bisa di-mention
- * @param {Object[]} participants - Array participant dari groupMetadata
+* Convertir todos los IDs de los participantes en un formato que puede ser -mención
+* @ param
  * @returns {string[]} Array of JIDs
  */
 function getParticipantJids(participants = []) {

@@ -6,7 +6,7 @@ const pluginConfig = {
     name: 'swm',
     alias: ['wm', 'stickerwm', 'stickermark', 'colong'],
     category: 'sticker',
-    description: 'Mengganti packname dan author pada sticker',
+    description: 'Sustituir el nombre de paquete y subastador en pegatinas',
     usage: '.swm <packname> atau .swm <packname>|<author>',
     example: '.swm BotName',
     isOwner: false,
@@ -24,7 +24,7 @@ async function handler(m, { sock, config: botConfig }) {
     if (!quoted) {
         return m.reply(
             `🖼️ *sᴛɪᴄᴋᴇʀ ᴡᴀᴛᴇʀᴍᴀʀᴋ*\n\n` +
-            `> Reply sticker dengan caption:\n` +
+            `Responder pegatina con capción:\n` +
             `> \`${m.prefix}swm packname\`\n\n` +
             `*ᴄᴏɴᴛᴏʜ:*\n` +
             `> \`${m.prefix}swm Ourin-AI\`\n` +
@@ -34,14 +34,14 @@ async function handler(m, { sock, config: botConfig }) {
     
     const isSticker = quoted.type === 'stickerMessage' || quoted.isSticker
     if (!isSticker) {
-        return m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> Reply pesan sticker, bukan ${_optionalChain([quoted, 'access', _ => _.type, 'optionalAccess', _2 => _2.replace, 'call', _3 => _3('Message', '')]) || 'media lain'}`)
+        return m.reply(`❌*ɢᴀɢᴀʟ*\n\nResponder ordena una pegatina, ¿no?${_optionalChain([quoted, 'access', _ => _.type, 'optionalAccess', _2 => _2.replace, 'call', _3 => _3('Message', '')]) || 'media lain'}`)
     }
     
     const input = _optionalChain([m, 'access', _4 => _4.text, 'optionalAccess', _5 => _5.trim, 'call', _6 => _6()])
     if (!input) {
         return m.reply(
             `❌ *ɢᴀɢᴀʟ*\n\n` +
-            `> Masukkan packname\n\n` +
+            `*Pon el nombre de la mochila*\n\n` +
             `*ᴄᴏɴᴛᴏʜ:*\n` +
             `> \`${m.prefix}swm Ourin-AI\`\n` +
             `> \`${m.prefix}swm Ourin-AI|LuckyArchz\` _(+ author)_`
@@ -66,7 +66,7 @@ async function handler(m, { sock, config: botConfig }) {
         
         if (!buffer || buffer.length === 0) {
             m.react('❌')
-            return m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> Gagal mendownload sticker`)
+            return m.reply(`❌*ɢᴀɢᴀʟ*\n\n*Cargando pegatinas descargables*`)
         }
         
         const exifOpts = { packname, author, emojis: ['🤖'] }

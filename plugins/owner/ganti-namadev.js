@@ -5,7 +5,7 @@ const pluginConfig = {
     name: 'ganti-namadev',
     alias: ['setnamadev', 'setnamedev', 'gantideveloper'],
     category: 'owner',
-    description: 'Ganti nama developer di config.js',
+    description: 'Desarrollo de nombres Cambia en config.',
     usage: '.ganti-namadev <nama baru>',
     example: '.ganti-namadev Lucky Archz',
     isOwner: true,
@@ -21,7 +21,7 @@ async function handler(m, { sock, config }) {
     const newName = m.args.join(' ')
     
     if (!newName) {
-        return m.reply(`👨‍💻 *ɢᴀɴᴛɪ ɴᴀᴍᴀ ᴅᴇᴠᴇʟᴏᴘᴇʀ*\n\n> Nama saat ini: *${_optionalChain([config, 'access', _ => _.bot, 'optionalAccess', _2 => _2.developer]) || '-'}*\n\n*Penggunaan:*\n\`${m.prefix}ganti-namadev <nama baru>\``)
+        return m.reply(`👨‍💻*ɢᴀɴᴛɪ ɴᴀᴍᴀ ᴅᴇᴠᴇʟᴏᴘᴇʀ*\n\nNombre actual: *${_optionalChain([config, 'access', _ => _.bot, 'optionalAccess', _2 => _2.developer]) || '-'}*\n\n*Uso:*\n\`${m.prefix}cambia-namadev<nama baru>\``)
     }
     
     try {
@@ -30,14 +30,14 @@ async function handler(m, { sock, config }) {
         
         configContent = configContent.replace(
             /developer:\s*['"]([^'"]*)['"]/,
-            `developer: '${newName}'`
+            `desarrollador: '${newName}'`
         )
         
         _fs2.default.writeFileSync(configPath, configContent)
         
         config.bot.developer = newName
         
-        m.reply(`✅ *ʙᴇʀʜᴀsɪʟ*\n\n> Nama developer diganti ke: *${newName}*`)
+        m.reply(`✅*ʙᴇʀʜᴀSɪʟ*\n\nEl nombre del desarrollo cambió a: *${newName}*`)
         
     } catch (error) {
         await m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName))

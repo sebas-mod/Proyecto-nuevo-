@@ -3,7 +3,7 @@ var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 
 const pluginConfig = {
     name: ['htpremium', 'hidetagpremium', 'htprem'],
     category: 'group',
-    description: 'Hidetag dengan support reply pesan (teks/media)',
+    description: 'Escondite con respuesta de soporte ( texto / medios )',
     usage: '.htprem [pesan] atau reply pesan',
     example: '.htprem atau reply pesan lalu .htprem',
     isOwner: false,
@@ -106,7 +106,7 @@ async function handler(m, { sock }) {
             const finalText = text || quotedText
 
             if (!finalText) {
-                return m.reply('❌ *Pesan kosong*')
+                return m.reply('❌*Mensaje vacio*')
             }
 
             return sock.sendMessage(m.chat, {
@@ -116,11 +116,11 @@ async function handler(m, { sock }) {
         }
         if (!text) {
             return m.reply(
-                `📢 *HIDETAG PREMIUM*\n\n` +
-                `• Reply pesan lalu ketik \`${m.prefix}ht\`\n` +
-                `• Atau ketik \`${m.prefix}ht <custom tag> | <pesan>\`\n\n` +
-                `• Contoh: \`${m.prefix}ht everyone | hai semua\`\n\n` +
-                `Support: teks, gambar, video, sticker, audio, dokumen`
+                `📢> 91; PREMUM DE HIDETAG > 93;\n\n` +
+                `•Responder mensaje y haga clic\`${m.prefix}ht\`\n` +
+                `•O escribe\`${m.prefix}ht <custom tag> | <pesan>\`\n\n` +
+                `•Ejemplo:\`${m.prefix}*Todo el mundo es tú*\`\n\n` +
+                `Soporte: texto, imagen, vídeo, pegatina, audio, documento`
             )
         }
 

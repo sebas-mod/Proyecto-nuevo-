@@ -10,7 +10,7 @@ const pluginConfig = {
   name: "pap",
   alias: ["papcewe", "papcowo", "papfemboy"],
   category: "search",
-  description: "Minta pap cewe, cowo, atau femboy dari Pinterest",
+  description: "Solicitar un cewe, niño, o femboy de Pinterest",
   usage: ".pap <cewe/cowo/femboy>",
   example: ".pap cewe",
   isOwner: false,
@@ -27,7 +27,7 @@ async function handler(m, { sock }) {
   const validTypes = ["cewe", "cowo", "femboy"];
 
   if (!arg || !validTypes.includes(arg)) {
-    return m.reply("❌ Pilih salah satu tipe pap yang tersedia: `cewe`, `cowo`, atau `femboy`.\n\nContoh: `.pap cewe`");
+    return m.reply("❌Seleccione uno de los tipos de pap disponibles:`*Nosotros*`.`Chicos.`, o`Femboy`.\n\nEjemplo:`- ¡Papá!`");
   }
 
   await m.react("🕕");
@@ -42,7 +42,7 @@ async function handler(m, { sock }) {
     const results = _optionalChain([data, 'optionalAccess', _5 => _5.data, 'optionalAccess', _6 => _6.results, 'optionalAccess', _7 => _7.filter, 'call', _8 => _8(item => item.image_url)]);
     if (!results || results.length === 0) {
       await m.react("❌");
-      return m.reply(`❌ Waduh, pap ${query} lagi kosong nih. Coba lagi nanti.`);
+      return m.reply(`❌ Waduh, pap ${query} otra vez vacio aquí. Intentalo mas tarde.`);
     }
 
     const randomItem = results[Math.floor(Math.random() * results.length)];
@@ -50,7 +50,7 @@ async function handler(m, { sock }) {
 
     if (!imageUrl) {
       await m.react("❌");
-      return m.reply("⚠️ Gambar tidak tersedia.");
+      return m.reply("⚠EveGambar no está disponible.");
     }
 
     const mediaMessage = await _ourin.prepareWAMessageMedia.call(void 0, {
@@ -69,7 +69,7 @@ async function handler(m, { sock }) {
               imageMessage: mediaMessage.imageMessage
             },
             footer: {
-              text: "Pilih menu pap lainnya di bawah ini 👇"
+              text: "Elija otro menú de pap en está cáscara👇"
             },
             body: {
               text: `📸 *PAP ${arg.toUpperCase()}*`
@@ -120,7 +120,7 @@ async function handler(m, { sock }) {
   } catch (error) {
     console.error("[PAP Search]", error.message);
     await m.react("☢");
-    m.reply("😔 Gagal memuat PAP. Server Pinterest mungkin sedang bermasalah.");
+    m.reply("😔PAP @-@ nivel stuntman, Pinterest servidor puede estar en problemas.");
   }
 }
 

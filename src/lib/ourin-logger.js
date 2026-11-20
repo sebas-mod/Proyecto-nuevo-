@@ -2,11 +2,11 @@
 var _ourintimejs = require('./ourin-time.js'); var timeHelper = _interopRequireWildcard(_ourintimejs);
 var _ourinlidjs = require('./ourin-lid.js');
 
-// Mock gradient-string if any other file imports it from here
+//Mock gradient - string si cualquier otro archivo importa desde aquí
 const gradientMock = (text) => text;
 const gradient = () => gradientMock;
 
-// 3 Main Colors
+//3 Colores principales
 const cGreen = _chalk2.default.greenBright;
 const cWhite = _chalk2.default.whiteBright;
 const cGray = _chalk2.default.gray;
@@ -66,7 +66,7 @@ function writeLog(kind, label, detail = "") {
   };
   const tag = tags[kind] || SYM.info;
 
-  // Format: [  OK  ] Started OURIN AI
+  // Formato: [ OK ] Started OURIN AI
   const msg = `${tag} ${_chalk2.default.cyanBright(label)}${detail ? " " + cWhite(detail) : ""}`;
   console.log(msg);
 }

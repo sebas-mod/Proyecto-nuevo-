@@ -34,7 +34,7 @@ async function handler(m, { sock }) {
     const targetName = targetUser.split("@")[0];
 
     if (userWarnings.length === 0) {
-      await m.reply(`✅ @${targetName} tidak memiliki warning.`, {
+      await m.reply(`✅ @${targetName}no tiene advertencia.`, {
         mentions: [targetUser],
       });
       return;
@@ -57,7 +57,7 @@ async function handler(m, { sock }) {
     );
 
     if (usersWithWarnings.length === 0) {
-      await m.reply(`✅ Tidak ada member dengan warning di grup ini.`);
+      await m.reply(`✅No hay fotos con advertencia en este grupo.`);
       return;
     }
 
@@ -69,7 +69,7 @@ async function handler(m, { sock }) {
       txt += `*${i + 1}.* @${name} - *${count}/${maxWarns}* warning\n`;
     });
 
-    txt += `\n> Ketik \`${m.prefix}listwarn @user\` untuk detail`;
+    txt += `\n> Escribe\`${m.prefix}listwarn\`para detail`;
 
     await m.reply(txt, { mentions: usersWithWarnings });
   }

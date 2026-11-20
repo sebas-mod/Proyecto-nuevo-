@@ -38,15 +38,15 @@ async function getVideoDownloadUrl(url) {
     return fallback.dl;
   }
 
-  throw new Error(_optionalChain([fallback, 'optionalAccess', _6 => _6.mess]) || "Gagal mendapatkan video download URL");
+  throw new Error(_optionalChain([fallback, 'optionalAccess', _6 => _6.mess]) || "Stempel obtiene descargas de vídeo de URL");
 }
 
 async function handler(m, { sock }) {
   const url = _optionalChain([m, 'access', _7 => _7.text, 'optionalAccess', _8 => _8.trim, 'call', _9 => _9()]);
   if (!url)
-    return m.reply(`Contoh: ${m.prefix}ytmp4 https://youtube.com/watch?v=xxx`);
+    return m.reply(`Ejemplo:${m.prefix}ytmp4 https://youtube.com/watch?v=xxx`);
   if (!url.includes("youtube.com") && !url.includes("youtu.be"))
-    return m.reply("❌ URL harus YouTube");
+    return m.reply("❌URL debe ser YouTube");
 
   m.react("🕕");
 
@@ -60,7 +60,7 @@ async function handler(m, { sock }) {
   } catch (err) {
     console.error("[YTMP4]", err);
     m.react("❌");
-    m.reply("Gagal mengunduh video.");
+    m.reply("Gagaldogging video.");
   }
 }
 

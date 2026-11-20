@@ -15,7 +15,7 @@ const pluginConfig = {
     name: allCommands,
     alias: [],
     category: 'panel',
-    description: 'Kelola owner/ceo/reseller per server',
+    description: 'Kelola propietario / ceo / revendedor por servidor',
     usage: '.addownerv1 @user atau .listceov2',
     example: '.addresellerv1 @user',
     isOwner: false,
@@ -55,7 +55,7 @@ function capitalize(str) {
 function handler(m, { sock }) {
     const parsed = parseCommand(m.command)
     if (!parsed) {
-        return m.reply(`❌ Command tidak valid.`)
+        return m.reply(`❌El mando no es válido.`)
     }
     
     const { action, role, server } = parsed
@@ -65,7 +65,7 @@ function handler(m, { sock }) {
     if (action === 'list') {
         const list = _ourinrolescpaneljs.listByRole.call(void 0, server, role)
         if (list.length === 0) {
-            return m.reply(`📋 *ᴅᴀꜰᴛᴀʀ ${roleLabel.toUpperCase()} ${serverLabel}*\n\n> Belum ada ${role} terdaftar.`)
+            return m.reply(`📋 *ᴅᴀꜰᴛᴀʀ ${roleLabel.toUpperCase()} ${serverLabel}*\n\n*No hay*${role}registrado.`)
         }
         
         let txt = `📋 *ᴅᴀꜰᴛᴀʀ ${roleLabel.toUpperCase()} ${serverLabel}*\n\n`
@@ -73,7 +73,7 @@ function handler(m, { sock }) {
         list.forEach((num, i) => {
             txt += `${i + 1}. \`${num}\`\n`
         })
-        txt += `\n> _Role: ${roleLabel} | Server: ${serverLabel}_`
+        txt += `\n> _Role: ${roleLabel}| Servidor:${serverLabel}_`
         return m.reply(txt)
     }
     
@@ -81,9 +81,9 @@ function handler(m, { sock }) {
         const userRole = _ourinrolescpaneljs.getUserRole.call(void 0, m.sender, server)
         return m.reply(
             `❌ *ᴀᴋsᴇs ᴅɪᴛᴏʟᴀᴋ*\n\n` +
-            `> Kamu tidak bisa mengelola *${roleLabel}* di *${serverLabel}*\n` +
-            `> Role kamu: *${userRole ? capitalize(userRole) : 'Tidak ada'}*\n\n` +
-            `> Hirarki: Owner > CEO > Reseller`
+            `*No puedes manejarlo*${roleLabel}* di *${serverLabel}*\n` +
+            `# Role you #${userRole ? capitalize(userRole) : 'Tidak ada'}*\n\n` +
+            `Propietario Hei`
         )
     }
     
@@ -101,7 +101,7 @@ function handler(m, { sock }) {
             `⚠️ *ᴄᴀʀᴀ ᴘᴀᴋᴀɪ*\n\n` +
             `> \`${m.prefix}${m.command} @user\`\n` +
             `> \`${m.prefix}${m.command} 628xxx\`\n` +
-            `> Reply pesan user`
+            `Responder mensaje usuario`
         )
     }
     
@@ -132,8 +132,8 @@ function handler(m, { sock }) {
         m.react('✅')
         return m.reply(
             `✅ *${roleLabel.toUpperCase()} ᴅɪʜᴀᴘᴜs*\n\n` +
-            `> Nomor: \`${targetUser}\`\n` +
-            `> Server: *${serverLabel}*\n` +
+            `> Número:\`${targetUser}\`\n` +
+            `♪ Servidor: ♪${serverLabel}*\n` +
             `> Total: *${_ourinrolescpaneljs.listByRole.call(void 0, server, role).length}* ${role}`
         )
     }

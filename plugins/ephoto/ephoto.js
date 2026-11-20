@@ -50,7 +50,7 @@ const pluginConfig = {
     ],
     alias: ['ephoto'],
     category: 'ephoto',
-    description: 'Buat efek text keren dengan berbagai style',
+    description: '# Crea eeck text fresco con un estilo @-@',
     usage: '.<effect> <text>',
     example: '.glitchtext Ourin-AI',
     isOwner: false,
@@ -118,19 +118,19 @@ async function handler(m, { sock }) {
         const effectList = Object.keys(EFFECT_URLS).map(e => `• \`${m.prefix}${e}\``).join('\n')
         return m.reply(
             `🎨 *ᴇᴘʜᴏᴛᴏ ᴇꜰꜰᴇᴄᴛs*\n\n` +
-            `> Buat efek text keren!\n\n` +
+            `# Beat eeck text genial!\n\n` +
             `╭┈┈⬡「 📋 *ᴅᴀꜰᴛᴀʀ ᴇꜰᴇᴋ* 」\n${effectList}\n╰┈┈┈┈┈┈┈┈⬡\n\n` +
-            `> *Contoh:* ${m.prefix}glitchtext Ourin-AI`
+            `> *Ejemplo:*${m.prefix}glitchtext Ourin-AI`
         )
     }
     
     if (!text) {
-        return m.reply(`❌ *ᴇʀʀᴏʀ*\n\n> Masukkan text!\n> *Contoh:* ${m.prefix}${command} Ourin-AI`)
+        return m.reply(`❌*ᴇʀʀᴏʀ*\n\n# Ponlo en tu boca #x¡T!\n> *Ejemplo:*${m.prefix}${command} Ourin-AI`)
     }
     
     const effectUrl = EFFECT_URLS[command]
     if (!effectUrl) {
-        return m.reply(`❌ Efek tidak ditemukan`)
+        return m.reply(`❌Efectos no encontrados`)
     }
     
     await m.react('🕕')

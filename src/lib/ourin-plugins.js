@@ -3,49 +3,49 @@ var _path = require('path'); var _path2 = _interopRequireDefault(_path);
 var _ourinloggerjs = require('./ourin-logger.js');
 /**
  * @typedef {Object} PluginConfig
- * @property {string} name - Nama command (tanpa prefix)
- * @property {string[]} alias - Array alias untuk command
- * @property {string} category - Kategori plugin (owner, main, utility, fun, dll)
- * @property {string} description - Deskripsi singkat command
- * @property {string} usage - Cara penggunaan command
- * @property {string} example - Contoh penggunaan command
- * @property {boolean} isOwner - Apakah command khusus owner
- * @property {boolean} isPremium - Apakah command khusus premium user
- * @property {boolean} isGroup - Apakah command hanya untuk group
- * @property {boolean} isPrivate - Apakah command hanya untuk private chat
- * @property {boolean} isAdmin - Apakah command memerlukan admin group
- * @property {boolean} isBotAdmin - Apakah bot harus jadi admin
- * @property {number} cooldown - Cooldown dalam detik
- * @property {number} limit - Jumlah limit yang digunakan per eksekusi
- * @property {boolean} isEnabled - Apakah plugin aktif
+* @ proprie{string}nombre - Nombre del comando (sin prefix)
+- Array alias para el comando
+* @ proprie{string}categoría - enchufe de categoría (propietario, principal, utilidad, diversión, dll )
+* @ proprie{string}descripción - Decryption short comando
+* @ proprie{string}Uage - Mando de uso de cara
+* @ proprie{string}examp - comando de uso de la palabra usuario
+* @ proprie{boolean}iisOwner - Es un dueño especial del Comando
+* @ proprie{boolean}isPremium - Es el usuario de estreno de las especies de comandos
+* @ proprie{boolean}- ¿La brújula es sólo para grupo?
+* Perfil{boolean}inavate - es compez sólo para el chat primate
+* @ proprie{boolean}isadmin - ¿El comando necesita grupo de administración
+* @ proprie{boolean}IsBotAdmin - ¿Tiene que ser un administrador
+* @ proprie{number}Enfriamiento - Enfriamiento en segundos
+* @ proprie{number}- Contar el límite utilizado por ejecución
+* @ proprie{boolean}isEnabled - Es los plugins activos
  */
 
 /**
  * @typedef {Object} Plugin
- * @property {PluginConfig} config - Konfigurasi plugin
+* @ proprie{PluginConfig}config - Configurar plugins
  * @property {PluginHandler} handler - Fungsi handler plugin
  */
 
 /**
  * @callback PluginHandler
  * @param {Object} m - Serialized message object
- * @param {Object} params - Parameter tambahan
+* @ param{Object}Params-- Parámetros adicionales
  * @param {Object} params.sock - Socket connection Baileys
  * @param {Object} params.store - Data store
- * @param {Object} params.config - Bot configuration
+* @ param{Object}param. config - configuración de spa
  * @param {Object} params.plugins - All loaded plugins
  * @returns {Promise<void>}
  */
 
 /**
  * @typedef {Object} PluginStore
- * @property {Map<string, Plugin>} commands - Map command name ke plugin
- * @property {Map<string, string>} aliases - Map alias ke command name
+* @ propriety { Carpeta<string, Plugin>comandos - Nombre del comando Carpeta al plug
+* @ propriety { Carpeta<string, string>Aliases - Carpeta alias para el nombre de comando
  * @property {Map<string, Plugin[]>} categories - Map category ke array plugins
  */
 
 /**
- * Collection untuk menyimpan semua plugins
+* Colección para almacenar todos los plugins
  * @type {PluginStore}
  */
 const pluginStore = {
@@ -55,7 +55,7 @@ const pluginStore = {
 };
 
 /**
- * Default config untuk plugin
+* Config predeterminado para plugins
  * @type {PluginConfig}
  */
 const defaultConfig = {
@@ -138,11 +138,11 @@ const removePluginFromStore = (plugin) => {
 };
 
 /**
- * Memuat satu plugin dari file
- * @param {string} filePath - Path ke file plugin
- * @returns {Plugin|null} Plugin object atau null jika gagal
+* Makin ' a plugin from a archivo
+* @ param{string}FilePath--Paths to plusin archivo
+* @ turn { Plugin Spanish } Objeto de plugin o nul si falló
  * @example
- * const plugin = await loadPlugin('./plugins/main/ping.js');
+* plugin de const = comenzar la cargaPlugin ( yup. / plugins / juego / ping. js megler );
  */
 var _url = require('url');
 
@@ -204,8 +204,8 @@ async function loadPlugin(filePath, bustCache = false) {
 
 /**
  * Mendaftarkan plugin ke store
- * @param {Plugin} plugin - Plugin untuk didaftarkan
- * @returns {boolean} True jika berhasil
+* @ param{Plugin}Plugin - Plugin para lista
+* @ devuelves{boolean}Verdadero si exitoso
  */
 function registerPlugin(plugin) {
   if (!plugin || !plugin.config || !plugin.config.name) {
@@ -293,9 +293,9 @@ function printPluginTable(plugins) {
 }
 
 /**
- * Memuat semua plugins dari directory
+* Realizar todos los plugins del directorio
  * @param {string} pluginsDir - Path ke directory plugins
- * @returns {number} Jumlah plugin yang berhasil dimuat
+* @ devuelves{number}plugins Cantidad que se cargan con éxito
  * @example
  * const count = loadPlugins('./ourin-plugins');
  * console.log(`Loaded ${count} plugins`);
@@ -364,11 +364,11 @@ async function loadPlugins(pluginsDir) {
 }
 
 /**
- * Mendapatkan plugin berdasarkan nama atau alias
- * @param {string} name - Nama command atau alias
- * @returns {Plugin|null} Plugin object atau null jika tidak ditemukan
+* Obtener el nombre basado en plugins o alias
+* @ param{string}nombre - Nombre del comando o alias
+* @ devuelve { Plugin Spanish } Objeto de plugin o nul si no se encuentra
  * @example
- * const plugin = getPlugin('menu');
+* plugins de const = getPlugin ( menú xenomous );
  * if (plugin) {
  *   await plugin.handler(m, { sock, config });
  * }
@@ -391,11 +391,11 @@ function getPlugin(name) {
 }
 
 /**
- * Mendapatkan semua plugins dalam kategori tertentu
- * @param {string} category - Nama kategori
- * @returns {Plugin[]} Array plugins dalam kategori
+* Consiguió todos los plugins en la categoría absoluta
+* @ param{string}categoría - Categoría Nombre
+* @ devuelve *
  * @example
- * const ownerPlugins = getPluginsByCategory('owner');
+* const ownerPlugins = getPlugins ByCategory (Hezowner 's friend );
  */
 function getPluginsByCategory(category) {
   if (!category) return [];
@@ -403,24 +403,24 @@ function getPluginsByCategory(category) {
 }
 
 /**
- * Mendapatkan semua kategori yang ada
- * @returns {string[]} Array nama kategori
- * @returns {string[]} Array nama kategori
+* Tengo todas las catequerías allí
+* @ returns * * string * Array 's name is caegori *
+* @ returns * * string * Array 's name is caegori *
  */
 function getCategories() {
   return Array.from(pluginStore.categories.keys());
 }
 
 /**
- * Mendapatkan semua plugins
- * @returns {Plugin[]} Array semua plugins
+* Consigue todos los plugins
+ * @returns {Plugin[]} Array todo plugins
  */
 function getAllPlugins() {
   return Array.from(pluginStore.commands.values());
 }
 
 /**
- * Mendapatkan total jumlah plugins
+* Obtener los totales de plugins saltados
  * @returns {number} Total plugins
  */
 function getPluginCount() {
@@ -428,7 +428,7 @@ function getPluginCount() {
 }
 
 /**
- * Mendapatkan semua nama command dan alias as array (Cached)
+* Tengo todo el comandante y alias como array ( Cached )
  * @returns {string[]}
  */
 function getAllCommandNames() {
@@ -436,8 +436,8 @@ function getAllCommandNames() {
 }
 
 /**
- * Mendapatkan daftar command per kategori untuk menu
- * @returns {Object<string, string[]>} Object dengan key kategori dan value array command names
+* Lista de comandos por caegori para el menú
+* @ devuelve { Obtexto<string, string[]>Obtexto con clave cathemori y nombres de comandos de array de valor
  */
 function getCommandsByCategory() {
   const result = {};
@@ -457,9 +457,9 @@ function getCommandsByCategory() {
 }
 
 /**
- * Mendapatkan info plugin untuk help
- * @param {string} name - Nama command
- * @returns {Object|null} Info plugin atau null
+* Obtener el plug ingo para ayuda
+* @ param{string}nombre - Nombre del comando
+* @ de regreso { Objetos Escucha nul } Info plugins o nul
  */
 function getPluginInfo(name) {
   const plugin = getPlugin(name);
@@ -482,8 +482,8 @@ function getPluginInfo(name) {
 
 /**
  * Reload single plugin
- * @param {string} name - Nama command untuk reload
- * @returns {boolean} True jika berhasil
+* @ param{string}nombre - Nombre del comando para la recarga
+* @ devuelves{boolean}Verdadero si exitoso
  */
 function reloadPlugin(name) {
   const plugin = getPlugin(name);
@@ -516,8 +516,8 @@ function reloadPlugin(name) {
 
 /**
  * Disable plugin
- * @param {string} name - Nama command untuk disable
- * @returns {boolean} True jika berhasil
+* @ param{string}nombre - Nombre del comando para deshabilitación
+* @ devuelves{boolean}Verdadero si exitoso
  */
 function disablePlugin(name) {
   const plugin = getPlugin(name);
@@ -529,8 +529,8 @@ function disablePlugin(name) {
 
 /**
  * Enable plugin
- * @param {string} name - Nama command untuk enable
- * @returns {boolean} True jika berhasil
+* @ param{string}nombre - Nombre del comando para habilitar
+* @ devuelves{boolean}Verdadero si exitoso
  */
 function enablePlugin(name) {
   const plugin = getPlugin(name);
@@ -541,9 +541,9 @@ function enablePlugin(name) {
 }
 
 /**
- * Cek apakah plugin aktif
- * @param {string} name - Nama command
- * @returns {boolean} True jika plugin aktif
+* Comprobar si los plugins están activos
+* @ param{string}nombre - Nombre del comando
+* @ devuelves{boolean}Es verdad si los plugins están activos
  */
 function isPluginEnabled(name) {
   const plugin = getPlugin(name);

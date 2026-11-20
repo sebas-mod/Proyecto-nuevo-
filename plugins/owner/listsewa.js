@@ -4,7 +4,7 @@ const pluginConfig = {
     name: 'listsewa',
     alias: ['sewalist', 'daftarsewa'],
     category: 'owner',
-    description: 'Lihat daftar grup yang terdaftar sewa',
+    description: 'Ver una lista de grupos firmados',
     usage: '.listsewa',
     example: '.listsewa',
     isOwner: true,
@@ -50,10 +50,10 @@ function handler(m) {
 
     if (groupIds.length === 0) {
         return m.reply(
-            `📋 *DAFTAR SEWA*\n\n` +
+            `📋*Registrate Alquiler*\n\n` +
             `Status: *${db.db.data.sewa.enabled ? '✅ AKTIF' : '❌ NONAKTIF'}*\n` +
-            `Belum ada grup terdaftar\n\n` +
-            `Tambah dengan: *${m.prefix}addsewa <link> <durasi>*`
+            `Aún no es un grupo firmado\n\n` +
+            `Añadir con: *${m.prefix}addsewa <link> <durasi>*`
         )
     }
 
@@ -68,9 +68,9 @@ function handler(m) {
     const active = sorted.filter(id => sewaGroups[id].isLifetime || sewaGroups[id].expiredAt > Date.now())
     const expired = sorted.filter(id => !sewaGroups[id].isLifetime && sewaGroups[id].expiredAt <= Date.now())
 
-    let text = `📋 *DAFTAR SEWA*\n\n`
-    text += `Status sistem: *${db.db.data.sewa.enabled ? '✅ AKTIF' : '❌ NONAKTIF'}*\n`
-    text += `Total: *${groupIds.length}* grup (${active.length} aktif, ${expired.length} expired)\n\n`
+    let text = `📋*Registrate Alquiler*\n\n`
+    text += `Estado del sistema: *${db.db.data.sewa.enabled ? '✅ AKTIF' : '❌ NONAKTIF'}*\n`
+    text += `Total: *${groupIds.length}* grupo (${active.length}activo,${expired.length} expired)\n\n`
 
     for (let i = 0; i < sorted.length; i++) {
         const gid = sorted[i]
@@ -81,13 +81,13 @@ function handler(m) {
 
         text += `${status} *${i + 1}. ${data.name || 'Unknown'}*\n`
         text += `   ID: ${gid.split('@')[0]}\n`
-        text += `   Sisa: ${countdown}\n`
-        text += `   Ditambah: ${addedDate}\n\n`
+        text += `Restante:${countdown}\n`
+        text += `Anadido:${addedDate}\n\n`
     }
 
     text += `*AKSI:*\n`
     text += `• *${m.prefix}renewsewa <id> <durasi>* — Perpanjang\n`
-    text += `• *${m.prefix}delsewa <id>* — Hapus dari whitelist`
+    text += `• *${m.prefix}delsewa<id>*—Retirar de la lista blanca`
 
     return m.reply(text)
 }

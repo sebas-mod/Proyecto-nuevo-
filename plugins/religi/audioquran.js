@@ -5,7 +5,7 @@ const pluginConfig = {
   name: "audioquran",
   alias: ["audio-quran", "murottal"],
   category: "religi",
-  description: "Cari dan putar audio Al-Quran dari berbagai Qari (mp3quran)",
+  description: "Busca y Al 's audio spin...Qlos zarcillos de los gruñidosQari ( mp3quran )",
   usage: ".audio-quran [mode] [args]",
   example: ".audio-quran audio Sudais 1\n.audio-quran reciters\n.audio-quran suwar",
   cooldown: 15,
@@ -52,7 +52,7 @@ async function mp3quran(input) {
         Code: 200,
         Input: input,
         Result: {
-          message: `🎙️ ${list.length} qari tersedia (bahasa: ${language})`,
+          message: `🎙️ ${list.length}qari está disponible ( halasa:${language})`,
           count: list.length,
           reciters: list.map((r) => ({
             id: r.id,
@@ -100,7 +100,7 @@ async function mp3quran(input) {
         Code: 200,
         Input: input,
         Result: {
-          message: `📚 ${list.length} riwayat bacaan`,
+          message: `📚 ${list.length}historial lectura`,
           count: list.length,
           riwayat: list,
         },
@@ -115,7 +115,7 @@ async function mp3quran(input) {
         Code: 200,
         Input: input,
         Result: {
-          message: `📻 ${list.length} radio stream live`,
+          message: `📻 ${list.length}radio streaming en vivo`,
           count: list.length,
           radios: list,
         },
@@ -134,7 +134,7 @@ async function mp3quran(input) {
       if (!Number.isInteger(surahId) || surahId < 1 || surahId > 114) {
         return {
           Status: false, Code: 400, Input: input, Result: null,
-          Error: "Field 'surah' harus 1-114.",
+          Error: "Campo",
         };
       }
 
@@ -235,7 +235,7 @@ async function mp3quran(input) {
         }).sort((a, b) => a.distance - b.distance).slice(0, 5);
         return {
           Status: false, Code: 404, Input: input, Result: null,
-          Error: `Qari "${input.reciter}" gak ketemu. Suggestion terdekat: ${ranked.map((r) => r.name).join(", ")}. Atau mode "reciters" buat list lengkap.`,
+          Error: `Qari "${input.reciter}" no ketemu. Suggestion terdekat: ${ranked.map((r) => r.name).join(", ")}O un modo.`,
         };
       }
 
@@ -258,14 +258,14 @@ async function mp3quran(input) {
       if (audios.length === 0) {
         return {
           Status: false, Code: 404, Input: input, Result: null,
-          Error: `Qari ketemu (${matches.length}× match) tapi surah ${surahId} gak tersedia di moshaf-nya.`,
+          Error: `Qari ketemu (${matches.length}×pero sura${surahId}El no está sentado en su moshaf.`,
         };
       }
 
       return {
         Status: true, Code: 200, Input: input,
         Result: {
-          message: `🎵 ${audios.length} audio surah ${surahId} dari ${matches.length} qari match "${input.reciter}"`,
+          message: `🎵 ${audios.length} audio surah ${surahId}de${matches.length} qari match "${input.reciter}"`,
           matchCount: matches.length,
           audioCount: audios.length,
           firstAudio: audios[0].audioUrl,
@@ -276,7 +276,7 @@ async function mp3quran(input) {
 
     return {
       Status: false, Code: 400, Input: input, Result: null,
-      Error: `Unknown mode "${mode}". Pakai: reciters | suwar | riwayat | radios | audio`,
+      Error: `Unknown mode "${mode}". Usar: reciters | suwar | historial | radios | audio`,
     };
   } catch (e) {
     return {
@@ -293,13 +293,13 @@ async function handler(m, { sock, args }) {
   if (args.length === 0) {
     return m.reply(
       `🕌 *AUDIO QURAN*\n\n` +
-      `> Mode yang tersedia:\n` +
+      `Modo desmenuzado:\n` +
       `- \`.audio-quran reciters\` (List qari)\n` +
       `- \`.audio-quran suwar\` (List surah 1-114)\n` +
-      `- \`.audio-quran radios\` (List radio live)\n` +
-      `- \`.audio-quran riwayat\` (List bacaan)\n` +
+      `-\`.audio-quran radios\`( radio en vivo lista )\n` +
+      `-\`.audio-quran historial\`(List lectura)\n` +
       `- \`.audio-quran audio <nama_qari> <nomor_surah>\`\n\n` +
-      `*Contoh:* \`.audio-quran audio sudais 1\``
+      `*Ejemplo:*\`- Corán audio sudais 1.\``
     );
   }
 
@@ -334,7 +334,7 @@ async function handler(m, { sock, args }) {
       caption += `*Qari:* ${reciterName}\n`;
       caption += `*Moshaf:* ${moshafName}\n`;
       caption += `*Surah:* ke-${surahId}\n\n`;
-      caption += `> Sedang mengirim audio...`;
+      caption += `YafLAWA envió a un público..`;
       
       await m.reply(caption);
       
@@ -348,7 +348,7 @@ async function handler(m, { sock, args }) {
       return;
     }
     
-    // For other modes: reciters, suwar, riwayat, radios
+    //Para otros modos: repetidores, suwar, hisiyat, radios
     const input = { mode, language: "id" };
     const res = await mp3quran(input);
     
@@ -362,9 +362,9 @@ async function handler(m, { sock, args }) {
     
     if (mode === "reciters") {
       for (const q of r.reciters.slice(0, 50)) {
-        txt += `- #${q.id} *${q.name}* (${q.moshafCount} riwayat)\n`;
+        txt += `- #${q.id} *${q.name}* (${q.moshafCount}historial)\n`;
       }
-      if (r.reciters.length > 50) txt += `\n> ... +${r.reciters.length - 50} qari lainnya.`;
+      if (r.reciters.length > 50) txt += `\n> ... +${r.reciters.length - 50}qari otros.`;
     } else if (mode === "suwar") {
       for (const s of r.suwar) {
         txt += `- #${s.id} *${s.name}* (${s.type})\n`;
@@ -375,7 +375,7 @@ async function handler(m, { sock, args }) {
       }
     } else if (mode === "radios") {
       for (const rd of r.radios.slice(0, 50)) {
-        txt += `- #${rd.id} *${rd.name}*\n  Link: ${rd.url}\n`;
+        txt += `- #${rd.id} *${rd.name}*\nEnlace:${rd.url}\n`;
       }
     }
     

@@ -12,7 +12,7 @@ const pluginConfig = {
   name: "swgcall",
   alias: ["swgcsemua", "swgcbroadcast", "swgcbc", "groupstoryall"],
   category: "owner",
-  description: "Post Group Status/Story ke SEMUA grup sekaligus (border hijau)",
+  description: "Estado del grupo de nichos / Historia del club. grupo a veces ( frontera verde )",
   usage: ".swgcall <teks> atau reply media",
   example: ".swgcall Pengumuman penting!",
   isOwner: true,
@@ -36,7 +36,7 @@ async function handler(m, { sock, db }) {
     const pending = _optionalChain([global, 'access', _ => _._swgcallPending, 'optionalAccess', _2 => _2.get, 'call', _3 => _3(m.sender)]);
     if (!pending) {
       return m.reply(
-        `⚠️ *Tidak ada data pending. Kirim ulang media + .swgcall*`,
+        `⚠No hay datos pendientes. Reconectar medios +. swgcall`,
       );
     }
 
@@ -90,12 +90,12 @@ async function handler(m, { sock, db }) {
     let report =
       `✅ *ʙʀᴏᴀᴅᴄᴀsᴛ sᴡɢᴄ sᴇʟᴇsᴀɪ*\n\n` +
       `> Total: *${total}* grup\n` +
-      `> Berhasil: *${success}* ✅\n` +
-      `> Gagal: *${failed}* ❌`;
+      `*Con éxito*${success}* ✅\n` +
+      `(Sumperando)${failed}* ❌`;
 
     if (failedGroups.length > 0) {
       report +=
-        `\n\n*Grup gagal:*\n` + failedGroups.map((g) => `> • ${g}`).join("\n");
+        `\n\n*Grupo fallido:*\n` + failedGroups.map((g) => `> • ${g}`).join("\n");
     }
 
     await m.reply(report);
@@ -122,7 +122,7 @@ async function handler(m, { sock, db }) {
   if (source) {
     try {
       buffer = await source.download();
-      if (!buffer) return m.reply(`❌ Gagal mengambil media.`);
+      if (!buffer) return m.reply(`❌Gagalm tomó medios.`);
 
       const fileType = await _filetype.fileTypeFromBuffer.call(void 0, buffer);
       ext = _optionalChain([fileType, 'optionalAccess', _11 => _11.ext]) || "bin";
@@ -157,10 +157,10 @@ async function handler(m, { sock, db }) {
   } else {
     return m.reply(
       `⚠️ *ᴄᴀʀᴀ ᴘᴀᴋᴀɪ*\n\n` +
-        `> \`${m.prefix}swgcall teks\` - Story teks ke semua grup\n` +
-        `> Reply gambar/video/audio + \`${m.prefix}swgcall\`\n` +
-        `> Kirim gambar/video + caption \`${m.prefix}swgcall\`\n\n` +
-        `⚠️ _Fitur ini akan mengirim story ke SEMUA grup!_`,
+        `> \`${m.prefix}swgcall texto\`- Amor a todos los grupos\n` +
+        `# Responder imagen / video / audio +\`${m.prefix}swgcall\`\n` +
+        `Para Consorver imágenes / video + leyenda\`${m.prefix}swgcall\`\n\n` +
+        `⚠Está característica enviará una tormenta a la montaña!`,
     );
   }
 
@@ -171,7 +171,7 @@ async function handler(m, { sock, db }) {
     const groupList = Object.entries(groups);
 
     if (groupList.length === 0) {
-      return m.reply(`⚠️ *Bot tidak berada di grup manapun.*`);
+      return m.reply(`⚠*Sí, no estoy en un grupo de comida.*`);
     }
 
     if (!global._swgcallPending) global._swgcallPending = new Map();
@@ -185,7 +185,7 @@ async function handler(m, { sock, db }) {
     const mediaType = rawContent.text
       ? "Teks"
       : rawContent.image
-        ? "Gambar"
+        ? "Imagen"
         : rawContent.video
           ? "Video"
           : rawContent.audio
@@ -205,10 +205,10 @@ async function handler(m, { sock, db }) {
       text:
         `📢 *ᴋᴏɴꜰɪʀᴍᴀsɪ ʙʀᴏᴀᴅᴄᴀsᴛ sᴡɢᴄ*\n\n` +
         `> Media: *${mediaType}*\n` +
-        `> Total Grup: *${groupList.length}*\n` +
-        `> Estimasi: *~${estimatedTime} detik*\n\n` +
-        `⚠️ _Story akan dipost ke SEMUA grup!_\n` +
-        `_Tekan konfirmasi untuk melanjutkan._`,
+        `* Total Grupo: *${groupList.length}*\n` +
+        `> Estimasi: *~${estimatedTime}segundo*\n\n` +
+        `⚠* Smallville: " Smallville: " Storybrooke está a punto de ser enviado al grupo "\n` +
+        `¿Qué?`,
       contextInfo: {
         ..._ourincontextjs.saluranCtx.call(void 0, ),
         forwardedNewsletterMessageInfo: {
@@ -221,7 +221,7 @@ async function handler(m, { sock, db }) {
         {
           name: "quick_reply",
           buttonParamsJson: JSON.stringify({
-            display_text: `✅ Kirim ke ${groupList.length} Grup`,
+            display_text: `✅Envia a${groupList.length}Grupo`,
             id: `${m.prefix}swgcall --yes`,
           }),
         },
@@ -236,7 +236,7 @@ async function handler(m, { sock, db }) {
     });
   } catch (error) {
     await m.reply(
-      `❌ *ᴇʀʀᴏʀ*\n\n> Gagal mengambil daftar grup.\n> _${error.message}_`,
+      `❌*ᴇʀʀᴏʀ*\n\n- ¿Qué pasa?\n¿Qué?${error.message}_`,
     );
     if (tempFile && _fs2.default.existsSync(tempFile)) {
       try {

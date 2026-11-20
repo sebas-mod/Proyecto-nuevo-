@@ -9,16 +9,16 @@ const notifCronJobs = new Map()
 let refreshJob = null
 
 const MAKAN_MESSAGES = [
-    '🍽️ *Waktunya makan {label}!*\n\n⏰ *{jam} WIB*\n\nJangan skip makan ya, tubuh butuh asupan energi biar tetap produktif 💪\n{menu}\n\n📌 _Diatur oleh @{sender}_',
-    '🥗 *Heyy @{sender}, udah jam {jam} nih!*\n\nSaatnya isi perut dulu 🍛\nMakan yang bergizi biar badan tetap fit!\n{menu}',
-    '🍜 *Reminder makan {label}*\n\n⏰ *{jam} WIB*\n\nPerut kosong bikin mood jelek lho 😤\nYuk makan dulu sebelum lanjut aktivitas\n{menu}\n\n📌 _Diatur oleh @{sender}_',
-    '🍜 *MAKAN DULU WOYY @{sender}*\n\nPakai ? {menu}',
+    '🍽# Hora de comer #{label}*\n\n⏰*{jam}¿Qué demonios?\n\nNo omitas tu comida, necesitas consumo de energía para mantenerla productiva.💪\n{menu}\n\n📌♪ Establecer por @{sender}¿Qué?',
+    '🥗* Heeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee{sender}, las horas han terminado{jam}aquí!*\n\nEs hora de un cuerpo completo.🍛\n¡La comida nutritiva es mantener el calcetín!\n{menu}',
+    '🍜*Reminder come{label}*\n\n⏰*{jam}¿Qué demonios?\n\nPareja vacio bikin humor feo lho😤\nComamos antes de continuar la actividad.\n{menu}\n\n📌♪ Establecer por @{sender}¿Qué?',
+    '🍜 *Come Antes WOYY @{sender}*\n\nUsar?{menu}',
 ]
 
 const TIDUR_MESSAGES = [
-    '🌙 *Waktunya istirahat!*\n\n⏰ *{jam} WIB*\n\nTaruh HP-nya, pejamkan mata 😴\nTidur cukup bikin otak fresh buat besok!\n_Selamat malam_ 🌟\n\n📌 _Diatur oleh @{sender}_',
-    '💤 *Udah jam {jam} nih @{sender}!*\n\nYuk istirahat, jangan begadang terus 🛏️\nKesehatan itu investasi paling berharga\n_Mimpi indah ya_ ✨',
-    '😴 *Reminder tidur malam*\n\n⏰ *{jam} WIB*\n\nLayar HP itu musuh tidur nyenyak 📵\nMatikan notifikasi dan rebahan sekarang!\n_Good night_ 🌜\n\n📌 _Diatur oleh @{sender}_',
+    '🌙¡El tiempo es el descanso!\n\n⏰*{jam}¿Qué demonios?\n\nBaja el teléfono. Cierra los ojos.😴\n¡Pon suficiente aliento fresco en la cama!\n*Feliz noche*🌟\n\n📌♪ Establecer por @{sender}¿Qué?',
+    '💤*Ya hora{jam}aquí @{sender}*\n\nDescanse, no siga luchando🛏♪\nEs la inversión más preciosa\nSueño en, sí✨',
+    '😴*Noches deslumbrantes*\n\n⏰*{jam}¿Qué demonios?\n\nEl HP es un enemigo dormido.📵\n¡Apague las notificaciones y los cambios ahora!\n*Buenas noches*🌜\n\n📌♪ Establecer por @{sender}¿Qué?',
     '*TURU WOYY @{sender}*\n\n⏰ Udah jam *{jam}*',
 ]
 
@@ -59,7 +59,7 @@ function buildCronJobs() {
         if (!entry.enabled || !entry.jadwal) continue
         for (const jam of entry.jadwal) {
             const [h, m] = jam.split(':').map(Number)
-            const cronKey = `makan_${key}_${jam}`
+            const cronKey = `Comer${key}_${jam}`
             if (notifCronJobs.has(cronKey)) continue
 
             const job = new (0, _cron.CronJob)(`${m} ${h} * * *`, async () => {
@@ -74,7 +74,7 @@ function buildCronJobs() {
         if (!entry.enabled || !entry.jadwal) continue
         for (const jam of entry.jadwal) {
             const [h, m] = jam.split(':').map(Number)
-            const cronKey = `tidur_${key}_${jam}`
+            const cronKey = `Duerme.${key}_${jam}`
             if (notifCronJobs.has(cronKey)) continue
 
             const job = new (0, _cron.CronJob)(`${m} ${h} * * *`, async () => {
@@ -85,7 +85,7 @@ function buildCronJobs() {
         }
     }
 
-    _ourinloggerjs.logger.info('NotifScheduler', `Ada ${notifCronJobs.size} alarm notifikasi yang lagi jalan nih (${TZ})`)
+    _ourinloggerjs.logger.info('NotifScheduler', `Ahí está.${notifCronJobs.size}La alarma es la otra salida.${TZ})`)
 }
 
 async function processEntry(entry, jam, type, key, db, dateStr) {
@@ -121,11 +121,11 @@ async function processEntry(entry, jam, type, key, db, dateStr) {
         db.setting(settingKey, allData)
 
         cleanOldSentKeys(lastSent)
-        _ourinloggerjs.logger.info('NotifScheduler', `Sukses ngirim alarm ${type} ke ${entry.chatJid} (${jam})`)
+        _ourinloggerjs.logger.info('NotifScheduler', `Sukses envía asuma${type} ke ${entry.chatJid} (${jam})`)
 
         await new Promise(r => setTimeout(r, 300))
     } catch (err) {
-        _ourinloggerjs.logger.error('NotifScheduler', `Gagal ngirim alarm ${type} ke ${entry.chatJid}: ${err.message}`)
+        _ourinloggerjs.logger.error('NotifScheduler', `Alarma de emisión de gagalm${type} ke ${entry.chatJid}: ${err.message}`)
     }
 }
 

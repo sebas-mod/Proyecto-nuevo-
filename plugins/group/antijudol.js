@@ -4,7 +4,7 @@ const pluginConfig = {
     name: 'antijudol',
     alias: ['antijudi', 'nojudi', 'antislot'],
     category: 'group',
-    description: 'Deteksi konten judol di grup',
+    description: 'Contenido Detective Juool en grupo',
     usage: '.antijudol <on/off/metode> [kick/remove]',
     example: '.antijudol on',
     isOwner: false,
@@ -30,11 +30,11 @@ function handler(m) {
             `🎰 *ᴀɴᴛɪᴊᴜᴅᴏʟ*\n\n` +
             `> Status: *${status.toUpperCase()}*\n` +
             `> Mode: *${mode.toUpperCase()}*\n\n` +
-            `> Deteksi konten judol seperti judi, slot, gacor, maxwin, togel, bonus member, link alternatif, dan pola sejenis.\n\n` +
+            `# Detective Content Justul like judi, slots, acor, maxganar, togel, foto de bonificación, enlaces alternativos, y un pequeño pola lindo.\n\n` +
             `> \`${m.prefix}antijudol on\`\n` +
             `> \`${m.prefix}antijudol off\`\n` +
-            `> \`${m.prefix}antijudol metode kick\`\n` +
-            `> \`${m.prefix}antijudol metode remove\``
+            `> \`${m.prefix}antijudgment método patada\`\n` +
+            `> \`${m.prefix}método antijuguli eliminar\``
         )
     }
 
@@ -58,7 +58,7 @@ function handler(m) {
             db.setGroup(m.chat, { antijudol: 'on', antijudolMode: 'remove' })
             return m.reply('✅ *AntiJudol mode DELETE diaktifkan*')
         }
-        return m.reply(`❌ Metode tidak valid! Gunakan: \`kick\` atau \`remove\``)
+        return m.reply(`❌¡Método inválido!\`Patito\`o\`Retirar\``)
     }
 
     if (option === 'kick') {
@@ -71,7 +71,7 @@ function handler(m) {
         return m.reply('✅ *AntiJudol mode DELETE diaktifkan*')
     }
 
-    return m.reply('❌ Opsi tidak valid! Gunakan: `on`, `off`, `metode kick`, `metode remove`')
+    return m.reply('❌¡Opsi inválido!`on`.`apagado`.`metodo kick`.`metodo remove`')
 }
 
 exports.config = pluginConfig; exports.handler = handler;

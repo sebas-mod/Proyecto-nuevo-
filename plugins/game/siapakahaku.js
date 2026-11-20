@@ -4,7 +4,7 @@ _ouringamesjs.games.register('siapakahaku', {
     alias: ['siapa', 'whoami'],
     emoji: '🎭',
     title: 'SIAPAKAH AKU',
-    description: 'Tebak dari deskripsi'
+    description: 'Adivina de la descripción'
 })
 
 const { config: pluginConfig, handler, answerHandler } = _ouringamesjs.games.createPlugin('siapakahaku')

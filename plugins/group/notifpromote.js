@@ -2,7 +2,7 @@
     name: 'notifpromote',
     alias: [],
     category: 'group',
-    description: 'Toggle notifikasi saat ada yang dijadikan admin',
+    description: 'Rebajar notificaciones cuando se crea admin',
     usage: '.notifpromote on/off',
     example: '.notifpromote on',
     isOwner: false,
@@ -16,7 +16,7 @@
 
 function handler(m, { sock, db }) {
     if (!m.isAdmin && !m.isOwner) {
-        return m.reply(`❌ Hanya admin grup yang bisa menggunakan fitur ini`)
+        return m.reply(`❌Sólo el administrador del grupo puede usar está característica`)
     }
     
     const args = _optionalChain([m, 'access', _ => _.args, 'access', _2 => _2[0], 'optionalAccess', _3 => _3.toLowerCase, 'call', _4 => _4()])
@@ -24,7 +24,7 @@ function handler(m, { sock, db }) {
     
     if (!['on', 'off'].includes(args)) {
         const status = group.notifPromote === true ? '✅ Aktif' : '❌ Nonaktif'
-        return m.reply(`👑 *ɴᴏᴛɪꜰ ᴘʀᴏᴍᴏᴛᴇ*\n\n> Status: ${status}\n\n*Penggunaan:*\n\`${m.prefix}notifpromote on\` - Aktifkan\n\`${m.prefix}notifpromote off\` - Nonaktifkan`)
+        return m.reply(`👑 *ɴᴏᴛɪꜰ ᴘʀᴏᴍᴏᴛᴇ*\n\n> Status: ${status}\n\n*Uso:*\n\`${m.prefix}notifpromote on\` - Aktifkan\n\`${m.prefix}notifpromote off\`- Desactiva`)
     }
     
     if (args === 'on') {

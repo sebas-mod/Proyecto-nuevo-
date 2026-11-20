@@ -4,7 +4,7 @@ const pluginConfig = {
   name: "rpg",
   alias: ["togglerpg"],
   category: "group",
-  description: "Mengaktifkan atau menonaktifkan fitur RPG di grup",
+  description: "Habilitar o desactivar las características de RPG en grupo",
   usage: ".rpg <on/off>",
   example: ".rpg on",
   isOwner: false,
@@ -22,11 +22,11 @@ async function handler(m, { sock }) {
 
   if (args !== "on" && args !== "off") {
     return m.reply(
-      `⚔️ *FITUR RPG GRUP*\n\n` +
-        `Gunakan perintah ini untuk mengatur akses member ke fitur RPG.\n\n` +
-        `• *${m.prefix}rpg on* - Member bisa main RPG\n` +
-        `• *${m.prefix}rpg off* - Member tidak bisa main RPG\n\n` +
-        `*Catatan:* Admin tetap bisa mengakses RPG meskipun dimatikan.`,
+      `⚔♪\n\n` +
+        `Utilice este comando para configurar la foto de acción a la función RPG.\n\n` +
+        `• *${m.prefix}* - * Puede jugar RPG*\n` +
+        `• *${m.prefix}* - * Can 't play RPG*\n\n` +
+        `* Catalán: * Admin todavía puede acceder a RPG aunque presionado.`,
     );
   }
 
@@ -36,7 +36,7 @@ async function handler(m, { sock }) {
   const isEnable = args === "on";
 
   if (group.rpg === isEnable) {
-    return m.reply(`⚔️ Fitur RPG sudah *${isEnable ? "AKTIF" : "NONAKTIF"}* di grup ini.`);
+    return m.reply(`⚔*La función de la RPG ya está*${isEnable ? "AKTIF" : "NONAKTIF"}* en este grupo.`);
   }
 
   group.rpg = isEnable;
@@ -44,10 +44,10 @@ async function handler(m, { sock }) {
 
   await m.react("✅");
   return m.reply(
-    `✅ Berhasil *${isEnable ? "MENGAKTIFKAN" : "MENONAKTIFKAN"}* fitur RPG di grup ini!\n\n` +
+    `✅Exito *${isEnable ? "MENGAKTIFKAN" : "MENONAKTIFKAN"}- ¡Los fusibles de RPG en este grupo!\n\n` +
     (isEnable
-      ? `Member sekarang bisa menggunakan semua perintah di menu RPG.`
-      : `Member tidak akan bisa menggunakan perintah RPG lagi.`),
+      ? `Ahora puede utilizar todos los comandos en el menú RPG.`
+      : `No podremos utilizar el comando RPG más.`),
   );
 }
 

@@ -4,7 +4,7 @@ const pluginConfig = {
     name: 'benefitowner',
     alias: ['ownerbenefits', 'ownerfitur'],
     category: 'main',
-    description: 'Lihat penjelasan dan daftar fitur khusus Owner',
+    description: 'Mira la explicación y la lista especial de características de propietario.',
     usage: '.benefitowner',
     isOwner: false,
     isGroup: false,

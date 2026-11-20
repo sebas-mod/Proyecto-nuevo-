@@ -2,13 +2,13 @@
 var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
 var _ourinhttpjs = require('../../src/lib/ourin-http.js');
 var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
-const NEOXR_APIKEY = _optionalChain([_configjs2.default, 'access', _ => _.APIkey, 'optionalAccess', _2 => _2.neoxr]) || 'Milik-Bot-OurinMD'
+const NEOXR_APIKEY = _optionalChain([_configjs2.default, 'access', _ => _.APIkey, 'optionalAccess', _2 => _2.neoxr]) || 'Millik - Eurinprobable'
 
 const pluginConfig = {
     name: 'videy',
     alias: ['vdl', 'videydownload', 'videydl'],
     category: 'download',
-    description: 'Download video dari videy.co',
+    description: 'Descargas de vídeo de vídeo.',
     usage: '.videy <url>',
     example: '.videy https://videy.co/v?id=7ZH1ZRIF',
     isOwner: false,
@@ -26,13 +26,13 @@ async function handler(m, { sock }) {
     if (!url) {
         return m.reply(
             `🎬 *ᴠɪᴅᴇʏ ᴅᴏᴡɴʟᴏᴀᴅ*\n\n` +
-            `> Masukkan URL videy.co\n\n` +
+            `Echoque el vídeo URL.\n\n` +
             `\`Contoh: ${m.prefix}videy https://videy.co/v?id=7ZH1ZRIF\``
         )
     }
     
     if (!url.match(/videy\.co/i)) {
-        return m.reply(`❌ URL tidak valid. Gunakan link dari videy.co`)
+        return m.reply(`❌URL inválida. Usar enlaces desde el vídeo.`)
     }
     
     m.react('🕕')
@@ -42,7 +42,7 @@ async function handler(m, { sock }) {
         
         if (!_optionalChain([data, 'optionalAccess', _6 => _6.status]) || !_optionalChain([data, 'optionalAccess', _7 => _7.data, 'optionalAccess', _8 => _8.url])) {
             m.react('❌')
-            return m.reply(`❌ Gagal mengambil video. Link tidak valid atau sudah expired.`)
+            return m.reply(`❌Stempel toma video. Inválido o ya e LinkxCerrada.`)
         }
         
         const videoUrl = data.data.url

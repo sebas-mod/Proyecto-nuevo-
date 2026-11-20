@@ -2,7 +2,7 @@
     name: 'cekcantik',
     alias: ['cantik', 'beautiful'],
     category: 'cek',
-    description: 'Cek seberapa cantik kamu',
+    description: 'Mira qué bonita eres.',
     usage: '.cekcantik <nama>',
     example: '.cekcantik Ani',
     isOwner: false,
@@ -24,19 +24,19 @@ async function handler(m) {
     } else if (percent >= 70) {
         desc = 'Cantik banget! 💕'
     } else if (percent >= 50) {
-        desc = 'Manis dan cantik~ 🌸'
+        desc = 'Dulce y bonita🌸'
     } else if (percent >= 30) {
         desc = 'Lumayan cantik 😊'
     } else {
         desc = 'Tetep cantik kok! 💖'
     }
     
-    let txt = mentioned === m.sender ? `Hai @${mentioned.split('@')[0]}
+    let txt = mentioned === m.sender ? `Hola @${mentioned.split('@')[0]}
     
-Tingkat kecantikan kamu *${percent}%*
-\`\`\`${desc}\`\`\`` : `Kamu ingin ngecek tingkat kecantikan @${mentioned.split('@')[0]} yak? 
+*Tu belleza está actuando*${percent}%*
+\`\`\`${desc}\`\`\`` : `Usted quiere comprobar el nivel de belleza @${mentioned.split('@')[0]} yak? 
     
-Tingkat kecantikan dia sebesar *${percent}%*
+Es una mujer alta y hermosa${percent}%*
 \`\`\`${desc}\`\`\``
     
     await m.reply(txt, { mentions: [mentioned] })

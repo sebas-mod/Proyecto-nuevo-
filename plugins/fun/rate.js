@@ -2,7 +2,7 @@
     name: 'rate',
     alias: ['nilai', 'rating'],
     category: 'fun',
-    description: 'Minta bot memberi rating sesuatu',
+    description: 'El robot tiene algo en él.',
     usage: '.rate <sesuatu>',
     example: '.rate wajahku',
     isOwner: false,
@@ -19,12 +19,12 @@ const ratings = [
     { score: '9/10', comment: 'Hampir sempurna! Keren banget!' },
     { score: '8/10', comment: 'Bagus banget! Mantap!' },
     { score: '7/10', comment: 'Cukup bagus, di atas rata-rata!' },
-    { score: '6/10', comment: 'Lumayan, bisa lebih baik lagi.' },
+    { score: '6/10', comment: 'Lumayan, podría ser mejor.' },
     { score: '5/10', comment: 'Biasa aja sih, standar.' },
     { score: '4/10', comment: 'Hmm, kurang sedikit.' },
     { score: '3/10', comment: 'Perlu banyak perbaikan.' },
-    { score: '2/10', comment: 'Aduh, masih jauh dari bagus.' },
-    { score: '1/10', comment: 'Maaf, tapi ini parah.' },
+    { score: '2/10', comment: 'Ouch, está lejos de ser bueno.' },
+    { score: '1/10', comment: 'Lo siento, pero esto es una olla.' },
     { score: '100/10', comment: 'LEGEND! Beyond perfect!' },
     { score: '11/10', comment: 'Melebihi ekspektasi!' },
     { score: '69/100', comment: 'Nice...' },
@@ -33,7 +33,7 @@ const ratings = [
     { score: '7.5/10', comment: 'Solid! Good job!' },
     { score: '8.5/10', comment: 'Impressive!' },
     { score: '9.5/10', comment: 'Near perfection!' },
-    { score: '-1/10', comment: 'Aku nggak tau harus ngomong apa...' },
+    { score: '-1/10', comment: 'No sé qué decir.' },
     { score: '???/10', comment: 'Error 404: Rating not found.' }
 ];
 
@@ -41,12 +41,12 @@ async function handler(m) {
     const text = _optionalChain([m, 'access', _ => _.text, 'optionalAccess', _2 => _2.trim, 'call', _3 => _3()]);
     
     if (!text) {
-        return m.reply(`⭐ *ʀᴀᴛᴇ*\n\n> Masukkan sesuatu untuk dinilai!\n\n*Contoh:*\n> .rate wajahku`);
+        return m.reply(`⭐*ʀᴀᴛᴇ*\n\n¡Esto es algo para afilar!\n\n*Ejemplo:*\nDios mío. ¡Calta mi cara!`);
     }
     
     const rating = ratings[Math.floor(Math.random() * ratings.length)];
     
-    await m.reply(`Rating dari aku: *${rating.score}*
+    await m.reply(`Valoración de mí: *${rating.score}*
 ${rating.comment}`);
 }
 

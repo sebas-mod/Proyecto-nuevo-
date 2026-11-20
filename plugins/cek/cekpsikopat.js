@@ -2,7 +2,7 @@
     name: 'cekpsikopat',
     alias: ['psikopat', 'psycho'],
     category: 'cek',
-    description: 'Cek seberapa psikopat kamu',
+    description: 'Mira cómo eres psicopata.',
     usage: '.cekpsikopat <nama>',
     example: '.cekpsikopat Budi',
     isOwner: false,
@@ -22,21 +22,21 @@ async function handler(m) {
     if (percent >= 90) {
         desc = 'PSIKOPAT AKUT! Jauhi! 😈'
     } else if (percent >= 70) {
-        desc = 'Hati-hati sama orang ini 👀'
+        desc = 'Cuidado con este tipo.👀'
     } else if (percent >= 50) {
         desc = 'Ada sisi gelapnya 🌑'
     } else if (percent >= 30) {
         desc = 'Sedikit misterius 🤔'
     } else {
-        desc = 'Normal dan baik hati 😇'
+        desc = 'Moral y amable.😇'
     }
     
-    let txt = mentioned === m.sender ? `Hai @${mentioned.split('@')[0]}
+    let txt = mentioned === m.sender ? `Hola @${mentioned.split('@')[0]}
     
-Tingkat kepsikopatan kamu *${percent}%*
-\`\`\`${desc}\`\`\`` : `Kamu ingin ngecek tingkat kepsikopatan @${mentioned.split('@')[0]} yak? 
+Tu nivel psicótico *${percent}%*
+\`\`\`${desc}\`\`\`` : `Usted quiere comprobar el nivel psicótico @${mentioned.split('@')[0]} yak? 
     
-Tingkat kepsikopatan dia sebesar *${percent}%*
+Nivel kepsikopatan el sebesar *${percent}%*
 \`\`\`${desc}\`\`\``
     
     await m.reply(txt, { mentions: [mentioned] })

@@ -2,7 +2,7 @@
     name: 'delete',
     alias: ['del', 'hapus', 'd'],
     category: 'group',
-    description: 'Hapus pesan dengan reply',
+    description: 'Retirar mensajes con respuesta',
     usage: '.delete (reply pesan)',
     example: '.delete',
     isOwner: false,
@@ -18,7 +18,7 @@
 
 async function handler(m, { sock }) {
     if (!m.quoted) {
-        return m.reply('⚠️ *Reply pesan yang ingin dihapus!*')
+        return m.reply('⚠* Responder el mensaje que quieres conseguir!')
     }
 
     const quotedSender = m.quoted.sender || _optionalChain([m, 'access', _ => _.quoted, 'access', _2 => _2.key, 'optionalAccess', _3 => _3.participant])
@@ -28,10 +28,10 @@ async function handler(m, { sock }) {
 
     if (!isOwnMessage && !isBotMessage) {
         if (!m.isBotAdmin) {
-            return m.reply('⚠️ *Bot harus jadi admin untuk hapus pesan orang lain!*')
+            return m.reply('⚠* Ser un administrador para borrar el mensaje de alguien más!')
         }
         if (!m.isAdmin && !m.isOwner) {
-            return m.reply('⚠️ *Hanya admin yang bisa hapus pesan orang lain!*')
+            return m.reply('⚠*¡Sólo el administrador puede eliminar el mensaje de alguien más!')
         }
     }
 
@@ -48,7 +48,7 @@ async function handler(m, { sock }) {
 
     } catch (err) {
         if (_optionalChain([err, 'access', _15 => _15.message, 'optionalAccess', _16 => _16.includes, 'call', _17 => _17('not found')]) || _optionalChain([err, 'access', _18 => _18.message, 'optionalAccess', _19 => _19.includes, 'call', _20 => _20('forbidden')])) {
-            await m.reply('❌ *Gagal menghapus!*\n> Pesan mungkin sudah dihapus atau terlalu lama.')
+            await m.reply('❌*No se pudo eliminar!*\nFeliz Mensaje puede haber sido violado o hace mucho tiempo.')
         } else {
             await m.react('❌')
         }

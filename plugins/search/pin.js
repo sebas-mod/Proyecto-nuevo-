@@ -13,7 +13,7 @@ const pluginConfig = {
   name: "pin",
   alias: ["pinsearch", "pinterestsearch", "pins"],
   category: "search",
-  description: "Cari gambar di Pinterest (album)",
+  description: "Busca dibujo en Pinterest ( álbum )",
   usage: ".pin <query>",
   example: ".pin Zhao Lusi",
   isOwner: false,
@@ -30,7 +30,7 @@ async function handler(m, { sock }) {
   if (!query) {
     return m.reply(
       `🔍 *ᴘɪɴᴛᴇʀᴇsᴛ sᴇᴀʀᴄʜ*\n\n` +
-      `> Contoh:\n` +
+      `> Ejemplo:\n` +
       `\`${m.prefix}pin Zhao Lusi\``,
     );
   }
@@ -44,7 +44,7 @@ async function handler(m, { sock }) {
     const results = _optionalChain([data, 'optionalAccess', _4 => _4.data, 'optionalAccess', _5 => _5.results, 'optionalAccess', _6 => _6.filter, 'call', _7 => _7(item => item.image_url), 'optionalAccess', _8 => _8.slice, 'call', _9 => _9(0, 10)]);
     if (!results || results.length === 0) {
       m.react("❌");
-      return m.reply(`❌ Tidak ditemukan hasil untuk: ${query}`);
+      return m.reply(`❌No se han encontrado resultados para:${query}`);
     }
 
     const mediaList = [];
@@ -70,7 +70,7 @@ async function handler(m, { sock }) {
 
     if (mediaList.length === 0) {
       m.react("❌");
-      return m.reply("❌ Gagal memuat gambar");
+      return m.reply("❌Los luchadores cargan la imagen");
     }
 
     try {
@@ -114,7 +114,7 @@ async function handler(m, { sock }) {
 
       m.react("✅");
     } catch (albumErr) {
-      console.log("[Pins] Album gagal, kirim satu-satu:", albumErr.message);
+      console.log("*Pins* *Voy a perderlo* *Pine* *voy a enviar uno*", albumErr.message);
 
       const saluranId = _optionalChain([config, 'access', _10 => _10.saluran, 'optionalAccess', _11 => _11.id]) || "120363400911374213@newsletter";
       const saluranName =

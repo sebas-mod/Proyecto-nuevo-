@@ -23,13 +23,13 @@ async function handler(m, { sock }) {
         return m.reply(
             `⚠️ *ᴄᴀʀᴀ ᴘᴀᴋᴀɪ*\n\n` +
             `> \`${m.prefix}ccdl <url>\`\n\n` +
-            `> Contoh:\n` +
+            `> Ejemplo:\n` +
             `> \`${m.prefix}ccdl https://www.capcut.com/t/xxx\``
         )
     }
 
     if (!url.match(/capcut\.com/i)) {
-        return m.reply(`❌ URL tidak valid. Gunakan link CapCut.`)
+        return m.reply(`❌URL inválida.`)
     }
 
     await m.react('🕕')
@@ -38,7 +38,7 @@ async function handler(m, { sock }) {
         const data = await _btchdownloader.capcut.call(void 0, url)
 
         if (!_optionalChain([data, 'optionalAccess', _4 => _4.status]) || !_optionalChain([data, 'optionalAccess', _5 => _5.originalVideoUrl])) {
-            return m.reply(`❌ Gagal mengambil video. Coba link lain.`)
+            return m.reply(`❌Gagal tomó el video, otro Cobalink.`)
         }
 
         await sock.sendMedia(m.chat, data.originalVideoUrl, null, m, {

@@ -44,7 +44,7 @@ async function handler(m, { sock }) {
 
     if (!videos || videos.length === 0) {
       m.react("❌");
-      return m.reply(`❌ Tidak ditemukan video untuk: ${query}`);
+      return m.reply(`❌No se ha encontrado ningún video para:${query}`);
     }
 
     const maxShow = Math.min(videos.length, 5);

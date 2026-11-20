@@ -5,7 +5,7 @@ const pluginConfig = {
     name: 'autoanimewinbu',
     alias: ['aaw', 'autoanime'],
     category: 'anime',
-    description: 'Auto upload ongoing anime & donghua dari winbu.net (720p Pixeldrain)',
+    description: 'Auto sube el anime en cursoxEldrin )',
     usage: '.autoanimewinbu <start|stop|status|cek|list|reset|addgrup|delgrup>',
     example: '.autoanimewinbu start',
     isOwner: true,
@@ -25,15 +25,15 @@ async function handler(m, { sock, args }) {
     switch (sub) {
         case 'start': {
             if (_ourinautoanimejs.isRunning.call(void 0, )) {
-                return m.reply(`⚠️ AutoAnime sudah berjalan!`)
+                return m.reply(`⚠¡El AutoAnime está en camino!`)
             }
 
             const groups = state.groups || []
             if (groups.length === 0) {
                 return m.reply(
-                    `❌ Belum ada grup target!\n\n` +
-                    `> Tambahkan grup dulu:\n` +
-                    `> \`${m.prefix}autoanimewinbu addgrup\` (di grup target)\n` +
+                    `❌¡No hay objetivo de grupo!\n\n` +
+                    `# To include so grupo prima #\n` +
+                    `> \`${m.prefix}autoaniewinbu addgrup\`(en el objetivo del grupo )\n` +
                     `> \`${m.prefix}autoanimewinbu addgrup 120363xxx@g.us\``
                 )
             }
@@ -44,11 +44,11 @@ async function handler(m, { sock, args }) {
 
             return sock.sendMessage(m.chat, {
                 text: `✅ *ᴀᴜᴛᴏ ᴀɴɪᴍᴇ sᴛᴀʀᴛᴇᴅ*\n\n` +
-                    `> 📲 Grup target: *${groups.length}*\n` +
-                    `> ⏱️ Interval: *${interval} menit*\n` +
+                    `♪📲Objetivos de grupo: *${groups.length}*\n` +
+                    `> ⏱️ Interval: *${interval}minuto*\n` +
                     `> 🎞️ Filter: *Pixeldrain 720p+*\n` +
-                    `> ⏰ Max age: *24 jam*\n\n` +
-                    `Pengecekan pertama dimulai...`,
+                    `♪⏰Maxedad: * 24 horas *\n\n` +
+                    `Se inició el primer cheque..`,
                 interactiveButtons: [
                     {
                         name: 'quick_reply',
@@ -71,7 +71,7 @@ async function handler(m, { sock, args }) {
         case 'stop': {
             _ourinautoanimejs.stopAutoCheck.call(void 0, )
             _ourinautoanimejs.saveState.call(void 0, { ...state, enabled: false })
-            return m.reply(`🛑 *AutoAnime dihentikan*`)
+            return m.reply(`🛑*AutoAnime detenido*`)
         }
 
         case 'status': {
@@ -82,12 +82,12 @@ async function handler(m, { sock, args }) {
             let txt = `📊 *ᴀᴜᴛᴏ ᴀɴɪᴍᴇ sᴛᴀᴛᴜs*\n\n`
             txt += `> 🔄 Status: *${running ? '🟢 ON' : '🔴 OFF'}*\n`
             txt += `> 💾 Auto-start: *${state.enabled ? 'Ya' : 'Tidak'}*\n`
-            txt += `> 📋 Sudah terkirim: *${sent.size}* episode\n`
-            txt += `> ⏱️ Interval: *${state.interval || 5} menit*\n`
-            txt += `> 📲 Grup target: *${groups.length}*\n`
+            txt += `♪📋## Sent: *${sent.size}* episode\n`
+            txt += `> ⏱️ Interval: *${state.interval || 5}minuto*\n`
+            txt += `♪📲Objetivos de grupo: *${groups.length}*\n`
 
             if (groups.length > 0) {
-                txt += `\n*Grup:*\n`
+                txt += `\n*Grupo:*\n`
                 groups.forEach((g, i) => {
                     txt += `> ${i + 1}. \`${g}\`\n`
                 })
@@ -104,7 +104,7 @@ async function handler(m, { sock, args }) {
             await m.reply('🔍 Mengecek anime terbaru...')
             try {
                 await _ourinautoanimejs.runCheck.call(void 0, )
-                return m.reply('✅ Pengecekan selesai')
+                return m.reply('✅Comprobación terminado')
             } catch (e) {
                 m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName))
             }
@@ -114,14 +114,14 @@ async function handler(m, { sock, args }) {
             await m.reply('📺 Mengambil daftar anime...')
             try {
                 const list = await _ourinautoanimejs.getOngoingAnimeList.call(void 0, )
-                if (list.length === 0) return m.reply('❌ Tidak ada anime ditemukan')
+                if (list.length === 0) return m.reply('❌No Anime encontrado')
 
                 let txt = `📺 *ᴅᴀꜰᴛᴀʀ ᴀɴɪᴍᴇ ᴛᴇʀʙᴀʀᴜ*\n\n`
                 txt += `> Total: *${list.length}* anime\n\n`
                 list.slice(0, 15).forEach((a, i) => {
                     txt += `*${i + 1}.* ${a.title}\n`
                 })
-                if (list.length > 15) txt += `\n> ...dan ${list.length - 15} lainnya`
+                if (list.length > 15) txt += `\n>...y${list.length - 15} otros`
 
                 return sock.sendMessage(m.chat, { text: txt }, { quoted: m })
             } catch (e) {
@@ -133,7 +133,7 @@ async function handler(m, { sock, args }) {
             const sent = _ourinautoanimejs.loadSent.call(void 0, )
             const count = sent.size
             _ourinautoanimejs.saveSent.call(void 0, new Set())
-            return m.reply(`✅ Reset! *${count}* episode dihapus dari riwayat.\n> Semua episode bisa terkirim ulang.`)
+            return m.reply(`✅Restablecer! *${count}* episodio fue interrumpido de la historia.\nY todos los episodios están siendo reentregados.`)
         }
 
         case 'addgrup':
@@ -147,20 +147,20 @@ async function handler(m, { sock, args }) {
 
             if (!grupId || !grupId.includes('@g.us')) {
                 return m.reply(
-                    `❌ ID grup tidak valid\n\n` +
-                    `> Gunakan di dalam grup, atau:\n` +
+                    `❌ID inválido grup\n\n` +
+                    `El uso estará dentro de un grupo, o:\n` +
                     `> \`${m.prefix}autoanimewinbu addgrup 120363xxx@g.us\``
                 )
             }
 
             const groups = state.groups || []
             if (groups.includes(grupId)) {
-                return m.reply(`⚠️ Grup sudah ada di daftar target`)
+                return m.reply(`⚠Soop ya está en la lista de destino`)
             }
 
             groups.push(grupId)
             _ourinautoanimejs.saveState.call(void 0, { ...state, groups })
-            return m.reply(`✅ Grup \`${grupId}\` ditambahkan ke target\n> Total: *${groups.length}* grup`)
+            return m.reply(`✅Grupo\`${grupId}\` anadido a target\n> 91; Tital > 93;${groups.length}* grupo`)
         }
 
         case 'delgrup':
@@ -175,19 +175,19 @@ async function handler(m, { sock, args }) {
             const groups = state.groups || []
             const idx = groups.indexOf(grupId)
             if (idx === -1) {
-                return m.reply(`❌ Grup tidak ditemukan di daftar target`)
+                return m.reply(`❌Grup no se encuentra en la lista de destino`)
             }
 
             groups.splice(idx, 1)
             _ourinautoanimejs.saveState.call(void 0, { ...state, groups })
-            return m.reply(`✅ Grup \`${grupId}\` dihapus dari target\n> Sisa: *${groups.length}* grup`)
+            return m.reply(`✅Grupo\`${grupId}\`de la meta\nRestante: *${groups.length}* grupo`)
         }
 
         case 'interval': {
             const rest = (typeof args === 'string' ? args : '').replace(/^interval\s*/i, '').trim()
             const mins = parseInt(rest)
             if (!mins || mins < 1 || mins > 60) {
-                return m.reply(`❌ Interval harus 1-60 menit\n\n> Contoh: \`${m.prefix}autoanimewinbu interval 10\``)
+                return m.reply(`❌La intervalación debe ser de 1 a 60 minutos\n\n> Ejemplo:\`${m.prefix}autoanimewinbu interval 10\``)
             }
 
             _ourinautoanimejs.saveState.call(void 0, { ...state, interval: mins })
@@ -197,7 +197,7 @@ async function handler(m, { sock, args }) {
                 _ourinautoanimejs.startAutoCheck.call(void 0, sock, mins)
             }
 
-            return m.reply(`✅ Interval diubah ke *${mins} menit*`)
+            return m.reply(`✅Interval se convierte a *${mins}minuto*`)
         }
 
         default: {
@@ -206,15 +206,15 @@ async function handler(m, { sock, args }) {
                 text: `🎬 *ᴀᴜᴛᴏ ᴀɴɪᴍᴇ ᴡɪɴʙᴜ*\n\n` +
                     `> Status: *${running ? '🟢 ON' : '🔴 OFF'}*\n\n` +
                     `*ᴄᴏᴍᴍᴀɴᴅs:*\n` +
-                    `> \`${m.prefix}aaw start\` — Mulai auto-check\n` +
+                    `> \`${m.prefix}Aaw comienza\` —Empieza auto-check\n` +
                     `> \`${m.prefix}aaw stop\` — Hentikan\n` +
-                    `> \`${m.prefix}aaw status\` — Lihat status\n` +
-                    `> \`${m.prefix}aaw cek\` — Manual check sekarang\n` +
-                    `> \`${m.prefix}aaw list\` — Daftar anime terbaru\n` +
-                    `> \`${m.prefix}aaw addgrup\` — Tambah grup target\n` +
-                    `> \`${m.prefix}aaw delgrup\` — Hapus grup target\n` +
-                    `> \`${m.prefix}aaw interval 10\` — Ubah interval\n` +
-                    `> \`${m.prefix}aaw reset\` — Reset riwayat terkirim`,
+                    `> \`${m.prefix}aaw estado\` —Mira estado\n` +
+                    `> \`${m.prefix}aaw comprueba\` —Control de manal ahora\n` +
+                    `> \`${m.prefix}lista de paredes\` —Nueva lista de Anime\n` +
+                    `> \`${m.prefix}aaw addgrup\` —Añadir objetivo grup\n` +
+                    `> \`${m.prefix}aaw delgrup\` —Quitar el objetivo del grupo\n` +
+                    `> \`${m.prefix}intervalo de espera 10\` —Cambia interval\n` +
+                    `> \`${m.prefix}aaw restablecer\` —Registro enviado`,
                 interactiveButtons: [
                     {
                         name: 'quick_reply',

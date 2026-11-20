@@ -5,7 +5,7 @@ const pluginConfig = {
   name: "gempa",
   alias: ["bmkg", "infogempa", "earthquake"],
   category: "info",
-  description: "Info gempa terkini dari BMKG",
+  description: "Actualización @-@ infos arriba de BMKG",
   usage: ".gempa",
   example: ".gempa",
   isOwner: false,
@@ -32,15 +32,15 @@ async function handler(m, { sock }) {
       : null;
 
     const text =
-      `🌍 *Info Gempa Terkini — BMKG*\n\n` +
-      `> 📅 Tanggal: *${g.Tanggal}*\n` +
-      `> 🕐 Jam: *${g.Jam}*\n` +
+      `🌍* Terkini Información de la Fiesta—BMKG *\n\n` +
+      `♪📅 Fecha: *${g.Tanggal}*\n` +
+      `♪🕐Hora: *${g.Jam}*\n` +
       `> 📐 Koordinat: *${g.Coordinates}*\n` +
       `> 📍 Lintang: *${g.Lintang}*\n` +
       `> 📍 Bujur: *${g.Bujur}*\n` +
       `> 💥 Magnitude: *${g.Magnitude}*\n` +
       `> 🔽 Kedalaman: *${g.Kedalaman}*\n` +
-      `> 🗺️ Wilayah: *${g.Wilayah}*\n` +
+      `♪🗺️ Region: *${g.Wilayah}*\n` +
       `> ⚠️ Potensi: *${g.Potensi}*\n` +
       `> 🏠 Dirasakan: *${g.Dirasakan}*\n\n` +
       `_Sumber: BMKG Indonesia_`;
@@ -65,7 +65,7 @@ async function handler(m, { sock }) {
   } catch (e) {
     await m.react("☢");
     await m.reply(
-      `❌ *Gagal mengambil data gempa*\n\n> ${e.message || "Coba lagi nanti"}`,
+      `❌*Sinvergüenzas recogiendo los datos*\n\n♪${e.message || "Coba lagi nanti"}`,
     );
   }
 }

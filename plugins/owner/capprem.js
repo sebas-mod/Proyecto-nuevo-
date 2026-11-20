@@ -5,7 +5,7 @@ const config = {
   name: "capprem",
   alias: ["cappremium", "setprem"],
   category: "owner",
-  description: "Mengecap banyak fitur sekaligus menjadi premium",
+  description: "Rocíe muchas características a la vez para ser una prima",
   usage: ".capprem <nama_fitur1> <nama_fitur2> ...",
   example: ".capprem hd jpm warn",
   isOwner: true,
@@ -20,14 +20,14 @@ const config = {
 async function handler(m, { sock }) {
   if (m.args.length === 0) {
     return m.reply(
-      `💎 *SISTEM CAP PREMIUM*\n\n` +
-      `Sistem eksklusif untuk mengubah status akses banyak fitur sekaligus menjadi Premium.\n\n` +
-      `*PENGGUNAAN:*\n` +
-      `- *${m.prefix}capprem <nama_fitur1> <nama_fitur2> ...* — Bisa banyak sekaligus\n\n` +
-      `*CONTOH PENGGUNAAN:*\n` +
+      `💎> 91; PREMUM DE LA CAPITUACIÓN SISTEMA >\n\n` +
+      `Systemaxclusivos para cimiar el estado de las acones muchas características se subsidertieron en Premium.\n\n` +
+      `*Uso:*\n` +
+      `- *${m.prefix}Caphor<nama_fitur1> <nama_fitur2>...—Las semillas son muchas de ellas.\n\n` +
+      `*Ejemplo de uso:*\n` +
       `- *${m.prefix}capprem hd jpm warn*\n\n` +
-      `*PENJELASAN:*\n` +
-      `Masukkan satu atau lebih nama fitur yang ingin dijadikan Premium. Pisahkan dengan spasi.`
+      `*Explicación:*\n` +
+      `Ponga una o más características que Premium quiere umar.`
     );
   }
 
@@ -55,15 +55,15 @@ async function handler(m, { sock }) {
 
   await m.react("✅");
   
-  let msg = `✅ *STATUS BERHASIL DIUBAH*\n\n`;
+  let msg = `✅> 91; SITUACIÓN DE LA HEAVILY > 93;\n\n`;
   if (successList.length > 0) {
-    msg += `*Berhasil (PREMIUM 💎):*\n${successList.map(f => `- ${f}`).join("\n")}\n\n`;
+    msg += `*Exito (Premium💎♪\n${successList.map(f => `- ${f}`).join("\n")}\n\n`;
   }
   if (failedList.length > 0) {
-    msg += `*Gagal (Tidak ditemukan):*\n${failedList.map(f => `- ${f}`).join("\n")}\n\n`;
+    msg += `* Impresionantemente (no se encuentra ):\n${failedList.map(f => `- ${f}`).join("\n")}\n\n`;
   }
   
-  msg += `_Fitur di atas (yang berhasil) sekarang hanya bisa diakses oleh member Premium._`;
+  msg += `La característica actual es sólo accionable por el miembro Premium.`;
   
   return m.reply(msg.trim());
 }

@@ -51,7 +51,7 @@ function validateServerConfig(serverConfig) {
 function getAvailableServers(pteroConfig) {
     const available = []
     for (let i = 1; i <= 5; i++) {
-        const cfg = pteroConfig[`server${i}`]
+        const cfg = pteroConfig[`servidor${i}`]
         if (_optionalChain([cfg, 'optionalAccess', _3 => _3.domain]) && _optionalChain([cfg, 'optionalAccess', _4 => _4.apikey])) available.push(`v${i}`)
     }
     return available
@@ -67,8 +67,8 @@ async function handler(m, { sock }) {
         const userRole = _ourinrolescpaneljs.getUserRole.call(void 0, m.sender, serverVersion)
         return m.reply(
             `❌ *ᴀᴋsᴇs ᴅɪᴛᴏʟᴀᴋ*\n\n` +
-            `> Kamu tidak punya akses ke *${serverLabel}*\n` +
-            `> Role kamu: *${userRole || 'Tidak ada'}*`
+            `*No tienes acento*${serverLabel}*\n` +
+            `# Role you #${userRole || 'Tidak ada'}*`
         )
     }
     
@@ -79,8 +79,8 @@ async function handler(m, { sock }) {
         const available = getAvailableServers(pteroConfig)
         let txt = `⚠️ *sᴇʀᴠᴇʀ ${serverLabel} ʙᴇʟᴜᴍ ᴋᴏɴꜰɪɢ*\n\n`
         if (available.length > 0) {
-            txt += `> Server tersedia: *${available.join(', ')}*\n`
-            txt += `> Contoh: \`${m.prefix}listuser${available[0]}\``
+            txt += `*El servidor está disponible*${available.join(', ')}*\n`
+            txt += `> Ejemplo:\`${m.prefix}listuser${available[0]}\``
         } else {
             txt += `> Isi config pterodactyl di \`config.js\``
         }
@@ -88,7 +88,7 @@ async function handler(m, { sock }) {
     }
     
     try {
-        const res = await _axios2.default.get(`${serverConfig.domain}/api/application/users?per_page=100`, {
+        const res = await _axios2.default.get(`${serverConfig.domain}/fuego/application/users?per_page=100`, {
             headers: {
                 'Authorization': `Bearer ${serverConfig.apikey}`,
                 'Content-Type': 'application/json',
@@ -99,7 +99,7 @@ async function handler(m, { sock }) {
         const users = res.data.data || []
         
         if (users.length === 0) {
-            return m.reply(`📋 *ᴅᴀꜰᴛᴀʀ ᴜsᴇʀ [${serverLabel}]*\n\n> Tidak ada user terdaftar.`)
+            return m.reply(`📋 *ᴅᴀꜰᴛᴀʀ ᴜsᴇʀ [${serverLabel}♪\n\nNo hay ningún usuario que se indique.`)
         }
         
         let txt = `📋 *ᴅᴀꜰᴛᴀʀ ᴜsᴇʀ [${serverLabel}]*\n\n`
@@ -110,16 +110,16 @@ async function handler(m, { sock }) {
             const isAdmin = attr.root_admin ? ' 👑' : ''
             txt += `${i + 1}. *${attr.username}*${isAdmin}\n`
             txt += `   ├ ID: \`${attr.id}\`\n`
-            txt += `   └ Email: \`${attr.email}\`\n`
+            txt += `   └Correo:\`${attr.email}\`\n`
         })
         
         if (users.length > 20) {
-            txt += `\n> ... dan ${users.length - 20} user lainnya`
+            txt += `\nSí, y${users.length - 20}user otros`
         }
         
         const available = getAvailableServers(pteroConfig)
         if (available.length > 1) {
-            txt += `\n\n> Server lain: *${available.filter(s => s !== serverVersion).join(', ')}*`
+            txt += `\n\n*Otro servidor*${available.filter(s => s !== serverVersion).join(', ')}*`
         }
         
         return m.reply(txt)

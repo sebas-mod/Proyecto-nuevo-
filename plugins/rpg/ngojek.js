@@ -5,7 +5,7 @@ const pluginConfig = {
   name: "ngojek",
   alias: ["ojek", "gojek", "ojol"],
   category: "rpg",
-  description: "Ngojek untuk mendapat uang",
+  description: "Hablar para conseguir dinero",
   usage: ".ngojek",
   example: ".ngojek",
   isOwner: false,
@@ -27,7 +27,7 @@ async function handler(m, { sock }) {
   user.rpg.stamina = _nullishCoalesce(user.rpg.stamina, () => ( 100));
 
   if (user.rpg.stamina < staminaCost) {
-    return m.reply(`Mesin motornya udah panas banget kak, mending istirahat dulu! 🥵🏍️💨\n\nNgojek butuh *${staminaCost} Stamina*, sisa stamina kamu *${user.rpg.stamina}* doang. Ngopi dulu gih! ☕`);
+    return m.reply(`El motor de Mesin es un hermano caliente mucho, que se descansó antes!🥵🏍♪💨\n\nHabar mierda${staminaCost}La resistencia, la restante te contamina${user.rpg.stamina}Ve a hablar con ella.☕`);
   }
 
   user.rpg.stamina -= staminaCost;
@@ -47,7 +47,7 @@ async function handler(m, { sock }) {
   const tips = Math.random() > 0.7 ? Math.floor(Math.random() * 5000) + 1000 : 0;
   const totalEarning = earning + tips;
 
-  await m.reply(`Nyalain motor, tarik gas! Mencari penumpang... 🏍️💨\nAda orderan *${order.type}* sejauh *${order.distance}* nih, Gasss! 🗺️`);
+  await m.reply(`Motores de potencia, niveles de gas, pasajeros de búsqueda.🏍♪💨\nHay orden${order.type}* sejauh *${order.distance}* aquí, Gasss!🗺♪`);
   await new Promise((r) => setTimeout(r, 3000));
 
   user.koin = (user.koin || 0) + totalEarning;
@@ -60,7 +60,7 @@ async function handler(m, { sock }) {
   await m.react("✅");
 
   let txt = `ALHAMDULILLAH ORDERAN KELAR! 🏍️✨\n\n`;
-  txt += `Rincian narik ojol hari ini:\n`;
+  txt += `El detalle de hoy en espiral:\n`;
   txt += `📱 Tipe: *${order.type}*\n`;
   txt += `💵 Tarif: *+Rp ${earning.toLocaleString("id-ID")}*\n`;
   if (tips > 0) {
@@ -68,7 +68,7 @@ async function handler(m, { sock }) {
   }
   txt += `📈 EXP: *+${expGain}*\n`;
   txt += `⚡ Stamina: *-${staminaCost}*\n\n`;
-  txt += `Lumayan buat nambah-nambahin jajan kak! Semangat narik lagi nanti! 🔥💪`;
+  txt += `Lumayan crea nambah-nambahin jajan hermano! Semangat narik otra vez luego! 🔥💪`;
 
   m.reply(txt);
 }

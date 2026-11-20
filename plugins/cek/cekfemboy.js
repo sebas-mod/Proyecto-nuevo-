@@ -8,7 +8,7 @@ const pluginConfig = {
   name: "cekfemboy",
   alias: ["femboy"],
   category: "cek",
-  description: "Cek seberapa femboy kamu",
+  description: "Mira tu femboy.",
   usage: ".cekfemboy <nama>",
   example: ".cekfemboy Budi",
   isOwner: false,
@@ -33,7 +33,7 @@ async function convertGifToMp4(buffer) {
     await _ourinffmpegjs.queueFFmpeg.call(void 0, 
       `ffmpeg -y -ignore_loop 0 -i "${gifPath}" -t 30 -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2" -c:v libx264 -pix_fmt yuv420p -movflags faststart -preset ultrafast -an "${mp4Path}"`,
     );
-    if (!_fs2.default.existsSync(mp4Path)) throw new Error("Gagal convert GIF");
+    if (!_fs2.default.existsSync(mp4Path)) throw new Error("GIF convertido stuntman");
     return _fs2.default.readFileSync(mp4Path);
   } finally {
     try {
@@ -50,7 +50,7 @@ async function handler(m, { sock }) {
   const inputName = _optionalChain([m, 'access', _ => _.text, 'optionalAccess', _2 => _2.trim, 'call', _3 => _3()]);
   const nama =
     mentioned === m.sender
-      ? inputName || m.pushName || "Kamu"
+      ? inputName || m.pushName || "Tu"
       : `@${mentioned.split("@")[0]}`;
 
   try {
@@ -70,10 +70,10 @@ async function handler(m, { sock }) {
 
     let txt =
       mentioned === m.sender
-        ? `Hai @${mentioned.split("@")[0]}
+        ? `Hola @${mentioned.split("@")[0]}
 
 ${result.hasil}`
-        : `Kamu ingin ngecek tingkat kefemboyan @${mentioned.split("@")[0]} yak? 
+        : `Quieres ver el nivel femoral${mentioned.split("@")[0]} yak? 
 
 ${result.hasil}`;
 

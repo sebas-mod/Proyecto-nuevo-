@@ -4,7 +4,7 @@ const pluginConfig = {
     name: 'antisticker',
     alias: ['as', 'nosticker'],
     category: 'group',
-    description: 'Mengatur antisticker di grup',
+    description: 'Maneja antiadherentes en grupo',
     usage: '.antisticker <on/off>',
     example: '.antisticker on',
     isOwner: false,
@@ -20,7 +20,7 @@ const pluginConfig = {
 
 function gpMsg(key, replacements = {}) {
     const defaults = {
-        antisticker: '⚠ *AntiSticker* — Sticker dari @%user% dihapus.',
+        antisticker: '⚠AntiStickers—Pegatina de @ % usuario % dispus.',
     }
     let text = _optionalChain([_configjs2.default, 'access', _ => _.groupProtection, 'optionalAccess', _2 => _2[key]]) || defaults[key] || ''
     for (const [k, v] of Object.entries(replacements)) {
@@ -65,18 +65,18 @@ async function handler(m, { sock }) {
     if (action === 'on') {
         db.setGroup(m.chat, { antisticker: true })
         m.react('✅')
-        await m.reply(`✅ *AntiSticker diaktifkan*`)
+        await m.reply(`✅*AntiSticker activado*`)
         return
     }
 
     if (action === 'off') {
         db.setGroup(m.chat, { antisticker: false })
         m.react('❌')
-        await m.reply(`❌ *AntiSticker dinonaktifkan*`)
+        await m.reply(`❌*AntiSticker desactivado*`)
         return
     }
 
-    await m.reply(`❌ Gunakan \`.antisticker on\` atau \`.antisticker off\``)
+    await m.reply(`❌Usa\`- Antiadherentes en.\`o\`- Antiadherentes apagados.\``)
 }
 
 exports.config = pluginConfig; exports.handler = handler; exports.checkAntisticker = checkAntisticker;

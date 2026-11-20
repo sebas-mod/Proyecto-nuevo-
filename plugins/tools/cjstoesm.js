@@ -61,16 +61,16 @@ function convertCjsToEsm(code) {
     })
 
     result = result.replace(/module\.exports\s*=\s*(async\s+)?(function|class)\s*(\w*)\s*(\([^)]*\))?\s*\{/g, (match, async, type, name, params) => {
-        if (name) return `export default ${async || ''}${type} ${name}${params || ''} {`
-        return `export default ${async || ''}${type}${params || ''} {`
+        if (name) return `export predeterminado${async || ''}${type} ${name}${params || ''} {`
+        return `export predeterminado${async || ''}${type}${params || ''} {`
     })
 
     result = result.replace(/module\.exports\s*=\s*(async\s+)?\(([^)]*)\)\s*=>/g, (match, async, params) => {
-        return `export default ${async || ''}(${params}) =>`
+        return `export predeterminado${async || ''}(${params}) =>`
     })
 
     result = result.replace(/module\.exports\s*=\s*([^;\n]+)\s*;?/g, (match, value) => {
-        return `export default ${value};`
+        return `export predeterminado${value};`
     })
 
     result = result.replace(/exports\.(\w+)\s*=\s*(async\s+)?function\s*(\w*)\s*(\([^)]*\))?\s*\{/g, (match, exportName, async, name, params) => {
@@ -117,9 +117,9 @@ async function handler(m, { sock }) {
         return m.reply(
             `🔄 *ᴄᴊs ᴛᴏ ᴇsᴍ ᴄᴏɴᴠᴇʀᴛᴇʀ*\n\n` +
             `> Convert CommonJS ke ES Modules\n\n` +
-            `> *Cara pakai:*\n` +
-            `> Reply kode CJS dengan ${m.prefix}cjstoesm\n\n` +
-            `> *Contoh CJS:*\n` +
+            `*Oh, oh, oh, oh, oh *\n` +
+            `* Responder código CJS con${m.prefix}cjstoesm\n\n` +
+            `> 91; Laughter > 93;\n` +
             `> \`const axios = require('axios')\`\n` +
             `> \`module.exports = handler\``
         )

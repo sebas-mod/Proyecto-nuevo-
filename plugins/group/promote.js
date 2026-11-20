@@ -4,7 +4,7 @@ const pluginConfig = {
     name: 'promote',
     alias: ['jadiadmin', 'admin'],
     category: 'group',
-    description: 'Jadikan member sebagai admin',
+    description: 'Ser miembro como administrador',
     usage: '.promote @user',
     example: '.promote @user',
     isOwner: false,
@@ -30,8 +30,8 @@ async function handler(m, { sock }) {
     if (!target) {
         await m.reply(
             `❌ *ᴛᴀʀɢᴇᴛ ᴛɪᴅᴀᴋ ᴅɪᴛᴇᴍᴜᴋᴀɴ*\n\n` +
-            `> Reply pesan user atau mention!\n` +
-            `> Contoh: \`${m.prefix}promote @user\``
+            `¡Ezely ordena un usuario o una mención!\n` +
+            `> Ejemplo:\`${m.prefix}ascender @user\``
         )
         return
     }
@@ -41,19 +41,19 @@ async function handler(m, { sock }) {
         const participant = groupMeta.participants.find(p => _ourinlidjs.getParticipantJid.call(void 0, p) === target)
 
         if (!participant) {
-            await m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> User tidak ditemukan di grup!`)
+            await m.reply(`❌*ɢᴀɢᴀʟ*\n\n¡No se encontró al usuario en el grupo!`)
             return
         }
 
         if (participant.admin) {
-            await m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> User sudah menjadi admin!`)
+            await m.reply(`❌*ɢᴀɢᴀʟ*\n\n¡Ez Usuario ya es un administrador!`)
             return
         }
 
         await sock.groupParticipantsUpdate(m.chat, [target], 'promote')
 
         await m.reply(
-            `✅ @${target.split('@')[0]} sekarang menjadi admin!`,
+            `✅ @${target.split('@')[0]}¡Ahora sé un administrador!`,
             { mentions: [target] }
         )
 

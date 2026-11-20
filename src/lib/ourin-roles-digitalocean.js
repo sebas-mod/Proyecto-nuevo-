@@ -74,20 +74,20 @@ function getUserRole(jid, server) {
 }
 
 function addRole(jid, server, role) {
-    if (!VALID_SERVERS.includes(server)) return { success: false, error: 'Server tidak valid' }
-    if (!VALID_ROLES.includes(role)) return { success: false, error: 'Role tidak valid' }
+    if (!VALID_SERVERS.includes(server)) return { success: false, error: 'Servidor inválido' }
+    if (!VALID_ROLES.includes(role)) return { success: false, error: 'El papel no es válido' }
     
     const number = cleanNumber(jid)
-    if (!number) return { success: false, error: 'Nomor tidak valid' }
+    if (!number) return { success: false, error: 'Número de inválidos' }
     
     const existingRole = getUserRole(jid, server)
     if (existingRole) {
-        return { success: false, error: `Sudah memiliki role ${existingRole} di ${server.toUpperCase()}` }
+        return { success: false, error: `Ya tiene un papel${existingRole} di ${server.toUpperCase()}` }
     }
     
     const list = loadRoleFile(role, server)
     if (list.includes(number)) {
-        return { success: false, error: 'Sudah terdaftar' }
+        return { success: false, error: 'Ya registrado' }
     }
     
     list.push(number)
@@ -96,16 +96,16 @@ function addRole(jid, server, role) {
 }
 
 function removeRole(jid, server, role) {
-    if (!VALID_SERVERS.includes(server)) return { success: false, error: 'Server tidak valid' }
-    if (!VALID_ROLES.includes(role)) return { success: false, error: 'Role tidak valid' }
+    if (!VALID_SERVERS.includes(server)) return { success: false, error: 'Servidor inválido' }
+    if (!VALID_ROLES.includes(role)) return { success: false, error: 'El papel no es válido' }
     
     const number = cleanNumber(jid)
-    if (!number) return { success: false, error: 'Nomor tidak valid' }
+    if (!number) return { success: false, error: 'Número de inválidos' }
     
     const list = loadRoleFile(role, server)
     const idx = list.indexOf(number)
     if (idx === -1) {
-        return { success: false, error: 'Tidak terdaftar' }
+        return { success: false, error: 'No registrado' }
     }
     
     list.splice(idx, 1)

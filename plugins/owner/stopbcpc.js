@@ -2,7 +2,7 @@
   name: 'stopbcpc',
   alias: ['stopbroadcastpc'],
   category: 'owner',
-  description: 'Hentikan broadcast private yang sedang berjalan',
+  description: 'Detenga la radiodifusión primate corriendo',
   usage: '.stopbcpc',
   isOwner: true,
   isPremium: false,
@@ -15,7 +15,7 @@
 
 async function handler(m) {
   if (!global.statusBcpc) {
-    return m.reply('❌ Tidak ada broadcast private yang sedang berjalan.')
+    return m.reply('❌No hay una radio de radio primate está caminando.')
   }
   global.stopBcpc = true
   return m.reply('⏹️ Menghentikan broadcast private...')

@@ -2,7 +2,7 @@
     name: 'cekjahat',
     alias: ['jahat', 'evil'],
     category: 'cek',
-    description: 'Cek seberapa jahat kamu',
+    description: 'Comprueba lo difícil que vas a conseguir.',
     usage: '.cekjahat <nama>',
     example: '.cekjahat Budi',
     isOwner: false,
@@ -31,12 +31,12 @@ async function handler(m) {
         desc = 'Baik kok, gak jahat! 😇'
     }
     
-    let txt = mentioned === m.sender ? `Hai @${mentioned.split('@')[0]}
+    let txt = mentioned === m.sender ? `Hola @${mentioned.split('@')[0]}
     
-Tingkat kejahatan kamu *${percent}%*
-\`\`\`${desc}\`\`\`` : `Kamu ingin ngecek tingkat kejahatan @${mentioned.split('@')[0]} yak? 
+Su tasa de criminalidad *${percent}%*
+\`\`\`${desc}\`\`\`` : `Quieres revisar el nivel del crimen${mentioned.split('@')[0]} yak? 
     
-Tingkat kejahatan dia sebesar *${percent}%*
+Es tan grande como un criminal.${percent}%*
 \`\`\`${desc}\`\`\``
     
     await m.reply(txt, { mentions: [mentioned] })

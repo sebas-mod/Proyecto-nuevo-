@@ -4,7 +4,7 @@ const pluginConfig = {
     name: 'notifmakan',
     alias: ['jadwalmakan', 'makanreminder'],
     category: 'group',
-    description: 'Atur pengingat waktu makan otomatis',
+    description: 'Auto @-@ recordatorio de alimentación',
     usage: '.notifmakan on <jam1,jam2,...> [menu] / off / edit <jam1,jam2,...> [menu]',
     example: '.notifmakan on 07.00,12.00,19.00 Nasi Padang',
     isOwner: false,
@@ -27,95 +27,95 @@ function handler(m) {
     if (!sub || !['on', 'off', 'edit'].includes(sub)) {
         const status = existing
             ? (existing.enabled ? '✅ Aktif' : '❌ Nonaktif')
-            : '⚪ Belum diatur'
+            : '⚪Aún no configurado'
 
-        let info = `🍽️ *PENGINGAT MAKAN*\n\n`
+        let info = `🍽*El alimento @-@ Recordar*\n\n`
         info += `📌 *Status:* ${status}\n`
 
         if (existing) {
             info += `⏰ *Jadwal:* ${existing.jadwal.map(j => `*${j}* WIB`).join(', ')}\n`
-            if (existing.menu) info += `🍴 *Menu:* _${existing.menu}_\n`
+            if (existing.menu) info += `🍴* Menú: *${existing.menu}_\n`
         }
 
-        info += `\n*📋 Cara Pakai:*\n`
+        info += `\n*📋Como usarlo:*\n`
         info += `> \`${m.prefix}notifmakan on 07.00,12.00,19.00\`\n`
-        info += `> \`${m.prefix}notifmakan on 07.00,12.00 Nasi Goreng\`\n`
+        info += `> \`${m.prefix}notifmakan on 07.00,12.00 Arroz Goreng\`\n`
         info += `> \`${m.prefix}notifmakan edit 08.00,13.00\`\n`
         info += `> \`${m.prefix}notifmakan off\`\n`
-        info += `\n> 💡 _Jam bisa pakai titik atau titik dua (07.00 / 07:00)_\n`
-        info += `> 💡 _Bisa multiple jam, pisahkan pakai koma_`
+        info += `\n♪💡Las horas pueden usar un cero o un dos ( 07. 00 / 07: 00 ) _\n`
+        info += `♪💡# Doble hora puede, rompe con comas #`
 
         return m.reply(info)
     }
 
     if (sub === 'off') {
         if (!existing) {
-            return m.reply(`❌ *Belum ada pengingat makan* yang aktif di chat ini`)
+            return m.reply(`❌* No hay una sola persona que esté comiendo * en este gráfico`)
         }
         _ourinnotifschedulerjs.toggleNotif.call(void 0, 'makan', sender, chatJid, false)
-        return m.reply(`✅ *Pengingat makan dinonaktifkan* 🔕\n\n> Ketik \`${m.prefix}notifmakan on\` untuk mengaktifkan kembali`)
+        return m.reply(`✅*El recordatorio de comida está desactivado*🔕\n\n> Escribe\`${m.prefix}not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not\`para reactivar`)
     }
 
     if (sub === 'on') {
         if (_optionalChain([existing, 'optionalAccess', _4 => _4.enabled]) && args.length === 1) {
-            return m.reply(`⚠️ *Pengingat makan sudah aktif!*\n\n⏰ Jadwal: ${existing.jadwal.map(j => `*${j}*`).join(', ')} WIB\n\n> Gunakan \`${m.prefix}notifmakan edit\` untuk mengubah jadwal`)
+            return m.reply(`⚠> 91; Hombre > > 91; ¡Apoyando a Lining Man!\n\n⏰Programado:${existing.jadwal.map(j => `*${j}*`).join(', ')}¡Vaya!\n\n> Usa \`${m.prefix}No se edita\`cambiar el habilitado`)
         }
 
         if (existing && args.length === 1) {
             _ourinnotifschedulerjs.toggleNotif.call(void 0, 'makan', sender, chatJid, true)
-            return m.reply(`✅ *Pengingat makan diaktifkan kembali!* 🔔\n\n⏰ Jadwal: ${existing.jadwal.map(j => `*${j}*`).join(', ')} WIB`)
+            return m.reply(`✅>#91; ¡El recordatorio de alimentos es re @-@ activado! &#93;🔔\n\n⏰Programado:${existing.jadwal.map(j => `*${j}*`).join(', ')} WIB`)
         }
 
         const timeInput = args[1]
         if (!timeInput) {
-            return m.reply(`❌ *Masukkan jadwal makan!*\n\n> Contoh: \`${m.prefix}notifmakan on 07.00,12.00,19.00\``)
+            return m.reply(`❌* Pon algo de comida!\n\n> Ejemplo:\`${m.prefix}notifmakan on 07.00,12.00,19.00\``)
         }
 
         const jadwal = _ourinnotifschedulerjs.parseJadwal.call(void 0, timeInput)
         if (jadwal.length === 0) {
-            return m.reply(`❌ *Format jam salah!*\n\n> Gunakan format *HH.MM* atau *HH:MM*\n> Contoh: \`07.00,12.30,19.00\``)
+            return m.reply(`❌= = Sincronización, corregido por elderman = =\n\n* Gunwill formfort * HH. * * o * HH: MM *\n> Ejemplo:\`07. 00, 12. 30, 19. 00.\``)
         }
 
         const menu = args.slice(2).join(' ').trim()
         _ourinnotifschedulerjs.setNotifMakan.call(void 0, sender, chatJid, jadwal, menu)
 
-        let reply = `✅ *Pengingat makan aktif!* 🔔\n\n`
+        let reply = `✅> #91; ¡El recordatorio de comida está encendido!🔔\n\n`
         reply += `⏰ *Jadwal:*\n`
         for (const j of jadwal) {
             const label = getMealLabel(j)
             reply += `> 🕐 *${j}* WIB _(${label})_\n`
         }
-        if (menu) reply += `\n🍴 *Menu:* _${menu}_`
-        reply += `\n\n> 💡 _Notifikasi akan dikirim ke chat ini setiap hari_`
+        if (menu) reply += `\n🍴* Menú: *${menu}_`
+        reply += `\n\n♪💡" Las notificaciones se enviarán a este gráfico todos los días ".`
 
         return m.reply(reply)
     }
 
     if (sub === 'edit') {
         if (!existing) {
-            return m.reply(`❌ *Belum ada pengingat makan!*\n\n> Aktifkan dulu: \`${m.prefix}notifmakan on 07.00,12.00,19.00\``)
+            return m.reply(`❌* No un recordatorio de comida!\n\nDisfruta del espectáculo.\`${m.prefix}notifmakan on 07.00,12.00,19.00\``)
         }
 
         const timeInput = args[1]
         if (!timeInput) {
-            return m.reply(`❌ *Masukkan jadwal baru!*\n\n> Contoh: \`${m.prefix}notifmakan edit 08.00,13.00,20.00\``)
+            return m.reply(`❌¡Pon una bolsa nueva!\n\n> Ejemplo:\`${m.prefix}notifmakan edit 08.00,13.00,20.00\``)
         }
 
         const jadwal = _ourinnotifschedulerjs.parseJadwal.call(void 0, timeInput)
         if (jadwal.length === 0) {
-            return m.reply(`❌ *Format jam salah!*\n\n> Gunakan format *HH.MM* atau *HH:MM*\n> Contoh: \`08.00,13.00,20.00\``)
+            return m.reply(`❌= = Sincronización, corregido por elderman = =\n\n* Gunwill formfort * HH. * * o * HH: MM *\n> Ejemplo:\`8: 00, 13: 00, 20: 00.\``)
         }
 
         const menu = args.slice(2).join(' ').trim() || existing.menu || ''
         _ourinnotifschedulerjs.setNotifMakan.call(void 0, sender, chatJid, jadwal, menu)
 
-        let reply = `✅ *Jadwal makan diperbarui!* ✏️\n\n`
-        reply += `⏰ *Jadwal baru:*\n`
+        let reply = `✅ *Jadwal come diperbarui!* ✏♪\n\n`
+        reply += `⏰*Jadwal nuevo:*\n`
         for (const j of jadwal) {
             const label = getMealLabel(j)
             reply += `> 🕐 *${j}* WIB _(${label})_\n`
         }
-        if (menu) reply += `\n🍴 *Menu:* _${menu}_`
+        if (menu) reply += `\n🍴* Menú: *${menu}_`
 
         return m.reply(reply)
     }

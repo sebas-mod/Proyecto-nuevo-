@@ -19,7 +19,7 @@ const assetCache = {};
           assetCache[key] = _fs2.default.readFileSync(fullPath);
           _ourinloggerjs.logger.system("CACHE", `Loaded: ${key}`);
         } else {
-          _ourinloggerjs.logger.warn("CACHE", `File not found: ${fullPath}`);
+          _ourinloggerjs.logger.warn("CACHE", `Archivo nut Found:${fullPath}`);
         }
       }
     } catch (e) {
@@ -61,7 +61,7 @@ var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefa
 } exports.getAssetBuffer = getAssetBuffer;
 
 /**
- * Update an asset buffer in memory and save it to disk (useful for owner commands that change assets).
+* Actualizar un búfer de activos en memoria y guardarlo en disco ( útil para comandos del propietario que cambian activos ).
  * 
  * @param {string} key - Asset key
  * @param {Buffer} buffer - New asset buffer

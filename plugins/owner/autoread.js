@@ -6,7 +6,7 @@ const pluginConfig = {
   name: "autoread",
   alias: ["readchat", "autobaca"],
   category: "owner",
-  description: "Auto read pesan masuk",
+  description: "Auto Leer mensaje entrante",
   usage: ".autoread on/off",
   example: ".autoread on",
   isOwner: true,
@@ -27,10 +27,10 @@ async function handler(m, { sock }) {
     return m.reply(
       `📖 *Auto Read*\n\n` +
         `> Status: *${current ? "Aktif ✅" : "Nonaktif ❌"}*\n\n` +
-        `*PENGGUNAAN:*\n` +
+        `*Uso:*\n` +
         `> *${m.prefix}autoread on* — Aktifkan\n` +
         `> *${m.prefix}autoread off* — Nonaktifkan\n\n` +
-        `_Bot akan otomatis membaca pesan masuk_`
+        `*Para automatizar la lectura de mensajes entrantes*`
     );
   }
 
@@ -38,8 +38,8 @@ async function handler(m, { sock }) {
     db.setting("autoRead", true);
     const ctx = _ourincontextjs.saluranCtx.call(void 0, );
     return m.reply(
-      `📖 *Auto Read Aktif*\n\n` +
-        `> Bot akan otomatis membaca pesan masuk`,
+      `📖> 91; Auto Read Active >\n\n` +
+        `♪ Para la automatización leer mensajes en ♪`,
       { contextInfo: ctx }
     );
   }
@@ -47,13 +47,13 @@ async function handler(m, { sock }) {
   if (option === "off") {
     db.setting("autoRead", false);
     return m.reply(
-      `📖 *Auto Read Nonaktif*\n\n` +
-        `> Bot tidak akan otomatis membaca pesan`
+      `📖> 91; Auto Read Nonactive > 93;\n\n` +
+        `# Nunca voy a automatizar el mensaje`
     );
   }
 
   return m.reply(
-    `❌ *Opsi Tidak Valid*\n\n> Gunakan *${m.prefix}autoread on* atau *${m.prefix}autoread off*`
+    `❌Opsi inválido\n\n*Uso*${m.prefix}autoread on * or *${m.prefix}autoread off*`
   );
 }
 

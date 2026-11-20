@@ -3,7 +3,7 @@ const pluginConfig = {
     name: 'setrulesgrup',
     alias: ['setgrouprules', 'setaturangrup'],
     category: 'group',
-    description: 'Set rules/aturan grup custom (admin only)',
+    description: 'Establecer / reglas de reglas grupo personalizado ( administrador solamente )',
     usage: '.setrulesgrup <text>',
     example: '.setrulesgrup 1. Jangan spam\n2. Hormati sesama',
     isOwner: false,
@@ -23,9 +23,9 @@ function handler(m) {
     if (!text) {
         return m.reply(
             `📝 *sᴇᴛ ɢʀᴜᴘ ʀᴜʟᴇs*\n\n` +
-            `> Masukkan teks rules yang baru\n\n` +
+            `*Pon nuevas reglas de texto*\n\n` +
             `\`Contoh:\`\n` +
-            `\`${m.prefix}setrulesgrup 1. Jangan spam
+            `\`${m.prefix}setrulesgrup 1.
 2. Hormati sesama\``
         )
     }
@@ -34,8 +34,8 @@ function handler(m) {
 
     m.reply(
         `✅ *ɢʀᴜᴘ ʀᴜʟᴇs ᴅɪᴜᴘᴅᴀᴛᴇ*\n\n` +
-        `Rules grup berhasil diubah!\n` +
-        `Ketik \`${m.prefix}rulesgrup\` untuk melihat.`
+        `¡Las reglas del grupo están siendo cambiadas!\n` +
+        `Escribe\`${m.prefix}rulesgrup\`para ver.`
     )
 }
 

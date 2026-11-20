@@ -4,7 +4,7 @@ const pluginConfig = {
     name: 'stopjadibot',
     alias: ['berhentijadibot', 'stopbot', 'unjadibot'],
     category: 'main',
-    description: 'Hentikan sesi jadibot kamu',
+    description: 'Detén tu sesque así @-@ bot.',
     usage: '.stopjadibot',
     example: '.stopjadibot',
     isOwner: false,
@@ -27,12 +27,12 @@ function formatUptime(ms) {
 
 async function handler(m, { sock }) {
     const sender = m.sender
-    if (!sender) return m.reply('❌ Gagal mengidentifikasi nomor kamu')
+    if (!sender) return m.reply('❌Stunner ID \'d su número')
 
     if (!_ourinjadibotmanagerjs.isJadibotActive.call(void 0, sender)) {
         return m.reply(
             `❌ *ᴋᴀᴍᴜ ᴛɪᴅᴀᴋ ᴀᴅᴀʟᴀʜ ᴊᴀᴅɪʙᴏᴛ*\n\n` +
-            `> Ketik \`${m.prefix}jadibot\` untuk menjadi bot`
+            `> Escribe\`${m.prefix}Así que el peso\`para convertirse en un bot`
         )
     }
 
@@ -47,15 +47,15 @@ async function handler(m, { sock }) {
 
         await m.reply(
             `🛑 *ᴊᴀᴅɪʙᴏᴛ ᴅɪʜᴇɴᴛɪᴋᴀɴ*\n\n` +
-            `> 📱 Nomor: *@${sender.split('@')[0]}*\n` +
+            `♪📱Número: *@${sender.split('@')[0]}*\n` +
             `> ⏱️ Uptime: *${uptime}*\n` +
-            `> 💾 Session: *Tersimpan*\n\n` +
-            `Ketik \`${m.prefix}jadibot\` untuk mengaktifkan kembali.`,
+            `♪💾Session: *Guardado*\n\n` +
+            `Escribe\`${m.prefix}Así que el peso\`Para reactivar.`,
             { mentions: [sender] }
         )
     } catch (e) {
         await m.react('☢')
-        await m.reply(`❌ Gagal menghentikan jadibot: ${e.message}`)
+        await m.reply(`❌Ataque parando el kebabot:${e.message}`)
     }
 }
 

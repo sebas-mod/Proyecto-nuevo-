@@ -2,7 +2,7 @@
 var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
 var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
 var _ourincontextjs = require('../../src/lib/ourin-context.js');
-const NEOXR_APIKEY = _optionalChain([_configjs2.default, 'access', _ => _.APIkey, 'optionalAccess', _2 => _2.neoxr]) || "Milik-Bot-OurinMD";
+const NEOXR_APIKEY = _optionalChain([_configjs2.default, 'access', _ => _.APIkey, 'optionalAccess', _2 => _2.neoxr]) || "Millik - Eurinprobable";
 
 const pluginConfig = {
   name: "filmget",
@@ -24,10 +24,10 @@ async function handler(m, { sock }) {
   if (!url || !url.includes("neoxr.eu")) {
     return m.reply(
       `🎬 *ꜰɪʟᴍ ᴅᴇᴛᴀɪʟ*\n\n` +
-        `> Ambil detail film dari URL\n\n` +
-        `*Format:*\n` +
+        `Emime detalles film de URL\n\n` +
+        `*Formato:*\n` +
         `> \`${m.prefix}filmget <url>\`\n\n` +
-        `> Gunakan \`${m.prefix}film <judul>\` untuk cari film dulu`,
+        `> Usa \`${m.prefix}El peecula<judul>\`La peelícula.`,
     );
   }
 
@@ -39,7 +39,7 @@ async function handler(m, { sock }) {
 
     if (!_optionalChain([data, 'optionalAccess', _6 => _6.status]) || !_optionalChain([data, 'optionalAccess', _7 => _7.data])) {
       m.react("❌");
-      return m.reply("❌ *ɢᴀɢᴀʟ*\n\n> Film tidak ditemukan");
+      return m.reply("❌*ɢᴀɢᴀʟ*\n\nFilm no encontrada");
     }
 
     const film = data.data;

@@ -2,13 +2,13 @@
 var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
 var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
 var _ourincontextjs = require('../../src/lib/ourin-context.js');
-const NEOXR_APIKEY = _optionalChain([_configjs2.default, 'access', _ => _.APIkey, 'optionalAccess', _2 => _2.neoxr]) || "Milik-Bot-OurinMD";
+const NEOXR_APIKEY = _optionalChain([_configjs2.default, 'access', _ => _.APIkey, 'optionalAccess', _2 => _2.neoxr]) || "Millik - Eurinprobable";
 
 const pluginConfig = {
   name: "emojitoimage",
   alias: ["emoji2img", "emojiimg", "e2i"],
   category: "tools",
-  description: "Konversi emoji ke gambar HD (style Apple)",
+  description: "Conversiones de Emoji a la imagen ED ( Estilo de manzana )",
   usage: ".emojitoimage <emoji> [style]",
   example: ".emojitoimage 😳 apple",
   cooldown: 5,
@@ -34,12 +34,12 @@ async function handler(m, { sock }) {
   if (!emoji) {
     return m.reply(
       `🖼️ *ᴇᴍᴏᴊɪ ᴛᴏ ɪᴍᴀɢᴇ*\n\n` +
-        `> Konversi emoji ke gambar HD\n\n` +
-        `*Format:*\n` +
+        `Conversión emoji a la imagen ED\n\n` +
+        `*Formato:*\n` +
         `> \`${m.prefix}emojitoimage <emoji> [style]\`\n\n` +
-        `*Contoh:*\n` +
+        `*Ejemplo:*\n` +
         `> \`${m.prefix}emojitoimage 😳 apple\`\n\n` +
-        `*Style tersedia:*\n` +
+        `*Style disponible:*\n` +
         `> ${STYLES.join(", ")}`,
     );
   }
@@ -54,7 +54,7 @@ async function handler(m, { sock }) {
 
     if (!_optionalChain([data, 'optionalAccess', _9 => _9.status]) || !_optionalChain([data, 'optionalAccess', _10 => _10.data, 'optionalAccess', _11 => _11.url])) {
       m.react("❌");
-      return m.reply("❌ *ɢᴀɢᴀʟ*\n\n> Emoji tidak ditemukan atau API error");
+      return m.reply("❌*ɢᴀɢᴀʟ*\n\n*Emoji no se encuentra ni error de API*");
     }
 
     const imgUrl = data.data.url;

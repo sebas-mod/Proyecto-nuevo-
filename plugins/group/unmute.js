@@ -3,7 +3,7 @@ const pluginConfig = {
     name: 'unmute',
     alias: ['unbisukan'],
     category: 'group',
-    description: 'Membuka mute grup',
+    description: 'Batir el mudo del grupo',
     usage: '.unmute',
     example: '.unmute',
     isOwner: false,
@@ -22,10 +22,10 @@ function handler(m, { sock }) {
     const group = db.getGroup(m.chat) || {}
     const groupName = m.groupMetadata.subject
 
-    if (!group.mute) return m.reply('❌ Grup tidak sedang di-mute.')
+    if (!group.mute) return m.reply('❌Grup \'s not in a mute.')
 
     db.setGroup(m.chat, { ...group, mute: false })
-    m.reply(`✅ Grup *${groupName}* berhasil di-unmute oleh @${m.sender.split('@')[0]}\n\nSemua member sekarang bisa mengirim pesan.`, { mentions: [m.sender] })
+    m.reply(`✅Grupo *${groupName}* Éxito en -un minuto por @${m.sender.split('@')[0]}\n\nTodas las fotos pueden enviar ahora un mensaje.`, { mentions: [m.sender] })
 }
 
 exports.config = pluginConfig; exports.handler = handler;

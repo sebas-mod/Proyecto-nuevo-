@@ -10,7 +10,7 @@ const pluginConfig = {
   name: "musikapaini",
   alias: ["whatmusic", "shazam", "recognizemusic", "mai"],
   category: "tools",
-  description: "Identifikasi lagu dari audio",
+  description: "Iticaciones de canciones de audio",
   usage: ".musikapaini (reply audio)",
   example: ".musikapaini",
   cooldown: 20,
@@ -34,7 +34,7 @@ async function uploadTo0x0(buffer, filename) {
     },
   );
 
-  if (!_optionalChain([res, 'access', _ => _.data, 'optionalAccess', _2 => _2.status]) ? res.data.path : "") throw new Error("Upload gagal");
+  if (!_optionalChain([res, 'access', _ => _.data, 'optionalAccess', _2 => _2.status]) ? res.data.path : "") throw new Error("Upload fallido");
   return res.data;
 }
 
@@ -71,10 +71,10 @@ async function handler(m, { sock }) {
   if (!audioBuffer) {
     return m.reply(
       `🎵 *ᴍᴜsɪᴋ ᴀᴘᴀ ɪɴɪ?*\n\n` +
-        `> Identifikasi lagu dari audio\n\n` +
-        `*Cara pakai:*\n` +
-        `> Reply audio dengan \`${m.prefix}musikapaini\`\n` +
-        `> Atau kirim audio + caption command`,
+        `*Canción Itikakasi del audio*\n\n` +
+        `*Como usarlo:*\n` +
+        `Responder audio con\`${m.prefix}musikapaini\`\n` +
+        `# Dime enviar audio + comando de captura #`,
     );
   }
 
@@ -90,7 +90,7 @@ async function handler(m, { sock }) {
     const data = await _ourinapimanagerjs2.default.neoxr.whatMusic(
       {
         url: audioUrl,
-        apikey: _optionalChain([_configjs2.default, 'access', _5 => _5.APIkey, 'optionalAccess', _6 => _6.neoxr]) || "Milik-Bot-OurinMD",
+        apikey: _optionalChain([_configjs2.default, 'access', _5 => _5.APIkey, 'optionalAccess', _6 => _6.neoxr]) || "Millik - Eurinprobable",
       },
       {
         timeout: 60000,
@@ -99,7 +99,7 @@ async function handler(m, { sock }) {
 
     if (!_optionalChain([data, 'optionalAccess', _7 => _7.status]) || !_optionalChain([data, 'optionalAccess', _8 => _8.data])) {
       m.react("❌");
-      return m.reply("❌ *ɢᴀɢᴀʟ*\n\n> Lagu tidak dikenali atau API error");
+      return m.reply("❌*ɢᴀɢᴀʟ*\n\n* Sing no se reproduce o error de API");
     }
 
     const music = data.data;

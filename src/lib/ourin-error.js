@@ -1,6 +1,6 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
 function te(prefix, command, pushName) {
-    const tpl = _configjs2.default.errorTemplate || `☢ *ᴇʀʀᴏʀ*\n\n> Terjadi kesalahan pada command \`{prefix}{command}\`\n> Silahkan coba lagi nanti, {pushName}\n\n_Jika masalah berlanjut, hubungi owner_`
+    const tpl = _configjs2.default.errorTemplate || `☢*ᴇʀʀᴏʀ*\n\n*Ha sido un error mandar*\`{prefix}{command}\`\nPor favor, intente de nuevo más tarde,{pushName}\n\nSi el problema continúa, contacte con el propietario_`
     return tpl
         .replace(/\{prefix\}/g, prefix || '.')
         .replace(/\{command\}/g, command || '?')

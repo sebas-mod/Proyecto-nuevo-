@@ -5,7 +5,7 @@ const pluginConfig = {
     name: 'cecanvietnam',
     alias: ['cewekvietnam', 'cewekvn'],
     category: 'cecan',
-    description: 'Random gambar cewek cantik Vietnam',
+    description: 'Imagen del azar de la hermosa mujer del Illignam',
     usage: '.cecanvietnam',
     example: '.cecanvietnam',
     isOwner: false,

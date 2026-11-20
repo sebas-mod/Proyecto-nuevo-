@@ -2,7 +2,7 @@
     name: 'cekkarma',
     alias: ['karma'],
     category: 'cek',
-    description: 'Cek tingkat karma kamu',
+    description: 'Revisa tu tarifa.',
     usage: '.cekkarma <nama>',
     example: '.cekkarma Budi',
     isOwner: false,
@@ -22,15 +22,15 @@ async function handler(m) {
     if (percent >= 80) desc = 'Karma baik! Surga menantimu~ ✨'
     else if (percent >= 60) desc = 'Cukup baik, terus tingkatkan! 🙏'
     else if (percent >= 40) desc = 'Netral, perbanyak kebaikan~ ⚖️'
-    else if (percent >= 20) desc = 'Hati-hati dengan karma buruk! ⚠️'
+    else if (percent >= 20) desc = '¡Cuidado con el karma malo!⚠♪'
     else desc = 'Wah perlu banyak tobat nih... 😱'
     
-    let txt = mentioned === m.sender ? `Hai @${mentioned.split('@')[0]}
+    let txt = mentioned === m.sender ? `Hola @${mentioned.split('@')[0]}
     
-Tingkat kekarmaan kamu *${percent}%*
-\`\`\`${desc}\`\`\`` : `Kamu ingin ngecek tingkat kekarmaan @${mentioned.split('@')[0]} yak? 
+Tu rango personal.${percent}%*
+\`\`\`${desc}\`\`\`` : `Usted quiere comprobar los niveles de decencia${mentioned.split('@')[0]} yak? 
     
-Tingkat kekarmaan dia sebesar *${percent}%*
+Es tan bueno como un hombre en su clase.${percent}%*
 \`\`\`${desc}\`\`\``
     
     await m.reply(txt, { mentions: [mentioned] })

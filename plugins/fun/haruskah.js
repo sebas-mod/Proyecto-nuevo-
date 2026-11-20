@@ -2,7 +2,7 @@
     name: 'haruskah',
     alias: ['harus', 'should'],
     category: 'fun',
-    description: 'Tanya bot haruskah sesuatu',
+    description: 'Pregunta bot debe ser algo',
     usage: '.haruskah <pertanyaan>',
     example: '.haruskah aku menyatakan cinta?',
     isOwner: false,
@@ -15,25 +15,25 @@
 };
 
 const answers = [
-    'Ya, harus!',
-    'Tidak usah.',
-    'Hmm, terserah kamu sih.',
-    'Harus banget! Jangan ragu!',
-    'Nggak harus juga.',
-    'Kalau menurutmu perlu, lakukan!',
+    'Si, debe!',
+    'No usah.',
+    'Eres tan mala.',
+    '¡Debe Mucho!',
+    'Nggak también debería.',
+    '¡Crees que necesitas hacerlo!',
     'Pikir dulu baik-baik.',
-    'Harus! Sekarang!',
-    'Jangan, mending tunggu dulu.',
-    'Harus, tapi hati-hati.',
-    'Nggak harus, tapi boleh.',
+    'Debe! Ahora!',
+    'No, espera un minuto.',
+    'Debe, pero ten cuidado.',
+    'No, tengo que hacerlo, pero estoy bien.',
     'Wajib!',
     'Hmm, skip aja deh.',
-    'Lakukan kalau sudah yakin.',
-    'Harus, demi masa depanmu!',
-    'Nggak harus, santai aja.',
+    'Hazlo si estás seguro.',
+    'Debe, tu futuro!',
+    'No hay necesidad de relajarse.',
     'Go for it!',
-    'Jangan buru-buru, pikir lagi.',
-    'Tentu harus!',
+    'No tengas tanta prisa, piensa de nuevo.',
+    'Claro debe!',
     'Lihat situasinya dulu.'
 ];
 
@@ -41,7 +41,7 @@ async function handler(m) {
     const text = _optionalChain([m, 'access', _ => _.text, 'optionalAccess', _2 => _2.trim, 'call', _3 => _3()]);
     
     if (!text) {
-        return m.reply(`⚖️ *ʜᴀʀᴜsᴋᴀʜ*\n\n> Masukkan pertanyaan!\n\n*Contoh:*\n> .haruskah aku menyatakan cinta?`);
+        return m.reply(`⚖♪ʜᴀʀᴜSᴋᴀʜ*\n\n¡Disfruta de la pregunta!\n\n*Ejemplo:*\nLo siento. ¿Debo decir amor?`);
     }
     
     const answer = answers[Math.floor(Math.random() * answers.length)];

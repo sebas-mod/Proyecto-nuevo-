@@ -10,7 +10,7 @@ const pluginConfig = {
   name: "hdvid",
   alias: ["hdvideo", "enhancevid", "hdv"],
   category: "tools",
-  description: "Meningkatkan kualitas video menjadi HD dengan pure FFMPEG",
+  description: "Aumentar la calidad de vídeo a HD con un FFMPEG puro",
   usage: ".hdvid (reply video)",
   example: ".hdvid",
   isOwner: false,
@@ -28,11 +28,11 @@ async function handler(m, { sock }) {
 
   if (!isVideoMessage && !isDocumentMessage) {
     let txt = `📹 *HD VIDEO ENHANCER* 📹\n\n`;
-    txt += `Halo kak! Punya video yang buram? Aku bisa bantu bikin jadi HD lho!\n\n`;
-    txt += `*Cara Pakai:*\n`;
-    txt += `👉 Kirim video (atau document video) dengan caption \`${m.prefix}hdvid\`\n`;
-    txt += `👉 Atau reply video (atau document video) dengan \`${m.prefix}hdvid\`\n\n`;
-    txt += `⚠️ _Fitur Premium, proses bisa memakan waktu tergantung ukuran ya kak!_`;
+    txt += `¡Hola hermano!\n\n`;
+    txt += `*Como usarlo:*\n`;
+    txt += `👉Ksendvideo (o vídeo de documento ) con capción\`${m.prefix}hdvid\`\n`;
+    txt += `👉O réplica vídeo (o documentos video ) con\`${m.prefix}hdvid\`\n\n`;
+    txt += `⚠No podemos permitirnos tener ese tipo de tiempo.`;
     return m.reply(txt);
   }
 
@@ -43,15 +43,15 @@ async function handler(m, { sock }) {
 
     if (!videoBuffer || videoBuffer.length === 0) {
       await m.react("❌");
-      return m.reply(`❌ *GAGAL*\n\nAduh kak, videonya gagal diunduh! Coba kirim ulang ya.`);
+      return m.reply(`❌*Fallido*\n\nEl nombre de mi hermano es Aish, el vídeo no se ha descargado!`);
     }
 
     if (videoBuffer.length > 50 * 1024 * 1024) {
       await m.react("❌");
-      return m.reply(`❌ *FILE TERLALU BESAR*\n\nMaaf kak, maksimal ukuran video cuma 50MB ya!`);
+      return m.reply(`❌*Voy a estar aquí*\n\nLo sentimos hermano, la suma máxNu de video cuma 50MB`);
     }
 
-    await m.reply(`🎞️ *PROSES ENHANCE DIMULAI* 🎞️\n\nVideo kakak sedang diproses agar menjadi HD! ✨\nEstimasi waktu tergantung ukuran video, mohon bersabar ya kak!`);
+    await m.reply(`🎞* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *🎞♪\n\nVideo Kazak está siendo procesado en HD!✨\nEstimaciones de tiempo colgado en el tamaño de vídeo, por favor ser paciente, hermano!`);
 
     const tempDir = _os2.default.tmpdir();
     const inputPath = _path2.default.join(tempDir, `input-hd-${Date.now()}.mp4`);
@@ -73,7 +73,7 @@ async function handler(m, { sock }) {
 
     const resultBuffer = _fs2.default.readFileSync(outputPath);
 
-    await sock.sendMedia(m.chat, resultBuffer, `✨ *PROSES SELESAI* ✨\n\nIni dia hasil videonya kak, udah jauh lebih mulus dan HD kan? 😍`, m, {
+    await sock.sendMedia(m.chat, resultBuffer, `✨*Voy a estar bien*✨\n\nAquí viene los recultados de vídeo, hermana, mucho más silenciosius y duro¿¿Verdad?😍`, m, {
       type: "video",
       mimetype: "video/mp4",
       fileName: `HDVID-${Date.now()}.mp4`,
@@ -87,7 +87,7 @@ async function handler(m, { sock }) {
     } catch (e) {}
   } catch (err) {
     await m.react("❌");
-    await m.reply(`❌ Maaf kak, proses enhance videonya gagal! 😭\n\nDetail: ${err.message}`);
+    await m.reply(`❌Lo siento hermano, el proceso mejorar videonya falló!😭\n\nDetalles:${err.message}`);
   }
 }
 

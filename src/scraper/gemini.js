@@ -135,7 +135,7 @@ async function gemini(input = {}) {
     }
 
     if (!parse1) {
-      throw new Error("Gagal mem-parsing response Gemini.");
+      throw new Error("Perguiendo stuntman la isla de Gemini.");
     }
 
     const newResumeArray = [...parse1[1], parse1[4][0][0]];

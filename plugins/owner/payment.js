@@ -26,7 +26,7 @@ function buildPaymentText(paymentCfg, customText, botName, ownerName) {
       .replace(/\{owner\}/gi, ownerName)
       .replace(/\{methods\}/gi, methods.map(m => `• *${m.name}*: ${m.number} (${m.holder || m.name})`).join('\n'))
       .replace(/\{banks\}/gi, banks.map(b => `• *${b.name}*: ${b.number} (${b.holder || b.name})`).join('\n'))
-      .replace(/\{qris\}/gi, paymentCfg.qrisUrl ? '✅ Tersedia' : '❌ Belum diatur')
+      .replace(/\{qris\}/gi, paymentCfg.qrisUrl ? '✅ Tersedia' : '❌Aún no configurado')
   }
 
   let text = `💳 *P A Y M E N T*\n`
@@ -43,7 +43,7 @@ function buildPaymentText(paymentCfg, customText, botName, ownerName) {
   }
 
   if (banks.length > 0) {
-    text += `🏦 *Bank Transfer:*\n`
+    text += `🏦* Transferencia bancaria: *\n`
     for (const b of banks) {
       text += `├─ • *${b.name}*\n`
       text += `│  \`${b.number}\`\n`
@@ -53,7 +53,7 @@ function buildPaymentText(paymentCfg, customText, botName, ownerName) {
   }
 
   if (paymentCfg.qrisUrl) {
-    text += `📸 *QRIS:* Tersedia (lihat gambar)\n\n`
+    text += `📸*QRIS: * Preservado ( ver imágenes )\n\n`
   }
 
   text += `━━━━━━━━━━━━━━━━━━\n`
@@ -66,8 +66,8 @@ async function handler(m, { sock }) {
   const db = _ourindatabasejs.getDatabase.call(void 0, )
   const paymentCfg = _configjs2.default.payment || {}
   const customText = db.setting('customPaymentText') || paymentCfg.customText || ''
-  const botName = _optionalChain([_configjs2.default, 'access', _ => _.bot, 'optionalAccess', _2 => _2.name]) || 'Bot'
-  const ownerName = _optionalChain([_configjs2.default, 'access', _3 => _3.owner, 'optionalAccess', _4 => _4.name]) || 'Owner'
+  const botName = _optionalChain([_configjs2.default, 'access', _ => _.bot, 'optionalAccess', _2 => _2.name]) || '♪'
+  const ownerName = _optionalChain([_configjs2.default, 'access', _3 => _3.owner, 'optionalAccess', _4 => _4.name]) || 'Propietario'
 
   const text = buildPaymentText(paymentCfg, customText, botName, ownerName)
 

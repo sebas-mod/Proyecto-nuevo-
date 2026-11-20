@@ -5,7 +5,7 @@ const pluginConfig = {
     name: 'barandom',
     alias: ['bluearchive', 'ba'],
     category: 'random',
-    description: 'Random gambar Blue Archive',
+    description: 'Imagen aleatoria Archivo Azul',
     usage: '.barandom',
     example: '.barandom',
     isOwner: false,

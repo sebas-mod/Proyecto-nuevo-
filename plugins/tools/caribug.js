@@ -19,7 +19,7 @@ async function handler(m, { args }) {
 
   if (!code) {
     return m.reply(
-      `*🐛 CARI BUG*\n\nKirim kode atau reply pesan kode untuk mencari bug.\n\nContoh:\n\`${m.prefix}caribug function test() {}\``
+      `*🐛Busca BUG*\n\nCódigo de Ksender o respuesta mensaje de código para buscar errores.\n\nEjemplo:\n\`${m.prefix}caribug function test() {}\``
     );
   }
 
@@ -39,24 +39,24 @@ async function handler(m, { args }) {
     const data = res.data;
 
     if (!data.success || !data.data) {
-      throw new Error("Gagal menganalisa kode dari server");
+      throw new Error("Steenace analiza el código desde el servidor");
     }
 
     const info = data.data;
     const meta = info.metadata;
     const bugInfo = info.bugsFound;
     
-    let text = `🐛 *HASIL ANALISA BUG*\n\n`;
+    let text = `🐛> 91; HAZARD ANALISA BUG > 93;\n\n`;
     text += `*Bahasa:* ${meta.detectedLanguage}\n`;
-    text += `*Tingkat:* ${meta.severityInfo.level} ${meta.severityInfo.icon}\n`;
-    text += `*Bug Ditemukan:* ${bugInfo.total}\n\n`;
+    text += `*Nivel:* ${meta.severityInfo.level} ${meta.severityInfo.icon}\n`;
+    text += `* Bug Discovered: *${bugInfo.total}\n\n`;
     
     if (bugInfo.summary) {
       text += `*📝 Ringkasan:*\n${bugInfo.summary}\n\n`;
     }
     
     if (_optionalChain([info, 'access', _3 => _3.codeAnalysis, 'optionalAccess', _4 => _4.fixed, 'optionalAccess', _5 => _5.code])) {
-      text += `*✨ Kode Perbaikan:*\n\`\`\`${meta.detectedLanguage}\n${info.codeAnalysis.fixed.code}\n\`\`\`\n\n`;
+      text += `*✨Recuperar Código: *\n\`\`\`${meta.detectedLanguage}\n${info.codeAnalysis.fixed.code}\n\`\`\`\n\n`;
     }
     
     if (bugInfo.details && bugInfo.details.length > 0) {

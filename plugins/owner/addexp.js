@@ -55,7 +55,7 @@ async function handler(m, { sock }) {
     }
     
     if (amount <= 0) {
-        return m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> Jumlah exp harus lebih dari 0`)
+        return m.reply(`❌*ɢᴀɢᴀʟ*\n\n# Sólo salta en el agujero #xp debe ser más de 0`)
     }
     
     if (amount > MAX_EXP) {
@@ -69,7 +69,7 @@ async function handler(m, { sock }) {
     await m.react('✅')
     
     await m.reply(
-        `✅ Berhasil menambahkan exp *${formatNumber(amount)}* ke *@${targetJid.split('@')[0]}*`,
+        `✅♪ Trabajar en el plus e ♪x*${formatNumber(amount)}* ke *@${targetJid.split('@')[0]}*`,
         { mentions: [targetJid] }
     )
 }

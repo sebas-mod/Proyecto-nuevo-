@@ -2,7 +2,7 @@
     name: 'cekpintar',
     alias: ['pintar', 'iq', 'smart'],
     category: 'cek',
-    description: 'Cek seberapa pintar kamu',
+    description: 'Mira lo inteligente que eres.',
     usage: '.cekpintar <nama>',
     example: '.cekpintar Budi',
     isOwner: false,
@@ -32,12 +32,12 @@ async function handler(m) {
         desc = 'Tetap semangat belajar! 📚'
     }
     
-    let txt = mentioned === m.sender ? `Hai @${mentioned.split('@')[0]}
+    let txt = mentioned === m.sender ? `Hola @${mentioned.split('@')[0]}
     
-Kepintaran (IQ) kamu *${iq}*
-\`\`\`${desc}\`\`\`` : `Kamu ingin ngecek kepintaran @${mentioned.split('@')[0]} yak? 
+Inteligencia (I)Q*${iq}*
+\`\`\`${desc}\`\`\`` : `¿Quieres echar un vistazo a la inteligencia @${mentioned.split('@')[0]} yak? 
     
-Kepintaran (IQ) dia sebesar *${iq}*
+Inteligencia (I)Q) he 's as big${iq}*
 \`\`\`${desc}\`\`\``
     
     await m.reply(txt, { mentions: [mentioned] })

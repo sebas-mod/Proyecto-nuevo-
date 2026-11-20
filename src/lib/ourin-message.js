@@ -5,9 +5,9 @@ var _ourincontextjs = require('./ourin-context.js');
 var _ourinutilsjs = require('./ourin-utils.js');
 /**
  * @typedef {Object} MessageOptions
- * @property {Object} [quoted] - Pesan untuk di-quote
- * @property {boolean} [ephemeral] - Pesan ephemeral
- * @property {string[]} [mentions] - Array JID untuk mention
+* @ proprie{Object}Mensaje a
+* @ proprie{boolean}♪
+*Voy a morir* *voy a morir*
  */
 
 /**
@@ -23,11 +23,11 @@ var _ourinutilsjs = require('./ourin-utils.js');
  */
 
 /**
- * Kirim pesan text
+* Mensajes Ksender texn
  * @param {Object} sock - Socket connection
  * @param {string} jid - JID tujuan
- * @param {string} text - Text untuk dikirim
- * @param {MessageOptions} [options={}] - Opsi pesan
+* @ param{string}texT @-@ Text para enviar
+* @ param{MessageOptions}> 91; Echotions > 93;{}- Opsia de mensaje
  * @returns {Promise<Object>} Sent message
  * @example
  * await sendText(sock, jid, 'Hello World!', { quoted: m });
@@ -47,11 +47,11 @@ async function sendText(sock, jid, text, options = {}) {
 }
 
 /**
- * Kirim pesan dengan reply
+* Mensaje Ksender con respuesta
  * @param {Object} sock - Socket connection
  * @param {string} jid - JID tujuan
- * @param {string} text - Text untuk dikirim
- * @param {Object} quoted - Pesan yang di-reply
+* @ param{string}texT @-@ Text para enviar
+* @ param{Object}- La cita de Mensaje se hace en @-@ respuesta
  * @returns {Promise<Object>} Sent message
  */
 async function sendReply(sock, jid, text, quoted) {
@@ -59,12 +59,12 @@ async function sendReply(sock, jid, text, quoted) {
 }
 
 /**
- * Kirim gambar
+* Imagen de la caja
  * @param {Object} sock - Socket connection
  * @param {string} jid - JID tujuan
- * @param {Buffer|string} image - Buffer gambar atau URL
- * @param {string} [caption=''] - Caption gambar
- * @param {MessageOptions} [options={}] - Opsi pesan
+* @ param { Buffer { Buffer} Takstring } image
+* @ param{string}*Capción* *Capción @-@ dibujo de la Capción*
+* @ param{MessageOptions}> 91; Echotions > 93;{}- Opsia de mensaje
  * @returns {Promise<Object>} Sent message
  * @example
  * await sendImage(sock, jid, imageBuffer, 'Caption here', { quoted: m });
@@ -100,12 +100,12 @@ async function sendImage(sock, jid, image, caption = "", options = {}) {
 }
 
 /**
- * Kirim video
+* Ksentvideo
  * @param {Object} sock - Socket connection
  * @param {string} jid - JID tujuan
- * @param {Buffer|string} video - Buffer video atau URL
+* @ param { Buffer Takenstring } video - Buffer video o URL
  * @param {string} [caption=''] - Caption video
- * @param {MessageOptions} [options={}] - Opsi pesan
+* @ param{MessageOptions}> 91; Echotions > 93;{}- Opsia de mensaje
  * @returns {Promise<Object>} Sent message
  */
 async function sendVideo(sock, jid, video, caption = "", options = {}) {
@@ -138,12 +138,12 @@ async function sendVideo(sock, jid, video, caption = "", options = {}) {
 }
 
 /**
- * Kirim audio
+* Ksender audigo
  * @param {Object} sock - Socket connection
  * @param {string} jid - JID tujuan
- * @param {Buffer|string} audio - Buffer audio atau URL
- * @param {boolean} [ptt=false] - Apakah sebagai voice note
- * @param {MessageOptions} [options={}] - Opsi pesan
+* @ param { Buffer Takenstring } audio - Buffer audio o URL
+* @ param{boolean}Es como nota de voicce
+* @ param{MessageOptions}> 91; Echotions > 93;{}- Opsia de mensaje
  * @returns {Promise<Object>} Sent message
  */
 async function sendAudio(sock, jid, audio, ptt = false, options = {}) {
@@ -175,11 +175,11 @@ async function sendAudio(sock, jid, audio, ptt = false, options = {}) {
 }
 
 /**
- * Kirim sticker
+* Ksentsticker
  * @param {Object} sock - Socket connection
  * @param {string} jid - JID tujuan
- * @param {Buffer|string} sticker - Buffer sticker atau URL
- * @param {MessageOptions} [options={}] - Opsi pesan
+* @ param
+* @ param{MessageOptions}> 91; Echotions > 93;{}- Opsia de mensaje
  * @returns {Promise<Object>} Sent message
  */
 async function sendSticker(sock, jid, sticker, options = {}) {
@@ -209,13 +209,13 @@ async function sendSticker(sock, jid, sticker, options = {}) {
 }
 
 /**
- * Kirim dokumen/file
+* Documentos clericales / archivos
  * @param {Object} sock - Socket connection
  * @param {string} jid - JID tujuan
- * @param {Buffer|string} file - Buffer file atau path
- * @param {string} fileName - Nama file
- * @param {string} [mimetype] - MIME type file
- * @param {MessageOptions} [options={}] - Opsi pesan
+* @ param
+* @ param{string}Nombre del archivo - Nombre del archivo
+* @ param{string}*A mimetipo* *Mimetipo archivo*
+* @ param{MessageOptions}> 91; Echotions > 93;{}- Opsia de mensaje
  * @returns {Promise<Object>} Sent message
  */
 async function sendDocument(sock, jid, file, fileName, mimetype, options = {}) {
@@ -250,12 +250,12 @@ async function sendDocument(sock, jid, file, fileName, mimetype, options = {}) {
 }
 
 /**
- * Kirim kontak
+* Persecutor constante
  * @param {Object} sock - Socket connection
  * @param {string} jid - JID tujuan
- * @param {string} number - Nomor kontak
- * @param {string} name - Nama kontak
- * @param {MessageOptions} [options={}] - Opsi pesan
+* @ param{string}Número uno en
+* @ param{string}nombre - Nombre de Conn
+* @ param{MessageOptions}> 91; Echotions > 93;{}- Opsia de mensaje
  * @returns {Promise<Object>} Sent message
  */
 async function sendContact(sock, jid, number, name, options = {}) {
@@ -282,13 +282,13 @@ END:VCARD`;
 }
 
 /**
- * Kirim lokasi
+* Container de localización
  * @param {Object} sock - Socket connection
  * @param {string} jid - JID tujuan
  * @param {number} latitude - Latitude
  * @param {number} longitude - Longitude
- * @param {string} [name=''] - Nama lokasi
- * @param {MessageOptions} [options={}] - Opsi pesan
+* @ param{string}- Nombre de la ubicación.
+* @ param{MessageOptions}> 91; Echotions > 93;{}- Opsia de mensaje
  * @returns {Promise<Object>} Sent message
  */
 async function sendLocation(
@@ -315,11 +315,11 @@ async function sendLocation(
 }
 
 /**
- * Kirim react emoji
+* Kpersreact emoji
  * @param {Object} sock - Socket connection
- * @param {string} jid - JID chat
- * @param {string} emoji - Emoji untuk react
- * @param {Object} key - Message key untuk react
+* @ param{string}Jid - JID CHATTER
+* @ param{string}emoji - Emoji para reacciones
+* @ param{Object}- Llave de mensaje para leer
  * @returns {Promise<Object>} Result
  */
 async function sendReact(sock, jid, emoji, key) {
@@ -332,12 +332,12 @@ async function sendReact(sock, jid, emoji, key) {
 }
 
 /**
- * Kirim pesan dengan typing indicator
+* Mensaje de Ksender con incinerador de escribir
  * @param {Object} sock - Socket connection
  * @param {string} jid - JID tujuan
- * @param {string} text - Text untuk dikirim
- * @param {number} [delay=1000] - Delay typing dalam ms
- * @param {MessageOptions} [options={}] - Opsi pesan
+* @ param{string}texT @-@ Text para enviar
+* @ param{number}Delay
+* @ param{MessageOptions}> 91; Echotions > 93;{}- Opsia de mensaje
  * @returns {Promise<Object>} Sent message
  */
 async function sendWithTyping(sock, jid, text, delay = 1000, options = {}) {
@@ -348,11 +348,11 @@ async function sendWithTyping(sock, jid, text, delay = 1000, options = {}) {
 }
 
 /**
- * Kirim pesan ke multiple JID
+* Mensaje Ksender a múltiples JID
  * @param {Object} sock - Socket connection
  * @param {string[]} jids - Array JID tujuan
- * @param {Object} content - Content pesan
- * @param {MessageOptions} [options={}] - Opsi pesan
+* @ param{Object}contenido - Mensaje de contenido
+* @ param{MessageOptions}> 91; Echotions > 93;{}- Opsia de mensaje
  * @returns {Promise<Object[]>} Array sent messages
  */
 async function sendToMultiple(sock, jids, content, options = {}) {
@@ -371,11 +371,11 @@ async function sendToMultiple(sock, jids, content, options = {}) {
 }
 
 /**
- * Forward pesan ke JID lain
+* Mensaje previo a otro JID
  * @param {Object} sock - Socket connection
  * @param {string} jid - JID tujuan
- * @param {Object} message - Pesan untuk di-forward
- * @param {boolean} [forceForward=false] - Force forward dengan label
+* @ param{Object}mensaje - pence to be--forred
+* @ param{boolean}*Para una fuerza hacia adelante* *fuera* *fuera hacia adelante con etiqueta*
  * @returns {Promise<Object>} Forwarded message
  */
 async function forwardMessage(sock, jid, message, forceForward = false) {
@@ -386,9 +386,9 @@ async function forwardMessage(sock, jid, message, forceForward = false) {
 }
 
 /**
- * Delete pesan
+* Eliminar el mensaje
  * @param {Object} sock - Socket connection
- * @param {string} jid - JID chat
+* @ param{string}Jid - JID CHATTER
  * @param {Object} key - Message key
  * @returns {Promise<Object>} Result
  */
@@ -399,13 +399,13 @@ async function deleteMessage(sock, jid, key) {
 }
 
 /**
- * Membuat quoted message dummy untuk fake reply
+* He hecho el mensaje de citas tonto para respuesta falsa
  * @param {string} jid - JID pengirim
- * @param {string} text - Text pesan
- * @param {string} [pushName='Bot'] - Nama pengirim
+* @ param{string}texT @-@ Text mensaje
+* @ param{string}- El nombre del remitente
  * @returns {Object} Dummy quoted message
  */
-function createQuotedDummy(jid, text, pushName = "Bot") {
+function createQuotedDummy(jid, text, pushName = "♪") {
   return {
     key: {
       fromMe: false,
@@ -420,16 +420,16 @@ function createQuotedDummy(jid, text, pushName = "Bot") {
 }
 
 /**
- * Kirim pesan dengan thumbnail link preview
+* Mensaje de persecución con vista previa de enlace de miniatura
  * @param {Object} sock - Socket connection
  * @param {string} jid - JID tujuan
- * @param {string} text - Text pesan
+* @ param{string}texT @-@ Text mensaje
  * @param {Object} preview - Preview data
  * @param {string} preview.title - Judul preview
  * @param {string} preview.body - Body preview
- * @param {string} text - Text menu
- * @param {Buffer|string} [image] - Gambar header (opsional)
- * @param {MessageOptions} [options={}] - Opsi pesan
+* @ param{string}texT @-@ Texmenú
+♪ Los diarios del vampiro ♪
+* @ param{MessageOptions}> 91; Echotions > 93;{}- Opsia de mensaje
  * @returns {Promise<Object>} Sent message
  */
 async function sendWithPreview(sock, jid, text, preview, options = {}) {

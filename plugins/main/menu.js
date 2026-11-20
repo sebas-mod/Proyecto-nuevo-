@@ -28,7 +28,7 @@ const pluginConfig = {
   name: "menu",
   alias: ["help", "bantuan", "commands", "m"],
   category: "main",
-  description: "Menampilkan menu utama bot",
+  description: "Adjuntar el menú principal del bot",
   usage: ".menu",
   example: ".menu",
   isOwner: false,
@@ -245,7 +245,7 @@ async function buildMenuText(
   let userRole = "User",
     roleEmoji = "👤";
   if (m.isOwner) {
-    userRole = "Owner";
+    userRole = "Propietario";
     roleEmoji = "👑";
   } else if (m.isPremium) {
     userRole = "Premium";
@@ -256,24 +256,24 @@ async function buildMenuText(
   const totalUsers = db.getUserCount();
   let txt = `${greeting}\n\n`;
   txt += `      ${m.pushName || "User"}\n\n`;
-  txt += `Halo Kawan 🌱\n`;
-  txt += `Perkenalkan aku ${_optionalChain([botConfig, 'access', _3 => _3.bot, 'optionalAccess', _4 => _4.name]) || "Denia Al"}, buatan ${_optionalChain([botConfig, 'access', _5 => _5.bot, 'optionalAccess', _6 => _6.developer]) || "Alesha"} Saya siap membantu\n`;
-  txt += `kebutuhanmu, mulai dari download\n`;
-  txt += `video, main game, tanya jawab, nyari\n`;
-  txt += `info/sesuatu, bikin sticker, dan lain-lain.\n\n`;
+  txt += `Hola Kawan🌱\n`;
+  txt += `Presentate yo${_optionalChain([botConfig, 'access', _3 => _3.bot, 'optionalAccess', _4 => _4.name]) || "Denia Al"}, buatan ${_optionalChain([botConfig, 'access', _5 => _5.bot, 'optionalAccess', _6 => _6.developer]) || "Alesha"}Estoy listo para ayudar.\n`;
+  txt += `Sus necesidades, comenzando desde las descargas\n`;
+  txt += `Video, juego, firmar la luz, buscar\n`;
+  txt += `I.V., pegatinas de bikin, etc.\n\n`;
 
-  txt += `    ᯓ INFO USER\n`;
-  txt += `╭   • Nama : ${m.pushName || "User"}\n`;
+  txt += `♪INFO USUARIO♪\n`;
+  txt += `╭   •Nombre:${m.pushName || "User"}\n`;
   txt += `┆   • Status : ${userRole}\n`;
   txt += `┆   • Mode : ${(botConfig.mode || "public").toUpperCase()}\n`;
-  txt += `┆   • Nomor : ${m.sender.split("@")[0]}\n`;
-  txt += `┆   • Waktu : ${timeStr} WIB\n`;
+  txt += `┆   •Número:${m.sender.split("@")[0]}\n`;
+  txt += `┆   •Tiempo:${timeStr} WIB\n`;
   txt += `╰➤------------------------------\n`;
 
-  txt += `    ᯓ INFO BOT\n`;
+  txt += `♪Info del bot♪\n`;
   txt += `╭  • Name : ${_optionalChain([botConfig, 'access', _7 => _7.bot, 'optionalAccess', _8 => _8.name]) || "Ourin-AI"}\n`;
   txt += `┆  • Author : ${_optionalChain([botConfig, 'access', _9 => _9.bot, 'optionalAccess', _10 => _10.developer]) || "Owner"}\n`;
-  txt += `┆  • Versi : ${_optionalChain([botConfig, 'access', _11 => _11.bot, 'optionalAccess', _12 => _12.version]) || "1.2.0"}\n`;
+  txt += `┆  •Versi:${_optionalChain([botConfig, 'access', _11 => _11.bot, 'optionalAccess', _12 => _12.version]) || "1.2.0"}\n`;
   txt += `┆  • Type script : OURIN x ${_optionalChain([botConfig, 'access', _13 => _13.bot, 'optionalAccess', _14 => _14.developer]) || "Owner"}\n`;
   txt += `┆  • Uptime : ${uptimeFormatted}\n`;
   txt += `╰➤------------------------------\n`;
@@ -353,7 +353,7 @@ async function buildMenuText(
     categoryLines.push(`${prefix}menucat ${category} ${emoji}`);
   }
   if (categoryLines.length > 0) {
-    txt += ` ✦ DAFTAR MENU ✦\n`;
+    txt += ` ✦Menú LINE✦\n`;
     txt += `╭   • ${categoryLines[0]}\n`;
     for (let i = 1; i < categoryLines.length; i++) {
       txt += `┆   • ${categoryLines[i]}\n`;
@@ -388,7 +388,7 @@ function getContextInfo(
     isForwarded: true,
     externalAdReply: {
       title: _optionalChain([botConfig, 'access', _23 => _23.bot, 'optionalAccess', _24 => _24.name]) || "Ourin-AI",
-      body: `BOT WHATSAPP MULTI DEVICE`,
+      body: `BOT whatsAPPP MULTI DEVICE`,
       sourceUrl: saluranLink,
       previewType: "VIDEO",
       showAdAttribution: false,
@@ -451,7 +451,7 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
     imageBuffer = _fs2.default.readFileSync(botConfig.assets["ourin"])
     thumbBuffer = _fs2.default.readFileSync(botConfig.assets["ourin2"])
   } catch (e) {
-    console.error("Gagal load assets:", e.message);
+    console.error("Activos de carga de los combatientes:", e.message);
   }
   const prefix = _optionalChain([botConfig, 'access', _29 => _29.command, 'optionalAccess', _30 => _30.prefix]) || ".";
   const saluranId = _optionalChain([botConfig, 'access', _31 => _31.saluran, 'optionalAccess', _32 => _32.id]) || "120363400911374213@newsletter";
@@ -472,8 +472,8 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
     const categories = getSortedCategories(m, botMode);
     const availableCats = new Set(categories.sorted.map(({ cat }) => cat.toLowerCase()));
     const categoryMeta = [
-      { key: "owner", label: "Owner Menu", emoji: "👑", type: "category" },
-      { key: "main", label: "Main Menu", emoji: "🏠", type: "command", command: "menu" },
+      { key: "owner", label: "Propietario", emoji: "👑", type: "category" },
+      { key: "main", label: "Menú principal", emoji: "🏠", type: "command", command: "menu" },
       { key: "utility", label: "Utility", emoji: "🔧", type: "category" },
       { key: "tools", label: "Tools", emoji: "🛠️", type: "category" },
       { key: "fun", label: "Fun", emoji: "🎮", type: "category" },
@@ -486,7 +486,7 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
       { key: "ai", label: "AI", emoji: "🤖", type: "category" },
       { key: "group", label: "Group", emoji: "👥", type: "category" },
       { key: "religi", label: "Religi", emoji: "☪️", type: "category" },
-      { key: "info", label: "Info Bot", emoji: "ℹ️", type: "category" },
+      { key: "info", label: "Info", emoji: "ℹ️", type: "category" },
       { key: "cek", label: "Cek", emoji: "📋", type: "category" },
       { key: "user", label: "User", emoji: "👤", type: "category" },
       { key: "canvas", label: "Canvas", emoji: "🎨", type: "category" },
@@ -519,14 +519,14 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
       const count = item.type === "category" ? (_optionalChain([categories, 'access', _39 => _39.sorted, 'access', _40 => _40.find, 'call', _41 => _41(x => x.cat.toLowerCase() === item.key), 'optionalAccess', _42 => _42.cmds, 'access', _43 => _43.length]) || 0) : 0;
       return [{
         title: `${item.emoji} ${item.label}`,
-        description: count ? `${count} command tersedia` : "Buka menu ini",
+        description: count ? `${count}comando disponible` : "Abre este menú",
         id,
       }];
     });
     switch (menuVariant) {
       case 1:
         if (imageBuffer) {
-          const displayName = m.pushName || "Pengguna";
+          const displayName = m.pushName || "Usuario";
           const mention = `@${m.sender.split("@")[0]}`;
           const statusText = _optionalChain([m, 'optionalAccess', _44 => _44.isOwner])
             ? "𝗕𝘂𝗸𝗮𝗻, 𝘁𝗮𝗽𝗶 𝗢𝘄𝗻𝗲𝗿"
@@ -596,7 +596,7 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
                       rows: [
                         {
                           title: "📚 𝗦𝗲𝗺𝘂𝗮 𝗠𝗲𝗻𝘂",
-                          description: "Lihat seluruh command yang tersedia",
+                          description: "Mira todo el comando disponible.",
                           id: `${m.prefix}allmenu`,
                         },
                         {
@@ -606,8 +606,8 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
                         },
                         {
                           title: "👑 𝗢𝘄𝗻𝗲𝗿",
-                          description: "Informasi owner bot",
-                          id: `${m.prefix}owner`,
+                          description: "Propietario de información bot",
+                          id: `${m.prefix}propietario`,
                         },
                       ],
                     },
@@ -625,9 +625,9 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
         }
         break;
       case 9: {
-        // V9: gambar header + caption native + native WhatsApp list buttons.
-        // Data pengguna selalu berasal dari m.sender agar setiap orang melihat datanya sendiri.
-        const displayName = m.pushName || "Pengguna";
+        //V9: encabezado de imagen + captura ingenua + ingenuo WhatsApp lista botones.
+        //Los datos del usuario siempre proceden de m.
+        const displayName = m.pushName || "Usuario";
         const mention = `@${m.sender.split("@")[0]}`;
         const botName = _optionalChain([botConfig, 'access', _57 => _57.bot, 'optionalAccess', _58 => _58.name]) || "OURIN DELUXE";
         const botVersion = _optionalChain([botConfig, 'access', _59 => _59.bot, 'optionalAccess', _60 => _60.version]) || "3.4";
@@ -663,14 +663,14 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
           `© ғᴀʟʟᴢx sᴛᴏʀᴇ`;
 
         const requested = [
-          ["owner", "👑", "Owner Menu"], ["main", "🏠", "Main Menu"],
+          ["owner", "👑", "Propietario"], ["main", "🏠", "Menú principal"],
           ["utility", "🔧", "Utility"], ["tools", "🛠️", "Tools"],
           ["fun", "🎮", "Fun"], ["game", "🎯", "Game"],
           ["newgame", "🆕", "New Game"], ["download", "📥", "Download"],
           ["search", "🔍", "Search"], ["sticker", "🖼️", "Sticker"],
           ["media", "🎬", "Media"], ["ai", "🤖", "AI"],
           ["group", "👥", "Group"], ["religi", "☪️", "Religi"],
-          ["info", "ℹ️", "Info Bot"], ["cek", "📋", "Cek"],
+          ["info", "ℹ️", "Info"], ["cek", "📋", "Cek"],
           ["user", "👤", "User"], ["canvas", "🎨", "Canvas"],
           ["random", "🎲", "Random"], ["ephoto", "✨", "Ephoto"],
           ["jpm", "📢", "JPM"], ["asupan", "🍑", "Asupan"],
@@ -693,7 +693,7 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
           }
           if (!availableCats.has(key)) continue;
           const count = _optionalChain([categories, 'access', _68 => _68.sorted, 'access', _69 => _69.find, 'call', _70 => _70(x => x.cat.toLowerCase() === key), 'optionalAccess', _71 => _71.cmds, 'access', _72 => _72.length]) || 0;
-          rows.push({ title: `${emoji} ${toMonoUpperBold(label)}`, description: `${count} command tersedia`, id: `${prefix}menucat ${key}` });
+          rows.push({ title: `${emoji} ${toMonoUpperBold(label)}`, description: `${count}comando disponible`, id: `${prefix}menucat ${key}` });
         }
 
         const sections = [];
@@ -791,7 +791,7 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
 ${readmore}${s}`
                   },
                   footer: {
-                    text: "Pilih tombol dibawah untuk info lebih lanjut"
+                    text: "Seleccione botones para obtener más información"
                   },
                   contextInfo: {
                     isForwarded: true,
@@ -815,7 +815,7 @@ ${readmore}${s}`
                       bottom_sheet: {
                         in_thread_buttons_limit: 2,
                         divider_indices: [1, 2, 3, 4, 5, 999],
-                        list_title: "Silahkan pilih menu yang kamu inginkan",
+                        list_title: "Por favor, seleccione el menú que desea.",
                         button_title: "🍅 Selengkapnya",
                       },
                       tap_target_configuration: {
@@ -836,7 +836,7 @@ ${readmore}${s}`
                       {
                         name: "cta_url",
                         buttonParamsJson: JSON.stringify({
-                          display_text: "🍫 Owner Kami",
+                          display_text: "🍫Propietario Nosotros",
                           url: `https://wa.me/${_optionalChain([botConfig, 'access', _91 => _91.owner, 'optionalAccess', _92 => _92.number, 'optionalAccess', _93 => _93[0]])}`,
                           merchant_url: `https://wa.me/${_optionalChain([_configjs2.default, 'access', _94 => _94.owner, 'optionalAccess', _95 => _95.number, 'optionalAccess', _96 => _96[0]])}`,
                         })
@@ -864,9 +864,9 @@ ${readmore}${s}`
           buttonsMessage: {
             buttons: [
               {
-                buttonId: `${m.prefix}owner`,
+                buttonId: `${m.prefix}propietario`,
                 buttonText: {
-                  displayText: '🧀 Owner',
+                  displayText: '🧀Propietario',
                 },
                 type: 1,
               },
@@ -881,7 +881,7 @@ ${readmore}${s}`
             locationMessage: {
               jpegThumbnail: await _sharp3.default.call(void 0, _fs2.default.readFileSync(_configjs2.default.assets["ourin"])).resize(300, 170).toBuffer(),
               name: _configjs2.default.bot.name,
-              address: `Versi saat ini: ${_configjs2.default.bot.version}`
+              address: `Versionreal:${_configjs2.default.bot.version}`
             },
             contentText: `✦ *ʜᴇʟʟᴏ, ${m.pushName}*
 
@@ -900,7 +900,7 @@ ${readmore}${s}`
 ┌───「 ᴘᴀɴᴇʟ ʜᴏsᴛɪɴɢ 」
 │ ɴᴇᴇᴅ ᴀ ʟᴇɢᴀʟ & ʀᴇʟɪᴀʙʟᴇ ᴘᴀɴᴇʟ?
 └ store.roselynsound.my.id`,
-            footerText: '🍔 Silahkan pilih dari salah satu tombol di bawah',
+            footerText: '🍔Por favor, seleccione uno de los putool en el crudo',
             headerType: 6,
           },
         };
@@ -939,7 +939,7 @@ ${readmore}${s}`
           return {
             name: "single_select",
             buttonParamsJson: JSON.stringify({
-              title: `${cat.emoji} ${cat.cat} Menu`,
+              title: `${cat.emoji} ${cat.cat}Menú`,
               sections: [
                 {
                   title: "Please select the command",
@@ -1007,7 +1007,7 @@ ${readmore}${s}`
                     bottom_sheet: {
                       in_thread_buttons_limit: 2,
                       divider_indices: [1, 2, 3, 4, 5, 999],
-                      list_title: "Please select the menu",
+                      list_title: "Seleccione el menú",
                       button_title: "🍙 See Category",
                     },
                     tap_target_configuration: {
@@ -1050,7 +1050,7 @@ ${readmore}${s}`
           const m = Math.floor(seconds % 3600 / 60);
           const s = Math.floor(seconds % 60);
 
-          return `${d} Jam ${m} Menit ${s} Detik`;
+          return `${d}Hora${m}Minuto${s}Segundo`;
         }
 
         const weatherCode = {
@@ -1075,18 +1075,18 @@ ${readmore}${s}`
             )
 
             const loc = _optionalChain([geo, 'access', _119 => _119.data, 'access', _120 => _120.results, 'optionalAccess', _121 => _121[0]])
-            if (!loc) return "Cuaca tidak tersedia"
+            if (!loc) return "Cuaca no está disponible"
 
             const res = await _axios2.default.get(
               `https://api.open-meteo.com/v1/forecast?latitude=${loc.latitude}&longitude=${loc.longitude}&current=temperature_2m,weather_code`
             )
 
             const current = res.data.current
-            const kondisi = weatherCode[current.weather_code] || "🌍 Tidak diketahui"
+            const kondisi = weatherCode[current.weather_code] || "🌍No diketahui"
 
             return `${kondisi} | 🌡️ ${Math.round(current.temperature_2m)}°C\n📍 ${loc.name}`
           } catch (e2) {
-            return "Cuaca tidak tersedia"
+            return "Cuaca no está disponible"
           }
         }
         const thumbnail = await _sharp3.default.call(void 0, _fs2.default.readFileSync(_configjs2.default.assets["ourin"])).resize(300, 300).toBuffer()
@@ -1166,13 +1166,13 @@ ${readmore}${s}`
                     limited_time_offer: {
                       text: `${greeting}`,
                       url: "Hai",
-                      // copy_code: "Dibuat oleh " + config.bot?.developer,
+                      //Copiar ese código:
                       expiration_time: Date.now() + 10000,
                     },
                     bottom_sheet: {
                       in_thread_buttons_limit: 2,
                       divider_indices: [1, 2, 3, 4, 5, 999],
-                      list_title: "Please select the menu",
+                      list_title: "Seleccione el menú",
                       button_title: "🍙 See Category",
                     },
                     tap_target_configuration: {
@@ -1223,7 +1223,7 @@ ${readmore}${s}`
           const m = Math.floor(seconds % 3600 / 60);
           const s = Math.floor(seconds % 60);
 
-          return `${d} Jam ${m} Menit ${s} Detik`;
+          return `${d}Hora${m}Minuto${s}Segundo`;
         }
 
         const weatherCode = {
@@ -1248,18 +1248,18 @@ ${readmore}${s}`
             )
 
             const loc = _optionalChain([geo, 'access', _122 => _122.data, 'access', _123 => _123.results, 'optionalAccess', _124 => _124[0]])
-            if (!loc) return "Cuaca tidak tersedia"
+            if (!loc) return "Cuaca no está disponible"
 
             const res = await _axios2.default.get(
               `https://api.open-meteo.com/v1/forecast?latitude=${loc.latitude}&longitude=${loc.longitude}&current=temperature_2m,weather_code`
             )
 
             const current = res.data.current
-            const kondisi = weatherCode[current.weather_code] || "🌍 Tidak diketahui"
+            const kondisi = weatherCode[current.weather_code] || "🌍No diketahui"
 
             return `${kondisi} | 🌡️ ${Math.round(current.temperature_2m)}°C\n📍 ${loc.name}`
           } catch (e3) {
-            return "Cuaca tidak tersedia"
+            return "Cuaca no está disponible"
           }
         }
         const rawStats = _fs2.default.readFileSync(_path2.default.join(process.cwd(), 'database/main/stats.json'), 'utf8')
@@ -1278,7 +1278,7 @@ ${readmore}${s}`
           }
           topCmdText += `╰➤------------------------------\n`
         } else {
-          topCmdText += `╭   • Belum ada command\n╰➤------------------------------\n`
+          topCmdText += `╭   •eram hay comando\n╰➤-...\n`
         }
 
         const thumbnail = await _sharp3.default.call(void 0, _fs2.default.readFileSync(_configjs2.default.assets["ourin"])).resize(300, 300).toBuffer()
@@ -1315,7 +1315,7 @@ ${readmore}${s}`
                     bottom_sheet: {
                       in_thread_buttons_limit: 2,
                       divider_indices: [1, 2, 3, 4, 5, 999],
-                      list_title: "Please select the menu",
+                      list_title: "Seleccione el menú",
                       button_title: "🍙 See Category",
                     },
                     tap_target_configuration: {
@@ -1361,13 +1361,13 @@ ${readmore}${s}`
         function runtimeStr(seconds) {
           seconds = Number(seconds);
           const d = Math.floor(seconds / (3600 * 24));
-          if (d > 0) return `${d} hari`;
+          if (d > 0) return `${d}el`;
           const h = Math.floor((seconds % (3600 * 24)) / 3600);
-          if (h > 0) return `${h} jam`;
+          if (h > 0) return `${h}hora`;
           const m = Math.floor((seconds % 3600) / 60);
-          if (m > 0) return `${m} menit`;
+          if (m > 0) return `${m}minuto`;
           const s = Math.floor(seconds % 60);
-          return `${s} detik`;
+          return `${s}segundo`;
         }
 
         const toMathSansBold = (text) => {
@@ -1406,7 +1406,7 @@ I'm ${botName}, your intelligent assistant powered by ${_optionalChain([_configj
         case7Text += `││  name : _${userName}_\n`;
         case7Text += `││  status : ${userStatus}\n`;
         case7Text += `││  role : ${userRole}\n`;
-        case7Text += `││  energi : ${userLimit}\n`;
+        case7Text += `││energía:${userLimit}\n`;
         case7Text += `╰╯\n`;
 
         const readmore = String.fromCharCode(8206).repeat(4001);
@@ -1468,7 +1468,7 @@ I'm ${botName}, your intelligent assistant powered by ${_optionalChain([_configj
                   }
                 },
                 body: { text: case7Text },
-                footer: { text: `Use: ${_optionalChain([m, 'optionalAccess', _136 => _136.prefix])}menucat <category>\n\nIf you have any questions, please contact the owner.` },
+                footer: { text: `Use: ${_optionalChain([m, 'optionalAccess', _136 => _136.prefix])}impacto<category>\n\nSi tiene alguna pregunta, por favor conecte al propietario.` },
                 contextInfo: {
                   mentionedJid: [m.sender],
                   isForwarded: true,
@@ -1479,7 +1479,7 @@ I'm ${botName}, your intelligent assistant powered by ${_optionalChain([_configj
                     {
                       name: "cta_url",
                       buttonParamsJson: JSON.stringify({
-                        display_text: "🥐 Contact Owner",
+                        display_text: "🥐Contact Propietario",
                         url: "http://wa.me/" + _configjs2.default.owner.number[0],
                         merchant_url: "http://wa.me/" + _configjs2.default.owner.number[0]
                       })
@@ -1517,13 +1517,13 @@ I'm ${botName}, your intelligent assistant powered by ${_optionalChain([_configj
         function runtimeStr(seconds) {
           seconds = Number(seconds);
           const d = Math.floor(seconds / (3600 * 24));
-          if (d > 0) return `${d} hari`;
+          if (d > 0) return `${d}el`;
           const h = Math.floor((seconds % (3600 * 24)) / 3600);
-          if (h > 0) return `${h} jam`;
+          if (h > 0) return `${h}hora`;
           const m = Math.floor((seconds % 3600) / 60);
-          if (m > 0) return `${m} menit`;
+          if (m > 0) return `${m}minuto`;
           const s = Math.floor(seconds % 60);
-          return `${s} detik`;
+          return `${s}segundo`;
         }
 
         const toMathSansBold = (text) => {
@@ -1574,11 +1574,11 @@ I'm ${botName}, your intelligent assistant powered by ${_optionalChain([_configj
         const { sorted } = getSortedCategories(m, botMode);
 
         const catMap = {
-          info: "INFO BOT",
-          jadibot: "JADI BOT",
+          info: "Info del bot",
+          jadibot: "Así que...",
           economy: "EKONOMI",
-          main: "MAIN MENU",
-          owner: "OWNER MENU"
+          main: "Juega MINUTE",
+          owner: "MENTER Propietario"
         };
 
         for (const cat of sorted) {
@@ -1607,7 +1607,7 @@ I'm ${botName}, your intelligent assistant powered by ${_optionalChain([_configj
           "Don't forget to smile today 😊",
           "Keep smiling and stay positive! ✨",
           "What a beautiful day to create something 💻",
-          "Thank you for using this bot 🙏",
+          "Gracias por usar estos bots🙏",
           "Hope you have a wonderful day! 🌸",
           "Don't forget to take a break 🍵",
           "Start your day with a positive mindset 😇"
@@ -1781,7 +1781,7 @@ I'm ${botName}, your intelligent assistant powered by ${_optionalChain([_configj
                 participant: m.sender,
               },
               message: {
-                conversation: "setelin musiknya nya bang"
+                conversation: "fontcolor = \" # FFFF00 \" set music bang"
               }
             };
             await sock.sendMessage(m.chat, {
@@ -1799,7 +1799,7 @@ I'm ${botName}, your intelligent assistant powered by ${_optionalChain([_configj
                 remoteJid: typeof saluranId !== "undefined" ? saluranId : "120363294025983803@newsletter",
               },
               message: {
-                conversation: "🔊 Playing Audio Menu..."
+                conversation: "🔊Jugar menú audio.."
               }
             };
             try {
@@ -1896,11 +1896,11 @@ I'm ${botName}, your intelligent assistant powered by ${_optionalChain([_configj
           }
         }
       } catch (e) {
-        console.error("[Menu] Error sending dynamic audio:", e.message);
+        console.error("Error enviando audio dinámico:", e.message);
       }
     }
   } catch (error) {
-    console.error("[Menu] Error on command execution:", error.message);
+    console.error("Error en el comando exEjecución:", error.message);
   }
 }
 exports. default = {

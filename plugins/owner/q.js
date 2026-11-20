@@ -4,7 +4,7 @@ const pluginConfig = {
     name: 'q',
     alias: ['quoted', 'inspect'],
     category: 'tools',
-    description: 'Ambil JSON message dari pesan yang direply',
+    description: 'Ambel JSON mensaje del mensaje redireccionado',
     usage: '.q (reply pesan)',
     isOwner: true,
     cooldown: 3,
@@ -13,7 +13,7 @@ const pluginConfig = {
 
 async function handler(m) {
     if (!m.quoted) {
-        return m.reply('❌ *Reply pesan yang ingin di-inspect*')
+        return m.reply('❌* Responder el mensaje que quieres insectos *')
     }
 
     try {

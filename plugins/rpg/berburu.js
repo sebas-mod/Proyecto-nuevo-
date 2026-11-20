@@ -5,7 +5,7 @@ const pluginConfig = {
   name: "berburu",
   alias: ["huntanimal", "buru"],
   category: "rpg",
-  description: "Berburu hewan untuk mendapat item",
+  description: "Caza el animal para conseguirlo",
   usage: ".berburu",
   example: ".berburu",
   isOwner: false,
@@ -28,13 +28,13 @@ async function handler(m, { sock }) {
   user.rpg.stamina = _nullishCoalesce(user.rpg.stamina, () => ( 100));
 
   if (user.rpg.stamina < staminaCost) {
-    return m.reply(`Aduh kak, stamina kamu abis nih! 😭⚡\n\nBuat berburu butuh *${staminaCost} Stamina*, tapi punya kamu sisa *${user.rpg.stamina}*.\nIstirahat dulu gih biar seger lagi! 🛌💤`);
+    return m.reply(`¡Oh hermana, tu resiscia se está enfriando!😭⚡\n\nLa crema es una caza ciega.${staminaCost}Stamina, pero te traje un restante${user.rpg.stamina}*.\nDescanse primero. Descanse.🛌💤`);
   }
 
   user.rpg.stamina -= staminaCost;
 
   await m.react("🏹");
-  await m.reply(`Mengendap-endap masuk ke hutan... 🤫🌳\nSiapin panah dan bidik dengan teliti! 🏹👀`);
+  await m.reply(`Stow @-@ detrás @-@ el escritorio @-@ en el bosque..🤫🌳\n¡Prepárate para estar caliente y biped con huevos!🏹👀`);
   await new Promise((r) => setTimeout(r, 3000));
 
   const animals = [
@@ -51,7 +51,7 @@ async function handler(m, { sock }) {
   if (caught.length === 0) {
     await m.react("😢");
     db.save();
-    return m.reply(`Yahh, apes banget hari ini kak! 😭😭\n\nHewannya pada lari semua, nggak dapet apa-apa deh.\nPadahal stamina udah kepotong *-${staminaCost}* ⚡. Sabar ya, coba lagi nanti! 🥺🌿`);
+    return m.reply(`Bueno, lo siento por hoy,😭😭\n\nLos animales están corriendo, nada viene...\nEn lo que la resistencia de los peludos es arrugada${staminaCost}*⚡¡Pruébalo otra vez más tarde!🥺🌿`);
   }
 
   let results = [];
@@ -73,15 +73,15 @@ async function handler(m, { sock }) {
 
   await m.react("✅");
 
-  let txt = `CROOT! Kena sasaran kak! 🎯🏹\n\nKamu pulang bawa hasil buruan nih:\n`;
+  let txt = `¡Kena sasaran hermano!🎯🏹\n\nHas vuelto con una mala acción:\n`;
   for (const r of results) {
     txt += `• ${r.name}: *+${r.qty} ekor*\n`;
   }
-  txt += `\nHasil buruannya otomatis kejual ya! 🎉\n`;
-  txt += `💸 Koin: *+Rp ${totalMoney.toLocaleString("id-ID")}*\n`;
+  txt += `\n¡La caza es una sorpresa automática!🎉\n`;
+  txt += `💸Monedas: *+Rp${totalMoney.toLocaleString("id-ID")}*\n`;
   txt += `📈 EXP: *+${totalExp}*\n`;
   txt += `⚡ Stamina terpakai: *-${staminaCost}*\n\n`;
-  txt += `Mantap banget, besok-besok berburu lagi ya kak! 🔥🥩`;
+  txt += `Consigue un par de brazaletes, beca...bek... vuelve a ir tras la prisa de nuevo🔥🥩`;
 
   m.reply(txt);
 }

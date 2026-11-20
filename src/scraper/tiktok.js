@@ -45,7 +45,7 @@ async function ttdownFromYuuLabs(url) {
   }
 
   if (downloads.length === 0) {
-    throw new Error("YuuLabs tidak mengembalikan link download");
+    throw new Error("YuuLabs no devolvió las descargas de enlaces");
   }
 
   return {
@@ -118,7 +118,7 @@ async function ttdownFromMusicalDown(url) {
   });
 
   if (downloads.length === 0) {
-    throw new Error("MusicalDown tidak mengembalikan link download");
+    throw new Error("Musical Down no devuelve las descargas de enlaces");
   }
 
   return {

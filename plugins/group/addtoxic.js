@@ -23,24 +23,24 @@ async function handler(m, { sock }) {
     if (!word) {
         return m.reply(
             `📝 *ᴀᴅᴅ ᴛᴏxɪᴄ*\n\n` +
-            `> Gunakan: \`.addtoxic <kata>\`\n\n` +
+            `> Usa: \`Addto.xic<kata>\`\n\n` +
             `\`Contoh: ${m.prefix}addtoxic katakasar\``
         )
     }
     
     if (word.length < 2) {
-        return m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> Kata terlalu pendek (min 2 huruf)`)
+        return m.reply(`❌*ɢᴀɢᴀʟ*\n\n- # Demasiado corto @-@ line # - # Demasiado corto @-@ term ( menos 2 @-@ letra )`)
     }
     
     if (word.length > 30) {
-        return m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> Kata terlalu panjang (max 30 huruf)`)
+        return m.reply(`❌*ɢᴀɢᴀʟ*\n\n> Palabra demasiado largo (max30 letra)`)
     }
     
     const groupData = db.getGroup(m.chat) || {}
     const toxicWords = groupData.toxicWords || []
     
     if (toxicWords.includes(word)) {
-        return m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> Kata \`${word}\` sudah ada di daftar`)
+        return m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> Kata \`${word}\`Ya está en la lista.`)
     }
     
     toxicWords.push(word)

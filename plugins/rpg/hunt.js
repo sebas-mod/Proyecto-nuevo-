@@ -5,7 +5,7 @@ const pluginConfig = {
   name: "hunt",
   alias: ["berburu", "hunting"],
   category: "rpg",
-  description: "Berburu hewan untuk mendapatkan daging dan kulit",
+  description: "Caza animales para conseguir carne y piel",
   usage: ".hunt",
   example: ".hunt",
   isOwner: false,
@@ -28,7 +28,7 @@ async function handler(m, { sock }) {
   user.rpg.stamina = user.rpg.stamina || 100;
 
   if (user.rpg.stamina < staminaCost) {
-    return m.reply(`⚡ Aduh kak, stamina kamu habis!\n\nButuh *${staminaCost} Stamina* buat pergi berburu.\nStamina kamu sisa: *${user.rpg.stamina}*`);
+    return m.reply(`⚡¡Oh hermana, tu resistsia está muerta!\n\nNecesito${staminaCost}Stamina tiene que ir a cazar.\nStamina que restante: *${user.rpg.stamina}*`);
   }
 
   user.rpg.stamina -= staminaCost;
@@ -64,10 +64,10 @@ async function handler(m, { sock }) {
 
   db.save();
 
-  let txt = `🏹 *TANGKAPAN BERHASIL!* 🏹\n\n`;
-  txt += `Wah jago banget bidikannya kak! Kamu berhasil menembak:\n`;
+  let txt = `🏹*TANGKAPAN Exito!*🏹\n\n`;
+  txt += `Fontcolor = " # FFFF00 " Wowbadbadangiddsis!\n`;
   txt += `🎯 *${caught.name}* (+1)\n\n`;
-  txt += `*Hasil Perburuan:*\n`;
+  txt += `*Resultado Perburuan:*\n`;
   txt += `✨ EXP Bertambah: *+${caught.exp}*\n`;
   txt += `⚡ Stamina Terpakai: *-${staminaCost}*`;
 

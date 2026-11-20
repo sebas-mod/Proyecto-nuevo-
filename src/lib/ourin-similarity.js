@@ -163,9 +163,9 @@ function getMatchType(inputLower, cmdLower) {
     if (cmdLower.startsWith(inputLower)) return { type: 'prefix', score: 0.95, emoji: '🎯', label: 'Awalan cocok' }
     if (inputLower.startsWith(cmdLower)) {
         if (isShortCmd && isLongInput) return null 
-        return { type: 'contains', score: 0.9, emoji: '📌', label: 'Command lebih pendek' }
+        return { type: 'contains', score: 0.9, emoji: '📌', label: 'El mando es más corto' }
     }
-    if (cmdLower.includes(inputLower)) return { type: 'substring', score: 0.85, emoji: '🔗', label: 'Bagian dari command' }
+    if (cmdLower.includes(inputLower)) return { type: 'substring', score: 0.85, emoji: '🔗', label: 'Parte del comando' }
     if (inputLower.includes(cmdLower)) {
         if (isShortCmd && isLongInput) return null
         return { type: 'reverse-substring', score: 0.8, emoji: '📎', label: 'Command ada di input' }
@@ -293,25 +293,25 @@ function formatSuggestionMessage(inputCommand, suggestions, prefix = '.', m) {
     const getConfidenceLevel = (percent) => {
         if (percent >= 85) return { text: 'Sangat Tinggi', emoji: '🟢' }
         if (percent >= 70) return { text: 'Tinggi', emoji: '🟡' }
-        if (percent >= 50) return { text: 'Sedang', emoji: '🟠' }
+        if (percent >= 50) return { text: 'Siendo', emoji: '🟠' }
         return { text: 'Rendah', emoji: '🔴' }
     }
     
     const confidence = getConfidenceLevel(topPercent)
 
-    let msg2 = `👋 Halo kak *${m.pushName}*!
+    let msg2 = `👋 Hola hermano *${m.pushName}*!
     
-Sepertinya kakak sedang mencari command \`${inputCommand}\` ya? 🤔
+Parece que el hermano está buscando el comando\`${inputCommand}\` ya? 🤔
 
-Mohon maaf banget, tapi command \`${inputCommand}\` belum tersedia di sistem kami saat ini. 🥺
-Mungkin kakaknya sedikit typo atau salah ketik? 😅👇`
+Disculpe, golpe, pero orden\`${inputCommand}\`Aún no está en nuestro sistema.🥺
+¿Quizá su hermano era un poco de tipo o mal?😅👇`
     return {
         message: msg2,
         interactiveButtons: suggestions.slice(0, 2).map((s, i) => {
             return {
                 name: 'quick_reply',
                 buttonParamsJson: JSON.stringify({
-                    display_text: `Coba: ${prefix}${s.command}`,
+                    display_text: `Intenta:${prefix}${s.command}`,
                     id: `${prefix}${s.command}`
                 })
             }
@@ -342,9 +342,9 @@ Mungkin kakaknya sedikit typo atau salah ketik? 😅👇`
     // msg += `╰┈┈⬡\n\n`
     
     // msg += `╭┈┈⬡「 ℹ️ *ᴛɪᴘs* 」\n`
-    // msg += `┃ • Pilih command dari daftar di atas\n`
-    // msg += `┃ • Ketik \`${prefix}menu\` untuk daftar lengkap\n`
-    // msg += `┃ • Ketik \`${prefix}help <cmd>\` untuk bantuan\n`
+    //msg + =`┃ •Seleccione el comando de la lista en la parte superior\n`
+    //msg + =`┃ •Escribe\`${prefix}menú\`para la lista completa\n`
+    //msg + =`┃ •Escribe\`${prefix}ayuda<cmd>\`para ayuda\n`
     // msg += `╰┈┈⬡`
     
     // return msg
@@ -360,7 +360,7 @@ function formatSuggestionButtons(inputCommand, suggestions, prefix = '.') {
         return {
             header: `${medal} ${prefix}${s.command}`,
             title: `${s.emoji} ${s.reason} • ${matchPercent}% cocok`,
-            description: `Klik command untuk mencoba`,
+            description: `Haga clic en el comando para probar`,
             id: `${prefix}${s.command}`
         }
     })

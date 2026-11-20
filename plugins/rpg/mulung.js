@@ -5,7 +5,7 @@ const pluginConfig = {
   name: "mulung",
   alias: ["scavenge", "kumpulsampah"],
   category: "rpg",
-  description: "Memulung untuk mengumpulkan barang",
+  description: "Cue para resolver",
   usage: ".mulung",
   example: ".mulung",
   isOwner: false,
@@ -28,13 +28,13 @@ async function handler(m, { sock }) {
   user.rpg.stamina = _nullishCoalesce(user.rpg.stamina, () => ( 100));
 
   if (user.rpg.stamina < staminaCost) {
-    return m.reply(`Yaela kak, mulung aja butuh tenaga kali! 🥵🗑️\n\nStamina kamu sisa *${user.rpg.stamina}*, padahal butuh *${staminaCost}*. Istirahat gih! 🛌💤`);
+    return m.reply(`Yaela hermano,¡¡Sólo te acostumbras!🥵🗑♪\n\n¡¡Stamina tu rettante!${user.rpg.stamina}*, en una cosa mala *${staminaCost}*. Descanse en vamos!🛌💤`);
   }
 
   user.rpg.stamina -= staminaCost;
 
   await m.react("🗑️");
-  await m.reply(`Mengorek tempat sampah dengan penuh harapan... 🗑️👀\nSemoga hari ini dapet barang bagus! ✨`);
+  await m.reply(`Revise la basura con la esperanza @-@ llena..🗑♪👀\nLa suerte de hoy es finalmente llegar a ser un buen chico!✨`);
   await new Promise((r) => setTimeout(r, 3000));
 
   const drops = [
@@ -67,15 +67,15 @@ async function handler(m, { sock }) {
   await m.react("✅");
 
   let txt = `ASIK DAPET RONGSOKAN! 🗑️💸\n\n`;
-  txt += `Kamu berhasil ngumpulin barang rongsokan nih kak:\n`;
+  txt += `Lo hiciste.\n`;
   for (const r of results) {
     txt += `• ${r.name}: *+${r.qty}*\n`;
   }
-  txt += `\nRongsokannya langsung dijual ke pengepul ya!\n`;
-  txt += `💵 Hasil Jual: *+Rp ${moneyEarned.toLocaleString("id-ID")}*\n`;
+  txt += `\nRongsokannya langsung vendido a pengepul si!\n`;
+  txt += `💵Vende Pahl: * + Rp${moneyEarned.toLocaleString("id-ID")}*\n`;
   txt += `📈 EXP: *+${expGain}*\n`;
   txt += `⚡ Stamina terpakai: *-${staminaCost}*\n\n`;
-  txt += `Teruslah memulung sampai kaya raya! 🔥🚀`;
+  txt += `¡Sigue dando la vuelta hasta que termines!🔥🚀`;
 
   m.reply(txt);
 }

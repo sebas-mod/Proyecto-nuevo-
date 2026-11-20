@@ -4,7 +4,7 @@ const pluginConfig = {
     name: 'afk',
     alias: ['away', 'brb'],
     category: 'group',
-    description: 'Set status AFK dengan alasan',
+    description: 'AFK status set with reason',
     usage: '.afk <alasan>',
     example: '.afk lagi makan',
     isOwner: false,
@@ -22,7 +22,7 @@ function getAfkUser(jid) {
 
 function setAfkUser(jid, reason) {
     afkStorage.set(jid, {
-        reason: reason || 'Tidak ada alasan',
+        reason: reason || 'No hay razón.',
         time: Date.now()
     })
 }
@@ -40,22 +40,22 @@ function formatDuration(ms) {
     const minutes = Math.floor(seconds / 60)
     const hours = Math.floor(minutes / 60)
     if (hours > 0) {
-        return `${hours} jam ${minutes % 60} menit`
+        return `${hours}hora${minutes % 60}minuto`
     } else if (minutes > 0) {
-        return `${minutes} menit ${seconds % 60} detik`
+        return `${minutes}minuto${seconds % 60}segundo`
     } else {
-        return `${seconds} detik`
+        return `${seconds}segundo`
     }
 }
 
 async function handler(m, { sock }) {
-    const reason = m.text || 'Tidak ada alasan'
+    const reason = m.text || 'No hay razón.'
     setAfkUser(m.sender, reason)
     await m.reply(
         `💤 *ᴀꜰᴋ ᴀᴋᴛɪꜰ*\n\n` +
-        `\`\`\`@${m.sender.split('@')[0]} sekarang AFK\`\`\`\n` +
+        `\`\`\`@${m.sender.split('@')[0]}ahora AFK\`\`\`\n` +
         `🍀 \`Alasan:\` *${reason}*\n\n` +
-        `_Ketik apapun untuk menonaktifkan AFK._`,
+        `Para hacer lo que sea necesario para desactivar AFK.`,
         { mentions: [m.sender] }
     )
 }
@@ -67,7 +67,7 @@ async function checkAfk(m, sock) {
         removeAfkUser(m.sender)
         const duration = formatDuration(Date.now() - afkData.time)
         await m.reply(`👋 *ᴀꜰᴋ ʙᴇʀᴀᴋʜɪʀ*\n\n` +
-                `\`\`\`@${m.sender.split('@')[0]} sudah kembali!\`\`\`\n` +
+                `\`\`\`@${m.sender.split('@')[0]}ya volver!\`\`\`\n` +
                 `🍀 \`Durasi AFK:\` *${duration}*`, { mentions: [m.sender] })
     }
     if (m.isGroup && m.mentionedJid && m.mentionedJid.length > 0) {
@@ -76,9 +76,9 @@ async function checkAfk(m, sock) {
             if (mentionedAfk) {
                 const duration = formatDuration(Date.now() - mentionedAfk.time)
                 await m.reply(`💤 *ᴜsᴇʀ ᴀꜰᴋ*\n\n` +
-                        `\`\`\`Hustt, jangan di ganggu!\`\`\` \`@${mentioned.split('@')[0]}\` lagi AFK\n` +
+                        `\`\`\`- Hutt, no te molestes.\`\`\` \`@${mentioned.split('@')[0]}\`otra vez AFK\n` +
                         `🍀 \`Alasan:\` *${mentionedAfk.reason}*\n` +
-                        `🍀 \`Sejak:\` *${duration} yang lalu*`, { mentions: [mentioned] })
+                        `🍀 \`Sejak:\` *${duration}que luego*`, { mentions: [mentioned] })
             }
         }
     }

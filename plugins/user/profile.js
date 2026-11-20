@@ -8,7 +8,7 @@ const pluginConfig = {
   name: "profile",
   alias: ["me", "profil", "myprofile", "my", "stats", "status"],
   category: "user",
-  description: "Melihat profil user dengan RPG stats",
+  description: "Ver los perfiles de usuario con estadísticas RPG",
   usage: ".profile [@user]",
   example: ".profile",
   isOwner: false,
@@ -129,19 +129,19 @@ async function handler(m, { sock }) {
     }
   }
 
-  let caption = `Halo kak @${phone}! 👋\n`;
-  caption += `Ini adalah rincian lengkap dari profil, status, dan seluruh aset yang kakak miliki saat ini di dalam sistem bot:\n\n`;
+  let caption = `Hola hermano @${phone}! 👋\n`;
+  caption += `Este es el anillo completo del perfil, estado y el activo completo que el abalone tiene actualmente en el sistema de bot:\n\n`;
   
-  caption += `*〔 👤 INFORMASI PRIBADI 〕*\n`;
-  caption += `- *Nama Asli:* ${user.name || m.pushName || "User"}\n`;
+  caption += `*〔 👤Información Privado〕*\n`;
+  caption += `- * Nombre Asli: *${user.name || m.pushName || "User"}\n`;
   if (user.isRegistered) {
-      caption += `- *Nama Daftar:* ${user.regName} (${user.regAge} tahun, ${user.regGender})\n`;
+      caption += `- * Nombre de la lista: *${user.regName} (${user.regAge}año,${user.regGender})\n`;
   }
   caption += `- *Tag / Mention:* @${target.split("@")[0]}\n`;
-  caption += `- *Status Akun:* ${isOwnerUser ? "👑 Owner" : isPremiumUser ? "💎 Premium" : "🆓 Free User"}\n`;
-  if (user.isBanned) caption += `- *Banned:* 🚫 Ya (Tidak bisa akses fitur bot)\n`;
+  caption += `* Estado Cuenta: *${isOwnerUser ? "👑 Owner" : isPremiumUser ? "💎 Premium" : "🆓 Free User"}\n`;
+  if (user.isBanned) caption += `- * Banned: *🚫Sí (No puede contabilizar las características de los bots )\n`;
   if (user.registeredAt) {
-      caption += `- *Tanggal Terdaftar:* ${new Date(user.registeredAt).toLocaleDateString("id-ID")}\n`;
+      caption += `* Fecha registrada: *${new Date(user.registeredAt).toLocaleDateString("id-ID")}\n`;
   }
   if (user.clanId) caption += `- *Klan / Guild:* ${user.clanId}\n`;
   if (user.rpg && user.rpg.spouse) {
@@ -149,26 +149,26 @@ async function handler(m, { sock }) {
   }
 
   caption += `\n*〔 ⚔️ RPG STATS & LEVEL 〕*\n`;
-  caption += `- *Role / Pangkat:* ${role}\n`;
-  caption += `- *Level Saat Ini:* ${user.rpg.level}\n`;
+  caption += `- * Papel / Pacto: *${role}\n`;
+  caption += `- * Cuando de nivel esto: *${user.rpg.level}\n`;
   caption += `- *Total Exp:* ${formatNumber(userExp)} XP\n`;
-  caption += `- *Kesehatan (Health):* ❤️ ${user.rpg.health} / ${user.rpg.maxHealth}\n`;
+  caption += `- *Salud (Health):* ❤♪${user.rpg.health} / ${user.rpg.maxHealth}\n`;
   caption += `- *Mana (Magic):* 💧 ${user.rpg.mana} / ${user.rpg.maxMana}\n`;
   caption += `- *Stamina:* ⚡ ${user.rpg.stamina} / ${user.rpg.maxStamina}\n`;
   caption += `- *Progress Ke Level ${user.rpg.level + 1}:*\n  ${getLevelBar(expInLevel, expNeeded)}\n  _${formatNumber(expInLevel)} / ${formatNumber(expNeeded)} XP_\n`;
 
   caption += `\n*〔 💰 ASET & KEUANGAN 〕*\n`;
-  caption += `- *Koin Tunai:* 🪙 Rp ${_optionalChain([user, 'access', _39 => _39.koin, 'optionalAccess', _40 => _40.toLocaleString, 'call', _41 => _41("id-ID")]) || 0} _(Digunakan untuk fitur RPG)_\n`;
-  caption += `- *Uang di Bank:* 🏦 Rp ${_optionalChain([user, 'access', _42 => _42.rpg, 'optionalAccess', _43 => _43.bank, 'optionalAccess', _44 => _44.toLocaleString, 'call', _45 => _45("id-ID")]) || 0} _(Aman dari resiko perampokan)_\n`;
-  caption += `- *Sisa Energi:* ⚡ ${isOwnerUser || isPremiumUser ? "∞ Tak Terbatas" : user.energi} _(Dibutuhkan setiap kali memakai command)_\n`;
+  caption += `- * Tela Tunai: *🪙Rp${_optionalChain([user, 'access', _39 => _39.koin, 'optionalAccess', _40 => _40.toLocaleString, 'call', _41 => _41("id-ID")]) || 0}_ (Se utiliza para funciones de RPG ) _\n`;
+  caption += `- * Dinero en Bork: *🏦Rp${_optionalChain([user, 'access', _42 => _42.rpg, 'optionalAccess', _43 => _43.bank, 'optionalAccess', _44 => _44.toLocaleString, 'call', _45 => _45("id-ID")]) || 0}_ (Segura de los ingresos del navegador ) _\n`;
+  caption += `- * Energy Sosa: *⚡ ${isOwnerUser || isPremiumUser ? "∞ Tak Terbatas" : user.energi}_ (Reducido siempre que usa comando ) _\n`;
 
-  caption += `\n*〔 📱 WHATSAPP INFO 〕*\n`;
-  caption += `- *Nomor:* +${phone}\n`;
+  caption += `\n*〔 📱QUÉ PUEDE ENFOQUE〕*\n`;
+  caption += `- * Número: * +${phone}\n`;
   caption += `- *Eksistensi WA:* ${exists ? 'Ya' : 'Tidak'}\n`;
   caption += `- *JID:* ${canonicalJid}\n`;
   caption += `- *LID:* ${lid || '-'}\n`;
   caption += `- *Tipe:* ${isGroup ? 'Group' : (isLid ? 'LID' : 'S.WhatsApp.Net')}\n`;
-  caption += `- *Bot WhatsApp:* ${isBot ? 'Ya' : 'Bukan'}\n`;
+  caption += `- * What 's up: *${isBot ? 'Ya' : 'Bukan'}\n`;
   caption += `- *Device ID:* ${deviceId || '-'}\n`;
 
   caption += `\n*〔 ℹ️ BIO & PROFILE 〕*\n`;
@@ -176,14 +176,14 @@ async function handler(m, { sock }) {
   caption += `- *Bio:* ${status || '-'}\n`;
   caption += `- *Bio Set:* ${fmtDate(statusTs) || '-'}\n`;
 
-  caption += `\n*〔 🏢 BUSINESS INFO 〕*\n`;
-  caption += `- *Tipe Akun:* ${isBiz ? 'WhatsApp Business' : 'WhatsApp Biasa'}\n`;
+  caption += `\n*〔 🏢BUSINESS INFO〕*\n`;
+  caption += `- * Tipe Cuenta: *${isBiz ? 'WhatsApp Business' : 'WhatsApp Biasa'}\n`;
   if (isBiz) {
-    caption += `- *Deskripsi:* ${bizProfile.description || '-'}\n`;
-    caption += `- *Website:* ${(bizProfile.website || []).join(', ') || '-'}\n`;
-    caption += `- *Email:* ${bizProfile.email || '-'}\n`;
-    caption += `- *Alamat:* ${bizProfile.address || '-'}\n`;
-    caption += `- *Kategori:* ${(bizProfile.categories || []).map(c => c.name || c).join(', ') || '-'}\n`;
+    caption += `- *Descripción:*${bizProfile.description || '-'}\n`;
+    caption += `- * Sitio web: *${(bizProfile.website || []).join(', ') || '-'}\n`;
+    caption += `- *Correo:*${bizProfile.email || '-'}\n`;
+    caption += `- *Dirección:*${bizProfile.address || '-'}\n`;
+    caption += `- *Categoría:*${(bizProfile.categories || []).map(c => c.name || c).join(', ') || '-'}\n`;
     caption += `- *Verified:* ${bizProfile.isProfileLinked ? 'Ya' : 'Tidak'}\n`;
     
     if (products > 0 || collectionsCount > 0) {
@@ -193,16 +193,16 @@ async function handler(m, { sock }) {
     }
   }
 
-  caption += `\n*〔 🤖 BOT VIEWPOINT 〕*\n`;
-  caption += `- *Bot JID:* ${_optionalChain([sock, 'access', _46 => _46.user, 'optionalAccess', _47 => _47.id]) || '-'}\n`;
-  caption += `- *Bot Platform:* ${_optionalChain([sock, 'access', _48 => _48.authState, 'optionalAccess', _49 => _49.creds, 'optionalAccess', _50 => _50.platform]) || process.platform || '-'}\n`;
+  caption += `\n*〔 🤖BOT VIEWPOINT〕*\n`;
+  caption += `- * EVE JID: *${_optionalChain([sock, 'access', _46 => _46.user, 'optionalAccess', _47 => _47.id]) || '-'}\n`;
+  caption += `- * * Plataforma: *${_optionalChain([sock, 'access', _48 => _48.authState, 'optionalAccess', _49 => _49.creds, 'optionalAccess', _50 => _50.platform]) || process.platform || '-'}\n`;
   caption += `- *Runtime:* Node ${process.version}\n`;
 
   if (user.inventory && Object.keys(user.inventory).length > 0) {
       const invItems = Object.entries(user.inventory).filter(([_, qty]) => qty > 0);
       if (invItems.length > 0) {
           caption += `\n*〔 🎒 ISI INVENTORY 〕*\n`;
-          caption += `Barang-barang yang berhasil kakak kumpulkan:\n`;
+          caption += `Las cosas que funcionan para mi hermano están reuniendo:\n`;
           invItems.forEach(([item, qty]) => {
               caption += `- *${item.charAt(0).toUpperCase() + item.slice(1)}:* sejumlah ${qty} item\n`;
           });
@@ -210,8 +210,8 @@ async function handler(m, { sock }) {
   }
 
   if (user.unlockedFeatures && user.unlockedFeatures.length > 0) {
-      caption += `\n*〔 🔓 FITUR PREMIUM TERBUKA 〕*\n`;
-      caption += `Fitur eksklusif yang sudah kakak beli secara permanen:\n`;
+      caption += `\n*〔 🔓PREMUM FIREMUM OPEN〕*\n`;
+      caption += `Características exclusivas que se han planteado hasta el mismo grado:\n`;
       user.unlockedFeatures.forEach(fitur => {
           caption += `- *${fitur}*\n`;
       });

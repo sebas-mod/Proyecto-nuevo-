@@ -5,13 +5,13 @@ const termaiKey = 'AIzaBj7z2z3xBjsk'
 const termaiDomain = 'https://c.termai.cc'
 
 async function uploadTo0x0(buffer, opts) {
-  if (!Buffer.isBuffer(buffer)) throw new Error("buffer harus Buffer");
+  if (!Buffer.isBuffer(buffer)) throw new Error("El amor debe ser amortiguador");
   
   const filename = _optionalChain([opts, 'optionalAccess', _ => _.filename]) || 'image.jpg'
   const form = new (0, _formdata2.default)();
   form.append('file', buffer, { filename, contentType: _optionalChain([opts, 'optionalAccess', _2 => _2.contentType]) || "application/octet-stream" });
 
-  const res = await _axios2.default.post(`${termaiDomain}/api/upload?key=${termaiKey}`, form, {
+  const res = await _axios2.default.post(`${termaiDomain}/fuego/upload?key=${termaiKey}`, form, {
     headers: { ...form.getHeaders(), Accept: "application/json" },
     timeout: _nullishCoalesce(_optionalChain([opts, 'optionalAccess', _3 => _3.timeoutMs]), () => ( 60000)),
     maxBodyLength: Infinity,
@@ -20,14 +20,14 @@ async function uploadTo0x0(buffer, opts) {
   })
 
   if (res.status < 200 || res.status >= 300) {
-    throw new Error(`Upload gagal (HTTP ${res.status}): ${typeof res.data === "string" ? res.data : JSON.stringify(res.data)}`);
+    throw new Error(`Descarga fallido (HTTP${res.status}): ${typeof res.data === "string" ? res.data : JSON.stringify(res.data)}`);
   }
   
   if (_optionalChain([res, 'access', _4 => _4.data, 'optionalAccess', _5 => _5.status]) && _optionalChain([res, 'access', _6 => _6.data, 'optionalAccess', _7 => _7.path])) {
     return { url: res.data.path, directUrl: res.data.path }
   }
 
-  throw new Error("Response tidak ada data valid dari Termai");
+  throw new Error("Respetuosamente no hay datos válidos de Termai");
 }
 
 // Map everything locally to termai wrapper, keeping exported name identical for compatibility

@@ -4,7 +4,7 @@ const pluginConfig = {
     name: 'installtemanebula',
     alias: ['installthemanebula', 'temanebula', 'nebulatheme'],
     category: 'panel',
-    description: 'Install tema Nebula (AtasBawahCantik) untuk panel Pterodactyl via SSH',
+    description: 'Instala Nebula ( Bottom Cantik ) tema instalado para Pterodactyl a través del panel SSH',
     usage: '.installtemanebula <ip>|<password>',
     example: '.installtemanebula 192.168.1.1|secretpass',
     isOwner: true,
@@ -21,7 +21,7 @@ apt-get update -qq && \
 apt-get install -y curl wget unzip git zip gnupg ca-certificates -qq && \
 mkdir -p /etc/apt/keyrings && \
 curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -yes -o /etc/apt/keyrings/nodesource.gpg && \
-echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_22.x nodistro main" | tee /etc/apt/sources.list.d/nodesource.list && \
+echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_22.x nodistro juega" | tee /etc/apt/sources.list.d/nodesource.list && \
 apt-get update -qq && \
 apt-get install -y nodejs -qq && \
 npm i -g yarn && \
@@ -42,7 +42,7 @@ bash blueprint.sh
 const CMD_NEBULA = `
 cd /var/www/pterodactyl && \
 wget -q -O nebula.blueprint "https://github.com/FikXzModzDeveloper/Nebula-Theme-pterodactyl/raw/main/nebula.blueprint" && \
-if command -v blueprint &> /dev/null; then \
+if comando -v blueprint &> /dev/null; then \
     printf "\\n\\n" | blueprint -install nebula; \
 else \
     printf "\\n\\n" | bash blueprint.sh -install nebula; \
@@ -55,7 +55,7 @@ function execSSH(conn, cmd) {
             if (err) return reject(err)
             let output = ''
             stream.on('close', (code, signal) => {
-                if (code !== 0) return reject(new Error(`Command failed with code ${code}\nOutput: ${output}`))
+                if (code !== 0) return reject(new Error(`El comando falló con código${code}\nOutput: ${output}`))
                 resolve(output)
             })
             stream.on('data', d => { output += d.toString() })
@@ -75,7 +75,7 @@ function handler(m) {
 
     const parts = text.split('|')
     if (parts.length < 2) {
-        return m.reply(`❌ Format salah! Gunakan: \`ip|password\``)
+        return m.reply(`❌ Formato incorrecto! Usa: \`* Contraseña*\``)
     }
 
     const ipvps = parts[0].trim()
@@ -95,10 +95,10 @@ function handler(m) {
 
     conn.on('ready', async () => {
         try {
-            await m.reply(`🕕 *[1/3] ᴘʀᴇᴘᴀʀɪɴɢ ᴇɴᴠɪʀᴏɴᴍᴇɴᴛ...*\n\n> Menginstall Node.js 22, Yarn, dan dependencies...`)
+            await m.reply(`🕕*ᴘʀᴇᴘᴀʀɪɴɢ ᴇɴᴠɪʀᴏɴᴍᴇɴᴛ...\n\n" Install Nodes. " Js 22, Yarn y deserdencies.`)
             await execSSH(conn, CMD_DEPS)
 
-            await m.reply(`🕕 *[2/3] ɪɴsᴛᴀʟʟ ʙʟᴜᴇᴘʀɪɴᴛ...*\n\n> Mendownload & konfigurasi Blueprint Framework...`)
+            await m.reply(`🕕* * 2 / 3 *ɪɴSᴛᴀʟʟ ʙʟᴜᴇᴘʀɪɴᴛ...\n\n*Abajo en el aire* *Configura Blueprunt Framework.*`)
             await execSSH(conn, CMD_BLUEPRINT)
 
             await m.reply(`🕕 *[3/3] ɪɴsᴛᴀʟʟ ɴᴇʙᴜʟᴀ...*\n\n> Menginstall tema Nebula (Auto-Confirm)...`)
@@ -106,7 +106,7 @@ function handler(m) {
 
             m.react('✅')
             await m.reply(
-                `╭┈┈⬡「 ✅ *ᴛᴇᴍᴀ ɴᴇʙᴜʟᴀ* 」\n┃ ㊗ sᴛᴀᴛᴜs: *Terinstall*\n┃ ㊗ ɪᴘ: ${ipvps}\n╰┈┈⬡\n\n> _Tema Nebula berhasil diinstall!_`
+                `╭┈┈⬡「 ✅ *ᴛᴇᴍᴀ ɴᴇʙᴜʟᴀ* 」\n┃ ㊗ sᴛᴀᴛᴜs: *Terinstall*\n┃ ㊗ ɪᴘ: ${ipvps}\n╰┈┈⬡\n\n# Tema Nebula instalado con éxito #`
             )
         } catch (err) {
             console.error('[Nebula Install Error]', err)
@@ -118,7 +118,7 @@ function handler(m) {
     }).on('error', (err) => {
         console.error('[SSH Error]', err)
         m.react('❌')
-        m.reply(`❌ Koneksi gagal!\n\n> IP atau Password tidak valid / VPS down.`)
+        m.reply(`❌Conexión fallido!\n\nAkeiP o Passard es inválido / VPS abajo.`)
     }).connect(connSettings)
 }
 

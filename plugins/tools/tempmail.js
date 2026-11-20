@@ -25,14 +25,14 @@ async function handler(m) {
     const saved = _optionalChain([db, 'access', _6 => _6.getUser, 'call', _7 => _7(m.sender), 'optionalAccess', _8 => _8.tempmail]);
     return m.reply(
       `📧 *Temp Mail*\n\n` +
-        `Buat email sementara yang bisa terima pesan — cocok buat daftar akun tanpa kasih email asli.\n\n` +
-        `*PENGGUNAAN:*\n` +
-        `> *${m.prefix}tempmail create* — Bikin email baru\n` +
-        `> *${m.prefix}tempmail inbox* — Cek pesan masuk\n\n` +
+        `Un campo de correo electrónico temporal que se puede enviar a usted.—fit crear una lista de cuentas sin el correo original.\n\n` +
+        `*Uso:*\n` +
+        `> *${m.prefix}tempmail crear *—Bikinis nuevo correo electrónico\n` +
+        `> *${m.prefix}inbo tempmailx*—Compruebe los mensajes entrantes\n\n` +
         (saved
-          ? `> Email aktif: *${saved}*\n`
-          : `> Belum punya email, ketik *${m.prefix}tempmail create* dulu\n`) +
-        `\n_Email ini bersifat sementara, bisa hilang kapan saja_`
+          ? `Awish on correo: *${saved}*\n`
+          : `*Tienes un correo, amigo*${m.prefix}tempmail create* dulu\n`) +
+        `\nEstos correos electrónicos son un poco pervertidos, se puede perder a cualquier precio.`
     );
   }
 
@@ -42,7 +42,7 @@ async function handler(m) {
 
     if (!result.status) {
       m.react("☢");
-      return m.reply(`❌ *Gagal Bikin Email*\n\n> ${result.error}`);
+      return m.reply(`❌*Agencia de correo electrónico de Fierce Bicin*\n\n♪${result.error}`);
     }
 
     const userData = db.getUser(m.sender) || {};
@@ -51,11 +51,11 @@ async function handler(m) {
 
     m.react("✅");
     return m.reply(
-      `📧 *Email Sementara Dibuat!*\n\n` +
-        `> 📬 Email: *${result.email}*\n\n` +
-        `Sekarang kamu bisa pakai email ini buat daftar apa aja.\n` +
-        `Cek pesan masuk dengan *${m.prefix}tempmail inbox*\n\n` +
-        `_Email ini sementara, jangan dipakai buat hal penting_`
+      `📧* Correo electrónico de Aminal hecho!\n\n` +
+        `♪📬Correo: *${result.email}*\n\n` +
+        `Ahora puede utilizar este correo electrónico para hacer una lista de cualquier cosa.\n` +
+        `Ver mensajes entrantes con *${m.prefix}tempmail inbox*\n\n` +
+        `Este correo electrónico es para el registro, no lo utilice por razones importantes.`
     );
   }
 
@@ -64,9 +64,9 @@ async function handler(m) {
     if (!saved) {
       m.react("❌");
       return m.reply(
-        `❌ *Belum Ada Email*\n\n` +
-          `Kamu belum bikin email sementara.\n` +
-          `Ketik *${m.prefix}tempmail create* dulu.`
+        `❌* There 's emailed eels *\n\n` +
+          `No ha podido enviar un correo electrónico en un tiempo.\n` +
+          `Escribe *${m.prefix}tempmail create* antes.`
       );
     }
 
@@ -75,24 +75,24 @@ async function handler(m) {
 
     if (!result.status) {
       m.react("☢");
-      return m.reply(`❌ *Gagal Cek Inbox*\n\n> ${result.error}`);
+      return m.reply(`❌* Stenched Inbo Choksx*\n\n♪${result.error}`);
     }
 
     if (result.count === 0) {
       m.react("📭");
       return m.reply(
-        `📭 *Inbox Kosong*\n\n` +
-          `> Email: *${saved}*\n\n` +
-          `Belum ada pesan masuk. Coba cek lagi nanti.`
+        `📭* InboxVacio*\n\n` +
+          `Correos: *${saved}*\n\n` +
+          `Le daré un mensaje más tarde.`
       );
     }
 
-    let txt = `📬 *Inbox — ${result.count} Pesan*\n\n`;
-    txt += `> Email: *${saved}*\n\n`;
+    let txt = `📬 *Inbox — ${result.count}Mensaje*\n\n`;
+    txt += `Correos: *${saved}*\n\n`;
 
     for (const msg of result.messages) {
       txt += `*━━━━━━━━━━━━━━━━━━━━*\n`;
-      txt += `> 📧 Dari: *${msg.from}*\n`;
+      txt += `♪📧De: *${msg.from}*\n`;
       txt += `> 📌 Subjek: *${msg.subject}*\n`;
       txt += `> 🕐 ${msg.created_at}\n`;
       txt += `> 📝 ${_optionalChain([msg, 'access', _12 => _12.body_text, 'optionalAccess', _13 => _13.substring, 'call', _14 => _14(0, 500)]) || "(tidak ada isi)"}\n\n`;
@@ -103,7 +103,7 @@ async function handler(m) {
   }
 
   return m.reply(
-    `❌ *Opsi Tidak Valid*\n\n> Gunakan *${m.prefix}tempmail create* atau *${m.prefix}tempmail inbox*`
+    `❌Opsi inválido\n\n*Uso*${m.prefix}tempmail crear * o *${m.prefix}tempmail inbox*`
   );
 }
 

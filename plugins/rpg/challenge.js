@@ -5,7 +5,7 @@ const pluginConfig = {
   name: "challenge",
   alias: ["daily", "dailychallenge", "tantangan"],
   category: "rpg",
-  description: "Daily challenge untuk hadiah spesial",
+  description: "Dairy Challenge para premio especial",
   usage: ".challenge",
   example: ".challenge",
   isOwner: false,
@@ -57,11 +57,11 @@ async function handler(m, { sock }) {
 
   if (action === "claim") {
     if (!isComplete) {
-      return m.reply(`❌ Tantangannya belum selesai nih kak!\nProgress kamu baru: *${challenge.progress}/${challenge.target}*`);
+      return m.reply(`❌¡El desafío no se ha hecho todavía!\nTu nuevo progreso: *${challenge.progress}/${challenge.target}*`);
     }
 
     if (challenge.claimed) {
-      return m.reply(`Wah kak, hadiah untuk hari ini udah diambil! Tunggu tantangan baru besok ya! 😉`);
+      return m.reply(`¡Espera el nuevo desafío!😉`);
     }
 
     user.koin = (user.koin || 0) + challenge.reward.gold;
@@ -72,33 +72,33 @@ async function handler(m, { sock }) {
 
     await m.react("🎉");
     return m.reply(
-      `🎉 *TANTANGAN HARIAN SELESAI!!* 🎉\n\n` +
-        `Kerja bagus kak! Ini hadiah dari Guild buat kamu:\n` +
-        `💰 Koin: *+Rp ${challenge.reward.gold.toLocaleString()}*\n` +
+      `🎉¡Arriba!🎉\n\n` +
+        `¡Buen trabajo, hermana!\n` +
+        `💰Monedas: *+Rp${challenge.reward.gold.toLocaleString()}*\n` +
         `✨ EXP: *+${challenge.reward.exp}*\n` +
         `\n\n` +
-        `> _Tantangan baru akan diberikan besok pagi!_`
+        `¡Para luchar contra el nuevo se dará al mañana beanong!`
     );
   }
 
-  let txt = `📋 *TANTANGAN HARIAN GUILD* 📋\n\n`;
-  txt += `Selesaikan tugas khusus hari ini untuk dapet uang jajan tambahan kak!\n\n`;
+  let txt = `📋(Asuntos de la mano)📋\n\n`;
+  txt += `Terminar la asignación especial de hoy para el dinero extra\n\n`;
   
-  txt += `*Tugas Kamu Hari Ini:*\n`;
+  txt += `* Tu trabajo hoy: *\n`;
   txt += `🎯 *${challenge.name}*\n`;
   txt += `📊 Progress: *${challenge.progress}/${challenge.target}*\n`;
   txt += `Status: ${isComplete ? "✅ *BISA DICLAIM!*" : "⏳ _Sedang dikerjakan..._"}\n\n`;
 
-  txt += `*🎁 Hadiah Tambahan:*\n`;
-  txt += `💰 Koin: *Rp ${challenge.reward.gold.toLocaleString()}*\n`;
+  txt += `*🎁Premio Adicional:*\n`;
+  txt += `💰Monedas: *Rp${challenge.reward.gold.toLocaleString()}*\n`;
   txt += `✨ EXP: *${challenge.reward.exp}*\n\n`;
 
   if (isComplete && !challenge.claimed) {
-    txt += `> 💡 Yuk buruan ketik \`${m.prefix}challenge claim\` untuk klaim hadiahnya kak!`;
+    txt += `♪💡Vamos a las colinas.\`${m.prefix}reclamación\`¡Para el presente, hermano!`;
   } else if (challenge.claimed) {
-    txt += `> ✅ Kamu hebat! Hadiah sudah diambil. Besok ada misi baru lagi ya!`;
+    txt += `♪✅Eres inbreíble, te estás quitando, y tienes otra misiónónónónónónónónónónón.`;
   } else {
-    txt += `> Semangat kerjainnya kak! Kalau udah selesai nanti ambil hadiahnya.`;
+    txt += `Terminaste de recibir su regalo.`;
   }
 
   return m.reply(txt);

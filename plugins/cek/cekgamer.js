@@ -2,7 +2,7 @@
     name: 'cekgamer',
     alias: ['gamer', 'pro'],
     category: 'cek',
-    description: 'Cek seberapa pro gamer kamu',
+    description: 'Mira cuánto tu jugador profesional',
     usage: '.cekgamer <nama>',
     example: '.cekgamer Budi',
     isOwner: false,
@@ -26,17 +26,17 @@ async function handler(m) {
     } else if (percent >= 50) {
         desc = 'Lumayan pro 👍'
     } else if (percent >= 30) {
-        desc = 'Masih noob nih 😅'
+        desc = 'Pobre novio.😅'
     } else {
         desc = 'Mending main masak-masakan 🍳'
     }
     
-    let txt = mentioned === m.sender ? `Hai @${mentioned.split('@')[0]}
+    let txt = mentioned === m.sender ? `Hola @${mentioned.split('@')[0]}
     
-Tingkat kegameran kamu *${percent}%*
-\`\`\`${desc}\`\`\`` : `Kamu ingin ngecek tingkat kegameran @${mentioned.split('@')[0]} yak? 
+Tu actuación es tan caliente${percent}%*
+\`\`\`${desc}\`\`\`` : `Quieres revisar los niveles de alegría${mentioned.split('@')[0]} yak? 
     
-Tingkat kegameran dia sebesar *${percent}%*
+Es tan alto como un hombre en su primer momento.${percent}%*
 \`\`\`${desc}\`\`\``
     
     await m.reply(txt, { mentions: [mentioned] })

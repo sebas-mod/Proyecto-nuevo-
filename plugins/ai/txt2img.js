@@ -5,7 +5,7 @@ const pluginConfig = {
     name: 'text2img3',
     alias: [],
     category: 'ai',
-    description: 'Generate gambar dari teks dengan AI',
+    description: 'Generar imágenes de texto con AI',
     usage: '.txt2img <prompt> | <style>',
     example: '.txt2img beautiful sunset | anime',
     isOwner: false,
@@ -24,7 +24,7 @@ async function handler(m, { sock }) {
     if (!input) {
         return m.reply(
             `🎨 *ᴛᴇxᴛ ᴛᴏ ɪᴍᴀɢᴇ*\n\n` +
-            `> Generate gambar dari teks dengan AI\n\n` +
+            `* Genera imágenes del texto con AI*\n\n` +
             `\`Contoh: ${m.prefix}txt2img beautiful sunset | anime\`\n\n` +
             `🎭 *sᴛʏʟᴇs*\n` +
             `> \`${STYLES.join(', ')}\``
@@ -37,7 +37,7 @@ async function handler(m, { sock }) {
     m.react('🕕')
 
     try {
-        const { data } = await _ourinhttpjs.f.call(void 0, `https://api.neoxr.eu/api/stablediff?prompt=${encodeURIComponent(prompt)}&model=default&orientation=potrait&apikey=${_configjs2.default.APIkey.neoxr}`)
+        const { data } = await _ourinhttpjs.f.call(void 0, `https://api.neoxr.eu/api/stablediff?prompt=${encodeURIComponent(prompt)}&model=predeterminado&orientation=potrait&apikey=${_configjs2.default.APIkey.neoxr}`)
 
         await sock.sendMedia(m.chat, data.url, null, m, {
             type: 'image'

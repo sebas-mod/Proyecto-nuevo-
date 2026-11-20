@@ -13,7 +13,7 @@ const pluginConfig = {
   name: "smeme",
   alias: ["memesticker", "memes"],
   category: "sticker",
-  description: "Membuat sticker meme dari gambar",
+  description: "Cree una pegatina.",
   usage: ".smeme <top>|<bottom>",
   example: ".smeme Ketika|Kamu Lupa",
   isOwner: false,
@@ -31,13 +31,13 @@ async function handler(m, { sock }) {
     (m.quoted && (m.quoted.isSticker || m.quoted.type === "stickerMessage"));
   if (!isImage && !isSticker) {
     return m.reply(
-      `😂 *ᴍᴇᴍᴇ sᴛɪᴄᴋᴇʀ*\n\n> Reply atau kirim gambar/sticker dengan caption\n\n\`Contoh: ${m.prefix}smeme Top|Bottom\``,
+      `😂*ᴍᴇᴍᴇSᴛɪᴄᴋᴇʀ*\n\n# Responder o enviar una imagen / pegatina con capción #\n\n\`Ejemplo:${m.prefix}smeme Top|Bottom\``,
     );
   }
   const input = m.args.join(" ");
   if (!input || !input.includes("|")) {
     return m.reply(
-      `😂 *ᴍᴇᴍᴇ sᴛɪᴄᴋᴇʀ*\n\n> Format: top|bottom\n\n\`Contoh: ${m.prefix}smeme Ketika|Kamu Lupa\``,
+      `😂*ᴍᴇᴍᴇSᴛɪᴄᴋᴇʀ*\n\n* Formatt: Top * Down *\n\n\`Epirame:${m.prefix}Cuando estoy cansado de ti\``,
     );
   }
   const [top, bottom] = input.split("|").map((s) => s.trim());
@@ -51,7 +51,7 @@ async function handler(m, { sock }) {
     }
     if (!mediaBuffer) {
       m.react("❌");
-      return m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> Gagal mengunduh media`);
+      return m.reply(`❌*ɢᴀɢᴀʟ*\n\n*El poderoso dodgerd*`);
     }
     let imageBuffer;
     try {
@@ -113,7 +113,7 @@ async function handler(m, { sock }) {
     }
     if (!imageUrl) {
       m.react("❌");
-      return m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> Gagal upload gambar, coba lagi nanti`);
+      return m.reply(`❌*ɢᴀɢᴀʟ*\n\n# Fotos sin miedo, intenta otra vez más tarde #`);
     }
     console.log("[SMEME] Image uploaded:", imageUrl);
     const encodeText = (text) => {
@@ -137,7 +137,7 @@ async function handler(m, { sock }) {
     const buffer = Buffer.from(response.data);
     await sock.sendImageAsSticker(m.chat, buffer, m, {
       packname: _optionalChain([_configjs.config, 'access', _10 => _10.sticker, 'optionalAccess', _11 => _11.packname]) || "Ourin-AI",
-      author: _optionalChain([_configjs.config, 'access', _12 => _12.sticker, 'optionalAccess', _13 => _13.author]) || "Bot",
+      author: _optionalChain([_configjs.config, 'access', _12 => _12.sticker, 'optionalAccess', _13 => _13.author]) || "♪",
     });
     m.react("✅");
   } catch (error) {

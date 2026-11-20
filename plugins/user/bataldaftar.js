@@ -4,7 +4,7 @@ const pluginConfig = {
   name: "bataldaftar",
   alias: ["cancelreg", "canceldaftar", "regcancel"],
   category: "user",
-  description: "Batalkan sesi pendaftaran yang sedang aktif",
+  description: "Desactivar el registro actual",
   usage: ".bataldaftar",
   example: ".bataldaftar",
   isOwner: false,
@@ -21,12 +21,12 @@ async function handler(m) {
   const canceled = _daftarjs.clearRegistrationSession.call(void 0, m.sender);
 
   if (!canceled) {
-    return m.reply(`❌ Kamu tidak punya sesi pendaftaran aktif.`);
+    return m.reply(`❌No tiene una señal activa @-@ off session.`);
   }
 
   return m.reply(
-    `✅ Sesi pendaftaran berhasil dibatalkan.\n\n` +
-      `> Mulai lagi dengan: \`${m.prefix}daftar\``,
+    `✅El signo @-@ up fue cancelado.\n\n` +
+      `Disfrute de los Starys de nuevo con:\`${m.prefix}daftar\``,
   );
 }
 

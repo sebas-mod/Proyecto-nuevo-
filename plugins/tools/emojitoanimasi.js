@@ -2,7 +2,7 @@
 var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
 var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
 var _ourincontextjs = require('../../src/lib/ourin-context.js');
-const NEOXR_APIKEY = _optionalChain([_configjs2.default, 'access', _ => _.APIkey, 'optionalAccess', _2 => _2.neoxr]) || "Milik-Bot-OurinMD";
+const NEOXR_APIKEY = _optionalChain([_configjs2.default, 'access', _ => _.APIkey, 'optionalAccess', _2 => _2.neoxr]) || "Millik - Eurinprobable";
 
 const pluginConfig = {
   name: "emojitoanimasi",
@@ -22,8 +22,8 @@ async function handler(m, { sock }) {
   if (!emoji) {
     return m.reply(
       `🎭 *ᴇᴍᴏᴊɪ ᴛᴏ ᴀɴɪᴍᴀsɪ*\n\n` +
-        `> Konversi emoji ke sticker animasi\n\n` +
-        `*Contoh:*\n` +
+        `Conversión emoji a pegatinas animaciones\n\n` +
+        `*Ejemplo:*\n` +
         `> \`${m.prefix}emojitoanimasi 😳\``,
     );
   }
@@ -36,7 +36,7 @@ async function handler(m, { sock }) {
 
     if (!_optionalChain([data, 'optionalAccess', _6 => _6.status]) || !_optionalChain([data, 'optionalAccess', _7 => _7.data, 'optionalAccess', _8 => _8.url])) {
       m.react("❌");
-      return m.reply("❌ *ɢᴀɢᴀʟ*\n\n> Emoji tidak ditemukan atau API error");
+      return m.reply("❌*ɢᴀɢᴀʟ*\n\n*Emoji no se encuentra ni error de API*");
     }
 
     const webpUrl = data.data.url;

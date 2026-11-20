@@ -4,7 +4,7 @@ const pluginConfig = {
     name: 'addpartner',
     alias: ['delpartner', 'listpartner'],
     category: 'owner',
-    description: 'Kelola daftar partner bot',
+    description: 'Kellola bot partner list',
     usage: '.addpartner <nomor/@tag> [hari]\n.delpartner <nomor/@tag>\n.listpartner\n.cekpartner <nomor/@tag>',
     example: '.addpartner 6281234567890 30',
     isOwner: true,
@@ -36,10 +36,10 @@ async function handler(m, { sock }) {
         if (!target) {
             return m.reply(
                 `🤝 *ᴀᴅᴅ ᴘᴀʀᴛɴᴇʀ*\n\n` +
-                `> Cara pakai:\n` +
-                `> \`${m.prefix}addpartner @tag [hari]\`\n` +
+                `Cara llevas\n` +
+                `> \`${m.prefix}addpartner\`\n` +
                 `> \`${m.prefix}addpartner 6281xxx 30\`\n\n` +
-                `> Default: 30 hari`
+                `* Predeterminado: 30 días *`
             )
         }
         let targetNumber = target.replace(/@.+/g, '')
@@ -47,7 +47,7 @@ async function handler(m, { sock }) {
             targetNumber = '62' + targetNumber.slice(1)
         }
         if (_configjs2.default.isOwner(targetNumber)) {
-            return m.reply(`⚠️ @${targetNumber} sudah menjadi owner!`, { mentions: [target] })
+            return m.reply(`⚠️ @${targetNumber}¡Se está convirtiendo en un propietario!`, { mentions: [target] })
         }
         const existingIndex = db.data.partner.findIndex(p => p.id === targetNumber)
         const days = parseInt(_optionalChain([m, 'access', _13 => _13.args, 'optionalAccess', _14 => _14.find, 'call', _15 => _15(a => /^\d+$/.test(a) && a.length <= 4)])) || 30
@@ -71,7 +71,7 @@ async function handler(m, { sock }) {
                 name: pushName,
                 addedAt: now
             })
-            message = `Berhasil ditambahkan`
+            message = `Anadido correctamente`
         }
 
         db.save()
@@ -79,7 +79,7 @@ async function handler(m, { sock }) {
         const expDate = new Date(newExpired).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })
 
         await m.reply(
-            `✅ Berhasil ${existingIndex !== -1 ? 'memperpanjang' : 'menambahkan'} partner @${targetNumber} selama *${days} hari*\nExpired: *${expDate}*`,
+            `✅Exito${existingIndex !== -1 ? 'memperpanjang' : 'menambahkan'} partner @${targetNumber}mientras *${days}el*\nEx# Pired #${expDate}*`,
             { mentions: [target] }
         )
         return
@@ -88,7 +88,7 @@ async function handler(m, { sock }) {
     if (cmd === 'delpartner') {
         const target = await extractNumber(m)
         if (!target) {
-            return m.reply(`⚠️ Tag atau reply user yang ingin dihapus dari partner.`)
+            return m.reply(`⚠Para la etiqueta o el usuario de respuesta que los socios quieren recoger.`)
         }
         let targetNumber = target.replace(/@.+/g, '')
         if (targetNumber.startsWith('08')) {
@@ -100,9 +100,9 @@ async function handler(m, { sock }) {
         
         if (db.data.partner.length < initialLength) {
             db.save()
-            await m.reply(`✅ Berhasil menghapus @${targetNumber} dari partner`, { mentions: [target] })
+            await m.reply(`✅Resultado en memoria @${targetNumber}de partner`, { mentions: [target] })
         } else {
-            return m.reply(`⚠️ User tersebut bukan partner.`)
+            return m.reply(`⚠Ese Usuario no era un socio.`)
         }
         return
     }
@@ -110,10 +110,10 @@ async function handler(m, { sock }) {
     if (cmd === 'listpartner') {
         const partners = db.data.partner
         if (!partners.length) {
-            return m.reply(`🤝 *ᴅᴀꜰᴛᴀʀ ᴘᴀʀᴛɴᴇʀ*\n\n> Belum ada partner.`)
+            return m.reply(`🤝*ᴅᴀꜰᴛᴀʀ ᴘᴀʀᴛɴᴇʀ*\n\nPara verlo como socio.`)
         }
 
-        let txt = `🤝 *DAFTAR PARTNER*\n\n`
+        let txt = `🤝*Registrate PARTNER*\n\n`
         const mentions = []
         partners.forEach((p, i) => {
             const num = p.id

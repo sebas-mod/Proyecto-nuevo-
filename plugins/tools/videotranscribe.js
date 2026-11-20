@@ -5,7 +5,7 @@ const pluginConfig = {
   name: "videotranscribe",
   alias: ["video-transcribe", "transkripvideo"],
   category: "tools",
-  description: "Transkrip video dari URL menjadi teks (YouTube, mp4, dll)",
+  description: "La transcripción de vídeo de la URL se convierte en un texto ( YouTube, mp4, dll )",
   usage: ".video-transcribe <url> [lang]",
   example: ".video-transcribe https://youtu.be/dQw4w9WgXcQ\n.video-transcribe https://youtu.be/dQw4w9WgXcQ id",
   cooldown: 30,
@@ -50,7 +50,7 @@ function cleanResult(input, json) {
     return {
       status: false,
       code: _optionalChain([json, 'optionalAccess', _4 => _4.code]) || 500,
-      message: _optionalChain([json, 'optionalAccess', _5 => _5.msg]) || _optionalChain([json, 'optionalAccess', _6 => _6.message]) || "Transcript tidak ditemukan",
+      message: _optionalChain([json, 'optionalAccess', _5 => _5.msg]) || _optionalChain([json, 'optionalAccess', _6 => _6.message]) || "Transcripción no encontrada",
     };
   }
   const title = _optionalChain([data, 'access', _7 => _7.find, 'call', _8 => _8((item) => _optionalChain([item, 'optionalAccess', _9 => _9.videoTitle])), 'optionalAccess', _10 => _10.videoTitle]) || "No title";
@@ -71,7 +71,7 @@ function cleanResult(input, json) {
 
 async function transcriber(url, language = DEFAULT_LANG) {
   if (!url || !/^https?:\/\//i.test(String(url))) {
-    throw new Error("URL kosong / tidak valid");
+    throw new Error("URL vacía / inválida");
   }
   const body = {
     track_id: makeTrackId(),
@@ -117,7 +117,7 @@ async function handler(m, { args }) {
     info += `*📜 Transcript:*\n${result.transcript.substring(0, 2500)}`;
     
     if (result.transcript.length > 2500) {
-      info += `... (teks terlalu panjang)`;
+      info += `... (texto demasiado largo)`;
     }
 
     m.react("✅");
@@ -125,7 +125,7 @@ async function handler(m, { args }) {
   } catch (err) {
     console.error("[VideoTranscribe]", err.message);
     m.react("☢");
-    m.reply(`❌ *Gagal:* ${err.message || "Gagal memproses video"}`);
+    m.reply(`❌*Fallido:*${err.message || "Gagal memproses video"}`);
   }
 }
 

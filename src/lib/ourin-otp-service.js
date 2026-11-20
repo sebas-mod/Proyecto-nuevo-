@@ -10,7 +10,7 @@ let serviceCacheTime = {}
 
 function getApiKey() {
     const key = _optionalChain([_configjs2.default, 'access', _ => _.jasaotp, 'optionalAccess', _2 => _2.apiKey])
-    if (!key) throw new Error('JasaOTP API key belum dikonfigurasi di config.js')
+    if (!key) throw new Error('La tarea clave de API no se ha configurado en config.')
     return key
 }
 
@@ -32,7 +32,7 @@ async function getBalance() {
         timeout: 15000
     })
 
-    if (!data.success) throw new Error(data.message || 'Gagal cek saldo')
+    if (!data.success) throw new Error(data.message || 'Saldo de comprobación pegajoso')
     return data.data.saldo
 }
 
@@ -42,9 +42,9 @@ async function getCountries() {
         return countryCache
     }
 
-    const { data } = await _axios2.default.get(`${BASE_URL}/negara.php`, { timeout: 15000 })
+    const { data } = await _axios2.default.get(`${BASE_URL}/pais.php`, { timeout: 15000 })
 
-    if (!data.success) throw new Error(data.message || 'Gagal ambil daftar negara')
+    if (!data.success) throw new Error(data.message || 'Tome la lista de estado.')
 
     countryCache = data.data
     countryCacheTime = now
@@ -67,7 +67,7 @@ async function getServices(countryId) {
     const services = data[cacheKey] || _optionalChain([data, 'access', _9 => _9.data, 'optionalAccess', _10 => _10[cacheKey]]) || data[countryId] || {}
 
     if (Object.keys(services).length === 0) {
-        throw new Error('Tidak ada layanan tersedia untuk negara ini')
+        throw new Error('No hay servicio disponible para este país')
     }
 
     serviceCache[cacheKey] = services
@@ -81,7 +81,7 @@ async function getOperators(countryId) {
         timeout: 15000
     })
 
-    if (!data.success) throw new Error(data.message || 'Gagal ambil daftar operator')
+    if (!data.success) throw new Error(data.message || 'Statul toma la lista de operadores')
 
     const operators = _optionalChain([data, 'access', _11 => _11.data, 'optionalAccess', _12 => _12[String(countryId)]]) || data.data || []
     return Array.isArray(operators) ? operators : Object.values(operators)
@@ -98,7 +98,7 @@ async function createOrder(countryId, service, operator) {
         timeout: 30000
     })
 
-    if (!data.success) throw new Error(data.message || 'Gagal membuat pesanan OTP')
+    if (!data.success) throw new Error(data.message || 'El truco hace que el mensaje OTP')
 
     return {
         orderId: data.data.order_id,
@@ -128,7 +128,7 @@ async function cancelOrder(orderId) {
         timeout: 15000
     })
 
-    if (!data.success) throw new Error(data.message || 'Gagal membatalkan pesanan')
+    if (!data.success) throw new Error(data.message || 'Mensajes de escupir')
 
     return {
         orderId: _optionalChain([data, 'access', _15 => _15.data, 'optionalAccess', _16 => _16.order_id]),

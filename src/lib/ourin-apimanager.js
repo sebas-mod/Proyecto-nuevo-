@@ -56,13 +56,13 @@ const HTTPS_AGENT = new _nodehttps2.default.Agent({
  * @property {string} [name]
  * @property {Buffer|import('stream').Readable|string} [value]
  * @property {Buffer|import('stream').Readable|string} [buffer]
- * @property {Buffer|import('stream').Readable|string} [file]
+ * @property {Buffer|import('stream').Readable|string} [archivo]
  * @property {string} [filename]
  * @property {string} [contentType]
  */
 
 /**
- * Client provider untuk pemanggilan API per namespace.
+* proveedor de cliente para llada Fuego por ando.
  */
 class OurinApiProvider {
   /**
@@ -562,7 +562,7 @@ class FgsiApiProvider extends OurinApiProvider {
 }
 
 /**
- * API manager terpusat untuk provider eksternal Ourin.
+* Administrator de Fuego fue alcanzado para el proveedor exTerno Ourin.
  */
 class OurinApiManager {
   /**
@@ -616,7 +616,7 @@ class OurinApiManager {
    */
   provider(name) {
     if (!this.hasProvider(name)) {
-      throw new Error(`Provider tidak ditemukan: ${name}`);
+      throw new Error(`Proveedor no encontrado:${name}`);
     }
     return this[name];
   }
@@ -628,7 +628,7 @@ class OurinApiManager {
   getProviderConfig(name) {
     const cfg = this.providers[name];
     if (!cfg) {
-      throw new Error(`Provider tidak ditemukan: ${name}`);
+      throw new Error(`Proveedor no encontrado:${name}`);
     }
     return cfg;
   }
@@ -1136,7 +1136,7 @@ class OurinApiManager {
       _optionalChain([err, 'optionalAccess', _15 => _15.response, 'optionalAccess', _16 => _16.data, 'optionalAccess', _17 => _17.message]) ||
       _optionalChain([err, 'optionalAccess', _18 => _18.response, 'optionalAccess', _19 => _19.data, 'optionalAccess', _20 => _20.msg]) ||
       _optionalChain([err, 'optionalAccess', _21 => _21.message]) ||
-      "Request gagal";
+      "Request fallido";
     const ex = new Error(`[${provider}] ${msg}`);
     ex.provider = provider;
     ex.endpoint = endpoint;

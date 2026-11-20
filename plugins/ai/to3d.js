@@ -28,7 +28,7 @@ async function handler(m, { sock }) {
     if (!isImage) {
         return m.reply(
             `🎮 *ᴛᴏ 3ᴅ*\n\n` +
-            `> Kirim/reply gambar untuk diubah ke gaya 3D\n\n` +
+            `Escoger / responder imágenes para convertir a gaya 3D\n\n` +
             `\`${m.prefix}to3d\``
         )
     }
@@ -43,7 +43,7 @@ async function handler(m, { sock }) {
         
         if (!buffer) {
             m.react('❌')
-            return m.reply(`❌ Gagal mendownload gambar`)
+            return m.reply(`❌Paso de descarga de imagen`)
         }
         
         await m.react('🕕')

@@ -2,7 +2,7 @@
     name: 'delppgc',
     alias: ['delprofilegc', 'delppgroup', 'hapusppgc'],
     category: 'group',
-    description: 'Menghapus foto profil grup',
+    description: 'Borrar la foto del perfil grupo',
     usage: '.delppgc',
     example: '.delppgc',
     isOwner: false,
@@ -21,12 +21,12 @@ async function handler(m, { sock }) {
         await sock.removeProfilePicture(m.chat)
         
         await m.reply(
-            `✅ PP Grup sekarang sudah botak`
+            `✅El PP de Grupo está aora calvo.`
         )
     } catch (error) {
         await m.reply(
             `❌ *ɢᴀɢᴀʟ*\n\n` +
-            `> Tidak dapat menghapus foto grup.\n` +
+            `No se pueden borrar fotos de grupo.\n` +
             `> _${error.message}_`
         )
     }

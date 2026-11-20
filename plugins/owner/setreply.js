@@ -46,31 +46,31 @@ const VARIANTS = {
   v5: {
     id: 5,
     name: "FAKE ORDER",
-    desc: "Teks dengan fake quoted order message",
+    desc: "Test con mensaje de orden de cita falsa",
     emoji: "🛒",
   },
   v6: {
     id: 6,
     name: "SIMPLE DOCUMENT",
-    desc: "Seperti V2 tapi tanpa fake contact quote (quoted ori)",
+    desc: "Como V2 pero sin cita de contacto falso ( citado ori )",
     emoji: "📄",
   },
   v7: {
     id: 7,
     name: "FAKE LOCATION",
-    desc: "Teks dengan fake quoted location message",
+    desc: "Texto con mensaje de ubicación de cita falsa",
     emoji: "📍",
   },
   v8: {
     id: 8,
     name: "FAKE SIGNUP",
-    desc: "Teks dengan fake quoted signup message",
+    desc: "Texto con mensaje de registro citado falso",
     emoji: "🥠",
   },
   v9: {
     id: 9,
     name: "FAKE ORDER",
-    desc: "Teks dengan fake quoted order message ( gak direkomendasikan )",
+    desc: "Prueba con mensaje de orden citado falso",
     emoji: "🍙",
   },
   v10: {
@@ -93,14 +93,14 @@ async function handler(m, { sock, db }) {
   if (variant) {
     const selected = VARIANTS[variant];
     if (!selected) {
-      await m.reply(`❌ *VARIANT TIDAK VALID*\n\nGunakan: *v1* s/d *v11*`);
+      await m.reply(`❌* VARIANT TIGHT VALID*\n\nUso: * v1 * s / d * v11 *`);
       return;
     }
 
     db.setting("replyVariant", selected.id);
     await db.save();
     await m.reply(
-      `✅ *REPLY VARIANT DIUBAH*\n\n` +
+      `✅* Responder VARIANT USED*\n\n` +
       `${selected.emoji} *V${selected.id} — ${selected.name}*\n` +
       `_${selected.desc}_`,
     );
@@ -129,9 +129,9 @@ async function handler(m, { sock, db }) {
   ];
 
   const bodys =
-    `💬📨 *REPLY VARIANT*\n\n` +
-    `Atur tampilan balasan bot ketika membalas pesan user 💬✨\n` +
-    `Variant aktif saat ini: *V${current} — ${_optionalChain([VARIANTS, 'access', _3 => _3[`v${current}`], 'optionalAccess', _4 => _4.name]) || "Unknown"}* 🎯\n\n`
+    `💬📨*Responder VARIANT*\n\n` +
+    `Arregle el retorno de arranque cuando responda a los mensajes de usuario💬✨\n` +
+    `Variable actual: * V${current} — ${_optionalChain([VARIANTS, 'access', _3 => _3[`v${current}`], 'optionalAccess', _4 => _4.name]) || "Unknown"}* 🎯\n\n`
 
   await sock.sendButton(
     m.chat,

@@ -6,7 +6,7 @@ const pluginConfig = {
   name: "wikipedia",
   alias: ["wiki", "wp"],
   category: "search",
-  description: "Mencari artikel lengkap dari Wikipedia",
+  description: "Búsqueda del artículo completo de Wikipedia",
   usage: ".wikipedia <query>",
   example: ".wikipedia Rendang",
   isOwner: false,
@@ -21,7 +21,7 @@ const pluginConfig = {
 const LANG = "id";
 const LIMIT = 5;
 const BASE = `https://${LANG}.wikipedia.org`;
-const API = `${BASE}/w/api.php`;
+const API = `${BASE}/w/fuego.php`;
 const UA = "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Mobile Safari/537.36";
 
 function decodeHtml(text) {
@@ -199,7 +199,7 @@ async function handler(m, { sock }) {
 
     if (!search.results.length) {
       await m.react("❌");
-      return m.reply(`⚠️ Artikel tentang *${query}* tidak ditemukan di Wikipedia.`);
+      return m.reply(`⚠* Artículo sobre*${query}* no se encuentra en Wikipedia.`);
     }
 
     const first = search.results[0];
@@ -208,11 +208,11 @@ async function handler(m, { sock }) {
 
     let text = `📚 *WIKIPEDIA SEARCH* 📚\n\n`;
     text += `*Judul:* ${r.Title}\n`;
-    if (r.Description) text += `*Deskripsi:* ${r.Description}\n`;
+    if (r.Description) text += `*Descripción:*${r.Description}\n`;
     text += `\n*Ringkasan:*\n${r.Extract || "Tidak ada ringkasan tersedia."}\n\n`;
 
     if (Object.keys(r.Infobox).length > 0) {
-      text += `*Info Tambahan:*\n`;
+      text += `* Info Añadir *\n`;
       let count = 0;
       for (const [key, val] of Object.entries(r.Infobox)) {
         if (count >= 5) break;
@@ -238,7 +238,7 @@ async function handler(m, { sock }) {
   } catch (error) {
     console.error("[Wikipedia Search]", error.message);
     await m.react("☢");
-    m.reply("😔 Terjadi kesalahan saat mencari artikel di Wikipedia.");
+    m.reply("😔Fue un error encontrar un artículo en Wikipedia.");
   }
 }
 

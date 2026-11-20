@@ -6,7 +6,7 @@ const pluginConfig = {
     name: "movieku",
     alias: ["movie", "film", "carifilm", "carimovie"],
     category: "search",
-    description: "Cari dan tampilkan informasi film lengkap dari Movieku beserta link download dalam berbagai kualitas",
+    description: "Busca y mostrar información completa de filmación de mi Movieku a lo largo de las descargas de enlaces en calidad",
     usage: ".movieku <judul film>",
     example: ".movieku avengers",
     isOwner: false,
@@ -73,7 +73,7 @@ async function getMovieDetail(movieUrl) {
 
 function formatDownloads(downloads) {
     if (!downloads || Object.keys(downloads).length === 0) return ""
-    let txt = `\n🔽 *LINK DOWNLOAD*\n\n`
+    let txt = `\n🔽*Enlace DOWNLOAD*\n\n`
     const qualities = ["1080p", "720p", "480p", "360p"]
     for (const q of qualities) {
         if (!downloads[q]) continue
@@ -94,13 +94,13 @@ async function handler(m, { sock }) {
     if (!query) {
         return m.reply(
             `🎬 *MOVIEKU*\n\n` +
-            `Fitur ini membantu kamu mencari informasi lengkap tentang film dari database Movieku, termasuk sinopsis, detail film, dan link download dalam berbagai kualitas resolusi\n\n` +
-            `*Cara pakai:*\n` +
+            `Está función le ayuda a buosación compleción sobleta so ( las elículas de mi base de datos Moview, sintopis, detllada peícula y encargas en la recituid de la resolución\n\n` +
+            `*Como usarlo:*\n` +
             `> \`${m.prefix}movieku <judul film>\`\n\n` +
-            `*Contoh:*\n` +
+            `*Ejemplo:*\n` +
             `> \`${m.prefix}movieku avengers\`\n` +
             `> \`${m.prefix}movieku one piece\`\n\n` +
-            `_Hasil pencarian akan menampilkan film yang paling relevan dengan judul yang kamu cari_`
+            `* La búsqueda mostrará la pepeícula más relevante con el encabezado que buscas *`
         )
     }
 
@@ -111,7 +111,7 @@ async function handler(m, { sock }) {
 
         if (!movies || movies.length === 0) {
             m.react("❌")
-            return m.reply(`❌ Film dengan kata kunci *${query}* tidak ditemukan, coba gunakan judul yang lebih spesifik ya`)
+            return m.reply(`❌Películas con palabras clave *${query}* no encontrado, tratar de utilizar un título más específico sí`)
         }
 
         const movie = movies[0]
@@ -129,9 +129,9 @@ async function handler(m, { sock }) {
         txt += `📋 *DETAIL FILM*\n\n`
         if (detail.genre) txt += `🎭 Genre: *${detail.genre}*\n`
         if (detail.release) txt += `📅 Rilis: *${detail.release}*\n`
-        if (detail.duration) txt += `⏱️ Durasi: *${detail.duration}*\n`
+        if (detail.duration) txt += `⏱Duración${detail.duration}*\n`
         if (detail.quality) txt += `📺 Kualitas: *${detail.quality}*\n`
-        if (detail.country) txt += `🌍 Negara: *${detail.country}*\n`
+        if (detail.country) txt += `🌍 Pais: *${detail.country}*\n`
         if (detail.director) txt += `🎬 Sutradara: *${detail.director}*\n`
         if (detail.rating) txt += `⭐ Rating: *${detail.rating}*\n`
         if (detail.score) txt += `📊 Score: *${detail.score}*\n`
@@ -158,14 +158,14 @@ async function handler(m, { sock }) {
         }
 
         if (movies.length > 1) {
-            let listTxt = `🎬 *HASIL LAINNYA*\n\n`
-            listTxt += `Ditemukan *${movies.length}* film yang cocok dengan pencarianmu, berikut daftar lengkapnya:\n\n`
+            let listTxt = `🎬*Resultado Otros*\n\n`
+            listTxt += `Ditemukan *${movies.length}* La única buena peícula con su búsqueda, junto a la lista compleja:\n\n`
             const maxShow = Math.min(movies.length, 10)
             for (let i = 1; i < maxShow; i++) {
                 listTxt += `- *${movies[i].post_title}*\n  > ${movies[i].post_link}\n\n`
             }
             if (movies.length > 10) {
-                listTxt += `_...dan ${movies.length - 10} film lainnya_`
+                listTxt += `_...y${movies.length - 10}Otras peículas`
             }
             await m.reply(listTxt.trim())
         }

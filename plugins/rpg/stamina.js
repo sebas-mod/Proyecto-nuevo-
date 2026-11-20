@@ -4,7 +4,7 @@ const pluginConfig = {
   name: "stamina",
   alias: ["energy", "cekstamina"],
   category: "rpg",
-  description: "Cek dan pulihkan stamina",
+  description: "Comprueba y comienza la resistencia.",
   usage: ".stamina / .stamina isi",
   example: ".stamina",
   isOwner: false,
@@ -37,11 +37,11 @@ async function handler(m, { sock }) {
     const potionCost = 5000;
 
     if (user.rpg.stamina >= user.rpg.maxStamina) {
-      return m.reply(`⚡ *sᴛᴀᴍɪɴᴀ ᴘᴇɴᴜʜ*\n\n> Stamina kamu sudah penuh!`);
+      return m.reply(`⚡*ᴛᴀᴍɪɴᴀ ᴘᴇɴᴜʜ*\n\n¡Para que estés lleno!`);
     }
 
     if ((user.koin || 0) < potionCost) {
-      return m.reply(`❌ *sᴀʟᴅᴏ ᴛɪᴅᴀᴋ ᴄᴜᴋᴜᴘ*\n\n` + `> Biaya: Rp ${potionCost.toLocaleString("id-ID")}\n` + `> Saldo: Rp ${(user.koin || 0).toLocaleString("id-ID")}`);
+      return m.reply(`❌ *sᴀʟᴅᴏ ᴛɪᴅᴀᴋ ᴄᴜᴋᴜᴘ*\n\n` + `> Coste: Rp ${potionCost.toLocaleString("id-ID")}\n` + `Saldo${(user.koin || 0).toLocaleString("id-ID")}`);
     }
 
     user.koin -= potionCost;
@@ -58,8 +58,8 @@ async function handler(m, { sock }) {
         `*💊 *ʀᴇsᴛᴏʀᴇ:*
 \n` +
         `> ⚡ Stamina: *+${restored}*\n` +
-        `> 💵 Biaya: *-Rp ${potionCost.toLocaleString("id-ID")}*\n` +
-        `> 📊 Sekarang: *${user.rpg.stamina}/${user.rpg.maxStamina}*\n` +
+        `♪💵Coste: *-Rp${potionCost.toLocaleString("id-ID")}*\n` +
+        `♪📊Ahora: *${user.rpg.stamina}/${user.rpg.maxStamina}*\n` +
         ``,
       "⚡ STAMINA",
       "Restore",
@@ -76,7 +76,7 @@ async function handler(m, { sock }) {
   txt += `> 📊 [${staminaBar}]\n`;
   txt += `\n\n`;
   txt += `> Isi stamina: \`${m.prefix}stamina isi\` (Rp 5.000)\n`;
-  txt += `> Stamina pulih otomatis setiap jam`;
+  txt += `# Automatización de pulih de resistencia cada hora #`;
 
   await _ourincontextjs.sendRpgPreview.call(void 0, sock, m.chat, txt, "⚡ STAMINA", "Status", {
     quoted: m,

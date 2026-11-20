@@ -4,7 +4,7 @@ const pluginConfig = {
   name: "beg",
   alias: ["ngemis", "minta"],
   category: "rpg",
-  description: "Mengemis untuk mendapatkan uang receh",
+  description: "Mendigando para obtener un recibo",
   usage: ".beg",
   example: ".beg",
   isOwner: false,
@@ -26,13 +26,13 @@ async function handler(m, { sock }) {
   await new Promise((r) => setTimeout(r, 2000));
 
   const responses = [
-    { success: true, money: 500, exp: 10, msg: "Seorang dermawan memberikanmu uang!" },
-    { success: true, money: 1000, exp: 20, msg: "Kamu dapat tips dari orang baik!" },
-    { success: true, money: 2000, exp: 50, msg: "WOW! Ada sultan yang kasihan!" },
-    { success: false, money: 0, exp: 0, msg: "Tidak ada yang peduli..." },
-    { success: false, money: 0, exp: 0, msg: "Orang-orang mengabaikanmu..." },
-    { success: true, money: 100, exp: 5, msg: "Dapat receh dari kantong orang!" },
-    { success: false, money: -500, exp: 0, msg: "Kamu malah dirampok pengemis lain!" },
+    { success: true, money: 500, exp: 10, msg: "¡Un benefactor te da dinero!" },
+    { success: true, money: 1000, exp: 20, msg: "¡Tienes consejos de un buen hombre!" },
+    { success: true, money: 2000, exp: 50, msg: "¡Vaya, hay un sultán amoroso!" },
+    { success: false, money: 0, exp: 0, msg: "A nadie le importa." },
+    { success: false, money: 0, exp: 0, msg: "Persona-persona mengabaikanmu..." },
+    { success: true, money: 100, exp: 5, msg: "¡Saca el recibo de la bolsa!" },
+    { success: false, money: -500, exp: 0, msg: "¡Estás en problemas para otro rover!" },
   ];
 
   const result = responses[Math.floor(Math.random() * responses.length)];
@@ -50,7 +50,7 @@ async function handler(m, { sock }) {
 
   let txt = "";
   if (result.success && result.money > 0) {
-    txt = `🙏 *ɴɢᴇᴍɪs sᴜᴋsᴇs*\n\n> ${result.msg}\n> 💰 Dapat: *+Rp ${result.money.toLocaleString("id-ID")}*`;
+    txt = `🙏 *ɴɢᴇᴍɪs sᴜᴋsᴇs*\n\n> ${result.msg}\n♪💰Puede: *+Rp${result.money.toLocaleString("id-ID")}*`;
     if (result.exp > 0) txt += `\n> 🚄 Exp: *+${result.exp}*`;
   } else if (result.money < 0) {
     txt = `😭 *ɴɢᴇᴍɪs ɢᴀɢᴀʟ*\n\n> ${result.msg}\n> 💸 Lost: *Rp ${Math.abs(result.money).toLocaleString("id-ID")}*`;

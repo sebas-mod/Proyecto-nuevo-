@@ -60,7 +60,7 @@ async function handler(m, { sock }) {
         const available = getAvailableServers(pteroConfig)
         let txt = `⚠️ *sᴇʀᴠᴇʀ ${serverKey.toUpperCase()} ʙᴇʟᴜᴍ ᴋᴏɴꜰɪɢ*\n\n`
         if (available.length > 0) {
-            txt += `> Server tersedia: *${available.join(', ')}*`
+            txt += `*El servidor está disponible*${available.join(', ')}*`
         }
         return m.reply(txt)
     }
@@ -72,19 +72,19 @@ async function handler(m, { sock }) {
     if (!serverId) {
         return m.reply(
             `⚠️ *ᴄᴀʀᴀ ᴘᴀᴋᴀɪ*\n\n` +
-            `> \`${m.prefix}delpanel ID\` - Hapus server saja\n` +
-            `> \`${m.prefix}delpanel ID full\` - Hapus server + user\n` +
-            `> \`${m.prefix}delpanel s2 ID\` - Dari server 2\n\n` +
-            `> Lihat ID dengan \`${m.prefix}listserver\``
+            `> \`${m.prefix}delpeel id\`- Sólo quita el servidor\n` +
+            `> \`${m.prefix}ID de descabellado completo\`- Servidor Elimina + usuario\n` +
+            `> \`${m.prefix}delpanel s2 id\`- Del servidor 2.\n\n` +
+            `* Mira ID con\`${m.prefix}listserver\``
         )
     }
     
     if (isNaN(serverId)) {
-        return m.reply(`❌ Server ID harus berupa angka.`)
+        return m.reply(`❌El servidor de identificación debe tener un número.`)
     }
     
     try {
-        const serverRes = await _axios2.default.get(`${serverConfig.domain}/api/application/servers/${serverId}`, {
+        const serverRes = await _axios2.default.get(`${serverConfig.domain}/fuego/application/servers/${serverId}`, {
             headers: {
                 'Authorization': `Bearer ${serverConfig.apikey}`,
                 'Content-Type': 'application/json',
@@ -98,16 +98,16 @@ async function handler(m, { sock }) {
         let userInfo = null
         let isUserAdmin = false
         try {
-            const userRes = await _axios2.default.get(`${serverConfig.domain}/api/application/users/${userId}`, {
+            const userRes = await _axios2.default.get(`${serverConfig.domain}/fuego/application/users/${userId}`, {
                 headers: { 'Authorization': `Bearer ${serverConfig.apikey}` }
             })
             userInfo = userRes.data.attributes
             isUserAdmin = userInfo.root_admin
         } catch (e) {}
         
-        await m.reply(`🗑️ *ᴍᴇɴɢʜᴀᴘᴜs ᴘᴀɴᴇʟ...*\n\n> Server: *${serverLabel}*\n> Panel: \`${server.name}\`\n> Mode: *${option === 'full' ? 'Server + User' : 'Server saja'}*`)
+        await m.reply(`🗑♪ᴍᴇɴɢʜᴀᴘᴜSᴘᴀɴᴇʟ...\n\n♪ Servidor: ♪${serverLabel}*\n> Panel: \`${server.name}\`\n> Mode: *${option === 'full' ? 'Server + User' : 'Server saja'}*`)
         
-        await _axios2.default.delete(`${serverConfig.domain}/api/application/servers/${serverId}`, {
+        await _axios2.default.delete(`${serverConfig.domain}/fuego/application/servers/${serverId}`, {
             headers: {
                 'Authorization': `Bearer ${serverConfig.apikey}`,
                 'Content-Type': 'application/json',
@@ -116,12 +116,12 @@ async function handler(m, { sock }) {
         })
         
         let result = `✅ *sᴇʀᴠᴇʀ ᴅɪʜᴀᴘᴜs [${serverLabel}]*\n\n`
-        result += `> Nama: \`${server.name}\`\n`
+        result += `> Nombre:\`${server.name}\`\n`
         result += `> ID: \`${serverId}\`\n`
         
         if (option === 'full' && userInfo && !isUserAdmin) {
             try {
-                await _axios2.default.delete(`${serverConfig.domain}/api/application/users/${userId}`, {
+                await _axios2.default.delete(`${serverConfig.domain}/fuego/application/users/${userId}`, {
                     headers: {
                         'Authorization': `Bearer ${serverConfig.apikey}`,
                         'Content-Type': 'application/json',
@@ -132,10 +132,10 @@ async function handler(m, { sock }) {
                 result += `> Username: \`${userInfo.username}\`\n`
                 result += `> ID: \`${userId}\``
             } catch (userErr) {
-                result += `\n⚠️ User gagal dihapus (mungkin masih punya server lain)`
+                result += `\n⚠Ez Usuario falló en la disputa (probablemente todavía tiene otro servidor )`
             }
         } else if (option === 'full' && isUserAdmin) {
-            result += `\n⚠️ User adalah Admin, tidak dihapus`
+            result += `\n⚠El usuario es Admin, no está cubierto.`
         }
         
         return m.reply(result)

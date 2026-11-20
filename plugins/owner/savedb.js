@@ -20,11 +20,11 @@ const pluginConfig = {
 }
 async function handler(m, { sock }) {
     if (!_configjs2.default.isOwner(m.sender)) {
-        return m.reply('❌ *Owner Only!*')
+        return m.reply('❌*Propietario Only!*')
     }
     const dbPath = _path2.default.join(process.cwd(), 'database', 'db.json')
     if (!_fs2.default.existsSync(dbPath)) {
-        return m.reply(`❌ File database tidak ditemukan!`)
+        return m.reply(`❌¡No se encuentra la base de datos de archivos!`)
     }
     try {
         const stats = _fs2.default.statSync(dbPath)
@@ -38,7 +38,7 @@ async function handler(m, { sock }) {
             mimetype: 'application/json',
             caption: `📦 *ᴅᴀᴛᴀʙᴀsᴇ ʙᴀᴄᴋᴜᴘ*\n\n` +
                 `╭┈┈⬡「 📋 *ɪɴғᴏ* 」\n` +
-                `┃ 📁 File: \`db.json\`\n` +
+                `┃ 📁Archivo:\`Db. json\`\n` +
                 `┃ 📊 Size: \`${(stats.size / 1024).toFixed(2)} KB\`\n` +
                 `┃ 📅 Date: \`${now.format('DD/MM/YYYY')}\`\n` +
                 `┃ ⏰ Time: \`${now.format('HH:mm:ss')}\`\n` +

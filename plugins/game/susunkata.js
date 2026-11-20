@@ -4,7 +4,7 @@ _ouringamesjs.games.register('susunkata', {
     alias: ['susun', 'scramble'],
     emoji: '🔠',
     title: 'SUSUN KATA',
-    description: 'Susun kata dari huruf'
+    description: 'Oír la palabra de la corazonada'
 })
 
 const { config: pluginConfig, handler, answerHandler } = _ouringamesjs.games.createPlugin('susunkata')

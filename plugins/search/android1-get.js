@@ -5,7 +5,7 @@ const pluginConfig = {
   name: "android1-get",
   alias: ["an1get", "an1dl"],
   category: "search",
-  description: "Download APK dari Android1",
+  description: "Descargar APK desde Android1",
   usage: ".android1-get <url>",
   example: ".android1-get https://an1.com/xxx",
   isOwner: false,
@@ -17,13 +17,13 @@ const pluginConfig = {
   isEnabled: true,
 };
 
-const NEOXR_APIKEY = _optionalChain([_configjs2.default, 'access', _ => _.APIkey, 'optionalAccess', _2 => _2.neoxr]) || "Milik-Bot-OurinMD";
+const NEOXR_APIKEY = _optionalChain([_configjs2.default, 'access', _ => _.APIkey, 'optionalAccess', _2 => _2.neoxr]) || "Millik - Eurinprobable";
 
 async function handler(m, { sock }) {
   const url = _optionalChain([m, 'access', _3 => _3.text, 'optionalAccess', _4 => _4.trim, 'call', _5 => _5()]);
 
   if (!url || !url.includes("an1.com")) {
-    return m.reply(`❌ URL tidak valid! Harus URL dari an1.com`);
+    return m.reply(`❌URL inválida!`);
   }
 
   m.react("🕕");
@@ -37,7 +37,7 @@ async function handler(m, { sock }) {
     );
 
     if (!_optionalChain([data, 'optionalAccess', _6 => _6.status]) || !_optionalChain([data, 'optionalAccess', _7 => _7.data])) {
-      throw new Error("Gagal mengambil detail APK");
+      throw new Error("Intento recuperar detalles de APK");
     }
 
     const app = data.data;
@@ -60,7 +60,7 @@ async function handler(m, { sock }) {
 
       m.react("✅");
     } else {
-      let caption = `> ⚠️ Download URL tidak tersedia`;
+      let caption = `♪⚠♪ En el agujero ♪`;
 
       await sock.sendMessage(
         m.chat,

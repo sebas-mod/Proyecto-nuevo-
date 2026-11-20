@@ -63,9 +63,9 @@ async function createDatabaseBackup() {
                     if (entry.name.endsWith('.zip')) continue
                     
                     if (entry.isDirectory()) {
-                        archive.directory(fullPath, `database/${entry.name}`)
+                        archive.directory(fullPath, `base de datos/${entry.name}`)
                     } else if (entry.isFile()) {
-                        archive.file(fullPath, { name: `database/${entry.name}` })
+                        archive.file(fullPath, { name: `base de datos/${entry.name}` })
                     }
                 }
                 
@@ -105,12 +105,12 @@ async function sendStoreBackup(sock) {
     const ownerNumbers = _optionalChain([config, 'access', _ => _.owner, 'optionalAccess', _2 => _2.number]) || []
     
     if (ownerNumbers.length === 0) {
-        return { success: false, error: 'No owner number configured' }
+        return { success: false, error: 'No hay configuración de número de propietario' }
     }
     
     const ownerNumber = String(ownerNumbers[0]).replace(/[^0-9]/g, '')
     if (!ownerNumber) {
-        return { success: false, error: 'Invalid owner number' }
+        return { success: false, error: 'Número de propietario inválido' }
     }
     
     const ownerJid = `${ownerNumber}@s.whatsapp.net`
@@ -127,12 +127,12 @@ async function sendStoreBackup(sock) {
         const caption = 
             `🗃️ *ꜱᴛᴏʀᴇ ʙᴀᴄᴋᴜᴘ*\n\n` +
             `╭┈┈⬡「 📋 *ɪɴꜰᴏ* 」\n` +
-            `┃ 📅 Waktu: ${timeHelper.formatDateTime('DD MMMM YYYY HH:mm:ss')} WIB\n` +
+            `┃ 📅Tiempo:${timeHelper.formatDateTime('DD MMMM YYYY HH:mm:ss')} WIB\n` +
             `┃ 📦 Size: ${sizeDisplay}\n` +
             `┃ 📁 Files: ${backupInfo.fileCount}\n` +
             `┃ 🔖 Schema: v${SCHEMA_VERSION}\n` +
             `╰┈┈┈┈┈┈┈┈⬡\n\n` +
-            `> Type-safe backup. Kompatibel dengan versi mendatang.\n` +
+            `*Tipo @-@ respaldo seguro Compatible con versiones futuras*\n` +
             `> ${_optionalChain([config, 'access', _3 => _3.bot, 'optionalAccess', _4 => _4.name]) || 'Ourin-AI'} Store Backup System`
         
         await sock.sendMessage(ownerJid, {
@@ -146,7 +146,7 @@ async function sendStoreBackup(sock) {
             await _fs2.default.promises.unlink(backupInfo.path)
         } catch (e) {}
         
-        console.log(`[StoreBackup] Backup sent to owner (${sizeDisplay})`)
+        console.log(`*Backup Store* *Retrocedido al propietario*${sizeDisplay})`)
         return { success: true, size: sizeDisplay, files: backupInfo.fileCount }
         
     } catch (error) {

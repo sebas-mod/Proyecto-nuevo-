@@ -4,7 +4,7 @@ const config = {
   name: "remini",
   alias: ["hd", "enhance", "upscale"],
   category: "tools",
-  description: "Enhance gambar jadi HD",
+  description: "Mejorar la imagen para ser un HD",
   usage: ".remini (reply gambar)",
   example: ".remini",
   cooldown: 15,
@@ -44,7 +44,7 @@ async function handler(m, { sock }) {
 
   if (!img) {
     return m.reply(
-      `*🪁 HD IMAGE*\n> Reply gambar yang mau dijernihkan\n\n\`\`\`${m.prefix}remini\`\`\``
+      `*🪁IMAGE HD *\n# Responder a la imagen que quiere ser lubricada #\n\n\`\`\`${m.prefix}remini\`\`\``
     );
   }
 
@@ -59,7 +59,7 @@ async function handler(m, { sock }) {
       m.chat,
       {
         image: enhancedBuffer,
-        caption: `✅ *BERHASIL*\n\n> Gambar telah berhasil di-upscale dan dijernihkan.`,
+        caption: `✅*Exito*\n\nEveGambar ha logrado en escala e iluminada.`,
       },
       { quoted: m }
     );
@@ -68,7 +68,7 @@ async function handler(m, { sock }) {
   } catch (err) {
     console.error("[HD Error]", err);
     m.react("❌");
-    m.reply("Maaf, terjadi kesalahan saat memproses gambar dari scraper. Coba lagi nanti ya.");
+    m.reply("Lo siento, hubo un error procesando la imagen del Scrapper.");
   }
 }
 

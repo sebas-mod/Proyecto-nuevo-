@@ -13,7 +13,7 @@ const pluginConfig = {
     name: "upch",
     alias: ["uploadch", "uploadsaluran", "uch"],
     category: "owner",
-    description: "Upload gambar, audio, video, atau teks ke saluran",
+    description: "Subir imágenes, audios, videos, o texto a canal",
     usage: ".upch <id saluran> <teks opsional>",
     example: ".upch 12xxx@newsletter Halo!",
     cooldown: 10,
@@ -66,13 +66,13 @@ async function handler(m, { sock }) {
     if (!isMedia && !caption) {
         return m.reply(
             `📤 *UPLOAD SALURAN*\n\n` +
-            `Kirim/reply media dengan caption:\n` +
+            `Ksena / respuesta media con caption:\n` +
             `  \`${m.prefix}upch 12xxx@newsletter <teks opsional>\`\n\n` +
             `*Support:*\n` +
             `  🖼️ Gambar\n` +
             `  🎥 Video\n` +
             `  🎵 Audio/VN\n` +
-            `  📝 Teks (tanpa media)`
+            `  📝Tex (sin medios)`
         )
     }
 
@@ -82,11 +82,11 @@ async function handler(m, { sock }) {
         if (!isMedia && caption) {
             await sock.sendMessage(chId, { text: caption })
             await m.react("✅")
-            return m.reply(`✅ Teks berhasil dikirim ke saluran`)
+            return m.reply(`✅Tanques enviados con éxito al canal`)
         }
 
         const mediaBuf = await _ourin.downloadMediaMessage.call(void 0, quoted, "buffer", {})
-        if (!mediaBuf || mediaBuf.length < 1000) throw new Error("Media terlalu kecil atau gagal download")
+        if (!mediaBuf || mediaBuf.length < 1000) throw new Error("Los medios son demasiado pequeños o descargas de fallos")
 
         if (isImage) {
             await sock.sendMessage(chId, {
@@ -94,7 +94,7 @@ async function handler(m, { sock }) {
                 caption: caption || undefined
             })
             await m.react("✅")
-            return m.reply("✅ Gambar berhasil dikirim ke saluran")
+            return m.reply("✅Imagen envió con éxito al canal")
         }
 
         if (isVideo) {
@@ -103,12 +103,12 @@ async function handler(m, { sock }) {
                 caption: caption || undefined
             })
             await m.react("✅")
-            return m.reply("✅ Video berhasil dikirim ke saluran")
+            return m.reply("✅Video enviado con éxito al canal")
         }
 
         if (isAudio) {
             const opusBuf = await toOggOpus(mediaBuf)
-            if (opusBuf.length < 5000) throw new Error("Konversi opus gagal")
+            if (opusBuf.length < 5000) throw new Error("La conversión de Opus falló")
             const waveform = generateWaveform(opusBuf)
             await sock.sendMessage(chId, {
                 audio: opusBuf,
@@ -117,10 +117,10 @@ async function handler(m, { sock }) {
                 waveform: Array.from(waveform)
             })
             await m.react("✅")
-            return m.reply("✅ Audio berhasil dikirim ke saluran")
+            return m.reply("✅Audio logró ser enviado al canal.")
         }
 
-        m.reply("❌ Tipe media tidak didukung")
+        m.reply("❌Los medios de comunicación de la cinta no son compatibles")
     } catch (e) {
         console.error("[UpCh]", e)
         await m.react("☢")

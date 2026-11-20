@@ -71,7 +71,7 @@ async function handler(m, { sock }) {
     }
     
     if (users.length === 0) {
-        return m.reply(`📊 *ʟᴇᴀᴅᴇʀʙᴏᴀʀᴅ*\n\n> Belum ada data user terdaftar di database.`)
+        return m.reply(`📊*ʟᴇᴀᴅᴇʀʙᴏᴀʀᴅ*\n\nPara ver si hay datos de un usuario que se enumeran en la base de datos.`)
     }
     
     const senderJid = m.sender.replace('@s.whatsapp.net', '')
@@ -89,7 +89,7 @@ async function handler(m, { sock }) {
         ]
         
         const overviewText = `🏆 *LEADERBOARD OVERVIEW* 🏆\n\n` +
-            `_Pilih tombol di bawah untuk melihat ranking!_`
+            `" ¡Elija un botón en el lavado para ver la ventana!`
             try {
                 await sock.sendButton(m.chat, _fs2.default.readFileSync(_path2.default.join(process.cwd(), 'assets', 'images', 'ourin.jpg')), overviewText, m, {
                     buttons: [
@@ -138,7 +138,7 @@ async function handler(m, { sock }) {
         title = 'TOP GLOBAL ENERGI'
         emoji = '⚡'
         field = 'energi'
-        formatValue = (u) => `${formatNumber(u.energi)} Energi`
+        formatValue = (u) => `${formatNumber(u.energi)}Energía`
     }
     
     users.sort((a, b) => b[field] - a[field])
@@ -147,7 +147,7 @@ async function handler(m, { sock }) {
     const totalField = users.reduce((sum, u) => sum + (u[field] || 0), 0)
     
     let text = `🏆 *${title}* 🏆\n\n`
-    text += `Peringkat para penguasa tertinggi saat ini!\n\n`
+    text += `¡Las calificaciones de los respiradores son altas en este momento!\n\n`
     text += `╭┈┈⬡「 ${emoji} *RANKING* 」\n`
     
     const mentions = []
@@ -168,9 +168,9 @@ async function handler(m, { sock }) {
     
     const myRankIndex = users.findIndex(u => u.jid === senderJid)
     if (myRankIndex !== -1) {
-        text += `> Posisi kamu: *#${myRankIndex + 1}* dari *${formatNumber(users.length)}* user.`
+        text += `Tu posición${myRankIndex + 1}* of *${formatNumber(users.length)}* user.`
     } else {
-        text += `> Kamu belum terdaftar di database.`
+        text += `Aún no estás en la base de datos.`
     }
     
     await m.reply(text, { mentions })

@@ -5,7 +5,7 @@ const pluginConfig = {
   name: ["tod", "spin", "putarbotol"],
   alias: ["todgame"],
   category: "fun",
-  description: "Bermain Truth or Dare bersama teman-teman grup secara instan!",
+  description: "Jugar la Verdad o el Rebaño con amigos, grupo en @ - @ leyes!",
   usage: ".tod",
   example: ".tod",
   isOwner: false,
@@ -18,39 +18,39 @@ const pluginConfig = {
 };
 
 const truths = [
-  "Siapa orang terakhir yang kamu chat sebelum pesan ini?",
-  "Apa rahasia terbesar yang belum pernah kamu ceritakan pada siapapun di grup ini?",
-  "Jika kamu diwajibkan menikah dengan salah satu member grup ini, siapa yang akan kamu pilih? Tag orangnya!",
-  "Pernahkah kamu menyukai seseorang di grup ini tapi tidak berani mengungkapkannya?",
-  "Apa hal paling memalukan yang pernah terjadi padamu di depan umum?",
-  "Sebutkan 3 hal yang paling kamu benci dari dirimu sendiri.",
-  "Jika kamu bisa kembali ke masa lalu, momen memalukan apa yang ingin kamu ubah?",
-  "Siapa mantan terindahmu? Kenapa putus?",
-  "Pernahkah kamu berbohong ke orang tua demi bolos sekolah/kuliah/kerja? Ceritakan!",
-  "Apa hal paling konyol yang pernah kamu cari di history Google pencarianmu?",
-  "Siapa member di grup ini yang menurutmu paling asik, dan siapa yang paling ngeselin?",
-  "Kapan terakhir kali kamu menangis dan apa alasannya?",
-  "Berapa jumlah saldo di rekening/e-wallet kamu sekarang? Jujur!",
-  "Apakah kamu pernah ketahuan stalking sosmed orang? Siapa?",
-  "Apa kebohongan terbesar yang pernah kamu ucapkan ke sahabatmu?"
+  "¿Quién fue la última persona que conversaste antes de este mensaje?",
+  "¿Cuál es el secreto más grande que nunca le has dicho a nadie en este grupo?",
+  "Si se le permite casarse con uno de estos clientes del grupo, ¿quién elegirá?",
+  "¿Alguna vez te ha gustado alguien en este grupo pero no ha tenido las bolas para revelarlas?",
+  "¿Cuál es la cosa más vergonzosa que te ha pasado en público?",
+  "Haz tres cosas que más odias de ti mismo.",
+  "Si pudieras volver a tiempo, ¿qué vergüenza querrías cambiar?",
+  "¿Quién es tu manteno más hermoso?",
+  "¿Alguna vez le has mentido a un padre de una escuela?",
+  "¿Cuál es la cosa más ridícula que has visto en tu historia en la búsqueda de Google?",
+  "¿Quién es el más divertido @-@ como miembro de este grupo?",
+  "El último lugar en el que lloraste fue ¿por qué razón?",
+  "¿Cuántas cuentas de saldo están en su cuenta ahora?",
+  "¿Alguna vez has conocido el atascamiento de alguien?",
+  "¿Cuál es la mentira más grande que le has dicho a tu mejor amigo?"
 ];
 
 const dares = [
-  "Kirim foto selfie kamu dengan gaya paling jelek sekarang juga ke grup!",
-  "Kirim VN (Voice Note) nyanyi reff lagu 'Balonku Ada Lima' tapi semua huruf vokalnya diganti jadi 'O'.",
-  "Chat mantan kamu sekarang, bilang 'Aku masih sayang', lalu screenshot dan kirim ke grup ini!",
+  "¡Tu autofotografía con la más fea gash está ahora en el grupo!",
+  "La Nota de Voz cantando el coro de mi canción de canto Cinco estaba enamorada pero todos los cascos vocales se convirtieron en",
+  "¡Chota tu mantán ahora, di que lo siento aún te amo y luego captura de pantalla y envíalo al grupo!",
   "Pakai foto profil wajah jelekmu selama 1 jam penuh!",
-  "Tulis status WhatsApp 'Aku sayang banget sama [Tag 1 Member Grup]' dan biarkan selama 30 menit. SS ke grup!",
-  "Kirim VN bilang 'Mewing mewing sigma skibidi' dengan nada serius ke grup.",
-  "Spam 5 stiker paling absurd/nggak jelas yang kamu punya ke grup ini sekarang.",
-  "Tag salah satu admin grup dan bilang 'Kamu jelek banget hari ini'.",
-  "Ubah bio WhatsApp kamu menjadi 'Saya badut ancol' selama 1 hari.",
-  "Kirim gombalan paling maut ke member yang berlawanan jenis di grup ini!",
+  "Me encanta tanto... y lo dejo ir por 30 minutos.",
+  "Ksena VN mujer que Mewing sigma skibidi con un tono series a grupo.",
+  "Las cinco pegatinas más absurdas que tienes en este grupo ahora mismo.",
+  "Etiqueta uno de los adminidores grupo y diga a su culo feo hoy.",
+  "Tu bio @-@ doc se convirtió en una mentira. Yo era un imbécil por un día.",
+  "¡El ángulo más obsceno del grupo más genial @-@ miembro de combate!",
   "Buat 1 puisi alay tentang ayam goreng, bacakan lewat VN!",
-  "Ketik 'Aku ini sebenernya alien' dan tag 3 orang secara acak di grup ini.",
-  "Sebutkan nama lengkapmu dengan suara berteriak di VN!",
-  "Pilih salah satu nomor secara acak dari kontakmu, chat 'P' sebanyak 10 kali, screenshot ke sini!",
-  "Jadikan foto profil bot ini sebagai foto profil WhatsApp kamu selama 30 menit."
+  "Soy un niño de verdad y etiquetaré a tres tipos en este grupo.",
+  "¡Mantén tu nombre completo en la voz de la vocalización VN!",
+  "Escoge uno de los números en la forma aleatoria de tu contacto, chat por 10 veces, screenshot por aquí!",
+  "Así que tome está foto del perfil de bot como su perfil de WhatsApp durante 30 minutos."
 ];
 
 async function handler(m, { sock }) {
@@ -66,19 +66,19 @@ async function handler(m, { sock }) {
       let challengeText = "";
 
       if (isTruth) {
-        typeLabel = "🗣️ *TRUTH* 🗣️\n_(Harus dijawab dengan sangat jujur!)_";
+        typeLabel = "🗣- ♪ VERDAD ♪🗣♪\n_ ( Debe respondió con una respuesta muy honesta! ) _";
         challengeText = truths[Math.floor(Math.random() * truths.length)];
       } else {
-        typeLabel = "🔥 *DARE* 🔥\n_(Harus dilakukan, buktikan ke grup!)_";
+        typeLabel = "🔥DARE🔥\n¡Debe hacer, shrieba a grupo!";
         challengeText = dares[Math.floor(Math.random() * dares.length)];
       }
 
-      let text = `🍾 *BOTOL DIPUTAR!* 🍾\n\n`;
-      text += `Botol berputar kencang di tengah-tengah kalian...\n`;
-      text += `Perlahan putarannya melambat, dan berhenti menunjuk kepada...\n\n`;
+      let text = `🍾*BOTOL Reproducido!*🍾\n\n`;
+      text += `Las torceduras de botella en el medio de tu cuerpo..\n`;
+      text += `Sus rondas están disminuyendo, y deja de apuntar a..\n\n`;
       text += `👉 @${targetJid.split('@')[0]} 👈\n\n`;
       text += `${typeLabel}\n\n`;
-      text += `*Tantangan/Pertanyaan:*\n👉 ${challengeText}`;
+      text += `*Desafio/Pregunta:*\n👉 ${challengeText}`;
 
       return m.reply(text, { mentions: [targetJid] });
     }

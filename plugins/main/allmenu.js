@@ -62,7 +62,7 @@ const CATEGORY_EMOJIS = {
 };
 
 function createBracketBox(emoji, title, lines = []) {
-  let text = `╭➤--「${title} MENU 」\n`;
+  let text = `╭➤--「${title}MINUTE」\n`;
   for (const line of lines) {
     text += `┆ ⇝ ${line}\n`;
   }
@@ -114,7 +114,7 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
   let userRole = "User",
     roleEmoji = "👤";
   if (m.isOwner) {
-    userRole = "Owner";
+    userRole = "Propietario";
     roleEmoji = "👑";
   } else if (m.isPremium) {
     userRole = "Premium";
@@ -146,22 +146,22 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
   const pushName = m.pushName || "User";
   const timeNow = new Date().toLocaleTimeString('id-ID', { timeZone: 'Asia/Jakarta' }).replace(/\./g, ':');
 
-  txt += `✦ *Informasi User*\n`;
-  txt += `• Nama   : ${pushName}\n`;
+  txt += `✦*Información User*\n`;
+  txt += `•Nombre:${pushName}\n`;
   txt += `• Status : ${userRole}\n`;
-  txt += `• Limit  : ${userLimit}\n\n`;
-  txt += `✦ *Informasi Bot*\n`;
-  txt += `• Nama   : ${botName}\n`;
-  txt += `• Fitur  : ${totalFeatures} fitur\n`;
-  txt += `• Versi  : ${botVersion}\n`;
-  txt += `• Waktu  : ${timeNow} WIB\n\n`;
-  txt += `✦ *Kelebihan Bot Ini*\n`;
+  txt += `•Límite:${userLimit}\n\n`;
+  txt += `✦Información del Tejado\n`;
+  txt += `•Nombre:${botName}\n`;
+  txt += `•Función:${totalFeatures} fitur\n`;
+  txt += `•Versi:${botVersion}\n`;
+  txt += `•Tiempo:${timeNow} WIB\n\n`;
+  txt += `✦*Esto es demasiado*\n`;
   txt += `• Fast response\n`;
   txt += `• Stable system\n`;
   txt += `• Multi feature\n`;
   txt += `• User friendly\n\n`;
-  txt += `Silakan pilih menu di bawah ini.\n`;
-  txt += `Gunakan sesuai kebutuhan dan jangan lupa gunakan dengan bijak.\n\n`;
+  txt += `Por favor, seleccione un menú en está olla.\n`;
+  txt += `Utilice sus necesidades y no olvide utilizarlas sabiamente.\n\n`;
   const categoryOrder = [
     "owner",
     "main",
@@ -260,7 +260,7 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
                     imageMessage: media.imageMessage
                   },
                   body: {
-                    text: `> Halo *${pushName}* 👋 Perkenalkan aku *${botName}*, buatan *${devName}* Saya siap membantu kebutuhanmu, mulai dari download video, main game, tanya jawab, nyari info/sesuatu, bikin sticker, dan lain-lain.\n\n`,
+                    text: `Hola${pushName}*👋 Presentate yo *${botName}*, buatan *${devName}* Estoy listo para ayudarte con tus necesidades, empezar a descargar videos, jugar juego, tayang, buscar I.V., comprar pegatinas, etc.\n\n`,
                   },
                   footer: {
                     text: txt
@@ -289,7 +289,7 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
                       {
                         name: "quick_reply",
                         buttonParamsJson: JSON.stringify({
-                          display_text: "🍅 Kembali Ke Menu Utama",
+                          display_text: "🍅Volver a Menú Principal",
                           id: m.prefix + "menu"
                         })
                       }
@@ -309,7 +309,7 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
           const h = Math.floor(seconds % (3600 * 24) / 3600);
           const m = Math.floor(seconds % 3600 / 60);
           const s = Math.floor(seconds % 60);
-          return `${d} Jam ${m} Menit ${s} Detik`;
+          return `${d}Hora${m}Minuto${s}Segundo`;
         }
 
         const weatherCode = {
@@ -320,13 +320,13 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
           try {
             const geo = await _axios2.default.get(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(city)}&count=1`)
             const loc = _optionalChain([geo, 'access', _27 => _27.data, 'access', _28 => _28.results, 'optionalAccess', _29 => _29[0]])
-            if (!loc) return "Cuaca tidak tersedia"
+            if (!loc) return "Cuaca no está disponible"
             const res = await _axios2.default.get(`https://api.open-meteo.com/v1/forecast?latitude=${loc.latitude}&longitude=${loc.longitude}&current=temperature_2m,weather_code`)
             const current = res.data.current
-            const kondisi = weatherCode[current.weather_code] || "🌍 Tidak diketahui"
+            const kondisi = weatherCode[current.weather_code] || "🌍No diketahui"
             return `${kondisi} | 🌡️ ${Math.round(current.temperature_2m)}°C\n📍 ${loc.name}`
           } catch (e2) {
-            return "Cuaca tidak tersedia"
+            return "Cuaca no está disponible"
           }
         }
 
@@ -357,7 +357,7 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
                 nativeFlowMessage: {
                   messageParamsJson: JSON.stringify({
                     limited_time_offer: { text: `${greeting}`, url: "Hai", expiration_time: Date.now() + 10000 },
-                    bottom_sheet: { in_thread_buttons_limit: 2, divider_indices: [1, 2, 3, 4, 5, 999], list_title: "Please select the menu", button_title: "🍙 See Category" },
+                    bottom_sheet: { in_thread_buttons_limit: 2, divider_indices: [1, 2, 3, 4, 5, 999], list_title: "Seleccione el menú", button_title: "🍙 See Category" },
                     tap_target_configuration: { title: " X ", description: "bomboclard", canonical_url: "https://ourin.site", domain: "shop.example.com", button_index: 0 },
                   }),
                   buttons: [
@@ -368,7 +368,7 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
                     },
                     {
                       name: "quick_reply",
-                      buttonParamsJson: JSON.stringify({ display_text: "🍅 Kembali Ke Menu Utama", id: m.prefix + "menu" })
+                      buttonParamsJson: JSON.stringify({ display_text: "🍅Volver a Menú Principal", id: m.prefix + "menu" })
                     },
                   ]
                 }
@@ -389,13 +389,13 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
           try {
             const geo = await _axios2.default.get(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(city)}&count=1`)
             const loc = _optionalChain([geo, 'access', _36 => _36.data, 'access', _37 => _37.results, 'optionalAccess', _38 => _38[0]])
-            if (!loc) return "Cuaca tidak tersedia"
+            if (!loc) return "Cuaca no está disponible"
             const res = await _axios2.default.get(`https://api.open-meteo.com/v1/forecast?latitude=${loc.latitude}&longitude=${loc.longitude}&current=temperature_2m,weather_code`)
             const current = res.data.current
-            const kondisi = weatherCode[current.weather_code] || "🌍 Tidak diketahui"
+            const kondisi = weatherCode[current.weather_code] || "🌍No diketahui"
             return `${kondisi} | 🌡️ ${Math.round(current.temperature_2m)}°C\n📍 ${loc.name}`
           } catch (e3) {
-            return "Cuaca tidak tersedia"
+            return "Cuaca no está disponible"
           }
         }
 
@@ -543,7 +543,7 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
                 participant: m.sender,
               },
               message: {
-                conversation: "setelin musiknya nya bang"
+                conversation: "fontcolor = \" # FFFF00 \" set music bang"
               }
             };
             await sock.sendMessage(m.chat, {
@@ -583,7 +583,7 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
                     forwardingScore: 9,
                     forwardedNewsletterMessageInfo: {
                       newsletterJid: "120363351980387532@newsletter",
-                      newsletterName: "Ourin Bot",
+                      newsletterName: "Ourin",
                       serverMessageId: 127,
                     },
                   },

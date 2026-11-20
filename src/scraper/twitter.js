@@ -31,7 +31,7 @@ async function x2twitterDl(url) {
     );
 
     if (searchResponse.data.status !== 'ok') {
-      return { error: true, message: 'Gagal mengambil data dari x2twitter.' };
+      return { error: true, message: 'Stemless toma datos dex2 twitter.' };
     }
 
     const html = searchResponse.data.data;

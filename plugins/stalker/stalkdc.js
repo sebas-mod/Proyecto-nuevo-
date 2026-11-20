@@ -50,11 +50,11 @@ function randomCb() {
 let _cachedV = null;
 async function fetchLatestVersion() {
   if (_cachedV) return _cachedV;
-  const res = await gc.get(`${RECAPTCHA_BASE}api.js`, {
+  const res = await gc.get(`${RECAPTCHA_BASE}fuego.js`, {
     headers: { referer: 'https://www.google.com/' },
   });
   const m = String(res.data).match(/releases\/([\w-]+)\//);
-  if (!m) throw new Error('gagal grab versi collector (v) dari api.js');
+  if (!m) throw new Error('cogidor de versi fallido ( v ) del fuego.');
   _cachedV = m[1];
   return _cachedV;
 }
@@ -71,7 +71,7 @@ function extractRresp(body) {
 
 async function solveRecaptchaV3({ sitekey, url, action, hl = 'id', retries = 2 } = {}) {
   if (!sitekey) throw new Error('sitekey wajib diisi');
-  const base = `${RECAPTCHA_BASE}api2/`;
+  const base = `${RECAPTCHA_BASE}Fuego`;
   const params = {
     ar: '1',
     k: sitekey,
@@ -94,7 +94,7 @@ async function solveRecaptchaV3({ sitekey, url, action, hl = 'id', retries = 2 }
       if (anchorRes.status !== 200) throw new Error(`anchor HTTP ${anchorRes.status}`);
 
       const cMatch = String(anchorRes.data).match(/id="recaptcha-token"\s+value="([^"]+)"/);
-      if (!cMatch) throw new Error('recaptcha-token tidak ditemukan di anchor');
+      if (!cMatch) throw new Error('recatcha - token not found in anchor');
 
       const postData = new URLSearchParams({
         v: params.v,
@@ -119,7 +119,7 @@ async function solveRecaptchaV3({ sitekey, url, action, hl = 'id', retries = 2 }
       if (reloadRes.status !== 200) throw new Error(`reload HTTP ${reloadRes.status}`);
 
       const token = extractRresp(reloadRes.data);
-      if (!token) throw new Error('rresp/token tidak ditemukan di reload');
+      if (!token) throw new Error('resp / token no se encuentra en la recarga');
 
       return { token, version: params.v };
     } catch (err) {
@@ -134,7 +134,7 @@ async function solveRecaptchaV3({ sitekey, url, action, hl = 'id', retries = 2 }
 
 async function lookupUser(discordId, recaptchaToken) {
   const res = await _axios2.default.post(
-    `${BASE}/api/user/lookup`,
+    `${BASE}/fuego/user/lookup`,
     new URLSearchParams({ id: discordId }).toString(),
     {
       timeout: 20000,
@@ -152,7 +152,7 @@ async function lookupUser(discordId, recaptchaToken) {
   );
 
   if (typeof res.data !== 'object') {
-    throw new Error(`Response bukan JSON (HTTP ${res.status})`);
+    throw new Error(`Respuesta de un JSON (HTTP)${res.status})`);
   }
   return res.data;
 }
@@ -161,18 +161,18 @@ async function handler(m, { text, sock }) {
     if (!text) {
         return m.reply(
             `👾 *DISCORD STALKER* 👾\n\n` +
-            `Fitur ini membantumu untuk melacak profil pengguna Discord hanya dari ID-nya saja!\n\n` +
-            `*CARA PENGGUNAAN:*\n` +
-            `- Ketik \`${m.prefix}stalkdc <ID Discord>\`\n` +
-            `- Contoh: \`${m.prefix}stalkdc 1280009524941426700\`\n\n` +
-            `_Pastikan kamu memasukkan ID berbentuk angka (bukan username ya!)._`
+            `Está característica le ayuda a rastrear el perfil de uso de discordia sólo desde su id!\n\n` +
+            `*Como usarlo:*\n` +
+            `- Escribe\`${m.prefix}stalkdc <ID Discord>\`\n` +
+            `- Ejemplo:\`${m.prefix}stalkdc 1280009524941426700\`\n\n` +
+            `Asegurarnos de que ponga una identificación en el número.`
         );
     }
 
     const discordId = text.replace(/[^0-9]/g, '');
     
     if (!discordId) {
-        return m.reply(`❌ *ID TIDAK VALID*\n\nPastikan ID Discord yang kamu masukkan hanya berupa angka.`);
+        return m.reply(`❌*No te decepcionaré*\n\nAsegúrese de que la discordia de identificación que usted entró es sólo un conjunto de números.`);
     }
 
     try {
@@ -183,20 +183,20 @@ async function handler(m, { text, sock }) {
 
         if (!resp.success) {
             await m.react('❌');
-            return m.reply(`❌ *AKUN TIDAK DITEMUKAN*\n\nSistem gagal menemukan akun dengan ID *${discordId}*. Mungkin ID tersebut salah atau akun telah dihapus.\n\n_Pesan error: ${resp.message || '-'}_`);
+            return m.reply(`❌> 91; No se ha encontrado en el sitio > 93;\n\nEl sistema no encontró una cuenta con id *${discordId}*. tal vez el id estaba equivocado o la cuenta había sido hackeado.\n\nError de Mensaje:${resp.message || '-'}_`);
         }
 
         const d = resp.data || {};
-        const isBot = d.is_bot ? 'Ya (Bot)' : 'Tidak (User)';
+        const isBot = d.is_bot ? 'Ya (Bot)' : 'No (User)';
         const badges = (d.badges || []).map((b) => b.name).join(', ') || '-';
         
         let caption = `👾 *DISCORD STALKER* 👾\n\n`;
-        caption += `Pencarian berhasil! Berikut adalah informasi profil dari Discord tersebut:\n\n`;
+        caption += `Búsqueda exitosa! Aft es la información de perfil de la discordia:\n\n`;
         caption += `👤 *Username:* ${d.username}\n`;
         caption += `🏷️ *Global Name:* ${d.global_name || '-'}\n`;
         caption += `🆔 *User ID:* ${d.id}\n`;
-        caption += `🤖 *Apakah Bot?:* ${isBot}\n`;
-        caption += `🗓️ *Dibuat Sejak:* ${d.creation_date || '-'}\n`;
+        caption += `🤖¿Qué pasa?${isBot}\n`;
+        caption += `🗓* Made Tasty: *${d.creation_date || '-'}\n`;
         caption += `🏅 *Badges:* ${badges}\n`;
         
         if (d.clan) {
@@ -216,7 +216,7 @@ async function handler(m, { text, sock }) {
     } catch (e) {
         console.error("DC Lookup Error:", e);
         await m.react('❌');
-        m.reply(`❌ *GAGAL MELACAK AKUN*\n\nMaaf, sistem sedang mengalami gangguan saat melakukan *bypass reCAPTCHA* atau memanggil API. Silakan coba beberapa saat lagi.\n\n_Error: ${e.message}_`);
+        m.reply(`❌*FILED THROUSTAND SHE END *\n\nLo sentimos, el erosá experimentando interferencias mientras hace el bypass reCAPTCHA o llamando a Fuego. Por favor, inténtelo de nuevo en un momento.\n\n- Ernor:${e.message}_`);
     }
 }
 

@@ -79,7 +79,7 @@ function buildEffectList() {
     }
 
     let txt = `🎧 *AUDIO FX* — ${EFFECT_NAMES.length} effects\n\n`
-    txt += `Reply audio/video lalu ketik efeknya\n\n`
+    txt += `Responder audio / video luego haga clic en el efecto2\n\n`
 
     for (const [cat, effects] of Object.entries(categories)) {
         txt += `${cat}\n`
@@ -90,7 +90,7 @@ function buildEffectList() {
         txt += `\n`
     }
 
-    txt += `_Contoh: reply audio lalu ketik .bass_`
+    txt += `_Contoh: responder audio luego escribe.bass_`
     return txt
 }
 
@@ -107,14 +107,14 @@ async function handler(m, { sock }) {
     const fx = EFFECTS[effectName]
     if (!fx) {
         return m.reply(
-            `❌ Efek *${effectName}* tidak ditemukan\n\n` +
-            `Ketik *${m.prefix}audiofx list* untuk daftar efek`
+            `❌ Efek *${effectName}* not found\n\n` +
+            `Escribe *${m.prefix}audiosoundxlista * para una lista de los efectos`
         )
     }
 
     const media = getMediaSource(m)
     if (!media) {
-        return m.reply(`${fx.emoji} *${effectName.toUpperCase()}*\n\nReply audio/video dengan command ini`)
+        return m.reply(`${fx.emoji} *${effectName.toUpperCase()}*\n\nResponder audio / video con este comando`)
     }
 
     m.react('🕕')
@@ -129,14 +129,14 @@ async function handler(m, { sock }) {
     try {
         const buffer = await media.download()
         if (!_optionalChain([buffer, 'optionalAccess', _19 => _19.length])) {
-            return m.reply(`❌ Gagal download media`)
+            return m.reply(`❌Descarga sin problemas medios`)
         }
 
         _fs2.default.writeFileSync(inputPath, buffer)
         await _ourinffmpegjs.queueFFmpeg.call(void 0, `ffmpeg -y -i "${inputPath}" -af "${fx.filter}" -vn "${outputPath}"`)
 
         if (!_fs2.default.existsSync(outputPath)) {
-            return m.reply(`❌ Gagal memproses audio`)
+            return m.reply(`❌Audios de procesamiento pegajoso`)
         }
 
         const audioBuffer = _fs2.default.readFileSync(outputPath)

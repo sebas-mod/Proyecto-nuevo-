@@ -4,7 +4,7 @@ const pluginConfig = {
     name: 'cpanel',
     alias: ['panelmenu', 'menupanel'],
     category: 'panel',
-    description: 'Menu panel pterodactyl (v1-v5)',
+    description: 'Panel de menú de Pterodactilo ( v1 - v5 )',
     usage: '.cpanel',
     example: '.cpanel',
     isOwner: false,
@@ -31,11 +31,11 @@ async function handler(m, { sock }) {
     }
     
     const userServers = _ourinrolescpaneljs.getAccessibleServers.call(void 0, m.sender)
-    const userRoleList = userServers.map(s => `${s.server.toUpperCase()}:${s.role}`).join(', ') || 'Tidak ada'
+    const userRoleList = userServers.map(s => `${s.server.toUpperCase()}:${s.role}`).join(', ') || 'No hay'
     
     let txt = `🖥️ *ᴄᴘᴀɴᴇʟ ᴍᴇɴᴜ v2.0*\n\n`
     txt += `> V1: ${serverStatuses.v1} | V2: ${serverStatuses.v2} | V3: ${serverStatuses.v3} | V4: ${serverStatuses.v4} | V5: ${serverStatuses.v5}\n`
-    txt += `> Role kamu: *${m.isOwner ? 'Bot Owner' : userRoleList}*\n\n`
+    txt += `# Role you #${m.isOwner ? 'Bot Owner' : userRoleList}*\n\n`
     
     txt += `╭─「 📦 *ᴄʀᴇᴀᴛᴇ sᴇʀᴠᴇʀ* 」\n`
     for (const ver of _ourinrolescpaneljs.VALID_SERVERS) {

@@ -122,7 +122,7 @@ async function createUploadUrl(filePath) {
   });
 
   if (result.status >= 400 || _optionalChain([result, 'access', _ => _.data, 'optionalAccess', _2 => _2.code]) !== 100000) {
-    throw new Error(`Gagal ambil upload url: ${JSON.stringify(result.data)}`);
+    throw new Error(`UI de carga ambished:${JSON.stringify(result.data)}`);
   }
 
   return result.data.result;
@@ -139,7 +139,7 @@ async function createJob(originalVideoUrl) {
   );
 
   if (result.status >= 400 || !_optionalChain([result, 'access', _3 => _3.data, 'optionalAccess', _4 => _4.result, 'optionalAccess', _5 => _5.job_id])) {
-    throw new Error(`Gagal create job: ${JSON.stringify(result.data)}`);
+    throw new Error(`Stealth crea jjust:${JSON.stringify(result.data)}`);
   }
 
   return result.data.result;
@@ -147,7 +147,7 @@ async function createJob(originalVideoUrl) {
 
 async function getJob(jobId) {
   return await getJson(
-    `/api/web/unblurimage/v1/video-enhancer/get-job/${jobId}`,
+    `/ fuego / web / unblurimage / v1 / video - potencial${jobId}`,
   );
 }
 
@@ -172,7 +172,7 @@ async function waitJob(jobId, maxTry = 80, delayMs = 5000) {
     await sleep(delayMs);
   }
 
-  throw new Error(`Job belum selesai: ${JSON.stringify(last)}`);
+  throw new Error(`Job no se ha hecho todavía:${JSON.stringify(last)}`);
 }
 
 async function videoEnhancer(video, { filename } = {}) {
@@ -189,7 +189,7 @@ async function videoEnhancer(video, { filename } = {}) {
   }
 
   if (!_nodefs2.default.existsSync(filePath)) {
-    throw new Error(`File tidak ditemukan: ${filePath}`);
+    throw new Error(`El archivo no se encuentra:${filePath}`);
   }
 
   try {
@@ -201,7 +201,7 @@ async function videoEnhancer(video, { filename } = {}) {
 
     if (put.status >= 400) {
       throw new Error(
-        `Upload file gagal HTTP ${put.status}: ${typeof put.data === "string" ? put.data : JSON.stringify(put.data)}`,
+        `HTTP falló${put.status}: ${typeof put.data === "string" ? put.data : JSON.stringify(put.data)}`,
       );
     }
 

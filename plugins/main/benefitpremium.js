@@ -4,7 +4,7 @@ const pluginConfig = {
     name: 'benefitpremium',
     alias: ['premiumbenefits', 'premiumfitur', 'benefitprem'],
     category: 'main',
-    description: 'Lihat penjelasan dan daftar fitur khusus Premium',
+    description: 'Mira la explicación y la lista de especiales Premium',
     usage: '.benefitpremium',
     isOwner: false,
     isGroup: false,
@@ -33,29 +33,29 @@ async function handler(m, { sock }) {
     
     const message = 
         `⭐ *ᴀᴘᴀ ɪᴛᴜ ᴘʀᴇᴍɪᴜᴍ?*\n\n` +
-        `Premium adalah *user berbayar* yang mendapatkan akses ke fitur eksklusif dan keuntungan lebih.\n\n` +
+        `Premium es un usuario pagado que consigue la acci ón en características exclusivas y más beneficios.\n\n` +
         `╭┈┈⬡「 💎 *ᴋᴇᴜɴᴛᴜɴɢᴀɴ ᴘʀᴇᴍɪᴜᴍ* 」\n` +
-        `┃ ✦ \`\`\`Limit harian: ${premiumLimit}x (vs ${defaultLimit}x user biasa)\`\`\`\n` +
-        `┃ ✦ \`\`\`Cooldown lebih rendah\`\`\`\n` +
-        `┃ ✦ \`\`\`Akses fitur eksklusif\`\`\`\n` +
+        `┃ ✦ \`\`\`Limit harian: ${premiumLimit}x (vs ${defaultLimit}xusuario regular )\`\`\`\n` +
+        `┃ ✦ \`\`\`La refrigeración es menor\`\`\`\n` +
+        `┃ ✦ \`\`\`Acción exclusiva de características\`\`\`\n` +
         `┃ ✦ \`\`\`Prioritas response\`\`\`\n` +
-        `┃ ✦ \`\`\`No watermark di beberapa fitur\`\`\`\n` +
+        `┃ ✦ \`\`\`No hay marca de agua en alguna característica\`\`\`\n` +
         `┃ ✦ \`\`\`Support prioritas\`\`\`\n` +
         `╰┈┈┈┈┈┈┈┈⬡\n\n` +
         `╭┈┈⬡「 ⚙️ *ᴄᴀʀᴀ ᴍᴇɴᴅᴀᴘᴀᴛᴋᴀɴ* 」\n` +
-        `┃ \`Premium didapatkan melalui:\`\n` +
-        `┃ • Hubungi owner bot\n` +
+        `┃ \`Premium se adquiere a través de:\`\n` +
+        `┃ •El dueño de la llamada bot\n` +
         `┃ • \`\`\`${_optionalChain([_configjs2.default, 'access', _7 => _7.command, 'optionalAccess', _8 => _8.prefix]) || '.'}addprem <nomor> <durasi>\`\`\`\n` +
-        `┃ • Contoh: .addprem 628xxx 30d\n` +
+        `┃ • Ejemplo:.addprem 628xxx30d\n` +
         `╰┈┈┈┈┈┈┈┈⬡\n\n` +
         `╭┈┈⬡「 📋 *ᴅᴀꜰᴛᴀʀ ᴄᴏᴍᴍᴀɴᴅ ᴘʀᴇᴍɪᴜᴍ* 」\n` +
         `┃ \`Total: ${totalCommands} command\`\n` +
         `┃\n` +
         (totalCommands > 0 
             ? commandList.map(cmd => `┃ ${cmd}`).join('\n')
-            : `┃ Semua command bisa diakses user biasa`) +
+            : `┃Todos los comandos pueden ser tratados por un usuario regular`) +
         `\n╰┈┈┈┈┈┈┈┈⬡\n\n` +
-        `Mau Upgrade? silahkan hubungi owner bot\n${_configjs2.default.owner.number.map(num => `- wa.me/${num}`).join('\n') }`
+        `¿Quieres actualizar?\n${_configjs2.default.owner.number.map(num => `- wa.me/${num}`).join('\n') }`
     
     await m.reply(message)
 }

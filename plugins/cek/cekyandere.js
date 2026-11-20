@@ -2,7 +2,7 @@
     name: 'cekyandere',
     alias: ['yandere'],
     category: 'cek',
-    description: 'Cek tingkat yandere kamu',
+    description: 'Revisa tus niveles de yandere.',
     usage: '.cekyandere <nama>',
     example: '.cekyandere Budi',
     isOwner: false,
@@ -19,18 +19,18 @@ async function handler(m) {
     const mentioned = m.mentionedJid[0] || m.sender
                     
     let desc = ''
-    if (percent >= 90) desc = 'Kamu milikku selamanya~ 🔪💕'
-    else if (percent >= 70) desc = 'Jangan dekati dia ya... 👁️'
+    if (percent >= 90) desc = 'Eres mía para siempre ~🔪💕'
+    else if (percent >= 70) desc = 'No se acerque a él.👁♪'
     else if (percent >= 50) desc = 'Overprotective sedikit~ 🫂'
     else if (percent >= 30) desc = 'Agak posesif 😅'
     else desc = 'Normal kok, santai~ 😊'
     
-    let txt = mentioned === m.sender ? `Hai @${mentioned.split('@')[0]}
+    let txt = mentioned === m.sender ? `Hola @${mentioned.split('@')[0]}
     
-Tingkat keyanderean kamu *${percent}%*
-\`\`\`${desc}\`\`\`` : `Kamu ingin ngecek tingkat keyanderean @${mentioned.split('@')[0]} yak? 
+Tu nivel de keyanderean *${percent}%*
+\`\`\`${desc}\`\`\`` : `Usted quiere comprobar el nivel keyanderean @${mentioned.split('@')[0]} yak? 
     
-Tingkat keyanderean dia sebesar *${percent}%*
+El nivel de Keyanderean es tan grande${percent}%*
 \`\`\`${desc}\`\`\``
     
     await m.reply(txt, { mentions: [mentioned] })

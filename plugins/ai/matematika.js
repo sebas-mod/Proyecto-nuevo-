@@ -6,7 +6,7 @@ const pluginConfig = {
     name: 'matematika',
     alias: ['mathgpt', 'math', 'mathsolver'],
     category: 'ai',
-    description: 'AI untuk menyelesaikan soal matematika',
+    description: 'AI para completar la ciencia matemática',
     usage: '.matematika <soal>',
     example: '.matematika 2+2 berapa?',
     isOwner: false,
@@ -22,7 +22,7 @@ async function handler(m, { sock }) {
     const text = m.args.join(' ')
 
     if (!text) {
-        return m.reply(`📐 *ᴍᴀᴛʜ ɢᴘᴛ*\n\n> Masukkan soal matematika\n\n\`Contoh: ${m.prefix}matematika 2+2 berapa?\``)
+        return m.reply(`📐*ᴍᴀᴛʜ ɢᴘᴛ*\n\nPon el canal de matemáticas en.\n\n\`Ejemplo:${m.prefix}¿Cuál es la matemática de 2 + 2?\``)
     }
 
     m.react('🕕')
@@ -39,7 +39,7 @@ async function handler(m, { sock }) {
 
         if (!data.status || !data.result) {
             await m.react('❌')
-            return m.reply("⚠️ Gagal memproses soal matematika.")
+            return m.reply("⚠Para procesar matemáticas.")
         }
 
         const answer = data.result

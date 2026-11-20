@@ -4,7 +4,7 @@ const pluginConfig = {
     name: 'kick',
     alias: ['remove', 'tendang'],
     category: 'group',
-    description: 'Kick member dari grup',
+    description: 'Kickphoto del grupo',
     usage: '.kick @user',
     example: '.kick @user',
     isOwner: false,
@@ -30,8 +30,8 @@ async function handler(m, { sock }) {
     if (!targetJid) {
         await m.reply(
             `❌ *ᴛᴀʀɢᴇᴛ ᴛɪᴅᴀᴋ ᴅɪᴛᴇᴍᴜᴋᴀɴ*\n\n` +
-            `> Reply pesan user atau mention!\n` +
-            `> Contoh: \`${m.prefix}kick @user\``
+            `¡Ezely ordena un usuario o una mención!\n` +
+            `> Ejemplo:\`${m.prefix}kick @user\``
         )
         return
     }
@@ -40,12 +40,12 @@ async function handler(m, { sock }) {
     const targetNumber = targetJid.replace(/@.*$/, '')
 
     if (targetJid === botNumber || targetNumber === botNumber.replace(/@.*$/, '')) {
-        await m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> Tidak bisa kick bot sendiri!`)
+        await m.reply(`❌*ɢᴀɢᴀʟ*\n\n¡No puedes patear tu propio bot!`)
         return
     }
 
     if (targetJid === m.sender) {
-        await m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> Tidak bisa kick diri sendiri!`)
+        await m.reply(`❌*ɢᴀɢᴀʟ*\n\n¡No puedes patearte!`)
         return
     }
 
@@ -54,18 +54,18 @@ async function handler(m, { sock }) {
         const targetParticipant = _ourinlidjs.findParticipantByNumber.call(void 0, groupMeta.participants, targetJid)
         
         if (!targetParticipant) {
-            await m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> User tidak ditemukan dalam grup!`)
+            await m.reply(`❌*ɢᴀɢᴀʟ*\n\n- ¡No se encontró al usuario en un grupo!`)
             return
         }
         
         if (targetParticipant.admin) {
-            await m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> Tidak bisa kick admin grup!`)
+            await m.reply(`❌*ɢᴀɢᴀʟ*\n\n¡No puede patear a administrador del grupo!`)
             return
         }
         
         await sock.groupParticipantsUpdate(m.chat, [targetParticipant.id], 'remove')
 
-        await m.reply(`✅ @${targetNumber} telah dikeluarkan dari grup ini.`, { mentions: [targetJid] })
+        await m.reply(`✅ @${targetNumber}ha sido eliminado de este grupo.`, { mentions: [targetJid] })
 
     } catch (error) {
         m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName))

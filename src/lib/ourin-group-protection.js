@@ -8,29 +8,29 @@ const CACHE_MAX_SIZE = 5000;
 function gpMsg(key, replacements = {}) {
   const defaults = {
     antilink: "⚠ *Antilink* — @%user% mengirim link.\nPesan dihapus.",
-    antilinkKick: "⚠ *Antilink* — @%user% di-kick karena mengirim link.",
+    antilinkKick: "⚠Antilinks—@ % usuario % di - patada debido al envío de enlaces.",
     antilinkGc: "⚠ *Antilink WA* — @%user% mengirim link WA.\nPesan dihapus.",
     antilinkGcKick:
-      "⚠ *Antilink WA* — @%user% di-kick karena mengirim link WA.",
+      "⚠Antilinks WA—@ % user % di - kick for send WA links.",
     antilinkAll: "⚠ *Antilink* — @%user% mengirim link.\nPesan dihapus.",
-    antilinkAllKick: "⚠ *Antilink* — @%user% di-kick karena mengirim link.",
-    antitagsw: "⚠ *AntiTagSW* — Tag status dari @%user% dihapus.",
-    antiswgc: "⚠ *AntiSWGC* — SW group type *%type%* dari @%user% dihapus.",
+    antilinkAllKick: "⚠Antilinks—@ % usuario % di - patada debido al envío de enlaces.",
+    antitagsw: "⚠> 91; AntiTagd > 93;—Estado de la etiqueta de @ % usuario % dispus.",
+    antiswgc: "⚠AntiSWGC—El grupo de cama tipo % tipo * de @ % usuario % disputa.",
     antijudol:
       "⚠ *AntiJudol* — @%user% terdeteksi kirim konten judol.\nPesan dihapus.",
-    antijudolKick: "⚠ *AntiJudol* — @%user% di-kick karena kirim konten judol.",
+    antijudolKick: "⚠AntiJudol—@ % user % di - kick porque envía un contenido jusole.",
     antiphising:
       "⚠ *AntiPhising* — @%user% terdeteksi kirim konten phising.\nPesan dihapus.",
     antiphisingKick:
-      "⚠ *AntiPhising* — @%user% di-kick karena kirim konten phising.",
+      "⚠AntiPhising—@ % user % di - kick porque envía contenido phising.",
     anticustom:
       "⚠ *AntiCustom* — @%user% melanggar rule custom *%rule%*.\nPesan dihapus.",
     anticustomKick:
-      "⚠ *AntiCustom* — @%user% di-kick karena melanggar rule custom *%rule%*.",
-    antiviewonce: "👁️ *ViewOnce* — Dari @%user%",
-    antiremove: "🗑️ *AntiDelete* — @%user% menghapus pesan:",
+      "⚠AntiCutom—@ % user % di - kick because of nemar rule custom * % rule % *.",
+    antiviewonce: "👁*Vista*—De @%user%",
+    antiremove: "🗑AntiDelete—@ % usuario % memoriza mensajes:",
     antihidetag: "⚠ *AntiHidetag* — Hidetag dari @%user% dihapus.",
-    notAdmin: "⚠ Bot bukan admin, tidak bisa menghapus pesan.",
+    notAdmin: "⚠No es administrador, no puede borrar mensajes.",
   };
   let text = _optionalChain([_configjs2.default, 'access', _ => _.groupProtection, 'optionalAccess', _2 => _2[key]]) || defaults[key] || "";
   for (const [k, v] of Object.entries(replacements)) {
@@ -208,10 +208,10 @@ const PHISHING_COMPACT_KEYWORDS = [
   { keyword: "taplink", score: 2, label: "tap link" },
   { keyword: "tekanlink", score: 2, label: "tekan link" },
   { keyword: "verifikasiakun", score: 3, label: "verifikasi akun" },
-  { keyword: "verifikasinomor", score: 3, label: "verifikasi nomor" },
+  { keyword: "verifikasinomor", score: 3, label: "verifikasi número" },
   { keyword: "verifikasirekening", score: 3, label: "verifikasi rekening" },
   { keyword: "verifikasiwallet", score: 3, label: "verifikasi wallet" },
-  { keyword: "loginsekarang", score: 3, label: "login sekarang" },
+  { keyword: "loginsekarang", score: 3, label: "login ahora" },
   { keyword: "logindisini", score: 3, label: "login disini" },
   { keyword: "masukdisini", score: 2, label: "masuk disini" },
   { keyword: "kodeotp", score: 2, label: "kode otp" },
@@ -220,10 +220,10 @@ const PHISHING_COMPACT_KEYWORDS = [
   { keyword: "resetakun", score: 3, label: "reset akun" },
   { keyword: "pulihkanakun", score: 3, label: "pulihkan akun" },
   { keyword: "klaimhadiah", score: 2, label: "klaim hadiah" },
-  { keyword: "klaimsaldo", score: 2, label: "klaim saldo" },
+  { keyword: "klaimsaldo", score: 2, label: "Saldo de la reclamación" },
   { keyword: "klaimbonus", score: 2, label: "klaim bonus" },
-  { keyword: "saldogratis", score: 2, label: "saldo gratis" },
-  { keyword: "saldokaget", score: 2, label: "saldo kaget" },
+  { keyword: "saldogratis", score: 2, label: "Saldo del agravante" },
+  { keyword: "saldokaget", score: 2, label: "*El equilibrio de la sorpresa*" },
   { keyword: "updateakun", score: 2, label: "update akun" },
   { keyword: "updaterekening", score: 2, label: "update rekening" },
   { keyword: "konfirmasiakun", score: 2, label: "konfirmasi akun" },
@@ -957,7 +957,7 @@ async function handleAntiRemove(messageUpdate, sock, db) {
         } else {
           await sock.sendMessage(
             chatId,
-            { text: "[AntiDelete] Pesan dihapus (tipe: " + msgType + ")" },
+            { text: "*AntiDelete* *Mensaje es diupus (tipo:" + msgType + ")" },
             { quoted: headerMsg },
           );
         }

@@ -4,7 +4,7 @@ const pluginConfig = {
     name: 'antidocument',
     alias: ['antidoc', 'nodocument', 'nodoc'],
     category: 'group',
-    description: 'Mengatur antidocument di grup',
+    description: 'Estabblecer un antídose en grupo',
     usage: '.antidocument <on/off>',
     example: '.antidocument on',
     isOwner: false,
@@ -20,7 +20,7 @@ const pluginConfig = {
 
 function gpMsg(key, replacements = {}) {
     const defaults = {
-        antidocument: '⚠ *AntiDocument* — Dokumen dari @%user% dihapus.',
+        antidocument: '⚠> 91; AntiDoment > 93;—Documento de @ % usuario % dispus.',
     }
     let text = _optionalChain([_configjs2.default, 'access', _ => _.groupProtection, 'optionalAccess', _2 => _2[key]]) || defaults[key] || ''
     for (const [k, v] of Object.entries(replacements)) {
@@ -65,18 +65,18 @@ async function handler(m, { sock }) {
     if (action === 'on') {
         db.setGroup(m.chat, { antidocument: true })
         m.react('✅')
-        await m.reply(`✅ *AntiDocument diaktifkan*`)
+        await m.reply(`✅*AntiDocument activado*`)
         return
     }
 
     if (action === 'off') {
         db.setGroup(m.chat, { antidocument: false })
         m.react('❌')
-        await m.reply(`❌ *AntiDocument dinonaktifkan*`)
+        await m.reply(`❌*AntiDocument desactivado*`)
         return
     }
 
-    await m.reply(`❌ Gunakan \`.antidocument on\` atau \`.antidocument off\``)
+    await m.reply(`❌Usa\`- Antidosis en.\`o\`- Antidosis apagada.\``)
 }
 
 exports.config = pluginConfig; exports.handler = handler; exports.checkAntidocument = checkAntidocument;

@@ -2,7 +2,7 @@
 var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
 var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
 
-const NEOXR_APIKEY = _optionalChain([_configjs2.default, 'access', _ => _.APIkey, 'optionalAccess', _2 => _2.neoxr]) || "Milik-Bot-OurinMD";
+const NEOXR_APIKEY = _optionalChain([_configjs2.default, 'access', _ => _.APIkey, 'optionalAccess', _2 => _2.neoxr]) || "Millik - Eurinprobable";
 
 const pluginConfig = {
     name: "countrystalk",
@@ -18,7 +18,7 @@ const pluginConfig = {
 
 async function handler(m, { sock, text }) {
     if (!text) {
-        return m.reply(`🌍 Harap masukkan nama negara!\nContoh: \`${m.prefix}${m.command} indonesia\``);
+        return m.reply(`🌍¡Por favor, ingrese el nombre del estado!\nEjemplo:\`${m.prefix}${m.command} indonesia\``);
     }
 
     await m.react("🕕");
@@ -31,7 +31,7 @@ async function handler(m, { sock, text }) {
 
         if (!data || !data.status || !data.data) {
             await m.react("❌");
-            return m.reply(`Maaf, data negara untuk "${text}" tidak ditemukan.`);
+            return m.reply(`Lo siento, datos del estado para decir${text}No se ha encontrado.`);
         }
 
         const c = data.data;
@@ -44,14 +44,14 @@ async function handler(m, { sock, text }) {
         const languages = c.languages && c.languages.length > 0 ? c.languages.map(l => l.name).join(", ") : "-";
         const timezones = c.timezones && c.timezones.length > 0 ? c.timezones.join(", ") : "-";
 
-        let txt = `🌍 *INFORMASI NEGARA: ${name.toUpperCase()}* 🌍\n\n`;
+        let txt = `🌍*Información Pais:${name.toUpperCase()}* 🌍\n\n`;
         txt += `🏢 *Ibukota:* ${capitals}\n`;
-        txt += `📜 *Nama Resmi:* ${officialName}\n`;
-        txt += `🗺️ *Wilayah:* ${c.region || "-"} (${c.subregion || "-"})\n`;
-        txt += `🗣️ *Bahasa Resmi:* ${languages}\n`;
+        txt += `📜*Nombre Oficial:*${officialName}\n`;
+        txt += `🗺️ *Region:*${c.region || "-"} (${c.subregion || "-"})\n`;
+        txt += `🗣* * * * *#91; Vocalizing > *93;${languages}\n`;
         txt += `👥 *Populasi:* ${population} jiwa\n`;
-        txt += `💰 *Mata Uang:* ${currencies}\n`;
-        txt += `🕰️ *Zona Waktu:* ${timezones}\n`;
+        txt += `💰*Moneda:*${currencies}\n`;
+        txt += `🕰Zona Tiempo:${timezones}\n`;
         txt += `🚗 *Posisi Mengemudi:* ${_optionalChain([c, 'access', _7 => _7.cars, 'optionalAccess', _8 => _8.driving_side]) || "-"}\n`;
 
         if (_optionalChain([c, 'access', _9 => _9.flag, 'optionalAccess', _10 => _10.emoji])) {

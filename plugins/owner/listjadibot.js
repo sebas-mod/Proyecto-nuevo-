@@ -3,7 +3,7 @@ const pluginConfig = {
     name: 'listjadibot',
     alias: ['jadibotlist', 'alljadibot'],
     category: 'owner',
-    description: 'Lihat semua session jadibot yang tersimpan',
+    description: 'Mira todas las sesiones tan bien salvadas',
     usage: '.listjadibot',
     example: '.listjadibot',
     isOwner: true,
@@ -20,12 +20,12 @@ async function handler(m, { sock }) {
     const active = _ourinjadibotmanagerjs.getActiveJadibots.call(void 0, )
 
     if (sessions.length === 0) {
-        return m.reply(`❌ Tidak ada session jadibot tersimpan`)
+        return m.reply(`❌No se ha mantenido ninguna sesión`)
     }
 
     let txt = `🤖 *ᴅᴀꜰᴛᴀʀ ᴊᴀᴅɪʙᴏᴛ*\n\n`
     txt += `> 📊 Total: *${sessions.length}* session\n`
-    txt += `> 🟢 Aktif: *${active.length}*\n`
+    txt += `♪🟢Activo: *${active.length}*\n`
     txt += `> ⚫ Offline: *${sessions.length - active.length}*\n\n`
 
     sessions.forEach((s, i) => {
@@ -36,7 +36,7 @@ async function handler(m, { sock }) {
 
     txt += `\n> \`${m.prefix}listjadibotaktif\` — Detail aktif\n`
     txt += `> \`${m.prefix}stopalljadibot\` — Stop semua\n`
-    txt += `> \`${m.prefix}stopdandeletejadibot @user\` — Hapus session`
+    txt += `> \`${m.prefix}stopdandeletekebot @ usuario\` —Elimina session`
 
     const mentions = sessions.map(s => s.jid)
 

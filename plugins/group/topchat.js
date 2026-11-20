@@ -3,7 +3,7 @@ const pluginConfig = {
   name: "topchat",
   alias: ["chatstat", "chatstats", "totalchat", "leaderboard"],
   category: "group",
-  description: "Lihat statistik chat member di grup",
+  description: "Mira la foto de chat estática en grupo",
   usage: ".topchat",
   example: ".topchat",
   isOwner: false,
@@ -29,18 +29,18 @@ async function handler(m, { sock }) {
   if (sorted.length === 0) {
     return m.reply(
       `📊 *ᴄʜᴀᴛ sᴛᴀᴛɪsᴛɪᴄs*\n\n` +
-      `> Belum ada data chat di grup ini.\n` +
-      `> Data akan tercatat otomatis setelah member aktif chat.`,
+      `Hay una charla en este grupo.\n` +
+      `Los datos se grabán automatizados después de las fotos de cit activas.`,
     );
   }
-  let txt = `📊 *TOTAL CHAT*\nBerikut ini adalah jumlah pesan yang dikirim oleh member di grup ini:\n\n`;
+  let txt = `📊* Chat total*\nEste es el núté de mensajes enviados por el miembro en ègrupo:\n\n`;
   for (let i = 0; i < sorted.length; i++) {
     const { jid, count } = sorted[i];
     const name = _optionalChain([group, 'access', _ => _.chatStats, 'access', _2 => _2[jid], 'optionalAccess', _3 => _3.name]) || jid.split("@")[0];
     const medal = i === 0 ? "🥇" : i === 1 ? "🥈" : i === 2 ? "🥉" : "▸";
     txt += `${medal} @${jid.split("@")[0]} — *${count.toLocaleString("id-ID")}* pesan\n`;
   }
-  txt += `\n*Total Pesan: ${sorted.reduce((a, b) => a + b.count, 0).toLocaleString("id-ID")}*`;
+  txt += `\n*Total Mensaje:${sorted.reduce((a, b) => a + b.count, 0).toLocaleString("id-ID")}*`;
   const mentions = sorted.map((u) => u.jid);
   await m.reply(txt, { mentions });
 }

@@ -3,7 +3,7 @@ const pluginConfig = {
     name: 'resetrules',
     alias: ['resetbotrules'],
     category: 'owner',
-    description: 'Reset rules bot ke default',
+    description: 'Reiniciar reglas bot un predeterminado',
     usage: '.resetrules',
     example: '.resetrules',
     isOwner: true,
@@ -22,8 +22,8 @@ function handler(m) {
     
     m.reply(
         `✅ *ʙᴏᴛ ʀᴜʟᴇs ᴅɪʀᴇsᴇᴛ*\n\n` +
-        `> Rules bot berhasil direset ke default!\n` +
-        `> Ketik \`${m.prefix}rules\` untuk melihat.`
+        `Ezrules bot logrânc restabblecerse a predeterminado!\n` +
+        `> Escribe\`${m.prefix}reglas\`para ver.`
     )
 }
 

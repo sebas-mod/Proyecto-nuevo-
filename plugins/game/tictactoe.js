@@ -4,7 +4,7 @@ const pluginConfig = {
   name: "tictactoe",
   alias: ["ttt", "xo"],
   category: "game",
-  description: "Main TicTacToe dengan player lain",
+  description: "TicTacToe principal con otro jugador",
   usage: ".tictactoe [room name] atau .ttt",
   example: ".tictactoe",
   isOwner: false,
@@ -108,7 +108,7 @@ function isRateLimitError(error) {
     message.includes("rate-overlimit") ||
     message.includes("rate overlimit") ||
     message.includes("ratelimit") ||
-    message.includes("rate limit")
+    message.includes("rate límite")
   );
 }
 
@@ -155,7 +155,7 @@ async function handler(m, { sock }) {
   const args = m.args || [];
   const roomName = args.join(" ").trim();
 
-  // Check if player already in a game
+  //Compruebe si el jugador alreacy en un juego
   const existingRoom = Object.values(global.tictactoeGames).find(
     (room) =>
       room.id.startsWith("ttt_") &&
@@ -165,8 +165,8 @@ async function handler(m, { sock }) {
   if (existingRoom) {
     return safeReply(
       m,
-      `❌ Kamu masih dalam game!\n\n` +
-        `> Selesaikan game kamu atau ketik *nyerah* untuk menyerah.`,
+      `❌¡Todavía estás en el juego!\n\n` +
+        `Para terminar tu juego o tu perra para ser una perra.`,
     );
   }
 
@@ -187,13 +187,13 @@ async function handler(m, { sock }) {
 
     const txt =
       `🎮 *ᴛɪᴄ ᴛᴀᴄ ᴛᴏᴇ*\n\n` +
-      `Partner ditemukan!\n\n` +
+      `¡Los socios encontrados!\n\n` +
       `❌ @${room.game.playerX.split("@")[0]}\n` +
       `⭕ @${room.game.playerO.split("@")[0]}\n\n` +
       `${board}\n\n` +
       `> Giliran: @${room.game.currentTurn.split("@")[0]}\n` +
-      `> Reply pesan ini dengan angka 1-9\n` +
-      `> Ketik *nyerah* untuk menyerah`;
+      `*Responde este mensaje con un mensaje @-@ 9*\n` +
+      `# Mierda @-@ daisy #`;
 
     await safeReact(m, "🎮");
     await safeReply(m, txt, {
@@ -216,9 +216,9 @@ async function handler(m, { sock }) {
     await safeReply(
       m,
       `🎮 *ᴛɪᴄ ᴛᴀᴄ ᴛᴏᴇ*\n\n` +
-        `Room dibuat! Menunggu partner...\n\n` +
-        `> Ketik \`.tictactoe${roomName ? " " + roomName : ""}\` untuk join\n` +
-        `> Room akan expired dalam 5 menit`,
+        `¡Se está haciendo la habitación!\n\n` +
+        `> Escribe\`Tictactoe.${roomName ? " " + roomName : ""}\`para join\n` +
+        `*La habitación e*xmetida en 5 minutos`,
     );
 
     // Auto delete after 5 min
@@ -236,7 +236,7 @@ async function answerHandler(m, sock) {
 
   const text = m.body.trim().toLowerCase();
 
-  // Find player's active game
+  //*Encontrar un jugador* *con algunas manos* *alguna partida*
   const room = Object.values(global.tictactoeGames).find(
     (r) =>
       r.state === "PLAYING" &&
@@ -262,9 +262,9 @@ async function answerHandler(m, sock) {
     await safeReact(m, "🏳️");
     await safeReply(
       m,
-      `🏳️ *MENYERAH!*\n\n` +
-        `@${loser.split("@")[0]} menyerah!\n` +
-        `@${winner.split("@")[0]} menang! +Rp 500`,
+      `🏳️ *Rendirse!*\n\n` +
+        `@${loser.split("@")[0]}rendirse!\n` +
+        `@${winner.split("@")[0]}Ganar! + Rp 50000`,
       { mentions: [winner, loser] },
     );
 
@@ -272,7 +272,7 @@ async function answerHandler(m, sock) {
     return true;
   }
 
-  // Check if valid move
+  //Compruebe si movimiento válido
   const move = parseInt(text);
   if (isNaN(move) || move < 1 || move > 9) return false;
 
@@ -287,12 +287,12 @@ async function answerHandler(m, sock) {
   const result = room.game.turn(player, move - 1);
 
   if (result === 0) {
-    await safeReply(m, "❌ Posisi sudah terisi!");
+    await safeReply(m, "❌¡La posición está cubierta!");
     return true;
   }
 
   if (result === -1) {
-    await safeReply(m, "❌ Posisi tidak valid!");
+    await safeReply(m, "❌¡Posición inválida!");
     return true;
   }
 
@@ -312,9 +312,9 @@ async function answerHandler(m, sock) {
     await safeReact(m, "🎉");
     await safeReply(
       m,
-      `🎉 *GAME OVER!*\n\n` +
+      `🎉> 91; ¡Juego OVER!\n\n` +
         `${board}\n\n` +
-        `🏆 @${winner.split("@")[0]} menang! +Rp 1.000`,
+        `🏆 @${winner.split("@")[0]}¡Voy a ganar!`,
       { mentions: [winner, loser] },
     );
 
@@ -326,7 +326,7 @@ async function answerHandler(m, sock) {
     await safeReact(m, "🤝");
     await safeReply(
       m,
-      `🤝 *SERI!*\n\n` + `${board}\n\n` + `> Tidak ada pemenang!`,
+      `🤝 *SERI!*\n\n` + `${board}\n\n` + `- ¡No hay ganadores!`,
       { mentions: [room.game.playerX, room.game.playerO] },
     );
 
@@ -334,7 +334,7 @@ async function answerHandler(m, sock) {
     return true;
   }
 
-  // Continue game
+  //Continuar juego
   await safeReply(
     m,
     `🎮 *ᴛɪᴄ ᴛᴀᴄ ᴛᴏᴇ*\n\n` +

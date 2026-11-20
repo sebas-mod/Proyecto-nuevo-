@@ -6,7 +6,7 @@ const pluginConfig = {
     name: 'ban',
     alias: ['addban', 'block'],
     category: 'owner',
-    description: 'Memblokir user dari menggunakan bot',
+    description: 'Bloquear el usuario de la bota',
     usage: '.ban <nomor/@tag>',
     example: '.ban 6281234567890',
     isOwner: true,
@@ -45,13 +45,13 @@ async function handler(m, { sock }) {
     if (!targetNumber || targetNumber.length < 10 || targetNumber.length > 15) {
         return m.reply(
             `🚫 *ʙᴀɴ ᴜsᴇʀ*\n\n` +
-            `> Masukkan nomor atau tag user\n\n` +
+            `* Ponga un número o una etiqueta de usuario*\n\n` +
             `\`Contoh: ${m.prefix}ban 6281234567890\``
         )
     }
 
     if (_configjs2.default.isOwner(targetNumber)) {
-        return m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> Tidak dapat ban owner`)
+        return m.reply(`❌*ɢᴀɢᴀʟ*\n\n*No puedo conseguir un dueño de neumáticos*`)
     }
 
     const db = _ourindatabasejs.getDatabase.call(void 0, )
@@ -63,7 +63,7 @@ async function handler(m, { sock }) {
     })
 
     if (alreadyBanned) {
-        return m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> Nomor \`${targetNumber}\` sudah dibanned`)
+        return m.reply(`❌*ɢᴀɢᴀʟ*\n\n> Número\`${targetNumber}\`ya dibanned`)
     }
 
     bannedList.push(targetNumber)

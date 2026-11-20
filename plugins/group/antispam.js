@@ -4,7 +4,7 @@ const pluginConfig = {
     name: "antispam",
     alias: ["antispamgc"],
     category: "group",
-    description: "Mengatur fitur perlindungan grup dari pesan spam secara brutal",
+    description: "Gestiona las características de protección grupo de mensajes de spam brutales",
     usage: ".antispam <on/off/action/delay>",
     example: ".antispam on\n.antispam warning\n.antispam 2",
     isOwner: false,
@@ -25,17 +25,17 @@ async function handler(m, { sock, db }) {
     
     if (!action || (!["on", "off", "warning", "kick", "delete"].includes(action) && !delayMatch)) {
         return m.reply(
-            `🛡️ *ANTI SPAM GROUP*\n\n` +
-            `Fitur ini melindungi grup dari member yang mengirim pesan berulang-ulang dengan sangat cepat dan brutal sehingga mengganggu kenyamanan member lain\n\n` +
-            `*Cara pakai:*\n` +
-            `> \`${m.prefix}antispam on\` (Aktifkan fitur antispam)\n` +
-            `> \`${m.prefix}antispam off\` (Matikan fitur antispam)\n\n` +
-            `*Pilih Metode Hukuman:*\n` +
-            `> \`${m.prefix}antispam warning\` (Beri teguran keras hingga 3 kali peringatan)\n` +
-            `> \`${m.prefix}antispam kick\` (Otomatis tendang spammer langsung tanpa ampun)\n` +
-            `> \`${m.prefix}antispam delete\` (Hapus seluruh pesan spam yang dikirimkan)\n\n` +
-            `*Atur Sensitivitas Jeda (Delay):*\n` +
-            `> \`${m.prefix}antispam 2\` (Set jarak antar pesan maksimal 2 detik)\n` +
+            `🛡*Y me alegraré de verte*\n\n` +
+            `Está característica protege al grupo del miembro que envía mensajes una y otra vez muy rápido y brutalmente, así como perturbando la comodidad de otras fotos\n\n` +
+            `*Como usarlo:*\n` +
+            `> \`${m.prefix}antispam on\`( Activar características antispam )\n` +
+            `> \`${m.prefix}antispam off\`(Suddering antispam )\n\n` +
+            `* Elija el método de las sanciones: *\n` +
+            `> \`${m.prefix}antispam warning\`(Dar un tiro duro de naranja 3 veces advertencia )\n` +
+            `> \`${m.prefix}antispam patada\`( Upside @-@ up spammer automatización sin misericordia )\n` +
+            `> \`${m.prefix}antispam delete\`(Todos los mensajes de spam enviados )\n\n` +
+            `* Ajedrez de la pausa Sensitivitas ( Delay ):\n` +
+            `> \`${m.prefix}antispam 2\`( El campo de juego ofrece máximo 2 segundos )\n` +
             `> \`${m.prefix}antispam 1500\` (Set jarak ke 1500 milidetik)`
         )
     }
@@ -55,25 +55,25 @@ async function handler(m, { sock, db }) {
         db.setGroup(m.chat, groupData)
         
         return m.reply(
-            `🛡️ *SENSITIVITAS ANTI SPAM DIPERBARUI*\n\n` +
-            `> Jeda Maksimal: *${delayMs} ms* (${(delayMs/1000).toFixed(1)} detik)\n\n` +
-            `Sistem kini akan menganggap pesan sebagai spam jika anggota mengirim beberapa pesan dengan jeda di bawah *${(delayMs/1000).toFixed(1)} detik* antar pesannya`
+            `🛡♪SENTIVITY AND SPAM STARTED♪\n\n` +
+            `> Jeda Maksimal: *${delayMs} ms* (${(delayMs/1000).toFixed(1)}segundo)\n\n` +
+            `El tagena selccionará un mensaje como spam si un miembro envía algunos mensajes con una jeda en el bawup *${(delayMs/1000).toFixed(1)}segundos para enviar el mensaje.`
         )
     }
 
     if (action === "on" || action === "off") {
         const isEnable = action === "on"
         if (groupData.antispam === isEnable) {
-            return m.reply(`✅ Fitur antispam sudah ${isEnable ? "aktif" : "nonaktif"} di grup ini, tidak ada perubahan yang dibuat`)
+            return m.reply(`✅La característica antispam ya es${isEnable ? "aktif" : "nonaktif"}En este grupo, no se ha producido ningún cambio`)
         }
         
         groupData.antispam = isEnable
         db.setGroup(m.chat, groupData)
         
         await m.reply(
-            `🛡️ *ANTI SPAM DIPERBARUI*\n\n` +
+            `🛡*Y no voy a dejarte ir*\n\n` +
             `> Status: *${isEnable ? "AKTIF ✅" : "NONAKTIF ❌"}*\n\n` +
-            `Sistem bot kini akan ${isEnable ? "mengawasi secara ketat" : "berhenti mengawasi"} setiap aktivitas spam atau flood pesan yang dilakukan oleh member di dalam grup ini`
+            `El sistema actual de bot será${isEnable ? "mengawasi secara ketat" : "berhenti mengawasi"}cada actividad de spam o ininunisción de mensajes realizados por el miembro dentro de ègrupo`
         )
     } else {
         groupData.antispamAction = action
@@ -81,13 +81,13 @@ async function handler(m, { sock, db }) {
         
         let textAction = ""
         if (action === "warning") textAction = "Memberikan peringatan keras secara bertahap"
-        if (action === "kick") textAction = "Menendang member yang membandel secara otomatis"
-        if (action === "delete") textAction = "Menghapus pesan spam yang mengganggu"
+        if (action === "kick") textAction = "Arrojándose a un miembro que golpea a un automático"
+        if (action === "delete") textAction = "Borrar mensajes de spam perturbadores"
         
         await m.reply(
             `🛡️ *AKSI ANTI SPAM DIPERBARUI*\n\n` +
-            `> Metode Hukuman: *${action.toUpperCase()}*\n\n` +
-            `Sistem bot akan langsung mengambil tindakan berupa *${textAction}* apabila ada member yang terdeteksi melakukan pelanggaran berupa tindakan spam brutal`
+            `*Metodología penman*${action.toUpperCase()}*\n\n` +
+            `El sistema de bots tomará egoístamente una acción rebotada *${textAction}* apala cualquier fotos modifidas realizan actos de spam ininterrumpdos`
         )
     }
 }
@@ -138,9 +138,9 @@ async function handleSpamAction(m, sock, db) {
         
         if (userData.warnings >= 3) {
             await m.reply(
-                `⚠️ *PERINGATAN SPAM MAKSIMAL*\n\n` +
+                `⚠♪ MEMORIA ESPAÑOL MÁSICA ♪\n\n` +
                 `> Teruntuk: @${senderId.split("@")[0]}\n\n` +
-                `Kamu telah mendapatkan 3 kali teguran peringatan karena mengirim pesan spam secara berkelanjutan. Harap segera berhenti melakukan spam atau jajaran admin grup dapat mengambil tindakan tegas terhadap pelanggaran ini!`,
+                `Usted ha recibido 3 disparos de advertencia para enviar un mensaje de texto tan pronto como demez el spam o el administrador puede tomar medidas contra esemanso!`,
                 { mentions: [senderId] }
             )
             userData.warnings = 0 
@@ -148,9 +148,9 @@ async function handleSpamAction(m, sock, db) {
             spamTracker.set(chatKey, userData)
         } else {
             await m.reply(
-                `⚠️ *TEGURAN SPAM TERDETEKSI*\n\n` +
-                `> Peringatan ke-${userData.warnings} dari maksimal 3 peringatan\n\n` +
-                `Halo @${senderId.split("@")[0]}, tolong jangan melakukan pengiriman pesan berulang-ulang di grup ini secara cepat! Sistem kami mendeteksi aktivitasmu sebagai spam. Mohon hargai kenyamanan member lainnya`,
+                `⚠Amonestacion SPAM DETECTED\n\n` +
+                `♪ A la advertencia${userData.warnings}desde el máximo 3 advertencias\n\n` +
+                `Hola @${senderId.split("@")[0]}¡No repita este mensaje en el grupo inmediatamente!`,
                 { mentions: [senderId] }
             )
             userData.count = 0 
@@ -159,16 +159,16 @@ async function handleSpamAction(m, sock, db) {
     } else if (action === "kick") {
         if (m.isBotAdmin) {
             await m.reply(
-                `🛑 *SPAMMER DIKELUARKAN*\n\n` +
-                `Maaf sekali @${senderId.split("@")[0]}, kamu akan dikeluarkan secara paksa oleh sistem karena kamu terdeteksi melakukan aksi spam brutal di grup ini!`, 
+                `🛑*SPAMMER Expulsado*\n\n` +
+                `Lo siento mucho.${senderId.split("@")[0]}Usted será liberado por el dhaporque usted es dettado para el acto bratal de spam en ègrupo!`, 
                 { mentions: [senderId] }
             )
             await sock.groupParticipantsUpdate(m.chat, [senderId], "remove")
             spamTracker.delete(chatKey)
         } else {
             await m.reply(
-                `⚠️ *SPAM TERDETEKSI*\n\n` +
-                `Telah terdeteksi aktivitas spam brutal dari @${senderId.split("@")[0]}, namun sistem bot sayangnya tidak dapat menendang member tersebut karena bot saat ini tidak memiliki akses sebagai admin grup. Tolong jadikan bot admin agar fitur ini bekerja maksimal`, 
+                `⚠* * * * * * * * * * 91; SPAM TAPPING * * 93;\n\n` +
+                `La última actividad de spam brutal detectable de @${senderId.split("@")[0]}, pero su querido sistema de bots no puede ' t lanzar una foto como tal porque el bot actualmente no tiene una acción como administrador del grupo.`, 
                 { mentions: [senderId] }
             )
             userData.count = 0

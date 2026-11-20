@@ -3,7 +3,7 @@ const pluginConfig = {
     name: 'clankick',
     alias: ['kickclan'],
     category: 'clan',
-    description: 'Kick member dari clan (leader only)',
+    description: 'Kickphoto del clan (sólo líder)',
     usage: '.clankick @user',
     example: '.clankick @user',
     isOwner: false,
@@ -19,24 +19,24 @@ async function handler(m) {
     const db = _ourindatabasejs.getDatabase.call(void 0, )
     const user = db.getUser(m.sender)
 
-    if (!_optionalChain([user, 'optionalAccess', _ => _.clanId])) return m.reply(`❌ Kamu belum punya clan`)
+    if (!_optionalChain([user, 'optionalAccess', _ => _.clanId])) return m.reply(`❌Aún no tienes un clan.`)
     if (!db.db.data.clans) db.db.data.clans = {}
 
     const clan = db.db.data.clans[user.clanId]
-    if (!clan) return m.reply(`❌ Clan tidak ditemukan`)
-    if (clan.leader !== m.sender) return m.reply(`❌ Hanya leader yang bisa kick`)
+    if (!clan) return m.reply(`❌- ¿Qué?`)
+    if (clan.leader !== m.sender) return m.reply(`❌Sólo un líder puede patear`)
 
     const target = _optionalChain([m, 'access', _2 => _2.mentionedJid, 'optionalAccess', _3 => _3[0]]) || _optionalChain([m, 'access', _4 => _4.quoted, 'optionalAccess', _5 => _5.sender])
     if (!target) {
         return m.reply(
             `👢 *CLAN KICK*\n\n` +
-            `Tag atau reply member yang mau dikeluarkan\n\n` +
-            `Contoh: *.clankick @user*`
+            `Tag or responder.\n\n` +
+            `Ejemplo: *.clankick @user*`
         )
     }
 
-    if (target === m.sender) return m.reply(`❌ Tidak bisa kick diri sendiri`)
-    if (!clan.members.includes(target)) return m.reply(`❌ User bukan member clan ini`)
+    if (target === m.sender) return m.reply(`❌No puedes patearte`)
+    if (!clan.members.includes(target)) return m.reply(`❌El usuario no es un cliente actual`)
 
     clan.members = clan.members.filter(jid => jid !== target)
     db.setUser(target, { clanId: null })
@@ -46,8 +46,8 @@ async function handler(m) {
 
     await m.reply(
         `${emblem} *KICKED*\n\n` +
-        `@${target.split('@')[0]} dikeluarkan dari *${clan.name}*\n` +
-        `Sisa members: ${clan.members.length}/50`,
+        `@${target.split('@')[0]}eyectados de *${clan.name}*\n` +
+        `Restante members:${clan.members.length}/50`,
         { mentions: [target] }
     )
 }

@@ -3,13 +3,13 @@ var _axios = require('axios'); var _axios2 = _interopRequireDefault(_axios);
 var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
 var _fs = require('fs'); var _fs2 = _interopRequireDefault(_fs);
 var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
-const NEOXR_APIKEY = _optionalChain([_configjs2.default, 'access', _ => _.APIkey, 'optionalAccess', _2 => _2.neoxr]) || "Milik-Bot-OurinMD";
+const NEOXR_APIKEY = _optionalChain([_configjs2.default, 'access', _ => _.APIkey, 'optionalAccess', _2 => _2.neoxr]) || "Millik - Eurinprobable";
 
 const pluginConfig = {
   name: "film",
   alias: ["movie", "nonton", "lk21"],
   category: "search",
-  description: "Cari film dan nonton online",
+  description: "Busca film y noton en línea",
   usage: ".film <judul>",
   example: ".film civil war",
   cooldown: 10,
@@ -26,10 +26,10 @@ async function handler(m, { sock }) {
   if (!query) {
     return m.reply(
       `🎬 *ꜰɪʟᴍ sᴇᴀʀᴄʜ*\n\n` +
-        `> Cari dan nonton film online\n\n` +
-        `*Format:*\n` +
+        `Busca y noton film en línea\n\n` +
+        `*Formato:*\n` +
         `> \`${m.prefix}film <judul>\`\n\n` +
-        `*Contoh:*\n` +
+        `*Ejemplo:*\n` +
         `> \`${m.prefix}film civil war\``,
     );
   }
@@ -43,7 +43,7 @@ async function handler(m, { sock }) {
     if (!_optionalChain([data, 'optionalAccess', _3 => _3.status]) || !_optionalChain([data, 'optionalAccess', _4 => _4.data, 'optionalAccess', _5 => _5.length])) {
       m.react("❌");
       return m.reply(
-        `❌ *ᴛɪᴅᴀᴋ ᴅɪᴛᴇᴍᴜᴋᴀɴ*\n\n> Film "${query}" tidak ditemukan`,
+        `❌ *ᴛɪᴅᴀᴋ ᴅɪᴛᴇᴍᴜᴋᴀɴ*\n\n> Film "${query}*No se encuentra*`,
       );
     }
 
@@ -59,14 +59,14 @@ async function handler(m, { sock }) {
     }, 300000);
 
     let text = `🎬 *ʜᴀsɪʟ ᴘᴇɴᴄᴀʀɪᴀɴ*\n\n`;
-    text += `> Ditemukan *${films.length}* film untuk "${query}"\n\n`;
+    text += `*Encontrado*${films.length}* Films to spew${query}"\n\n`;
 
     films.forEach((f, i) => {
       text += `*${i + 1}. ${f.title}*\n`;
       text += `> ⭐ ${f.rating} | 📺 ${f.quality} | 📅 ${f.release}\n\n`;
     });
 
-    text += `> _Pilih film dari list di bawah_`;
+    text += `* Esage una peícula de la lista de ababjo *`;
 
     const listItems = films.map((f, i) => ({
       header: "",

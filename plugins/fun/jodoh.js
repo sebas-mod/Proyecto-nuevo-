@@ -6,7 +6,7 @@ const pluginConfig = {
   name: "jodoh",
   alias: ["match", "shipcouple", "ship"],
   category: "fun",
-  description: "Jodohkan 2 member random dengan kecocokan",
+  description: "Compelled 2 foto aleatoria con partido",
   usage: ".jodoh",
   example: ".jodoh",
   isOwner: false,
@@ -30,11 +30,11 @@ try {
 } catch (e) {}
 
 const loveQuotes = [
-  "Cinta sejati tidak pernah mengenal jarak 💕",
-  "Dua hati yang bersatu takkan terpisahkan 💗",
-  "Kalian seperti puzzle yang sempurna 🧩",
+  "El amor verdadero nunca conoce el camino💕",
+  "Los dos corazones unidos no están separados💗",
+  "Ustedes son como rompecabezas perfectos.🧩",
   "Match made in heaven! ✨",
-  "Chemistry-nya kuat banget! 🔥",
+  "¡La química es un brazalete!🔥",
   "Couple goals banget sih kalian 💑",
   "Destiny brought you together 🌟",
   "Perfect match detected! 💘",
@@ -52,8 +52,8 @@ const compatibilityText = (percent) => {
   if (percent >= 90) return "JODOH SEJATI! 💍";
   if (percent >= 70) return "Sangat Cocok! 💖";
   if (percent >= 50) return "Lumayan Cocok 💗";
-  if (percent >= 30) return "Bisa Dicoba 💓";
-  return "Butuh Usaha Lebih 💔";
+  if (percent >= 30) return "Puede Intentado💓";
+  return "Es un gran problema.💔";
 };
 
 const isRegistrationRequired = (db) => {
@@ -70,7 +70,7 @@ async function handler(m, { sock }) {
   try {
     groupMeta = m.groupMetadata;
   } catch (e) {
-    return m.reply("❌ *ɢᴀɢᴀʟ*\n\n> Tidak bisa mengambil data grup!");
+    return m.reply("❌*ɢᴀɢᴀʟ*\n\n¡No puede obtener los datos del grupo!");
   }
 
   const participants = groupMeta.participants || [];
@@ -79,7 +79,7 @@ async function handler(m, { sock }) {
     .filter((jid) => jid && jid !== botNumber);
 
   if (memberJids.length < 2) {
-    return m.reply("❌ *ɢᴀɢᴀʟ*\n\n> Minimal ada 2 member untuk dijodohkan!");
+    return m.reply("❌*ɢᴀɢᴀʟ*\n\n¡Al menos dos!");
   }
 
   const allUsers = db.getAllUsers();
@@ -96,7 +96,7 @@ async function handler(m, { sock }) {
 
   if (registrationRequired && registeredMembers.length < 2) {
     return m.reply(
-      "❌ *ɢᴀɢᴀʟ*\n\n> Mode wajib daftar aktif. Minimal harus ada 2 member yang sudah terdaftar di grup ini!",
+      "❌*ɢᴀɢᴀʟ*\n\nLa lista de modos está activa. Al menos dos de las fotos ya están registradas en este grupo!",
     );
   }
 
@@ -180,7 +180,7 @@ async function handler(m, { sock }) {
     text += `> ✨ _Dijodohkan berdasarkan data registrasi_\n`;
   }
   if (registrationRequired) {
-    text += `> 🔒 _Mode wajib daftar aktif, hanya member terdaftar yang dipilih_\n`;
+    text += `♪🔒Modo de Ez es la lista activa, sólo se seleccionan las fotos seleccionadas\n`;
   }
   text += `> _"${quote}"_`;
 

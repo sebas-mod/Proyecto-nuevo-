@@ -28,7 +28,7 @@ async function handler(m, { sock }) {
     const db = _ourindatabasejs.getDatabase.call(void 0, )
     
     let targetJid = m.sender
-    let targetName = m.pushName || 'Kamu'
+    let targetName = m.pushName || 'Tu'
     
     if (m.quoted) {
         targetJid = m.quoted.sender
@@ -43,7 +43,7 @@ async function handler(m, { sock }) {
     const level = _ourinleveljs.calculateLevel.call(void 0, user.exp || 0)
     const title = _ourinleveljs.getRole.call(void 0, level)
     
-    let text = `*〔 ⭐ EXP INFO 〕*\n\n`
+    let text = `*〔 ⭐EXP INFO〕*\n\n`
 
 text += `*〔 👤 User 〕* ${targetName}\n`
 text += `*〔 ⭐ Exp 〕* ${expDisplay}\n`

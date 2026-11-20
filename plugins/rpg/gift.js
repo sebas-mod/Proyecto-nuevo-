@@ -3,7 +3,7 @@ const pluginConfig = {
   name: "gift",
   alias: ["kasih", "hadiah"],
   category: "rpg",
-  description: "Beri hadiah ke pasangan untuk meningkatkan love",
+  description: "Dar un regalo a los pares para mejorar el amor",
   usage: ".gift <item> <jumlah>",
   example: ".gift diamond 1",
   isOwner: false,
@@ -22,7 +22,7 @@ async function handler(m, { sock }) {
   if (!user.rpg) user.rpg = {};
 
   if (!user.rpg.spouse) {
-    return m.reply(`❌ *ʙᴇʟᴜᴍ ᴍᴇɴɪᴋᴀʜ*\n\n` + `> Kamu belum menikah!\n` + `> Nikah dulu dengan \`.marry @user\``);
+    return m.reply(`❌ *ʙᴇʟᴜᴍ ᴍᴇɴɪᴋᴀʜ*\n\n` + `¡No estás casado todavía!\n` + `Que tengas un buen día con\`(Marry @ USER)\``);
   }
 
   const args = m.args || [];
@@ -34,7 +34,7 @@ async function handler(m, { sock }) {
       `🎁 *ɢɪꜰᴛ*\n\n` +
         `*📋 *ᴜsᴀɢᴇ:*
 \n` +
-        `> > Pilih item untuk diberikan\n` +
+        `# Eligelo para dárselo\n` +
         `> > \`.gift diamond 1\`\n` +
         ``,
     );
@@ -43,14 +43,14 @@ async function handler(m, { sock }) {
   user.inventory = user.inventory || {};
 
   if ((user.inventory[itemKey] || 0) < amount) {
-    return m.reply(`❌ *ɪᴛᴇᴍ ᴛɪᴅᴀᴋ ᴄᴜᴋᴜᴘ*\n\n` + `> Item *${itemKey}* kamu: ${user.inventory[itemKey] || 0}\n` + `> Butuh: ${amount}`);
+    return m.reply(`❌ *ɪᴛᴇᴍ ᴛɪᴅᴀᴋ ᴄᴜᴋᴜᴘ*\n\n` + `♪ Artículos ♪${itemKey}* tu:${user.inventory[itemKey] || 0}\n` + `> Necesito:${amount}`);
   }
 
   const spouseJid = user.rpg.spouse;
   const partner = db.getUser(spouseJid);
 
   if (!partner) {
-    return m.reply(`❌ *ᴘᴀsᴀɴɢᴀɴ ɴᴏᴛ ꜰᴏᴜɴᴅ*\n\n> Pasangan tidak ditemukan di database!`);
+    return m.reply(`❌*ᴘᴀSᴀɴɢᴀɴ ɴᴏᴛ ꜰᴏᴜɴᴅ*\n\n¡No se encuentra la cita en la base de datos!`);
   }
 
   partner.inventory = partner.inventory || {};
@@ -64,8 +64,8 @@ async function handler(m, { sock }) {
   db.save();
 
   let txt = `🎁 *ɢɪꜰᴛ sᴜᴋsᴇs*\n\n`;
-  txt += `> 💝 Kamu memberikan ${amount}x ${itemKey}\n`;
-  txt += `> 👤 Untuk: @${spouseJid.split("@")[0]}\n`;
+  txt += `♪💝Tu dando${amount}x ${itemKey}\n`;
+  txt += `♪👤Para: @${spouseJid.split("@")[0]}\n`;
   txt += `> 💕 Love: +${amount * 10}\n\n`;
   txt += `> _So sweet! 💖_`;
 

@@ -2,7 +2,7 @@
     name: 'cekimut',
     alias: ['imut', 'cute'],
     category: 'cek',
-    description: 'Cek seberapa imut kamu',
+    description: 'Compruebe lo difícil que va a conseguir',
     usage: '.cekimut <nama>',
     example: '.cekimut Ani',
     isOwner: false,
@@ -31,12 +31,12 @@ async function handler(m) {
         desc = 'Mungkin cool bukan imut? 😎'
     }
     
-    let txt = mentioned === m.sender ? `Hai @${mentioned.split('@')[0]}
+    let txt = mentioned === m.sender ? `Hola @${mentioned.split('@')[0]}
     
-Tingkat keimutan kamu *${percent}%*
-\`\`\`${desc}\`\`\`` : `Kamu ingin ngecek tingkat keimutan @${mentioned.split('@')[0]} yak? 
+Tu tasa de imitación *${percent}%*
+\`\`\`${desc}\`\`\`` : `Quieres revisar el nivel de imitación${mentioned.split('@')[0]} yak? 
     
-Tingkat keimutan dia sebesar *${percent}%*
+Es tan grande como un Imperialista.${percent}%*
 \`\`\`${desc}\`\`\``
     
     await m.reply(txt, { mentions: [mentioned] })

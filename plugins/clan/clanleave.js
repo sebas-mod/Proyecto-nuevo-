@@ -3,7 +3,7 @@ const pluginConfig = {
     name: 'clanleave',
     alias: ['leaveclan', 'guildleave'],
     category: 'clan',
-    description: 'Keluar dari clan',
+    description: '¡No!',
     usage: '.clanleave',
     example: '.clanleave',
     isOwner: false,
@@ -19,22 +19,22 @@ async function handler(m) {
     const db = _ourindatabasejs.getDatabase.call(void 0, )
     const user = db.getUser(m.sender)
 
-    if (!_optionalChain([user, 'optionalAccess', _ => _.clanId])) return m.reply(`❌ Kamu belum punya clan`)
+    if (!_optionalChain([user, 'optionalAccess', _ => _.clanId])) return m.reply(`❌Aún no tienes un clan.`)
     if (!db.db.data.clans) db.db.data.clans = {}
 
     const clan = db.db.data.clans[user.clanId]
     if (!clan) {
         db.setUser(m.sender, { clanId: null })
         db.save()
-        return m.reply(`❌ Clan tidak ditemukan, data dibersihkan`)
+        return m.reply(`❌- No lo encontraremos.`)
     }
 
     if (clan.leader === m.sender) {
         if (clan.members.length > 1) {
             return m.reply(
-                `❌ Kamu adalah leader!\n\n` +
-                `Transfer dulu: *.clantransfer @user*\n` +
-                `Atau kick semua member terlebih dahulu`
+                `❌¡Eres un líder!\n\n` +
+                `Transferencia primero: *. clantransfer @ usuario *\n` +
+                `O patear todo lo antes posible.`
             )
         }
         delete db.db.data.clans[user.clanId]
@@ -49,7 +49,7 @@ async function handler(m) {
     db.setUser(m.sender, { clanId: null })
     db.save()
 
-    await m.reply(`👋 Kamu keluar dari *${clan.name}*`)
+    await m.reply(`👋Estás fuera de ella.${clan.name}*`)
 }
 
 exports.config = pluginConfig; exports.handler = handler;

@@ -4,7 +4,7 @@ _ouringamesjs.games.register('tebakmakanan', {
     alias: ['makanan', 'food'],
     emoji: '🍲',
     title: 'TEBAK MAKANAN',
-    description: 'Tebak nama makanan',
+    description: 'Adivina el nombre de la comida',
     hasImage: true
 })
 

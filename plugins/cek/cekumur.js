@@ -2,7 +2,7 @@
     name: 'cekumur',
     alias: ['umur', 'age'],
     category: 'cek',
-    description: 'Cek umur mental kamu',
+    description: 'Comprueba tu tenencia mental',
     usage: '.cekumur <nama>',
     example: '.cekumur Budi',
     isOwner: false,
@@ -19,17 +19,17 @@ async function handler(m) {
     const mentioned = m.mentionedJid[0] || m.sender
                     
     let desc = ''
-    if (percent >= 60) desc = 'Bijaksana seperti orang tua! 🧓'
-    else if (percent >= 40) desc = 'Dewasa dan matang~ 🧑'
+    if (percent >= 60) desc = '¡Esposa como gente vieja!🧓'
+    else if (percent >= 40) desc = 'Adulto y maduro ~🧑'
     else if (percent >= 20) desc = 'Jiwa muda! 🧒'
-    else desc = 'Masih seperti anak kecil~ 👶'
+    else desc = 'Pobre como un niño👶'
     
-    let txt = mentioned === m.sender ? `Hai @${mentioned.split('@')[0]}
+    let txt = mentioned === m.sender ? `Hola @${mentioned.split('@')[0]}
     
-Tingkat keumuran kamu *${percent}%*
-\`\`\`${desc}\`\`\`` : `Kamu ingin ngecek tingkat keumuran @${mentioned.split('@')[0]} yak? 
+Nivel de su edad *${percent}%*
+\`\`\`${desc}\`\`\`` : `Usted quiere comprobar los niveles del general${mentioned.split('@')[0]} yak? 
     
-Tingkat keumuran dia sebesar *${percent}%*
+Es tan alto como un hombre en su vida temprana.${percent}%*
 \`\`\`${desc}\`\`\``
     
     await m.reply(txt, { mentions: [mentioned] })

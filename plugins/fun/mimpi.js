@@ -7,7 +7,7 @@ const pluginConfig = {
     name: 'mimpi',
     alias: ['dream', 'dreamworld'],
     category: 'fun',
-    description: 'Jelajahi dunia mimpimu berdasarkan nama',
+    description: 'Examine el mundo bajo el nombre del mimpmimu',
     usage: '.mimpi <nama>',
     example: '.mimpi Keisya',
     isOwner: false,
@@ -27,14 +27,14 @@ const ELEMENTS = [
     '🌈 Pelangi Mengambang',
     '🌺 Taman Melayang',
     '⭐ Konstelasi Hidup',
-    '🌙 Bulan Kembar',
+    '🌙Mes Kembar',
     '🏰 Kastil Awan',
     '🌋 Gunung Prisma',
     '🎭 Theater Bayangan'
 ]
 
 const EVENTS = [
-    '🦋 Kupu-kupu membawa pesan rahasia',
+    '🦋@-@ I @-@ @-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@',
     '🎭 Topeng menari sendiri',
     '🌊 Hujan bintang jatuh ke laut',
     '🎪 Parade makhluk ajaib',
@@ -51,14 +51,14 @@ const ENCOUNTERS = [
     '🧝‍♀️ Peri Pembawa Mimpi',
     '🦁 Singa Kristal',
     '🐋 Paus Terbang Mistis',
-    '🦅 Burung Phoenix Waktu',
+    '🦅Pajaro PhoenixTiempo',
     '🐢 Kura-kura Pembawa Dunia',
     '🦄 Unicorn Dimensi'
 ]
 
 const POWERS = [
-    '✨ Mengendalikan Waktu',
-    '🌊 Berbicara dengan Elemen',
+    '✨Mengendalikan Tiempo',
+    '🌊Habla con Element.',
     '🎭 Shapeshifting',
     '🌈 Manipulasi Realitas',
     '👁️ Penglihatan Masa Depan',
@@ -68,14 +68,14 @@ const POWERS = [
 ]
 
 const MESSAGES = [
-    'Perjalananmu akan membawa perubahan besar',
-    'Rahasia kuno akan terungkap dalam waktu dekat',
-    'Kekuatan tersembunyi akan segera bangkit',
+    'Su viaje traerá un cambio de tamaño.',
+    'El secreto kuno se revelará en poco tiempo',
+    'El poder oculto se levantará pronto.',
     'Takdir baru menanti di horizon',
-    'Koneksi spiritual akan menguat',
-    'Transformasi besar akan terjadi',
-    'Pencerahan akan datang dari arah tak terduga',
-    'Misi penting akan segera dimulai'
+    'Las conexiones espirituales serán fuertes',
+    'Una transformación masiva está a punto de ocurrir.',
+    'El divorcio vendrá de la Arah sin amasar',
+    'La importante misión se iniciará pronto'
 ]
 
 function generateDream(seed) {

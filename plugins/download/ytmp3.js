@@ -29,15 +29,15 @@ async function getAudioDownload(url) {
     return { download: fallback.dl, title: fallback.title, isFallback: true };
   }
 
-  throw new Error(_optionalChain([fallback, 'optionalAccess', _7 => _7.mess]) || "Gagal mendapatkan audio download URL");
+  throw new Error(_optionalChain([fallback, 'optionalAccess', _7 => _7.mess]) || "Stempel obtiene una descarga de audio de URL");
 }
 
 async function handler(m, { sock }) {
   const url = _optionalChain([m, 'access', _8 => _8.text, 'optionalAccess', _9 => _9.trim, 'call', _10 => _10()]);
   if (!url)
-    return m.reply(`Contoh: ${m.prefix}ytmp3 https://youtube.com/watch?v=xxx`);
+    return m.reply(`Ejemplo:${m.prefix}ytmp3 https://youtube.com/watch?v=xxx`);
   if (!url.includes("youtube.com") && !url.includes("youtu.be"))
-    return m.reply("❌ URL harus YouTube");
+    return m.reply("❌URL debe ser YouTube");
 
   m.react("🕕");
 
@@ -68,7 +68,7 @@ async function handler(m, { sock }) {
   } catch (err) {
     console.error("[YTMP3]", err);
     m.react("❌");
-    m.reply("Gagal mengunduh audio.");
+    m.reply("Gagaldingaudiodownload.");
   }
 }
 

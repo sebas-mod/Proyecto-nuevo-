@@ -2,7 +2,7 @@
   name: ["baca", "read", "markread"],
   alias: [],
   category: "owner",
-  description: "Tandai pesan sebagai sudah dibaca",
+  description: "Mensajes de alta resolución como ya en el archivo",
   usage: ".baca",
   example: ".baca",
   isOwner: true,
@@ -15,9 +15,9 @@ async function handler(m, { sock }) {
   try {
     await sock.readMessages([m.key]);
     await m.react("✅");
-    return m.reply("📖 *Pesan ditandai sudah dibaca*");
+    return m.reply("📖* Mensaje marcado ya con pantano *");
   } catch (err) {
-    return m.reply(`❌ Gagal: ${err.message}`);
+    return m.reply(`❌Fallido:${err.message}`);
   }
 }
 

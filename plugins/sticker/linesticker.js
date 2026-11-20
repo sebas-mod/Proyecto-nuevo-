@@ -28,9 +28,9 @@ async function handler(m, { sock }) {
             `┃ ${m.prefix}linesticker <url>\n` +
             `╰┈┈┈┈┈┈┈┈⬡\n\n` +
             `*ᴄᴀʀᴀ ᴅᴀᴘᴀᴛ ᴜʀʟ:*\n` +
-            `> 1. Buka https://store.line.me\n` +
-            `> 2. Pilih sticker pack\n` +
-            `> 3. Copy URL dari browser\n\n` +
+            `Abrehttps://store.line.me\n` +
+            `Escoge un paquete de pegatinas.\n` +
+            `Copiar la URL del navegador.\n\n` +
             `*ᴄᴏɴᴛᴏʜ:*\n` +
             `> ${m.prefix}linesticker https://store.line.me/stickershop/product/9801/en`
         )
@@ -42,7 +42,7 @@ async function handler(m, { sock }) {
         const apikey = _optionalChain([_configjs2.default, 'access', _5 => _5.APIkey, 'optionalAccess', _6 => _6.neoxr])
         if (!apikey) {
             await m.react('❌')
-            return m.reply(`❌ API Key Neoxr tidak ditemukan di config!`)
+            return m.reply(`❌¿Qué pasa?xr no se encuentra en el config!`)
         }
         
         const apiUrl = `https://api.neoxr.eu/api/linesticker?url=${encodeURIComponent(url)}&apikey=${apikey}`
@@ -50,7 +50,7 @@ async function handler(m, { sock }) {
         
         if (!_optionalChain([res, 'access', _7 => _7.data, 'optionalAccess', _8 => _8.status]) || !_optionalChain([res, 'access', _9 => _9.data, 'optionalAccess', _10 => _10.data])) {
             await m.react('❌')
-            return m.reply(`❌ Gagal mengambil sticker dari URL tersebut!`)
+            return m.reply(`❌Gagalt tomó las pegatinas de la URL!`)
         }
         
         const data = res.data.data
@@ -64,7 +64,7 @@ async function handler(m, { sock }) {
         
         if (!stickerUrls.length) {
             await m.react('❌')
-            return m.reply(`❌ Tidak ada sticker ditemukan!`)
+            return m.reply(`❌¡No se encontraron pegatinas!`)
         }
         
         await m.reply(
@@ -75,7 +75,7 @@ async function handler(m, { sock }) {
             `┃ 🎬 *Animated:* ${isAnimated ? 'Ya' : 'Tidak'}\n` +
             `┃ 📊 *Total:* ${stickerUrls.length}\n` +
             `╰┈┈┈┈┈┈┈┈⬡\n\n` +
-            `> 🕕 Mengirim sticker...`
+            `♪🕕Enviando sticker...`
         )
         
         const maxStickers = Math.min(stickerUrls.length, 10)
@@ -106,10 +106,10 @@ async function handler(m, { sock }) {
         
         if (sent > 0) {
             await m.react('✅')
-            await m.reply(`✅ Berhasil kirim ${sent}/${stickerUrls.length} sticker`)
+            await m.reply(`✅Exito envia${sent}/${stickerUrls.length} sticker`)
         } else {
             await m.react('☢')
-            await m.reply(`❌ Gagal mengirim sticker`)
+            await m.reply(`❌El truco envió las pegatinas`)
         }
         
     } catch (error) {

@@ -2,7 +2,7 @@ const pluginConfig = {
   name: 'channeltools',
   alias: ['followch', 'unfollowch', 'setnamech', 'createch'],
   category: 'owner',
-  description: 'Manajemen WhatsApp Channel / Saluran resmi dari bot',
+  description: 'Mannemen WhatsApp Canal / Oficial Saluran del bot',
   usage: '.followch <JID> | .unfollowch <JID> | .setnamech <JID|Nama> | .createch <Nama>',
   example: '.followch 120363xxx@newsletter',
   isOwner: true,
@@ -22,33 +22,33 @@ async function handler(m, context) {
   try {
     if (cmd === 'followch') {
       const id = String(args[0] || '').trim();
-      if (!id) return m.reply(`Contoh: \`${p}followch 120363xxx@newsletter\``);
+      if (!id) return m.reply(`Ejemplo:\`${p}followch 120363xxx@newsletter\``);
       if (typeof sock.newsletterFollow !== 'function') {
-        return m.reply('❌ Fitur newsletterFollow belum tersedia pada socket bot saat ini.');
+        return m.reply('❌El boletín Sigue las características todavía no están disponibles en el bot de toma actual.');
       }
       const jid = id.includes('@newsletter') ? id : `${id}@newsletter`;
       await sock.newsletterFollow(jid);
-      return m.reply(`✅ Berhasil mem-follow saluran \`${jid}\``);
+      return m.reply(`✅Resultado sigue @-@ canal\`${jid}\``);
     }
 
     if (cmd === 'unfollowch') {
       const id = String(args[0] || '').trim();
-      if (!id) return m.reply(`Contoh: \`${p}unfollowch 120363xxx@newsletter\``);
+      if (!id) return m.reply(`Ejemplo:\`${p}unfollowch 120363xxx@newsletter\``);
       if (typeof sock.newsletterUnfollow !== 'function') {
-        return m.reply('❌ Fitur newsletterUnfollow belum tersedia pada socket bot saat ini.');
+        return m.reply('❌El embudo de newsletter todavía no está disponible en el bot de toma actual.');
       }
       const jid = id.includes('@newsletter') ? id : `${id}@newsletter`;
       await sock.newsletterUnfollow(jid);
-      return m.reply(`✅ Berhasil unfollow saluran \`${jid}\``);
+      return m.reply(`✅Resultado del canal sin seguimiento\`${jid}\``);
     }
 
     if (cmd === 'setnamech') {
       const raw = String(args.join(' ') || '').trim();
       if (!raw) {
         return m.reply(
-          `Gunakan format:\n` +
-            `• \`${p}setnamech Nama Saluran Baru\` (jika dijalankan di saluran)\n` +
-            `• \`${p}setnamech 120363xxx@newsletter|Nama Saluran Baru\``
+          `Usa formato:\n` +
+            `• \`${p}nombre del set Nombre Saluran Nuevo\`(si se ejecuta en el canal )\n` +
+            `• \`${p}setnamech 120363xxx@ newsletter Nombre de Nuevo Saluran\``
         );
       }
       let channel = '';
@@ -58,32 +58,32 @@ async function handler(m, context) {
       }
       channel = channel || (m.chat?.endsWith('@newsletter') ? m.chat : null);
       if (!channel) {
-        return m.reply('Masukkan ID saluran dengan format: `JID@newsletter|Nama Baru`');
+        return m.reply('Insertar el canal de identificación con forte:`JID@newsletter|Nombre Nuevo`');
       }
       if (typeof sock.newsletterUpdateName !== 'function') {
-        return m.reply('❌ Fitur newsletterUpdateName belum tersedia pada socket bot.');
+        return m.reply('❌El boletín informativo UpdateName no ha estado disponible en el bot de socket.');
       }
       await sock.newsletterUpdateName(channel, name);
-      return m.reply(`✅ Nama saluran berhasil diubah menjadi *${name}*`);
+      return m.reply(`✅Nombre del canal convertido a *${name}*`);
     }
 
     if (cmd === 'createch') {
       const chName = String(text || '').trim();
-      if (!chName) return m.reply(`Contoh: \`${p}createch Saluran Resmi Ourin\``);
+      if (!chName) return m.reply(`Ejemplo:\`${p}El Saluran Saluran Oficial Ourin\``);
       if (typeof sock.newsletterCreate !== 'function') {
-        return m.reply('❌ Fitur newsletterCreate belum tersedia pada socket bot.');
+        return m.reply('❌El boletínCreate no está disponible todavía en el bot de socket.');
       }
       const result = await sock.newsletterCreate(chName, 'Official Channel created via Ourin 3.5');
       return m.reply(
-        `🎉 *SALURAN BERHASIL DIBUAT!*\n\n` +
-          `📢 *Nama:* ${chName}\n` +
+        `🎉> 91; COOING EXPLOSIONS > 93;\n\n` +
+          `📢*Nombre:*${chName}\n` +
           `🆔 *JID:* \`${result?.id || '-'}\`\n` +
           `🔗 *Invite:* ${result?.invite ? 'https://whatsapp.com/channel/' + result.invite : '-'}`
       );
     }
   } catch (err) {
     console.error(`[CHANNEL TOOLS ERROR]`, err.message);
-    return m.reply(`❌ Gagal mengeksekusi ${p}${cmd}: ${err.message}`);
+    return m.reply(`❌Fallido mengeksekusi${p}${cmd}: ${err.message}`);
   }
 }
 

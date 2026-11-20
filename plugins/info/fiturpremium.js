@@ -5,7 +5,7 @@ const config = {
   name: "fiturpremium",
   alias: ["listprem", "listpremium", "fiturprem"],
   category: "info",
-  description: "Melihat daftar seluruh fitur premium bot",
+  description: "Mira toda la lista de características premium de bots",
   usage: ".fiturpremium",
   example: ".fiturpremium",
   isOwner: false,
@@ -41,8 +41,8 @@ async function handler(m, { sock }) {
   if (premiumFeatures.length === 0) {
     await m.react("✅");
     return m.reply(
-      `📝 *DAFTAR FITUR PREMIUM*\n\n` +
-      `Saat ini belum ada fitur yang terdaftar sebagai fitur premium eksklusif.`
+      `📝* LÍNEA DE LUZ PERMUM*\n\n` +
+      `No hay características actualmente enumeradas como características exLa prima clusivas.`
     );
   }
   
@@ -52,10 +52,10 @@ async function handler(m, { sock }) {
   
   await m.react("✅");
   return m.reply(
-    `💎 *DAFTAR FITUR PREMIUM*\n\n` +
-    `Berikut adalah seluruh daftar fitur eksklusif yang hanya bisa diakses oleh member berstatus Premium:\n\n` +
+    `💎* LÍNEA DE LUZ PERMUM*\n\n` +
+    `Asport es una lista compleja de características exclusivas que sólo un miembro de categoría premium puede actuar en:\n\n` +
     `${listText}\n\n` +
-    `_Untuk berlangganan premium, silakan hubungi owner._`
+    `Para suscribirse a la prima, por favor contacte con el propietario. _`
   );
 }
 

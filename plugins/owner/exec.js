@@ -9,7 +9,7 @@ const pluginConfig = {
     name: 'exec',
     alias: ['>', 'run', 'execute'],
     category: 'owner',
-    description: 'Jalankan kode JS dari pesan yang di-reply (Owner Only)',
+    description: 'Ejecute el código JS del mensaje de respuesta (sólo propietario)',
     usage: '.> (reply pesan berisi kode)',
     example: '.> (reply)',
     isOwner: true,
@@ -23,7 +23,7 @@ const pluginConfig = {
 
 async function handler(m, { sock, store }) {
     if (!_configjs2.default.isOwner(m.sender)) {
-        return m.reply('❌ *Owner Only!*')
+        return m.reply('❌*Propietario Only!*')
     }
 
     let code = null
@@ -39,12 +39,12 @@ async function handler(m, { sock, store }) {
     if (!code) {
         return m.reply(
             `⚙️ *ᴇxᴇᴄ*\n\n` +
-            `> Reply pesan berisi kode JavaScript!\n\n` +
-            `*Atau:*\n` +
+            `¡Yafreply un mensaje con el código javasnipt!\n\n` +
+            `*O:*\n` +
             `> .> <code>\n\n` +
-            `*Contoh:*\n` +
-            `> Reply pesan: \`return m.chat\`\n` +
-            `> Lalu ketik: .>`
+            `*Ejemplo:*\n` +
+            `Responder mensaje:\`return m.chat\`\n` +
+            `> Luego escribe:.>`
         )
     }
 

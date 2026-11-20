@@ -30,21 +30,21 @@ function handler(m, { sock }) {
 
   if (!action || !["create", "join", "leave", "info", "list", "members", "deposit"].includes(action)) {
     let txt = `🏰 *SERIKAT GUILD RPG* 🏰\n\n`;
-    txt += `Bangun atau gabung ke serikat buat dapet *benefit* bareng temen-temen lu!\n\n`;
-    txt += `*Daftar Perintah:*\n`;
+    txt += `¡Levántate o ponte en una puta fila para conseguir tus malditos amigos!\n\n`;
+    txt += `*Lista de comandos:*\n`;
     txt += `🗡️ \`${m.prefix}guild create <nama>\` (Bikin Guild)\n`;
-    txt += `🛡️ \`${m.prefix}guild join <nama>\` (Gabung Guild)\n`;
-    txt += `🏃 \`${m.prefix}guild leave\` (Keluar Guild)\n`;
-    txt += `📜 \`${m.prefix}guild info\` (Cek Stats Guild)\n`;
-    txt += `👥 \`${m.prefix}guild members\` (Cek Anggota)\n`;
-    txt += `💰 \`${m.prefix}guild deposit <amount>\` (Donasi Kas)\n`;
+    txt += `🛡️ \`${m.prefix}guild join <nama>\`(Unirse Guild)\n`;
+    txt += `🏃 \`${m.prefix}licencia de gremio\`(Salir Guild)\n`;
+    txt += `📜 \`${m.prefix}guild info\`( Chequear Stats Gushed )\n`;
+    txt += `👥 \`${m.prefix}pelucas de gremio\`(Comprueba Miembro)\n`;
+    txt += `💰 \`${m.prefix}depósito de gremio<amount>\`(Donación Kas)\n`;
     txt += `🏆 \`${m.prefix}guild list\` (Top Guilds)\n\n`;
 
     if (user.rpg.guildId) {
       const myGuild = guilds[user.rpg.guildId];
       txt += `📌 Status: Tergabung di *${_optionalChain([myGuild, 'optionalAccess', _7 => _7.name]) || "Unknown"}*`;
     } else {
-      txt += `📌 Status: *Jomblo Guild (Kagak Punya Temen)*`;
+      txt += `📌Estado: * El Jombo Guid ( Kagak Tener Temen ) *`;
     }
     return m.reply(txt);
   }
@@ -52,10 +52,10 @@ function handler(m, { sock }) {
   if (action === "list") {
     const guildList = Object.values(guilds);
     if (guildList.length === 0) {
-      return m.reply(`Belum ada guild di server ini! Bikin dong pake \`${m.prefix}guild create <nama>\``);
+      return m.reply(`¡Hay un gremio en este servidor!\`${m.prefix}guild create <nama>\``);
     }
 
-    let txt = `🏆 *DAFTAR TOP GUILD* 🏆\n\n`;
+    let txt = `🏆* Registrate TOP GUILD*🏆\n\n`;
     for (const g of guildList.slice(0, 10)) {
       txt += `🏰 *${g.name}* (Lv. ${g.level || 1})\n`;
       txt += `👥 Member: ${_optionalChain([g, 'access', _8 => _8.members, 'optionalAccess', _9 => _9.length]) || 0}/50\n`;
@@ -67,25 +67,25 @@ function handler(m, { sock }) {
 
   if (action === "create") {
     if (user.rpg.guildId) {
-      return m.reply(`Rakus lu! Kan udah punya guild. Leave dulu sana kalau mau bikin baru!`);
+      return m.reply(`¡Déjalo ahí si quieres comprar nuevos!`);
     }
 
     if (!guildName || guildName.length < 3) {
-      return m.reply(`Nama guild minimal *3 huruf* bos!`);
+      return m.reply(`Nombre de un gremio mínimo * 3 letra * jefe!`);
     }
 
     if (guildName.length > 20) {
-      return m.reply(`Nama guild kepanjangan, maksimal *20 huruf* aja!`);
+      return m.reply(`¡El nombre de un gremio representa 20 tops!`);
     }
 
     const existingGuild = Object.values(guilds).find((g) => g.name.toLowerCase() === guildName.toLowerCase());
     if (existingGuild) {
-      return m.reply(`Yahh, nama *${guildName}* udah dipake kelompok lain! Cari nama yang lebih keren!`);
+      return m.reply(`Bueno, nombre...${guildName}¡Encuentra un nombre más fresco!`);
     }
 
     const createCost = 10000;
     if ((user.koin || 0) < createCost) {
-      return m.reply(`Miskin amat mau jadi ketua? Butuh *Rp 10.000* buat biaya administrasi pendaftaran Guild!`);
+      return m.reply(`¿Miskin mait quiere ser una reina?`);
     }
 
     user.koin -= createCost;
@@ -107,31 +107,31 @@ function handler(m, { sock }) {
     user.rpg.guildId = guildId;
     db.save();
 
-    let txt = `🎉 *GUILD RESMI BERDIRI!* 🎉\n\n`;
-    txt += `Papan nama *${guildName}* telah dipasang di markas baru!\n\n`;
-    txt += `👑 Ketua: @${m.sender.split("@")[0]}\n`;
-    txt += `💸 Biaya Bangunan: *-Rp ${createCost.toLocaleString()}*\n\n`;
-    txt += `> _Ajak temen-temen lu buat gabung pake \`.guild join ${guildName}\`!_`;
+    let txt = `🎉* GUILD Oficial WENT!🎉\n\n`;
+    txt += `Nombre de papá *${guildName}* ha sido puesto en el nuevo mercado!\n\n`;
+    txt += `👑Lider: @${m.sender.split("@")[0]}\n`;
+    txt += `💸Coste build: * - Rp${createCost.toLocaleString()}*\n\n`;
+    txt += `* Dile a tus amigos que paguen por ello*\`- La culpa se une.${guildName}\`!_`;
 
     return m.reply(txt, { mentions: [m.sender] });
   }
 
   if (action === "join") {
     if (user.rpg.guildId) {
-      return m.reply(`Lu udah punya kelompok bro! Nggak bisa *double agent* di sini.`);
+      return m.reply(`¡Tienes un grupo de chicos!`);
     }
 
     if (!guildName) {
-      return m.reply(`Tulis nama guild yang mau dimasukin!\nContoh: \`${m.prefix}guild join DragonSlayers\``);
+      return m.reply(`¡La palabra " gremio " que quiere ser ingresada!\nEjemplo:\`${m.prefix}guild join DragonSlayers\``);
     }
 
     const targetGuild = Object.values(guilds).find((g) => g.name.toLowerCase() === guildName.toLowerCase());
     if (!targetGuild) {
-      return m.reply(`Guild *${guildName}* nggak ketemu! Typo kali lu?`);
+      return m.reply(`Guild *${guildName}Typo @-@ san, ¿cuál es tu problema?`);
     }
 
     if (_optionalChain([targetGuild, 'access', _10 => _10.members, 'optionalAccess', _11 => _11.length]) >= 50) {
-      return m.reply(`Maaf bang, kapasitas markas guild *${targetGuild.name}* udah full (50/50)!`);
+      return m.reply(`Lo siento hermano, Markas capacidad de gremio *${targetGuild.name}* ya full ( 50 / 50 )!`);
     }
 
     targetGuild.members = targetGuild.members || [];
@@ -139,23 +139,23 @@ function handler(m, { sock }) {
     user.rpg.guildId = targetGuild.id;
     db.save();
 
-    return m.reply(`✅ Selamat datang di barak! Lu sekarang resmi jadi anggota guild *${targetGuild.name}*! ⚔️`);
+    return m.reply(`✅Lu es ahora miembro del gremio.${targetGuild.name}*! ⚔️`);
   }
 
   if (action === "leave") {
     if (!user.rpg.guildId) {
-      return m.reply(`Lu aja belum masuk guild mana-mana, mau leave darimana coba? 😂`);
+      return m.reply(`¿No has estado en un gremio en ningún lugar, quieres irte?😂`);
     }
 
     const myGuild = guilds[user.rpg.guildId];
     if (!myGuild) {
       user.rpg.guildId = null;
       db.save();
-      return m.reply(`Guild lu kayaknya udah bubar atau di-*delete*. Data udah di-reset.`);
+      return m.reply(`Te llenó mucho o a - * eliminar *. datos hasta @-@ restablecer.`);
     }
 
     if (myGuild.leader === m.sender && _optionalChain([myGuild, 'access', _12 => _12.members, 'optionalAccess', _13 => _13.length]) > 1) {
-      return m.reply(`Woy ketua! Masa mau ninggalin anggota gitu aja? Transfer kepemimpinan dulu ke member lain atau kick semua anggotanya! 😡`);
+      return m.reply(`¿Quieres dejar a un miembro del equipo?😡`);
     }
 
     myGuild.members = (myGuild.members || []).filter((m) => m !== m.sender);
@@ -168,37 +168,37 @@ function handler(m, { sock }) {
     user.rpg.guildId = null;
     db.save();
 
-    return m.reply(`🏃 Lu cabut dari markas *${guildName}* dan kembali jadi ronin tanpa tuan!`);
+    return m.reply(`🏃Usted es el debacle del mercado${guildName}* y volver a ser un ronin sin un tuan!`);
   }
 
   if (action === "info") {
     if (!user.rpg.guildId) {
-      return m.reply(`Lu nggak punya guild bos! Cari temen sana!`);
+      return m.reply(`Lu no tener guild bos! Busca temen sana!`);
     }
 
     const myGuild = guilds[user.rpg.guildId];
     if (!myGuild) {
-      return m.reply(`Guild tidak ditemukan!`);
+      return m.reply(`¡Los huéspedes no se encuentran!`);
     }
 
-    let txt = `🏰 *PAPAN INFO GUILD* 🏰\n\n`;
-    txt += `👑 Nama: *${myGuild.name}*\n`;
+    let txt = `🏰* PAPANIA INFO GUILD *🏰\n\n`;
+    txt += `👑Nombre: *${myGuild.name}*\n`;
     txt += `👤 Leader: @${_optionalChain([myGuild, 'access', _14 => _14.leader, 'optionalAccess', _15 => _15.split, 'call', _16 => _16("@"), 'access', _17 => _17[0]])}\n`;
     txt += `📊 Level: *${myGuild.level || 1}*\n`;
-    txt += `👥 Anggota: *${_optionalChain([myGuild, 'access', _18 => _18.members, 'optionalAccess', _19 => _19.length]) || 0}/50*\n`;
-    txt += `💰 Uang Kas: *Rp ${(myGuild.treasury || 0).toLocaleString()}*\n`;
+    txt += `👥Miembro: *${_optionalChain([myGuild, 'access', _18 => _18.members, 'optionalAccess', _19 => _19.length]) || 0}/50*\n`;
+    txt += `💰Dinero${(myGuild.treasury || 0).toLocaleString()}*\n`;
 
     return m.reply(txt, { mentions: [myGuild.leader] });
   }
 
   if (action === "members") {
     if (!user.rpg.guildId) {
-      return m.reply(`Cieee nggak punya guild...`);
+      return m.reply(`Cieee No tiene gremio..`);
     }
 
     const myGuild = guilds[user.rpg.guildId];
     if (!myGuild) {
-      return m.reply(`Guild tidak ditemukan!`);
+      return m.reply(`¡Los huéspedes no se encuentran!`);
     }
 
     const memberList = (myGuild.members || [])
@@ -208,33 +208,33 @@ function handler(m, { sock }) {
       })
       .join("\n");
 
-    return m.reply(`👥 *DAFTAR ANGGOTA ${myGuild.name}*\n\n${memberList}`, { mentions: myGuild.members });
+    return m.reply(`👥*Registrate Miembro${myGuild.name}*\n\n${memberList}`, { mentions: myGuild.members });
   }
 
   if (action === "deposit") {
     if (!user.rpg.guildId) {
-      return m.reply(`Lu mau donasi ke panti asuhan mana? Lu aja nggak punya guild!`);
+      return m.reply(`¿Dónde quieres donar?`);
     }
 
     const myGuild = guilds[user.rpg.guildId];
     if (!myGuild) {
-      return m.reply(`Guild tidak ditemukan!`);
+      return m.reply(`¡Los huéspedes no se encuentran!`);
     }
 
     const amount = parseInt(args[1]) || 0;
     if (amount < 100) {
-      return m.reply(`Pelit amat! Minimal donasi kas *Rp 100* lah!`);
+      return m.reply(`¡Al menos el dinero vale 100 dólares!`);
     }
 
     if ((user.koin || 0) < amount) {
-      return m.reply(`Duit lu kurang bro buat donasi segitu!`);
+      return m.reply(`¡Eres un poco corto para una donación!`);
     }
 
     user.koin -= amount;
     myGuild.treasury = (myGuild.treasury || 0) + amount;
     db.save();
 
-    return m.reply(`✅ *DONASI KAS BERHASIL!*\n\nLu barusan masukin *Rp ${amount.toLocaleString()}* ke brankas Guild!\nTotal Kas Sekarang: *Rp ${myGuild.treasury.toLocaleString()}* 🏰💰`);
+    return m.reply(`✅(Explosiones de donación de alta calidad )\n\nAcabas de entrar.${amount.toLocaleString()}¡A la caja fuerte de Guid!\nTOTAL Ahora: * Rp${myGuild.treasury.toLocaleString()}* 🏰💰`);
   }
 }
 

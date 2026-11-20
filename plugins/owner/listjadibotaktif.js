@@ -3,7 +3,7 @@ const pluginConfig = {
     name: 'listjadibotaktif',
     alias: ['jadibotaktif', 'activejadibots'],
     category: 'owner',
-    description: 'Lihat jadibot yang sedang aktif dengan detail',
+    description: 'Mire el kebabot que \' s activo con los detalles.',
     usage: '.listjadibotaktif',
     example: '.listjadibotaktif',
     isOwner: true,
@@ -28,11 +28,11 @@ async function handler(m, { sock }) {
     const active = _ourinjadibotmanagerjs.getActiveJadibots.call(void 0, )
 
     if (active.length === 0) {
-        return m.reply(`❌ Tidak ada jadibot yang aktif saat ini`)
+        return m.reply(`❌No existe tal peso en este momento.`)
     }
 
     let txt = `🟢 *ᴊᴀᴅɪʙᴏᴛ ᴀᴋᴛɪꜰ*\n\n`
-    txt += `> 📊 Total: *${active.length}* bot aktif\n\n`
+    txt += `> 📊 Total: *${active.length}* bot activa\n\n`
 
     active.forEach((s, i) => {
         const uptime = formatUptime(Date.now() - s.startedAt)
@@ -41,7 +41,7 @@ async function handler(m, { sock }) {
         txt += `   ⏱️ *${uptime}* — 👤 @${owner}\n\n`
     })
 
-    txt += `> \`${m.prefix}stopalljadibot\` — Hentikan semua`
+    txt += `> \`${m.prefix}Stopaljabot\` —Hentikan todo`
 
     const mentions = active.flatMap(s => [s.jid, s.ownerJid].filter(Boolean))
 

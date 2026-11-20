@@ -6,7 +6,7 @@ const pluginConfig = {
   name: "publicthisgc",
   alias: ["publicgc", "publicgroup", "publicthisgroup"],
   category: "group",
-  description: "Aktifkan mode public hanya di grup ini",
+  description: "Permitir modos públicos sólo en este grupo",
   usage: ".publicthisgc",
   example: ".publicthisgc",
   isOwner: true,
@@ -29,8 +29,8 @@ async function handler(m, { sock }) {
   if (isPublicGroup && !isSelfGroup) {
     return m.reply(
       `ℹ️ *ɢʀᴜᴘ ɪɴɪ sᴜᴅᴀʜ ᴍᴏᴅᴇ ᴘᴜʙʟɪᴄ*\n\n` +
-        `> Bot merespon semua member di grup ini\n\n` +
-        `_Gunakan ${m.prefix}selfthisgc untuk menutup akses_`,
+        `# Responde todas las fotos de este grupo\n\n` +
+        `*Usarlo*${m.prefix}autothisgc para cerrar el acceso _`,
     );
   }
 
@@ -44,10 +44,10 @@ async function handler(m, { sock }) {
   m.react("🌐");
   return m.reply(
     `🌐 *ᴍᴏᴅᴇ ᴘᴜʙʟɪᴄ ᴅɪᴀᴋᴛɪꜰᴋᴀsɪ*\n\n` +
-      `> Bot sekarang merespon semua member di grup ini\n` +
-      `> Override mode global aktif untuk grup ini\n\n` +
-      `📋 *Grup lain tidak terpengaruh*\n\n` +
-      `_Gunakan ${m.prefix}selfthisgc untuk menutup akses lagi_`,
+      `*Ahora respondiendo a todas las fotos de este grupo*\n` +
+      `# Modo de sobrescribir activo global para este grupo #\n\n` +
+      `📋Otro Grupo no está afectado\n\n` +
+      `*Usarlo*${m.prefix}autoestegc para cerrar acciones de nuevo _`,
   );
 }
 

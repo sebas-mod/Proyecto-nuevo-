@@ -6,7 +6,7 @@ const pluginConfig = {
   name: "searchplugin",
   alias: ["splugin", "findplugin", "infoplugin"],
   category: "owner",
-  description: "Cari dan tampilkan info plugin",
+  description: "Busca y mostrar los plugins en el campo",
   usage: ".splugin <nama>",
   example: ".splugin sticker",
   isOwner: true,
@@ -63,7 +63,7 @@ async function findPluginFromFile(pluginsDir, name) {
       if (baseName.toLowerCase() === name.toLowerCase()) {
         const filePath = _path2.default.join(folderPath, file);
         try {
-          const mod = await Promise.resolve().then(() => _interopRequireWildcard(require(`file://${filePath.replace(/\\/g, "/")}`)));
+          const mod = await Promise.resolve().then(() => _interopRequireWildcard(require(`archivo://${filePath.replace(/\\/g, "/")}`)));
           return {
             ...mod.config,
             folder,
@@ -86,7 +86,7 @@ async function handler(m, { sock }) {
   if (!name) {
     return m.reply(
       `🔍 *sᴇᴀʀᴄʜ ᴘʟᴜɢɪɴ*\n\n` +
-        `> Cari dan tampilkan info plugin\n\n` +
+        `Busca y mostrar el plugin en el campo\n\n` +
         `*ᴄᴏɴᴛᴏʜ:*\n` +
         `> \`${m.prefix}splugin sticker\`\n` +
         `> \`${m.prefix}splugin menu\``,
@@ -106,7 +106,7 @@ async function handler(m, { sock }) {
     if (!info) {
       await m.react("❌");
       return m.reply(
-        `❌ *ᴛɪᴅᴀᴋ ᴅɪᴛᴇᴍᴜᴋᴀɴ*\n\n> Plugin \`${name}\` tidak ditemukan`,
+        `❌ *ᴛɪᴅᴀᴋ ᴅɪᴛᴇᴍᴜᴋᴀɴ*\n\n> Plugin \`${name}\`no encontrado`,
       );
     }
 
@@ -114,8 +114,8 @@ async function handler(m, { sock }) {
       await m.react("⚠️");
       return m.reply(
         `⚠️ *ᴘʟᴜɢɪɴ ᴇʀʀᴏʀ*\n\n` +
-          `> File: \`${info.file}\`\n` +
-          `> Folder: \`${info.folder}\`\n` +
+          `> Archivo:\`${info.file}\`\n` +
+          `> Carpeta:\`${info.folder}\`\n` +
           `> Error: \`${info.error}\``,
       );
     }
@@ -123,11 +123,11 @@ async function handler(m, { sock }) {
     const aliases = Array.isArray(info.alias)
       ? info.alias.join(", ")
       : info.alias || "-";
-    const isEnabled = info.isEnabled !== false ? "✅ Ya" : "❌ Tidak";
-    const isOwner = info.isOwner ? "✅ Ya" : "❌ Tidak";
-    const isPremium = info.isPremium ? "✅ Ya" : "❌ Tidak";
-    const isGroup = info.isGroup ? "✅ Ya" : "❌ Tidak";
-    const isAdmin = info.isAdmin ? "✅ Ya" : "❌ Tidak";
+    const isEnabled = info.isEnabled !== false ? "✅ Ya" : "❌No";
+    const isOwner = info.isOwner ? "✅ Ya" : "❌No";
+    const isPremium = info.isPremium ? "✅ Ya" : "❌No";
+    const isGroup = info.isGroup ? "✅ Ya" : "❌No";
+    const isAdmin = info.isAdmin ? "✅ Ya" : "❌No";
 
     await m.react("✅");
     return m.reply(

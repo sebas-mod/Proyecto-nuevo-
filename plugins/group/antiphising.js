@@ -4,7 +4,7 @@ const pluginConfig = {
     name: 'antiphising',
     alias: ['antiphishing', 'antiscamlink', 'nophising'],
     category: 'group',
-    description: 'Deteksi konten phising di grup',
+    description: 'Contenido dettando el phising en grupo',
     usage: '.antiphising <on/off/metode> [kick/remove]',
     example: '.antiphising on',
     isOwner: false,
@@ -30,11 +30,11 @@ function handler(m) {
             `🎣 *ᴀɴᴛɪᴘʜɪsɪɴɢ*\n\n` +
             `> Status: *${status.toUpperCase()}*\n` +
             `> Mode: *${mode.toUpperCase()}*\n\n` +
-            `> Deteksi pesan phising seperti klik link, verifikasi akun, login palsu, shortener mencurigakan, URL IP, punycode, dan pola sejenis.\n\n` +
+            `Para detectar mensajes de phising como enlaces de clics, cuentas de verificación, palsu de log, shortener steal, URL IP, punycodes, y pola @-@ type.\n\n` +
             `> \`${m.prefix}antiphising on\`\n` +
             `> \`${m.prefix}antiphising off\`\n` +
-            `> \`${m.prefix}antiphising metode kick\`\n` +
-            `> \`${m.prefix}antiphising metode remove\``
+            `> \`${m.prefix}patada de método antifraseante\`\n` +
+            `> \`${m.prefix}método antifrasecado eliminar\``
         )
     }
 
@@ -58,7 +58,7 @@ function handler(m) {
             db.setGroup(m.chat, { antiphising: 'on', antiphisingMode: 'remove' })
             return m.reply('✅ *AntiPhising mode DELETE diaktifkan*')
         }
-        return m.reply('❌ Metode tidak valid! Gunakan: `kick` atau `remove`')
+        return m.reply('❌¡Método inválido!`Patito`o`Retirar`')
     }
 
     if (option === 'kick') {
@@ -71,7 +71,7 @@ function handler(m) {
         return m.reply('✅ *AntiPhising mode DELETE diaktifkan*')
     }
 
-    return m.reply('❌ Opsi tidak valid! Gunakan: `on`, `off`, `metode kick`, `metode remove`')
+    return m.reply('❌¡Opsi inválido!`on`.`apagado`.`metodo kick`.`metodo remove`')
 }
 
 exports.config = pluginConfig; exports.handler = handler;

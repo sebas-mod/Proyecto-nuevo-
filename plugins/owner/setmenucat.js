@@ -22,19 +22,19 @@ const VARIANTS = {
   v1: {
     id: 1,
     name: "Plain Text",
-    desc: "Tampilan teks biasa tanpa media, cocok untuk koneksi lambat atau device yang tidak support interactive message",
+    desc: "Texto regular sin medios, coc para conexión de latracto o desviación que no admite mensaje interactivo",
     emoji: "📝",
   },
   v2: {
     id: 2,
     name: "Interactive + Image Header",
-    desc: "Tampilan premium dengan gambar header, limited time offer, dan tombol navigasi interaktif",
+    desc: "Mostrar premium con cabeceras de imagen, oferta de tiempo limitado, y botones de navegación interactivos",
     emoji: "🖼️",
   },
   v5: {
     id: 5,
     name: "MENUCAT NATIVEFLOW",
-    desc: "Tampilan native flow premium dengan video & cuaca",
+    desc: "Apareciendo prima de flujo ingenuo con video dhamca",
     emoji: "✨",
   },
   v6: {
@@ -52,7 +52,7 @@ async function handler(m, { sock, db }) {
   if (variant) {
     const selected = VARIANTS[variant];
     if (!selected) {
-      await m.reply(`❌ *VARIANT TIDAK VALID*\n\nGunakan: *v1*, *v2*, *v5*, atau *v6*`);
+      await m.reply(`❌* VARIANT TIGHT VALID*\n\nUso: * v1 *, * v2 *, * v5 *, o * v6 *`);
       return;
     }
 
@@ -60,7 +60,7 @@ async function handler(m, { sock, db }) {
     await db.save();
 
     await m.reply(
-      `✅ *MENUCAT VARIANT DIUBAH*\n\n` +
+      `✅> 91; RESUMEN DE VARIANT > 93;\n\n` +
         `${selected.emoji} *V${selected.id} — ${selected.name}*\n` +
         `${selected.desc}`,
     );
@@ -92,9 +92,9 @@ async function handler(m, { sock, db }) {
 
   const bodyText =
     `📂🗂️ *MENUCAT VARIANT*\n\n` +
-    `Atur tampilan menu per kategori ketika user memilih kategori dari menu utama 📋✨\n` +
-    `Variant aktif saat ini: *V${current} — ${_optionalChain([VARIANTS, 'access', _6 => _6[`v${current}`], 'optionalAccess', _7 => _7.name]) || "Unknown"}* 🎯\n\n` +
-    `> Pilih variant menucat dari tombol di bawah 👇`;
+    `Enciende el menú de vista por cathegori cuando el usuario selecciona el cathegori del menú principal📋✨\n` +
+    `Variable actual: * V${current} — ${_optionalChain([VARIANTS, 'access', _6 => _6[`v${current}`], 'optionalAccess', _7 => _7.name]) || "Unknown"}* 🎯\n\n` +
+    `*Elija la variante* *de la cuna en la flauta*👇`;
 
   await sock.sendButton(
     m.chat,

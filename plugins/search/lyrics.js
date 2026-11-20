@@ -34,9 +34,9 @@ async function handler(m, { sock }) {
     
     if (!query) {
         return m.reply(
-            `Hai kak! ✨ Lupa masukin judul lagunya ya? 😅\n\n` +
-            `Coba deh ketik perintahnya begini: *${m.prefix}lirik sempurna andra and the backbone* 🎶\n\n` +
-            `Yuk, masukin judulnya biar kita bisa nyanyi bareng! 🎤🔥`
+            `Hola hermano!✨Eka entrar en el gimiso,¿¿No?😅\n\n` +
+            `Intenta como en el mando como este: *${m.prefix}lirik sempurna andra and the backbone* 🎶\n\n` +
+            `¡Vamos a buscar una silla para cantar una canción!🎤🔥`
         )
     }
     
@@ -47,19 +47,19 @@ async function handler(m, { sock }) {
         
         if (!data || !data.lyrics || !data.lyrics.plain_lyrics) {
             m.react('❌')
-            return m.reply(`Waduh, maaf banget kak 🥺 lirik lagu *${query}* nggak ketemu nih di database. Coba pakai kata kunci atau judul yang lebih spesifik ya! 💔`)
+            return m.reply(`Lo siento, hermano.🥺como canciones *${query}¡Intente usar una contraseña o encabezado más específico!💔`)
         }
         
         const title = data.title || query
-        const artist = data.artist || data.lyrics.artist_name || 'Tidak diketahui'
+        const artist = data.artist || data.lyrics.artist_name || 'No diketahui'
         const lyricsText = data.lyrics.plain_lyrics
         
-        const texts = `Ketemu nih liriknya! 🎉\n\n` +
+        const texts = `¡La reunión litúrgica!🎉\n\n` +
                       `🎵 *Judul:* ${title}\n` +
                       `🎤 *Artis:* ${artist}\n\n` +
-                      `Ini dia lirik lengkapnya buat kamu:\n\n` +
+                      `Aquí tienes.\n\n` +
                       `${lyricsText}\n\n` +
-                      `Selamat bernyanyi ria, kak! 🎧💖`
+                      `Canta bien, hermana!🎧💖`
                       
         if (data.thumbnail && data.thumbnail !== '-') {
             await sock.sendMessage(m.chat, {
@@ -74,7 +74,7 @@ async function handler(m, { sock }) {
         
     } catch (error) {
         m.react('☢')
-        m.reply(`Yah, server liriknya lagi ngambek nih kak 😭 Coba lagi nanti ya! 🛠️✨`)
+        m.reply(`Bueno, la letra del servidor está tomando pies fríos.😭¡Inténtalo de nuevo más tarde!🛠♪✨`)
     }
 }
 

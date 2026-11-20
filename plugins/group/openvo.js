@@ -3,7 +3,7 @@ const pluginConfig = {
     name: 'rvo',
     alias: [],
     category: 'group',
-    description: 'Membuka pesan 1x lihat yang di-reply',
+    description: 'Mensaje abierto 1xvéase la respuesta',
     usage: '.rvo (reply pesan 1x lihat)',
     example: '.rvo',
     isOwner: false,
@@ -21,8 +21,8 @@ async function handler(m, { sock }) {
     if (!quoted) {
         await m.reply(
             `❌ *ɢᴀɢᴀʟ*\n\n` +
-            `> Balas pesan 1x lihat dengan perintah ini!\n` +
-            `> Gunakan: \`${m.prefix}openvo\` (reply pesan 1x lihat)`
+            `*Otro*x¡Míralo con este orden!\n` +
+            `> Usa: \`${m.prefix}openvo\`(mensaje de respuesta 1xmira)`
         )
         return
     }
@@ -31,7 +31,7 @@ async function handler(m, { sock }) {
     if (!quotedMsg) {
         await m.reply(
             `❌ *ᴘᴇsᴀɴ ᴛɪᴅᴀᴋ ᴅɪᴛᴇᴍᴜᴋᴀɴ*\n\n` +
-            `> Tidak dapat membaca pesan yang di-reply.`
+            `No se pueden leer mensajes que se reponen.`
         )
         return
     }
@@ -42,7 +42,7 @@ async function handler(m, { sock }) {
     if (!content) {
         await m.reply(
             `❌ *ᴋᴏɴᴛᴇɴ ᴛɪᴅᴀᴋ ᴅɪᴛᴇᴍᴜᴋᴀɴ*\n\n` +
-            `> Konten pesan tidak dapat dibaca.`
+            `Para Contenidos los mensajes no se pueden pegar.`
         )
         return
     }
@@ -50,8 +50,8 @@ async function handler(m, { sock }) {
     if (!content.viewOnce) {
         await m.reply(
             `❌ *ʙᴜᴋᴀɴ ᴠɪᴇᴡᴏɴᴄᴇ*\n\n` +
-            `> Pesan yang di-reply bukan pesan 1x lihat!\n` +
-            `> Balas pesan dengan ikon 1x lihat (👁️).`
+            `Mensaje, quien no responde a un mensaje 1xmira!\n` +
+            `*Mensajes de Responde con icono 1*xmira (👁- (Gruñido)`
         )
         return
     }
@@ -70,7 +70,7 @@ async function handler(m, { sock }) {
 
         if (!mediaType) {
             await m.reply(
-                `Tipenya gak didukung, hanya support image, video, audio`
+                `El tipo es compatible, sólo soporte imágenes, vídeo, audio`
             )
             return
         }
@@ -85,8 +85,8 @@ async function handler(m, { sock }) {
         if (!buffer || buffer.length < 100) {
             await m.reply(
                 `❌ *ɢᴀɢᴀʟ ᴍᴇɴɢᴜɴᴅᴜʜ*\n\n` +
-                `> Tidak dapat mengunduh media.\n` +
-                `> Media mungkin sudah kadaluarsa.`
+                `No se puede descargar los medios de comunicación.\n` +
+                `Ehemedia puede haber expirado.`
             )
             return
         }
@@ -111,7 +111,7 @@ async function handler(m, { sock }) {
     } catch (error) {
         await m.reply(
             `❌ *ᴇʀʀᴏʀ*\n\n` +
-            `> Gagal membuka pesan 1x lihat.\n` +
+            `Gafl hace el mensaje 1xmira.\n` +
             `> _${error.message}_`
         )
     }

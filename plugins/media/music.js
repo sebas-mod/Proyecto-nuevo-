@@ -24,7 +24,7 @@ async function handler(m, { sock, command }) {
     const num = parseInt(musicNum)
     
     if (isNaN(num) || num < 1 || num > 65) {
-        return m.reply(`🎵 *ᴍᴜsɪᴄ ᴄᴏʟʟᴇᴄᴛɪᴏɴ*\n\n> Tersedia: .music1 - .music65`)
+        return m.reply(`🎵*ᴍᴜSɪᴄ ᴄᴏʟʟᴇᴄᴛɪᴏɴ*\n\n> Disponible:.music1 -.music65`)
     }
     
     m.react('🕕')
@@ -41,7 +41,7 @@ async function handler(m, { sock, command }) {
         
     } catch (err) {
         m.react('❌')
-        m.reply(`❌ *ᴇʀʀᴏʀ*\n\n> Musik tidak ditemukan atau gagal diambil.`)
+        m.reply(`❌*ᴇʀʀᴏʀ*\n\nMusik 's not found or failed to be taken.`)
     }
 }
 

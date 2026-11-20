@@ -36,7 +36,7 @@ const pluginConfig = {
     name: ['addprefix', 'gantiprefix', 'setprefix', 'delprefix', 'listprefix', 'resetprefix'],
     alias: [],
     category: 'owner',
-    description: 'Manajemen prefix bot',
+    description: 'Preficultores de MannemenxBot',
     usage: '.addprefix <prefix1> <prefix2>...',
     example: '.addprefix ! # $',
     isOwner: true,
@@ -61,13 +61,13 @@ function handler(m, { sock }) {
             if (args.length === 0) {
                 return m.reply(
                     `✏️ *ᴀᴅᴅ ᴘʀᴇғɪx*\n\n` +
-                    `> Tambah prefix baru untuk bot\n\n` +
-                    `*Format:*\n` +
+                    `*Agrega el prefi*xnuevo para bot\n\n` +
+                    `*Formato:*\n` +
                     `> \`${m.prefix}addprefix <prefix1> <prefix2> ...\`\n\n` +
-                    `*Contoh:*\n` +
+                    `*Ejemplo:*\n` +
                     `> \`${m.prefix}addprefix ! # $ 😚\`\n\n` +
                     `*Special:*\n` +
-                    `> \`${m.prefix}addprefix <noprefix>\` - Tanpa prefix`
+                    `> \`${m.prefix}addprefix <noprefix>\`- Sin el prefijox`
                 )
             }
             
@@ -76,8 +76,8 @@ function handler(m, { sock }) {
                 savePrefixes(data)
                 return m.reply(
                     `✅ *ɴᴏᴘʀᴇғɪx ᴅɪᴀᴋᴛɪғᴋᴀɴ*\n\n` +
-                    `> Bot sekarang bisa dijalankan tanpa prefix\n` +
-                    `> Ketik langsung nama command (misal: \`menu\`)`
+                    `*Ahora puede ser corre sin el prefi*x\n` +
+                    `Para escribir el comando nombre ( missal:\`menú\`)`
                 )
             }
             
@@ -88,7 +88,7 @@ function handler(m, { sock }) {
             })
             
             if (newPrefixes.length === 0) {
-                return m.reply(`❌ Tidak ada prefix baru yang valid!`)
+                return m.reply(`❌No hay preficiox¡Nuevo válido!`)
             }
             
             data.prefixes = [...new Set([...data.prefixes, ...newPrefixes])]
@@ -97,7 +97,7 @@ function handler(m, { sock }) {
             m.reply(
                 `✅ *ᴘʀᴇғɪx ᴅɪᴛᴀᴍʙᴀʜᴋᴀɴ*\n\n` +
                 `> Added: \`${newPrefixes.join('` `')}\`\n\n` +
-                `*Semua prefix aktif:*\n` +
+                `*Todo prefixactivo:*\n` +
                 `> \`${getAllPrefixes().join('` `')}\`` +
                 `${data.noprefix ? '\n> + *noprefix* aktif' : ''}`
             )
@@ -109,15 +109,15 @@ function handler(m, { sock }) {
             if (args.length === 0) {
                 return m.reply(
                     `🔄 *ɢᴀɴᴛɪ/sᴇᴛ ᴘʀᴇғɪx*\n\n` +
-                    `> Ganti semua prefix dengan yang baru\n\n` +
-                    `*Format:*\n` +
+                    `♪ Todos los prefijosxcon una nueva\n\n` +
+                    `*Formato:*\n` +
                     `> \`${m.prefix}${cmd} <prefix1> <prefix2> ...\`\n\n` +
-                    `*Contoh:*\n` +
+                    `*Ejemplo:*\n` +
                     `> \`${m.prefix}${cmd} ! G #\`\n\n` +
                     `*Special:*\n` +
-                    `> \`${m.prefix}${cmd} <noprefix>\` - Tanpa prefix saja\n` +
+                    `> \`${m.prefix}${cmd} <noprefix>\`- Sin el prefijoxsolo\n` +
                     `> \`${m.prefix}${cmd} . <noprefix>\` - Prefix . + noprefix\n\n` +
-                    `⚠️ Ini akan menghapus semua prefix lama di database!`
+                    `⚠Esto borrará todo el preficiox¡Largo tiempo sin ver!`
                 )
             }
             
@@ -139,12 +139,12 @@ function handler(m, { sock }) {
             }
             
             if (hasNoprefix) {
-                replyText += `> *Noprefix: Aktif* (bisa ketik command langsung)\n`
+                replyText += `*No prefi*x: Activo * (canulos de comandos cosquibles )\n`
             }
             
-            replyText += `\n*Semua prefix aktif:*\n`
+            replyText += `\n*Todo prefixactivo:*\n`
             replyText += `> \`${getAllPrefixes().join('` `')}\``
-            if (data.noprefix) replyText += `\n> + *noprefix* aktif`
+            if (data.noprefix) replyText += `\n> + *noprefix* activo`
             
             m.reply(replyText)
             break
@@ -154,12 +154,12 @@ function handler(m, { sock }) {
             if (args.length === 0) {
                 return m.reply(
                     `🗑️ *ᴅᴇʟᴇᴛᴇ ᴘʀᴇғɪx*\n\n` +
-                    `> Hapus prefix dari database\n\n` +
-                    `*Format:*\n` +
+                    `*Prefi*xde base de datos\n\n` +
+                    `*Formato:*\n` +
                     `> \`${m.prefix}delprefix <prefix1> <prefix2> ...\`\n\n` +
-                    `*Contoh:*\n` +
+                    `*Ejemplo:*\n` +
                     `> \`${m.prefix}delprefix ! $\`\n` +
-                    `> \`${m.prefix}delprefix <noprefix>\` - Nonaktifkan noprefix`
+                    `> \`${m.prefix}delprefix <noprefix>\`- Desarmar al noprefix`
                 )
             }
             
@@ -185,7 +185,7 @@ function handler(m, { sock }) {
             m.reply(
                 `✅ *ᴘʀᴇғɪx ᴅɪʜᴀᴘᴜs*\n\n` +
                 `> Deleted: \`${deleted.length > 0 ? deleted.join('` `') : 'None'}\`\n\n` +
-                `*Semua prefix aktif:*\n` +
+                `*Todo prefixactivo:*\n` +
                 `> \`${getAllPrefixes().join('` `')}\`` +
                 `${data.noprefix ? '\n> + *noprefix* aktif' : ''}`
             )
@@ -198,7 +198,7 @@ function handler(m, { sock }) {
             
             let text = `📋 *ʟɪsᴛ ᴘʀᴇғɪx*\n\n`
             text += `╭┈┈⬡「 ⚙️ *ᴄᴏɴғɪɢ* 」\n`
-            text += `┃ Default: \`${configPref}\`\n`
+            text += `┃Predeterminado:\`${configPref}\`\n`
             text += `┃ Noprefix: ${data.noprefix ? '✅ Aktif' : '❌ Nonaktif'}\n`
             text += `╰┈┈┈┈┈┈┈┈⬡\n\n`
             
@@ -210,7 +210,7 @@ function handler(m, { sock }) {
                 text += `╰┈┈┈┈┈┈┈┈⬡\n\n`
             }
             
-            text += `*Total prefix aktif:* ${all.length}`
+            text += `*Total prefixactivo:*${all.length}`
             if (data.noprefix) text += ` + noprefix`
             text += `\n> \`${all.join('` `')}\``
             
@@ -225,10 +225,10 @@ function handler(m, { sock }) {
             
             m.reply(
                 `✅ *ᴘʀᴇғɪx ᴅɪʀᴇsᴇᴛ*\n\n` +
-                `> Semua prefix di database dihapus!\n` +
-                `> Noprefix dinonaktifkan!\n` +
-                `> Hanya tersisa prefix dari config.js\n\n` +
-                `*Prefix aktif:* \`${_optionalChain([_configjs2.default, 'access', _8 => _8.command, 'optionalAccess', _9 => _9.prefix]) || '.'}\``
+                `Todos los preficiosx¡En disputa de base!\n` +
+                `# No prefi #xdesactivado!\n` +
+                `*Solo pon el prefi en.*xde config.js\n\n` +
+                `* Prefixactivo:*\`${_optionalChain([_configjs2.default, 'access', _8 => _8.command, 'optionalAccess', _9 => _9.prefix]) || '.'}\``
             )
             break
         }

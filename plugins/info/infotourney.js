@@ -73,7 +73,7 @@ async function handler(m, { sock }) {
 
     if (!tournaments || tournaments.length === 0) {
       await m.react("❌");
-      return m.reply("❌ Tidak ada turnamen yang ditemukan");
+      return m.reply("❌No hay torneo encontrado");
     }
 
     const saluranId = _optionalChain([_configjs2.default, 'access', _2 => _2.saluran, 'optionalAccess', _3 => _3.id]) || "120363400911374213@newsletter";

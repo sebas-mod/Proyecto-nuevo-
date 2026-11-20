@@ -20,24 +20,24 @@ const pluginConfig = {
 const VARIANTS = {
   1: {
     name: "Canvas Image",
-    desc: "Gambar canvas dengan foto profil",
+    desc: "Lona de juego con fotos de perfil",
     emoji: "🎨",
   },
   2: {
     name: "Carousel Cards",
-    desc: "Kartu carousel interaktif dengan tombol",
+    desc: "Carousel interactivo cartu con pubs",
     emoji: "🃏",
   },
   3: {
     name: "Text Only",
-    desc: "Pesan teks minimalis tanpa gambar",
+    desc: "Pessan texto imagen mínima sin minimalista",
     emoji: "📝",
   },
   4: { name: "Group", desc: "ContextInfo group style", emoji: "👥" },
-  5: { name: "Simple", desc: "Pesan teks simple + foto profile", emoji: "✨" },
-  6: { name: "Video", desc: "Kirim video ucapan selamat tinggal", emoji: "🎥" },
-  7: { name: "Interactive Quoted", desc: "Interactive message dengan fake quoted", emoji: "💬" },
-  8: { name: "Super Simple", desc: "Pesan teks sangat singkat tanpa hiasan", emoji: "👋" },
+  5: { name: "Simple", desc: "Mensaje", emoji: "✨" },
+  6: { name: "Video", desc: "Ksenta video adiós", emoji: "🎥" },
+  7: { name: "Interactive Quoted", desc: "Mensaje interactivo con cita falsa", emoji: "💬" },
+  8: { name: "Super Simple", desc: "Texto de Mensaje es muy corto sin ninguna decoración", emoji: "👋" },
 };
 async function handler(m, { sock, db }) {
   const args = m.args || [];
@@ -48,7 +48,7 @@ async function handler(m, { sock, db }) {
     db.setting("goodbyeType", id);
     await db.save();
     await m.reply(
-      `✅ *GOODBYE TYPE DIUBAH*\n\n` +
+      `✅* GOODBANA TYPE USED*\n\n` +
         `${VARIANTS[id].emoji} *V${id} — ${VARIANTS[id].name}*\n` +
         `_${VARIANTS[id].desc}_`,
     );
@@ -74,18 +74,18 @@ async function handler(m, { sock, db }) {
   ];
   const bodyText =
     `👋🚪 *GOODBYE TYPE*\n\n` +
-    `Atur tampilan pesan goodbye saat member keluar dari grup 🚶💨\n` +
-    `Tipe aktif saat ini: *V${current} — ${VARIANTS[current].name}* 🎯\n\n` +
-    `*PENJELASAN TIPE:*\n\n` +
-    `- *V1 Canvas Image* 🎨 — Bot membuat gambar canvas otomatis berisi foto profil dan nama member yang keluar, lalu dikirim sebagai gambar\n\n` +
-    `- *V2 Carousel Cards* 🃏 — Menampilkan kartu carousel interaktif yang bisa di-swipe lengkap dengan tombol action, cocok untuk tampilan modern\n\n` +
-    `- *V3 Text Only* 📝 — Pesan teks biasa tanpa gambar sama sekali, ringan dan minimalis\n\n` +
-    `- *V4 Group* 👥 — Menggunakan contextInfo bergaya group forward, tampilan rapi dengan label newsletter\n\n` +
-    `- *V5 Simple* ✨ — Pesan teks sederhana disertai foto profile member yang keluar, tidak terlalu mencolok namun informatif\n\n` +
-    `- *V6 Video* 🎥 — Mengirimkan video perpisahan yang estetik dilengkapi caption otomatis untuk member\n\n` +
-    `- *V7 Interactive Quoted* 💬 — Mengirimkan pesan interaktif dan fake quoted dari orang yang keluar\n\n` +
-    `- *V8 Super Simple* 👋 — Pesan teks sangat singkat tanpa hiasan (Contoh: Goodbye @user, dari grup...)\n\n` +
-    `> Pilih tipe goodbye dari tombol di bawah 👇`;
+    `Mostrar mensajes de Adiós mientras la foto sale del grupo🚶💨\n` +
+    `Consejo activo actual: * V${current} — ${VARIANTS[current].name}* 🎯\n\n` +
+    `*Explicación TIPE:*\n\n` +
+    `- * V1 Canvas Images *🎨 —Para crear imagen de la automatización de lienzos contiene fotos de perfil y el nombre de la foto que surgió, enviado como imagen\n\n` +
+    `- * V2 Carousel Cards *🃏 —Adjuntar carousel interactivo carousel carousel que se puede completar con acción putool, coc para la pantalla moderna\n\n` +
+    `- * V3 Tex*Solo*📝 —El texto regular de mensaje sin imágenes en absoluto, mareos y minimalismo\n\n` +
+    `- Grupo V4👥 —Usando contextInfo ganda grupo forwarm, mostrar ordenado con una etiqueta de bahtín\n\n` +
+    `- * V5 Simple *✨ —Texto de Mensaje simplemente disertó fotos de perfil fuera, no sólo es usted capaz de acceder a los nombres informativos\n\n` +
+    `- * V6 Video *🎥 —Envío de vídeo de separaciones estéticas completo a la autocaptura para el miembro\n\n` +
+    `- * V7 InteractiveQuoted ♪💬 —Enviar mensajes interactivos y citas falsas de la persona que sale\n\n` +
+    `- * V8 Super Simple *👋 —Los textos de Pessan son muy cortos sin ningún tipo de assemo ( lassas: Adiós @ usuario, de grupo. )\n\n` +
+    `Elige el tipo de despedida de charco en el crudo👇`;
   await sock.sendButton(
     m.chat,
     _ourinassetmanagerjs.getAssetBuffer.call(void 0, "ourin"),

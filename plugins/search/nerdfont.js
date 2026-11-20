@@ -78,22 +78,22 @@ async function handler(m, { sock }) {
         header: `Font ${f.name}`,
         title: f.info,
         description: `Version: ${f.version}`,
-        id: `${m.prefix}nerdfont-ambil ${f.name}`,
+        id: `${m.prefix}nerdfont-toma${f.name}`,
       };
     });
     await sock.sendMessage(
       m.chat,
       {
-        text: "Silahkan pilih font yang ingin kamu download",
-        footer: "Click tombol di bawah ini",
+        text: "Por favor, seleccione una fuente que desea descargar",
+        footer: "Haga clic en el charco en la flauta",
         interactiveButtons: [
           {
             name: "single_select",
             buttonParamsJson: JSON.stringify({
-              title: `Pilih Font Disini`,
+              title: `Seleccione Font Disini`,
               sections: [
                 {
-                  title: "Aku harap, font ini dapat membantu kamu",
+                  title: "Espero que este gráfico pueda ayudarte.",
                   highlight_label: "Font Pilihan",
                   rows: rows,
                 },

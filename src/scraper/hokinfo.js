@@ -1,6 +1,6 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { newObj[key] = obj[key]; } } } newObj.default = obj; return newObj; } } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _cheerio = require('cheerio'); var cheerio = _interopRequireWildcard(_cheerio);
 async function scrapeHokCharacter(name) {
-    if (!name) throw new Error("Nama karakter kosong");
+    if (!name) throw new Error("Nombre de carácter vacío");
 
     const url = `https://honor-of-kings.fandom.com/wiki/${encodeURIComponent(name)}`;
 
@@ -11,7 +11,7 @@ async function scrapeHokCharacter(name) {
     });
 
     if (!res.ok) {
-        throw new Error("Gagal mengambil halaman karakter");
+        throw new Error("Steenic toma la página de caracteres");
     }
 
     const html = await res.text();
@@ -21,7 +21,7 @@ async function scrapeHokCharacter(name) {
 
     const title = clean($("#firstHeading").text());
     if (!title) {
-        throw new Error("Karakter tidak ditemukan");
+        throw new Error("El personaje no encontrado");
     }
 
     let image =

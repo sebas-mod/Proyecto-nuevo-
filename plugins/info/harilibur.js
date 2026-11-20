@@ -5,7 +5,7 @@ const pluginConfig = {
   name: "harilibur",
   alias: ["libur", "harinasional"],
   category: "info",
-  description: "Menampilkan informasi hari libur dan hari nasional mendatang",
+  description: "Adjuntar información sobre vacaciones y próximos días nacionales",
   usage: ".harilibur",
   example: ".harilibur",
   isOwner: false,
@@ -31,24 +31,24 @@ async function handler(m, { sock }) {
     const data = res.data;
     if (!data.status || !data.result) {
       await m.react("❌");
-      return m.reply("⚠️ Gagal mengambil informasi hari libur saat ini.");
+      return m.reply("⚠Para tomar un día libre de información ahora mismo.");
     }
 
     const r = data.result;
-    let caption = `📅 *HARI LIBUR & NASIONAL MENDATANG* 📅\n\n`;
+    let caption = `📅* HOPE LOOK TO NASIONAL DREAM *📅\n\n`;
 
     if (r.mendatang.hari_libur && r.mendatang.hari_libur.length > 0) {
-      caption += `*Hari Libur Mendatang*\n`;
+      caption += `* Un día libre *\n`;
       r.mendatang.hari_libur.slice(0, 5).forEach(item => {
-        caption += `- ${item.date}: ${item.event} (${item.daysUntil} hari lagi)\n`;
+        caption += `- ${item.date}: ${item.event} (${item.daysUntil}el otra vez)\n`;
       });
       caption += `\n`;
     }
 
     if (r.mendatang.event_nasional && r.mendatang.event_nasional.length > 0) {
-      caption += `*Hari Nasional Mendatang*\n`;
+      caption += `# El Día Nacional #\n`;
       r.mendatang.event_nasional.slice(0, 5).forEach(item => {
-        caption += `- ${item.date}: ${item.event} (${item.daysUntil} hari lagi)\n`;
+        caption += `- ${item.date}: ${item.event} (${item.daysUntil}el otra vez)\n`;
       });
     }
 
@@ -56,9 +56,9 @@ async function handler(m, { sock }) {
     await m.react("✅");
 
   } catch (error) {
-    console.error("[Hari Libur]", error.message);
+    console.error("[El Libur]", error.message);
     await m.react("☢");
-    m.reply("😔 Terjadi kesalahan saat mengambil data hari libur.");
+    m.reply("😔Fue un error tomar unas vacaciones.");
   }
 }
 

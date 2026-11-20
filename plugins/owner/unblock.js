@@ -4,7 +4,7 @@ const pluginConfig = {
     name: ['unblock', 'unblocknomor'],
     alias: [],
     category: 'owner',
-    description: 'Buka blokir nomor WhatsApp',
+    description: 'Número de bloqueadores bloqueadores WhatsApp',
     usage: '.unblock <nomor/reply/mention>',
     example: '.unblock 628xxx',
     isOwner: true,
@@ -22,7 +22,7 @@ async function handler(m, { sock }) {
         targetJid = m.quoted.sender || m.quoted.participant
     } else if (m.args[0]) {
         let num = m.args[0].replace(/[^0-9]/g, '')
-        if (!num) return m.reply('❌ Nomor tidak valid.')
+        if (!num) return m.reply('❌El número no es válido.')
         targetJid = num + '@s.whatsapp.net'
     } else if (!m.isGroup) {
         targetJid = m.chat
@@ -32,9 +32,9 @@ async function handler(m, { sock }) {
         return m.reply(
             '⚠️ *ᴄᴀʀᴀ ᴘᴀᴋᴀɪ*\n\n' +
             '> `.unblock 628xxx` — Unblock via nomor\n' +
-            '> `.unblock` (reply pesan) — Unblock pengirim\n' +
-            '> `.unblock @mention` — Unblock yang di-mention\n' +
-            '> `.unblock` (di private chat) — Unblock user ini'
+            '♪`. desbloquear.`(responder mensaje)—Desbloquear el remitente\n' +
+            '♪`. desbloquear @ mención` —Desbloquear la mención en @-@\n' +
+            '♪`. desbloquear.`(en la charla primaria )—Desbloquear a este usuario'
         )
     }
 
@@ -43,7 +43,7 @@ async function handler(m, { sock }) {
         await m.react('✅')
         return m.reply(
             `✅ *ɴᴏᴍᴏʀ ᴅɪ-ᴜɴʙʟᴏᴄᴋ*\n\n` +
-            `> Target: @${targetJid.split('@')[0]}`,
+            `> Objetivo: @${targetJid.split('@')[0]}`,
             { mentions: [targetJid] }
         )
     } catch (err) {

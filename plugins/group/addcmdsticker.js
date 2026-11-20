@@ -21,14 +21,14 @@ async function handler(m, { sock }) {
     const args = m.args || []
     const commandName = args[0]
     
-    // Validasi command name
+    //Nombre de comando Validasi
     if (!commandName) {
         const existingCmds = _ourinstickercommandjs.listStickerCommands.call(void 0, )
         
         let txt = `🖼️ *sᴛɪᴄᴋᴇʀ ᴛᴏ ᴄᴏᴍᴍᴀɴᴅ*\n\n`
-        txt += `> Reply sticker + ketik command yang ingin dijadikan shortcut.\n\n`
-        txt += `*Contoh:*\n`
-        txt += `> Reply sticker, lalu ketik:\n`
+        txt += `Responder sticker + comando de axila que es ser acortado.\n\n`
+        txt += `*Ejemplo:*\n`
+        txt += `Responder pegatina, luego axila:\n`
         txt += `> \`.addcmdsticker menu\`\n\n`
         
         if (existingCmds.length > 0) {
@@ -37,7 +37,7 @@ async function handler(m, { sock }) {
                 txt += `┃ 🖼️ → \`${cmd.command}\`\n`
             }
             if (existingCmds.length > 10) {
-                txt += `┃ ... dan ${existingCmds.length - 10} lainnya\n`
+                txt += `┃... y${existingCmds.length - 10} lainnya\n`
             }
             txt += `╰┈┈┈┈┈┈┈┈⬡`
         }
@@ -45,28 +45,28 @@ async function handler(m, { sock }) {
         return m.reply(txt)
     }
     
-    // Validasi reply sticker
+    //Validaciones réplica pegatinas
     if (!m.quoted) {
-        return m.reply('⚠️ *Reply sticker* yang ingin dijadikan command!')
+        return m.reply('⚠Responder pegatinas a ser hecho!')
     }
     
     const stickerHash = _ourinstickercommandjs.getQuotedStickerHash.call(void 0, m)
     if (!stickerHash) {
-        return m.reply('⚠️ Pesan yang di-reply bukan *sticker*!')
+        return m.reply('⚠¡Para ordenar la respuesta en lugar de pegatinas!')
     }
     
-    // Validasi command exists
+    //Validasi comand exists
     const cleanCmd = commandName.toLowerCase().replace(/^\./, '')
     const plugin = _ourinpluginsjs.getPlugin.call(void 0, cleanCmd)
     
     if (!plugin) {
         return m.reply(
-            `❌ Command \`${cleanCmd}\` tidak ditemukan!\n\n` +
-            `> Pastikan command yang ingin dijadikan shortcut valid.`
+            `❌Comando\`${cleanCmd}\`no encontrado!\n\n` +
+            `Para asegurarse de que el código es ser atajo válido.`
         )
     }
     
-    // Add sticker command
+    //Agregar el comando sticker
     const success = _ourinstickercommandjs.addStickerCommand.call(void 0, stickerHash, cleanCmd, m.sender)
     
     if (success) {
@@ -74,10 +74,10 @@ async function handler(m, { sock }) {
         await m.reply(
             `✅ *sᴛɪᴄᴋᴇʀ ᴄᴏᴍᴍᴀɴᴅ ᴅɪᴛᴀᴍʙᴀʜᴋᴀɴ*\n\n` +
             `> 🖼️ Sticker → \`.${cleanCmd}\`\n\n` +
-            `_Kirim sticker tersebut untuk menjalankan command!_`
+            `*El Ksentsticker que llamas para ejecutar tu comando!`
         )
     } else {
-        await m.reply('❌ Gagal menyimpan sticker command!')
+        await m.reply('❌¡Mantenga pegajoso comando!')
     }
 }
 

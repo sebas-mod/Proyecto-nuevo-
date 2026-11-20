@@ -6,7 +6,7 @@ const pluginConfig = {
   name: "donasi",
   alias: ["donate", "donation", "support", "saweria", "trakteer"],
   category: "main",
-  description: "Informasi donasi untuk mendukung bot dengan QRIS",
+  description: "Información donando para balancear el bot conQRIS",
   usage: ".donasi",
   example: ".donasi",
   isOwner: false,
@@ -20,7 +20,7 @@ const pluginConfig = {
 
 async function handler(m, { sock }) {
   const botName = _optionalChain([_configjs2.default, 'access', _ => _.bot, 'optionalAccess', _2 => _2.name]) || "Ourin-AI";
-  const ownerName = _optionalChain([_configjs2.default, 'access', _3 => _3.owner, 'optionalAccess', _4 => _4.name]) || "Owner";
+  const ownerName = _optionalChain([_configjs2.default, 'access', _3 => _3.owner, 'optionalAccess', _4 => _4.name]) || "Propietario";
   const saluranId = _optionalChain([_configjs2.default, 'access', _5 => _5.saluran, 'optionalAccess', _6 => _6.id]) || "120363400911374213@newsletter";
   const saluranName = _optionalChain([_configjs2.default, 'access', _7 => _7.saluran, 'optionalAccess', _8 => _8.name]) || botName;
 
@@ -30,12 +30,12 @@ async function handler(m, { sock }) {
   const qrisUrl = donasiConfig.qris || "";
   const benefits = donasiConfig.benefits || [
     "Mendukung development",
-    "Server lebih stabil",
-    "Fitur baru lebih cepat",
+    "El servidor es más estable",
+    "Las nuevas características son más rápidas",
     "Priority support",
   ];
 
-  let text = `DONASI KE OWNER ${botName} 🙏`;
+  let text = `DONACY TO Propietario${botName} 🙏`;
 
   if (payments.length > 0 || links.length > 0) {
     text += `Pembayaran\n`;
@@ -62,7 +62,7 @@ async function handler(m, { sock }) {
   } else {
     text += `╭┈┈⬡「 💳 *ᴘᴀʏᴍᴇɴᴛ* 」\n`;
     text += `┃\n`;
-    text += `┃ > Belum dikonfigurasi\n`;
+    text += `┃*No estoy configurado*\n`;
     text += `┃ > Edit config.donasi\n`;
     text += `┃\n`;
     text += `╰┈┈┈┈┈┈┈┈⬡\n\n`;
@@ -74,7 +74,7 @@ async function handler(m, { sock }) {
   }
   text += `\n`;
 
-  text += `_Donasi berapapun sangat berharga_\n`;
+  text += `Para cualquier donación vale mucho\n`;
   text += `Contact: @${_optionalChain([_configjs2.default, 'access', _21 => _21.owner, 'optionalAccess', _22 => _22.number, 'optionalAccess', _23 => _23[0]]) || "owner"}`;
 
   const copyButtons = payments.map((pay) => ({

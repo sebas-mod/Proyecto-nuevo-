@@ -1,6 +1,6 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true});function cekfemboy(nama) {
     try {
-        if (!nama) throw new Error('Masukkan nama dulu dong!');
+        if (!nama) throw new Error('¡Pon tu nombre primero!');
         
         const percent = Math.floor(Math.random() * 101);
         let desc = '';
@@ -24,7 +24,7 @@
         }
         
         return {
-            hasil: `${nama}, kamu ${percent}% femboy!, ${desc}`,
+            hasil: `${nama}, tu${percent}% femboy!, ${desc}`,
             gif: imgUrl
         };
     } catch (error) {

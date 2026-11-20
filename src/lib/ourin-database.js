@@ -56,7 +56,7 @@ class Database {
 
     _ourinloggerjs.logger.info(
       "database",
-      `migrasi ${oldFiles.length} file dari src/database ke ${_path2.default.relative(process.cwd(), this.dbPath)}/`,
+      `migrasi ${oldFiles.length}archivo de src / databage a${_path2.default.relative(process.cwd(), this.dbPath)}/`,
     );
     this.ensureDir();
 
@@ -66,10 +66,10 @@ class Database {
       try {
         _fs2.default.copyFileSync(src, dest);
       } catch (e) {
-        _ourinloggerjs.logger.error("database", `gagal migrasi ${file}: ${e.message}`);
+        _ourinloggerjs.logger.error("database", `fallido migrasi${file}: ${e.message}`);
       }
     }
-    _ourinloggerjs.logger.success("database", "migrasi path selesai");
+    _ourinloggerjs.logger.success("database", "Migración de caminos completa");
   }
 
   async init() {
@@ -149,7 +149,7 @@ class Database {
         if (synced > 0) {
           _ourinloggerjs.logger.info(
             "database",
-            `energi sync ${synced} user di-update (default: ${currentDefault}, premium: ${currentPremium})`,
+            `energía sync${synced}usuario en --update ( predeterminado:${currentDefault}, estreno:${currentPremium})`,
           );
         }
       }
@@ -161,7 +161,7 @@ class Database {
       );
       return this;
     } catch (error) {
-      _ourinloggerjs.logger.error("database", `gagal inisialisasi: ${error.message}`);
+      _ourinloggerjs.logger.error("database", `fallido inisialisasi:${error.message}`);
       this.db = {
         data: {
           users: {},
@@ -271,7 +271,7 @@ class Database {
           );
           _ourinloggerjs.logger.warn(
             "database",
-            `${fileName} rusak, backup disimpan: ${backup}`,
+            `${fileName}Corrupted, backfired save:${backup}`,
           );
         }
       }
@@ -311,10 +311,10 @@ class Database {
       _fs2.default.renameSync(oldFile, backupPath);
       _ourinloggerjs.logger.success(
         "database",
-        `migrasi dari energis.json selesai, backup: ${_path2.default.basename(backupPath)}`,
+        `migraciones de energía. json completado, backup:${_path2.default.basename(backupPath)}`,
       );
     } catch (e) {
-      _ourinloggerjs.logger.error("database", `gagal migrasi energis.json: ${e.message}`);
+      _ourinloggerjs.logger.error("database", `no migraña energía.${e.message}`);
     }
   }
 
@@ -323,7 +323,7 @@ class Database {
       this.flushAll();
       return true;
     } catch (error) {
-      _ourinloggerjs.logger.error("database", `gagal menyimpan: ${error.message}`);
+      _ourinloggerjs.logger.error("database", `no se pudo guardar:${error.message}`);
       return false;
     }
   }
@@ -577,7 +577,7 @@ class Database {
     const backupDir = _path2.default.join(this.dbPath, "backups");
     if (!_fs2.default.existsSync(backupDir)) _fs2.default.mkdirSync(backupDir, { recursive: true });
     const ts = new Date().toISOString().replace(/[:.]/g, "-");
-    const backupFolder = _path2.default.join(backupDir, `pre-reset-${ts}`);
+    const backupFolder = _path2.default.join(backupDir, `pre-restablecer-${ts}`);
     _fs2.default.mkdirSync(backupFolder, { recursive: true });
 
     const fileMap = {
@@ -642,7 +642,7 @@ class Database {
     return {
       resetCount,
       total: Object.keys(fileMap).length,
-      backupFolder: `backups/pre-reset-${ts}`,
+      backupFolder: `backups/pre-restablecer-${ts}`,
     };
   }
 
@@ -712,7 +712,7 @@ async function initDatabase(dbPath) {
 function getDatabase() {
   if (!dbInstance) {
     throw new Error(
-      "Database belum diinisialisasi. Panggil initDatabase terlebih dahulu.",
+      "Databage no inicializado. Llamar en la primera entradaDatabase.",
     );
   }
   return dbInstance;

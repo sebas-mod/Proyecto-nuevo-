@@ -47,7 +47,7 @@ async function getDiskUsage() {
             return `💿 *Disk Usage*\nTotal: ${parts[1]}\nUsed: ${parts[2]}\nFree: ${parts[3]}\nUse%: ${parts[4]}`;
         }
     } catch (e) {
-        return '❌ Gagal mengambil info disk';
+        return '❌El tentador toma el disco intro';
     }
 }
 
@@ -76,17 +76,17 @@ async function handler(m, { sock }) {
                 const speed = cpus[0].speed;
                 const cores = cpus.length;
                 
-                const text = `🖥️ *CPU INFO*\n\n` +
+                const text = `🖥* Love INFO *\n\n` +
                              `Model: ${model}\n` +
                              `Speed: ${speed} MHz\n` +
                              `Cores: ${cores} Core(s)\n` +
-                             `Uptime: ${formatSize(_os2.default.uptime())} (Wrong format, raw seconds)`; 
+                             `Uptime: ${formatSize(_os2.default.uptime())}(WFLAPPING, RAW SECONDS )`; 
                 const uptime = _os2.default.uptime();
                 const hours = Math.floor(uptime / 3600);
                 const minutes = Math.floor((uptime % 3600) / 60);
                 const seconds = Math.floor(uptime % 60);
                 const uptimeStr = `${hours}h ${minutes}m ${seconds}s`;
-                m.reply(`🖥️ *CPU INFO*\n\nModel: ${model}\nSpeed: ${speed} MHz\nCores: ${cores}\nServer Uptime: ${uptimeStr}`);
+                m.reply(`🖥* Love INFO *\n\nMODELO:${model}\nSpeed: ${speed} MHz\nCores: ${cores}\nServer Uptime: ${uptimeStr}`);
             }
             break;
 
@@ -111,7 +111,7 @@ async function handler(m, { sock }) {
         }
     } catch (e) {
         console.error('System Plugin Error:', e);
-        m.reply('❌ Terjadi kesalahan mengambil data sistem.');
+        m.reply('❌Fue un error recuperar los datos del sistema.');
     }
 }
 

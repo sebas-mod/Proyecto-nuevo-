@@ -22,7 +22,7 @@ async function handler(m, { sock }) {
     const username = m.args[0]
     
     if (!username) {
-        return m.reply(`📺 *ʏᴏᴜᴛᴜʙᴇ sᴛᴀʟᴋ*\n\n> Masukkan username YouTube\n\n\`Contoh: ${m.prefix}ytstalk mrbeast\``)
+        return m.reply(`📺*ʏᴏᴜᴛᴜʙᴇSᴛᴀʟᴋ*\n\n*Pon un nombre de usuario en YouTube*\n\n\`Ejemplo:${m.prefix}ytstalk mrbeast\``)
     }
     
     m.react('🔍')
@@ -34,18 +34,18 @@ async function handler(m, { sock }) {
         
         if (!_optionalChain([res, 'access', _ => _.data, 'optionalAccess', _2 => _2.status]) || !_optionalChain([res, 'access', _3 => _3.data, 'optionalAccess', _4 => _4.data])) {
             m.react('❌')
-            return m.reply(`❌ Channel *${username}* tidak ditemukan`)
+            return m.reply(`❌ Channel *${username}* not found`)
         }
         
         const c = res.data.data
         
         let caption = `📺 *ʏᴏᴜᴛᴜʙᴇ sᴛᴀʟᴋ*\n\n` +
-            `👤 *Nama:* ${c.name}\n` +
+            `👤*Nombre:*${c.name}\n` +
             `🔗 *Username:* @${username}\n` +
             `✅ *Verified:* ${c.verified ? 'Ya' : 'Tidak'}\n\n` +
             `👥 *Subscribers:* ${c.subscribers}\n` +
             `🎬 *Total Video:* ${c.video_count}\n\n` +
-            `📝 *Deskripsi:*\n${c.about || '-'}\n\n` +
+            `📝*Descripción:*\n${c.about || '-'}\n\n` +
             `🔗 ${c.url}`
             
         m.react('✅')

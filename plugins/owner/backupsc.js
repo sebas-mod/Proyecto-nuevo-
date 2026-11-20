@@ -8,7 +8,7 @@ const pluginConfig = {
   name: "backupsc",
   alias: ["backup", "backupscript", "backupsource"],
   category: "owner",
-  description: "Backup script bot dalam bentuk zip",
+  description: "Botín Skript backend en zhakk @-@ tack",
   usage: ".backupsc",
   example: ".backupsc",
   isOwner: true,
@@ -97,7 +97,7 @@ function getBackupOutputDir(projectRoot) {
 async function handler(m, { sock }) {
   await m.react("🕕");
   await m.reply(
-    `📦 *ʙᴀᴄᴋᴜᴘ sᴄʀɪᴘᴛ*\n\n> Memproses backup...\n> Mohon tunggu sebentar...`,
+    `📦*ʙᴀᴄᴋᴜᴘSᴄʀɪᴘᴛ*\n\n- Procesando la espalda.\n- Por favor, espera un minuto.`,
   );
   try {
     const projectRoot = process.cwd();
@@ -134,12 +134,12 @@ async function handler(m, { sock }) {
       output.on("close", () => {
         try {
           if (!_fs2.default.existsSync(zipFilePath)) {
-            fail(new Error("File backup tidak ditemukan setelah proses zip"));
+            fail(new Error("El archivo Bakup no se encontró después del proceso Z"));
             return;
           }
           const stats = _fs2.default.statSync(zipFilePath);
           if (stats.size <= 0) {
-            fail(new Error("File backup kosong atau 0KB"));
+            fail(new Error("El archivo de horneo está vacío o 0KB"));
             return;
           }
           succeed();
@@ -175,7 +175,7 @@ async function handler(m, { sock }) {
 
       addDirectory(projectRoot);
       if (fileCount === 0) {
-        fail(new Error("Tidak ada file yang masuk ke backup script"));
+        fail(new Error("Ningún archivo entró en el backend del script"));
         return;
       }
       archive.finalize();

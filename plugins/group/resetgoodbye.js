@@ -21,14 +21,14 @@ async function handler(m, { sock }) {
     const groupData = db.getGroup(m.chat)
     
     if (!_optionalChain([groupData, 'optionalAccess', _ => _.goodbyeMsg])) {
-        return m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> Goodbye message sudah default`)
+        return m.reply(`❌*ɢᴀɢᴀʟ*\n\n*El mensaje de adiós ha sido predeterminado*`)
     }
     
     db.setGroup(m.chat, { goodbyeMsg: null })
     
     m.react('✅')
     
-    await m.reply(`✅ *ɢᴏᴏᴅʙʏᴇ ᴅɪʀᴇsᴇᴛ*\nKembali ke pesan default`)
+    await m.reply(`✅*ɢᴏᴏᴅʙʏᴇ ᴅɪʀᴇSᴇᴛ*\nRegresar al mensaje desfavorable`)
 }
 
 exports.config = pluginConfig; exports.handler = handler;

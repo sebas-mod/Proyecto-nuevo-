@@ -42,11 +42,11 @@ async function handler(m, { sock }) {
       }
       await m.react("✅");
       return m.reply(
-        `📁 *${count} grup diarsipkan*\n\n> Private chat tidak bisa diarsipkan sekaligus (tidak ada daftar chat)`,
+        `📁 *${count}grupo está archivado *\n\n* El chat prima do no puede ser archivado una vez *`,
       );
     } catch (err) {
       global.isFetchingGroups = false;
-      return m.reply(`❌ Gagal: ${err.message}`);
+      return m.reply(`❌Fallido:${err.message}`);
     }
   } else {
     if (_optionalChain([m, 'access', _5 => _5.mentionedJid, 'optionalAccess', _6 => _6.length]) > 0) {
@@ -65,8 +65,8 @@ async function handler(m, { sock }) {
     return m.reply(
       "📁 *ᴀʀsɪᴘ ᴄʜᴀᴛ*\n\n" +
         "> `.arsip 628xxx` — Arsipkan chat\n" +
-        "> `.arsip` (di private chat) — Arsipkan chat ini\n" +
-        "> `.arsip` (reply pesan) — Arsipkan chat pengirim\n" +
+        "♪`- Césped artificial.`(en la charla primaria )—Arsisikan está charla\n" +
+        "♪`- Césped artificial.`(responder mensaje)—Archivar el chat del remitente\n" +
         "> `.arsip buka 628xxx` — Buka arsip chat\n" +
         "> `.arsip semua` — Arsipkan semua chat",
     );
@@ -78,11 +78,11 @@ async function handler(m, { sock }) {
     const target = targetJid.split("@")[0];
     return m.reply(
       archive
-        ? `📁 *ᴄʜᴀᴛ ᴅɪᴀʀsɪᴘᴋᴀɴ*\n\n> Target: ${target}\n> Gunakan \`.arsip buka ${target}\` untuk membuka`
-        : `📂 *ᴀʀsɪᴘ ᴅɪʙᴜᴋᴀ*\n\n> Target: ${target}`,
+        ? `📁 *ᴄʜᴀᴛ ᴅɪᴀʀsɪᴘᴋᴀɴ*\n\n> Objetivo: ${target}\n> Usa \`.arsip abre${target}\`para abriendo`
+        : `📂 *ᴀʀsɪᴘ ᴅɪʙᴜᴋᴀ*\n\n> Objetivo: ${target}`,
     );
   } catch (err) {
-    return m.reply(`❌ Gagal: ${err.message}`);
+    return m.reply(`❌Fallido:${err.message}`);
   }
 }
 

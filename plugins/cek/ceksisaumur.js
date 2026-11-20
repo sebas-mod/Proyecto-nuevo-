@@ -2,7 +2,7 @@
     name: 'ceksisaumur',
     alias: ['sisaumur', 'umur'],
     category: 'cek',
-    description: 'Cek sisa umur kamu',
+    description: 'Revisa tu sutura habitual',
     usage: '.ceksisaumur <nama>',
     example: '.ceksisaumur Budi',
     isOwner: false,
@@ -29,17 +29,17 @@ async function handler(m) {
     } else if (tahun > 60) {
         desc = 'Lumayan panjang~ ✨'
     } else if (tahun > 40) {
-        desc = 'Cukup lah ya 😊'
+        desc = 'Descansa.😊'
     } else {
         desc = 'Jaga kesehatan ya! 🙏'
     }
     
-    let txt = mentioned === m.sender ? `Hai @${mentioned.split('@')[0]}
+    let txt = mentioned === m.sender ? `Hola @${mentioned.split('@')[0]}
     
-Sisa umur kamu *${tahun} Tahun ${bulan} Bulan ${hari} Hari*
-\`\`\`${desc}\`\`\`` : `Kamu ingin ngecek tingkat kesisaumuran @${mentioned.split('@')[0]} yak? 
+Eres tan viejo.${tahun}Año${bulan}Mes${hari}El*
+\`\`\`${desc}\`\`\`` : `Quieres revisar el nivel de ansiedad${mentioned.split('@')[0]} yak? 
     
-Sisa umur dia sebesar *${tahun} Tahun ${bulan} Bulan ${hari} Hari*
+El mismo viejo que él${tahun}Año${bulan}Mes${hari}El*
 \`\`\`${desc}\`\`\``
     
     await m.reply(txt, { mentions: [mentioned] })

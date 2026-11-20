@@ -36,7 +36,7 @@ async function createEnhanceTask(filePath, apiKey = DEFAULT_API_KEY) {
   const payload = response.data;
 
   if (!_optionalChain([payload, 'optionalAccess', _ => _.status]) || !_optionalChain([payload, 'optionalAccess', _2 => _2.data, 'optionalAccess', _3 => _3.pollUrl])) {
-    throw new Error(_optionalChain([payload, 'optionalAccess', _4 => _4.message]) || "Gagal membuat task HD video");
+    throw new Error(_optionalChain([payload, 'optionalAccess', _4 => _4.message]) || "Stunner creó la tarea de vídeo DD");
   }
 
   return {
@@ -75,7 +75,7 @@ async function pollEnhanceTask(
       if (normalizedStatus === "success") {
         const result = _optionalChain([payload, 'optionalAccess', _7 => _7.data, 'optionalAccess', _8 => _8.result]);
         if (!_optionalChain([result, 'optionalAccess', _9 => _9.res_url])) {
-          throw new Error("HD video selesai tetapi url hasil tidak ditemukan");
+          throw new Error("HD vídeo completado pero resultado url no encontrado");
         }
 
         return {
@@ -91,7 +91,7 @@ async function pollEnhanceTask(
         const terminalError = new Error(
           _optionalChain([payload, 'optionalAccess', _14 => _14.message]) ||
             _optionalChain([payload, 'optionalAccess', _15 => _15.data, 'optionalAccess', _16 => _16.message]) ||
-            `HD video gagal dengan status ${status}`,
+            `Video HD falló con el estado${status}`,
         );
         terminalError.isTerminal = true;
         throw terminalError;
@@ -99,7 +99,7 @@ async function pollEnhanceTask(
 
       if (!_optionalChain([payload, 'optionalAccess', _17 => _17.status]) && !PENDING_STATUSES.has(normalizedStatus)) {
         const terminalError = new Error(
-          _optionalChain([payload, 'optionalAccess', _18 => _18.message]) || "Polling HD video gagal",
+          _optionalChain([payload, 'optionalAccess', _18 => _18.message]) || "Votar vídeo HD falló",
         );
         terminalError.isTerminal = true;
         throw terminalError;
@@ -113,7 +113,7 @@ async function pollEnhanceTask(
         throw new Error(
           _optionalChain([error, 'optionalAccess', _20 => _20.response, 'optionalAccess', _21 => _21.data, 'optionalAccess', _22 => _22.message]) ||
             _optionalChain([error, 'optionalAccess', _23 => _23.message]) ||
-            "Polling HD video gagal",
+            "Votar vídeo HD falló",
         );
       }
     }
@@ -121,7 +121,7 @@ async function pollEnhanceTask(
     await delay(pollIntervalMs);
   }
 
-  throw new Error(_optionalChain([lastPayload, 'optionalAccess', _24 => _24.message]) || "Timeout menunggu hasil HD video");
+  throw new Error(_optionalChain([lastPayload, 'optionalAccess', _24 => _24.message]) || "Timeout espera el resultado de un video HD");
 }
 
 async function videoenhancer(

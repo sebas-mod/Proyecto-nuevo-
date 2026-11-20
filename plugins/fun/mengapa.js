@@ -2,7 +2,7 @@
     name: 'mengapa',
     alias: ['kenapa', 'why'],
     category: 'fun',
-    description: 'Tanya bot mengapa sesuatu',
+    description: '¿Por qué lo que pasa?',
     usage: '.mengapa <pertanyaan>',
     example: '.mengapa langit biru?',
     isOwner: false,
@@ -15,33 +15,33 @@
 };
 
 const answers = [
-    'Karena memang sudah takdirnya begitu.',
-    'Hmm, pertanyaan bagus! Aku juga bingung.',
-    'Karena itulah cara kerjanya.',
-    'Karena Tuhan berkehendak demikian.',
+    'Porque ya tiene esa mirada.',
+    'Bueno, buena pregunta, también.',
+    'Porque así es como funciona.',
+    'Porque Dios está decidido a hacerlo.',
     'Aku nggak tau, cari di Google aja.',
-    'Karena ya gitu aja.',
-    'Mungkin karena kebetulan?',
-    'Karena dunia memang penuh misteri.',
+    'Porque eso es todo.',
+    '¿Tal vez sea una coincidencia?',
+    'Porque el mundo está lleno de misterio.',
     'Hmm, sulit dijelaskan sih.',
-    'Karena alam semesta bekerja dengan cara yang misterius.',
-    'Aku juga penasaran, kenapa ya?',
-    'Karena hal tersebut memang seharusnya terjadi.',
-    'Pertanyaan yang bagus! Sayangnya aku nggak punya jawabannya.',
-    'Karena itulah keunikan hidup.',
-    'Karena setiap hal punya alasannya masing-masing.',
-    'Hmm... aku butuh waktu untuk memikirkannya.',
-    'Karena begitulah logikanya.',
-    'Aku rasa karena memang harus begitu.',
-    'Karena segala sesuatu saling berhubungan.',
-    'Nah itu aku juga mikir!'
+    'Porque el universo trabaja de maneras misteriosas.',
+    'También tengo curiosidad, ¿por qué es eso?',
+    'Porque las cosas que se supone que deben suceder.',
+    'Me temo que tengo una respuesta.',
+    'Porque eso es lo único que hay en la vida.',
+    'Porque cada cosa tiene sus razones.',
+    'Necesito tiempo para pensarlo.',
+    'Porque esa es la lógica.',
+    'Supongo que es porque tiene que ser.',
+    'Porque todo está en el comercio.',
+    '¡He estado pensando!'
 ];
 
 async function handler(m) {
     const text = _optionalChain([m, 'access', _ => _.text, 'optionalAccess', _2 => _2.trim, 'call', _3 => _3()]);
     
     if (!text) {
-        return m.reply(`🤔 *ᴍᴇɴɢᴀᴘᴀ*\n\n> Masukkan pertanyaan!\n\n*Contoh:*\n> .mengapa langit biru?`);
+        return m.reply(`🤔*ᴍᴇɴɢᴀᴘᴀ*\n\n¡Disfruta de la pregunta!\n\n*Ejemplo:*\n¿Por qué es tan brillante?`);
     }
     
     const answer = answers[Math.floor(Math.random() * answers.length)];

@@ -6,7 +6,7 @@ const pluginConfig = {
     name: "dungeon",
     alias: ["dg", "explore", "labirin"],
     category: "game",
-    description: "Jelajahi dungeon dan lawan monster secara interaktif",
+    description: "Examine la mazmorra y el lado del buster en modo interactivo.",
     usage: ".dungeon",
     example: ".dungeon",
     isOwner: false,
@@ -164,9 +164,9 @@ async function handler(m, { sock }) {
                 db.save();
             } else {
                 return m.reply(
-                    `⚔️ *SESI DUNGEON MASIH AKTIF*\n\n` +
-                    `Kamu sedang berada di pertengahan eksplorasi!\n` +
-                    `> Balas chat terakhir bot untuk membatalkan (ketik \`batal\`) atau melanjutkan aksi (ketik \`serang\` / \`lari\`).`,
+                    `⚔*El período de sesiones de DUNGEON hace un esfuerzo*\n\n` +
+                    `¡Está en medio de una exploración!\n` +
+                    `# La última vez que nos fuimos #\`cancelar\`) o continuar la acción ( axila\`ataca\`/\`correr\`).`,
                 );
             }
         }
@@ -174,7 +174,7 @@ async function handler(m, { sock }) {
         const available = DUNGEONS.filter((d) => userLevel >= d.levelReq);
         if (available.length === 0) {
             return m.reply(
-                `❌ *LEVEL TERLALU RENDAH*\n\n> Level kamu saat ini adalah *${userLevel}*. Kamu butuh minimal level *1* untuk memasuki dungeon paling mudah.`,
+                `❌* LEVEL LATE Bajo *\n\nDejarte ahora es...${userLevel}Necesitas un mínimo de nivel para entrar en la mazmorra más barata.`,
             );
         }
 
@@ -185,19 +185,19 @@ async function handler(m, { sock }) {
         db.save();
 
         let txt = `🏰 *LOBI DUNGEON*\n\n`;
-        txt += `📊 *Statistik Kamu:*\n`;
+        txt += `📊* Estadísticas Tu: *\n`;
         txt += `> Level: *${userLevel}*\n`;
         txt += `> Stamina: *${_nullishCoalesce(user.rpg.stamina, () => ( 100))}/100*\n\n`;
-        txt += `Pilih lokasi yang ingin kamu jelajahi:\n\n`;
+        txt += `Seleccione la ubicación que desea explicar:\n\n`;
 
         for (const d of DUNGEONS) {
             if (userLevel >= d.levelReq) {
                 txt += `🔓 *${d.id}.* ${d.name} (Lv ${d.levelReq}+)\n`;
             } else {
-                txt += `> 🔒 *${d.id}.* ${d.name} (Butuh Lv ${d.levelReq})\n`;
+                txt += `> 🔒 *${d.id}.* ${d.name}(Necesito Lv${d.levelReq})\n`;
             }
         }
-        txt += `\n> 💡 Balas pesan ini dengan *angka* lokasi yang 🔓 (contoh: \`1\`) atau ketik \`batal\` untuk keluar.`;
+        txt += `\n♪💡Replay este mensaje con el * número * ubicación🔓(ejemplo:\`1\`) o Tyk\`cancelar\`para salir.`;
 
         return m.reply(txt);
     } catch (error) {
@@ -220,7 +220,7 @@ async function dungeonAnswerHandler(m, sock) {
         delete user.rpg.dungeon_session;
         db.save();
         await m.reply(
-            `⏰ *SESI DUNGEON KEDALUWARSA*\n\n> Sesi dungeon kamu sudah hangus karena tidak aktif selama 5 menit.`,
+            `⏰* DUNGEON SESSION OF THE WARRANTS *\n\nHa estado colgado en el sesi de mazmorra durante cinco minutos.`,
         );
         return true;
     }
@@ -231,7 +231,7 @@ async function dungeonAnswerHandler(m, sock) {
     if (text === "batal" || text === "cancel" || text === "keluar") {
         delete user.rpg.dungeon_session;
         db.save();
-        await m.reply(`🚪 Kamu berhasil keluar dari Lobi Dungeon dengan selamat.`);
+        await m.reply(`🚪Te las arreglaste para salir de Dungeon Lobby con seguridad.`);
         return true;
     }
 
@@ -243,14 +243,14 @@ async function dungeonAnswerHandler(m, sock) {
 
         if (!dungeon) {
             await m.reply(
-                `❌ *PILIHAN TIDAK VALID*\n\n> Dungeon nomor ${choiceId} tidak ditemukan.`,
+                `❌* OPCIÓN DEL PROBLEMA VALIDO*\n\n*Número de Dungeon*${choiceId}no encontrado.`,
             );
             return true;
         }
 
         if (userLevel < dungeon.levelReq) {
             await m.reply(
-                `🔒 *DUNGEON TERKUNCI*\n\n> Level kamu (*Lv ${userLevel}*) belum cukup untuk memasuki *${dungeon.name}*.\n> Kamu butuh minimal *Lv ${dungeon.levelReq}*.`,
+                `🔒*DUNGEON Bloqueado*\n\n*Tu nivel*${userLevel}No es suficiente para encajar${dungeon.name}*.\n*Necesitas un poco de Lv*${dungeon.levelReq}*.`,
             );
             return true;
         }
@@ -260,10 +260,10 @@ async function dungeonAnswerHandler(m, sock) {
 
         if (user.rpg.stamina < staminaCost) {
             await m.reply(
-                `⚡ *STAMINA TIDAK CUKUP*\n\n` +
-                `Kamu butuh setidaknya *${staminaCost} stamina* untuk masuk.\n` +
-                `Sisa stamina kamu saat ini hanya *${user.rpg.stamina}*.\n\n` +
-                `> 💡 *Tips:* Gunakan perintah \`.rest\` atau batalkan dulu (ketik \`batal\`).`,
+                `⚡¿Qué?\n\n` +
+                `Necesitas al menos${staminaCost}La resistencia.\n` +
+                `Su resistencia presente es tan buena como su presente.${user.rpg.stamina}*.\n\n` +
+                `♪💡* Consejos: * Usar el comando\`- Quítate.\`O cancelarlo primero.\`cancelar\`).`,
             );
             return true;
         }
@@ -290,12 +290,12 @@ async function dungeonAnswerHandler(m, sock) {
 
         await m.react("🚪");
         let txt = `🚪 *MEMASUKI DUNGEON*\n\n`;
-        txt += `Kamu melangkah perlahan ke dalam *${dungeon.name}*...\n`;
-        txt += `> ⚡ Stamina berkurang *${staminaCost}*\n\n`;
-        txt += `Tiba-tiba, seekor *👹 ${monster}* muncul dari kegelapan dan menghadang jalanmu!\n\n`;
-        txt += `*⚔️ APA YANG INGIN KAMU LAKUKAN?*\n`;
-        txt += `> Balas pesan ini dengan \`serang\` untuk melawan\n`;
-        txt += `> Balas pesan ini dengan \`lari\` untuk kabur (berisiko)`;
+        txt += `Te metiste en ello.${dungeon.name}*...\n`;
+        txt += `♪⚡Stamina 's delgada *${staminaCost}*\n\n`;
+        txt += `- Llegar - Muy bien, Seekor👹 ${monster}* para salir de la oscuridad y bloquear su camino!\n\n`;
+        txt += `*⚔¿Te acuerdas?\n`;
+        txt += `*Para escribir este mensaje con\`ataca\`para melawan\n`;
+        txt += `*Para escribir este mensaje con\`correr\`para soar ( sikawo )`;
 
         await m.reply(txt);
         return true;
@@ -333,13 +333,13 @@ async function dungeonAnswerHandler(m, sock) {
                 await _ourinleveljs.addExpWithLevelCheck.call(void 0, sock, m, db, user, expReward);
 
                 reportText += `🎉 *KEMENANGAN GEMILANG!*\n\n`;
-                reportText += `Dengan serangan mematikan, kamu berhasil menebas *${session.monster}*!\n\n`;
-                reportText += `*🎁 HADIAH YANG DIDAPAT:*\n`;
+                reportText += `Con un ataque detenido, usted logró cortar *${session.monster}*!\n\n`;
+                reportText += `*🎁AUDIENCIA JANG ACCESO: *\n`;
                 reportText += `> ✨ EXP: *+${Math.floor(expReward)}*\n`;
-                reportText += `> 💰 Koin: *+${goldReward.toLocaleString()}*\n`;
+                reportText += `♪💰Monedas: *+${goldReward.toLocaleString()}*\n`;
 
                 if (droppedItems.length > 0) {
-                    reportText += `\n*📦 BARANG JARAHAN (LOOT):*\n`;
+                    reportText += `\n*📦 Articulo JARAHAN (LOOT):*\n`;
                     reportText += `> ${droppedItems.join("\n> ")}\n`;
                 }
 
@@ -350,12 +350,12 @@ async function dungeonAnswerHandler(m, sock) {
                 user.rpg.health = Math.max(1, (user.rpg.health || 100) - 40);
 
                 reportText += `💀 *KEKALAHAN TRAGIS!*\n\n`;
-                reportText += `Kekuatanmu belum sebanding! *${session.monster}* memukul mundur dirimu dengan telak.\n`;
-                reportText += `Kamu berhasil merangkak keluar dengan tubuh penuh luka.\n\n`;
-                reportText += `*💔 KERUGIAN:*\n`;
-                reportText += `> 💸 Uang jatuh: *-${goldLoss.toLocaleString()} Koin*\n`;
-                reportText += `> ❤️ Darah berkurang: *-40 HP*\n\n`;
-                reportText += `> 💡 *Tips:* Naikan levelmu, makan potion, atau perkuat senjata!`;
+                reportText += `¡Tu fuerza aún no está rota!${session.monster}* te golpeó con un rígido.\n`;
+                reportText += `Te las arreglaste para arrastrarte con una herida de cuerpo.\n\n`;
+                reportText += `*💔Perdida:*\n`;
+                reportText += `♪💸Dinero cayó: * -${goldLoss.toLocaleString()}Monedas*\n`;
+                reportText += `♪❤Ya 's lowering: 40 hps\n\n`;
+                reportText += `♪💡* Consejos: * ¡Levanten sus niveles, coman las pociones, o la pelea de armas!`;
 
                 await m.react("💀");
             }
@@ -369,17 +369,17 @@ async function dungeonAnswerHandler(m, sock) {
             let reportText = "";
 
             if (escapeChance) {
-                reportText += `🏃‍♂️ *BERHASIL KABUR!*\n\n`;
-                reportText += `Kamu berbalik dan berlari sekuat tenaga. *${session.monster}* kehilangan jejakmu!\n`;
-                reportText += `Kamu selamat tanpa cedera, tapi petualangan ini sia-sia.`;
+                reportText += `🏃‍♂(Sumperando)\n\n`;
+                reportText += `Estás caminando y corriendo un sésamo de diez elementos. *${session.monster}* kehilangan jejakmu!\n`;
+                reportText += `Sobreviviste sin lesión, pero está aventura no es nada.`;
                 await m.react("💨");
             } else {
                 const hpLoss = 25;
                 user.rpg.health = Math.max(1, (user.rpg.health || 100) - hpLoss);
-                reportText += `💥 *GAGAL KABUR!*\n\n`;
-                reportText += `Kakimu tersandung bebatuan! *${session.monster}* mengejarmu dan mendaratkan cakarnya di tubuhmu!\n\n`;
-                reportText += `*💔 KERUGIAN:*\n`;
-                reportText += `> ❤️ Darah berkurang: *-${hpLoss} HP*`;
+                reportText += `💥*Fallido KABUR!*\n\n`;
+                reportText += `Kakimu tersandung bebatuan! *${session.monster}* ¡Ve tras ti y aterriza las garras en tu cuerpo!\n\n`;
+                reportText += `*💔Perdida:*\n`;
+                reportText += `♪❤Ya 's lowering:${hpLoss} HP*`;
                 await m.react("🩸");
             }
 
@@ -389,10 +389,10 @@ async function dungeonAnswerHandler(m, sock) {
             return true;
         } else {
             await m.reply(
-                `❓ *PILIHAN TIDAK DIKENAL*\n\n` +
-                `> Balas dengan \`serang\` untuk melawan monster.\n` +
-                `> Balas dengan \`lari\` untuk kabur.\n` +
-                `> Balas dengan \`batal\` jika benar-benar menyerah.`,
+                `❓OPCIÓN DEL PROBLEMA CONOCIDO\n\n` +
+                `# Responde con\`ataca\`Para luchar contra los monstruos.\n` +
+                `# Responde con\`correr\`para kabur.\n` +
+                `# Responde con\`cancelar\`Si es realmente violento.`,
             );
             return true;
         }

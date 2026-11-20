@@ -6,7 +6,7 @@ const pluginConfig = {
   name: "autotyping",
   alias: ["typing", "autoketik"],
   category: "owner",
-  description: "Auto typing indicator saat menerima pesan",
+  description: "Incinerador de escritura automática mientras recibe mensajes",
   usage: ".autotyping on/off",
   example: ".autotyping on",
   isOwner: true,
@@ -27,10 +27,10 @@ async function handler(m, { sock }) {
     return m.reply(
       `⌨️ *Auto Typing*\n\n` +
         `> Status: *${current ? "Aktif ✅" : "Nonaktif ❌"}*\n\n` +
-        `*PENGGUNAAN:*\n` +
+        `*Uso:*\n` +
         `> *${m.prefix}autotyping on* — Aktifkan\n` +
         `> *${m.prefix}autotyping off* — Nonaktifkan\n\n` +
-        `_Bot akan menampilkan indikator typing saat menerima pesan_`
+        `* Mostrará el indicador escribiendo mientras recibe mensajes*`
     );
   }
 
@@ -38,8 +38,8 @@ async function handler(m, { sock }) {
     db.setting("autoTyping", true);
     const ctx = _ourincontextjs.saluranCtx.call(void 0, );
     return m.reply(
-      `⌨️ *Auto Typing Aktif*\n\n` +
-        `> Bot akan menampilkan indikator typing`,
+      `⌨️ *Auto Typing Activo*\n\n` +
+        `* Mostrará el indicador escribiendo*`,
       { contextInfo: ctx }
     );
   }
@@ -47,13 +47,13 @@ async function handler(m, { sock }) {
   if (option === "off") {
     db.setting("autoTyping", false);
     return m.reply(
-      `⌨️ *Auto Typing Nonaktif*\n\n` +
-        `> Bot tidak akan menampilkan indikator typing`
+      `⌨♪ Demasiado no está activa ♪\n\n` +
+        `# Nunca voy a mostrar un indicador de escribir #`
     );
   }
 
   return m.reply(
-    `❌ *Opsi Tidak Valid*\n\n> Gunakan *${m.prefix}autotyping on* atau *${m.prefix}autotyping off*`
+    `❌Opsi inválido\n\n*Uso*${m.prefix}autotipado en * o *${m.prefix}autotyping off*`
   );
 }
 

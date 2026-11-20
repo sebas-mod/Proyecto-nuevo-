@@ -85,7 +85,7 @@ async function handleCommand(m, sock) {
     const db = _ourindatabasejs.getDatabase.call(void 0, );
 
     switch (command) {
-      // Category: info
+      //Categoría: info
       case "cping":
       case "cspeed":
       case "clatency": {
@@ -161,7 +161,7 @@ async function handleCommand(m, sock) {
           text += `╚══════════════════╝\n\n`;
           text += `╭┈┈⬡「 📊 *ɪɴꜰᴏ* 」\n`;
           text += `┃ ◦ Total: *${totalCases}* cases\n`;
-          text += `┃ ◦ Kategori: *${Object.keys(casesByCategory).length}*\n`;
+          text += `┃ ◦Categoría: *${Object.keys(casesByCategory).length}*\n`;
           text += `╰┈┈⬡\n\n`;
 
           for (const category in casesByCategory) {
@@ -181,7 +181,7 @@ async function handleCommand(m, sock) {
           }
 
           text += `*━━━━━━━━━━━━━━━*\n`;
-          text += `💡 *ᴛɪᴘ:* Gunakan \`.listallplugin\` untuk melihat plugin`;
+          text += `💡*ᴛɪᴘ:* Usa\`. listallplugin.\`para ver los plugins`;
 
           await sock.sendMessage(
             m.chat,
@@ -233,7 +233,7 @@ async function handleCommand(m, sock) {
           }
 
           if (totalPlugins === 0) {
-            await m.reply("⚠️ *Belum ada plugin yang dimuat*");
+            await m.reply("⚠*No hay una sola gota de enchufe que llevas*");
             return { handled: true };
           }
 
@@ -242,7 +242,7 @@ async function handleCommand(m, sock) {
           text += `╚══════════════════╝\n\n`;
           text += `╭┈┈⬡「 📊 *ɪɴꜰᴏ* 」\n`;
           text += `┃ ◦ Total: *${totalPlugins}* plugins\n`;
-          text += `┃ ◦ Kategori: *${categories.length}*\n`;
+          text += `┃ ◦Categoría: *${categories.length}*\n`;
           text += `╰┈┈⬡\n\n`;
 
           for (const category of categories.sort()) {
@@ -269,7 +269,7 @@ async function handleCommand(m, sock) {
           }
 
           text += `*━━━━━━━━━━━━━━━*\n`;
-          text += `💡 *ᴛɪᴘ:* Gunakan \`.listallcase\` untuk melihat case`;
+          text += `💡*ᴛɪᴘ:* Usa\`. listallcase.\`para ver el caso`;
 
           await sock.sendMessage(
             m.chat,
@@ -300,7 +300,7 @@ async function handleCommand(m, sock) {
         }
         return { handled: true };
       }
-      // End Category: info
+      //Final de la categoría: info
 
       default:
         return { handled: false };

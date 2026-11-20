@@ -24,21 +24,21 @@ async function handler(m, { sock }) {
     return m.reply(
       `📝 *sᴇᴛ ɢᴏᴏᴅʙʏᴇ*\n\n` +
         `╭┈┈⬡「 📋 *ᴘʟᴀᴄᴇʜᴏʟᴅᴇʀ* 」\n` +
-        `┃ ◦ \`{user}\` - Nama member\n` +
-        `┃ ◦ \`{number}\` - Nomor member\n` +
-        `┃ ◦ \`{group}\` - Nama grup\n` +
-        `┃ ◦ \`{desc}\` - Deskripsi grup\n` +
-        `┃ ◦ \`{count}\` - Sisa member\n` +
-        `┃ ◦ \`{owner}\` - Nama owner grup\n` +
-        `┃ ◦ \`{date}\` - Tanggal (DD/MM/YYYY)\n` +
-        `┃ ◦ \`{time}\` - Waktu (HH:mm WIB)\n` +
-        `┃ ◦ \`{day}\` - Hari (Senin, Selasa, dll)\n` +
-        `┃ ◦ \`{bot}\` - Nama bot\n` +
+        `┃ ◦ \`{user}\`- El nombre del miembro\n` +
+        `┃ ◦ \`{number}\`- Número\n` +
+        `┃ ◦ \`{group}\`- Nombre del grupo\n` +
+        `┃ ◦ \`{desc}\`- Decryption grup\n` +
+        `┃ ◦ \`{count}\`- Por favor.\n` +
+        `┃ ◦ \`{owner}\`- El nombre del propietario es grup\n` +
+        `┃ ◦ \`{date}\`- Fecha (D/MMM / YYYY)\n` +
+        `┃ ◦ \`{time}\`- Hora (HH: mm Walume )\n` +
+        `┃ ◦ \`{day}\`- Día ( Lunes, ensalada, dll )\n` +
+        `┃ ◦ \`{bot}\`- El nombre del bot.\n` +
         `┃ ◦ \`{prefix}\` - Prefix bot\n` +
         `╰┈┈⬡\n\n` +
         `\`Contoh:\`\n` +
         `\`${m.prefix}setgoodbye Bye {user}! 👋\`\n` +
-        `\`Sampai jumpa lagi pada {day}, {date}\``,
+        `\`Hasta el final del día{day}.{date}\``,
     );
   }
 
@@ -48,7 +48,7 @@ async function handler(m, { sock }) {
   m.react("✅");
 
   await m.reply(
-    `✅ Goodbye berhasil di set menjadi *${text}*\nMau reset? ketik ${m.prefix}resetgoodbye`,
+    `✅Adiós manejado en el set para ser *${text}*\n¿Quieres restablecerte?${m.prefix}resetgoodbye`,
   );
 }
 

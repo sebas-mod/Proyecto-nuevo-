@@ -4,7 +4,7 @@ _ouringamesjs.games.register('tebakbendera', {
     alias: ['tbendera', 'flag'],
     emoji: '🏳️',
     title: 'TEBAK BENDERA',
-    description: 'Tebak negara dari bendera',
+    description: 'Adivina el país de la bandera',
     dataFile: 'tebakbendera2.json',
     answerField: 'name',
     hasImage: true

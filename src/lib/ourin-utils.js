@@ -4,9 +4,9 @@ var _path = require('path'); var _path2 = _interopRequireDefault(_path);
 var _axios = require('axios'); var _axios2 = _interopRequireDefault(_axios);
 var _crypto = require('crypto'); var _crypto2 = _interopRequireDefault(_crypto);
 /**
- * Generate random string dengan panjang tertentu
- * @param {number} length - Panjang string yang diinginkan
- * @param {string} [charset='alphanumeric'] - Tipe karakter ('alphanumeric', 'numeric', 'alpha', 'hex')
+* Generar cadena aleatoria con cierta longitud
+* @ param{number}longitud - Long string deseado
+* @ param{string} [charset='alphanumeric'] - Tipe caracter ('alphanumeric', 'numeric', 'alpha', 'hex( GASPS )
  * @returns {string} Random string
  * @example
  * randomString(8); // "aB3dE7fG"
@@ -31,9 +31,9 @@ function randomString(length, charset = 'alphanumeric') {
 }
 
 /**
- * Generate random integer antara min dan max (inclusive)
- * @param {number} min - Nilai minimum
- * @param {number} max - Nilai maximum
+* Generar entero entero entre min y max(incluido)
+* @ param{number} min - Valor minimum
+* @ param{number}max- Valor maximum
  * @returns {number} Random integer
  * @example
  * randomInt(1, 10); // 7
@@ -43,9 +43,9 @@ function randomInt(min, max) {
 }
 
 /**
- * Pilih item random dari array
- * @param {Array} array - Array untuk dipilih
- * @returns {*} Item random dari array
+* Elijalo al azar desde Array
+* @ param{Array}array - Array para seleccionar
+* @ devuelve { * } Artículo aleatorio de array
  * @example
  * randomPick(['a', 'b', 'c']); // 'b'
  */
@@ -55,20 +55,20 @@ function randomPick(array) {
 }
 
 /**
- * Delay eksekusi untuk durasi tertentu
- * @param {number} ms - Durasi delay dalam milliseconds
- * @returns {Promise<void>} Promise yang resolve setelah delay
+* Ejecución de demoras por duración absoluta
+* @ param{number}ms - DÍA Duración en milisegundos
+* @ devuelve { Promesa<void>Promesa que resuelve después de la demora
  * @example
- * await delay(1000); // tunggu 1 detik
+* espera retraso ( 1000 ); / / / espera 1 segundo
  */
 function delay(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 /**
- * Cek apakah string adalah URL valid
- * @param {string} str - String untuk dicek
- * @returns {boolean} True jika URL valid
+* Comprobar si el punto es una URL válida
+* @ param{string}# Estring to intercept #
+* @ devuelves{boolean}Es verdad si URL válida
  * @example
  * isUrl('https://google.com'); // true
  * isUrl('not a url'); // false
@@ -83,9 +83,9 @@ function isUrl(str) {
 }
 
 /**
- * Cek apakah string adalah nomor telepon valid
- * @param {string} str - String untuk dicek
- * @returns {boolean} True jika nomor telepon valid
+* Comprobar si el punto es el número del teléfono válido
+* @ param{string}# Estring to intercept #
+* @ devuelves{boolean}Es verdad si el número uno de las llamadas de teléfono válidas
  * @example
  * isPhoneNumber('6281234567890'); // true
  */
@@ -94,18 +94,18 @@ function isPhoneNumber(str) {
 }
 
 /**
- * Cek apakah string adalah email valid
- * @param {string} str - String untuk dicek
- * @returns {boolean} True jika email valid
+* Comprobar si la cadena es un correo válido
+* @ param{string}# Estring to intercept #
+* @ devuelves{boolean}Es verdad si el correo electrónico es válido
  */
 function isEmail(str) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(str);
 }
 
 /**
- * Parse mention dari text
- * @param {string} text - Text yang berisi mention
- * @returns {string[]} Array nomor yang di-mention
+* Mención de parálisis de texn
+* @ param{string}texT @-@ Texn que contiene mención
+* @ devuelve *
  * @example
  * parseMention('@6281234567890 hello'); // ['6281234567890']
  */
@@ -117,8 +117,8 @@ function parseMention(text) {
 }
 
 /**
- * Escape karakter khusus regex
- * @param {string} str - String untuk di-escape
+* Escape especial carácter regex
+* @ param{string}- Cantad a la... Escax.
  * @returns {string} Escaped string
  */
 function escapeRegex(str) {
@@ -127,7 +127,7 @@ function escapeRegex(str) {
 
 /**
  * Deep clone object
- * @param {Object} obj - Object untuk di-clone
+* @ param{Object}*Obtexto a @-@ clone*
  * @returns {Object} Cloned object
  */
 function deepClone(obj) {
@@ -136,7 +136,7 @@ function deepClone(obj) {
 
 /**
  * Merge deep objects
- * @param {Object} target - Target object
+ * @param {Object} objetivo - Objetivo object
  * @param {Object} source - Source object
  * @returns {Object} Merged object
  */
@@ -155,10 +155,10 @@ function deepMerge(target, source) {
 }
 
 /**
- * Fetch buffer dari URL
- * @param {string} url - URL untuk fetch
+* Búfer de búsqueda de URL
+* @ param{string}url @-@ URL para embrague
  * @param {Object} [options={}] - Axios options
- * @returns {Promise<Buffer>} Buffer dari response
+* @ devuelve { Promesa<Buffer>Buffer of the family
  * @example
  * const buffer = await fetchBuffer('https://example.com/image.png');
  */
@@ -175,8 +175,8 @@ async function fetchBuffer(url, options = {}) {
 }
 
 /**
- * Fetch JSON dari URL
- * @param {string} url - URL untuk fetch
+* Buscar JSON desde URL
+* @ param{string}url @-@ URL para embrague
  * @param {Object} [options={}] - Axios options
  * @returns {Promise<Object>} JSON response
  * @example
@@ -195,8 +195,8 @@ async function fetchJson(url, options = {}) {
 }
 
 /**
- * Fetch text dari URL
- * @param {string} url - URL untuk fetch
+* Fetch text de URL
+* @ param{string}url @-@ URL para embrague
  * @param {Object} [options={}] - Axios options
  * @returns {Promise<string>} Text response
  */
@@ -213,10 +213,10 @@ async function fetchText(url, options = {}) {
 }
 
 /**
- * Download file dari URL dan simpan ke path
- * @param {string} url - URL file untuk download
- * @param {string} filePath - Path untuk menyimpan file
- * @returns {Promise<string>} Path file yang disimpan
+* Descarga de archivo de URL y guardar a la ruta
+* @ param{string}url @-@ archivo URL para descargas
+* @ param{string}Posh - Archivo de ruta para cargar el archivo
+* @ devuelve { Promesa<string>archivo Path guardado
  */
 async function downloadFile(url, filePath) {
     try {
@@ -230,13 +230,13 @@ async function downloadFile(url, filePath) {
         _fs2.default.writeFileSync(filePath, buffer);
         return filePath;
     } catch (error) {
-        throw new Error(`Failed to download file: ${error.message}`);
+        throw new Error(`Failed to downloads archivo:${error.message}`);
     }
 }
 
 /**
- * Generate hash MD5 dari string
- * @param {string} str - String untuk di-hash
+* Generar hash MD5 de la cadena
+* @ param{string}# String to the hash #
  * @returns {string} MD5 hash
  */
 function md5(str) {
@@ -244,8 +244,8 @@ function md5(str) {
 }
 
 /**
- * Generate hash SHA256 dari string
- * @param {string} str - String untuk di-hash
+* Generar hash SHA256 de la cuerda
+* @ param{string}# String to the hash #
  * @returns {string} SHA256 hash
  */
 function sha256(str) {
@@ -254,7 +254,7 @@ function sha256(str) {
 
 /**
  * Encode string ke Base64
- * @param {string} str - String untuk di-encode
+* @ param{string}*Canta a la @-@ codificación*
  * @returns {string} Base64 encoded string
  */
 function toBase64(str) {
@@ -263,7 +263,7 @@ function toBase64(str) {
 
 /**
  * Decode Base64 ke string
- * @param {string} str - Base64 string untuk di-decode
+* @ param{string}*Base64 * cuerda a la decodificación*
  * @returns {string} Decoded string
  */
 function fromBase64(str) {
@@ -271,9 +271,9 @@ function fromBase64(str) {
 }
 
 /**
- * Cek apakah path adalah file
- * @param {string} filePath - Path untuk dicek
- * @returns {boolean} True jika file exists dan adalah file
+* Comproba si el deber es un archivo
+* @ param{string}Posh @-@ Send to Intern
+* @ devuelves{boolean}Es verdad si llenasxists y es archivo
  */
 function isFile(filePath) {
     try {
@@ -284,9 +284,9 @@ function isFile(filePath) {
 }
 
 /**
- * Cek apakah path adalah directory
- * @param {string} dirPath - Path untuk dicek
- * @returns {boolean} True jika path exists dan adalah directory
+* Compruebe si los caminos son directorio
+* @ param{string}- Camino para interceptar.
+* @ devuelves{boolean}Verdadero si camino exists y es directorio
  */
 function isDirectory(dirPath) {
     try {
@@ -297,9 +297,9 @@ function isDirectory(dirPath) {
 }
 
 /**
- * Buat directory jika belum ada
+* Directorio de Crea si aún no existe
  * @param {string} dirPath - Path directory
- * @returns {boolean} True jika berhasil
+* @ devuelves{boolean}Verdadero si exitoso
  */
 function ensureDir(dirPath) {
     if (!_fs2.default.existsSync(dirPath)) {
@@ -309,10 +309,10 @@ function ensureDir(dirPath) {
 }
 
 /**
- * Baca file JSON dengan aman
- * @param {string} filePath - Path file JSON
- * @param {*} [defaultValue={}] - Default value jika file tidak ada
- * @returns {Object} Parsed JSON atau default value
+* Lea archivos JSON con seguridad
+* @ param{string} filePath - Path archivo JSON
+*Param* *DefaultValue*{}- Valor predeterminado si no hay archivo
+* @ devuelves{Object}Parsed JSON o valor predeterminado
  */
 function readJsonFile(filePath, defaultValue = {}) {
     try {
@@ -325,11 +325,11 @@ function readJsonFile(filePath, defaultValue = {}) {
 }
 
 /**
- * Tulis object ke file JSON
- * @param {string} filePath - Path file JSON
- * @param {Object} data - Data untuk ditulis
- * @param {boolean} [pretty=true] - Apakah format dengan indentasi
- * @returns {boolean} True jika berhasil
+* Turlis objeto a json archivo
+* @ param{string} filePath - Path archivo JSON
+* @ param{Object}datos - Datos para escribir
+* @ param{boolean}♪ Es formación ♪
+* @ devuelves{boolean}Verdadero si exitoso
  */
 function writeJsonFile(filePath, data, pretty = true) {
     try {
@@ -347,8 +347,8 @@ function writeJsonFile(filePath, data, pretty = true) {
 }
 
 /**
- * Dapatkan MIME type dari buffer
- * @param {Buffer} buffer - Buffer untuk dicek
+* Obtener tipo MIME del búfer
+* @ param{Buffer}búfer - búfer para interceptar
  * @returns {string} MIME type
  */
 function getMimeType(buffer) {
@@ -381,9 +381,9 @@ function getMimeType(buffer) {
 }
 
 /**
- * Dapatkan ekstensi file dari MIME type
+* Obtener el archivo de extensión del tipo MIME
  * @param {string} mimeType - MIME type
- * @returns {string} File extension (tanpa dot)
+* @ devuelves{string}Archivo extensión (sin puntos)
  */
 function getExtension(mimeType) {
     const extensions = {
@@ -403,7 +403,7 @@ function getExtension(mimeType) {
 }
 
 /**
- * Sleep dengan random delay
+* Dormir con retraso aleatorio
  * @param {number} minMs - Minimum delay
  * @param {number} maxMs - Maximum delay
  * @returns {Promise<void>}
@@ -414,11 +414,11 @@ async function randomDelay(minMs, maxMs) {
 }
 
 /**
- * Retry function dengan exponential backoff
- * @param {Function} fn - Function untuk di-retry
+* Función de reingreso con exretroceso inicial
+* @ param{Function}Fencing to retry-
  * @param {number} [maxRetries=3] - Maksimum retry
- * @param {number} [baseDelay=1000] - Base delay dalam ms
- * @returns {Promise<*>} Result dari function
+* @ param{number}*Si me das el tiempo* *te daré el tiempo*
+* @ devuelve { Promesa } Resultado de la función
  */
 async function retry(fn, maxRetries = 3, baseDelay = 1000) {
     let lastError;
@@ -438,9 +438,9 @@ async function retry(fn, maxRetries = 3, baseDelay = 1000) {
 }
 
 /**
- * Chunk array menjadi array of arrays dengan size tertentu
- * @param {Array} array - Array untuk di-chunk
- * @param {number} size - Ukuran setiap chunk
+* El array de la hucha se convierte en array de arrays con absoluto seis
+* @ param{Array}array - Array to --chunk
+* @ param{number}tamaño - árido cada pedazo
  * @returns {Array<Array>} Array of chunks
  * @example
  * chunk([1,2,3,4,5], 2); // [[1,2], [3,4], [5]]
@@ -464,9 +464,9 @@ function flatten(array, depth = 1) {
 }
 
 /**
- * Remove duplicate dari array
- * @param {Array} array - Array dengan kemungkinan duplicate
- * @returns {Array} Array tanpa duplicate
+* Retirado duplicado de matriz
+* @ param{Array}array - Array con posibilidades duplicadas
+* @ devuelves{Array}Array sin duplicar
  */
 function unique(array) {
     return [...new Set(array)];
@@ -475,7 +475,7 @@ function unique(array) {
 /**
  * Group array by key
  * @param {Array<Object>} array - Array of objects
- * @param {string} key - Key untuk grouping
+* @ param{string}llave @-@ clave para agrupar
  * @returns {Object} Grouped object
  */
 function groupBy(array, key) {
@@ -492,8 +492,8 @@ function groupBy(array, key) {
 /**
  * Sort array of objects by key
  * @param {Array<Object>} array - Array of objects
- * @param {string} key - Key untuk sorting
- * @param {string} [order='asc'] - Order: 'asc' atau 'desc'
+* @ param{string}llave @-@ para clasificar
+* @ param{string}Orden
  * @returns {Array<Object>} Sorted array
  */
 function sortBy(array, key, order = 'asc') {

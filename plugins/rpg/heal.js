@@ -4,7 +4,7 @@ const pluginConfig = {
   name: "heal",
   alias: ["sembuh", "recover"],
   category: "rpg",
-  description: "Pulihkan health dengan istirahat (gratis tapi lama)",
+  description: "Reducir el sanador con un descanso libre pero viejo",
   usage: ".heal",
   example: ".heal",
   isOwner: false,
@@ -27,7 +27,7 @@ async function handler(m, { sock }) {
   user.rpg.maxStamina = user.rpg.maxStamina || 100;
 
   if (user.rpg.health >= user.rpg.maxHealth && user.rpg.stamina >= user.rpg.maxStamina) {
-    return m.reply(`Eits, badan kamu masih seger bugar kak! 🏋️✨\nNggak usah istirahat dulu, mending lanjut petualang aja! 🚀`);
+    return m.reply(`Eits, usted halstill mirando el arp @ - @ hermana!🏋♪✨\nNo hay descanso, sólo tiens que ir de viaje!🚀`);
   }
 
   await m.react("🛌");
@@ -43,11 +43,11 @@ async function handler(m, { sock }) {
   user.rpg.health = Math.min(user.rpg.health + healthRecover, user.rpg.maxHealth);
   user.rpg.stamina = Math.min(user.rpg.stamina + staminaRecover, user.rpg.maxStamina);
 
-  let txt = `Hooammm... seger banget abis tidur! 🥱🌞\n\n`;
-  txt += `Status kamu udah pulih nih:\n`;
+  let txt = `Hooammm... seger mucho abis duerme! 🥱🌞\n\n`;
+  txt += `Status you 've been doing well:\n`;
   txt += `❤️ Health: ${oldHealth} 📈 *${user.rpg.health}*\n`;
   txt += `⚡ Stamina: ${oldStamina} 📈 *${user.rpg.stamina}*\n\n`;
-  txt += `Kalo males nunggu istirahat, kamu bisa beli potion di \`.shop\` dan ketik \`.use potion\` buat heal instant ya! 🥤💖`;
+  txt += `Pronto estarás fuera de la cama.\`. Tienda\`y escribe\`. uso de la poción\`Que sea fresco, instantáneo.🥤💖`;
 
   db.save();
   await m.reply(txt);

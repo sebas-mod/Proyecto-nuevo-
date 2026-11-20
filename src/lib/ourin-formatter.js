@@ -3,43 +3,43 @@ var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefa
 var _ourintimejs = require('./ourin-time.js'); var timeHelper = _interopRequireWildcard(_ourintimejs);
 /**
  * @typedef {Object} DashboardData
- * @property {string} userName - Nama user
- * @property {string} userStatus - Status user (Owner/Premium/Free)
- * @property {string} mode - Mode bot (Public/Self)
- * @property {number} totalUsers - Total pengguna bot
- * @property {number} userLimit - Limit user
+* @ proprie{string}UsuarioName - Nombre de usuario
+* Perfil{string}Usuarios Estado - Usuario del estaya ( Propietario / Premium / Gratis )
+* @ proprie{string}Modo - Bot de modo ( Publically / Self )
+* @ proprie{number}total Usuarios - total de uso de botas
+* @ proprie{number}UserLimit - Límite user
  */
 
 /**
  * @typedef {Object} BotInfoData
- * @property {string} botName - Nama bot
- * @property {string} developer - Nama developer
- * @property {string} version - Versi bot
- * @property {string} uptime - Uptime bot
- * @property {number} totalFeatures - Total fitur
- * @property {string} mode - Mode bot
- * @property {string} platform - Platform bot
+* @ proprie{string}- Nombre del bot.
+* @ proprie{string}develtner - Nombre del desarrollo
+* Perfil{string}- Versión - Versión del bot
+* @ proprie{string}- Hora de hacer el bot
+* @ proprie{number}Total Características - total características
+* @ proprie{string}Modo @-@ Modo bot
+* @ proprie{string}Plataforma - Plataforma bot
  */
 
 /**
  * @typedef {Object} UserProfileData
- * @property {string} name - Nama user
- * @property {string} number - Nomor user
- * @property {string} status - Status (Owner/Premium/Free)
- * @property {number} limit - Limit tersisa
- * @property {string} registeredAt - Tanggal registrasi
+* @ proprie{string}nombre
+* @ proprie{string}- El número de usuario
+* Perfil{string}Akado - estado ( Propietario / Premium / Gratis )
+* @ proprie{number}límite - límite se deja
+* @ proprie{string}registro - Registro protegido
  */
 
 /**
  * @typedef {Object} MenuCategory
- * @property {string} name - Nama kategori
- * @property {string} emoji - Emoji kategori
- * @property {string} description - Deskripsi kategori
- * @property {string[]} commands - Array command dalam kategori
+* @ proprie{string}nombre - Categoría Nombre
+* @ proprie{string}emoji - Emoji cathegori
+* @ proprie{string}descripción - descripción del category
+* @ promency { string } comandos - Array comando in thetheorem
  */
 
 /**
- * Karakter untuk styling menu
+* Caracter para el menú de estilo
  * @constant
  */
 const CHARS = {
@@ -60,7 +60,7 @@ const CHARS = {
 };
 
 /**
- * Emoji untuk berbagai kebutuhan
+* Emoji to be so needy
  * @constant
  */
 const EMOJIS = {
@@ -96,8 +96,8 @@ const EMOJIS = {
 };
 
 /**
- * Format uptime menjadi string yang mudah dibaca
- * @param {number} ms - Uptime dalam milliseconds
+* Tiempo de actualización de formato es una cadena de perfil @-@ muy baja
+* @ param{number}ms - Tiempo de actualización en milisegundos
  * @returns {string} Formatted uptime string
  * @example
  * formatUptime(3661000); // "1h 1m 1s"
@@ -119,8 +119,8 @@ function formatUptime(ms) {
 }
 
 /**
- * Format tanggal ke format lokal Indonesia
- * @param {Date|number|string} date - Tanggal untuk diformat
+* Formatt agigal to local form Indonesia
+* @ param { Date }
  * @returns {string} Formatted date string
  * @example
  * formatDate(new Date()); // "17/12/2024, 12:30:45"
@@ -130,8 +130,8 @@ function formatDate(date) {
 }
 
 /**
- * Format nomor telepon ke format yang lebih readable
- * @param {string} number - Nomor telepon
+* Número de teléfono de formato a un forte más legible
+* @ param{string}- Número uno.
  * @returns {string} Formatted number
  * @example
  * formatNumber('6281234567890'); // '62 812-3456-7890'
@@ -151,8 +151,8 @@ function formatNumber(number) {
 }
 
 /**
- * Format ukuran file ke format yang readable
- * @param {number} bytes - Ukuran dalam bytes
+* Archivo de tamaño de formato a un forte legible
+* @ param{number}bytes - Ukuran en bytes
  * @returns {string} Formatted size string
  * @example
  * formatFileSize(1024); // "1.00 KB"
@@ -169,9 +169,9 @@ function formatFileSize(bytes) {
 }
 
 /**
- * Buat garis horizontal
- * @param {number} length - Panjang garis
- * @param {string} [char='─'] - Karakter untuk garis
+* Garis horizontal de la manta
+* @ param{number}longitud - longitud
+* @ param{string}♪─- Un personaje para el garaje.
  * @returns {string} String garis
  */
 function createLine(length = 20, char = CHARS.horizontal) {
@@ -179,9 +179,9 @@ function createLine(length = 20, char = CHARS.horizontal) {
 }
 
 /**
- * Buat header box
+* Crea header box
  * @param {string} title - Judul header
- * @param {number} [width=20] - Lebar box
+* @ param{number}*Mi anchura* *20*x
  * @returns {string} Header string
  * @example
  * createHeader('DASHBOARD');
@@ -194,8 +194,8 @@ function createHeader(title, width = 20) {
 }
 
 /**
- * Buat footer box
- * @param {number} [width=20] - Lebar box
+* Crea footer box
+* @ param{number}*Mi anchura* *20*x
  * @returns {string} Footer string
  * @example
  * createFooter(); // "╰────────────────────╯"
@@ -205,10 +205,10 @@ function createFooter(width = 20) {
 }
 
 /**
- * Buat baris body dengan bullet
- * @param {string} text - Text untuk baris
+* Cuerpo de baris de barco con bala
+* @ param{string}texT @-@ Text para bar
  * @param {string} [prefix='│'] - Prefix baris
- * @param {string} [bullet='◦'] - Karakter bullet
+* @ param{string}*Toletes*◦* * *Milona magra*
  * @returns {string} Formatted body line
  */
 function createBodyLine(text, prefix = CHARS.vertical, bullet = CHARS.bullet) {
@@ -216,20 +216,20 @@ function createBodyLine(text, prefix = CHARS.vertical, bullet = CHARS.bullet) {
 }
 
 /**
- * Buat baris dengan arrow
+* Barco con flecha
  * @param {string} label - Label
- * @param {string} value - Nilai
- * @returns {string} Formatted line dengan arrow
+* @ param{string}valor - valor
+* @ devuelves{string}Línea formada con arraw
  * @example
- * createArrowLine('Nama', 'Ourin-AI'); // "│ ➣ Nama: Ourin-AI"
+* crearArrowLine ( Nombre de la Tierra, etc. )│ ➣Nombre: Ourin-AI"
  */
 function createArrowLine(label, value) {
   return `${CHARS.vertical} ${CHARS.arrow} ${label}: ${value}`;
 }
 
 /**
- * Buat dashboard info
- * @param {DashboardData} data - Data untuk dashboard
+* Información de Crea dashboard
+* @ param{DashboardData}datos - Datos para el panel de control
  * @returns {string} Formatted dashboard string
  */
 function createDashboard(data) {
@@ -244,11 +244,11 @@ function createDashboard(data) {
   const lines = [
     `${CHARS.cornerTopLeft}${CHARS.horizontal}「 ${EMOJIS.dashboard} DASHBOARD 」${CHARS.horizontal}`,
     `${CHARS.vertical}`,
-    createArrowLine("Nama", userName),
+    createArrowLine("Nombre", userName),
     createArrowLine("Status User", userStatus),
     createArrowLine("Mode", mode),
-    createArrowLine("Pengguna", totalUsers.toString()),
-    createArrowLine("Limit", userLimit.toString()),
+    createArrowLine("Usuario", totalUsers.toString()),
+    createArrowLine("Límite", userLimit.toString()),
     `${CHARS.vertical}`,
     `${CHARS.cornerBottomLeft}${createLine(24)}`,
   ];
@@ -257,14 +257,14 @@ function createDashboard(data) {
 }
 
 /**
- * Buat info bot
- * @param {BotInfoData} data - Data info bot
- * @returns {string} Formatted bot info string
+* Crea info del bot
+* @ param{BotInfoData}datos - Datos de la infantería
+* @ devuelves{string}Cuerda de información de bot con formato
  */
 function createBotInfo(data) {
   const {
     botName = _optionalChain([_configjs2.default, 'access', _ => _.bot, 'optionalAccess', _2 => _2.name]) || "Ourin-AI",
-    developer = _optionalChain([_configjs2.default, 'access', _3 => _3.owner, 'optionalAccess', _4 => _4.name]) || "Owner",
+    developer = _optionalChain([_configjs2.default, 'access', _3 => _3.owner, 'optionalAccess', _4 => _4.name]) || "Propietario",
     version = _optionalChain([_configjs2.default, 'access', _5 => _5.bot, 'optionalAccess', _6 => _6.version]) || "1.0.0",
     uptime = "0s",
     totalFeatures = 0,
@@ -273,14 +273,14 @@ function createBotInfo(data) {
   } = data;
 
   const lines = [
-    `${CHARS.horizontal} *Informasi Bot* ${CHARS.horizontal}`,
+    `${CHARS.horizontal}Información del Tejado${CHARS.horizontal}`,
     ``,
-    `${CHARS.dot} Nama-Bot : ${botName} 🌿`,
-    `${CHARS.dot} Developer : ${developer}`,
+    `${CHARS.dot}Nombre - DOUBLE:${botName} 🌿`,
+    `${CHARS.dot}Desarrollador:${developer}`,
     `${CHARS.dot} Mode : ${mode.charAt(0).toUpperCase() + mode.slice(1)}`,
     `${CHARS.dot} Version : ${version}`,
     `${CHARS.dot} Uptime : ${uptime}`,
-    `${CHARS.dot} Total-Fitur : ${totalFeatures}`,
+    `${CHARS.dot}Total-Función:${totalFeatures}`,
     `${CHARS.dot} Platform : ${platform}`,
     ``,
   ];
@@ -289,7 +289,7 @@ function createBotInfo(data) {
 }
 
 /**
- * Buat user profile
+* Perfil de usuario de carga
  * @param {UserProfileData} data - Data user profile
  * @returns {string} Formatted user profile string
  */
@@ -303,7 +303,7 @@ function createUserProfile(data) {
   } = data;
 
   const statusEmoji =
-    status === "Owner"
+    status === "Propietario"
       ? EMOJIS.owner
       : status === "Premium"
         ? EMOJIS.premium
@@ -311,24 +311,24 @@ function createUserProfile(data) {
 
   const lines = [
     `【 USER PROFILE 】`,
-    `${EMOJIS.name} Nama   : ${name}`,
-    `${EMOJIS.number} Nomor  : ${formatNumber(number)}`,
+    `${EMOJIS.name}Nombre:${name}`,
+    `${EMOJIS.number}Número:${formatNumber(number)}`,
     `${statusEmoji} Status : ${status}`,
-    `${EMOJIS.limit} Limit  : ${limit}`,
+    `${EMOJIS.limit}Límite:${limit}`,
     ``,
   ];
 
   if (registeredAt) {
-    lines.splice(5, 0, `${EMOJIS.time} Daftar : ${registeredAt}`);
+    lines.splice(5, 0, `${EMOJIS.time}Registrate:${registeredAt}`);
   }
 
   return lines.join("\n");
 }
 
 /**
- * Buat status bot
- * @param {Object} data - Data status bot
- * @returns {string} Formatted bot status string
+* Crea estado del bot
+* @ param{Object}data - Estado del bot de datos
+* @ devuelves{string}Cuerda de estado de bot con formato
  */
 function createBotStatus(data) {
   const {
@@ -341,12 +341,12 @@ function createBotStatus(data) {
   } = data;
 
   const lines = [
-    `【 BOT STATUS 】`,
-    `${EMOJIS.bot} Bot      : ${botName}`,
+    `【BOT STATUS】`,
+    `${EMOJIS.bot}> 91; Gasps &#93;${botName}`,
     `${EMOJIS.uptime} Uptime   : ${uptime}`,
     `${EMOJIS.mode} Mode     : ${mode}`,
-    `${EMOJIS.commands} Commands : ${totalCommands} fitur`,
-    `${EMOJIS.user} Pengguna : ${totalUsers} users`,
+    `${EMOJIS.commands} Commands : ${totalCommands}función`,
+    `${EMOJIS.user}Usuario:${totalUsers} users`,
     `${EMOJIS.speed} Speed    : ${speed}`,
     ``,
   ];
@@ -355,10 +355,10 @@ function createBotStatus(data) {
 }
 
 /**
- * Buat kategori menu
- * @param {MenuCategory} category - Data kategori
- * @param {string} prefix - Prefix command
- * @returns {string} Formatted category menu
+* Menú de Crea caegori
+* @ param{MenuCategory}Categoría - Categoría Datos
+* @ param{string}prefix- Prefi.xcomando
+* @ devuelves{string}Menú de categoría con formato
  */
 function createCategoryMenu(category, prefix = _optionalChain([_configjs2.default, 'access', _9 => _9.command, 'optionalAccess', _10 => _10.prefix]) || ".") {
   const { name, emoji, description = "", commands = [] } = category;
@@ -377,8 +377,8 @@ function createCategoryMenu(category, prefix = _optionalChain([_configjs2.defaul
 }
 
 /**
- * Buat kategori menu dengan sub-description
- * @param {Object} data - Data kategori menu
+* Menú Crea camori con sub @-@ descripción
+* @ param{Object}datos - Datos del menú de categoría
  * @returns {string} Formatted category section
  */
 function createCategorySection(data) {
@@ -386,7 +386,7 @@ function createCategorySection(data) {
 
   const lines = [
     `${emoji} *${title}*`,
-    `  Ketik: ${prefix}${command}`,
+    `Escribe:${prefix}${command}`,
     `  ${CHARS.vertical} ( ${description} )`,
     ``,
   ];
@@ -395,9 +395,9 @@ function createCategorySection(data) {
 }
 
 /**
- * Buat main menu lengkap
- * @param {Object} data - Data untuk main menu
- * @returns {string} Formatted main menu string
+* Menú principal de Crea completo
+* @ param{Object}datos - Datos para reproducir el menú
+* @ devuelves{string}Cuerda de menú principal con formato
  */
 function createMainMenu(data) {
   const {
@@ -431,19 +431,19 @@ function createMainMenu(data) {
     );
   }
 
-  parts.push(`${EMOJIS.tip} *Tips:* Jika kamu tidak tahu cara menggunakan Bot`);
-  parts.push(`Kamu bisa tanya ke owner`);
+  parts.push(`${EMOJIS.tip}* Consejos: * Si no sabes cómo utilizar`);
+  parts.push(`Puedes consultar al dueño.`);
   parts.push(`${CHARS.vertical} Mode: ${data.mode || "Public"}`);
 
   return parts.join("\n");
 }
 
 /**
- * Buat command list untuk kategori tertentu
- * @param {string} categoryName - Nama kategori
- * @param {string[]} commands - Array command
- * @param {string} prefix - Prefix command
- * @returns {string} Formatted command list
+* Lista de comandos de carga para el cathegori especificado
+* @ param{string}CategoríaName - Categori Nombre
+ * @param {string[]} commands - Array comando
+* @ param{string}prefix- Prefi.xcomando
+* @ devuelves{string}Lista de comandos formateada
  */
 function createCommandList(categoryName, commands, prefix = ".") {
   const emoji = _optionalChain([_configjs2.default, 'access', _13 => _13.categoryEmojis, 'optionalAccess', _14 => _14[categoryName.toLowerCase()]]) || "📋";
@@ -464,8 +464,8 @@ function createCommandList(categoryName, commands, prefix = ".") {
 }
 
 /**
- * Buat pesan wait/loading
- * @param {string} [message='Tunggu sebentar...'] - Pesan loading
+* Crea wait / mensaje de la loating
+* @ param{string}# El momento en que espero #
  * @returns {string} Formatted wait message
  */
 function createWaitMessage(message = "Tunggu sebentar...") {
@@ -473,26 +473,26 @@ function createWaitMessage(message = "Tunggu sebentar...") {
 }
 
 /**
- * Buat pesan sukses
- * @param {string} [message='Berhasil!'] - Pesan sukses
+* Arrojar el mensaje del éxito
+* @ param{string}*Espera que funcione*
  * @returns {string} Formatted success message
  */
-function createSuccessMessage(message = "Berhasil!") {
+function createSuccessMessage(message = "Exito!") {
   return `${EMOJIS.success} *${message}*`;
 }
 
 /**
- * Buat pesan error
- * @param {string} [message='Terjadi kesalahan!'] - Pesan error
+* Mensaje de error de carga
+* @ param{string}Mensaje
  * @returns {string} Formatted error message
  */
-function createErrorMessage(message = "Terjadi kesalahan!") {
+function createErrorMessage(message = "Se produjo un error!") {
   return `${EMOJIS.error} *${message}*`;
 }
 
 /**
- * Buat pesan warning
- * @param {string} message - Pesan warning
+* Mensajes de advertencia abiertos
+* @ param{string}Mensaje - Psan warning
  * @returns {string} Formatted warning message
  */
 function createWarningMessage(message) {
@@ -500,23 +500,23 @@ function createWarningMessage(message) {
 }
 
 /**
- * Mendapatkan greeting berdasarkan waktu
+* Consiguiendo tiempo basado en el pastoreo
  * @returns {string} Greeting message
  * @example
- * getTimeGreeting(); // "Selamat Pagi" (jika pagi hari)
+* Get Time Greeting ( ); / - Feliz Mañana Essence ( si día )
  */
 function getTimeGreeting() {
   const hour = timeHelper.getHour();
 
-  if (hour >= 4 && hour < 10) return "Selamat Pagi 🌅";
-  if (hour >= 10 && hour < 15) return "Selamat Siang ☀️";
-  if (hour >= 15 && hour < 18) return "Selamat Sore 🌇";
-  return "Selamat Malam 🌙";
+  if (hour >= 4 && hour < 10) return "Buenos días🌅";
+  if (hour >= 10 && hour < 15) return "Buenas tardes☀♪";
+  if (hour >= 15 && hour < 18) return "Buenas tardes🌇";
+  return "Buenas noches🌙";
 }
 
 /**
- * Capitalize setiap kata dalam string
- * @param {string} str - String untuk di-capitalize
+* Capitalizar cada palabra en la cuerda
+* @ param{string}# String to the - capitalize #
  * @returns {string} Capitalized string
  * @example
  * capitalize('hello world'); // "Hello World"
@@ -527,10 +527,10 @@ function capitalize(str) {
 }
 
 /**
- * Truncate text jika terlalu panjang
- * @param {string} text - Text untuk di-truncate
- * @param {number} maxLength - Panjang maksimal
- * @param {string} [suffix='...'] - Suffix jika di-truncate
+* Truncate texSi es demasiado largo
+* @ param{string}texT @-@ Text a @-@ truncate
+* @ param{number}max_ Full- Top de la línea
+* @ param{string}*Suffi*x- Sí.xsi di-truncate
  * @returns {string} Truncated text
  */
 function truncate(text, maxLength, suffix = "...") {

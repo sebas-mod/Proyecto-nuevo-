@@ -33,7 +33,7 @@ async function handler(m, { sock }) {
     if (!username) {
         return m.reply(
             `📸 *ɪɴsᴛᴀɢʀᴀᴍ sᴛᴀʟᴋ*\n\n` +
-            `> Masukkan username Instagram\n\n` +
+            `*Pon el nombre de usuario Instagram*\n\n` +
             `\`Contoh: ${m.prefix}igstalk cristiano\``
         )
     }
@@ -49,16 +49,16 @@ async function handler(m, { sock }) {
         const d = _optionalChain([res, 'access', _5 => _5.data, 'optionalAccess', _6 => _6.data])
         if (!_optionalChain([res, 'access', _7 => _7.data, 'optionalAccess', _8 => _8.status]) || !_optionalChain([d, 'optionalAccess', _9 => _9.username])) {
             m.react('❌')
-            return m.reply(`❌ Akun *@${username}* tidak ditemukan`)
+            return m.reply(`❌Cuenta *@${username}* not found`)
         }
         
         const caption = `📸 *ɪɴsᴛᴀɢʀᴀᴍ sᴛᴀʟᴋ*\n\n` +
             `👤 *Username:* ${d.username}\n` +
-            `📛 *Nama:* ${d.full_name || '-'}\n` +
+            `📛*Nombre:*${d.full_name || '-'}\n` +
             `✅ *Verified:* ${d.is_verified ? 'Ya' : 'Tidak'}\n` +
             `🔒 *Private:* ${d.is_private ? 'Ya' : 'Tidak'}\n\n` +
-            `👥 *Pengikut:* ${shortNum(_optionalChain([d, 'access', _10 => _10.stats, 'optionalAccess', _11 => _11.followers]))}\n` +
-            `👤 *Mengikuti:* ${shortNum(_optionalChain([d, 'access', _12 => _12.stats, 'optionalAccess', _13 => _13.following]))}\n` +
+            `👥*Seguidores:*${shortNum(_optionalChain([d, 'access', _10 => _10.stats, 'optionalAccess', _11 => _11.followers]))}\n` +
+            `👤*Siguiendo:*${shortNum(_optionalChain([d, 'access', _12 => _12.stats, 'optionalAccess', _13 => _13.following]))}\n` +
             `📷 *Postingan:* ${shortNum(_optionalChain([d, 'access', _14 => _14.stats, 'optionalAccess', _15 => _15.posts]))}\n\n` +
             `📝 *Bio:*\n${d.bio || '-'}\n\n` +
             `🔗 https://instagram.com/${d.username}`

@@ -2,7 +2,7 @@
     name: 'cekkpopers',
     alias: ['kpopers', 'kpop'],
     category: 'cek',
-    description: 'Cek tingkat kpopers kamu',
+    description: 'Compruebe su nivel de kpopers',
     usage: '.cekkpopers <nama>',
     example: '.cekkpopers Budi',
     isOwner: false,
@@ -25,12 +25,12 @@ async function handler(m) {
     else if (percent >= 30) desc = 'Tau dikit-dikit aja 😅'
     else desc = 'Bukan kpopers 🤷'
     
-    let txt = mentioned === m.sender ? `Hai @${mentioned.split('@')[0]}
+    let txt = mentioned === m.sender ? `Hola @${mentioned.split('@')[0]}
     
-Tingkat kekpopersan kamu *${percent}%*
-\`\`\`${desc}\`\`\`` : `Kamu ingin ngecek tingkat kekpopersan @${mentioned.split('@')[0]} yak? 
+Califica tu onda *${percent}%*
+\`\`\`${desc}\`\`\`` : `Usted quiere comprobar el nivel de estreno @${mentioned.split('@')[0]} yak? 
     
-Tingkat kekpopersan dia sebesar *${percent}%*
+Nivel kekpopersan el sebesar *${percent}%*
 \`\`\`${desc}\`\`\``
     
     await m.reply(txt, { mentions: [mentioned] })

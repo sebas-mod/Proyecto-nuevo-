@@ -5,7 +5,7 @@ const pluginConfig = {
   name: "spotplay",
   alias: ["splay", "sp"],
   category: "search",
-  description: "Putar musik dari Spotify",
+  description: "Música de Play de Spotify",
   usage: ".spotplay <query>",
   example: ".spotplay neffex grateful",
   cooldown: 15,
@@ -27,7 +27,7 @@ async function handler(m, { sock }) {
 
     if (!_optionalChain([searchData, 'optionalAccess', _4 => _4.status]) || !_optionalChain([searchData, 'optionalAccess', _5 => _5.result]) || searchData.result.length === 0) {
       await m.react("❌");
-      return m.reply("❌ Lagu Spotify tidak ditemukan.");
+      return m.reply("❌El Spotify Cancion no fue encontrado.");
     }
 
     const firstTrack = searchData.result[0];
@@ -37,7 +37,7 @@ async function handler(m, { sock }) {
 
     if (!_optionalChain([dlData, 'optionalAccess', _6 => _6.status]) || !_optionalChain([dlData, 'optionalAccess', _7 => _7.result, 'optionalAccess', _8 => _8.download_url])) {
       await m.react("❌");
-      return m.reply("❌ Gagal mengambil link download lagu Spotify.");
+      return m.reply("❌Stempel toma las descargas de enlaces Spotify canción.");
     }
 
     const result = dlData.result;

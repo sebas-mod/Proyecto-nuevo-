@@ -2,7 +2,7 @@
     name: 'apakah',
     alias: ['apa'],
     category: 'fun',
-    description: 'Tanya bot apakah sesuatu',
+    description: 'Pregunta bot es algo',
     usage: '.apakah <pertanyaan>',
     example: '.apakah aku bisa kaya?',
     isOwner: false,
@@ -16,32 +16,32 @@
 
 const answers = [
     'Ya, tentu saja!',
-    'Tidak, sepertinya tidak.',
+    'No, no lo creo.',
     'Mungkin saja, coba lagi nanti.',
     'Hmm... aku rasa iya.',
-    'Aku ragu, tapi bisa jadi.',
+    'Lo dudo, pero podría ser.',
     'Pasti! 100%!',
-    'Tidak mungkin.',
-    'Bisa jadi, siapa yang tau?',
+    'No quizas.',
+    'Entonces, ¿quién sabe?',
     'Menurutku sih iya.',
     'Wah, kayaknya nggak deh.',
-    'Tentu, kenapa tidak?',
-    'Aku nggak tau, coba tanya yang lain.',
-    'Ya ampun, pasti lah!',
-    'Hmm... sepertinya tidak.',
+    'Claro, ¿por qué no?',
+    'No lo sé, prueba otro.',
+    '¡Dios mío, tiene que ser!',
+    'Parece que no.',
     'Aku yakin iya!',
     'Nggak mungkin banget.',
-    'Mungkin, tapi jangan berharap terlalu tinggi.',
+    'Tal vez, pero no esperes ser demasiado alto.',
     'Iya dong!',
-    'Nggak, maaf ya.',
-    'Bisa! Semangat!'
+    'No, lo siento.',
+    'Puede! Semangat!'
 ];
 
 async function handler(m) {
     const text = _optionalChain([m, 'access', _ => _.text, 'optionalAccess', _2 => _2.trim, 'call', _3 => _3()]);
     
     if (!text) {
-        return m.reply(`❓ *ᴀᴘᴀᴋᴀʜ*\n\n> Masukkan pertanyaan!\n\n*Contoh:*\n> .apakah aku bisa jadi kaya?`);
+        return m.reply(`❓*ᴀᴘᴀᴋᴀʜ*\n\n¡Disfruta de la pregunta!\n\n* Elemento: *\nLo siento.¿¿Puedo ser rico?`);
     }
     
     const answer = answers[Math.floor(Math.random() * answers.length)];

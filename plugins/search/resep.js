@@ -3,13 +3,13 @@ var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefa
 var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
 var _ourindatabasejs = require('../../src/lib/ourin-database.js');
 
-const NEOXR_APIKEY = _optionalChain([_configjs2.default, 'access', _ => _.APIkey, 'optionalAccess', _2 => _2.neoxr]) || "Milik-Bot-OurinMD";
+const NEOXR_APIKEY = _optionalChain([_configjs2.default, 'access', _ => _.APIkey, 'optionalAccess', _2 => _2.neoxr]) || "Millik - Eurinprobable";
 
 const pluginConfig = {
     name: "resep",
     alias: ["resepmasak", "resepmasakan", "caramasak"],
     category: "search",
-    description: "Cari resep makanan yang lengkap dan enak",
+    description: "Consigue una receta completa y buena para la comida.",
     usage: ".resep <nama makanan>",
     example: ".resep ayam geprek",
     isOwner: false,
@@ -23,7 +23,7 @@ const pluginConfig = {
 
 async function handler(m, { sock, text }) {
     if (!text) {
-        return m.reply(`🍳 *PENCARIAN RESEP*\n\nKetik nama makanan yang mau dicari resepnya.\n*Contoh:* ${m.prefix}resep Nasi Goreng`);
+        return m.reply(`🍳*Búsqueda RESEP*\n\nEl tipo de nombre de la comida que desea buscar para la recepción.\n*Ejemplo:*${m.prefix}Prescripción de Sooch frito`);
     }
 
     await m.react("🕕");
@@ -37,12 +37,12 @@ async function handler(m, { sock, text }) {
 
         if (!data || !data.status || !data.data || data.data.length === 0) {
             await m.react("❌");
-            return m.reply(`Maaf, resep untuk "${text}" tidak ditemukan. Coba kata kunci lain.`);
+            return m.reply(`Lo siento, receta para el agujero de zorro.${text}Prueba otra palabra clave.`);
         }
 
         const maxResults = Math.min(data.data.length, 10);
-        let listTxt = `🍳 *HASIL PENCARIAN RESEP: ${text.toUpperCase()}*\n\n`;
-        listTxt += `Ditemukan beberapa resep nih, pilih salah satu ya:\n\n`;
+        let listTxt = `🍳* PRESIDENTE DEL RESEP RESEP:${text.toUpperCase()}*\n\n`;
+        listTxt += `Encontré algunas recetas aquí, elegir uno de ustedes:\n\n`;
 
         const searchResults = [];
 
@@ -55,7 +55,7 @@ async function handler(m, { sock, text }) {
             listTxt += `*${i + 1}.* ${item.name}\n`;
         }
 
-        listTxt += `\n> 💡 *Kirim angka (contoh: 1)* untuk melihat detail resepnya, atau ketik \`batal\` untuk membatalkan pencarian.`;
+        listTxt += `\n♪💡* Número de contenedor (por ejemplo: 1 ) * para ver el desprendimiento del recipiente, o la axila\`cancelar\`Para deshacer la búsqueda.`;
         const db = _ourindatabasejs.getDatabase.call(void 0, );
         const user = db.getUser(m.sender);
 
@@ -87,7 +87,7 @@ async function resepAnswerHandler(m, sock) {
     if (Date.now() - session.time > SESSION_TIMEOUT) {
         delete user.resep_session;
         db.save();
-        await m.reply(`⏰ *SESI KEDALUWARSA*\n\nSesi pencarian resep sudah berakhir karena lebih dari 5 menit. Silakan ketik perintah .resep lagi.`);
+        await m.reply(`⏰* SECIÓN DEL AGUA*\n\nSesi @-@ la prescripción de búsqueda se ha terminado debido a más de 5 minutos.`);
         return true;
     }
 
@@ -96,7 +96,7 @@ async function resepAnswerHandler(m, sock) {
     if (text === "batal" || text === "cancel") {
         delete user.resep_session;
         db.save();
-        await m.reply(`🚪 Pencarian resep dibatalkan.`);
+        await m.reply(`🚪La búsqueda de la inscripción se cancela.`);
         return true;
     }
 
@@ -118,12 +118,12 @@ async function resepAnswerHandler(m, sock) {
 
         if (!resData || !resData.status || !resData.data) {
             await m.react("❌");
-            return m.reply(`Maaf, gagal mengambil detail resep untuk "${selectedRecipe.name}".`);
+            return m.reply(`Lo sentimos, no se pudo recuperar los detalles de la receta para explicar${selectedRecipe.name}".`);
         }
 
         const recipe = resData.data;
         let recipeTxt = `👨‍🍳 *${recipe.title.toUpperCase()}* 👩‍🍳\n\n`;
-        recipeTxt += `⏱️ *Waktu:* ${recipe.timeout || "-"}\n`;
+        recipeTxt += `⏱️ *Tiempo:*${recipe.timeout || "-"}\n`;
         recipeTxt += `🍽️ *Porsi:* ${recipe.portion || "-"}\n\n`;
 
         if (recipe.ingredients && recipe.ingredients.length > 0) {
@@ -135,7 +135,7 @@ async function resepAnswerHandler(m, sock) {
         }
 
         if (recipe.steps && recipe.steps.length > 0) {
-            recipeTxt += `*🍳 CARA MEMBUAT:*\n`;
+            recipeTxt += `*🍳CARA Creando:*\n`;
             recipe.steps.forEach((step, index) => {
                 recipeTxt += `*${index + 1}.* ${step}\n\n`;
             });
@@ -155,7 +155,7 @@ async function resepAnswerHandler(m, sock) {
     } catch (error) {
         console.error("[RESEP Detail Error]", error);
         await m.react("☢");
-        await m.reply(`Terjadi kesalahan saat memuat resep. Silakan coba lagi.`);
+        await m.reply(`Es un error completar la receta.`);
     }
 
     return true;

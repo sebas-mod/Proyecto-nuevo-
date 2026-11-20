@@ -17,7 +17,7 @@ const pluginConfig = {
   name: "menucat",
   alias: ["mc", "category", "cat"],
   category: "main",
-  description: "Menampilkan commands dalam kategori tertentu",
+  description: "Adjuntar comandos en el catémori absoluto",
   usage: ".menucat <kategori>",
   example: ".menucat tools",
   isOwner: false,
@@ -202,13 +202,13 @@ async function handler(m, { sock, db }) {
     });
 
     let txt = ``;
-    txt += createBracketBox("🤖", "KETERANGAN", [
-      "Ⓞ = Hanya untuk owner",
-      "ⓟ = Hanya untuk premium",
-      "Ⓛ = Membutuhkan limit",
-      "Ⓐ = Hanya untuk admin",
-      "Ⓖ = Hanya di dalam grup",
-      "Ⓟ = Hanya di private chat",
+    txt += createBracketBox("🤖", "Descripción", [
+      "Ⓞ= Sólo para el propietario",
+      "ⓟ= Sólo para prima",
+      "Ⓛ= límite de necesidad",
+      "Ⓐ= Sólo para administración",
+      "Ⓖ= Sólo dentro del grupo",
+      "Ⓟ= Sólo en el chat primario",
     ]);
 
     for (const cat of visibleCats) {
@@ -254,7 +254,7 @@ async function handler(m, { sock, db }) {
                       text: txt,
                     },
                     footer: {
-                      text: "Pilih tombol dibawah untuk kembali ke menu utama",
+                      text: "Seleccione el botón de la barra para volver al menú principal",
                     },
                     contextInfo: {
                       isForwarded: true,
@@ -278,7 +278,7 @@ async function handler(m, { sock, db }) {
                         {
                           name: "quick_reply",
                           buttonParamsJson: JSON.stringify({
-                            display_text: "🍅 Kembali Ke Menu Utama",
+                            display_text: "🍅Volver a Menú Principal",
                             id: m.prefix + "menu",
                           }),
                         },
@@ -299,7 +299,7 @@ async function handler(m, { sock, db }) {
             const h = Math.floor(seconds % (3600 * 24) / 3600);
             const m = Math.floor(seconds % 3600 / 60);
             const s = Math.floor(seconds % 60);
-            return `${d} Jam ${m} Menit ${s} Detik`;
+            return `${d}Hora${m}Minuto${s}Segundo`;
           }
 
           const weatherCode = {
@@ -310,13 +310,13 @@ async function handler(m, { sock, db }) {
             try {
               const geo = await _axios2.default.get(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(city)}&count=1`)
               const loc = _optionalChain([geo, 'access', _12 => _12.data, 'access', _13 => _13.results, 'optionalAccess', _14 => _14[0]])
-              if (!loc) return "Cuaca tidak tersedia"
+              if (!loc) return "Cuaca no está disponible"
               const res = await _axios2.default.get(`https://api.open-meteo.com/v1/forecast?latitude=${loc.latitude}&longitude=${loc.longitude}&current=temperature_2m,weather_code`)
               const current = res.data.current
-              const kondisi = weatherCode[current.weather_code] || "🌍 Tidak diketahui"
+              const kondisi = weatherCode[current.weather_code] || "🌍No diketahui"
               return `${kondisi} | 🌡️ ${Math.round(current.temperature_2m)}°C\n📍 ${loc.name}`
             } catch (e2) {
-              return "Cuaca tidak tersedia"
+              return "Cuaca no está disponible"
             }
           }
 
@@ -347,14 +347,14 @@ async function handler(m, { sock, db }) {
                   nativeFlowMessage: {
                     messageParamsJson: JSON.stringify({
                       limited_time_offer: { text: `${greeting}`, url: "Hai", expiration_time: Date.now() + 10000 },
-                      bottom_sheet: { in_thread_buttons_limit: 2, divider_indices: [1, 2, 3, 4, 5, 999], list_title: "Please select the menu", button_title: "🍙 See Category" },
+                      bottom_sheet: { in_thread_buttons_limit: 2, divider_indices: [1, 2, 3, 4, 5, 999], list_title: "Seleccione el menú", button_title: "🍙 See Category" },
                       tap_target_configuration: { title: " X ", description: "bomboclard", canonical_url: "https://ourin.site", domain: "shop.example.com", button_index: 0 },
                     }),
                     buttons: [
                       { name: "", buttonParamsJson: "" },
                       {
                         name: "quick_reply",
-                        buttonParamsJson: JSON.stringify({ display_text: "🍅 Kembali Ke Menu Utama", id: m.prefix + "menu" })
+                        buttonParamsJson: JSON.stringify({ display_text: "🍅Volver a Menú Principal", id: m.prefix + "menu" })
                       },
                     ]
                   }
@@ -383,12 +383,12 @@ async function handler(m, { sock, db }) {
 
   if (!matchedCat) {
     return m.reply(
-      `❌ *KATEGORI TIDAK DITEMUKAN*\n\n> Kategori \`${categoryArg}\` tidak ada.\n> Ketik \`${prefix}menucat\` untuk list kategori.`,
+      `❌* CATHEGORI CAN 'T BE FOUND *\n\n> Categoría\`${categoryArg}\`no hay.\n> Escribe\`${prefix}impacto\`Para la lista de caegori.`,
     );
   }
 
   if (matchedCat === "owner" && !m.isOwner) {
-    return m.reply(`❌ *AKSES DITOLAK*\n\n> Kategori ini hanya untuk owner.`);
+    return m.reply(`❌> 91; Cumplimiento de la ACCESO > 93;\n\nA este kagori es para el dueño.`);
   }
 
   const pluginCommands = commandsByCategory[matchedCat] || [];
@@ -397,7 +397,7 @@ async function handler(m, { sock, db }) {
 
   if (allCommands.length === 0) {
     return m.reply(
-      `❌ *KOSONG*\n\n> Kategori \`${matchedCat}\` tidak memiliki command.`,
+      `❌*Vacio*\n\n> Categoría\`${matchedCat}\`no tiene ningún comando.`,
     );
   }
 
@@ -444,7 +444,7 @@ async function handler(m, { sock, db }) {
                     text: txt,
                   },
                   footer: {
-                    text: "Pilih tombol dibawah untuk kembali ke menu utama",
+                    text: "Seleccione el botón de la barra para volver al menú principal",
                   },
                   contextInfo: {
                     isForwarded: true,
@@ -475,7 +475,7 @@ async function handler(m, { sock, db }) {
                       {
                         name: "quick_reply",
                         buttonParamsJson: JSON.stringify({
-                          display_text: "🍅 Kembali Ke Menu Utama",
+                          display_text: "🍅Volver a Menú Principal",
                           id: m.prefix + "menu",
                         }),
                       },
@@ -496,7 +496,7 @@ async function handler(m, { sock, db }) {
           const h = Math.floor(seconds % (3600 * 24) / 3600);
           const m = Math.floor(seconds % 3600 / 60);
           const s = Math.floor(seconds % 60);
-          return `${d} Jam ${m} Menit ${s} Detik`;
+          return `${d}Hora${m}Minuto${s}Segundo`;
         }
 
         const weatherCode = {
@@ -507,13 +507,13 @@ async function handler(m, { sock, db }) {
           try {
             const geo = await _axios2.default.get(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(city)}&count=1`)
             const loc = _optionalChain([geo, 'access', _25 => _25.data, 'access', _26 => _26.results, 'optionalAccess', _27 => _27[0]])
-            if (!loc) return "Cuaca tidak tersedia"
+            if (!loc) return "Cuaca no está disponible"
             const res = await _axios2.default.get(`https://api.open-meteo.com/v1/forecast?latitude=${loc.latitude}&longitude=${loc.longitude}&current=temperature_2m,weather_code`)
             const current = res.data.current
-            const kondisi = weatherCode[current.weather_code] || "🌍 Tidak diketahui"
+            const kondisi = weatherCode[current.weather_code] || "🌍No diketahui"
             return `${kondisi} | 🌡️ ${Math.round(current.temperature_2m)}°C\n📍 ${loc.name}`
           } catch (e3) {
-            return "Cuaca tidak tersedia"
+            return "Cuaca no está disponible"
           }
         }
 
@@ -544,7 +544,7 @@ async function handler(m, { sock, db }) {
                 nativeFlowMessage: {
                   messageParamsJson: JSON.stringify({
                     limited_time_offer: { text: `${greeting}`, url: "Hai", expiration_time: Date.now() + 10000 },
-                    bottom_sheet: { in_thread_buttons_limit: 2, divider_indices: [1, 2, 3, 4, 5, 999], list_title: "Please select the menu", button_title: "🍙 See Category" },
+                    bottom_sheet: { in_thread_buttons_limit: 2, divider_indices: [1, 2, 3, 4, 5, 999], list_title: "Seleccione el menú", button_title: "🍙 See Category" },
                     tap_target_configuration: { title: " X ", description: "bomboclard", canonical_url: "https://ourin.site", domain: "shop.example.com", button_index: 0 },
                   }),
                   buttons: [
@@ -555,7 +555,7 @@ async function handler(m, { sock, db }) {
                     },
                     {
                       name: "quick_reply",
-                      buttonParamsJson: JSON.stringify({ display_text: "🍅 Kembali Ke Menu Utama", id: m.prefix + "menu" })
+                      buttonParamsJson: JSON.stringify({ display_text: "🍅Volver a Menú Principal", id: m.prefix + "menu" })
                     },
                   ]
                 }
@@ -576,13 +576,13 @@ async function handler(m, { sock, db }) {
           try {
             const geo = await _axios2.default.get(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(city)}&count=1`)
             const loc = _optionalChain([geo, 'access', _34 => _34.data, 'access', _35 => _35.results, 'optionalAccess', _36 => _36[0]])
-            if (!loc) return "Cuaca tidak tersedia"
+            if (!loc) return "Cuaca no está disponible"
             const res = await _axios2.default.get(`https://api.open-meteo.com/v1/forecast?latitude=${loc.latitude}&longitude=${loc.longitude}&current=temperature_2m,weather_code`)
             const current = res.data.current
-            const kondisi = weatherCode[current.weather_code] || "🌍 Tidak diketahui"
+            const kondisi = weatherCode[current.weather_code] || "🌍No diketahui"
             return `${kondisi} | 🌡️ ${Math.round(current.temperature_2m)}°C\n📍 ${loc.name}`
           } catch (e4) {
-            return "Cuaca tidak tersedia"
+            return "Cuaca no está disponible"
           }
         }
 

@@ -24,8 +24,8 @@ async function handler(m, { sock }) {
         if (existingCmds.length === 0) {
             return m.reply(
                 `🖼️ *sᴛɪᴄᴋᴇʀ ᴄᴏᴍᴍᴀɴᴅs*\n\n` +
-                `> Tidak ada sticker command yang terdaftar.\n` +
-                `> Tambahkan dengan \`.addcmdsticker\``
+                `No hay pegatinas registradas.\n` +
+                `# Ver incluso con\`Agregador de pared.\``
             )
         }
         
@@ -37,9 +37,9 @@ async function handler(m, { sock }) {
         }
         txt += `╰┈┈┈┈┈┈┈┈⬡\n\n`
         
-        txt += `*Hapus dengan:*\n`
+        txt += `*Elimina con:*\n`
         txt += `> \`.delstickercmd <command>\`\n`
-        txt += `> atau reply sticker + \`.delstickercmd\``
+        txt += `*Y si quieres* *o responde* *pegatina +*\`- Delstickercmd.\``
         
         return m.reply(txt)
     }
@@ -52,7 +52,7 @@ async function handler(m, { sock }) {
             const success = _ourinstickercommandjs.deleteStickerCommand.call(void 0, stickerHash)
             if (success) {
                 deleted = true
-                deletedCmd = 'sticker yang di-reply'
+                deletedCmd = 'La respuesta pegatinas'
             }
         }
     }
@@ -68,8 +68,8 @@ async function handler(m, { sock }) {
             }
         } else {
             return m.reply(
-                `❌ Sticker command \`${cleanCmd}\` tidak ditemukan!\n\n` +
-                `> Lihat daftar dengan \`.delstickercmd\``
+                `❌Sticker comando\`${cleanCmd}\`no encontrado!\n\n` +
+                `*Ve una lista con\`- Delstickercmd.\``
             )
         }
     }
@@ -78,13 +78,13 @@ async function handler(m, { sock }) {
         await m.react('✅')
         await m.reply(
             `✅ *sᴛɪᴄᴋᴇʀ ᴄᴏᴍᴍᴀɴᴅ ᴅɪʜᴀᴘᴜs*\n\n` +
-            `> 🗑️ \`${deletedCmd}\` telah dihapus.`
+            `> 🗑️ \`${deletedCmd}\`telah eliminado.`
         )
     } else {
         await m.reply(
-            `❌ Gagal menghapus!\n\n` +
-            `> Reply sticker yang ingin dihapus, atau\n` +
-            `> Ketik nama command: \`.delstickercmd menu\``
+            `❌No se pudo eliminar!\n\n` +
+            `Responder pegatinas que quieren ser cubiertas, o\n` +
+            `* El nombre de Escribe ordena:\`delstickercmd mentacus.\``
         )
     }
 }

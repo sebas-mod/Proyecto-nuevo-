@@ -27,10 +27,10 @@ function handler(m) {
         return m.reply(
             `🎤 *ᴄᴍᴅ ᴠᴏɪᴄᴇ ɴᴏᴛᴇ*\n\n` +
             `> Status: *${status}*\n\n` +
-            `> \`${m.prefix}cmdvn on\` — Command via VN\n` +
-            `> \`${m.prefix}cmdvn off\` — Command via text (default)\n\n` +
-            `> Saat ON, kirim VN berisi nama command\n` +
-            `> Contoh: VN "menu" → trigger .menu`
+            `> \`${m.prefix}cmdvn en\` —Comando vía VN\n` +
+            `> \`${m.prefix}cmdvn apagado\` —Comando a través de text (predeterminado)\n\n` +
+            `EzSaat On, enviar VN con un nombre de comandante\n` +
+            `♪→dispara. menú`
         )
     }
 
@@ -38,18 +38,18 @@ function handler(m) {
         db.setting('cmdVn', true)
         return m.reply(
             `✅ *ᴄᴍᴅ ᴠɴ ᴀᴋᴛɪꜰ*\n\n` +
-            `> Kirim voice note berisi nama command\n` +
-            `> Bot akan transkrip dan jalankan otomatis\n` +
-            `> Contoh: VN "menu" → trigger .menu`
+            `La nota de voz de Kseni contiene un nombre de comandante\n` +
+            `♪ ♪ ♪ ♪ ♪\n` +
+            `♪→dispara. menú`
         )
     }
 
     if (subCmd === 'off') {
         db.setting('cmdVn', false)
-        return m.reply(`❌ CMD VN *dinonaktifkan*. Command via text normal.`)
+        return m.reply(`❌ CMD VN *desactivado*. Comando via texEs normal.`)
     }
 
-    return m.reply(`❌ Gunakan \`${m.prefix}cmdvn on\` atau \`${m.prefix}cmdvn off\``)
+    return m.reply(`❌ Usa \`${m.prefix}cmdvn en\`o\`${m.prefix}cmdvn off\``)
 }
 
 exports.config = pluginConfig; exports.handler = handler;

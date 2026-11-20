@@ -4,7 +4,7 @@ const pluginConfig = {
     name: 'installtemaenigma',
     alias: ['installthemaenigma', 'temaenigma'],
     category: 'panel',
-    description: 'Install tema Enigma untuk panel Pterodactyl via SSH',
+    description: 'Instalar el tema Enigma para el pterodactilo péster a través de SSH',
     usage: '.installtemaenigma <ip>|<password>|<link_wa>|<link_group>|<link_channel>',
     example: '.installtemaenigma 192.168.1.1|secretpass|https://wa.me/628xxx|https://t.me/group|https://t.me/channel',
     isOwner: true,
@@ -65,13 +65,13 @@ function handler(m) {
 
     if (!text) {
         return m.reply(
-            `╭┈┈⬡「 🎨 *ɪɴsᴛᴀʟʟ ᴛᴇᴍᴀ ᴇɴɪɢᴍᴀ* 」\n┃ ㊗ ᴜsᴀɢᴇ: \`${m.prefix}installtemaenigma <ip>|<password>|<link_wa>|<link_group>|<link_channel>\`\n╰┈┈⬡\n\n> Contoh:\n> \`${m.prefix}installtemaenigma 192.168.1.1|pass|https://wa.me/628xxx|https://t.me/group|https://t.me/channel\``
+            `╭┈┈⬡「 🎨 *ɪɴsᴛᴀʟʟ ᴛᴇᴍᴀ ᴇɴɪɢᴍᴀ* 」\n┃ ㊗ ᴜsᴀɢᴇ: \`${m.prefix}installtemaenigma <ip>♪<password>♪<link_wa>♪<link_group>♪<link_channel>\`\n╰┈┈⬡\n\n> Ejemplo:\n♪\`${m.prefix}installtemaenigma 192.168.1.1|pass|https://wa.me/628xxx|https://t.me/group|https://t.me/channel\``
         )
     }
 
     const parts = text.split('|')
     if (parts.length < 5) {
-        return m.reply(`❌ Format salah!\n\n> Gunakan: \`ip|password|link_wa|link_group|link_channel\``)
+        return m.reply(`❌Formato incorrecto!\n\n> Usa: \`*Contraseñas* *En el cielo* *el cielo es el cielo*\``)
     }
 
     const ipvps = parts[0].trim()
@@ -112,7 +112,7 @@ function handler(m) {
 
             m.react('✅')
             await m.reply(
-                `╭┈┈⬡「 ✅ *ᴛᴇᴍᴀ ᴇɴɪɢᴍᴀ* 」\n┃ ㊗ sᴛᴀᴛᴜs: *Terinstall*\n┃ ㊗ ɪᴘ: ${ipvps}\n╰┈┈⬡\n\n> _Tema Enigma + dependencies berhasil diinstall!_`
+                `╭┈┈⬡「 ✅ *ᴛᴇᴍᴀ ᴇɴɪɢᴍᴀ* 」\n┃ ㊗ sᴛᴀᴛᴜs: *Terinstall*\n┃ ㊗ ɪᴘ: ${ipvps}\n╰┈┈⬡\n\n*Tema Enigma + dependencias instaladas con éxito!`
             )
         } catch (err) {
             m.react('☢')
@@ -122,7 +122,7 @@ function handler(m) {
         }
     }).on('error', (err) => {
         m.react('❌')
-        m.reply(`❌ Koneksi gagal!\n\n> IP atau Password tidak valid.`)
+        m.reply(`❌Conexión fallido!\n\nAkeiP o Passard es inválido.`)
     }).connect(connSettings)
 }
 

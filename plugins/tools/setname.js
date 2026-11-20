@@ -2,7 +2,7 @@
     name: 'setname',
     alias: ['setnamebot', 'setbotnama'],
     category: 'tools',
-    description: 'Mengubah nama profil bot',
+    description: 'Renombrar el perfil de bot',
     usage: '.setname <nama baru>',
     example: '.setname Ourin-AI',
     isOwner: true,
@@ -20,7 +20,7 @@ async function handler(m, { sock }) {
     if (!newName) {
         await m.reply(
             `⚠️ *ᴄᴀʀᴀ ᴘᴀᴋᴀɪ*\n\n` +
-            `> \`${m.prefix}setname Nama Bot Baru\``
+            `> \`${m.prefix}nombre del set de Nuevo\``
         )
         return
     }
@@ -28,7 +28,7 @@ async function handler(m, { sock }) {
     if (newName.length < 1 || newName.length > 25) {
         await m.reply(
             `⚠️ *ᴠᴀʟɪᴅᴀsɪ*\n\n` +
-            `> Nama bot harus 1-25 karakter.`
+            `El nombre del bot debe ser de 1 a 25 caracteres.`
         )
         return
     }
@@ -38,12 +38,12 @@ async function handler(m, { sock }) {
         
         await m.reply(
             `✅ *ɴᴀᴍᴀ ʙᴏᴛ ᴅɪᴜʙᴀʜ*\n\n` +
-            `> Nama bot sekarang: *${newName}*`
+            `Nombre el bot ahora: *${newName}*`
         )
     } catch (error) {
         await m.reply(
             `❌ *ɢᴀɢᴀʟ*\n\n` +
-            `> Tidak dapat mengubah nama bot.\n` +
+            `No puede cambiar el nombre del bot.\n` +
             `> _${error.message}_`
         )
     }

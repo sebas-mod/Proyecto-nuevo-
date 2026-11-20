@@ -2,7 +2,7 @@
 var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
 var _ourinhttpjs = require('../../src/lib/ourin-http.js');
 var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
-const NEOXR_APIKEY = _optionalChain([_configjs2.default, 'access', _ => _.APIkey, 'optionalAccess', _2 => _2.neoxr]) || 'Milik-Bot-OurinMD'
+const NEOXR_APIKEY = _optionalChain([_configjs2.default, 'access', _ => _.APIkey, 'optionalAccess', _2 => _2.neoxr]) || 'Millik - Eurinprobable'
 
 const pluginConfig = {
     name: 'fuckmylife',
@@ -28,7 +28,7 @@ async function handler(m, { sock }) {
         
         if (!_optionalChain([data, 'optionalAccess', _3 => _3.status]) || !_optionalChain([data, 'optionalAccess', _4 => _4.data, 'optionalAccess', _5 => _5.text])) {
             m.react('❌')
-            return m.reply(`❌ Gagal mengambil FML story`)
+            return m.reply(`❌stunner toma tormenta FML`)
         }    
         await m.reply(data.data.text)
         m.react('✅')

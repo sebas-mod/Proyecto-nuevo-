@@ -5,7 +5,7 @@ const pluginConfig = {
     name: 'qc',
     alias: ['qcstc', 'stcqc', 'qcstic', 'qcstick', 'quotesticker'],
     category: 'sticker',
-    description: 'Membuat sticker quote chat dengan warna custom',
+    description: 'Crear un chat de cita de pegatina con una warna personalizada',
     usage: '.qc <warna> <text>',
     example: '.qc pink Hai semuanya!',
     isOwner: false,
@@ -85,9 +85,9 @@ async function handler(m, { sock }) {
             `💬 *ǫᴜᴏᴛᴇ sᴛɪᴄᴋᴇʀ*\n\n` +
             `╭┈┈⬡「 📋 *ᴄᴀʀᴀ ᴘᴀᴋᴀɪ* 」\n` +
             `┃ ◦ \`${m.prefix}qc <warna> <text>\`\n` +
-            `┃ ◦ Reply pesan + \`${m.prefix}qc <warna>\`\n` +
+            `┃ ◦Responder mensaje +\`${m.prefix}qc <warna>\`\n` +
             `╰┈┈⬡\n\n` +
-            `> Contoh: \`${m.prefix}qc pink Hai semuanya!\`\n\n` +
+            `> Ejemplo:\`${m.prefix}qc pink Hola a todos!\`\n\n` +
             `╭┈┈⬡「 🎨 *ᴡᴀʀɴᴀ* 」\n` +
             `┃ ${colorList}\n` +
             `╰┈┈⬡`
@@ -98,7 +98,7 @@ async function handler(m, { sock }) {
     const backgroundColor = COLORS[color]
     
     if (!backgroundColor) {
-        return m.reply(`❌ *ᴇʀʀᴏʀ*\n\n> Warna \`${color}\` tidak ditemukan!\n> Gunakan salah satu warna yang tersedia.`)
+        return m.reply(`❌ *ᴇʀʀᴏʀ*\n\n> Warna \`${color}\`no encontrado!\nPara usar una de las verrugas disponibles.`)
     }
     
     let message = args.slice(1).join(' ')
@@ -108,11 +108,11 @@ async function handler(m, { sock }) {
     }
     
     if (!message) {
-        return m.reply(`❌ *ᴇʀʀᴏʀ*\n\n> Masukkan text untuk quote!`)
+        return m.reply(`❌*ᴇʀʀᴏʀ*\n\n# Ponlo en tu boca #x¡T para cita!`)
     }
     
     if (message.length > 80) {
-        return m.reply(`❌ *ᴇʀʀᴏʀ*\n\n> Maksimal 80 karakter! (Saat ini: ${message.length})`)
+        return m.reply(`❌*ᴇʀʀᴏʀ*\n\n¡Para 80 personajes, al menos!${message.length})`)
     }
     
     m.react('🕕')
@@ -166,7 +166,7 @@ async function handler(m, { sock }) {
         
         await sock.sendImageAsSticker(m.chat, buffer, m, {
             packname: _optionalChain([_configjs2.default, 'access', _ => _.sticker, 'optionalAccess', _2 => _2.packname]) || 'Ourin-AI',
-            author: _optionalChain([_configjs2.default, 'access', _3 => _3.sticker, 'optionalAccess', _4 => _4.author]) || 'Bot'
+            author: _optionalChain([_configjs2.default, 'access', _3 => _3.sticker, 'optionalAccess', _4 => _4.author]) || '♪'
         })
         
         m.react('✅')

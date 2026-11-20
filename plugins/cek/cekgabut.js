@@ -2,7 +2,7 @@
     name: 'cekgabut',
     alias: ['gabut', 'bored'],
     category: 'cek',
-    description: 'Cek tingkat keGabutan kamu',
+    description: 'Comprueba tu tenacidad',
     usage: '.cekgabut <nama>',
     example: '.cekgabut Budi',
     isOwner: false,
@@ -19,18 +19,18 @@ async function handler(m) {
     const mentioned = m.mentionedJid[0] || m.sender
                     
     let desc = ''
-    if (percent >= 90) desc = 'GABUT LEVEL MAX! Main bot aja~ 🥱'
+    if (percent >= 90) desc = 'Vayamos a la sala de policía.🥱'
     else if (percent >= 70) desc = 'Gabut parah nih! 😴'
     else if (percent >= 50) desc = 'Lumayan gabut 😅'
     else if (percent >= 30) desc = 'Agak sibuk dikit 📝'
     else desc = 'Sibuk banget! Produktif! 💼'
     
-    let txt = mentioned === m.sender ? `Hai @${mentioned.split('@')[0]}
+    let txt = mentioned === m.sender ? `Hola @${mentioned.split('@')[0]}
     
-Tingkat kegabutan kamu *${percent}%*
-\`\`\`${desc}\`\`\`` : `Kamu ingin ngecek tingkat kegabutan @${mentioned.split('@')[0]} yak? 
+Estás actuando como una loca${percent}%*
+\`\`\`${desc}\`\`\`` : `Quieres ver el nivel de fusibles${mentioned.split('@')[0]} yak? 
     
-Tingkat kegabutan dia sebesar *${percent}%*
+Es tan grande como un hombre con prisa.${percent}%*
 \`\`\`${desc}\`\`\``
     
     await m.reply(txt, { mentions: [mentioned] })

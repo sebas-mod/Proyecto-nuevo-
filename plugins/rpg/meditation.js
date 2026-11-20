@@ -3,7 +3,7 @@ const pluginConfig = {
   name: "meditation",
   alias: ["rest", "istirahat", "tidur", "sleep"],
   category: "rpg",
-  description: "Istirahat untuk pulihkan HP dan stamina",
+  description: "Descanse para el duro giro de HP y la resistencia",
   usage: ".meditation",
   example: ".meditation",
   isOwner: false,
@@ -35,12 +35,12 @@ async function handler(m) {
         `> ⚡ Stamina: ${currentStamina}/${maxStamina}\n` +
         `> ❤️ Health: ${currentHealth}/${maxHealth}\n` +
         `> 💙 Mana: ${currentMana}/${maxMana}\n\n` +
-        `💡 Kamu sudah dalam kondisi prima!`,
+        `💡¡Ya estás en la condición prima!`,
     );
   }
 
   await m.react("💤");
-  await m.reply(`💤 *ʙᴇʀɪsᴛɪʀᴀʜᴀᴛ...*\n\n> Memulihkan energi...`);
+  await m.reply(`💤*ʙᴇʀɪSᴛɪʀᴀʜᴀᴛ...\n\n" Reducir la energía..`);
   await new Promise((r) => setTimeout(r, 3000));
 
   const staminaRecovered = Math.min(maxStamina - currentStamina, 40 + Math.floor(Math.random() * 20));
@@ -62,7 +62,7 @@ async function handler(m) {
       `> ❤️ Health: *+${healthRecovered}* (${user.rpg.health}/${maxHealth})\n` +
       `> 💙 Mana: *+${manaRecovered}* (${user.rpg.mana}/${maxMana})\n` +
       `\n\n` +
-      `> Kamu merasa lebih segar! 🌟`,
+      `- ¡Te sientes mejor!🌟`,
   );
 }
 

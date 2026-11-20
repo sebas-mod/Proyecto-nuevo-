@@ -18,7 +18,7 @@ const pluginConfig = {
 async function handler(m) {
     const question = _ouringamedatajs.getRandomItem.call(void 0, 'truth.json');
     if (!question) {
-        await m.reply('❌ Data tidak tersedia!');
+        await m.reply('❌¡Datos no disponibles!');
         return;
     }
     await m.reply(`\`\`\`${question}\`\`\``);

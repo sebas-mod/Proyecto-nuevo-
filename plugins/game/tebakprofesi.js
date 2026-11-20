@@ -4,7 +4,7 @@ _ouringamesjs.games.register('tebakprofesi', {
     alias: ['tp', 'guessjob'],
     emoji: '👨‍💼',
     title: 'TEBAK PROFESI',
-    description: 'Tebak nama profesi'
+    description: 'Adivina el nombre de la profesión.'
 })
 
 const { config: pluginConfig, handler, answerHandler } = _ouringamesjs.games.createPlugin('tebakprofesi')

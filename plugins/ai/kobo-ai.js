@@ -5,7 +5,7 @@ const pluginConfig = {
   name: "kobo-ai",
   alias: ["koboai", "kobo"],
   category: "ai",
-  description: "Chat dengan Kobo Kanaeru — VTuber Hololive ID",
+  description: "Chat con Kobo Kanaeru—VTuber Hololive ID",
   usage: ".kobo-ai <pertanyaan>",
   example: ".kobo-ai Kobo lagi apa?",
   isOwner: false,
@@ -22,11 +22,11 @@ async function handler(m, { sock }) {
   if (!text) {
     return m.reply(
       `🌬️ *Kobo Kanaeru*\n\n` +
-        `> VTuber Hololive Indonesia Gen 3\n> Wind Shaman yang cheerfull dan suka prank!\n\n` +
-        `*PENGGUNAAN:*\n` +
+        `*VTuber Hololive*\n* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\n\n` +
+        `*Uso:*\n` +
         `> *${m.prefix}kobo-ai <pertanyaan>*\n\n` +
-        `*CONTOH:*\n` +
-        `> *${m.prefix}kobo-ai Kobo lagi apa?*`
+        `*Ejemplo:*\n` +
+        `> *${m.prefix}Kobo - ai Kobo otra vez ¿Qué?`
     );
   }
 

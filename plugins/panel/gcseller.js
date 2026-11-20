@@ -53,7 +53,7 @@ const pluginConfig = {
     name: allCommands,
     alias: [],
     category: 'panel',
-    description: 'Daftarkan grup sebagai GC Seller panel (akses command create server)',
+    description: 'Lista grupo como panel de GC Vendedor ( comando de accities crear servatory )',
     usage: '.addgcsellerv1 (di dalam grup)',
     example: '.addgcsellerv1',
     isOwner: true,
@@ -83,10 +83,10 @@ function parseCommand(cmd) {
 
 function handler(m) {
     const parsed = parseCommand(m.command)
-    if (!parsed) return m.reply('❌ Command tidak valid.')
+    if (!parsed) return m.reply('❌El mando no es válido.')
 
     if (!hasAccess(m.sender, m.isOwner)) {
-        return m.reply('❌ *ᴀᴋsᴇs ᴅɪᴛᴏʟᴀᴋ*\n\n> Fitur ini hanya untuk Owner atau Owner Panel.')
+        return m.reply('❌*ᴀᴋSᴇSᴅɪᴛᴏʟᴀᴋ*\n\nEstá cosa de Función es para el Propietario o Panel de Propietario.')
     }
 
     const { action, version } = parsed
@@ -95,7 +95,7 @@ function handler(m) {
     if (action === 'add') {
         const current = loadGcSeller(version)
         if (current === m.chat) {
-            return m.reply(`❌ Grup ini sudah terdaftar sebagai GC Seller *${serverLabel}*.`)
+            return m.reply(`❌Este grupo ya registrado como GC Vendedor *${serverLabel}*.`)
         }
 
         saveGcSeller(version, m.chat)
@@ -107,25 +107,25 @@ function handler(m) {
         txt += `┃ 👥 ɢʀᴜᴘ: \`${m.groupName || m.chat}\`\n`
         txt += `┃ 🔓 ᴀᴋsᴇs: \`1gb${version}\` - \`10gb${version}\`, \`unli${version}\`\n`
         if (current) {
-            txt += `┃ ⚠️ ᴘʀᴇᴠ: \`${current}\` (diganti)\n`
+            txt += `┃ ⚠️ ᴘʀᴇᴠ: \`${current}\`(cambiado)\n`
         }
         txt += `╰┈┈⬡\n\n`
-        txt += `> Semua member grup ini sekarang bisa create server ${serverLabel}.`
+        txt += `Todas estas fotos de grupo ahora pueden crear servidor${serverLabel}.`
         return m.reply(txt)
     }
 
     if (action === 'reset') {
         const current = loadGcSeller(version)
         if (!current) {
-            return m.reply(`❌ Belum ada GC Seller terdaftar untuk *${serverLabel}*.`)
+            return m.reply(`❌Sin mencionar un GC Seller registrado a *${serverLabel}*.`)
         }
 
         saveGcSeller(version, null)
         m.react('✅')
         return m.reply(
             `✅ *ɢᴄ sᴇʟʟᴇʀ ${serverLabel} ᴅɪʀᴇsᴇᴛ*\n\n` +
-            `> Grup: \`${current}\`\n` +
-            `> Server *${serverLabel}* tidak lagi terhubung ke grup manapun.`
+            `> Grupo:\`${current}\`\n` +
+            `♪ Servidor ♪${serverLabel}* ya no conectado a ningún grupo.`
         )
     }
 }

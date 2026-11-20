@@ -2,7 +2,7 @@
     name: 'cekkaya',
     alias: ['kaya', 'rich'],
     category: 'cek',
-    description: 'Cek seberapa kaya kamu',
+    description: 'Compruebe cuánto está mirando.',
     usage: '.cekkaya <nama>',
     example: '.cekkaya Budi',
     isOwner: false,
@@ -30,19 +30,19 @@ async function handler(m) {
         desc = 'Lumayan berada 💵'
         emoji = '💰'
     } else if (percent >= 30) {
-        desc = 'Cukup lah buat hidup 😊'
+        desc = 'Sólo ganarse la vida.😊'
         emoji = '💵'
     } else {
         desc = 'Semangat nabung! 🙏'
         emoji = '🪙'
     }
     
-    let txt = mentioned === m.sender ? `Hai @${mentioned.split('@')[0]}
+    let txt = mentioned === m.sender ? `Hola @${mentioned.split('@')[0]}
     
-Tingkat kekayaan kamu *${percent}%*
-\`\`\`${desc}\`\`\`` : `Kamu ingin ngecek tingkat kekayaan @${mentioned.split('@')[0]} yak? 
+Su alto @-@ ranking.${percent}%*
+\`\`\`${desc}\`\`\`` : `Quieres revisar los altos niveles de riqueza${mentioned.split('@')[0]} yak? 
     
-Tingkat kekayaan dia sebesar *${percent}%*
+Es tan rico como la fama del hombre${percent}%*
 \`\`\`${desc}\`\`\``
     
     await m.reply(txt, { mentions: [mentioned] })

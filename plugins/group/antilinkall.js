@@ -32,29 +32,29 @@ function handler(m, { sock }) {
         `> Status: *${status === "on" ? "Aktif ✅" : "Nonaktif ❌"}*\n` +
         `> Mode: *${mode.toUpperCase()}*\n\n` +
         `*DETEKSI:*\n` +
-        `> • https:// / http:// (dengan protokol)\n` +
+        `♪• https:///http://(con protokol)\n` +
         `> • www. (subdomain)\n` +
         `> • Domain extension (.com, .id, .io, .net, dll)\n` +
         `> • Shortlink (bit.ly, t.me, tinyurl, dll)\n\n` +
-        `*PENGGUNAAN:*\n` +
+        `*Uso:*\n` +
         `> *${m.prefix}antilinkall on* — Aktifkan\n` +
         `> *${m.prefix}antilinkall off* — Nonaktifkan\n` +
-        `> *${m.prefix}antilinkall metode kick* — Mode kick user\n` +
-        `> *${m.prefix}antilinkall metode remove* — Mode hapus pesan`
+        `> *${m.prefix}patada antilinkal método *—Usuario de patada\n` +
+        `> *${m.prefix}método antilinkal eliminar *—Modo de eliminación de mensajes`
     );
   }
 
   if (option === "on") {
     db.setGroup(m.chat, { antilinkall: "on" });
     return m.reply(
-      `✅ *Antilink All Aktif*\n\n` +
-        `> Semua link akan dideteksi otomatis\n> Mendeteksi domain extension, bukan hanya http/https`
+      `✅Antilinks All Active\n\n` +
+        `Todos los enlaces serán auto @-@ detectable\n♪ Decline el dominio e ♪xtensions, no sólo http / https`
     );
   }
 
   if (option === "off") {
     db.setGroup(m.chat, { antilinkall: "off" });
-    return m.reply(`❌ *Antilink All Nonaktif*\n\n> Link tidak akan difilter lagi`);
+    return m.reply(`❌> 91; Antilinks All Nonactive > 93;\n\nEl enlace no será filtrado de nuevo`);
   }
 
   if (option.startsWith("metode")) {
@@ -62,16 +62,16 @@ function handler(m, { sock }) {
     if (method === "kick") {
       db.setGroup(m.chat, { antilinkall: "on", antilinkallMode: "kick" });
       return m.reply(
-        `✅ *Antilink All — Mode Kick*\n\n> User yang kirim link akan di-kick`
+        `✅* Antilinks All—Modo de Kickk *\n\nEl usuario que envía el enlace se le da patadas.`
       );
     } else if (method === "remove" || method === "delete") {
       db.setGroup(m.chat, { antilinkall: "on", antilinkallMode: "remove" });
       return m.reply(
-        `✅ *Antilink All — Mode Delete*\n\n> Pesan dengan link akan dihapus`
+        `✅* Antilinks All—Modo de eliminación *\n\n*Mensaje con enlaces será cubierto*`
       );
     } else {
       return m.reply(
-        `❌ *Metode Tidak Valid*\n\n> Gunakan *kick* atau *remove*\n> Contoh: *${m.prefix}antilinkall metode kick*`
+        `❌Método inválido\n\n*Usa una patada o un retiro*\n> 91; Gasps &#93;${m.prefix}patada antilinkal método *`
       );
     }
   }
@@ -79,19 +79,19 @@ function handler(m, { sock }) {
   if (option === "kick") {
     db.setGroup(m.chat, { antilinkall: "on", antilinkallMode: "kick" });
     return m.reply(
-      `✅ *Antilink All — Mode Kick*\n\n> User yang kirim link akan di-kick`
+      `✅* Antilinks All—Modo de Kickk *\n\nEl usuario que envía el enlace se le da patadas.`
     );
   }
 
   if (option === "remove" || option === "delete") {
     db.setGroup(m.chat, { antilinkall: "on", antilinkallMode: "remove" });
     return m.reply(
-      `✅ *Antilink All — Mode Delete*\n\n> Pesan dengan link akan dihapus`
+      `✅* Antilinks All—Modo de eliminación *\n\n*Mensaje con enlaces será cubierto*`
     );
   }
 
   return m.reply(
-    `❌ *Opsi Tidak Valid*\n\n> Gunakan *on*, *off*, *metode kick*, atau *metode remove*`
+    `❌Opsi inválido\n\n*Uso* *en,* *en marcha, método patada*`
   );
 }
 

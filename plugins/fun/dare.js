@@ -19,7 +19,7 @@ async function handler(m) {
     const challenge = _ouringamedatajs.getRandomItem.call(void 0, 'dare.json');
     
     if (!challenge) {
-        await m.reply('❌ Data tidak tersedia!');
+        await m.reply('❌¡Datos no disponibles!');
         return;
     }
     

@@ -19,7 +19,7 @@ async function handler(m) {
     const parts = input.split(/[&,]/).map(s => s.trim()).filter(s => s)
     
     if (parts.length < 2) {
-        return m.reply(`💕 *ᴄᴇᴋ ᴊᴏᴅᴏʜ*\n\n> Masukkan 2 nama!\n\n> Contoh: ${m.prefix}cekjodoh Budi & Ani`)
+        return m.reply(`💕*ᴄᴇᴋ ᴊᴏᴅᴏʜ*\n\n¡Aquí hay un par de nombres!\n\n> Ejemplo:${m.prefix}cekjodoh Budi & Ani`)
     }
     
     const percent = Math.floor(Math.random() * 101)
@@ -33,17 +33,17 @@ async function handler(m) {
     } else if (percent >= 50) {
         desc = 'Lumayan cocok~ 😊'
     } else if (percent >= 30) {
-        desc = 'Hmm, perlu usaha lebih 🤔'
+        desc = 'Hmm, se necesita más esfuerzo.🤔'
     } else {
-        desc = 'Mungkin cari yang lain? 😅'
+        desc = '¿Quizás otro?😅'
     }
     
-    let txt = mentioned === m.sender ? `Hai @${mentioned.split('@')[0]}
+    let txt = mentioned === m.sender ? `Hola @${mentioned.split('@')[0]}
     
-Tingkat kejodohan kamu *${percent}%*
-\`\`\`${desc}\`\`\`` : `Kamu ingin ngecek tingkat kejodohan @${mentioned.split('@')[0]} yak? 
+Nivel de su juego *${percent}%*
+\`\`\`${desc}\`\`\`` : `Quieres comprobar el nivel de los matrimonios arreglados${mentioned.split('@')[0]} yak? 
     
-Tingkat kejodohan dia sebesar *${percent}%*
+El nivel de juego es tan grande como ella.${percent}%*
 \`\`\`${desc}\`\`\``
     
     await m.reply(txt, { mentions: [mentioned] })

@@ -25,7 +25,7 @@ const pluginConfig = {
   name: 'reactevent',
   alias: ['revent', 'autoreactevent'],
   category: 'owner',
-  description: 'Atur auto react untuk event grup (member masuk/keluar/update)',
+  description: 'Configure auto reacciona para el evento grupo ( photo en / out / actualización )',
   usage: '.reactevent <on|off|add|del|list> [emoji]',
   example: '.reactevent on',
   isOwner: true,
@@ -47,10 +47,10 @@ async function handler(m, context) {
 
   if (!sub) {
     return m.reply(
-      `📦 *AUTO REACT EVENT GRUP*\n\n` +
-        `> Status di grup ini: ${conf.enabled ? 'ON ✅' : 'OFF ❌'}\n` +
-        `> Daftar Emoji: ${conf.emojis.join(' ')}\n\n` +
-        `*PERINTAH:*\n` +
+      `📦* AUTO REACT EVENT Grupo *\n\n` +
+        `*Estado en este grupo:*${conf.enabled ? 'ON ✅' : 'OFF ❌'}\n` +
+        `Lista Emoji:${conf.emojis.join(' ')}\n\n` +
+        `*Comando:*\n` +
         `> \`${p}reactevent on\`\n` +
         `> \`${p}reactevent off\`\n` +
         `> \`${p}reactevent add <emoji>\`\n` +
@@ -63,35 +63,35 @@ async function handler(m, context) {
     case 'on':
       conf.enabled = true;
       saveConf(jid, conf);
-      return m.reply('✅ Auto react event grup telah diaktifkan untuk grup ini.');
+      return m.reply('✅El evento de reacción automática grupo ha sido activado para ègrupo.');
 
     case 'off':
       conf.enabled = false;
       saveConf(jid, conf);
-      return m.reply('❌ Auto react event grup telah dinonaktifkan untuk grup ini.');
+      return m.reply('❌El evento de reacción automática grupo ha sido desactivado para ègrupo.');
 
     case 'add':
-      if (!emoji) return m.reply(`> Penggunaan: \`${p}reactevent add <emoji>\``);
-      if (conf.emojis.includes(emoji)) return m.reply('⚠️ Emoji tersebut sudah terdaftar di list.');
+      if (!emoji) return m.reply(`> Uso: \`${p}reactevent add <emoji>\``);
+      if (conf.emojis.includes(emoji)) return m.reply('⚠La lista de Emoji ya está en la lista.');
       conf.emojis.push(emoji);
       saveConf(jid, conf);
-      return m.reply(`✅ Emoji ${emoji} berhasil ditambahkan ke daftar react event.`);
+      return m.reply(`✅ Emoji ${emoji}Exterminado exitosamente a la lista de eventos récord.`);
 
     case 'del': {
-      if (!emoji) return m.reply(`> Penggunaan: \`${p}reactevent del <emoji>\``);
+      if (!emoji) return m.reply(`> Uso: \`${p}reactevent del <emoji>\``);
       const idx = conf.emojis.indexOf(emoji);
-      if (idx === -1) return m.reply('⚠️ Emoji tersebut tidak ada dalam daftar.');
-      if (conf.emojis.length <= 1) return m.reply('⚠️ Minimal harus ada 1 emoji dalam daftar.');
+      if (idx === -1) return m.reply('⚠El Emoji no está en la lista.');
+      if (conf.emojis.length <= 1) return m.reply('⚠Al menos un emoji debería estar en la lista.');
       conf.emojis.splice(idx, 1);
       saveConf(jid, conf);
-      return m.reply(`✅ Emoji ${emoji} berhasil dihapus dari daftar.`);
+      return m.reply(`✅ Emoji ${emoji}Lo tengo fuera de la lista.`);
     }
 
     case 'list':
-      return m.reply(`📋 *Daftar Emoji React Event:*\n${conf.emojis.join(' ')}`);
+      return m.reply(`📋* Lista Emoji React Event: *\n${conf.emojis.join(' ')}`);
 
     default:
-      return m.reply(`Perintah tidak dikenal. Pilihan: on, off, add, del, list.`);
+      return m.reply(`Orden desconocido. Opciones: en, apagado, añadir, del, lista.`);
   }
 }
 

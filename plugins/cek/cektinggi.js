@@ -29,15 +29,15 @@ async function handler(m) {
     } else if (tinggi >= 155) {
         desc = 'Standard kok 🙂'
     } else {
-        desc = 'Imut dan mungil! 🥺'
+        desc = '¡Qué lindo y lindo!🥺'
     }
     
-    let txt = mentioned === m.sender ? `Hai @${mentioned.split('@')[0]}
+    let txt = mentioned === m.sender ? `Hola @${mentioned.split('@')[0]}
     
-Tinggi badan kamu *${tinggi} cm*
-\`\`\`${desc}\`\`\`` : `Kamu ingin ngecek tingkat ketinggian @${mentioned.split('@')[0]} yak? 
+*Para amarte*${tinggi} cm*
+\`\`\`${desc}\`\`\`` : `Usted quiere comprobar la altura del nivel @${mentioned.split('@')[0]} yak? 
     
-Tinggi badan dia sebesar *${tinggi} cm*
+Dale una bolsa grande.${tinggi} cm*
 \`\`\`${desc}\`\`\``
     
     await m.reply(txt, { mentions: [mentioned] })

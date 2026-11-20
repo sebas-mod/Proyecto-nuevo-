@@ -6,7 +6,7 @@ const pluginConfig = {
   name: "join",
   alias: ["joingrup", "joingroup", "gabung"],
   category: "owner",
-  description: "Bot join ke grup via link invite, support reply pesan yang mengandung link",
+  description: "* Entrada al grupo mediante enlace, invitación, respuesta de apoyo*",
   usage: ".join <link> / .join (reply pesan berisi link)",
   example: ".join https://chat.whatsapp.com/xxx",
   isOwner: true,
@@ -45,7 +45,7 @@ function extractAllInviteCodes(text) {
 async function joinGroup(sock, inviteCode) {
   try {
     const groupInfo = await sock.groupGetInviteInfo(inviteCode);
-    if (!groupInfo) return { success: false, error: "Tidak dapat mengambil info grup" };
+    if (!groupInfo) return { success: false, error: "Can 't retrieve group inho" };
 
     const botJid = _optionalChain([sock, 'access', _ => _.user, 'optionalAccess', _2 => _2.id, 'optionalAccess', _3 => _3.replace, 'call', _4 => _4(/:.*@/, "@")]) || "";
     const isMember = _optionalChain([groupInfo, 'access', _5 => _5.participants, 'optionalAccess', _6 => _6.some, 'call', _7 => _7(
@@ -68,11 +68,11 @@ async function joinGroup(sock, inviteCode) {
       owner: _optionalChain([groupInfo, 'access', _18 => _18.owner, 'optionalAccess', _19 => _19.split, 'call', _20 => _20("@"), 'access', _21 => _21[0]]) || "Unknown",
     };
   } catch (error) {
-    let errorMsg = error.message || "Link tidak valid";
-    if (errorMsg.includes("not-authorized")) errorMsg = "Link sudah tidak valid atau expired";
-    else if (errorMsg.includes("gone") || errorMsg.includes("item-not-found") || errorMsg.includes("404")) errorMsg = "Grup tidak ditemukan (link ngasal/sudah direvoke)";
-    else if (errorMsg.includes("conflict")) errorMsg = "Bot sudah menjadi member";
-    else errorMsg = "Link tidak valid atau bot dilarang join";
+    let errorMsg = error.message || "Enlace inválido";
+    if (errorMsg.includes("not-authorized")) errorMsg = "El enlace ya no es válido o exPillada";
+    else if (errorMsg.includes("gone") || errorMsg.includes("item-not-found") || errorMsg.includes("404")) errorMsg = "Grupo no encontract (lo siento / si revolcar enlacce )";
+    else if (errorMsg.includes("conflict")) errorMsg = "Lo siento.";
+    else errorMsg = "El enlace no es válido o bot está en la unión";
     return { success: false, error: errorMsg };
   }
 }
@@ -87,15 +87,15 @@ async function handler(m, { sock }) {
 
   if (!sourceText) {
     return m.reply(
-      `🔗 *Join Grup*\n\n` +
-        `Bot akan join ke grup berdasarkan link invite yang kamu berikan.\n\n` +
-        `*PENGGUNAAN:*\n` +
-        `> *${m.prefix}join <link>* — Join via link langsung\n` +
-        `> *${m.prefix}join* (reply pesan) — Join dari link di pesan yang di-reply\n\n` +
-        `*CONTOH:*\n` +
+      `🔗*Join Grupo*\n\n` +
+        `Para unirse al grupo de enlaces desprevenido le invitamos a pescar.\n\n` +
+        `*Uso:*\n` +
+        `> *${m.prefix}únete<link>*—" Nunca te olvidaré. "\n` +
+        `> *${m.prefix}únete a * (respuestas de mensajes )—Únase a los enlaces en la respuesta del mensaje\n\n` +
+        `*Ejemplo:*\n` +
         `> *${m.prefix}join https://chat.whatsapp.com/xxx*\n` +
-        `> Reply pesan berisi link lalu ketik *${m.prefix}join*\n\n` +
-        `_Bot akan mendeteksi semua link grup di pesan dan join satu per satu_`
+        `Responder mensaje el agradecimiento y luego el imbécil${m.prefix}join*\n\n` +
+        `* Detectará todos los enlaces del grupo en el mensaje y se unirá uno por uno*`
     );
   }
 
@@ -103,9 +103,9 @@ async function handler(m, { sock }) {
 
   if (inviteCodes.length === 0) {
     return m.reply(
-      `❌ *Tidak Ada Link Grup*\n\n` +
-        `> Bot tidak menemukan link invite grup di pesan tersebut.\n\n` +
-        `*Format link yang didukung:*\n` +
+      `❌No Enlace del grupo\n\n` +
+        `* No se puede encontrar un enlace que invite al grupo en el mensaje.*\n\n` +
+        `* Fata siguiente línea: *\n` +
         `> *https://chat.whatsapp.com/xxx*\n` +
         `> *https://invite.whatsapp.com/xxx*`
     );
@@ -119,29 +119,29 @@ async function handler(m, { sock }) {
     if (result.alreadyMember) {
       m.react("❌");
       return m.reply(
-        `❌ *Sudah Menjadi Member*\n\n> Bot sudah join di grup *${result.subject}*`
+        `❌* Ha pasado un tiempo *\n\n# Ya te unes al grupo #${result.subject}*`
       );
     }
 
     if (!result.success) {
       m.react("❌");
-      return m.reply(`❌ *Gagal Join*\n\n> ${result.error}`);
+      return m.reply(`❌*Fallido Join*\n\n♪${result.error}`);
     }
 
     m.react("✅");
     const ctx = _ourincontextjs.saluranCtx.call(void 0, );
     return m.reply(
-      `✅ *Berhasil Join!*\n\n` +
-        `> 🏠 Nama: *${result.subject}*\n` +
+      `✅*Exito Join!*\n\n` +
+        `♪🏠Nombre: *${result.subject}*\n` +
         `> 👥 Member: *${result.members}*\n` +
-        `> 👤 Owner: *${result.owner}*`,
+        `♪👤Propietario: *${result.owner}*`,
       { contextInfo: ctx }
     );
   }
 
   let resultText =
-    `🔗 *Multi Join — ${inviteCodes.length} Link Terdeteksi*\n\n` +
-    `Bot akan join ke semua grup satu per satu.\n\n`;
+    `🔗 *Multi Join — ${inviteCodes.length}Enlace Terdeteksi*\n\n` +
+    `Nos uniremos a todos los grupos uno por uno.\n\n`;
 
   let successCount = 0;
   let alreadyCount = 0;
@@ -152,10 +152,10 @@ async function handler(m, { sock }) {
 
     if (result.alreadyMember) {
       alreadyCount++;
-      resultText += `*${i + 1}.* ${result.subject} — ⚠️ Sudah member\n`;
+      resultText += `*${i + 1}.* ${result.subject} — ⚠# Ya photo\n`;
     } else if (result.success) {
       successCount++;
-      resultText += `*${i + 1}.* ${result.subject} — ✅ Berhasil join\n`;
+      resultText += `*${i + 1}.* ${result.subject} — ✅Exito join\n`;
     } else {
       failedCount++;
       resultText += `*${i + 1}.* ${inviteCodes[i].substring(0, 12)}... — ❌ ${result.error}\n`;
@@ -167,10 +167,10 @@ async function handler(m, { sock }) {
   }
 
   resultText +=
-    `\n*Hasil:*\n` +
-    `> ✅ Berhasil: *${successCount}*\n` +
-    `> ⚠️ Sudah member: *${alreadyCount}*\n` +
-    `> ❌ Gagal: *${failedCount}*\n` +
+    `\n*Resultado:*\n` +
+    `♪✅Exito: *${successCount}*\n` +
+    `♪⚠*Ya photo:*${alreadyCount}*\n` +
+    `♪❌Fallido: *${failedCount}*\n` +
     `> 📊 Total: *${inviteCodes.length}*`;
 
   m.react(successCount > 0 ? "✅" : "❌");

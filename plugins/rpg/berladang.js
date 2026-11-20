@@ -5,7 +5,7 @@ const pluginConfig = {
   name: "berladang",
   alias: ["farm", "tanam", "berkebun"],
   category: "rpg",
-  description: "Berladang untuk mendapat hasil panen",
+  description: "Campo para una cosecha.",
   usage: ".berladang",
   example: ".berladang",
   isOwner: false,
@@ -28,13 +28,13 @@ async function handler(m, { sock }) {
   user.rpg.stamina = _nullishCoalesce(user.rpg.stamina, () => ( 100));
 
   if (user.rpg.stamina < staminaCost) {
-    return m.reply(`Aduh kak, encok nih badan! 🥵\n\nBuat nyangkul butuh *${staminaCost} Stamina*, sisa stamina kamu *${user.rpg.stamina}*.\nMakan atau istirahat dulu gih! 🛌💤`);
+    return m.reply(`¡Aduh hermano, encok aquí badan!🥵\n\nLa bestia que sostiene el arco${staminaCost}La resistencia, la restante te contamina${user.rpg.stamina}*.\nComer o descansar primero.🛌💤`);
   }
 
   user.rpg.stamina -= staminaCost;
 
   await m.react("🌾");
-  await m.reply(`Menyiapkan cangkul dan menyiram tanah... 🌱💧\nSemoga hari ini panen berlimpah!`);
+  await m.reply(`Prepara las pinzas y el agua el páramo..🌱💧\n¡Por favor, vierte la cosecha hoy!`);
   await new Promise((r) => setTimeout(r, 3000));
 
   const crops = [
@@ -72,15 +72,15 @@ async function handler(m, { sock }) {
 
   await m.react("✅");
 
-  let txt = `PANEN RAYA KAK! 🚜🌾\n\n`;
-  txt += `Gila, kebun kamu hari ini ngasilin banyak banget:\n`;
+  let txt = `¡¡Raya Hermano Panema!🚜🌾\n\n`;
+  txt += `Gila, tu jardín hoy es un montón de flequillo:\n`;
   for (const r of results) {
     txt += `• ${r.name}: *+${r.qty}* (Est. Rp ${r.value.toLocaleString("id-ID")})\n`;
   }
-  txt += `\n💰 Total Estimasi Nilai: *Rp ${totalValue.toLocaleString("id-ID")}*\n`;
+  txt += `\n💰Estimaciones totales Nillai: * Rp${totalValue.toLocaleString("id-ID")}*\n`;
   txt += `📈 EXP Petani: *+${expGain}*\n`;
   txt += `⚡ Stamina: *-${staminaCost}*\n\n`;
-  txt += `Kamu bisa jual hasil panen ini ke pasar pakai \`${m.prefix}sellall\` ya! 🧺✨`;
+  txt += `Usted puede vender está cosecha al mercado usando\`${m.prefix}sellall\` ya! 🧺✨`;
 
   m.reply(txt);
 }

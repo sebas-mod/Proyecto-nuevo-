@@ -162,9 +162,9 @@ function parseInterval(str) {
 
 function formatInterval(ms) {
   if (ms >= 24 * 60 * 60 * 1000)
-    return `${Math.floor(ms / (24 * 60 * 60 * 1000))} hari`;
-  if (ms >= 60 * 60 * 1000) return `${Math.floor(ms / (60 * 60 * 1000))} jam`;
-  return `${Math.floor(ms / (60 * 1000))} menit`;
+    return `${Math.floor(ms / (24 * 60 * 60 * 1000))}el`;
+  if (ms >= 60 * 60 * 1000) return `${Math.floor(ms / (60 * 60 * 1000))}hora`;
+  return `${Math.floor(ms / (60 * 1000))}minuto`;
 }
 
 function intervalToCron(ms) {
@@ -243,13 +243,13 @@ async function sendBackupToOwner(backupInfo) {
 
   const ownerNumbers = _optionalChain([_configjs2.default, 'access', _ => _.owner, 'optionalAccess', _2 => _2.number]) || [];
   if (ownerNumbers.length === 0) {
-    _ourinloggerjs.logger.error("AutoBackup", "No owner number configured");
+    _ourinloggerjs.logger.error("AutoBackup", "No hay configuración de número de propietario");
     return false;
   }
 
   const ownerNumber = String(ownerNumbers[0]).replace(/[^0-9]/g, "");
   if (!ownerNumber) {
-    _ourinloggerjs.logger.error("AutoBackup", "Invalid owner number");
+    _ourinloggerjs.logger.error("AutoBackup", "Número de propietario inválido");
     return false;
   }
 
@@ -262,7 +262,7 @@ async function sendBackupToOwner(backupInfo) {
     const caption =
       `🗂️ *ᴀᴜᴛᴏ ʙᴀᴄᴋᴜᴘ*\n\n` +
       `╭┈┈⬡「 📋 *ɪɴꜰᴏ* 」\n` +
-      `┃ 📅 Waktu: ${timeHelper.formatDateTime("DD MMMM YYYY HH:mm:ss")} WIB\n` +
+      `┃ 📅Tiempo:${timeHelper.formatDateTime("DD MMMM YYYY HH:mm:ss")} WIB\n` +
       `┃ 📦 Size: ${sizeInMB} MB\n` +
       `┃ 📁 Files: ${backupInfo.fileCount}\n` +
       `┃ ⏱️ Interval: ${formatInterval(state.intervalMs)}\n` +
@@ -285,7 +285,7 @@ async function sendBackupToOwner(backupInfo) {
       await _fs2.default.promises.unlink(backupInfo.path);
     } catch (e5) {}
 
-    _ourinloggerjs.logger.success("AutoBackup", `Backup sent to owner (${sizeInMB} MB)`);
+    _ourinloggerjs.logger.success("AutoBackup", `Copia de seguridad enviada al propietario (${sizeInMB} MB)`);
     return true;
   } catch (error) {
     _ourinloggerjs.logger.error("AutoBackup", `Send failed: ${error.message}`);
@@ -335,7 +335,7 @@ function enableAutoBackup(intervalStr, sock) {
   if (!parsed) {
     return {
       success: false,
-      error: "Format interval tidak valid. Contoh: 5m, 1h, 2d",
+      error: "El intervalo de formato es inválido.",
     };
   }
 

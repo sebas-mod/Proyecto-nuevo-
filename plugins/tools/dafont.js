@@ -38,7 +38,7 @@ const pluginConfig = {
   name: "dafont",
   alias: ["font", "daffont", "carifont"],
   category: "tools",
-  description: "Cari dan download font dari DaFont",
+  description: "Busca y descargas fuente de DFITT",
   usage: ".dafont <nama font>",
   example: ".dafont arial",
   isOwner: false,
@@ -56,13 +56,13 @@ async function handler(m, { sock }) {
     m.react("❌");
     return m.reply(
       `🔤 *DaFont Search*\n\n` +
-        `Cari font dari DaFont, lalu reply nomor buat download.\n\n` +
-        `*PENGGUNAAN:*\n` +
+        `Busca font de DFont, luego responder al número de descargas.\n\n` +
+        `*Uso:*\n` +
         `> *${m.prefix}dafont <nama font>*\n\n` +
-        `*CONTOH:*\n` +
+        `*Ejemplo:*\n` +
         `> *${m.prefix}dafont arial*\n` +
         `> *${m.prefix}dafont horror*\n\n` +
-        `_Setelah daftar muncul, reply pesan bot dengan nomor font buat download_`
+        `Una vez que aparece una lista, responda un mensaje bot con un número de fuente haga descarga_`
     );
   }
 
@@ -73,13 +73,13 @@ async function handler(m, { sock }) {
 
     if (!result.status) {
       m.react("☢");
-      return m.reply(`❌ *DaFont Gagal*\n\n> ${result.error}`);
+      return m.reply(`❌*DaFont Fallido*\n\n♪${result.error}`);
     }
 
     const items = result.results.slice(0, 10);
 
     let txt = `🔤 *DaFont — ${result.count} Font Ditemukan*\n\n`;
-    txt += `> Pencarian: *${text}*\n\n`;
+    txt += `# Buscadme #${text}*\n\n`;
 
     items.forEach((v, i) => {
       txt += `*${i + 1}.* ${v.name}\n`;
@@ -88,7 +88,7 @@ async function handler(m, { sock }) {
       txt += `   └ 📜 License: ${v.license || "-"}\n`;
     });
 
-    txt += `\n_Reply pesan ini dengan nomor font buat download file-nya_`;
+    txt += `\nResponder Genevieve mensaje con un núudus de fuentes para hacer las descargas campo - links _`;
 
     const session = setSession(m.sender, items);
     session.chat = m.chat;
@@ -98,7 +98,7 @@ async function handler(m, { sock }) {
   } catch (e) {
     console.error(e);
     m.react("☢");
-    m.reply("❌ Gagal mencari font, coba lagi nanti");
+    m.reply("❌Pegatina buscando la fuente, intente más tarde");
   }
 }
 

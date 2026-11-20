@@ -5,7 +5,7 @@ const pluginConfig = {
   name: "jokowi-ai",
   alias: ["jokowiai", "jokowi", "pakjokowi"],
   category: "ai",
-  description: "Chat dengan Pak Jokowi — Pria Solo",
+  description: "Chat con el Sr. Jokowi—Hombre Solo",
   usage: ".jokowi-ai <pertanyaan>",
   example: ".jokowi-ai Pak, gimana kabar?",
   isOwner: false,
@@ -22,11 +22,11 @@ async function handler(m, { sock }) {
   if (!text) {
     return m.reply(
       `🏛️ *Pak Jokowi*\n\n` +
-        `> Pria Solo — Mantan Presiden RI\n> Sederhana, bijak, dan suka blusukan\n\n` +
-        `*PENGGUNAAN:*\n` +
+        `Hombre Solo—President RI 's ex@ - @ novio.\n♪Simple, sabio, y le gusta el rubor\n\n` +
+        `*Uso:*\n` +
         `> *${m.prefix}jokowi-ai <pertanyaan>*\n\n` +
-        `*CONTOH:*\n` +
-        `> *${m.prefix}jokowi-ai Pak, gimana kabar?*`
+        `*Ejemplo:*\n` +
+        `> *${m.prefix}Jokow--ai señor, ¿cómo está?`
     );
   }
 

@@ -5,7 +5,7 @@ const pluginConfig = {
   name: "boss",
   alias: ["raidboss", "bigboss"],
   category: "rpg",
-  description: "Lawan boss untuk hadiah besar",
+  description: "Pawan patrones para el gran premio",
   usage: ".boss",
   example: ".boss",
   isOwner: false,
@@ -95,10 +95,10 @@ async function handler(m, { sock }) {
 
   if (availableBosses.length === 0) {
     const lowestBoss = BOSSES.reduce((a, b) => (a.minLevel < b.minLevel ? a : b));
-    let txt = `Aduh kak, level kamu masih terlalu rendah buat ikutan Raid Boss! 😭\n\n`;
-    txt += `Level kamu sekarang: *${userLevel}*\n`;
-    txt += `Minimal level yang dibutuhkan: *${lowestBoss.minLevel}*\n\n`;
-    txt += `💡 _Tips: Rajin-rajin farming EXP dari \`.dungeon\`, \`.fishing\`, atau \`.mining\` dulu yuk kak!_`;
+    let txt = `Aduh hermano, Nivel que sigue siendo desiado bajo para un Jefe de la Reserva!😭\n\n`;
+    txt += `Nivel que ahora: *${userLevel}*\n`;
+    txt += `Minimal evel requerido: *${lowestBoss.minLevel}*\n\n`;
+    txt += `💡Sooths:\`. mazmorra.\`.\`Pescados.\`, o\`. minería\`Lo siento, ¡ya llegué tarde!`;
     return m.reply(txt);
   }
 
@@ -106,7 +106,7 @@ async function handler(m, { sock }) {
   user.rpg.stamina = _nullishCoalesce(user.rpg.stamina, () => ( 100));
 
   if (user.rpg.stamina < staminaCost) {
-    return m.reply(`⚡ Yahh stamina kamu habis kak!\n\nButuh *${staminaCost} Stamina* untuk melawan boss.\nStamina kamu sisa: *${user.rpg.stamina}*`);
+    return m.reply(`⚡¡¡La fuerza de Eh matasse a hermana!\n\nNecesito${staminaCost}Estabilización para el jefe.\nStamina que restante: *${user.rpg.stamina}*`);
   }
 
   user.rpg.stamina -= staminaCost;
@@ -114,11 +114,11 @@ async function handler(m, { sock }) {
   const boss = availableBosses[Math.floor(Math.random() * availableBosses.length)];
 
   await m.react("⚔️");
-  let introTxt = `⚠️ *PERINGATAN BAHAYA!* ⚠️\n\n`;
-  introTxt += `Aura kegelapan menyelimuti arena... *${boss.name}* telah muncul di hadapan kamu!\n\n`;
-  introTxt += `❤️ Darah Boss: *${boss.hp} HP*\n`;
-  introTxt += `⚔️ Kekuatan: *${boss.attack} ATK*\n\n`;
-  introTxt += `_Siapkan senjatamu kak! Pertarungan dimulai..._`;
+  let introTxt = `⚠️ *Advertencia BAHAYA!* ⚠♪\n\n`;
+  introTxt += `Aura kegelapan menyelimuti arena... *${boss.name}* ha aparecido en tu cara!\n\n`;
+  introTxt += `❤♪ Sangre BATS ♪${boss.hp} HP*\n`;
+  introTxt += `⚔️ Fuerza: *${boss.attack} ATK*\n\n`;
+  introTxt += `_Siapkan senjatamu hermano! Lucha comenzó..._`;
   
   await m.reply(introTxt);
   await new Promise((r) => setTimeout(r, 2500));
@@ -141,20 +141,20 @@ async function handler(m, { sock }) {
     bossHp -= finalPlayerDmg;
 
     if (critChance > 0.9) {
-      battleLog.push(`💥 *CRITICAL HIT!!* Serangan mematikanmu masuk: *-${finalPlayerDmg} HP*`);
+      battleLog.push(`💥* CRITICAL HIT! * Ataque desactivando en: *${finalPlayerDmg} HP*`);
     } else {
-      battleLog.push(`⚔️ Kamu menebas boss: *-${finalPlayerDmg} HP*`);
+      battleLog.push(`⚔Para ver que cortaste al jefe:${finalPlayerDmg} HP*`);
     }
 
     if (bossHp <= 0) break;
 
     const bossDmg = Math.max(10, boss.attack - userDefense + Math.floor(Math.random() * 15));
     userHp -= bossDmg;
-    battleLog.push(`👹 Boss mengamuk dan memukul mundur: *-${bossDmg} HP*`);
+    battleLog.push(`👹Jefe se atropellaron y retrocedieron: * -${bossDmg} HP*`);
   }
 
   await m.reply(
-    `⚔️ *Sengitnya Pertarungan...*\n\n${battleLog
+    `⚔La batalla está a punto de comenzar.\n\n${battleLog
       .slice(-6)
       .map((l) => `> ${l}`)
       .join("\n")}`,
@@ -181,15 +181,15 @@ async function handler(m, { sock }) {
       }
     }
 
-    txt = `🏆 *BOSS BERHASIL DIKALAHKAN!!* 🎉\n\n`;
-    txt += `Wahh gila, kamu berhasil numbangin monster raksasa *${boss.name}* kak!\n\n`;
+    txt = `🏆* BOSS REST DISAPPEARED!🎉\n\n`;
+    txt += `Gila, lo hacía al monstruo gigante${boss.name}* hermano!\n\n`;
     txt += `*🎁 Harta Karun Boss:*\n`;
     txt += `✨ EXP: *+${expReward.toLocaleString()}*\n`;
-    txt += `💰 Koin Emas: *+Rp ${goldReward.toLocaleString()}*\n`;
+    txt += `💰Tela Oro: * + Rp${goldReward.toLocaleString()}*\n`;
     if (droppedItems.length > 0) {
-      txt += `📦 Item Loot: *${droppedItems.join(", ")}*\n`;
+      txt += `📦Lotería: *${droppedItems.join(", ")}*\n`;
     }
-    txt += `\n> ❤️ Sisa HP Kamu: *${Math.max(0, userHp)}/${userMaxHp}*`;
+    txt += `\n♪❤Ayasa Sip Your HP: *${Math.max(0, userHp)}/${userMaxHp}*`;
 
     await m.react("🏆");
   } else {
@@ -197,12 +197,12 @@ async function handler(m, { sock }) {
     user.koin = Math.max(0, (user.koin || 0) - goldLoss);
     user.rpg.health = Math.max(1, (user.rpg.health || 100) - 50);
 
-    txt = `💀 *YAH... KAMU TERPURUK...* 💔\n\n`;
-    txt += `Tenaga *${boss.name}* ternyata masih terlalu besar buat kamu kak!\n\n`;
+    txt = `💀* Sí, estás jodido. *💔\n\n`;
+    txt += `Tenaga *${boss.name}* El espectáculo es todavía demasiado grande para ti hermano!\n\n`;
     txt += `*Penalti Kekalahan:*\n`;
-    txt += `💸 Koin Terjatuh: *-Rp ${goldLoss.toLocaleString()}*\n`;
-    txt += `❤️ HP Berkurang: *-50 HP*\n\n`;
-    txt += `> 💡 _Tips: Coba tingkatkan level dan perbaiki senjatamu sebelum nantangin dia lagi ya kak!_`;
+    txt += `💸 Monedas Terjatuh: *-Rp ${goldLoss.toLocaleString()}*\n`;
+    txt += `❤️ HP Reducido: *-50 HP*\n\n`;
+    txt += `♪💡- Intenta está aumentando su nivel y armas antes de que usted vuelva a luchar contra él!`;
 
     await m.react("💀");
   }

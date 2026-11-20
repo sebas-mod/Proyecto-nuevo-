@@ -5,7 +5,7 @@ const pluginConfig = {
   name: "test",
   alias: ["poll"],
   category: "test",
-  description: "Test Poll Menu Interaktif",
+  description: "Prueba de la encuesta interactiva de menús",
   usage: ".poll",
   example: ".poll",
   isOwner: false,
@@ -34,8 +34,8 @@ async function handler(m, { sock }) {
 
     await sock.relayMessage(m.chat, msg.message, { messageId: msg.key.id });
   } catch (error) {
-    console.error("[TestPoll] Gagal:", error);
-    m.reply("Gagal membuat poll menu.");
+    console.error("[TestPoll] Fallido:", error);
+    m.reply("Steenner hace un menú de encuestas.");
   }
 }
 

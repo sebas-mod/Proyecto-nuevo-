@@ -6,7 +6,7 @@ const pluginConfig = {
   name: "bcpc",
   alias: ["broadcastpc", "bcprivate"],
   category: "owner",
-  description: "Broadcast pesan ke semua kontak private chat",
+  description: "Mensaje de la maleta a todos los principales chat conundrum",
   usage: ".bcpc <pesan>",
   isOwner: true,
   isPremium: false,
@@ -41,19 +41,19 @@ async function handler(m, { sock }) {
   if (!input) {
     const jeda = db.setting("jedaBcpc") || 5000;
     return m.reply(
-      `📱 *BROADCAST PRIVATE CHAT*\n\n` +
+      `📱*Chuta de principios de la brigada *\n\n` +
         `Jeda: ${jeda}ms (${(jeda / 1000).toFixed(1)}s)\n\n` +
-        `*PENGGUNAAN:*\n` +
-        `• \`${m.prefix}bcpc <pesan>\` — Kirim ke semua kontak\n` +
-        `• \`${m.prefix}bcpc (reply media)\` — Kirim dengan media\n\n` +
-        `⚠️ *Peringatan:* Bot akan mengirim pesan ke semua kontak yang tersimpan!\n\n` +
-        `ℹ️ *Note:* Kontak hanya terdeteksi jika mereka sudah pernah mengirim pesan ke bot. Kontak yang hanya disimpan tapi belum pernah chat tidak akan muncul.`,
+        `*Uso:*\n` +
+        `• \`${m.prefix}bcpc<pesan>\` —Ksender a todos los contactos\n` +
+        `• \`${m.prefix}bcpc (repuesta media)\` —Kseng con medios\n\n` +
+        `⚠# Warned: # Enviará mensajes a todos los contactos guardados!\n\n` +
+        `Un shell que se mantuvo pero nunca chats no aparecía.`,
     );
   }
 
   if (global.statusBcpc) {
     return m.reply(
-      `❌ Broadcast private sedang berjalan.\nKetik \`${m.prefix}stopbcpc\` untuk menghentikan.`,
+      `❌El primate de la cadena está en camino.\nEscribe\`${m.prefix}stopbcpc\`para detener.`,
     );
   }
 
@@ -115,7 +115,7 @@ async function handler(m, { sock }) {
     if (privateJids.size === 0) {
       m.react("❌");
       return m.reply(
-        "❌ Tidak ada kontak ditemukan.\n\nPastikan bot sudah pernah menerima pesan dari kontak tersebut.",
+        "❌No se encontró contacto.\n\nAsegúrese de que el bot ha recibido mensajes de los contactos.",
       );
     }
 
@@ -136,7 +136,7 @@ async function handler(m, { sock }) {
           `┃ ⏱️ ᴊᴇᴅᴀ: \`${jeda}ms\`\n` +
           `┃ 📊 ᴇsᴛɪᴍᴀsɪ: \`${Math.ceil((filtered.length * jeda) / 60000)} menit\`\n` +
           `╰┈┈⬡\n\n` +
-          `> Memulai broadcast...`,
+          `*Mirando el descontento*`,
         contextInfo: ctx,
       },
       { quoted: m },
@@ -187,7 +187,7 @@ async function handler(m, { sock }) {
   } catch (e) {
     delete global.statusBcpc;
     m.react("❌");
-    m.reply("Gagal: " + e.message);
+    m.reply("Fallido:" + e.message);
   }
 }
 

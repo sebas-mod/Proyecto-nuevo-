@@ -21,14 +21,14 @@ async function handler(m, { sock }) {
     if (!global.absensi[chatId]) {
         return m.reply(
             `❌ *ᴛɪᴅᴀᴋ ᴀᴅᴀ ᴀʙsᴇɴ*\n\n` +
-            `> Belum ada sesi absen di grup ini!\n\n` +
-            `> Admin dapat memulai dengan\n` +
-            `> *.mulaiabsen [keterangan]*`
+            `¡Hay una sesión de absesión en este grupo!\n\n` +
+            `*El adicto puede ser cuidadoso con\n` +
+            `♪ Comiencen un bosen ♪ ♪ Para olvidar ♪`
         )
     }
     const absen = global.absensi[chatId]
     if (absen.peserta.includes(m.sender)) {
-        return m.reply(`❌ Kamu sudah absen!`)
+        return m.reply(`❌¡Estás fuera!`)
     }
     absen.peserta.push(m.sender)
     const now = _momenttimezone2.default.call(void 0, ).tz('Asia/Jakarta')
@@ -38,14 +38,14 @@ async function handler(m, { sock }) {
         .join('\n')
     await m.reply(`✅ *MANTAP, @${m.sender.split('@')[0]} HADIRR*\n` +
             `TUJUAN ABSEN: ${absen.keterangan}\n` +
-            `╭┈┈⬡「 📋 INFO LAIN 」\n` +
+            `╭┈┈⬡「 📋INFO Otro」\n` +
             `┃ 📅 ${dateStr}\n` +
             `┃ 👥 Total: ${absen.peserta.length}\n` +
             `├┈┈⬡「 📝 *ᴅᴀғᴛᴀʀ ʜᴀᴅɪʀ* 」\n` +
             `${list}\n` +
             `╰┈┈┈┈┈┈┈┈⬡\n\n` +
-            `> _Ketik *${m.prefix}absen* untuk hadir_\n` +
-            `> _Ketik *${m.prefix}cekabsen* untuk melihat daftar_`,
+            `> _Ketik *${m.prefix}absene * for _ presence\n` +
+            `> _Ketik *${m.prefix}ckabsen * para ver _ lista`,
             { mentions: absen.peserta })
 }
 exports.config = pluginConfig; exports.handler = handler;

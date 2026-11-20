@@ -2,7 +2,7 @@
     name: 'bagaimana',
     alias: ['gimana', 'how'],
     category: 'fun',
-    description: 'Tanya bot bagaimana sesuatu',
+    description: 'Pregunta bot ¿qué tal algo?',
     usage: '.bagaimana <pertanyaan>',
     example: '.bagaimana cara jadi sukses?',
     isOwner: false,
@@ -17,31 +17,31 @@
 const answers = [
     'Caranya gampang, ya tinggal dilakuin aja!',
     'Hmm, susah dijelasin sih. Coba aja dulu!',
-    'Dengan usaha dan doa pastinya.',
+    'Con esfuerzo y pastas de doa.',
     'Ya begitulah caranya.',
     'Aku kurang tau sih, coba cari referensi lain.',
-    'Pelan-pelan aja, nanti juga bisa.',
-    'Dengan kerja keras dan pantang menyerah!',
+    'Tranquilízate, funcionará más tarde.',
+    '¡Con trabajo duro y sin gruñir!',
     'Pertama, percaya sama diri sendiri dulu.',
-    'Hmm, tiap orang beda-beda sih caranya.',
+    'Bueno, no es así.',
     'Ikutin kata hatimu aja.',
-    'Belajar dari yang sudah berpengalaman.',
-    'Step by step, jangan terburu-buru.',
-    'Dengan tekad yang kuat!',
-    'Mulai dari yang kecil dulu.',
-    'Konsisten aja, nanti juga bisa.',
-    'Jangan overthinking, langsung action!',
+    'Una lección de ser experimentado.',
+    'Paso a paso, no corra.',
+    '¡Con una firme resolución!',
+    'Es un poco de comienzo.',
+    'Constante, más tarde.',
+    '¡No pienses demasiado, acción lunsung!',
     'Gampang! Tinggal mulai aja!',
     'Caranya? Ya dicoba dulu!',
-    'Dengan strategi yang tepat.',
-    'Hmm, aku juga masih belajar sih.'
+    'Con la estrategia correcta.',
+    'Bueno, todavía estoy aprendiendo, también.'
 ];
 
 async function handler(m) {
     const text = _optionalChain([m, 'access', _ => _.text, 'optionalAccess', _2 => _2.trim, 'call', _3 => _3()]);
     
     if (!text) {
-        return m.reply(`📋 *ʙᴀɢᴀɪᴍᴀɴᴀ*\n\n> Masukkan pertanyaan!\n\n*Contoh:*\n> .bagaimana cara jadi sukses?`);
+        return m.reply(`📋*ʙᴀɢᴀɪᴍᴀɴᴀ*\n\n¡Disfruta de la pregunta!\n\n*Ejemplo:*\nSí. ¿Cómo lo haces funcionar?`);
     }
     
     const answer = answers[Math.floor(Math.random() * answers.length)];

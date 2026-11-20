@@ -5,7 +5,7 @@ const config = {
   name: "capfree",
   alias: ["capgratis", "setfree"],
   category: "owner",
-  description: "Mengecap banyak fitur sekaligus menjadi gratis",
+  description: "Rocíe muchas características una vez un gradiente",
   usage: ".capfree <nama_fitur1> <nama_fitur2> ...",
   example: ".capfree hd jpm warn",
   isOwner: true,
@@ -20,14 +20,14 @@ const config = {
 async function handler(m, { sock }) {
   if (m.args.length === 0) {
     return m.reply(
-      `🆓 *SISTEM CAP FREE*\n\n` +
-      `Sistem untuk mengembalikan status akses banyak fitur sekaligus menjadi gratis secara publik.\n\n` +
-      `*PENGGUNAAN:*\n` +
-      `- *${m.prefix}capfree <nama_fitur1> <nama_fitur2> ...* — Bisa banyak sekaligus\n\n` +
-      `*CONTOH PENGGUNAAN:*\n` +
+      `🆓91; SISTETAS CAP Gratis\n\n` +
+      `El sistema para restaurar el estado de acción de muchas características a la vez se convierte en un público gradiente.\n\n` +
+      `*Uso:*\n` +
+      `- *${m.prefix}sin gorra<nama_fitur1> <nama_fitur2>...—Las semillas son muchas de ellas.\n\n` +
+      `*Ejemplo de uso:*\n` +
       `- *${m.prefix}capfree hd jpm warn*\n\n` +
-      `*PENJELASAN:*\n` +
-      `Masukkan satu atau lebih nama fitur yang ingin digratiskan. Pisahkan dengan spasi.`
+      `*Explicación:*\n` +
+      `Introduzca una o más características que quieren ser libres.`
     );
   }
 
@@ -55,15 +55,15 @@ async function handler(m, { sock }) {
 
   await m.react("✅");
   
-  let msg = `✅ *STATUS BERHASIL DIUBAH*\n\n`;
+  let msg = `✅> 91; SITUACIÓN DE LA HEAVILY > 93;\n\n`;
   if (successList.length > 0) {
-    msg += `*Berhasil (FREE 🆓):*\n${successList.map(f => `- ${f}`).join("\n")}\n\n`;
+    msg += `*Exito (FREE🆓♪\n${successList.map(f => `- ${f}`).join("\n")}\n\n`;
   }
   if (failedList.length > 0) {
-    msg += `*Gagal (Tidak ditemukan):*\n${failedList.map(f => `- ${f}`).join("\n")}\n\n`;
+    msg += `* Impresionantemente (no se encuentra ):\n${failedList.map(f => `- ${f}`).join("\n")}\n\n`;
   }
   
-  msg += `_Fitur di atas (yang berhasil) sekarang sudah bebas diakses semua member._`;
+  msg += `Las atas Función son amora libele e inalcanzables por todas las fotos.`;
   
   return m.reply(msg.trim());
 }

@@ -6,7 +6,7 @@ const pluginConfig = {
   name: 'tiktoks',
   alias: ['ttsearch', 'tiktoksearch', 'caritiktok'],
   category: 'search',
-  description: 'Cari video TikTok berdasarkan kata kunci dan unduh tanpa watermark',
+  description: 'Busca video TikTok se basa en palabras clave y un subtexto sin marcas de agua',
   usage: '.tiktoks <kata kunci>',
   example: '.tiktoks jedag jedug preset',
   isOwner: false,
@@ -45,7 +45,7 @@ async function handler(m, context) {
   const p = prefix || '.';
 
   if (!text) {
-    return m.reply(`Masukkan kata kunci pencarian TikTok!\nContoh: \`${p}${command} anime edit amv\``);
+    return m.reply(`¡Introdúzcase la palabra clave de la búsqueda de TikTok!\nEjemplo:\`${p}${command} anime edit amv\``);
   }
 
   try {
@@ -58,12 +58,12 @@ async function handler(m, context) {
       try {
         await sock.sendMessage(m.chat, { react: { text: '❌', key: m.key } });
       } catch {}
-      return m.reply(`❌ Tidak ditemukan video TikTok untuk kata kunci: *"${text}"*`);
+      return m.reply(`❌No se encuentra video TikTok para palabras clave: *${text}"*`);
     }
 
     const video = videos[Math.floor(Math.random() * videos.length)];
     const playPath = video.play || video.wmplay;
-    if (!playPath) throw new Error('Tautan video tidak tersedia dari server TikWM.');
+    if (!playPath) throw new Error('El vídeo no está disponible en servidores TikWM.');
 
     const videoUrl = playPath.startsWith('http') ? playPath : `https://www.tikwm.com${playPath}`;
 
@@ -71,12 +71,12 @@ async function handler(m, context) {
       `📱 *TIKTOK SEARCH RESULTS*\n\n` +
       `🎬 *Judul:* ${video.title || '-'}\n` +
       `👤 *Kreator:* ${video.author?.nickname || '-'} (@${video.author?.unique_id || '-'})\n` +
-      `⏱️ *Durasi:* ${video.duration || 0} detik\n` +
+      `⏱️ *Duración:*${video.duration || 0} detik\n` +
       `❤️ *Likes:* ${Number(video.digg_count || 0).toLocaleString('id-ID')}\n` +
       `💬 *Komentar:* ${Number(video.comment_count || 0).toLocaleString('id-ID')}\n` +
       `🔁 *Shares:* ${Number(video.share_count || 0).toLocaleString('id-ID')}\n` +
       `👀 *Tayangan:* ${Number(video.play_count || 0).toLocaleString('id-ID')}\n\n` +
-      `_Diunduh tanpa watermark via Ourin 3.5_`;
+      `*En contrabando sin marca de agua por Uurin 3*`;
 
     await sock.sendMessage(
       m.chat,
@@ -96,7 +96,7 @@ async function handler(m, context) {
     try {
       await sock.sendMessage(m.chat, { react: { text: '❌', key: m.key } });
     } catch {}
-    return m.reply(`❌ Gagal mencari video TikTok: ${err.message}`);
+    return m.reply(`❌Aspecto de la cavidad para el video TikTok:${err.message}`);
   }
 }
 

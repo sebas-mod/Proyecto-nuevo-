@@ -4,7 +4,7 @@ const pluginConfig = {
     name: 'banchat',
     alias: ['bangroup', 'bangrup', 'unbanchat', 'unbangroup'],
     category: 'group',
-    description: 'Ban grup dari penggunaan bot (hanya owner yang bisa akses)',
+    description: 'Ban grupo del uso de botas ( sólo el propietario puede realmente trabajar )',
     usage: '.banchat',
     example: '.banchat',
     isOwner: true,
@@ -30,8 +30,8 @@ async function handler(m, { sock }) {
             if (!groupData.isBanned) {
                 return m.reply(
                     `⚠️ *ɢʀᴜᴘ ᴛɪᴅᴀᴋ ᴅɪʙᴀɴ*\n\n` +
-                    `> Grup ini tidak dalam status banned.\n` +
-                    `> Semua user bisa menggunakan bot.`
+                    `Este tipo de Grupo no está en el estaya prohibida.\n` +
+                    `Para ver si todos los usuarios podrían usar las botas.`
                 )
             }
             
@@ -41,10 +41,10 @@ async function handler(m, { sock }) {
                 text: `✅ *ɢʀᴜᴘ ᴅɪ-ᴜɴʙᴀɴ*\n\n` +
                     `╭┈┈⬡「 📋 *ᴅᴇᴛᴀɪʟ* 」\n` +
                     `┃ 📛 ɢʀᴜᴘ: *${groupName}*\n` +
-                    `┃ 📊 sᴛᴀᴛᴜs: *✅ AKTIF*\n` +
+                    `┃ 📊Sᴛᴀᴛᴜs: *✅Activo*\n` +
                     `┃ 👤 ᴜɴʙᴀɴ ᴏʟᴇʜ: @${m.sender.split('@')[0]}\n` +
                     `╰┈┈⬡\n\n` +
-                    `> Semua member sekarang bisa menggunakan bot kembali.`,
+                    `Todas las fotos ahora pueden usar las botas de nuevo.`,
                 mentions: [m.sender]
             }, { quoted: m })
         }
@@ -52,8 +52,8 @@ async function handler(m, { sock }) {
         if (groupData.isBanned) {
             return m.reply(
                 `⚠️ *ɢʀᴜᴘ sᴜᴅᴀʜ ᴅɪʙᴀɴ*\n\n` +
-                `> Grup ini sudah dalam status banned.\n` +
-                `> Gunakan \`.unbanchat\` untuk membuka akses.`
+                `Este Grupo si está en estaya prohibida.\n` +
+                `> Usa\`Unbanchat.\`Para abrir el acto.`
             )
         }
         
@@ -65,8 +65,8 @@ async function handler(m, { sock }) {
                 `┃ 📊 sᴛᴀᴛᴜs: *🔴 BANNED*\n` +
                 `┃ 👤 ʙᴀɴ ᴏʟᴇʜ: @${m.sender.split('@')[0]}\n` +
                 `╰┈┈⬡\n\n` +
-                `> Member biasa tidak bisa menggunakan bot di grup ini.\n` +
-                `> Hanya owner yang bisa menggunakan bot.`, {  mentions: [m.sender] })
+                `Sí, bueno, no podemos usar las botas en este grupo.\n` +
+                `Sólo el propietario puede usar las botas.`, {  mentions: [m.sender] })
         
     } catch (error) {
         m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName))

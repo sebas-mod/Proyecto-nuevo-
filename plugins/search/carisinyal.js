@@ -5,7 +5,7 @@ const pluginConfig = {
     name: 'spekhp',
     alias: ['spek', 'spesifikasi'],
     category: 'search',
-    description: 'Mencari spesifikasi lengkap smartphone dari Carisinyal.',
+    description: 'Buscando un smartphone completo del Caribe.',
     usage: '.spekhp <nama hp>',
     example: '.spekhp oppo a3s',
     isOwner: false,
@@ -96,7 +96,7 @@ async function detail(url) {
         camera: {
             total: get("Jumlah Kamera"),
             configuration: get("Konfigurasi"),
-            features: get("Fitur"),
+            features: get("Función"),
             video: get("Resolusi Video")
         },
         connectivity: {
@@ -122,7 +122,7 @@ async function detail(url) {
         sensors: get("Sensor"),
         audio: {
             jack: get("Jack 3.5mm"),
-            features: get("Fitur Lainnya")
+            features: get("Función Otros")
         },
         specs
     };
@@ -131,12 +131,12 @@ async function detail(url) {
 async function handler(m, { sock, text }) {
     if (!text) {
         return m.reply(
-            `📱 *FITUR PENCARIAN SPESIFIKASI HP*\n\n` +
-            `Fitur ini membantumu mencari spesifikasi lengkap dari sebuah *smartphone* menggunakan *database* terpercaya dari Carisinyal.\n\n` +
-            `*CARA PENGGUNAAN:*\n` +
-            `- Ketik \`${m.prefix}spekhp <nama hp>\`\n` +
-            `- Contoh: \`${m.prefix}spekhp oppo a3s\`\n\n` +
-            `_Sistem akan secara otomatis mencari ponsel yang paling sesuai dengan kata kuncimu dan menampilkan rincian spesifikasinya lengkap dengan gambarnya!_`
+            `📱* FUTURO DE LA ESPECIACIÓN DE HP *\n\n` +
+            `Está función le ayuda a buscar las especificaciones completas de un smartphone.\n\n` +
+            `*Como usarlo:*\n` +
+            `- Escribe\`${m.prefix}spekhp <nama hp>\`\n` +
+            `- Ejemplo:\`${m.prefix}spekhp oppo a3s\`\n\n` +
+            `Systema buscar los teléfonos más ados con la palabra kumimus y mostrar los detalles de las cáfifies completas con la imagen!`
         );
     }
 
@@ -146,7 +146,7 @@ async function handler(m, { sock, text }) {
 
         if (!results || results.length === 0) {
             await m.react('❌');
-            return m.reply(`❌ *TIDAK DITEMUKAN*\n\nMaaf, sistem tidak dapat menemukan ponsel dengan kata kunci *${text}*. Cobalah menggunakan nama merk atau seri yang lebih spesifik.`);
+            return m.reply(`❌*No encontrado*\n\nLo siento, el sistema no pudo encontrar un mango con una palabra clave *${text}* Cobabah utiliza un nombre de marca o una serie más específica.`);
         }
 
         const phone = results.find(r => (r.type || "").toLowerCase().includes("ponsel")) || results[0];
@@ -155,10 +155,10 @@ async function handler(m, { sock, text }) {
 
         let caption = `📱 *SPESIFIKASI ${data.title.toUpperCase()}*\n\n`;
         if (data.release) caption += `📅 *Rilis:* ${data.release}\n`;
-        if (data.network) caption += `📶 *Jaringan:* ${data.network}\n`;
+        if (data.network) caption += `📶 *Red:* ${data.network}\n`;
         caption += `\n`;
 
-        caption += `🖥️ *LAYAR*\n`;
+        caption += `🖥️ *Pantalla*\n`;
         if (data.display.type) caption += `- *Tipe:* ${data.display.type}\n`;
         if (data.display.size) caption += `- *Ukuran:* ${data.display.size}\n`;
         if (data.display.resolution) caption += `- *Resolusi:* ${data.display.resolution}\n`;
@@ -173,19 +173,19 @@ async function handler(m, { sock, text }) {
         if (data.performance.storage) caption += `- *Storage:* ${data.performance.storage}\n`;
         caption += `\n`;
 
-        caption += `📸 *KAMERA UTAMA*\n`;
-        if (data.camera.total) caption += `- *Jumlah:* ${data.camera.total}\n`;
-        if (data.camera.configuration) caption += `- *Konfigurasi:* ${data.camera.configuration}\n`;
+        caption += `📸> 91; MACHINE CHATTER &#93;\n`;
+        if (data.camera.total) caption += `- *Cantidad:*${data.camera.total}\n`;
+        if (data.camera.configuration) caption += `- *Configuración:*${data.camera.configuration}\n`;
         if (data.camera.video) caption += `- *Video:* ${data.camera.video}\n`;
         caption += `\n`;
 
-        caption += `🔋 *BATERAI*\n`;
+        caption += `🔋*Batería*\n`;
         if (data.battery.capacity) caption += `- *Kapasitas:* ${data.battery.capacity}\n`;
         if (data.battery.charging) caption += `- *Charging:* ${data.battery.charging}\n`;
         caption += `\n`;
 
-        caption += `📡 *KONEKTIVITAS & LAINNYA*\n`;
-        if (data.system.os) caption += `- *OS Saat Rilis:* ${data.system.os}\n`;
+        caption += `📡> 91; CONETTIVITY FOR ANOTHER > 93;\n`;
+        if (data.system.os) caption += `* OS Cuando Rilis: *${data.system.os}\n`;
         if (data.connectivity.nfc) caption += `- *NFC:* ${data.connectivity.nfc}\n`;
         if (data.audio.jack) caption += `- *Audio Jack:* ${data.audio.jack}\n`;
         if (data.sensors) caption += `- *Sensor:* ${data.sensors}\n`;
@@ -202,7 +202,7 @@ async function handler(m, { sock, text }) {
     } catch (e) {
         console.error(e);
         await m.react('❌');
-        m.reply(`❌ *GAGAL MENGAMBIL DATA*\n\nMaaf, sistem mengalami gangguan saat mencoba mengambil data dari *Carisinyal*. Silakan coba lagi nanti.`);
+        m.reply(`❌* DATOS DE TAKE Fallido*\n\nLo sentimos, el erosá experimentando interferencia mientras intenta recuperar datos del * Carisinal *. Por favor, inténtelo de nuevo más tarde.`);
     }
 }
 

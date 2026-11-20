@@ -25,11 +25,11 @@ async function handler(m, { sock }) {
   let bet = parseInt(args[0]);
 
   if (!bet || bet < 1000) {
-    return m.reply(`Taruhan minimal buat narik tuas slot ini *Rp 1.000* bro! 🎰\nContoh: \`.slot 5000\``);
+    return m.reply(`El coste mínimo de está llegando * Rp 10,000 * hermano!🎰\nEpirame:\`Una ranura de 5000.\``);
   }
 
   if ((user.koin || 0) < bet) {
-    return m.reply(`Koin lu kering kerontang! 💸\nUang lu: *Rp ${(user.koin || 0).toLocaleString("id-ID")}*\nButuh: *Rp ${bet.toLocaleString("id-ID")}*`);
+    return m.reply(`¡Tus monedas secan separadas!💸\nDinero lu: * Rp${(user.koin || 0).toLocaleString("id-ID")}*\nButuh: *Rp ${bet.toLocaleString("id-ID")}*`);
   }
 
   user.koin -= bet;
@@ -49,7 +49,7 @@ async function handler(m, { sock }) {
 
   const result = [spin(), spin(), spin()];
 
-  await _ourincontextjs.sendRpgPreview.call(void 0, sock, m.chat, `🎰 *TREK TREK TREK...* Tuas ditarik! Mesin slot berputar cepat...`, "🎰 MESIN SLOT", "Spin!", {
+  await _ourincontextjs.sendRpgPreview.call(void 0, sock, m.chat, `🎰 *TREK TREK TREK...* Tuas ditarik! Mesin slot berputar rápido...`, "🎰 MESIN SLOT", "Spin!", {
     quoted: m,
   });
   await new Promise((r) => setTimeout(r, 2500));
@@ -70,25 +70,25 @@ async function handler(m, { sock }) {
     }
   } else if (result[0] === result[1] || result[1] === result[2] || result[0] === result[2]) {
     multiplier = 1.5;
-    winText = "LUMAYAN LAH! DOUBLE!! 👍 (1.5x Lipat)";
+    winText = "¡Un nuevo día!👍( 1. 5.x¡Fold!";
   }
 
   const winnings = Math.floor(bet * multiplier);
   user.koin = (user.koin || 0) + winnings;
 
-  let txt = `🎰 *HASIL MESIN SLOT* 🎰\n\n`;
+  let txt = `🎰* Resultado ENGINE SLOT *🎰\n\n`;
   txt += `[ ${result[0]} | ${result[1]} | ${result[2]} ]\n\n`;
 
   if (multiplier > 0) {
     txt += `${winText}\n`;
-    txt += `💰 Uang Cair: *+Rp ${winnings.toLocaleString("id-ID")}*\n`;
+    txt += `💰Cair Dinero: * + Rp${winnings.toLocaleString("id-ID")}*\n`;
   } else {
-    txt += `ZONK!! Duit lu ditelan mesin slot! 😭💸\n`;
-    txt += `💸 Uang Hangus: *-Rp ${bet.toLocaleString("id-ID")}*\n`;
+    txt += `ZONK, ¡estás en medio de una máquina de tragaperras!😭💸\n`;
+    txt += `💸Hangus Dinero: * - Rp${bet.toLocaleString("id-ID")}*\n`;
   }
 
   db.save();
-  await _ourincontextjs.sendRpgPreview.call(void 0, sock, m.chat, txt, "🎰 RESULT", "Selesai", { quoted: m });
+  await _ourincontextjs.sendRpgPreview.call(void 0, sock, m.chat, txt, "🎰 RESULT", "Terminado", { quoted: m });
 }
 
 exports.config = pluginConfig; exports.handler = handler;

@@ -17,8 +17,8 @@ async function handler(m, { sock }) {
   if (!m.quoted) {
     return m.reply(
       "⭐ *sᴛɪᴄᴋᴇʀ ᴘʀᴇᴍɪᴜᴍ*\n\n" +
-        "> Reply sticker yang mau dijadikan premium!\n\n" +
-        `> Penggunaan: \`${m.prefix}sprem\``,
+        "Responder pegatinas que quieren ser primas!\n\n" +
+        `> Uso: \`${m.prefix}sprem\``,
     );
   }
 
@@ -26,7 +26,7 @@ async function handler(m, { sock }) {
 
   try {
     const msg = _optionalChain([q, 'access', _ => _.message, 'optionalAccess', _2 => _2.stickerMessage]);
-    if (!msg) return m.reply("❌ Gagal membaca data sticker");
+    if (!msg) return m.reply("❌Pasear por los datos de las pegatinas");
 
     const stickerMessage = _ourin.proto.Message.StickerMessage.fromObject({
       url: msg.url,
@@ -73,7 +73,7 @@ async function handler(m, { sock }) {
     await m.react("✅");
   } catch (err) {
     console.error("[sprem]", err.message);
-    return m.reply(`❌ Gagal: ${err.message}`);
+    return m.reply(`❌Fallido:${err.message}`);
   }
 }
 

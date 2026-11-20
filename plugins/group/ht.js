@@ -3,7 +3,7 @@ var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 
 const pluginConfig = {
     name: ['ht', 'hidetag'],
     category: 'group',
-    description: 'Hidetag dengan support reply pesan (teks/media)',
+    description: 'Escondite con respuesta de soporte ( texto / medios )',
     usage: '.ht [pesan] atau reply pesan',
     example: '.ht atau reply pesan lalu .ht',
     isOwner: false,
@@ -26,7 +26,7 @@ async function handler(m, { sock }) {
         const quoted = m.quoted
         const text = _optionalChain([m, 'access', _ => _.fullArgs, 'optionalAccess', _2 => _2.trim, 'call', _3 => _3()])
 
-        // ===== REPLY MODE =====
+        //Responder MODE
         if (quoted) {
             const qMsg = quoted.message || {}
             const type = Object.keys(qMsg)[0]
@@ -125,7 +125,7 @@ async function handler(m, { sock }) {
             const finalText = text || quotedText
 
             if (!finalText) {
-                return m.reply('❌ *Pesan kosong*')
+                return m.reply('❌*Mensaje vacio*')
             }
 
             return sock.sendMessage(m.chat, {
@@ -136,9 +136,9 @@ async function handler(m, { sock }) {
         if (!text) {
             return m.reply(
                 `📢 *HIDETAG*\n\n` +
-                `• Reply pesan lalu ketik \`${m.prefix}ht\`\n` +
-                `• Atau ketik \`${m.prefix}ht <pesan>\`\n\n` +
-                `Support: teks, gambar, video, sticker, audio, dokumen`
+                `•Responder mensaje y haga clic\`${m.prefix}ht\`\n` +
+                `•O escribe\`${m.prefix}ht <pesan>\`\n\n` +
+                `Soporte: texto, imagen, vídeo, pegatina, audio, documento`
             )
         }
 

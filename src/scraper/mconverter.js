@@ -53,7 +53,7 @@ const initSession = async () => {
         });
         sessionInitialized = true;
     } catch (e) {
-        console.log("⚠️ Gagal init session, mencoba lanjut...");
+        console.log("⚠Gwal en su sesión, intenta continuar.");
     }
 };
 
@@ -100,7 +100,7 @@ const mconverter = {
     convert: async (inputPath, targetFormat) => {
         await initSession();
 
-        if (!_fs2.default.existsSync(inputPath)) return { error: 'File tidak ada' };
+        if (!_fs2.default.existsSync(inputPath)) return { error: 'El archivo no existe' };
 
         const filename = _path2.default.basename(inputPath);
         const fileSize = _fs2.default.statSync(inputPath).size;
@@ -129,7 +129,7 @@ const mconverter = {
 
             if (resInit.data.error) throw new Error(resInit.data.error.message);
             const token = resInit.data.token;
-            if (!token) throw new Error("Gagal dapet token upload");
+            if (!token) throw new Error("Stempem dapet token subida");
 
             let startByte = 1;
             const CHUNK_SIZE = 10 * 1024 * 1024;
@@ -167,7 +167,7 @@ const mconverter = {
                 await new Promise(r => setTimeout(r, 2000));
 
                 const resPoll = await client.get(
-                    `${CONFIG.BASE_URL}${CONFIG.API.PROGRESS}?token=${token}`,
+                    `${CONFIG.BASE_URL}${CONFIG.API.PROGRESS}# Token =${token}`,
                     { headers: CONFIG.HEADERS }
                 );
 
@@ -179,7 +179,7 @@ const mconverter = {
                 }
 
                 if (status === 'finished') {
-                    process.stdout.write('✅ Selesai!\n');
+                    process.stdout.write('✅Terminado!\n');
 
                     const dlParams = new URLSearchParams({
                         token: token,

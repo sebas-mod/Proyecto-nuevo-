@@ -5,7 +5,7 @@ const pluginConfig = {
   name: "cooking",
   alias: ["chef"],
   category: "rpg",
-  description: "Masak makanan untuk stamina dan HP",
+  description: "Cocinar alimentos para la resistencia y HP",
   usage: ".cooking <recipe>",
   example: ".cooking friedrice",
   isOwner: false,
@@ -41,8 +41,8 @@ async function handler(m, { sock }) {
   const recipeName = _optionalChain([args, 'access', _ => _[0], 'optionalAccess', _2 => _2.toLowerCase, 'call', _3 => _3()]);
 
   if (!recipeName) {
-    let txt = `Halo Master Chef! Mau masak resep yang mana nih? 👨‍🍳🍳\n\n`;
-    txt += `*Daftar Resep Rahasia:*\n`;
+    let txt = `Hao Master Chef, ¿qué receta estás haciendo?👨‍🍳🍳\n\n`;
+    txt += `* Lista de Proceps Secretos: *\n`;
 
     for (const [key, recipe] of Object.entries(RECIPES)) {
       const mats = Object.entries(recipe.materials)
@@ -54,7 +54,7 @@ async function handler(m, { sock }) {
       txt += `\n*${recipe.name}*\n`;
       txt += `📦 Bahan: ${mats}\n`;
       txt += `💫 Efek: ${effects}\n`;
-      txt += `👉 Ketik: \`.cooking ${key}\`\n`;
+      txt += `👉Escribe:\`Cocinar.${key}\`\n`;
     }
 
     return m.reply(txt);
@@ -62,7 +62,7 @@ async function handler(m, { sock }) {
 
   const recipe = RECIPES[recipeName];
   if (!recipe) {
-    return m.reply(`Hayo, resep apaan tuh? Nggak ada di buku menu kak! 😂\nCek daftar resepnya pake \`.cooking\` ya!`);
+    return m.reply(`¿Cuál es la receta para?😂\nConsulta la lista de recepción,\`Cocinar.\`si!`);
   }
 
   const missingMaterials = [];
@@ -74,11 +74,11 @@ async function handler(m, { sock }) {
   }
 
   if (missingMaterials.length > 0) {
-    return m.reply(`Eits, bahan kamu belum lengkap buat masak *${recipe.name}*! 😭\n\nYang kurang:\n${missingMaterials.join("\n")}\n\nCari bahannya dulu gih! 🛒🏃`);
+    return m.reply(`Eits, incluso no has cocinado lo suficiente *${recipe.name}*😭\n\nQue menos:\n${missingMaterials.join("\n")}\n\n¡Recupera los ingredientes a tiempo!🛒🏃`);
   }
 
   await m.react("👨‍🍳");
-  await m.reply(`Srengg... Srenggg... 🔥🍳\nLagi masak *${recipe.name}* nih, wanginya nyebar sekampung! 🤤`);
+  await m.reply(`Srenggg.. Srengg..🔥🍳\nCocina otra vez${recipe.name}* Bueno, el olor se está extendiendo por todo el lugar!🤤`);
   await new Promise((r) => setTimeout(r, 3000));
 
   for (const [material, needed] of Object.entries(recipe.materials)) {
@@ -111,12 +111,12 @@ async function handler(m, { sock }) {
     .join("\n");
 
   return m.reply(
-    `TADAA! MASAKAN MATANG! 🍽️✨\n\n` +
-      `Kamu langsung melahap *${recipe.name}* yang enak banget!\n` +
-      `Efek yang kamu dapet:\n` +
+    `TADAA! Plato Maduro! 🍽♪✨\n\n` +
+      `Te has ido tanto tiempo${recipe.name}* Eso es bueno!\n` +
+      `Efeck que tienes:\n` +
       `${effectTexts}\n\n` +
-      `📈 Bonus EXP Masak: *+${recipe.exp}*\n\n` +
-      `Kenyang banget rasanya, siap tempur lagi! 🔥`
+      `📈Bono de la EXP de cocina: * +${recipe.exp}*\n\n` +
+      `El pedo está sintiendo, listo para la batalla de nuevo!🔥`
   );
 }
 

@@ -4,7 +4,7 @@ const pluginConfig = {
     name: 'nomerhoki',
     alias: ['nomorhoki', 'ceknomor'],
     category: 'primbon',
-    description: 'Cek keberuntungan nomor HP',
+    description: 'Compruebe los números de HP',
     usage: '.nomerhoki <nomor>',
     example: '.nomerhoki 6281234567890',
     isOwner: false,
@@ -19,7 +19,7 @@ const pluginConfig = {
 async function handler(m, { sock }) {
     let nomor = m.args.join('').replace(/[^0-9]/g, '')
     if (!nomor) {
-        return m.reply(`🍀 *ɴᴏᴍᴏʀ ʜᴏᴋɪ*\n\n> Masukkan nomor HP\n\n\`Contoh: ${m.prefix}nomerhoki 6281234567890\``)
+        return m.reply(`🍀*ɴᴏᴍᴏʀ ʜᴏᴋɪ*\n\n*Pon el número para el teléfono*\n\n\`Ejemplo:${m.prefix}nomerhoki 6281234567890\``)
     }
     
     m.react('🍀')
@@ -30,7 +30,7 @@ async function handler(m, { sock }) {
         
         if (!_optionalChain([data, 'optionalAccess', _ => _.status]) || !_optionalChain([data, 'optionalAccess', _2 => _2.data])) {
             m.react('❌')
-            return m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> Gagal menganalisa nomor`)
+            return m.reply(`❌*ɢᴀɢᴀʟ*\n\n# Poderoso análisis de los números #`)
         }
         
         const r = data.data
@@ -38,11 +38,11 @@ async function handler(m, { sock }) {
         const en = r.energi_negatif.details
         
         const response = `🍀 *ɴᴏᴍᴏʀ ʜᴏᴋɪ*\n\n` +
-            `> Nomor: *${r.nomor}*\n\n` +
+            `* Nuna:${r.nomor}*\n\n` +
             `📊 *ᴀɴɢᴋᴀ ʙᴀɢᴜᴀ:* ${r.angka_bagua_shuzi.value}%\n\n` +
             `✅ *ᴇɴᴇʀɢɪ ᴘᴏꜱɪᴛɪꜰ:* ${r.energi_positif.total}%\n` +
             `├ Kekayaan: ${ep.kekayaan}\n` +
-            `├ Kesehatan: ${ep.kesehatan}\n` +
+            `├ Salud: ${ep.kesehatan}\n` +
             `├ Cinta: ${ep.cinta}\n` +
             `└ Kestabilan: ${ep.kestabilan}\n\n` +
             `❌ *ᴇɴᴇʀɢɪ ɴᴇɢᴀᴛɪꜰ:* ${r.energi_negatif.total}%\n` +

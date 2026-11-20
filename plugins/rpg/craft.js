@@ -4,7 +4,7 @@ const pluginConfig = {
   name: "craft",
   alias: ["buat", "create"],
   category: "rpg",
-  description: "Craft item dari materials",
+  description: "Objeto de material artesanal",
   usage: ".craft <item>",
   example: ".craft sword",
   isOwner: false,
@@ -60,18 +60,18 @@ async function handler(m, { sock }) {
   const itemKey = _optionalChain([args, 'access', _ => _[0], 'optionalAccess', _2 => _2.toLowerCase, 'call', _3 => _3()]);
 
   if (!itemKey) {
-    let txt = `Halo Petualang! Mau merakit alat apa nih? 🛠️✨\n\n`;
-    txt += `*Daftar Resep Rakitan:*\n`;
+    let txt = `¿Qué quieres hacer?🛠♪✨\n\n`;
+    txt += `* Lista de patentes de receta: *\n`;
 
     for (const [key, recipe] of Object.entries(RECIPES)) {
       txt += `\n*${recipe.name}*\n`;
-      txt += `📦 Bahan yang dibutuhin:\n`;
+      txt += `📦Bahan necesitaba:\n`;
       for (const [mat, qty] of Object.entries(recipe.materials)) {
         const userHas = user.inventory[mat] || 0;
         const status = userHas >= qty ? "✅" : "❌";
         txt += `• ${status} ${mat}: ${userHas}/${qty}\n`;
       }
-      txt += `👉 Ketik: \`.craft ${key}\`\n`;
+      txt += `👉Escribe:\`Artesanía.${key}\`\n`;
     }
 
     return m.reply(txt);
@@ -79,7 +79,7 @@ async function handler(m, { sock }) {
 
   const recipe = RECIPES[itemKey];
   if (!recipe) {
-    return m.reply(`Hayo, mau rakit apaan tuh? Barangnya nggak ada di daftar kak! 😂\nCek list yang bener pake \`.craft\` ya!`);
+    return m.reply(`¿Qué quieres?😂\nLista de verificación de la pata\`Artesanía.\`si!`);
   }
 
   const missingMaterials = [];
@@ -90,11 +90,11 @@ async function handler(m, { sock }) {
   }
   
   if (missingMaterials.length > 0) {
-      return m.reply(`Eits, bahannya belum cukup buat ngerakit *${recipe.name}* nih! 😭\n\nKekurangannya:\n${missingMaterials.join("\n")}\n\nKumpulin dulu deh, baru balik ke sini! 🏃💨`);
+      return m.reply(`Eits, el material no es suficiente para ensnare *${recipe.name}* aquí!😭\n\nKekurangannya:\n${missingMaterials.join("\n")}\n\nKumpulin antes, nuevo balik a sini! 🏃💨`);
   }
 
   await m.react("🛠️");
-  await m.reply(`Tok tok tok... Krek... 🛠️🔩\nSedang serius merakit *${recipe.name}*... Bentar lagi jadi!`);
+  await m.reply(`Tok tok tok... Krek... 🛠️🔩\nSedang serius merakit *${recipe.name}¡Un momento más!`);
   await new Promise((r) => setTimeout(r, 2000));
 
   for (const [mat, qty] of Object.entries(recipe.materials)) {
@@ -112,12 +112,12 @@ async function handler(m, { sock }) {
 
   await m.react("✅");
 
-  let txt = `YEAYY! BARANGNYA UDAH JADI! 🎉🛠️\n\n`;
-  txt += `Kamu berhasil merakit:\n`;
-  txt += `📦 Item: *${recipe.name} x${resultQty}*\n`;
+  let txt = `YEAYY! BARANGNYA Si JADI! 🎉🛠♪\n\n`;
+  txt += `Lo hiciste.\n`;
+  txt += `📦Objeto: *${recipe.name} x${resultQty}*\n`;
 
   if (recipe.bonus) {
-    txt += `\n*Status Bonus Aktif:*\n`;
+    txt += `\n* Activo de Bono Status: *\n`;
     for (const [stat, value] of Object.entries(recipe.bonus)) {
       txt += `📈 ${stat.toUpperCase()}: *+${value}*\n`;
     }

@@ -24,8 +24,8 @@ async function handler(m) {
     await m.react(isEnable ? '⚡' : '🔌')
     return m.reply(
         isEnable
-            ? '⚡ *sɪsᴛᴇᴍ ᴇɴᴇʀɢɪ ᴅɪᴀᴋᴛɪꜰᴋᴀɴ*\n\n> Setiap command sekarang memerlukan energi.'
-            : '🔌 *sɪsᴛᴇᴍ ᴇɴᴇʀɢɪ ᴅɪɴᴏɴᴀᴋᴛɪꜰᴋᴀɴ*\n\n> Command tidak lagi membutuhkan energi.'
+            ? '⚡*ɪSᴛᴇᴍ ᴇɴᴇʀɢɪ ᴅɪᴀᴋᴛɪꜰᴋᴀɴ*\n\nPara ver al comandante ahora requiere energía.'
+            : '🔌*ɪSᴛᴇᴍ ᴇɴᴇʀɢɪ ᴅɪɴᴏɴᴀᴋᴛɪꜰᴋᴀɴ*\n\nPara ordenar ya no requiere energía.'
     )
 }
 

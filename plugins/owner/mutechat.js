@@ -39,7 +39,7 @@ async function handler(m, { sock }) {
         return m.reply(
             '🔇 *ᴍᴜᴛᴇ ᴄʜᴀᴛ*\n\n' +
             '> `.mutechat 628xxx` — Mute chat\n' +
-            '> `.mutechat` (di private chat) — Mute chat ini\n' +
+            '♪`Mutechat.`(en la charla primaria )—Está charla de Mute\n' +
             '> `.mutechat buka 628xxx` — Unmute chat'
         )
     }
@@ -50,11 +50,11 @@ async function handler(m, { sock }) {
         const target = targetJid.split('@')[0]
         return m.reply(
             mute
-                ? `🔇 *ᴄʜᴀᴛ ᴅɪᴍᴜᴛᴇ*\n\n> Target: ${target}`
-                : `🔊 *ᴄʜᴀᴛ ᴅɪᴜɴᴍᴜᴛᴇ*\n\n> Target: ${target}`
+                ? `🔇 *ᴄʜᴀᴛ ᴅɪᴍᴜᴛᴇ*\n\n> Objetivo: ${target}`
+                : `🔊 *ᴄʜᴀᴛ ᴅɪᴜɴᴍᴜᴛᴇ*\n\n> Objetivo: ${target}`
         )
     } catch (err) {
-        return m.reply(`❌ Gagal: ${err.message}`)
+        return m.reply(`❌Fallido:${err.message}`)
     }
 }
 

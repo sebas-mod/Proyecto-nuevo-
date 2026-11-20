@@ -6,7 +6,7 @@ const pluginConfig = {
   name: "play",
   alias: ["playaudio"],
   category: "search",
-  description: "Putar musik dari YouTube",
+  description: "Juega música desde YouTube",
   usage: ".play <query>",
   example: ".play komang",
   cooldown: 15,
@@ -24,36 +24,36 @@ function formatViews(n) {
 async function handler(m, { sock, text }) {
   const query = _optionalChain([m, 'access', _ => _.text, 'optionalAccess', _2 => _2.trim, 'call', _3 => _3()]);
   if (!query)
-    return m.reply(`🎵 *ᴘʟᴀʏ*\n\n> Contoh:\n\`${m.prefix}play komang\``);
+    return m.reply(`🎵*ᴘʟᴀʏ*\n\n> Ejemplo:\n\`${m.prefix}play komang\``);
 
   m.react("🕐");
 
   try {
     const search = await _ytsearch2.default.call(void 0, query);
-    if (!search.videos.length) throw new Error("Video tidak ditemukan");
+    if (!search.videos.length) throw new Error("No se encontró vídeo");
     const video = search.videos[0];
 
     const res = await _axios2.default.get(`https://api.azbry.com/api/download/ytmp3?url=${encodeURIComponent(video.url)}`, { timeout: 60000 });
     const data = res.data;
     
     if (!data.status || !data.result || !data.result.download) {
-       throw new Error("Gagal mengambil audio dari API");
+       throw new Error("Steenaltook una audiencia de API");
     }
 
     let info = `🎵 *NOW PLAYING*\n\n`;
     info += `📌 *Judul:* ${video.title}\n\n`;
     info += `*DETAIL*\n`;
     info += `👤 Channel: *${video.author.name}*\n`;
-    info += `⏱️ Durasi: *${video.duration.timestamp}*\n`;
+    info += `⏱Duración${video.duration.timestamp}*\n`;
     info += `👀 Views: *${formatViews(video.views)}*\n`;
     info += `📅 Upload: *${video.ago}*\n`;
     info += `🆔 ID: \`${video.videoId}\`\n\n`;
     if (video.description) {
       const desc = video.description.substring(0, 150).replace(/\n/g, " ");
-      info += `*Deskripsi:*\n_${desc}${video.description.length > 150 ? "..." : ""}_\n\n`;
+      info += `*Descripción:*\n¿Qué?${desc}${video.description.length > 150 ? "..." : ""}_\n\n`;
     }
     info += `🔗 ${video.url}\n\n`;
-    info += `_⏳ mengirim audio, harap tunggu..._`;
+    info += `¿Qué?⏳enviar un público, por favor espere.`;
 
     await sock.sendPreview(
       m.chat,
@@ -89,7 +89,7 @@ async function handler(m, { sock, text }) {
     console.error("[Play]", err);
     m.react("😭");
     m.reply(
-      `Wahhh, fitur putar musiknya lagi ada kendala kak, coba lagi nanti yak, jangan spam`,
+      `Fontcolor = " # FFFF00 " Wahh, theplayingpistpistingwithcontrol fontcolor = " # FFFF00 " hermano, try again fontcolor = " # FFFF00 " yak, donotspam`,
     );
   }
 }

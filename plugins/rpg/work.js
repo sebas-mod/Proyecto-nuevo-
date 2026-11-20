@@ -5,7 +5,7 @@ const pluginConfig = {
   name: "work",
   alias: ["kerja", "job"],
   category: "rpg",
-  description: "Bekerja untuk mendapatkan uang",
+  description: "Trabajando para conseguir dinero",
   usage: ".work",
   example: ".work",
   isOwner: false,
@@ -27,7 +27,7 @@ async function handler(m, { sock }) {
   user.rpg.stamina = user.rpg.stamina || 100;
 
   if (user.rpg.stamina < staminaCost) {
-    return m.reply(`Hadeh kak, badan kamu udah loyo banget! 🥵💦\n\nKerja butuh *${staminaCost} Stamina*, tapi sisa *${user.rpg.stamina}* doang.\nIstirahat dulu kek, jangan diforsir ntar tepar! 🛌💤`);
+    return m.reply(`¡Hadesh hermano, badan, enseña el loyo mucho!🥵💦\n\nEl trabajo es malo *${staminaCost}Resistencia, pero restante${user.rpg.stamina}* solo.\n¡Seguridad, no oldka la prtoshx- Es bueno.🛌💤`);
   }
 
   user.rpg.stamina -= staminaCost;
@@ -45,7 +45,7 @@ async function handler(m, { sock }) {
   const salary = Math.floor(Math.random() * (job.max - job.min + 1)) + job.min;
   const expGain = Math.floor(salary / 10);
 
-  await m.reply(`Otw berangkat kerja jadi *${job.name.substring(3)}* dulu kak! 🏃💼💨`);
+  await m.reply(`Otw los trabajos arriba *${job.name.substring(3)}* antes hermano! 🏃💼💨`);
   await new Promise((r) => setTimeout(r, 3000));
 
   user.koin = (user.koin || 0) + salary;
@@ -53,13 +53,13 @@ async function handler(m, { sock }) {
 
   db.save();
 
-  let txt = `CIE YANG ABIS KERJA! 💸✨\n\n`;
-  txt += `Gila, gajinya lumayan banget nih:\n`;
+  let txt = `¡Trabaja CIE Que ABIS!💸✨\n\n`;
+  txt += `Gila, gajinya lumayan mucho aquí:\n`;
   txt += `💼 Profesi: *${job.name}*\n`;
-  txt += `💵 Gaji Bersih: *+Rp ${salary.toLocaleString("id-ID")}*\n`;
+  txt += `💵Plépto paga: * + Rp${salary.toLocaleString("id-ID")}*\n`;
   txt += `📈 EXP: *+${expGain}*\n`;
   txt += `⚡ Stamina: *-${staminaCost}*\n\n`;
-  txt += `Kerja keras bagai quda membuahkan hasil kak! Lanjutkan! 🐴🔥`;
+  txt += `Trabaja duro bagai quda membuahkan resultado hermano! Continua! 🐴🔥`;
 
   await m.reply(txt);
 }

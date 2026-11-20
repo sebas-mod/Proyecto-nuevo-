@@ -318,7 +318,7 @@ try {
     .filter((f) => f.endsWith(".js") && !f.startsWith("_"));
   for (const file of gameFiles) {
     try {
-      const plugin = _interopRequireWildcard(require(`../plugins/game/${file}`));
+      const plugin = _interopRequireWildcard(require(`. / plugins / juego /${file}`));
       const name = file.replace(".js", "");
       if (plugin.answerHandler) cachedGamePlugins.set(name, plugin);
     } catch (e42) { }
@@ -406,7 +406,7 @@ async function handleSmartTriggers(m, sock, db) {
         .replace(/{name}/g, m.pushName || "User")
         .replace(/{tag}/g, `@${m.sender.split("@")[0]}`)
         .replace(/{sender}/g, m.sender.split("@")[0])
-        .replace(/{botname}/g, _optionalChain([_configjs2.default, 'access', _15 => _15.bot, 'optionalAccess', _16 => _16.name]) || "Bot")
+        .replace(/{botname}/g, _optionalChain([_configjs2.default, 'access', _15 => _15.bot, 'optionalAccess', _16 => _16.name]) || "♪")
         .replace(/{time}/g, timeHelper.formatTime("HH:mm:ss"))
         .replace(/{date}/g, timeHelper.formatDate("DD MMMM YYYY"));
 
@@ -480,9 +480,9 @@ async function handleSmartTriggers(m, sock, db) {
 
     if (isMentioned) {
       await m.reply(
-        `Ada yang manggil ${botName}?
+        `Hay algo llamado${botName}?
         
-Ada apa manggil aku @${m.sender.split("@")[0]}?`,
+What 's wrong with my name @${m.sender.split("@")[0]}?`,
         { mentions: [m.sender] },
       );
       return true;
@@ -490,14 +490,14 @@ Ada apa manggil aku @${m.sender.split("@")[0]}?`,
 
     if (_optionalChain([text, 'optionalAccess', _32 => _32.toLowerCase, 'call', _33 => _33()]) === "p") {
       await m.reply(
-        `Hai @${m.sender.split("@")[0]}, utamakan salam dulu yahh`,
+        `Hola @${m.sender.split("@")[0]}fontcolor = " # FFFF00 ", forfirmeatSalam fontcolor = " # FFFF00 " yaahh`,
         { mentions: [m.sender] },
       );
       return true;
     }
 
     if (_optionalChain([text, 'optionalAccess', _34 => _34.toLowerCase, 'call', _35 => _35()]) === "bot") {
-      await m.reply(`Hai @${m.sender.split("@")[0]}, ${botName} Aktif ✅`, {
+      await m.reply(`Hola @${m.sender.split("@")[0]}, ${botName}Activo✅`, {
         mentions: [m.sender],
       });
       return true;
@@ -511,7 +511,7 @@ Ada apa manggil aku @${m.sender.split("@")[0]}?`,
     }
 
     if (_optionalChain([text, 'optionalAccess', _40 => _40.toLowerCase, 'call', _41 => _41(), 'optionalAccess', _42 => _42.includes, 'call', _43 => _43("hallo")])) {
-      await m.reply(`Halo juga kak @${m.sender.split("@")[0]}`, {
+      await m.reply(`Hola también hermano @${m.sender.split("@")[0]}`, {
         mentions: [m.sender],
       });
       return true;
@@ -524,9 +524,9 @@ Ada apa manggil aku @${m.sender.split("@")[0]}?`,
 }
 
 /**
- * Cek apakah user sedang spam
+* Comprobar si el usuario está siendo spam
  * @param {string} jid - JID user
- * @returns {boolean} True jika sedang spam
+* @ devolver{boolean}Cierto cuando se trata de spam
  */
 async function isSpamming(jid) {
   if (!_optionalChain([_configjs2.default, 'access', _44 => _44.features, 'optionalAccess', _45 => _45.antiSpam])) return false;
@@ -540,8 +540,8 @@ async function isSpamming(jid) {
 }
 
 /**
- * Handler utama untuk memproses pesan
- * @param {Object} msg - Raw message dari Baileys
+* Manejador principal para procesar mensajes
+* @ param{Object}msg - Mensaje bruto de Baileys
  * @param {Object} sock - Socket connection
  * @returns {Promise<void>}
  * @example
@@ -616,11 +616,11 @@ async function messageHandler(msg, sock, options = {}) {
               groupData.autoSambut.pesanList = [groupData.autoSambut.pesan];
             }
 
-            const pList = groupData.autoSambut.pesanList || ["Halo {user}! Selamat datang kembali 🙇‍♂️"];
+            const pList = groupData.autoSambut.pesanList || ["Hola{user}¡Bienvenido!🙇‍♂♪"];
             const randomMsg = pList[Math.floor(Math.random() * pList.length)];
 
             let sambutan = randomMsg
-              .replace(/{name}/gi, m.pushName || "Owner")
+              .replace(/{name}/gi, m.pushName || "Propietario")
               .replace(/{user}/gi, `@${ownerId.split('@')[0]}`);
 
             m.reply(sambutan, { mentions: [ownerId] }).catch(() => { });
@@ -831,7 +831,7 @@ async function messageHandler(msg, sock, options = {}) {
         await m
           .reply(
             _optionalChain([_configjs2.default, 'access', _86 => _86.messages, 'optionalAccess', _87 => _87.banned]) ||
-            "🚫 *Kamu dibanned dari menggunakan bot ini.*",
+            "🚫* Eres beligerante de usar estas botas. *",
           )
           .catch(() => { });
       }
@@ -842,7 +842,7 @@ async function messageHandler(msg, sock, options = {}) {
     if (m.isGroup && m.isCommand && !m.isOwner) {
       const groupData = db.getGroup(m.chat) || {};
       if (groupData.isBanned) {
-        // kalau mau nambih text juga boleh bang, pake m.reply atau sendMessage
+        //¿Quieres comer?xt también ok hermano, mse respuesta o enviarMessage
         return;
       }
     }
@@ -1080,10 +1080,10 @@ async function messageHandler(msg, sock, options = {}) {
           "getDatabase",
           "console",
           `
-          const { default: axios } = await import('axios')
-          const { default: fs } = await import('fs')
-          const { default: path } = await import('path')
-          const { default: os } = await import('os')
+const { predeterminado: ax- Espera a importar.xios dhakum )
+const { defoult: fs } = aghult importa ( spans )
+{ defoust: path } = aghut import ( xenpath )
+{ defoust: os } = aqaut important ( xenos }
           const { promisify } = await import('util')
           const { generateWAMessage, getBuffer, generateWAMessageFromContent, proto, generateMessageID } = await import('ourin')
           const { exec: childExec } = await import('child_process')
@@ -1141,10 +1141,10 @@ async function messageHandler(msg, sock, options = {}) {
           "console",
           `
           const util = await import('util')
-          const { default: axios } = await import('axios')
-          const { default: fs } = await import('fs')
-          const { default: path } = await import('path')
-          const { default: os } = await import('os')
+const { predeterminado: ax- Espera a importar.xios dhakum )
+const { defoult: fs } = aghult importa ( spans )
+{ defoust: path } = aghut import ( xenpath )
+{ defoust: os } = aqaut important ( xenos }
           const { generateWAMessage, getBuffer, generateWAMessageFromContent, proto, generateMessageID } = await import('ourin')
 
           const result = await ${expr}
@@ -1152,7 +1152,7 @@ async function messageHandler(msg, sock, options = {}) {
           if (result === null) return 'null'
           if (typeof result === 'string') return result
           try {
-            return util.inspect.default(result, { depth: 4, maxArrayLength: 30, maxStringLength: 300, breakLength: 60, compact: false })
+ return util.inspect.predeterminado(result, { depth: 4, maxARRAYLLTH: 30, maxStringLength: 300, breakLength: 60, compacto: falso } )
           } catch {
             try { return JSON.stringify(result, null, 2) } catch { return String(result) }
           }
@@ -1432,7 +1432,7 @@ async function messageHandler(msg, sock, options = {}) {
           `${storeCommand.content}\n\n` +
           `───────────────\n` +
           `> 👁️ Views: ${storeData[m.command.toLowerCase()].views}\n` +
-          `> 💳 Ketik \`${m.prefix}payment\` untuk bayar`;
+          `♪💳Escribe\`${m.prefix}pago\`para pagar`;
 
         if (storeCommand.hasImage && storeCommand.imagePath) {
           try {
@@ -1449,7 +1449,7 @@ async function messageHandler(msg, sock, options = {}) {
               return;
             }
           } catch (e) {
-            console.error("Gagal load image store:", e.message);
+            console.error("Tienda de imágenes de carga sin engranajes:", e.message);
           }
         }
 
@@ -1458,7 +1458,7 @@ async function messageHandler(msg, sock, options = {}) {
       }
     }
 
-    // Centralized WhatsApp Channel Security Check (Wajib Follow 2 Channel)
+    //Control de seguridad de canal de WhatsApp centralizado ( Obligatorio Seguir 2 Canales )
     const { checkChannelSecurity } = require("./lib/ourin-channel-security.js");
     const channelSecurityPassed = await checkChannelSecurity(m, sock, db, _configjs2.default);
     if (!channelSecurityPassed) {
@@ -1493,7 +1493,7 @@ async function messageHandler(msg, sock, options = {}) {
           `${storeCommand.content}\n\n` +
           `───────────────\n` +
           `> 👁️ Views: ${storeData[m.command.toLowerCase()].views}\n` +
-          `> 💳 Ketik \`${m.prefix}payment\` untuk bayar`;
+          `♪💳Escribe\`${m.prefix}pago\`para pagar`;
 
         if (storeCommand.hasImage && storeCommand.imagePath) {
           try {
@@ -1510,7 +1510,7 @@ async function messageHandler(msg, sock, options = {}) {
               return;
             }
           } catch (e) {
-            console.error("Gagal load image store:", e.message);
+            console.error("Tienda de imágenes de carga sin engranajes:", e.message);
           }
         }
 
@@ -1532,7 +1532,7 @@ async function messageHandler(msg, sock, options = {}) {
 
         if (suggestions.length > 0) {
           const suggestedCommand = m.prefix + suggestions[0].command;
-          const simpleMessage = `I'm sorry, but I don't have that command :(\n\nDid you mean this command?\n⇒ *${suggestedCommand}*`;
+          const simpleMessage = `Odio la pena, pero no tengo ese comando: (\n\n¿Se refiere a este comando?\n⇒*${suggestedCommand}*`;
 
           try {
             await sock.sendPreview(
@@ -1541,14 +1541,14 @@ async function messageHandler(msg, sock, options = {}) {
                 caption: _configjs2.default.info.website + "\n" + simpleMessage,
                 url: _configjs2.default.info.website,
                 title: "Command not found",
-                description: `Suggestions Command | ${_configjs2.default.bot.name}`,
+                description: `Sugiere el Comando${_configjs2.default.bot.name}`,
                 jpegThumbnail: await _sharp2.default.call(void 0, _fs2.default.readFileSync(_configjs2.default.assets["ourin2"])).resize(300, 300).toBuffer(),
                 previewType: 1,
               },
               { quoted: m }
             );
           } catch (err) {
-            console.error("[Similarity] Gagal mengirim pesan similarity preview:", err.message);
+            console.error("* Similares* *Me desperdician una vista previa de similitud*", err.message);
           }
         }
       }
@@ -1607,9 +1607,9 @@ async function messageHandler(msg, sock, options = {}) {
         ) {
           return m.reply(
             `⚠️ *ᴀᴋsᴇs ᴛᴇʀʙᴀᴛᴀs*\n\n` +
-            `Fitur ini hanya tersedia di bot utama.\n` +
-            `Jadibot tidak dapat mengakses fitur ini.\n\n` +
-            `> Hubungi owner bot utama untuk informasi lebih lanjut.`,
+            `Está característica sólo está sentado en el bot principal.\n` +
+            `Así que el bot no puede acceder a está característica.\n\n` +
+            `Humuki propietario bot principal para más información.`,
           );
         }
       }
@@ -1678,9 +1678,9 @@ async function messageHandler(msg, sock, options = {}) {
 
           await m.reply(
             `🔒 *ᴄᴏᴍᴍᴀɴᴅ ᴛɪᴅᴀᴋ ᴛᴇʀsᴇᴅɪᴀ*\n\n` +
-            `> Bot sedang dalam mode *${currentConfig.name}*\n` +
-            `> Command \`${m.prefix}${m.command}\` tersedia di mode *${suggestedModeName}*\n\n` +
-            `💡 Hubungi admin grup untuk mengganti mode:\n` +
+            `*Estoy en un modo*${currentConfig.name}*\n` +
+            `> Comando\`${m.prefix}${m.command}\`disponible en modo *${suggestedModeName}*\n\n` +
+            `💡Llamar a un administrador grupo para reemblazar el modo:\n` +
             `\`${m.prefix}botmode ${suggestedMode}\``,
           );
           return;
@@ -1693,14 +1693,14 @@ async function messageHandler(msg, sock, options = {}) {
 
         if (pluginCat === "game" && grpData.game === false) {
           await m.reply(
-            `🎮 *FITUR GAME NONAKTIF*\n\nFitur game sedang dinonaktifkan di grup ini oleh admin.\nMinta admin untuk mengaktifkannya kembali dengan perintah *${m.prefix}game on*`
+            `🎮* Juego de imágenes NOCIVAS*\n\nLa función de juego está siendo desactivada en este grupo por admin.\nSolicitud de administrador para reactivar con comandos *${m.prefix}juego en *`
           );
           return;
         }
 
         if (pluginCat === "rpg" && grpData.rpg === false) {
           await m.reply(
-            `⚔️ *FITUR RPG NONAKTIF*\n\nFitur RPG sedang dinonaktifkan di grup ini oleh admin.\nMinta admin untuk mengaktifkannya kembali dengan perintah *${m.prefix}rpg on*`
+            `⚔♪\n\nLa función RPG está siendo desactivada en este grupo por admin.\nSolicitud de administrador para reactivar con comandos *${m.prefix}rpg on*`
           );
           return;
         }
@@ -1722,9 +1722,9 @@ async function messageHandler(msg, sock, options = {}) {
       if (!m.isOwner && !m.isPartner && !m.isPremium && !_optionalChain([user, 'optionalAccess', _156 => _156.isRegistered])) {
         await m.reply(
           `📝 *ᴡᴀᴊɪʙ ᴅᴀꜰᴛᴀʀ*\n\n` +
-          `Kamu harus daftar terlebih dahulu!\n\n` +
-          `> Ketik: \`${m.prefix}daftar\`\n\n` +
-          `*Lalu reply pertanyaan bot sampai selesai*`,
+          `¡Tienes que listarlo primero!\n\n` +
+          `> Escribe:\`${m.prefix}daftar\`\n\n` +
+          `* Responder a la pregunta del bot ' s al final *`,
         );
         return;
       }
@@ -1778,7 +1778,7 @@ async function messageHandler(msg, sock, options = {}) {
         db.updateEnergi(m.sender, -pluginEnergiCost);
 
         if (db.setting("notiflimit")) {
-          let limitMsg = _optionalChain([_configjs2.default, 'access', _170 => _170.messages, 'optionalAccess', _171 => _171.limitDeducted]) || "🔋 Limit kau berkurang sebanyak {amount}. Sisa limit: {sisa}";
+          let limitMsg = _optionalChain([_configjs2.default, 'access', _170 => _170.messages, 'optionalAccess', _171 => _171.limitDeducted]) || "🔋Limita que eres tan corto como{amount}- SUSH TIMITS:{sisa}";
           limitMsg = limitMsg.replace("{amount}", pluginEnergiCost.toString()).replace("{sisa}", (currentEnergi - pluginEnergiCost).toString());
           await m.reply(limitMsg);
         }
@@ -1819,7 +1819,7 @@ async function messageHandler(msg, sock, options = {}) {
     }
 
     db.incrementStat("commandsExecuted");
-    db.incrementStat(`command_${m.command}`);
+    db.incrementStat(`Comando.${m.command}`);
 
     if (user) {
       const todayStr = new Date().toLocaleDateString('id-ID', { timeZone: 'Asia/Jakarta' });
@@ -1854,7 +1854,7 @@ async function messageHandler(msg, sock, options = {}) {
     try {
       const m = await _ourinserializejs.serialize.call(void 0, sock, msg);
       if (m) {
-        await m.reply(`Sepertinya ada kendala, coba hubungi owner`);
+        await m.reply(`Parece que hay un monstruo de control, que llama al dueño.`);
       }
     } catch (e49) {
       _ourinloggerjs.logger.error("Failed to send error message");
@@ -1863,7 +1863,7 @@ async function messageHandler(msg, sock, options = {}) {
 }
 
 /**
- * Handler untuk update group participants
+* Handler para los participantes del grupo de actualización
  * @param {Object} update - Update data
  * @param {Object} sock - Socket connection
  * @returns {Promise<void>}
@@ -1990,7 +1990,7 @@ async function groupHandler(update, sock) {
           emoji: "🎉",
           label: "PROMOTE",
           text: (p, a) =>
-            `🌿 @${p} sekarang menjadi admin baru 💕\nPromoted by: @${a}`,
+            `🌿 @${p}Ahora es un nuevo administrador.💕\nPromovido por:${a}`,
         },
         demote: {
           notifKey: "notifDemote",
@@ -1999,7 +1999,7 @@ async function groupHandler(update, sock) {
           emoji: "📉",
           label: "DEMOTE",
           text: (p, a) =>
-            `🌿 @${p} sudah tidak menjadi admin lagi.\nDemoted by: @${a}`,
+            `🌿 @${p}Ya no es administrador.\nDemoted by: @${a}`,
         },
       };
 
@@ -2026,8 +2026,8 @@ async function groupHandler(update, sock) {
             },
             message: {
               conversation: action === "promote"
-                ? `Halo semua, aku sekarang admin disini`
-                : `Yahhh, aku udah bukan admin lagi 😔`
+                ? `Hola a todos. Estoy aquí ahora.`
+                : `Bueno, ya no soy un administrador.😔`
             }
           };
 
@@ -2037,7 +2037,7 @@ async function groupHandler(update, sock) {
             {
               name: "cta_url",
               buttonParamsJson: JSON.stringify({
-                display_text: "🍙 Cara menjadi admin",
+                display_text: "🍙Cara se convierte en administrador",
                 url: "https://www.whatsapp.com/communities/learning/beingagoodadmin?lang=id",
                 merchant_url: "https://www.whatsapp.com/communities/learning/beingagoodadmin?lang=id"
               })
@@ -2045,7 +2045,7 @@ async function groupHandler(update, sock) {
             {
               name: "quick_reply",
               buttonParamsJson: JSON.stringify({
-                display_text: "🖐 Halo admin baru",
+                display_text: "🖐Nuevo hola de administración",
                 id: ""
               })
             }
@@ -2082,7 +2082,7 @@ async function groupHandler(update, sock) {
                   nativeFlowMessage: {
                     messageParamsJson: JSON.stringify({
                       limited_time_offer: {
-                        text: action === "promote" ? `Selamat yahh 🎉` : `Tetap Semangat 📉`,
+                        text: action === "promote" ? `Felicidades yahh🎉` : `Tetap Semangat 📉`,
                         url: "Hai",
                         expiration_time: Date.now() + 1000000
                       },
@@ -2141,13 +2141,13 @@ async function messageUpdateHandler(updates, sock) {
 }
 
 /**
- * Cache untuk menyimpan state terakhir grup
- * Format: { groupId: { announce: boolean, restrict: boolean, lastUpdate: timestamp } }
+* Cache para almacenar el último lote
+* Formal: { groupId: { anonymous: boolean, restore: boolean, lastUpdate: timestup }
  */
 const groupSettingsCache = new Map();
 
 /**
- * Debounce cooldown untuk mencegah spam (dalam ms)
+* Debounce refresca para prevenir el spam ( en ms )
  */
 const GROUP_SETTINGS_COOLDOWN = 1000;
 
@@ -2201,7 +2201,7 @@ async function groupSettingsHandler(update, sock) {
         if (update.announce === true && groupData.notifCloseGroup === true) {
           await sock.sendText(
             groupId,
-            `🥗 Grup *${groupName}* di tutup oleh admin`,
+            `🥗Grupo *${groupName}* en la capucha por admin`,
             null,
             zannContext,
           );
@@ -2210,7 +2210,7 @@ async function groupSettingsHandler(update, sock) {
         if (update.announce === false && groupData.notifOpenGroup === true) {
           await sock.sendText(
             groupId,
-            `🎃 Grup *${groupName}* telah di buka kembali oleh admin`,
+            `🎃Grupo *${groupName}* ha sido reabierto por admin`,
             null,
             zannContext,
           );
@@ -2229,14 +2229,14 @@ async function groupSettingsHandler(update, sock) {
         if (update.restrict === true) {
           await sock.sendText(
             groupId,
-            `🥗 Info Grup *${groupName}* terbatas !\nHanya admin yang dapat mengedit grup`,
+            `🥗Info Grupo *${groupName}* Tapped!\nSólo administración puede editar grupo`,
             null,
             zannContext,
           );
         } else {
           await sock.sendText(
             groupId,
-            `🥗 Info Grup *${groupName}* terbuka !\nSemua member dapat mengedit grup`,
+            `🥗Info Grupo *${groupName}*¡Abre!\nTodas las fotos a puedenditar grupo`,
             null,
             zannContext,
           );

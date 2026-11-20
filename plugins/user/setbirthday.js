@@ -4,7 +4,7 @@ const pluginConfig = {
     name: 'setbirthday',
     alias: ['setbday', 'setultah', 'settgl'],
     category: 'user',
-    description: 'Set tanggal ulang tahun',
+    description: '¡Fuera de mi cumpleaños!',
     usage: '.setbirthday <DD-MM>',
     example: '.setbirthday 25-12',
     isOwner: false,
@@ -29,13 +29,13 @@ async function handler(m) {
         let text = `🎂 *sᴇᴛ ʙɪʀᴛʜᴅᴀʏ*\n\n`
         
         if (currentBday) {
-            text += `> Birthday kamu: *${currentBday}*\n\n`
+            text += `Tus cumpleaños${currentBday}*\n\n`
         }
         
         text += `╭┈┈⬡「 📋 *ғᴏʀᴍᴀᴛ* 」\n`
         text += `┃ ${m.prefix}setbirthday DD-MM\n`
         text += `╰┈┈┈┈┈┈┈┈⬡\n\n`
-        text += `*Contoh:*\n`
+        text += `*Ejemplo:*\n`
         text += `> ${m.prefix}setbirthday 25-12\n`
         text += `> ${m.prefix}setbirthday 01-01`
         
@@ -46,19 +46,19 @@ async function handler(m) {
     const match = input.match(dateRegex)
     
     if (!match) {
-        return m.reply(`❌ Format salah! Gunakan: DD-MM\n\n> Contoh: ${m.prefix}setbirthday 25-12`)
+        return m.reply(`❌ Formato incorrecto! Usa: DD-MM\n\n> Ejemplo:${m.prefix}setbirthday 25-12`)
     }
     
     const day = parseInt(match[1])
     const month = parseInt(match[2])
     
     if (month < 1 || month > 12) {
-        return m.reply(`❌ Bulan tidak valid! (1-12)`)
+        return m.reply(`❌¡Toros no válidos! ( 1 @-@ 12 )`)
     }
     
     const daysInMonth = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
     if (day < 1 || day > daysInMonth[month - 1]) {
-        return m.reply(`❌ Tanggal tidak valid untuk bulan ${month}!`)
+        return m.reply(`❌La fecha no es válida durante meses${month}!`)
     }
     
     const formattedDate = `${day.toString().padStart(2, '0')}-${month.toString().padStart(2, '0')}`
@@ -74,11 +74,11 @@ async function handler(m) {
     await m.reply(
         `✅ *ʙɪʀᴛʜᴅᴀʏ ᴅɪsɪᴍᴘᴀɴ!*\n\n` +
         `╭┈┈⬡「 🎂 *ᴅᴇᴛᴀɪʟ* 」\n` +
-        `┃ 📅 Tanggal: *${day} ${months[month - 1]}*\n` +
+        `┃ 📅 Fecha: *${day} ${months[month - 1]}*\n` +
         `┃ 👤 User: @${cleanJid}\n` +
         `╰┈┈┈┈┈┈┈┈⬡\n\n` +
-        `> Bot akan mengucapkan selamat\n` +
-        `> ulang tahun di hari spesialmu! 🎉`,
+        `*Será felicitante*\n` +
+        `¡Feliz cumpleaños en tu día especial!🎉`,
         { mentions: [userJid] }
     )
 }

@@ -2,17 +2,17 @@ NEW GAMES -> OURIN DELUXE 3.4
 
 Added public commands:
 .gamenew / .newgame 
-.chess / .catur / .mini-chess (ourin premium) 
+. Ajedrez. Ajedrez. mini @-@ ajedrez.
 .dino / .runner
 .mbim / .highway / .car
-.plane / .spacerush(ourin premium) 
+. plano /. cepillo de espacio ( nuestra prima )
 .ttc
 
 Notes:
-- Youhu's case.js, handler.js, shell, eval, jadibot and database were NOT copied.
+- Youhu's case.js, handler.js, shell, eval, jadibot and base de datos were NOT copied.
 - Existing Ourin .tictactoe was preserved to avoid handler/answerHandler conflicts.
 - Youhu Tic-Tac-Toe is exposed as .ttc.
 - The plane plugin does NOT keep Youhu's "game" alias because Ourin already uses .game for group game toggle.
-- The five games use Ourin's plugin contract and Ourin's existing relayMessage API.
+- The five games use Ourin's plugin contract and Ourin's exdesperdiciar la recuperación Fuego de mensajes.
 - The HTML payload and certificate are still fetched from the same remote sources used by the original Youhu plugins.
-- In group chats, Ourin's existing .game on/off control still applies to category=game plugins.
+- En charlas de grupo, Ourin Ezxisting. juego en / fuera de control todavía aplicado a la categoría = plugins de juego.

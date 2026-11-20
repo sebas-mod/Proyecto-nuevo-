@@ -2,7 +2,7 @@
     name: 'cekbaik',
     alias: ['baik', 'kind'],
     category: 'cek',
-    description: 'Cek seberapa baik kamu',
+    description: 'Mira lo bueno que eres',
     usage: '.cekbaik <nama>',
     example: '.cekbaik Budi',
     isOwner: false,
@@ -20,9 +20,9 @@ async function handler(m) {
     
     let desc = ''
     if (percent >= 90) {
-        desc = 'Mantappp! kamu adalah orang paling Baik di dunia ini! 😇✨'
+        desc = '¡Eres la persona más hermosa del mundo!😇✨'
     } else if (percent >= 70) {
-        desc = 'Baik hati dan tidak sombong! 💝'
+        desc = '¡Qué bien y no arrogante!💝'
     } else if (percent >= 50) {
         desc = 'Lumayan baik 😊'
     } else if (percent >= 30) {
@@ -31,12 +31,12 @@ async function handler(m) {
         desc = 'Hmm, perlu introspeksi ?? 🤔'
     }
     
-    let txt = mentioned === m.sender ? `Hai @${mentioned.split('@')[0]}
+    let txt = mentioned === m.sender ? `Hola @${mentioned.split('@')[0]}
     
-Tingkat kebaikan kamu *${percent}%*
-\`\`\`${desc}\`\`\`` : `Kamu ingin ngecek tingkat kebaikan @${mentioned.split('@')[0]} yak? 
+Tu tarifa de tipo${percent}%*
+\`\`\`${desc}\`\`\`` : `Quieres ver el nivel de bondad${mentioned.split('@')[0]} yak? 
     
-Tingkat kebaikan dia sebesar *${percent}%*
+Es tan bueno como un hombre.${percent}%*
 \`\`\`${desc}\`\`\``
     
     await m.reply(txt, { mentions: [mentioned] })

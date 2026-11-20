@@ -4,7 +4,7 @@ const pluginConfig = {
     name: 'installtemastellar',
     alias: ['installthemastellar', 'temastellar'],
     category: 'panel',
-    description: 'Install tema Stellar untuk panel Pterodactyl via SSH',
+    description: 'Instalar el tema estelar para el panel de Pterodactilo a través de SSSH',
     usage: '.installtemastellar <ip>|<password>',
     example: '.installtemastellar 192.168.1.1|secretpass',
     isOwner: true,
@@ -43,7 +43,7 @@ function handler(m) {
 
     const parts = text.split('|')
     if (parts.length < 2) {
-        return m.reply(`❌ Format salah! Gunakan: \`ip|password\``)
+        return m.reply(`❌ Formato incorrecto! Usa: \`* Contraseña*\``)
     }
 
     const ipvps = parts[0].trim()
@@ -74,7 +74,7 @@ function handler(m) {
 
             m.react('✅')
             await m.reply(
-                `╭┈┈⬡「 ✅ *ᴛᴇᴍᴀ sᴛᴇʟʟᴀʀ* 」\n┃ ㊗ sᴛᴀᴛᴜs: *Terinstall*\n┃ ㊗ ɪᴘ: ${ipvps}\n╰┈┈⬡\n\n> _Tema Stellar + dependencies berhasil diinstall!_`
+                `╭┈┈⬡「 ✅ *ᴛᴇᴍᴀ sᴛᴇʟʟᴀʀ* 」\n┃ ㊗ sᴛᴀᴛᴜs: *Terinstall*\n┃ ㊗ ɪᴘ: ${ipvps}\n╰┈┈⬡\n\n*Tema Stellar + dependientes instalados con éxito!`
             )
         } catch (err) {
             m.react('☢')
@@ -84,7 +84,7 @@ function handler(m) {
         }
     }).on('error', (err) => {
         m.react('❌')
-        m.reply(`❌ Koneksi gagal!\n\n> IP atau Password tidak valid.`)
+        m.reply(`❌Conexión fallido!\n\nAkeiP o Passard es inválido.`)
     }).connect(connSettings)
 }
 

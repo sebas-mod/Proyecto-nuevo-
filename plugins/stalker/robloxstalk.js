@@ -19,12 +19,12 @@ const pluginConfig = {
 
 async function Roblox(username) {
   const search = await fetch(
-    `https://users.roblox.com/v1/users/search?keyword=${username}&limit=10`,
+    `https://users.roblox.com/v1/users/search?keyword=${username}&límite=10`,
   );
   const searchJson = await search.json();
 
   if (!searchJson.data || !searchJson.data.length) {
-    return { error: "User tidak ditemukan" };
+    return { error: "Usuario no encontrado" };
   }
 
   const user = searchJson.data[0];
@@ -43,7 +43,7 @@ async function Roblox(username) {
   ] = await Promise.all([
     fetch(`https://users.roblox.com/v1/users/${userId}`).then((r) => r.json()),
     fetch(
-      `https://thumbnails.roblox.com/v1/users/avatar?userIds=${userId}&size=420x420&format=Png`,
+      `https://thumbnails.roblox.com/v1/users/avatar?userIds=${userId}Hiksize = 420x420&formato=Png`,
     ).then((r) => r.json()),
     fetch(`https://friends.roblox.com/v1/users/${userId}/followers/count`).then(
       (r) => r.json(),
@@ -57,14 +57,14 @@ async function Roblox(username) {
     fetch(`https://groups.roblox.com/v2/users/${userId}/groups/roles`).then(
       (r) => r.json(),
     ),
-    fetch(`https://games.roblox.com/v2/users/${userId}/games?limit=50`).then(
+    fetch(`https://games.roblox.com/v2/users/${userId}/games?límite=50`).then(
       (r) => r.json(),
     ),
-    fetch(`https://badges.roblox.com/v1/users/${userId}/badges?limit=50`).then(
+    fetch(`https://badges.roblox.com/v1/users/${userId}/badges?límite=50`).then(
       (r) => r.json(),
     ),
     fetch(
-      `https://inventory.roblox.com/v1/users/${userId}/assets/collectibles?limit=50`,
+      `https://inventory.roblox.com/v1/users/${userId}/assets/collectibles?límite=50`,
     )
       .then((r) => r.json())
       .catch(() => null),
@@ -97,7 +97,7 @@ async function Roblox(username) {
     groups: groups.data,
     games: games.data,
     badges: badges.data,
-    inventory: _optionalChain([inventory, 'optionalAccess', _6 => _6.data]) || "private / tidak tersedia",
+    inventory: _optionalChain([inventory, 'optionalAccess', _6 => _6.data]) || "primate / no disponible",
     presence,
   };
 }
@@ -115,7 +115,7 @@ async function handler(m, { sock }) {
   if (!username) {
     return m.reply(
       `🎮 *ʀᴏʙʟᴏx sᴛᴀʟᴋ*\n\n` +
-        `> Masukkan username Roblox\n\n` +
+        `Pon un manto de usuariox\n\n` +
         `\`Contoh: ${m.prefix}robloxstalk Linkmon99\``,
     );
   }
@@ -127,7 +127,7 @@ async function handler(m, { sock }) {
 
     if (res.error) {
       m.react("❌");
-      return m.reply(`❌ Username *${username}* tidak ditemukan`);
+      return m.reply(`❌ Username *${username}* not found`);
     }
 
     const topGroups =
@@ -137,7 +137,7 @@ async function handler(m, { sock }) {
           (v) =>
             `  ◦ ${v.group.name} (${v.group.memberCount} members) — ${v.role.name}`,
         )
-, 'access', _16 => _16.join, 'call', _17 => _17("\n")]) || "  ◦ Tidak ada";
+, 'access', _16 => _16.join, 'call', _17 => _17("\n")]) || "  ◦No hay";
 
     const topGames =
       _optionalChain([res, 'access', _18 => _18.games
@@ -146,7 +146,7 @@ async function handler(m, { sock }) {
           (v) =>
             `  ◦ ${v.name} (${(v.placeVisits || 0).toLocaleString()} visits)`,
         )
-, 'access', _23 => _23.join, 'call', _24 => _24("\n")]) || "  ◦ Tidak ada";
+, 'access', _23 => _23.join, 'call', _24 => _24("\n")]) || "  ◦No hay";
 
     const topBadges =
       _optionalChain([res, 'access', _25 => _25.badges
@@ -155,7 +155,7 @@ async function handler(m, { sock }) {
           (v) =>
             `  ◦ ${v.name} (${_optionalChain([v, 'access', _30 => _30.statistics, 'optionalAccess', _31 => _31.awardedCount, 'optionalAccess', _32 => _32.toLocaleString, 'call', _33 => _33()]) || 0} awarded)`,
         )
-, 'access', _34 => _34.join, 'call', _35 => _35("\n")]) || "  ◦ Tidak ada";
+, 'access', _34 => _34.join, 'call', _35 => _35("\n")]) || "  ◦No hay";
 
     const topInventory = Array.isArray(res.inventory)
       ? res.inventory
@@ -169,7 +169,7 @@ async function handler(m, { sock }) {
 
     const presInfo = res.presence
       ? `Status: ${presenceType[res.presence.userPresenceType] || res.presence.userPresenceType}\n  Last Location: ${res.presence.lastLocation || "-"}\n  PlaceId: ${res.presence.placeId || "-"}\n  GameId: ${res.presence.gameId || "-"}`
-      : "tidak tersedia";
+      : "no disponible";
 
     const caption =
       `🎮 *ʀᴏʙʟᴏx sᴛᴀʟᴋ*\n\n` +

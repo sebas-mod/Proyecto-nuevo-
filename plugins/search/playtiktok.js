@@ -5,7 +5,7 @@ const pluginConfig = {
   name: "playtiktok",
   alias: ["ttplay", "tiktokplay"],
   category: "search",
-  description: "Cari dan kirim satu video TikTok terbaik",
+  description: "Busca y enviar un video de los mejores TikTok",
   usage: ".playtiktok <query>",
   example: ".playtiktok cewe tiktok",
   isOwner: false,
@@ -29,7 +29,7 @@ async function handler(m, { sock }) {
 
   if (!query) {
     return m.reply(
-      `🎵 *PLAY TIKTOK*\n\n> Contoh:\n\`${m.prefix}playtiktok cewe tiktok\``,
+      `🎵* Hasta el momento. *\n\n> Ejemplo:\n\`${m.prefix}playtiktok cewe tiktok\``,
     );
   }
 
@@ -39,7 +39,7 @@ async function handler(m, { sock }) {
     const videos = await _tiktoksearchjs.tiktokSearchVideo.call(void 0, query);
     if (!videos || videos.length === 0) {
       m.react("❌");
-      return m.reply(`❌ Tidak ditemukan video untuk: ${query}`);
+      return m.reply(`❌No se ha encontrado ningún video para:${query}`);
     }
 
     const video = videos[0];
@@ -51,7 +51,7 @@ async function handler(m, { sock }) {
     caption += `💬 *Comments:* ${formatNumber(_optionalChain([video, 'access', _12 => _12.stats, 'optionalAccess', _13 => _13.comments]))}\n`;
     caption += `🔁 *Shares:* ${formatNumber(_optionalChain([video, 'access', _14 => _14.stats, 'optionalAccess', _15 => _15.shares]))}\n`;
     caption += `🎧 *Music:* ${video.music || "-"}\n`;
-    caption += `🔗 *Link:* ${video.link}`;
+    caption += `🔗*Enlace:*${video.link}`;
 
     await sock.sendMedia(m.chat, video.link, caption, m, {
       type: "video",

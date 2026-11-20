@@ -4,7 +4,7 @@ const pluginConfig = {
   name: "cook",
   alias: ["masak"],
   category: "rpg",
-  description: "Memasak makanan untuk menambah health",
+  description: "Instalar alimentos para agregar salud",
   usage: ".cook",
   example: ".cook",
   isOwner: false,
@@ -34,7 +34,7 @@ async function handler(m, { sock }) {
   user.rpg.maxHealth = user.rpg.maxHealth || 100;
 
   if (user.rpg.health >= user.rpg.maxHealth) {
-    return m.reply(`Perut kamu masih kenyang kak! 🤢\nNggak usah masak dulu, nanti kekenyangan malah susah jalan! 🏃💨`);
+    return m.reply(`¡Estás cansado, hermana!🤢\nNo cocines primero, y luego llegarás tarde a la carretera!🏃💨`);
   }
 
   let cooked = null;
@@ -53,19 +53,19 @@ async function handler(m, { sock }) {
   }
 
   if (!cooked) {
-    let txt = `Halo Chef! Mau masak apa hari ini? 🍳👨‍🍳\n\n`;
-    txt += `Ini daftar resep yang bisa kamu bikin:\n\n`;
+    let txt = `¿Qué estás cocinando hoy?🍳👨‍🍳\n\n`;
+    txt += `Aquí hay una lista de recetas que puedes decir:\n\n`;
     for (const [key, recipe] of Object.entries(RECIPES)) {
       txt += `*${recipe.name}*\n`;
       txt += `❤️ Heal: +${recipe.heal} HP\n`;
-      txt += `📦 Bahan yang dibutuhin:\n`;
+      txt += `📦Bahan necesitaba:\n`;
       for (const [mat, qty] of Object.entries(recipe.materials)) {
         const has = user.inventory[mat] || 0;
         txt += `• ${has >= qty ? "✅" : "❌"} ${mat}: ${has}/${qty}\n`;
       }
       txt += `\n`;
     }
-    txt += `(Bot bakal otomatis masak resep pertama yang bahannya cukup!)`;
+    txt += `(Para cocinar una cocina automática de la primera receta que es suficiente! )`;
     return m.reply(txt);
   }
 
@@ -74,7 +74,7 @@ async function handler(m, { sock }) {
   }
 
   await m.react("🍳");
-  await m.reply(`Srengg... Srenggg... 🔥🍳\nLagi masak *${cooked.name}* nih, wanginya enak banget! 🤤`);
+  await m.reply(`Srenggg.. Srengg..🔥🍳\nCocina otra vez${cooked.name}* aquí, wanginya sabroso mucho! 🤤`);
   await new Promise((r) => setTimeout(r, 3000));
 
   const oldHealth = user.rpg.health;
@@ -84,10 +84,10 @@ async function handler(m, { sock }) {
 
   await m.react("✅");
 
-  let txt = `NYAM NYAM! Masakan Matang! 🍽️✨\n\n`;
-  txt += `Kamu langsung makan *${cooked.name}* dan ngerasa baikan!\n`;
+  let txt = `¡Buscaño, eres policía!🍽♪✨\n\n`;
+  txt += `Tienes mucho tiempo para comer.${cooked.name}* y sentir bien!\n`;
   txt += `❤️ HP Pulih: ${oldHealth} 📈 *${user.rpg.health}*\n\n`;
-  txt += `Lanjut petualang lagi gass! 🚀🔥`;
+  txt += `¡Continúe con más aventuras, Gass!🚀🔥`;
 
   await m.reply(txt);
 }

@@ -3,7 +3,7 @@ const pluginConfig = {
     name: 'botmode',
     alias: ['setmode', 'mode'],
     category: 'group',
-    description: 'Atur mode bot untuk grup ini',
+    description: 'Configura Mode bot para este grupo',
     usage: '.botmode <md/cpanel/pushkontak/store/otp/all>',
     example: '.botmode store',
     isOwner: false,
@@ -19,31 +19,31 @@ const pluginConfig = {
 const MODES = {
     md: {
         name: 'Multi-Device',
-        desc: 'Mode default dengan semua fitur standar',
+        desc: 'Modo predeterminado con todas las características de soporte',
         allowedCategories: null,
         excludeCategories: ['cpanel', 'pushkontak', 'store']
     },
     all: {
         name: 'All Features',
-        desc: 'Semua fitur dari semua mode bisa diakses',
+        desc: 'Todas las características de todos los modos pueden ser actuadas',
         allowedCategories: null,
         excludeCategories: null
     },
     cpanel: {
         name: 'CPanel Pterodactyl',
-        desc: 'Mode khusus untuk panel server',
+        desc: 'Modos especiales para el servidor de peel',
         allowedCategories: ['main', 'group', 'sticker', 'owner', 'tools', 'panel'],
         excludeCategories: null
     },
     pushkontak: {
         name: 'Push Kontak',
-        desc: 'Mode khusus untuk push kontak ke member',
+        desc: 'Modo especial para el conk de empuje a miembro',
         allowedCategories: ['owner', 'main', 'group', 'sticker', 'pushkontak'],
         excludeCategories: null
     },
     store: {
         name: 'Store/Toko',
-        desc: 'Mode khusus untuk toko manual',
+        desc: 'Modo especial para la tienda manual',
         allowedCategories: ['main', 'group', 'sticker', 'owner', 'store'],
         excludeCategories: null
     },
@@ -74,18 +74,18 @@ function handler(m, { sock }) {
 
         return m.reply(
             `🔧 *ʙᴏᴛ ᴍᴏᴅᴇ*\n\n` +
-            `> Mode saat ini: *${currentMode.toUpperCase()}* (${_optionalChain([MODES, 'access', _ => _[currentMode], 'optionalAccess', _2 => _2.name]) || 'Unknown'})\n` +
+            `El modo actual: *${currentMode.toUpperCase()}* (${_optionalChain([MODES, 'access', _ => _[currentMode], 'optionalAccess', _2 => _2.name]) || 'Unknown'})\n` +
             `\n╭─「 📋 *ᴘɪʟɪʜᴀɴ* 」\n` +
             `${modeList}` +
             `╰───────────────\n\n` +
             `*ꜰʟᴀɢ sᴛᴏʀᴇ:*\n` +
-            `> \`${m.prefix}botmode store\` - Manual order\n\n` +
-            `> _Pengaturan per-grup_`
+            `> \`${m.prefix}tormenta de botmodas\`- Orden manual\n\n` +
+            `El futuro por grupo`
         )
     }
 
     if (!Object.keys(MODES).includes(mode)) {
-        return m.reply(`❌ Mode tidak valid. Pilihan: \`${Object.keys(MODES).join(', ')}\``)
+        return m.reply(`❌Modo inválido. Opciones:\`${Object.keys(MODES).join(', ')}\``)
     }
 
 
@@ -110,20 +110,20 @@ function handler(m, { sock }) {
     let extraInfo = ''
     if (mode === 'store') {
         const products = _optionalChain([newGroupData, 'access', _5 => _5.storeConfig, 'optionalAccess', _6 => _6.products]) || []
-        extraInfo = `\n\n📋 *Manual mode*\n` +
-            `> Admin perlu confirm order manual\n` +
+        extraInfo = `\n\n📋♪ Modo de Manal ♪\n` +
+            `Akemin necesita un manual de conaffción ón de anciano\n` +
             `> Product: \`${products.length}\` item\n\n` +
             `*ᴘᴀɴᴅᴜᴀɴ:*\n` +
             `> \`${m.prefix}addprod <kode> <harga> <nama>\`\n` +
-            `> \`${m.prefix}listprod\` - Lihat produk`
+            `> \`${m.prefix}listprod\`- Mira el producto`
     }
 
     return m.reply(
         `✅ *ᴍᴏᴅᴇ ᴅɪᴜʙᴀʜ*\n\n` +
         `> Mode: *${mode.toUpperCase()}* (${MODES[mode].name})\n` +
-        `> Grup: *${m.chat.split('@')[0]}*\n` +
+        `*${m.chat.split('@')[0]}*\n` +
         extraInfo +
-        `\n\n> Ketik \`${m.prefix}menu\` untuk melihat menu.`
+        `\n\n> Escribe\`${m.prefix}menú\`para ver el menú.`
     )
 }
 

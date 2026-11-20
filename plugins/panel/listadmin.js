@@ -9,7 +9,7 @@ const pluginConfig = {
     name: allCommands,
     alias: allAliases,
     category: 'panel',
-    description: 'List semua admin panel (v1-v5)',
+    description: 'Listar todos los administradores de panel ( v1 - v5 )',
     usage: '.listadminv1 atau .listadminv2',
     example: '.listadminv1',
     isOwner: false,
@@ -48,7 +48,7 @@ function validateConfig(serverConfig) {
 function getAvailableServers(pteroConfig) {
     const available = []
     for (let i = 1; i <= 5; i++) {
-        const cfg = pteroConfig[`server${i}`]
+        const cfg = pteroConfig[`servidor${i}`]
         if (_optionalChain([cfg, 'optionalAccess', _3 => _3.domain]) && _optionalChain([cfg, 'optionalAccess', _4 => _4.apikey])) available.push(`v${i}`)
     }
     return available
@@ -64,8 +64,8 @@ async function handler(m, { sock }) {
         const userRole = _ourinrolescpaneljs.getUserRole.call(void 0, m.sender, serverVersion)
         return m.reply(
             `❌ *ᴀᴋsᴇs ᴅɪᴛᴏʟᴀᴋ*\n\n` +
-            `> Kamu tidak punya akses ke *${serverLabel}*\n` +
-            `> Role kamu: *${userRole || 'Tidak ada'}*`
+            `*No tienes acento*${serverLabel}*\n` +
+            `# Role you #${userRole || 'Tidak ada'}*`
         )
     }
     
@@ -76,15 +76,15 @@ async function handler(m, { sock }) {
         const available = getAvailableServers(pteroConfig)
         let txt = `⚠️ *sᴇʀᴠᴇʀ ${serverLabel} ʙᴇʟᴜᴍ ᴋᴏɴꜰɪɢ*\n\n`
         if (available.length > 0) {
-            txt += `> Server tersedia: *${available.join(', ')}*`
+            txt += `*El servidor está disponible*${available.join(', ')}*`
         } else {
-            txt += `> Isi di \`config.js\` bagian \`pterodactyl.server1\``
+            txt += `*Estoy dentro*\`config.\`Parte\`pterodactilo. Servidor1\``
         }
         return m.reply(txt)
     }
     
     try {
-        const res = await _axios2.default.get(`${serverConfig.domain}/api/application/users`, {
+        const res = await _axios2.default.get(`${serverConfig.domain}/fuego/application/users`, {
             headers: {
                 'Authorization': `Bearer ${serverConfig.apikey}`,
                 'Content-Type': 'application/json',
@@ -96,7 +96,7 @@ async function handler(m, { sock }) {
         const admins = users.filter(u => u.attributes.root_admin)
         
         if (admins.length === 0) {
-            return m.reply(`📋 *ᴅᴀꜰᴛᴀʀ ᴀᴅᴍɪɴ [${serverLabel}]*\n\n> Tidak ada admin terdaftar.`)
+            return m.reply(`📋 *ᴅᴀꜰᴛᴀʀ ᴀᴅᴍɪɴ [${serverLabel}♪\n\nNo hay ningún administrador en la lista.`)
         }
         
         let txt = `📋 *ᴅᴀꜰᴛᴀʀ ᴀᴅᴍɪɴ [${serverLabel}]*\n\n`
@@ -105,7 +105,7 @@ async function handler(m, { sock }) {
         admins.forEach((u, i) => {
             const attr = u.attributes
             txt += `${i + 1}. *${attr.username}*\n`
-            txt += `   └ ID: \`${attr.id}\` | Email: \`${attr.email}\`\n`
+            txt += `   └ ID: \`${attr.id}\`| Correo:\`${attr.email}\`\n`
         })
         
         return m.reply(txt)

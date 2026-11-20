@@ -12,7 +12,7 @@ const pluginConfig = {
   name: "jadwalsholat",
   alias: ["sholat", "prayertime", "jadwalsolat", "waktusolat", "waktusholat"],
   category: "religi",
-  description: "Menampilkan jadwal sholat real-time dari myquran.com",
+  description: "Asistir a la clasificación de la verdadera showat - tiempo de myquran. com",
   usage: ".jadwalsholat <kota>",
   example: ".jadwalsholat Jakarta",
   isOwner: false,
@@ -31,7 +31,7 @@ async function handler(m, { sock }) {
     if (!kota) {
       m.react("❌");
       return m.reply(
-        `❌ *ɢᴀɢᴀʟ*\n\n> Kota "${city}" tidak ditemukan\n> Coba nama kabupaten/kota lain`,
+        `❌*ɢᴀɢᴀʟ*\n\n*Ciudad*${city}*No más trucos*\nTratar hach el ombre de otro kampen / ciudad`,
       );
     }
     const jadwalData = await _ourinsholatapijs.getTodaySchedule.call(void 0, kota.id);
@@ -57,7 +57,7 @@ async function handler(m, { sock }) {
 ┃ 🌆 ᴍᴀɢʜʀɪʙ: \`${times.maghrib}\`
 ┃ 🌃 ɪsʏᴀ: \`${times.isya}\`
 ╰┈┈⬡
-> _Sumber: myquran.com | Jangan lupa sholat ya! 🤲_`;
+¡No olvides dispararte!🤲¿Qué?`;
     const adzanUrl = "https://files.catbox.moe/z2bj5s.mp3";
     let adzanBuffer;
     try {

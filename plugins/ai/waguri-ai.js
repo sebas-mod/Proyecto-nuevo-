@@ -5,7 +5,7 @@ const pluginConfig = {
   name: "waguri-ai",
   alias: ["waguriai", "waguri"],
   category: "ai",
-  description: "Chat dengan Waguri-san — Gadis pemalu yang lupa kacamata",
+  description: "Chat con Waguri @-@ san—La chica peluda que olvidó sus gafas",
   usage: ".waguri-ai <pertanyaan>",
   example: ".waguri-ai Waguri-san, halo!",
   isOwner: false,
@@ -22,11 +22,11 @@ async function handler(m, { sock }) {
   if (!text) {
     return m.reply(
       `👓 *Waguri-san*\n\n` +
-        `> Gadis pemalu dari "The Girl I Like Forgot Her Glasses"\n> Manis, perhatian, dan sering salah tingkah~\n\n` +
-        `*PENGGUNAAN:*\n` +
+        `# Las chicas vencen al amor que me gusta olvidar sus cristales #\nManis, presta atención, y ponte en el lado equivocado\n\n` +
+        `*Uso:*\n` +
         `> *${m.prefix}waguri-ai <pertanyaan>*\n\n` +
-        `*CONTOH:*\n` +
-        `> *${m.prefix}waguri-ai Waguri-san, halo!*`
+        `*Ejemplo:*\n` +
+        `> *${m.prefix}Waguri @-@ ai Waguri @-@ san, hola!`
     );
   }
 

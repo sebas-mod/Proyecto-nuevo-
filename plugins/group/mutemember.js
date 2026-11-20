@@ -5,7 +5,7 @@ const pluginConfig = {
     name: 'mutemember',
     alias: ['mutmember', 'silentmember', 'bisukanmember'],
     category: 'group',
-    description: 'Bisukan member tertentu (pesan akan dihapus bot)',
+    description: 'Fotos específicas prematuras (el mensaje será recortado por bots )',
     usage: '.mutemember <@tag/reply/nomor>',
     example: '.mutemember @user',
     isOwner: false,
@@ -44,12 +44,12 @@ async function handler(m, { sock }) {
     if (!targetJid) {
         return m.reply(
             `🔇 *MUTE MEMBER*\n\n` +
-            `> Bisukan member tertentu di grup ini\n` +
-            `> Pesan member yang dimute akan dihapus oleh bot\n\n` +
+            `*Aporta la foto más específica de este grupo*\n` +
+            `Para pedir una foto hecha a medida @ será cubierta por el bot\n\n` +
             `\`Contoh:\`\n` +
             `> ${m.prefix}mutemember @user\n` +
             `> ${m.prefix}mutemember 6281234567890\n` +
-            `> Reply pesan member + ${m.prefix}mutemember`
+            `# Responder mensaje # +${m.prefix}mutemember`
         )
     }
 
@@ -61,7 +61,7 @@ async function handler(m, { sock }) {
             return pJid === targetNumber && (p.admin === 'admin' || p.admin === 'superadmin')
         })])
         if (isTargetAdmin) {
-            return m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> Tidak dapat mute admin grup`)
+            return m.reply(`❌*ɢᴀɢᴀʟ*\n\n* No puede mute administrador del grupo`)
         }
     }
 
@@ -75,7 +75,7 @@ async function handler(m, { sock }) {
     })
 
     if (alreadyMuted) {
-        return m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> Member @${targetNumber} sudah dimute`, { mentions: [targetJid] })
+        return m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> Member @${targetNumber}ya dimute`, { mentions: [targetJid] })
     }
 
     mutedMembers.push(targetJid)
@@ -89,8 +89,8 @@ async function handler(m, { sock }) {
         `┃ 🔇 sᴛᴀᴛᴜs: \`Muted\`\n` +
         `┃ 📊 ᴛᴏᴛᴀʟ ᴍᴜᴛᴇ: \`${mutedMembers.length}\` ᴍᴇᴍʙᴇʀ\n` +
         `╰┈┈⬡\n\n` +
-        `> Semua pesan dari member ini akan dihapus otomatis\n` +
-        `> Gunakan \`${m.prefix}unmutemember\` untuk unmute`,
+        `Todos los mensajes de está foto serán interceptados por automatización\n` +
+        `> Usa \`${m.prefix}no de contrabando\`para unmute`,
         { mentions: [targetJid] }
     )
 }

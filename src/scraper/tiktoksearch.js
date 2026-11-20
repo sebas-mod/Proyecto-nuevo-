@@ -45,7 +45,7 @@ async function tiktokSearchVideo(query) {
     })
 
     if (!_optionalChain([data, 'optionalAccess', _19 => _19.status]) || !Array.isArray(_optionalChain([data, 'optionalAccess', _20 => _20.result]))) {
-        throw new Error(_optionalChain([data, 'optionalAccess', _21 => _21.message]) || 'TikTok search gagal')
+        throw new Error(_optionalChain([data, 'optionalAccess', _21 => _21.message]) || 'La búsqueda de TikTok falló')
     }
 
     return data.result.map(normalizeItem).filter((item) => item.link)

@@ -23,11 +23,11 @@ async function handler(m) {
     m.react("❌");
     return m.reply(
       `🔍 *Google News*\n\n` +
-        `Cari berita terbaru dari Google News.\n\n` +
-        `*PENGGUNAAN:*\n` +
+        `Las últimas noticias de Busca de Google News.\n\n` +
+        `*Uso:*\n` +
         `> *${m.prefix}google <topik>*\n\n` +
-        `*CONTOH:*\n` +
-        `> *${m.prefix}google gempa hari ini*\n` +
+        `*Ejemplo:*\n` +
+        `> *${m.prefix}*El google que abre hoy*\n` +
         `> *${m.prefix}google teknologi terbaru*`,
     );
   }
@@ -39,18 +39,18 @@ async function handler(m) {
 
     if (!result.status) {
       m.react("☢");
-      return m.reply(`❌ *Google Gagal*\n\n> ${result.error}`);
+      return m.reply(`❌*Google Fallido*\n\n♪${result.error}`);
     }
 
     const items = result.results.slice(0, 10);
 
     if (items.length === 0) {
       m.react("☢");
-      return m.reply(`❌ Nggak nemu hasil buat: *${query}*`);
+      return m.reply(`❌Resultados de búsqueda: *${query}*`);
     }
 
     let txt = `🔍 *Google News*\n\n`;
-    txt += `> Pencarian: *${query}*\n\n`;
+    txt += `# Buscadme #${query}*\n\n`;
 
     items.forEach((item) => {
       txt += `*${item.index_node}.* ${item.resource_title}\n`;
@@ -64,7 +64,7 @@ async function handler(m) {
   } catch (e) {
     console.error(e);
     m.react("☢");
-    m.reply("❌ Gagal mencari di Google, coba lagi nanti");
+    m.reply("❌GoaIy mirando a Google, probar de nuevo más tarde");
   }
 }
 

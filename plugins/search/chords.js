@@ -17,7 +17,7 @@ const pluginConfig = {
     isEnabled: true
 }
 
-const NEOXR_APIKEY = _optionalChain([_configjs2.default, 'access', _ => _.APIkey, 'optionalAccess', _2 => _2.neoxr]) || 'Milik-Bot-OurinMD'
+const NEOXR_APIKEY = _optionalChain([_configjs2.default, 'access', _ => _.APIkey, 'optionalAccess', _2 => _2.neoxr]) || 'Millik - Eurinprobable'
 
 async function handler(m, { sock }) {
     const text = _optionalChain([m, 'access', _3 => _3.text, 'optionalAccess', _4 => _4.trim, 'call', _5 => _5()])
@@ -25,8 +25,8 @@ async function handler(m, { sock }) {
     if (!text) {
         return m.reply(
             `🎸 *ᴄʜᴏʀᴅs sᴇᴀʀᴄʜ*\n\n` +
-            `> Cari chord/kunci gitar lagu\n\n` +
-            `> Contoh:\n` +
+            `> Busca chord/llave gitar cancion\n\n` +
+            `> Ejemplo:\n` +
             `\`${m.prefix}chords komang\`\n` +
             `\`${m.prefix}chord perjalanan terindah\``
         )
@@ -41,7 +41,7 @@ async function handler(m, { sock }) {
         
         if (!_optionalChain([data, 'optionalAccess', _6 => _6.status]) || !_optionalChain([data, 'optionalAccess', _7 => _7.data, 'optionalAccess', _8 => _8.chord])) {
             m.react('❌')
-            return m.reply(`❌ Chord tidak ditemukan untuk: \`${text}\``)
+            return m.reply(`❌El corcho no se encuentra para:\`${text}\``)
         }
         
         const chord = data.data.chord

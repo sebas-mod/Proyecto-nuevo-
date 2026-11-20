@@ -7,7 +7,7 @@ const pluginConfig = {
   name: "ganticode",
   alias: ["replaceplugin", "updateplugin", "gantiplugin"],
   category: "owner",
-  description: "Ganti code plugin yang sudah ada",
+  description: "Plugins existentes del código Cambia",
   usage: ".ganticode [namafile] [folder]",
   example: ".ganticode ping main",
   isOwner: true,
@@ -54,12 +54,12 @@ async function handler(m, { sock }) {
 
   if (!quoted) {
     return m.reply(
-      `Halo *${m.pushName}*, sepertinya kamu belum mereply kode plugin barunya.\n\n` +
-      `Silakan reply kode plugin yang baru dengan perintah:\n` +
-      `- .ganticode (untuk deteksi otomatis)\n` +
-      `- .ganticode <nama file> (untuk nama kustom)\n` +
-      `- .ganticode <nama file> <folder> (untuk kustom nama dan folder)\n\n` +
-      `Tenang saja, kode yang lama akan otomatis dibackup sebelum diganti.`
+      `Hola *${m.pushName}*, parece que aún no ha registrado las barras de plugin.\n\n` +
+      `Por favor, responda un nuevo código de plug con comando:\n` +
+      `-. ganticode (para autodetective )\n` +
+      `- Ganticodo.<nama file>(para el nombre de kurstom )\n` +
+      `- Ganticodo.<nama file> <folder>(para el nombre y la carpeta personalizados )\n\n` +
+      `Relax, el viejo código se respaldará antes de que cambie.`
     );
   }
 
@@ -72,19 +72,19 @@ async function handler(m, { sock }) {
     try {
       code = (await quoted.download()).toString();
     } catch (e) {
-      return m.reply(`Maaf *${m.pushName}*, proses gagal karena file tidak dapat diunduh.`);
+      return m.reply(`Lo siento *${m.pushName}*, el proceso falló porque el archivo no se podía descargar.`);
     }
   }
 
   if (!code || code.length < 50) {
-    return m.reply(`Maaf *${m.pushName}*, proses gagal karena kode terlalu pendek atau tidak valid.`);
+    return m.reply(`Lo siento *${m.pushName}*, el proceso falló porque el código es corto o no válido.`);
   }
 
   const hasExport = code.includes("module.exports") || code.includes("export ");
   const hasConfig = code.includes("pluginConfig") || code.includes("config");
   if (!hasExport || !hasConfig) {
     return m.reply(
-      `Maaf *${m.pushName}*, proses gagal karena kode bukan format plugin yang valid. Pastikan ada export dan config di dalamnya.`
+      `Lo siento *${m.pushName}*, proceso falló porque el código no es un formato de plugin válido.xEl eje y el config están dentro.`
     );
   }
 
@@ -96,14 +96,14 @@ async function handler(m, { sock }) {
 
   if (!fileName) {
     return m.reply(
-      `Maaf *${m.pushName}*, aku tidak bisa mendeteksi nama pluginnya. Silakan gunakan perintah dengan format .ganticode <nama file>.`
+      `Lo siento *${m.pushName}*, No puedo detectar el nombre de los plugins.<nama file>.`
     );
   }
 
   fileName = fileName.toLowerCase().replace(/[^a-z0-9\-_]/g, "");
 
   if (!fileName) {
-    return m.reply(`Maaf *${m.pushName}*, proses gagal karena nama file tidak valid.`);
+    return m.reply(`Lo siento *${m.pushName}*, el proceso falló porque el nombre del archivo era inválido.`);
   }
 
   await m.react("🕕");
@@ -159,13 +159,13 @@ async function handler(m, { sock }) {
     await m.react("✅");
 
     let replyText =
-      `Proses selesai! Kode plugin berhasil ${isNewFile ? "ditambahkan" : "diperbarui"}.\n\n` +
-      `- File: ${fileName}.js\n` +
-      `- Folder: ${targetFolder}\n` +
+      `¡Prosses completados!${isNewFile ? "ditambahkan" : "diperbarui"}.\n\n` +
+      `- Archivo:${fileName}.js\n` +
+      `- Carpeta:${targetFolder}\n` +
       `- Ukuran: ${code.length} bytes\n`;
 
     if (!isNewFile) {
-      replyText += `- Ukuran Lama: ${oldSize} bytes\n`;
+      replyText += `- Antiguo 's rump:${oldSize} bytes\n`;
     }
 
     replyText +=
@@ -173,10 +173,10 @@ async function handler(m, { sock }) {
 
     if (backupPath) {
       const relBackup = _path2.default.relative(process.cwd(), backupPath);
-      replyText += `File lama sudah dibackup dengan aman di lokasi berikut:\n${relBackup}\n\n`;
+      replyText += `El archivo antiguo ha sido pegado con seguridad en la siguiente ubicación:\n${relBackup}\n\n`;
     }
 
-    replyText += `Plugin sudah aktif dan siap digunakan, silakan dicoba ya!`;
+    replyText += `Plugin está en y listo para usar, por favor, probátalo!`;
 
     return m.reply(replyText);
   } catch (error) {

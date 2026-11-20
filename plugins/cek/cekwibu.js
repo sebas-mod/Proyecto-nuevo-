@@ -2,7 +2,7 @@
     name: 'cekwibu',
     alias: ['wibu', 'weeb'],
     category: 'cek',
-    description: 'Cek seberapa wibu kamu',
+    description: 'Mira tu por qué demu',
     usage: '.cekwibu <nama>',
     example: '.cekwibu Budi',
     isOwner: false,
@@ -31,12 +31,12 @@ async function handler(m) {
         desc = 'Bukan wibu, normal! 😎'
     }
     
-    let txt = mentioned === m.sender ? `Hai @${mentioned.split('@')[0]}
+    let txt = mentioned === m.sender ? `Hola @${mentioned.split('@')[0]}
     
-Tingkat kewibuan kamu *${percent}%*
-\`\`\`${desc}\`\`\`` : `Kamu ingin ngecek tingkat kewibuan @${mentioned.split('@')[0]} yak? 
+Su tasa de empresaria${percent}%*
+\`\`\`${desc}\`\`\`` : `Quieres revisar el nivel empresarial${mentioned.split('@')[0]} yak? 
     
-Tingkat kewibuan dia sebesar *${percent}%*
+Su tasa de empresario es tan grande${percent}%*
 \`\`\`${desc}\`\`\``
     
     await m.reply(txt, { mentions: [mentioned] })

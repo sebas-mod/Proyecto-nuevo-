@@ -22,7 +22,7 @@ async function handler(m) {
   if (!text) {
     return m.reply(
       `📱 *ɢsᴍᴀʀᴇɴᴀ*\n\n` +
-        `> Cari spesifikasi HP lengkap\n\n` +
+        `*Busca especificaciones completas*\n\n` +
         `\`Contoh: ${m.prefix}gsmarena samsung galaxy s25\``,
     );
   }
@@ -34,7 +34,7 @@ async function handler(m) {
 
     if (!results || results.length === 0) {
       m.react("❌");
-      return m.reply(`📱 HP tidak ditemukan untuk *${text}*`);
+      return m.reply(`📱HP no encontrado para *${text}*`);
     }
 
     if (results.length === 1) {
@@ -67,7 +67,7 @@ function formatList(results, query, prefix) {
     }
   });
 
-  txt += `\n> Ketik \`${prefix}gsmarena <nama lengkap>\` untuk detail`;
+  txt += `\n> Escribe\`${prefix}gsmarena<nama lengkap>\`para detail`;
   return txt;
 }
 

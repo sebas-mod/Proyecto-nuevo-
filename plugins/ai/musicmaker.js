@@ -5,7 +5,7 @@ const pluginConfig = {
   name: "musicmaker",
   alias: ["bikinlagu", "suno"],
   category: "maker",
-  description: "Membuat musik atau lagu menggunakan AI dari teks (prompt)",
+  description: "Crear música o canción usando AI de texto ( propont )",
   usage: ".musicmaker <prompt>",
   example: ".musicmaker Lagu sedih tentang perpisahan dengan musik piano",
   isOwner: false,
@@ -21,7 +21,7 @@ async function handler(m, { sock }) {
   const prompt = _optionalChain([m, 'access', _ => _.text, 'optionalAccess', _2 => _2.trim, 'call', _3 => _3()]) || m.args.join(" ");
 
   if (!prompt) {
-    return m.reply("❌ Masukkan deskripsi lagu yang ingin dibuat.\n\nContoh: `.musicmaker Lagu pop romantis yang ceria`");
+    return m.reply("❌Ponga en la descripción de la canción que desea crear.\n\nEjemplo:`- Los músicos románticos de cancion de cerámica.`");
   }
 
   await m.react("🕕");
@@ -39,7 +39,7 @@ async function handler(m, { sock }) {
     const data = res.data;
     if (!data.status || !data.result) {
       await m.react("❌");
-      return m.reply("⚠️ AI gagal membuat lagu. Coba gunakan prompt (deskripsi) yang lain.");
+      return m.reply("⚠Prueba con otro aviso.");
     }
 
     const r = data.result;
@@ -47,7 +47,7 @@ async function handler(m, { sock }) {
     const caption = `🎵 *MUSIC MAKER AI* 🎵\n\n` +
       `*Judul:* ${r.title}\n` +
       `*Tags:* ${r.tags}\n` +
-      `*Durasi:* ${r.duration} detik\n\n` +
+      `*Duración:*${r.duration} detik\n\n` +
       `*Lirik:*\n${r.lyrics}`;
 
     await sock.sendMessage(m.chat, {
@@ -66,7 +66,7 @@ async function handler(m, { sock }) {
   } catch (error) {
     console.error("[Music Maker AI]", error.message);
     await m.react("☢");
-    m.reply("😔 Terjadi kesalahan saat memproses permintaan pembuatan lagu ke AI. Server AI mungkin sibuk.");
+    m.reply("😔Fue un error procesar la creación de la canción a Al.");
   }
 }
 

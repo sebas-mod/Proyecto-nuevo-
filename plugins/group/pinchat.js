@@ -2,7 +2,7 @@
     name: 'pinchat',
     alias: ['pinmsg', 'pinpesan'],
     category: 'group',
-    description: 'Pin pesan penting di grup',
+    description: 'Disfruta del importante mensaje en grupo',
     usage: '.pinchat (reply pesan)',
     example: '.pinchat',
     isOwner: false,
@@ -20,10 +20,10 @@ async function handler(m, { sock, args }) {
     if (!m.quoted || !m.quoted.key || !m.quoted.key.id) {
         await m.reply(
             `⚠️ *ᴠᴀʟɪᴅᴀsɪ ɢᴀɢᴀʟ*\n\n` +
-            `> Reply pesan yang ingin di-pin!\n\n` +
-            `*Cara penggunaan:*\n` +
-            `> Reply pesan → ketik \`.pinchat\`\n` +
-            `> Optional: \`.pinchat 24\` (pin 24 jam)`
+            `Ezely un mensaje que quieres poner!\n\n` +
+            `*Como usarlo:*\n` +
+            `*Responde mensajes*→escribe\`Pinchat.\`\n` +
+            `Opcional:\`- Pinchat 24.\`( 24 @-@ hora pin )`
         );
         return;
     }
@@ -51,16 +51,16 @@ async function handler(m, { sock, args }) {
         });
         
         const durationText = duration >= 86400 
-            ? `${Math.floor(duration / 86400)} hari` 
-            : `${Math.floor(duration / 3600)} jam`;
+            ? `${Math.floor(duration / 86400)}el` 
+            : `${Math.floor(duration / 3600)}hora`;
         
-        const successMsg = `✅ Success pin pesan ini`;
+        const successMsg = `✅Los éxitos marcan este mensaje`;
         await m.reply(successMsg, { mentions: [m.sender] })
         
     } catch (error) {
         await m.reply(
             `❌ *ᴇʀʀᴏʀ*\n\n` +
-            `> Gagal mem-pin pesan.\n` +
+            `- Lo siento.\n` +
             `> _${error.message}_`
         );
     }

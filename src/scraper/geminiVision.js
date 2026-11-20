@@ -15,13 +15,13 @@ function buildMessage({ message, history = [], imageBuffer = null }) {
       .join("\n");
 
     if (historyText) {
-      parts.push(`Riwayat percakapan:\n${historyText}`);
+      parts.push(`Historial percakapan:\n${historyText}`);
     }
   }
 
   if (imageBuffer) {
     parts.push(
-      "User mengirim gambar. Jika model tidak bisa melihat gambar secara langsung, tetap jawab sebaik mungkin dari konteks teks yang ada.",
+      "El usuario envía una imagen. Si los modelos no pueden ver imágenes de una manera más larga, todavía responden tanto como sea posible a los contextos textuales existentes.",
     );
   }
 

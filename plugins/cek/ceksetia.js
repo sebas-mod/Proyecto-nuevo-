@@ -2,7 +2,7 @@
     name: 'ceksetia',
     alias: ['setia', 'loyal'],
     category: 'cek',
-    description: 'Cek tingkat kesetiaan kamu',
+    description: 'Compruebe su nivel de lealtad',
     usage: '.ceksetia <nama>',
     example: '.ceksetia Budi',
     isOwner: false,
@@ -20,17 +20,17 @@ async function handler(m) {
                     
     let desc = ''
     if (percent >= 90) desc = 'Setia sampai mati! 💍💕'
-    else if (percent >= 70) desc = 'Sangat setia dan tulus! ❤️'
+    else if (percent >= 70) desc = '¡Tan leal y verdadero!❤♪'
     else if (percent >= 50) desc = 'Cukup setia~ 😊'
     else if (percent >= 30) desc = 'Hmm... kadang goyah 😅'
     else desc = 'Playboy/Playgirl mode? 😏'
     
-    let txt = mentioned === m.sender ? `Hai @${mentioned.split('@')[0]}
+    let txt = mentioned === m.sender ? `Hola @${mentioned.split('@')[0]}
     
-Tingkat kesetiaan kamu *${percent}%*
-\`\`\`${desc}\`\`\`` : `Kamu ingin ngecek tingkat kesetiaan @${mentioned.split('@')[0]} yak? 
+Tu nivel de lealtad *${percent}%*
+\`\`\`${desc}\`\`\`` : `Quieres ver el nivel de lealtad${mentioned.split('@')[0]} yak? 
     
-Tingkat kesetiaan dia sebesar *${percent}%*
+Es tan leal como un hombre en su primer momento.${percent}%*
 \`\`\`${desc}\`\`\``
     
     await m.reply(txt, { mentions: [mentioned] })

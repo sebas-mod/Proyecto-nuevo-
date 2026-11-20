@@ -24,7 +24,7 @@ async function handler(m, { sock }) {
         return m.reply(
             `🎭 *ᴇᴍᴏᴊɪ ᴍɪx*\n\n` +
             `> Gabungkan 2 emoji menjadi 1\n\n` +
-            `> Contoh: \`${m.prefix}emojimix 😂🔥\``
+            `> Ejemplo:\`${m.prefix}emojimix 😂🔥\``
         )
     }
 
@@ -32,7 +32,7 @@ async function handler(m, { sock }) {
     const emojis = text.match(emojiRegex)
 
     if (!emojis || emojis.length < 2) {
-        return m.reply(`❌ Masukkan minimal 2 emoji!\n\nContoh: ${m.prefix}emojimix 😂🔥`)
+        return m.reply(`❌¡Pon un poco de 2 emojis!\n\nEjemplo:${m.prefix}emojimix 😂🔥`)
     }
 
     const emoji1 = emojis[0]
@@ -46,7 +46,7 @@ async function handler(m, { sock }) {
         const data = await _ourinhttpjs.f.call(void 0, apiUrl)
 
         if (!data.status || !_optionalChain([data, 'access', _4 => _4.data, 'optionalAccess', _5 => _5.url])) {
-            return m.reply(`❌ Kombinasi emoji tidak ditemukan!\n\nCoba emoji lain.`)
+            return m.reply(`❌¡La combinación de emojis no se encuentra!\n\nOtro disparo de emoji.`)
         }
 
         const imageUrl = data.data.url

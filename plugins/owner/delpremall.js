@@ -5,7 +5,7 @@ const pluginConfig = {
     name: 'delpremall',
     alias: ['delpremiumall', 'removepremall'],
     category: 'owner',
-    description: 'Menghapus semua member grup dari premium',
+    description: 'Quitar todas las fotos de grupo del estreno',
     usage: '.delprem all',
     example: '.delprem all',
     isOwner: true,
@@ -23,7 +23,7 @@ async function handler(m, { sock }) {
         const participants = groupMeta.participants || []
         
         if (participants.length === 0) {
-            return m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> Tidak ada member di grup ini`)
+            return m.reply(`❌*ɢᴀɢᴀʟ*\n\n*No hay foto en este grupo*`)
         }
         
         await m.react('🕕')
@@ -68,7 +68,7 @@ async function handler(m, { sock }) {
             `┃ ⏭️ ʙᴜᴋᴀɴ ᴘʀᴇᴍɪᴜᴍ: \`${notPremCount}\`\n` +
             `┃ 💎 sɪsᴀ ᴘʀᴇᴍɪᴜᴍ: \`${db.data.premium.length}\`\n` +
             `╰┈┈⬡\n\n` +
-            `> Grup: ${groupMeta.subject}`
+            `> Grupo:${groupMeta.subject}`
         )
         
     } catch (error) {

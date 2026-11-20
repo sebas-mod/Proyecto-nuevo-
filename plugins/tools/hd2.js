@@ -8,7 +8,7 @@ const pluginConfig = {
   name: "hd2",
   alias: ["enhance2", "upscale2", "aienhancer"],
   category: "tools",
-  description: "Enhance gambar menjadi HD dengan AI (V3)",
+  description: "Mejorar la imagen en HD con AI ( V3 )",
   usage: ".hd2 (reply gambar)",
   example: ".hd2",
   isOwner: false,
@@ -24,12 +24,12 @@ async function handler(m, { sock }) {
   const isImage = m.isImage || (m.quoted && m.quoted.type === "imageMessage");
 
   if (!isImage) {
-    let help = `✨ *FITUR HD ENHANCE V2*\n\n`
-    help += `Tingkatkan resolusi gambar kamu menjadi jauh lebih HD dan tajam menggunakan AI!\n\n`
-    help += `*Cara Penggunaan:*\n`
-    help += `- Kirim gambar dan tambahkan pesan *${m.prefix}hd2*\n`
-    help += `- Atau balas (reply) gambar yang sudah terkirim dengan perintah *${m.prefix}hd2*\n\n`
-    help += `_Proses rendering mungkin memerlukan waktu beberapa detik hingga satu menit._`
+    let help = `✨* FUTURA SU ENHANCE V2 *\n\n`
+    help += `Aumenta tu resolución de imagen a mucho más HD y uso afilado AI!\n\n`
+    help += `*Como usarlo:*\n`
+    help += `- Fotos de Carver y mensaje *${m.prefix}hd2*\n`
+    help += `- O una respuesta enviada a la imagen con un pedido *${m.prefix}hd2*\n\n`
+    help += `*Promes rendering puede necesitar unos segundos de naranja un minuto.*`
     return m.reply(help);
   }
 
@@ -45,7 +45,7 @@ async function handler(m, { sock }) {
 
     if (!buffer) {
       await m.react("❌");
-      return m.reply(`Maaf, sistem gagal mengunduh gambar yang kamu berikan. Silakan coba kirim ulang gambarnya!`);
+      return m.reply(`Lo sentimos, el sistema no pudo descargar la imagen que dibujaste.`);
     }
 
     const form = new (0, _formdata2.default)();
@@ -61,7 +61,7 @@ async function handler(m, { sock }) {
     const data = response.data;
     if (!data || !data.status || !data.result) {
       await m.react("❌");
-      return m.reply(`Maaf, AI gagal memproses gambarmu kali ini. Silakan coba lagi dalam beberapa saat!`);
+      return m.reply(`Lo siento, Al no ha podido procesar su imagen está vez por favor, ¡inténtelo de nuevo en unos momentos!`);
     }
 
     await m.react("✅");

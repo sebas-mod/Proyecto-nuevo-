@@ -5,7 +5,7 @@ const pluginConfig = {
     name: 'cecanjepang',
     alias: ['cewekjepang', 'cewekjpn'],
     category: 'cecan',
-    description: 'Random gambar cewek cantik Jepang',
+    description: 'Fotos aleatorias de la chica bonita Gerang',
     usage: '.cecanjepang',
     example: '.cecanjepang',
     isOwner: false,

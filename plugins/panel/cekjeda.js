@@ -27,9 +27,9 @@ function formatTime(ms) {
   const hours = Math.floor(minutes / 60);
 
   if (hours > 0)
-    return `${hours} jam ${minutes % 60} menit ${seconds % 60} detik`;
-  if (minutes > 0) return `${minutes} menit ${seconds % 60} detik`;
-  return `${seconds} detik`;
+    return `${hours}hora${minutes % 60}minuto${seconds % 60}segundo`;
+  if (minutes > 0) return `${minutes}minuto${seconds % 60}segundo`;
+  return `${seconds}segundo`;
 }
 
 function handler(m, { sock }) {
@@ -38,7 +38,7 @@ function handler(m, { sock }) {
   );
 
   if (!hasAccess && !m.isOwner) {
-    return m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> Kamu tidak memiliki akses ke CPanel!`);
+    return m.reply(`❌*ɢᴀɢᴀʟ*\n\n¡Al infierno no tienes el acento en el Capel!`);
   }
 
   const db = _ourindatabasejs.getDatabase.call(void 0, );
@@ -49,14 +49,14 @@ function handler(m, { sock }) {
   const remaining = Math.max(0, jedaMs - elapsed);
 
   let status = "✅ *READY*";
-  let statusDesc = "Bisa create panel sekarang!";
+  let statusDesc = "¡El panel de creación ahora!";
 
   if (jedaMs === 0) {
     status = "⚡ *NO JEDA*";
     statusDesc = "Jeda dinonaktifkan, bebas create!";
   } else if (remaining > 0) {
     status = "🕕 *COOLDOWN*";
-    statusDesc = `Tunggu ${formatTime(remaining)} lagi`;
+    statusDesc = `Espera${formatTime(remaining)}otra vez`;
   }
 
   let text = `⏱️ *sᴛᴀᴛᴜs ᴊᴇᴅᴀ ᴘᴀɴᴇʟ*\n\n`;
@@ -67,7 +67,7 @@ function handler(m, { sock }) {
 
   text += `╭┈┈⬡「 ⚙️ *ᴋᴏɴꜰɪɢ* 」\n`;
   text += `┃ ◦ Jeda: *${jedaMs === 0 ? "OFF" : formatTime(jedaMs)}*\n`;
-  text += `┃ ◦ Default: *5 menit*\n`;
+  text += `┃ ◦Predeterminado: * 5 minutos *\n`;
 
   if (lastUsed > 0) {
     const lastUsedTime = timeHelper.fromTimestamp(lastUsed, "HH:mm:ss");
@@ -75,13 +75,13 @@ function handler(m, { sock }) {
   }
 
   if (remaining > 0) {
-    text += `┃ ◦ Sisa: *${formatTime(remaining)}*\n`;
+    text += `┃ ◦Restante: *${formatTime(remaining)}*\n`;
   }
 
   text += `╰┈┈⬡\n\n`;
 
   if (m.isOwner) {
-    text += `> _Owner: gunakan \`${m.prefix}jedacreate\` untuk setting_`;
+    text += `Propietario: uso\`${m.prefix}jedacreate\`para setting_`;
   }
 
   return m.reply(text);

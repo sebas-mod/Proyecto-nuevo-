@@ -22,20 +22,20 @@ async function handler(m, { sock }) {
         try {
             video = await m.quoted.download()
         } catch (e) {
-            return m.reply(`❌ Gagal download video dari quoted.`)
+            return m.reply(`❌Stempelldownloads video de citado.`)
         }
     } else if (m.isVideo) {
         try {
             video = await m.download()
         } catch (e) {
-            return m.reply(`❌ Gagal download video.`)
+            return m.reply(`❌Steenaldownloads video.`)
         }
     }
     
     if (!video) {
         return m.reply(
             `⚠️ *ᴄᴀʀᴀ ᴘᴀᴋᴀɪ*\n\n` +
-            `> Kirim *video* atau *balas video* lalu ketik:\n` +
+            `*Klido * video * o * video de las ballas * y luego las axilas:\n` +
             `> \`${m.prefix}ptv\``
         )
     }

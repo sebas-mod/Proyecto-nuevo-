@@ -5,7 +5,7 @@ const pluginConfig = {
     name: 'hidetag2',
     alias: ['h2', 'ht2'],
     category: 'group',
-    description: 'Hidetag dengan fakeQuoted styling',
+    description: 'Escondite con faxQuoted styling',
     usage: '.h2 <text> atau reply pesan',
     example: '.h2 Pengumuman penting!',
     isOwner: false,
@@ -26,7 +26,7 @@ async function handler(m, { sock }) {
         return m.reply(
             `📢 *HIDETAG 2*\n\n` +
             `• \`${m.prefix}h2 <text>\`\n` +
-            `• Reply pesan + \`${m.prefix}h2\``
+            `•Responder mensaje +\`${m.prefix}h2\``
         )
     }
     try {

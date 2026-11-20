@@ -6,7 +6,7 @@ const pluginConfig = {
     name: "rulesgrup",
     alias: ["grouprules", "aturangrup", "grules"],
     category: "group",
-    description: "Menampilkan rules dan aturan grup secara lengkap",
+    description: "Participar plenamente en las reglas y reglas del Grupo",
     usage: ".rulesgrup",
     example: ".rulesgrup",
     isOwner: false,
@@ -18,37 +18,37 @@ const pluginConfig = {
     isEnabled: true,
 }
 
-const DEFAULT_GROUP_RULES = `📜 *ATURAN GRUP*
+const DEFAULT_GROUP_RULES = `📜*Reglas del grupo*
 
-Selamat datang di grup ini! Supaya suasana tetap nyaman dan kondusif untuk semua anggota, harap patuhi aturan-aturan berikut ini ya.
+¡Bienvenido al grupo!
 
 🔹 *ETIKA BERKOMUNIKASI*
 
-- Gunakan *bahasa yang sopan* dan saling menghargai satu sama lain. Tidak ada toleransi untuk kata-kata kasar atau ujaran kebencian.
-- Dilarang melakukan *spam* pesan berulang-ulang, termasuk spam sticker, gambar, dan voice note secara berlebihan.
-- Dilarang menyebarkan *konten SARA, pornografi, dan kekerasan* dalam bentuk apapun.
-- Jangan *menghina, membully, atau mempermalukan* anggota grup lainnya.
+No hay tolerancia para las palabras o palabras de odio.
+- Haciendo un mensapje @ spam @ spam @ repetitive, spam @ stickos connetados, imágenes, y las voces notan de una manera que dosh sobc @ - @ hecho.
+- Discutir la SARA, pornográfico, y la negación de cualquier cosa.
+- No insultes, ni acosas ni avergüences al otro grupo.
 
-🔹 *KONTEN DAN LINK*
+🔹* 91 * * KonakI Y Enlace 93*
 
-- Dilarang *promosi* produk, jasa, atau akun media sosial tanpa izin admin grup.
-- Dilarang *menyebarkan link* apapun tanpa persetujuan admin, termasuk link grup WhatsApp lain.
-- Dilarang menyebarkan *berita hoax* atau informasi yang belum terverifikasi kebenarannya.
-- Dilarang mengirim *dokumen atau file mencurigakan* yang berpotensi mengandung virus.
+- Promocional, servicios o cuentas de redes sociales sin permiso para administrador del grupo.
+- Discutir enlaces sin ofertas de administración, entrar en otro grupo de WhatsApp.
+- Difundir los esparcimientosx* o información no verificada de su veracidad.
+- Envió documentos o archivos que eran virus potenciales de embarazo.
 
-🔹 *PENGGUNAAN BOT*
+🔹> 91; UTILIZACIÓN DE BOT > 93;
 
-- Gunakan command bot *secukupnya*, jangan spam command berulang-ulang.
-- *Patuhi instruksi admin* grup kapan saja. Keputusan admin adalah final.
-- Jika ada masalah, sampaikan dengan baik-baik ke admin, bukan di grup.
+- Use suffcientes tarjitas, don 't spam comando over and over again.
+- * Patuhi administrador instruction * grupo place.
+- Si hay un problema, mételo al administrador, no al grupo.
 
 🔹 *KONSEKUENSI*
 
-- Pelanggaran ringan mendapat *peringatan (warning)* dari admin
-- Pelanggaran berat atau berulang akan di-*kick* dari grup
-- Admin berhak mengeluarkan member kapan saja tanpa pemberitahuan
+- Una advertencia rara de admin.
+- El peso o el rectificado estará en - * patada * del grupo
+- Admin tiene derecho a liberar a un cliente sin previo aviso.
 
-_Dengan bergabung di grup ini, kamu dianggap sudah menyetujui semua aturan di atas._`
+Se supone que sigues todas las reglas de aquí.`
 
 async function handler(m, { sock }) {
     const db = _ourindatabasejs.getDatabase.call(void 0, )

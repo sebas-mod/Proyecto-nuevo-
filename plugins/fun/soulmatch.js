@@ -7,7 +7,7 @@ const pluginConfig = {
     name: 'soulmatch',
     alias: [],
     category: 'fun',
-    description: 'Cek kecocokan jiwa dengan seseorang',
+    description: 'Verifique el partido de jiwa con alguien',
     usage: '.soulmatch nama1|nama2',
     example: '.soulmatch Raiden|Mei',
     isOwner: false,
@@ -23,7 +23,7 @@ const ELEMENTS = ['Api 🔥', 'Air 💧', 'Tanah 🌍', 'Angin 🌪️', 'Petir 
 const ZODIAC = ['♈ Aries', '♉ Taurus', '♊ Gemini', '♋ Cancer', '♌ Leo', '♍ Virgo', 
                '♎ Libra', '♏ Scorpio', '♐ Sagittarius', '♑ Capricorn', '♒ Aquarius', '♓ Pisces']
 const SOUL_TYPES = [
-    "Pemimpin Yang Berani", "Penyeimbang Bijaksana", "Kreator Ekspresif", "Pembangun Solid", 
+    "El mártir de los beraníes", "Penyeimbang Bijaksana", "Kreator Ekspresif", "Pembangun Solid", 
     "Petualang Bebas", "Pelindung Setia", "Pemikir Mistis", "Penakluk Kuat", "Humanitarian Murni"
 ]
 
@@ -47,13 +47,13 @@ function getMatchDescription(score) {
 
 function getReading(score) {
     if (score >= 80) {
-        return "Jiwa kalian memiliki koneksi yang sangat istimewa dan langka. Takdir telah merencanakan pertemuan ini."
+        return "Su Jiwa tiene una conexión muy especial y rara, y el destino ha sido hecho para cumplir con esto."
     } else if (score >= 60) {
-        return "Ada chemistry yang kuat di antara kalian. Perbedaan kalian justru menciptakan harmoni."
+        return "Hay una química que no puede manejar, ya sabes, la diferencia entre usted y el mundo que tiene."
     } else if (score >= 40) {
-        return "Butuh waktu untuk saling memahami. Setiap tantangan akan memperkuat ikatan kalian."
+        return "Se necesita tiempo para la venta para entender, y cada desafío será mucho más vinculante."
     }
-    return "Perbedaan signifikan dalam energi jiwa. Butuh banyak adaptasi dan pengertian."
+    return "Distribución de significado en la energía jiwa, requiere mucha adaptación e ingenio."
 }
 
 async function handler(m, { sock }) {
@@ -63,10 +63,10 @@ async function handler(m, { sock }) {
     if (!text || !text.includes('|')) {
         return m.reply(
             `💫 *sᴏᴜʟ ᴍᴀᴛᴄʜ*\n\n` +
-            `> Cek kecocokan jiwa 2 orang!\n\n` +
-            `*Format:*\n` +
-            `> \`.soulmatch nama1|nama2\`\n\n` +
-            `*Contoh:*\n` +
+            `¡Estoy tan cansada de que dos personas se vean atrapadas!\n\n` +
+            `*Formato:*\n` +
+            `♪\`Soulmatch. Nombre 1.\`\n\n` +
+            `*Ejemplo:*\n` +
             `> \`.soulmatch Raiden|Mei\``
         )
     }
@@ -74,7 +74,7 @@ async function handler(m, { sock }) {
     const [nama1, nama2] = text.split('|').map(n => n.trim())
     
     if (!nama1 || !nama2) {
-        return m.reply(`❌ Masukkan 2 nama dengan format: \`${m.prefix}soulmatch nama1|nama2\``)
+        return m.reply(`❌Inserte 2 nombres con forte:\`${m.prefix}nombre de la anfitriona 1.\``)
     }
     
     await m.react('🕕')

@@ -21,8 +21,8 @@ const SHOP_ITEMS = {
   antidote: { name: "💊 Antidote", buyPrice: 80, sellPrice: 40, desc: "Sembuhkan racun" },
   bread: { name: "🍞 Roti", buyPrice: 30, sellPrice: 15, desc: "Pulihkan 10 stamina" },
   energydrink: { name: "⚡ Energy Drink", buyPrice: 200, sellPrice: 100, desc: "Pulihkan 50 stamina" },
-  pickaxe: { name: "⛏️ Beliung", buyPrice: 500, sellPrice: 250, desc: "Untuk mining" },
-  fishingrod: { name: "🎣 Joran", buyPrice: 400, sellPrice: 200, desc: "Untuk memancing" },
+  pickaxe: { name: "⛏️ Beliung", buyPrice: 500, sellPrice: 250, desc: "Para mining" },
+  fishingrod: { name: "🎣 Joran", buyPrice: 400, sellPrice: 200, desc: "Para memancing" },
   wood: { name: "🪵 Kayu", buyPrice: 50, sellPrice: 25, desc: "Material dasar" },
   iron: { name: "🔩 Besi", buyPrice: 80, sellPrice: 40, desc: "Material logam" },
   leather: { name: "🧶 Kulit", buyPrice: 60, sellPrice: 30, desc: "Material armor" },
@@ -45,7 +45,7 @@ function handler(m) {
 
   if (!action || !["buy", "sell", "list"].includes(action)) {
     let txt = `🏪 *ᴍᴇʀᴄʜᴀɴᴛ sʜᴏᴘ*\n\n`;
-    txt += `> Selamat datang di toko!\n\n`;
+    txt += `¡Feliz cumpleaños a ti en la tienda!\n\n`;
     txt += `*📋 *ᴄᴏᴍᴍᴀɴᴅ:*
 \n`;
     txt += `> ${m.prefix}merchant list\n`;
@@ -63,8 +63,8 @@ function handler(m) {
 
     for (const [key, item] of Object.entries(SHOP_ITEMS)) {
       txt += `> ${item.name}\n`;
-      txt += `> 💵 Beli: ${item.buyPrice.toLocaleString()}\n`;
-      txt += `> 💰 Jual: ${item.sellPrice.toLocaleString()}\n`;
+      txt += `♪💵Compra:${item.buyPrice.toLocaleString()}\n`;
+      txt += `♪💰Vende:${item.sellPrice.toLocaleString()}\n`;
       txt += `> 📝 ${item.desc}\n`;
       txt += `> → \`${key}\`\n`;
       txt += `> \n`;
@@ -76,17 +76,17 @@ function handler(m) {
 
   if (action === "buy") {
     if (!itemKey) {
-      return m.reply(`❌ Tentukan item!\n\n> Contoh: \`${m.prefix}merchant buy potion 5\``);
+      return m.reply(`❌Tentukan objeto!\n\n> Ejemplo:\`${m.prefix}merchant buy potion 5\``);
     }
 
     const item = SHOP_ITEMS[itemKey];
     if (!item) {
-      return m.reply(`❌ Item tidak ditemukan!\n\n> Ketik \`${m.prefix}merchant list\` untuk melihat daftar.`);
+      return m.reply(`❌¡El artículo no se encuentra!\n\n> Escribe\`${m.prefix}Lista de comerciantes\`para ver la lista.`);
     }
 
     const totalCost = item.buyPrice * qty;
     if ((user.koin || 0) < totalCost) {
-      return m.reply(`❌ *ʙᴀʟᴀɴᴄᴇ ᴋᴜʀᴀɴɢ*\n\n` + `> Harga: ${totalCost.toLocaleString()}\n` + `> Balance: ${(user.koin || 0).toLocaleString()}`);
+      return m.reply(`❌ *ʙᴀʟᴀɴᴄᴇ ᴋᴜʀᴀɴɢ*\n\n` + `> Precio:${totalCost.toLocaleString()}\n` + `> Balance: ${(user.koin || 0).toLocaleString()}`);
     }
 
     user.koin -= totalCost;
@@ -97,27 +97,27 @@ function handler(m) {
       `✅ *ᴘᴇᴍʙᴇʟɪᴀɴ ʙᴇʀʜᴀsɪʟ*\n\n` +
         `*🛒 *ᴅᴇᴛᴀɪʟ:*
 \n` +
-        `> 📦 Item: *${item.name}*\n` +
+        `♪📦Objeto: *${item.name}*\n` +
         `> 📊 Qty: *${qty}*\n` +
         `> 💵 Total: *-${totalCost.toLocaleString()}*\n` +
-        `> 💰 Sisa: *${user.koin.toLocaleString()}*\n` +
+        `♪💰Restante: *${user.koin.toLocaleString()}*\n` +
         ``,
     );
   }
 
   if (action === "sell") {
     if (!itemKey) {
-      return m.reply(`❌ Tentukan item!\n\n> Contoh: \`${m.prefix}merchant sell iron 10\``);
+      return m.reply(`❌Tentukan objeto!\n\n> Ejemplo:\`${m.prefix}merchant sell iron 10\``);
     }
 
     const item = SHOP_ITEMS[itemKey];
     if (!item) {
-      return m.reply(`❌ Item tidak bisa dijual ke merchant!`);
+      return m.reply(`❌¡Los artículos no pueden venderse a la mercancía!`);
     }
 
     const have = user.inventory[itemKey] || 0;
     if (have < qty) {
-      return m.reply(`❌ *ɪᴛᴇᴍ ᴋᴜʀᴀɴɢ*\n\n` + `> Punya: ${have}\n` + `> Mau jual: ${qty}`);
+      return m.reply(`❌ *ɪᴛᴇᴍ ᴋᴜʀᴀɴɢ*\n\n` + `> Tener:${have}\n` + `# Para vender:${qty}`);
     }
 
     const totalEarn = item.sellPrice * qty;
@@ -130,7 +130,7 @@ function handler(m) {
       `✅ *ᴘᴇɴᴊᴜᴀʟᴀɴ ʙᴇʀʜᴀsɪʟ*\n\n` +
         `*💰 *ᴅᴇᴛᴀɪʟ:*
 \n` +
-        `> 📦 Item: *${item.name}*\n` +
+        `♪📦Objeto: *${item.name}*\n` +
         `> 📊 Qty: *${qty}*\n` +
         `> 💵 Total: *+${totalEarn.toLocaleString()}*\n` +
         `> 💰 Balance: *${user.koin.toLocaleString()}*\n` +

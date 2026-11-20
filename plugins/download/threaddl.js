@@ -46,7 +46,7 @@ const pluginConfig = {
   name: "threaddl",
   alias: ["tdl", "threads", "threadsdl"],
   category: "download",
-  description: "Download foto dan video dari postingan Threads tanpa repot!",
+  description: "Descargar fotos y videos de publicaciones Pan sin una olla!",
   usage: ".tdl <url>",
   example: ".tdl https://www.threads.net/@xxx/post/xxx",
   cooldown: 10,
@@ -91,18 +91,18 @@ async function handler(m, { sock }) {
 
     if (res.status >= 300 || data.success !== true || result.length === 0) {
       await m.react("❌");
-      return m.reply(`⚠️ *Aduh, gagal mengambil data dari Threads!*\n\nMungkin postingan ini bersifat privat, sudah dihapus, atau link yang kamu berikan kurang tepat.\n\nAlasan sistem: ${data.message || data.error || "Tidak diketahui"}`);
+      return m.reply(`⚠* Ouch, no pudo recuperar datos de los hilos!\n\nTal vez este post está preparado, cubierto, o el enlace en el que pesca es correcto.\n\nRazón del sistema:${data.message || data.error || "Tidak diketahui"}`);
     }
 
     const captionText = `✨ *THREADS DOWNLOADER* ✨
 
-Halo! Ini hasil unduhan Threads yang kamu minta:
+Este es el resultado del contrabando de panes que pidió:
 
-👤 *Pembuat*: ${info.author || "Unknown"}
-📝 *Teks Postingan*: ${cleanText(info.title) || cleanText(info.description) || "Tidak ada deskripsi."}
-📊 *Jumlah File Media*: ${result.length} file
+👤*Creador*:${info.author || "Unknown"}
+📝*Texto Postingan*:${cleanText(info.title) || cleanText(info.description) || "Tidak ada deskripsi."}
+📊* Jumulah Archivo Media *${result.length}archivo
 
-*Semoga bermanfaat ya!* Jangan lupa mampir lagi kalau mau download yang lain. 🚀`;
+No olvides volver a bajar.🚀`;
 
     const mediaList = [];
     for (const item of result) {
@@ -127,7 +127,7 @@ Halo! Ini hasil unduhan Threads yang kamu minta:
   } catch (err) {
     console.error("[ThreadsDL]", err.message);
     await m.react("☢");
-    m.reply("😔 *Sepertinya ada gangguan di sistemku.* \n\nTerjadi kesalahan fatal saat mencoba memproses link Threads tersebut. Silakan coba lagi nanti ya!");
+    m.reply("😔Creo que tengo un trastorno en mi sistema.\n\nEs un error fatal tratar de procesar los threadts más tarde.");
   }
 }
 

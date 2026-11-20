@@ -7,7 +7,7 @@ const pluginConfig = {
   name: "delplugin",
   alias: ["delpl", "hapusplugin", "removeplugin"],
   category: "owner",
-  description: "Hapus plugin berdasarkan nama",
+  description: "Eliminar plugins nombrados",
   usage: ".delplugin <nama>",
   example: ".delplugin bliblidl",
   isOwner: true,
@@ -45,10 +45,10 @@ async function handler(m, { sock }) {
 
   if (!name) {
     return m.reply(
-      `Halo *${m.pushName}*, sepertinya kamu lupa memasukkan nama plugin yang ingin dihapus.\n\n` +
-      `Silakan gunakan format perintah berikut:\n` +
+      `Hola *${m.pushName}*, parece que se olvidó de incluir el nombre de los plugins que desea tocar.\n\n` +
+      `Por favor, utilice el siguiente formato de comando:\n` +
       `- .delplugin <nama plugin>\n\n` +
-      `Contoh penggunaan:\n` +
+      `Ejemplo de uso:\n` +
       `- .delplugin bliblidl`
     );
   }
@@ -61,7 +61,7 @@ async function handler(m, { sock }) {
 
     if (!found) {
       await m.react("❌");
-      return m.reply(`Maaf *${m.pushName}*, plugin dengan nama ${name} tidak dapat ditemukan.`);
+      return m.reply(`Lo siento *${m.pushName}*, plug by name${name}Es indetectable.`);
     }
 
     let unloadResult = { success: false };
@@ -73,11 +73,11 @@ async function handler(m, { sock }) {
 
     await m.react("✅");
     let replyText =
-      `Proses selesai! Plugin berhasil dihapus dari sistem.\n\n` +
-      `- File: ${found.file}\n` +
-      `- Folder: ${found.folder}\n` +
+      `El proceso está completo! Plugin interceptado con éxito del sistema.\n\n` +
+      `- Archivo:${found.file}\n` +
+      `- Carpeta:${found.folder}\n` +
       `- Status Unload: ${unloadResult.success ? "Berhasil" : "Pending"}\n\n` +
-      `Plugin tersebut sudah dihapus dan tidak aktif lagi.`;
+      `El plug ha sido interceptado y desactivado.`;
 
     return m.reply(replyText);
   } catch (error) {

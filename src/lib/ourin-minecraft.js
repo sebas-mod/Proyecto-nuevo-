@@ -213,7 +213,7 @@ function addPickExp(mcUser, pickKey, amount) {
     statsIncreased.push("Luck +1%, Speed +1%, Fortune +0.5%");
   }
   if (levelUp)
-    return `⛏️ Pickaxe *${pick.name}* naik ke level ${pick.level}!\n✨ ${statsIncreased.join(", ")}`;
+    return `⛏️ Pickaxe *${pick.name}* Hasta el nivel${pick.level}!\n✨ ${statsIncreased.join(", ")}`;
   return null;
 }
 
@@ -282,7 +282,7 @@ function doCombat(mcUser, mobKey) {
   const mobDef = _ourinminecraftdatajs.mobData[mobKey];
   if (!mobDef) return null;
   if ((mcUser.level || 1) < mobDef.minLevel)
-    return { error: `⬆️ Level kurang! Butuh Lv.${mobDef.minLevel}` };
+    return { error: `⬆- ¡Lv 's tiene un corto!${mobDef.minLevel}` };
   if ((mcUser.hp || 20) <= 0) mcUser.hp = mcUser.maxHp || 20;
 
   const playerAtk = mcUser.atk + (mcUser.combatUpgrade || 0) * 3;
@@ -295,14 +295,14 @@ function doCombat(mcUser, mobKey) {
   while (pHp > 0 && mHp > 0) {
     const pDmg = Math.max(1, playerAtk - Math.floor(Math.random() * 2));
     mHp -= pDmg;
-    log.push(`⚔️ Kamu: -${pDmg} HP ke ${mobDef.name}`);
+    log.push(`⚔Eres tan lindo.${pDmg} HP ke ${mobDef.name}`);
     if (mHp <= 0) break;
     const mDmg = Math.max(
       1,
       mobAtk - (mcUser.def || 0) - Math.floor(Math.random() * 2),
     );
     pHp -= mDmg;
-    log.push(`💥 ${mobDef.name}: -${mDmg} HP ke kamu`);
+    log.push(`💥 ${mobDef.name}: -${mDmg}Hágalo.`);
   }
 
   const won = mHp <= 0;
@@ -369,9 +369,9 @@ function doSmelt(mcUser) {
 
 function doCraft(mcUser, recipeKey) {
   const recipe = _ourinminecraftdatajs.CRAFT_RECIPES[recipeKey];
-  if (!recipe) return { error: "🛠️ Resep tidak ada!" };
+  if (!recipe) return { error: "🛠- ¡No hay prescripción!" };
   if ((mcUser.level || 1) < recipe.requiredLevel)
-    return { error: `⬆️ Level kurang! Butuh Lv.${recipe.requiredLevel}` };
+    return { error: `⬆- ¡Lv 's tiene un corto!${recipe.requiredLevel}` };
 
   const invNames = (mcUser.inventory || []).map((i) => i.name);
   const tempInv = [...invNames];
@@ -386,7 +386,7 @@ function doCraft(mcUser, recipeKey) {
     }
     if (found < count)
       return {
-        error: `🧪 Bahan kurang! ${ingName} butuh ${count}, punya ${found}`,
+        error: `🧪Bahan menos!${ingName}necesito${count}, tener${found}`,
       };
   }
 
@@ -438,7 +438,7 @@ function applyJackpotReward(db, mcUser, sender, result) {
         user.energi = (user.energi || 0) + val;
         db.markDirty("users");
       }
-      applied = { desc: `⚡ +${val} Energi`, type };
+      applied = { desc: `⚡ +${val}Energía`, type };
       break;
     }
     case "limit": {
@@ -448,7 +448,7 @@ function applyJackpotReward(db, mcUser, sender, result) {
         user.limit = (user.limit || 0) + val;
         db.markDirty("users");
       }
-      applied = { desc: `📌 +${val} Limit`, type };
+      applied = { desc: `📌 +${val}Límite`, type };
       break;
     }
     case "tickets":
@@ -480,7 +480,7 @@ function applyJackpotReward(db, mcUser, sender, result) {
         user.isPremium = true;
         db.markDirty("users");
       }
-      applied = { desc: `👑 Premium ${days} Hari!`, type };
+      applied = { desc: `👑Premium${days}El!`, type };
       break;
     }
     case "partner_7d":
@@ -498,7 +498,7 @@ function applyJackpotReward(db, mcUser, sender, result) {
         user.isPartner = true;
         db.markDirty("users");
       }
-      applied = { desc: `🤝 Partner ${days} Hari!`, type };
+      applied = { desc: `🤝 Partner ${days}El!`, type };
       break;
     }
     case "unlimited_energi": {
@@ -508,7 +508,7 @@ function applyJackpotReward(db, mcUser, sender, result) {
         user.energi = -1;
         db.markDirty("users");
       }
-      applied = { desc: `♾️ UNLIMITED Energi!`, type };
+      applied = { desc: `♾*Energía UNLIMITADA*`, type };
       break;
     }
     case "unlimited_limit": {
@@ -518,7 +518,7 @@ function applyJackpotReward(db, mcUser, sender, result) {
         user.limit = -1;
         db.markDirty("users");
       }
-      applied = { desc: `♾️ UNLIMITED Limit!`, type };
+      applied = { desc: `♾* Límite desligado*`, type };
       break;
     }
     case "owner_reward": {
@@ -538,7 +538,7 @@ function applyJackpotReward(db, mcUser, sender, result) {
         db.markDirty("users");
       }
       applied = {
-        desc: `🔥 OWNER REWARD! Premium+Partner 1 Tahun + UNLIMITED!`,
+        desc: `🔥¡Propietario REWARD! Premium + Partners 1 Año + UNLIMITED!`,
         type,
       };
       break;
@@ -561,9 +561,9 @@ function getAvailableMobs(mcUser) {
 
 function healPlayer(mcUser) {
   const cost = Math.floor((mcUser.maxHp - mcUser.hp) * 500);
-  if (mcUser.hp >= mcUser.maxHp) return { error: "❤️ HP sudah penuh!" };
+  if (mcUser.hp >= mcUser.maxHp) return { error: "❤¡El HP está lleno!" };
   if ((mcUser.money || 0) < cost)
-    return { error: `💸 Uang kurang! Butuh ${formatMoney(cost)}` };
+    return { error: `💸Dinero al @-@ Dinero!${formatMoney(cost)}` };
   mcUser.money -= cost;
   mcUser.hp = mcUser.maxHp;
   return { success: true, cost, hp: mcUser.hp };

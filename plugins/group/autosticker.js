@@ -4,7 +4,7 @@ const pluginConfig = {
     name: 'autosticker',
     alias: ['autostiker', 'as'],
     category: 'group',
-    description: 'Toggle auto sticker - otomatis jadikan gambar/video jadi sticker',
+    description: 'Toggle auto stickers - automatización para que la imagen / vídeo se convierta en stickers',
     usage: '.autosticker on/off',
     example: '.autosticker on',
     isOwner: false,
@@ -29,33 +29,33 @@ async function handler(m, { sock }) {
         return m.reply(
             `🖼️ *ᴀᴜᴛᴏsᴛɪᴄᴋᴇʀ*\n\n` +
             `> Status: ${status}\n\n` +
-            `> Gunakan:\n` +
+            `> Usa:\n` +
             `> \`${m.prefix}autosticker on\` - aktifkan\n` +
             `> \`${m.prefix}autosticker off\` - nonaktifkan\n\n` +
-            `> _Otomatis jadikan gambar/video jadi sticker_`
+            `# Así que foto / video tan pegatina_`
         )
     }
     
     
     if (arg === 'on' || arg === '1' || arg === 'aktif') {
         if (current) {
-            return m.reply(`🖼️ *ᴀᴜᴛᴏsᴛɪᴄᴋᴇʀ*\n\n> Sudah aktif!`)
+            return m.reply(`🖼♪ᴀᴜᴛᴏSᴛɪᴄᴋᴇʀ*\n\n¡Dios mío!`)
         }
         db.setGroup(m.chat, { autosticker: true })
         await db.save()
-        return m.reply(`🖼️ *ᴀᴜᴛᴏsᴛɪᴄᴋᴇʀ*\n\n> ✅ Berhasil diaktifkan!\n> Gambar/video akan otomatis jadi sticker`)
+        return m.reply(`🖼♪ᴀᴜᴛᴏSᴛɪᴄᴋᴇʀ*\n\n♪✅Activado correctamente!\nImagen / video automatizará a las pegatinas`)
     }
     
     if (arg === 'off' || arg === '0' || arg === 'nonaktif') {
         if (!current) {
-            return m.reply(`🖼️ *ᴀᴜᴛᴏsᴛɪᴄᴋᴇʀ*\n\n> Sudah nonaktif!`)
+            return m.reply(`🖼♪ᴀᴜᴛᴏSᴛɪᴄᴋᴇʀ*\n\n¡Dios mío!`)
         }
         db.setGroup(m.chat, { autosticker: false })
         await db.save()
-        return m.reply(`🖼️ *ᴀᴜᴛᴏsᴛɪᴄᴋᴇʀ*\n\n> ❌ Berhasil dinonaktifkan!`)
+        return m.reply(`🖼♪ᴀᴜᴛᴏSᴛɪᴄᴋᴇʀ*\n\n♪❌Desactivado correctamente!`)
     }
     
-    return m.reply(`❌ Gunakan: \`${m.prefix}autosticker on/off\``)
+    return m.reply(`❌ Usa: \`${m.prefix}autosticker on/off\``)
 }
 
 async function autoStickerHandler(m, sock) {
@@ -94,7 +94,7 @@ async function autoStickerHandler(m, sock) {
         if (isImage) {
             await sock.sendImageAsSticker(m.chat, buffer, m, {
                 packname: _optionalChain([_configjs2.default, 'access', _12 => _12.sticker, 'optionalAccess', _13 => _13.packname]) || 'Ourin',
-                author: _optionalChain([_configjs2.default, 'access', _14 => _14.sticker, 'optionalAccess', _15 => _15.author]) || 'Bot'
+                author: _optionalChain([_configjs2.default, 'access', _14 => _14.sticker, 'optionalAccess', _15 => _15.author]) || '♪'
             })
         } else if (isVideo) {
             const videoMsg = msg.videoMessage || _optionalChain([content, 'optionalAccess', _16 => _16.message, 'optionalAccess', _17 => _17.videoMessage])
@@ -103,7 +103,7 @@ async function autoStickerHandler(m, sock) {
             
             await sock.sendVideoAsSticker(m.chat, buffer, m, {
                 packname: _optionalChain([_configjs2.default, 'access', _19 => _19.sticker, 'optionalAccess', _20 => _20.packname]) || 'Ourin',
-                author: _optionalChain([_configjs2.default, 'access', _21 => _21.sticker, 'optionalAccess', _22 => _22.author]) || 'Bot'
+                author: _optionalChain([_configjs2.default, 'access', _21 => _21.sticker, 'optionalAccess', _22 => _22.author]) || '♪'
             })
         }
         

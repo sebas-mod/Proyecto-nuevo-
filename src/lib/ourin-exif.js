@@ -1,17 +1,17 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { newObj[key] = obj[key]; } } } newObj.default = obj; return newObj; } } function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; } function _nullishCoalesce(lhs, rhsFn) { if (lhs != null) { return lhs; } else { return rhsFn(); } }/**
  * Credits & Thanks to
- * Developer = Lucky Archz ( Zann )
- * Lead owner = HyuuSATAN
- * Owner = Keisya
+* Desarrollo = Lucchy Archz ( Zann )
+* Propietario principal: PESUSUATAN
+* Propietario = Keisya
  * Designer = Danzzz
  * Wileys = Penyedia baileys
  * Penyedia APIs
  * Penyedia Scrapers
  * 
- * JANGAN HAPUS/GANTI CREDITS & THANKS TO
- * JANGAN DIJUAL YA MEK
+* DEFENSE Elimina / GANIT CREDITS TO THANKS
+* DORNESS SALE YA MEK
  * 
- * Saluran Resmi Ourin:
+* Oficial Ourin Saluran:
  * https://whatsapp.com/channel/0029VbB37bgBfxoAmAlsgE0t 
  * 
  */

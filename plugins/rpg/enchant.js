@@ -4,7 +4,7 @@ const pluginConfig = {
   name: "enchant",
   alias: ["upgrade", "enhance", "tingkatkan"],
   category: "rpg",
-  description: "Upgrade equipment dengan enchantment",
+  description: "Equipos de actualización con encanto",
   usage: ".enchant <item>",
   example: ".enchant sword",
   isOwner: false,
@@ -39,7 +39,7 @@ async function handler(m, { sock }) {
 
   if (!itemName) {
     let txt = `✨ *ᴇɴᴄʜᴀɴᴛ - ᴜᴘɢʀᴀᴅᴇ ᴇǫᴜɪᴘ*\n\n`;
-    txt += `> Tingkatkan equipment untuk bonus stats!\n\n`;
+    txt += `- ¡Arriba los equipos para las estadísticas de bonificación!\n\n`;
     txt += `*📦 *ɪᴛᴇᴍ:*
 \n`;
 
@@ -47,7 +47,7 @@ async function handler(m, { sock }) {
       const currentLevel = user.rpg.enchants[key] || 0;
       txt += `> ${item.name}\n`;
       txt += `> 📊 Level: ${currentLevel}/10\n`;
-      txt += `> 💪 Bonus: +${item.bonus} ${item.stat}\n`;
+      txt += `♪💪Bono: +${item.bonus} ${item.stat}\n`;
       txt += `> 💰 Cost: ${item.cost.toLocaleString()}\n`;
       txt += `> 🎯 Rate: ${item.successRate}%\n`;
       txt += `> → \`${key}\`\n> \n`;
@@ -59,21 +59,21 @@ async function handler(m, { sock }) {
 
   const item = ENCHANTABLE[itemName];
   if (!item) {
-    return m.reply(`❌ Item tidak bisa di-enchant!\n\n> Ketik \`${m.prefix}enchant\` untuk melihat daftar.`);
+    return m.reply(`❌¡Los artículos no pueden ser encantadores!\n\n> Escribe\`${m.prefix}encantados\`para ver la lista.`);
   }
 
   if ((user.inventory[itemName] || 0) < 1) {
-    return m.reply(`❌ Kamu tidak punya ${item.name}!`);
+    return m.reply(`❌No tiene ninguna.${item.name}!`);
   }
 
   const currentLevel = user.rpg.enchants[itemName] || 0;
   if (currentLevel >= 10) {
-    return m.reply(`❌ ${item.name} sudah level MAX (10)!`);
+    return m.reply(`❌ ${item.name}¡Ya es el nivel Max ( 10 )!`);
   }
 
   const cost = item.cost * (currentLevel + 1);
   if ((user.koin || 0) < cost) {
-    return m.reply(`❌ *ʙᴀʟᴀɴᴄᴇ ᴋᴜʀᴀɴɢ*\n\n` + `> Butuh: ${cost.toLocaleString()}\n` + `> Balance: ${(user.koin || 0).toLocaleString()}`);
+    return m.reply(`❌ *ʙᴀʟᴀɴᴄᴇ ᴋᴜʀᴀɴɢ*\n\n` + `> Necesito:${cost.toLocaleString()}\n` + `> Balance: ${(user.koin || 0).toLocaleString()}`);
   }
 
   user.koin -= cost;
@@ -97,9 +97,9 @@ async function handler(m, { sock }) {
       `🎉 *ᴇɴᴄʜᴀɴᴛ ʙᴇʀʜᴀsɪʟ!*\n\n` +
         `*✨ *ʀᴇsᴜʟᴛ:*
 \n` +
-        `> 📦 Item: *${item.name}*\n` +
+        `♪📦Objeto: *${item.name}*\n` +
         `> 📊 Level: *${currentLevel} → ${currentLevel + 1}*\n` +
-        `> 💪 Bonus: *+${item.bonus} ${item.stat}*\n` +
+        `♪💪Bono: *+${item.bonus} ${item.stat}*\n` +
         `> 💰 Cost: *-${cost.toLocaleString()}*\n` +
         `> ✨ EXP: *+150*\n` +
         ``,
@@ -112,11 +112,11 @@ async function handler(m, { sock }) {
       `💔 *ᴇɴᴄʜᴀɴᴛ ɢᴀɢᴀʟ!*\n\n` +
         `*😢 *ʀᴇsᴜʟᴛ:*
 \n` +
-        `> 📦 Item: *${item.name}*\n` +
-        `> 📊 Level: *${currentLevel}* (tidak naik)\n` +
+        `♪📦Objeto: *${item.name}*\n` +
+        `> 📊 Level: *${currentLevel}* (sin jersey)\n` +
         `> 💰 Cost: *-${cost.toLocaleString()}* (hangus)\n` +
         `\n\n` +
-        `💡 *Tips:* Coba lagi! Rate: ${adjustedRate}%`,
+        `💡* Consejos: * ¡Intenta otra vez!${adjustedRate}%`,
     );
   }
 }

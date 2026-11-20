@@ -14,7 +14,7 @@ const pluginConfig = {
   name: "daftar",
   alias: ["register", "reg"],
   category: "user",
-  description: "Daftar sebagai user bot melalui sesi reply interaktif",
+  description: "Lista como usuario bot a través de la sesión de respuesta interactiva",
   usage: ".daftar",
   example: ".daftar",
   isOwner: false,
@@ -179,17 +179,17 @@ function buildRewardPreview(user) {
   const rewards = getRegistrationRewards();
 
   if (_optionalChain([user, 'optionalAccess', _26 => _26.hasClaimedRegisterReward])) {
-    return `🎁 *Status Bonus*\n> Bonus daftar pertama sudah pernah kamu klaim\n> Daftar ulang tidak mendapat reward lagi`;
+    return `🎁*Estado Bono*\nUsted ha reclamado su primera lista de bonos.\n*El resign no consigue una regrado*`;
   }
 
-  return `🎁 *Bonus Daftar Pertama*\n> 💰 +${rewards.koin.toLocaleString("id-ID")} Koin\n> ⚡ +${rewards.energi} Energi\n> ⭐ +${rewards.exp.toLocaleString("id-ID")} EXP`;
+  return `🎁Primera lista de bonificación\n♪💰+${rewards.koin.toLocaleString("id-ID")} Koin\n> ⚡ +${rewards.energi} Energi\n> ⭐ +${rewards.exp.toLocaleString("id-ID")} EXP`;
 }
 
 function buildConfirmationRewardBlock(user) {
   const rewards = getRegistrationRewards();
 
   if (_optionalChain([user, 'optionalAccess', _27 => _27.hasClaimedRegisterReward])) {
-    return `╭┈┈⬡「 🎁 *ʙᴏɴᴜs* 」\n┃ Bonus daftar pertama sudah pernah diambil\n┃ Daftar ulang tidak mendapat reward lagi\n╰┈┈┈┈┈┈┈┈⬡`;
+    return `╭┈┈⬡「 🎁*ʙᴏɴᴜs ♪」\n┃La primera lista de bonos ya se ha tomado\n┃Relist ya no se vuelve a enloquecer\n╰┈┈┈┈┈┈┈┈⬡`;
   }
 
   return `╭┈┈⬡「 🎁 *ʀᴇᴡᴀʀᴅs* 」\n┃ 💰 +${rewards.koin.toLocaleString("id-ID")} Koin\n┃ ⚡ +${rewards.energi} Energi\n┃ ⭐ +${rewards.exp.toLocaleString("id-ID")} EXP\n╰┈┈┈┈┈┈┈┈⬡`;
@@ -199,7 +199,7 @@ function buildSuccessRewardBlock(alreadyClaimedReward) {
   const rewards = getRegistrationRewards();
 
   if (alreadyClaimedReward) {
-    return `╭┈┈⬡「 🎁 *ʙᴏɴᴜs* 」\n┃ Bonus daftar sudah pernah diklaim\n┃ Tidak ada reward tambahan kali ini\n╰┈┈┈┈┈┈┈┈⬡`;
+    return `╭┈┈⬡「 🎁*ʙᴏɴᴜs ♪」\n┃La lista de bonos se ha reclamado\n┃No hay resorts adicionales está vez\n╰┈┈┈┈┈┈┈┈⬡`;
   }
 
   return `╭┈┈⬡「 🎁 *ʀᴇᴡᴀʀᴅs* 」\n┃ 💰 +${rewards.koin.toLocaleString("id-ID")} Koin\n┃ ⚡ +${rewards.energi} Energi\n┃ ⭐ +${rewards.exp.toLocaleString("id-ID")} EXP\n╰┈┈┈┈┈┈┈┈⬡`;
@@ -208,8 +208,8 @@ function buildSuccessRewardBlock(alreadyClaimedReward) {
 function buildUserDataBlock(name, age, gender) {
   return (
     `╭┈┈⬡「 📋 *ᴅᴀᴛᴀ* 」\n` +
-    `┃ 📛 Nama: *${name || "-"}*\n` +
-    `┃ 🎂 Umur: *${age ? `${age} tahun` : "-"}*\n` +
+    `┃ 📛Nombre: *${name || "-"}*\n` +
+    `┃ 🎂Edad: *${age ? `${age} tahun` : "-"}*\n` +
     `┃ 👤 Gender: *${gender || "-"}*\n` +
     `╰┈┈┈┈┈┈┈┈⬡`
   );
@@ -217,7 +217,7 @@ function buildUserDataBlock(name, age, gender) {
 
 function buildWelcomeMessage(user, registrationRequired, prefix) {
   const benefits = [
-    `🗂️ Data akun kamu tersimpan lebih rapi`,
+    `🗂Los datos de su cuenta se guardan más rápidamente`,
     `${buildRewardPreview(user)}`,
   ];
 
@@ -225,35 +225,35 @@ function buildWelcomeMessage(user, registrationRequired, prefix) {
     benefits.splice(
       1,
       0,
-      `🔓 Setelah daftar kamu bisa mengakses semua command`,
+      `🔓Siempre y cuando su lista pueda acceder a todos los comandos`,
     );
   }
 
   return (
     `👋 *sᴇʟᴀᴍᴀᴛ ᴅᴀᴛᴀɴɢ ᴅɪ ᴍᴇɴᴜ ᴅᴀꜰᴛᴀʀ*\n\n` +
-    `✨ Dengan daftar, data akun kamu jadi lebih aman dan pengalaman pakai bot jadi lebih lengkap.\n\n` +
-    `🌟 *Manfaat Daftar*\n` +
+    `✨Con la lista, los datos de su cuenta son más seguros y la experiencia de robot es más completa.\n\n` +
+    `🌟*Manfaat Registrate*\n` +
     `${benefits.map((item) => `> ${item}`).join("\n")}\n\n` +
-    `📝 *Pertanyaan 1/4*\n` +
-    `> Siapa nama kamu?\n\n` +
-    `📌 *Wajib reply pesan ini ya*\n` +
-    `> Untuk batal: reply \`batal\` atau ketik \`${prefix}bataldaftar\``
+    `📝*Pregunta 1/4*\n` +
+    `¿Quién es tu nombre?\n\n` +
+    `📌* Obligatorio respuesta essaje sí *\n` +
+    `*Al batallón: respuesta*\`cancelar\`o escribe\`${prefix}bataldaftar\``
   );
 }
 
 function buildConfirmationPrompt(session, user) {
   return (
     `✅ *ᴘᴇʀᴛᴀɴʏᴀᴀɴ 4/4*\n\n` +
-    `Apakah data berikut sudah benar?\n\n` +
+    `¿Los próximos datos son correctos?\n\n` +
     `${buildUserDataBlock(session.name, session.age, session.gender)}\n\n` +
     `${buildConfirmationRewardBlock(user)}\n\n` +
-    `🛠️ Kalau ada yang salah, kamu bisa revisi per bagian.\n\n` +
-    `*Reply pesan ini dengan:*\n` +
-    `> \`ya\` untuk simpan\n` +
-    `> \`revisi nama\` untuk ubah nama\n` +
-    `> \`revisi umur\` untuk ubah umur\n` +
-    `> \`revisi gender\` untuk ubah gender\n` +
-    `> \`batal\` untuk batalkan`
+    `🛠Si se equivoca, puede revisar por acción.\n\n` +
+    `* Responder este mensaje con: *\n` +
+    `♪\`si\`para guarda\n` +
+    `♪\`revisi nombre\`Para renombrar\n` +
+    `♪\`revisi edad\`Para el uso común.\n` +
+    `♪\`revisiones de género\`Para género @-@ embers.\n` +
+    `♪\`cancelar\`para cancela`
   );
 }
 
@@ -263,17 +263,17 @@ async function handler(m, { sock }) {
 
   if (_optionalChain([user, 'optionalAccess', _28 => _28.isRegistered])) {
     return m.reply(
-      `✅ Kamu sudah terdaftar!\n\n` +
+      `✅¡Ya estás registrado!\n\n` +
       `${buildUserDataBlock(user.regName, user.regAge, user.regGender)}\n\n` +
-      `> Untuk unregister: \`${m.prefix}unreg\``,
+      `Para los no registrados:\`${m.prefix}unreg\``,
     );
   }
 
   if (getRegistrationSessionEntry(m.sender).session) {
     return m.reply(
-      `📝 Masih ada sesi pendaftaran aktif!\n\n` +
-      `> Reply pesan terakhir bot untuk melanjutkan\n` +
-      `> Atau ketik: \`${m.prefix}bataldaftar\``,
+      `📝¡Hay un sesi @-@ sign active!\n\n` +
+      `Responder el último mensaje bot para añadir\n` +
+      `- Sí.\`${m.prefix}bataldaftar\``,
     );
   }
 
@@ -305,7 +305,7 @@ async function registrationAnswerHandler(m, sock) {
   if (["batal", "cancel", "batalkan"].includes(lowText)) {
     clearRegistrationSession(m.sender);
     await m.reply(
-      `❌ Pendaftaran dibatalkan.\n\n> Mulai lagi dengan: \`${m.prefix}daftar\``,
+      `❌Registro cancelado.\n\nDisfrute de los Starys de nuevo con:\`${m.prefix}daftar\``,
     );
     return true;
   }
@@ -314,7 +314,7 @@ async function registrationAnswerHandler(m, sock) {
     const name = normalizeRegistrationName(text);
 
     if (name.length < 2 || name.length > 30) {
-      await m.reply(`❌ Nama harus 2-30 karakter!`);
+      await m.reply(`❌El nombre debe ser 2 @-@ 30 caracteres!`);
       return true;
     }
 
@@ -325,11 +325,11 @@ async function registrationAnswerHandler(m, sock) {
       sock,
       m,
       `🎂 *ᴘᴇʀᴛᴀɴʏᴀᴀɴ 2/4*\n\n` +
-      `Halo *${name}* 👋\n\n` +
-      `> Berapa umurmu?\n\n` +
-      `📌 Umur hanya boleh *1 - 100* tahun\n` +
-      `📩 Reply pesan ini dengan angka umur kamu\n\n` +
-      `> Contoh: \`17\``,
+      `Hola *${name}* 👋\n\n` +
+      `¿Cuál es su edad?\n\n` +
+      `📌Edad sólo se permite * 1 - 100 * años\n` +
+      `📩Responder este mensaje con su número general\n\n` +
+      `> Ejemplo:\`17\``,
     );
 
     session.promptId = _optionalChain([sent, 'optionalAccess', _31 => _31.key, 'optionalAccess', _32 => _32.id]) || session.promptId;
@@ -341,7 +341,7 @@ async function registrationAnswerHandler(m, sock) {
 
     if (!/^\d+$/.test(text) || Number.isNaN(age) || age < 1 || age > 100) {
       await m.reply(
-        `❌ Umur tidak valid!\n\n> Masukkan angka umur dari *1 - 100* tahun`,
+        `❌¡La edad no es válida!\n\nAquí va el número general de 1 @-@ 100 *`,
       );
       return true;
     }
@@ -353,10 +353,10 @@ async function registrationAnswerHandler(m, sock) {
       sock,
       m,
       `� *ᴘᴇʀᴛᴀɴʏᴀᴀɴ 3/4*\n\n` +
-      `> Kamu cowo atau cewe?\n\n` +
-      `┃ � *Cowo* / *Cowok* / *Laki-laki* / *L*\n` +
-      `┃ � *Cewe* / *Cewek* / *Perempuan* / *P*\n\n` +
-      `📩 Reply pesan ini dengan jawabanmu`,
+      `¿Ustedes o chicas?\n\n` +
+      `┃ �*Chicos * * Cowok * * Laki @ - * * * * * * * * * * * * *\n` +
+      `┃ �* Pollos * * * picaduras * * chulos * * pow * * pow * * *\n\n` +
+      `📩Responder, este mensaje con su respuesta.`,
     );
 
     session.promptId = _optionalChain([sent, 'optionalAccess', _33 => _33.key, 'optionalAccess', _34 => _34.id]) || session.promptId;
@@ -374,9 +374,9 @@ async function registrationAnswerHandler(m, sock) {
 
     if (!gender) {
       await m.reply(
-        `❌ Gender tidak valid!\n\n` +
-        `> Balas dengan: *Cowo* / *Cowok* / *Laki-laki* / *L*\n` +
-        `> Atau: *Cewe* / *Cewek* / *Perempuan* / *P*`,
+        `❌¡El género no es válido!\n\n` +
+        `*Laz con: *Cowo * Cowok *\n` +
+        `* O: *Chicks*`,
       );
       return true;
     }
@@ -399,7 +399,7 @@ async function registrationAnswerHandler(m, sock) {
     const name = normalizeRegistrationName(text);
 
     if (name.length < 2 || name.length > 30) {
-      await m.reply(`❌ Nama harus 2-30 karakter!`);
+      await m.reply(`❌El nombre debe ser 2 @-@ 30 caracteres!`);
       return true;
     }
 
@@ -422,7 +422,7 @@ async function registrationAnswerHandler(m, sock) {
 
     if (!/^\d+$/.test(text) || Number.isNaN(age) || age < 1 || age > 100) {
       await m.reply(
-        `❌ Umur tidak valid!\n\n> Masukkan angka umur dari *1 - 100* tahun`,
+        `❌¡La edad no es válida!\n\nAquí va el número general de 1 @-@ 100 *`,
       );
       return true;
     }
@@ -452,9 +452,9 @@ async function registrationAnswerHandler(m, sock) {
 
     if (!gender) {
       await m.reply(
-        `❌ Gender tidak valid!\n\n` +
-        `> Balas dengan: *Cowo* / *Cowok* / *Laki-laki* / *L*\n` +
-        `> Atau: *Cewe* / *Cewek* / *Perempuan* / *P*`,
+        `❌¡El género no es válido!\n\n` +
+        `*Laz con: *Cowo * Cowok *\n` +
+        `* O: *Chicks*`,
       );
       return true;
     }
@@ -474,15 +474,15 @@ async function registrationAnswerHandler(m, sock) {
   }
 
   if (session.step === "confirm") {
-    if (["revisi nama", "ubah nama", "edit nama"].includes(lowText)) {
+    if (["revisi nombre", "cambia nombre", "edit nombre"].includes(lowText)) {
       session.step = "revise_name";
 
       const sent = await sendRegistrationPrompt(
         sock,
         m,
         `📛 *ʀᴇᴠɪsɪ ɴᴀᴍᴀ*\n\n` +
-        `> Kirim nama yang benar ya.\n\n` +
-        `📩 Reply pesan ini dengan nama baru kamu`,
+        `- Lo siento.\n\n` +
+        `📩Responder este mensaje con tu nuevo nombre`,
       );
 
       session.promptId = _optionalChain([sent, 'optionalAccess', _43 => _43.key, 'optionalAccess', _44 => _44.id]) || session.promptId;
@@ -498,9 +498,9 @@ async function registrationAnswerHandler(m, sock) {
         sock,
         m,
         `🎂 *ʀᴇᴠɪsɪ ᴜᴍᴜʀ*\n\n` +
-        `> Kirim umur yang benar ya.\n\n` +
-        `📌 Umur hanya boleh *1 - 100* tahun\n` +
-        `📩 Reply pesan ini dengan angka umur baru kamu`,
+        `Qué buen Knjur.\n\n` +
+        `📌Edad sólo se permite * 1 - 100 * años\n` +
+        `📩Responder este mensaje con su nuevo número general`,
       );
 
       session.promptId = _optionalChain([sent, 'optionalAccess', _45 => _45.key, 'optionalAccess', _46 => _46.id]) || session.promptId;
@@ -518,10 +518,10 @@ async function registrationAnswerHandler(m, sock) {
         sock,
         m,
         `👤 *ʀᴇᴠɪsɪ ɢᴇɴᴅᴇʀ*\n\n` +
-        `> Pilih gender yang benar ya.\n\n` +
-        `┃ � *Cowo* / *Cowok* / *Laki-laki* / *L*\n` +
-        `┃ 👧 *Cewe* / *Cewek* / *Perempuan* / *P*\n\n` +
-        `📩 Reply pesan ini dengan jawabanmu`,
+        `- Sí.\n\n` +
+        `┃ �*Chicos * * Cowok * * Laki @ - * * * * * * * * * * * * *\n` +
+        `┃ 👧* Pollos * * * picaduras * * chulos * * pow * * pow * * *\n\n` +
+        `📩Responder, este mensaje con su respuesta.`,
       );
 
       session.promptId = _optionalChain([sent, 'optionalAccess', _47 => _47.key, 'optionalAccess', _48 => _48.id]) || session.promptId;
@@ -532,15 +532,15 @@ async function registrationAnswerHandler(m, sock) {
       ["revisi", "ulang", "reset", "ulangi", "edit", "ubah"].includes(lowText)
     ) {
       await m.reply(
-        `❌ Revisi belum spesifik!\n\n` +
-        `> Reply: \`revisi nama\`, \`revisi umur\`, atau \`revisi gender\``,
+        `❌¡Revive no específico!\n\n` +
+        `> Responder:\`revisi nombre\`.\`revisi edad\`, o\`revisiones de género\``,
       );
       return true;
     }
 
     if (!["ya", "y", "iya", "yes", "lanjut", "confirm"].includes(lowText)) {
       await m.reply(
-        `❌ Balasan tidak valid!\n\n> Reply: \`ya\`, \`revisi nama\`, \`revisi umur\`, \`revisi gender\`, atau \`batal\``,
+        `❌¡Paso inválido!\n\n> Responder:\`si\`.\`revisi nombre\`.\`revisi edad\`.\`revisiones de género\`, o\`cancelar\``,
       );
       return true;
     }
@@ -580,10 +580,10 @@ async function registrationAnswerHandler(m, sock) {
       {
         text:
           `🎉 *ᴘᴇɴᴅᴀꜰᴛᴀʀᴀɴ ʙᴇʀʜᴀsɪʟ!*\n\n` +
-          `Selamat datang, *${finalName}*!\n\n` +
+          `Bienvenido, *${finalName}*!\n\n` +
           `${buildUserDataBlock(finalName, finalAge, finalGender)}\n\n` +
           `${buildSuccessRewardBlock(alreadyClaimedReward)}\n\n` +
-          `🚀 Sekarang kamu sudah siap menggunakan bot!`,
+          `🚀¡Ahora estás listo para usar las botas!`,
         contextInfo: getRegistrationContextInfo(),
       },
       { quoted: m },

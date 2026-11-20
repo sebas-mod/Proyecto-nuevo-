@@ -5,7 +5,7 @@ const pluginConfig = {
   name: "mining",
   alias: ["mine", "tambang"],
   category: "rpg",
-  description: "Menambang untuk mendapatkan ores dan gems",
+  description: "Ampliar para conseguir ores y gemas",
   usage: ".mining",
   example: ".mining",
   isOwner: false,
@@ -28,7 +28,7 @@ async function handler(m, { sock }) {
   user.rpg.stamina = user.rpg.stamina || 100;
 
   if (user.rpg.stamina < staminaCost) {
-    return m.reply(`Aduh kak, badan kamu udah remuk duluan! 🥵\n\nNambang batu tuh berat, butuh *${staminaCost} Stamina*. Stamina kamu sisa *${user.rpg.stamina}* doang. Istirahat gih! 🛌💤`);
+    return m.reply(`¡Ouch hermana, vas a tener que mercado por ello!🥵\n\nSin embargo pesado aí, necesita *${staminaCost}Stamina, estás tan triste.${user.rpg.stamina}* solo. Descanso vamos! 🛌💤`);
   }
 
   user.rpg.stamina -= staminaCost;
@@ -67,14 +67,14 @@ async function handler(m, { sock }) {
 
   await m.react("✅");
 
-  let txt = `CROOT! BATUNYA PECAH KAK! ⛏️✨\n\n`;
-  txt += `Kamu berhasil dapetin material ini:\n`;
+  let txt = `CROOT! BATUNYA PECAH Hermano! ⛏♪✨\n\n`;
+  txt += `Tienes este material:\n`;
   for (const r of results) {
     txt += `• ${r.name}: *+${r.qty}*\n`;
   }
   txt += `\n📈 EXP: *+${expGain}*\n`;
   txt += `⚡ Stamina: *-${staminaCost}*\n\n`;
-  txt += `Simpen baik-baik ya kak, nanti bisa dicraft atau dijual! 💎💰`;
+  txt += `Ser bueno, hermana,¡se monoá o se venderá!💎💰`;
 
   await m.reply(txt);
 }

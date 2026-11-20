@@ -31,7 +31,7 @@ async function handler(m, { sock }) {
     const data = res.data;
     if (!data.status || !data.result) {
       await m.react("❌");
-      return m.reply("⚠️ Gagal mengambil informasi Grow a Garden saat ini.");
+      return m.reply("⚠Para tomar la información del Bow a Garden en este momento.");
     }
 
     const r = data.result;
@@ -45,7 +45,7 @@ async function handler(m, { sock }) {
       return txt + "\n";
     };
 
-    let caption = `🌱 *GROW A GARDEN INFO* 🌱\n\n`;
+    let caption = `🌱* GRW A GARDEN INFO *🌱\n\n`;
 
     caption += formatStock(r.gearStock, "⚙️ Gear Stock");
     caption += formatStock(r.eggStock, "🥚 Egg Stock");
@@ -67,7 +67,7 @@ async function handler(m, { sock }) {
   } catch (error) {
     console.error("[GAG Info]", error.message);
     await m.react("☢");
-    m.reply("😔 Terjadi kesalahan saat mengambil data GAG.");
+    m.reply("😔Fue un error recuperar datos de GAG.");
   }
 }
 

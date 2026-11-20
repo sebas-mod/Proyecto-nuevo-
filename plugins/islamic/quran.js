@@ -6,7 +6,7 @@ const pluginConfig = {
   name: "quran",
   alias: ["surah", "alquran", "bacaquran"],
   category: "islamic",
-  description: "Baca ayat Al-Quran berdasarkan nama surah",
+  description: "Lee Al 's yat...Qsubtly a Sura name",
   usage: ".quran <nama surah>",
   example: ".quran al fatihah",
   isOwner: false,
@@ -67,7 +67,7 @@ async function handler(m, { sock }) {
   if (!query) {
     return m.reply(
       `📖 *QURAN*\n\n` +
-        `> Masukkan nama surah\n\n` +
+        `" Ingrese el nombre de Sura "\n\n` +
         `\`Contoh: ${m.prefix}quran al fatihah\`\n` +
         `\`Contoh: ${m.prefix}quran al baqarah\``,
     );
@@ -80,7 +80,7 @@ async function handler(m, { sock }) {
 
     if (!_optionalChain([data, 'access', _6 => _6.ayat, 'optionalAccess', _7 => _7.length])) {
       m.react("❌");
-      return m.reply(`❌ Surah *${query}* tidak ditemukan`);
+      return m.reply(`❌ Surah *${query}* not found`);
     }
 
     let teks = `📖 *${data.surah}*\n${data.info}\n\n`;

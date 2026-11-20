@@ -3,7 +3,7 @@ const pluginConfig = {
     name: 'asmaulhusna',
     alias: ['asmaul', 'husna', '99names'],
     category: 'religi',
-    description: '99 Nama Allah (Asmaul Husna)',
+    description: '99 El nombre de Alá ( Asmaul Husna )',
     usage: '.asmaulhusna [nomor/nama]',
     example: '.asmaulhusna 1\n.asmaulhusna ar rahman',
     isOwner: false,
@@ -25,14 +25,14 @@ async function handler(m) {
     } else if (/^\d+$/.test(query)) {
         const index = parseInt(query);
         if (index < 1 || index > 99) {
-            await m.reply('❌ Nomor harus antara 1-99!');
+            await m.reply('❌¡Los nomores deben ser entre 1 y 99!');
             return;
         }
         name = _ouringamedatajs.getItemByIndex.call(void 0, 'asmaulhusna.json', index);
     } else if (query.toLowerCase() === 'all' || query.toLowerCase() === 'semua') {
         const allNames = _ouringamedatajs.getAllData.call(void 0, 'asmaulhusna.json');
         let text = `☪️ *ASMAUL HUSNA*\n`;
-        text += `> 99 Nama Allah SWT\n\n`;
+        text += `99 El nombre de Dios es SWT\n\n`;
         text += `\`\`\``;
         
         for (const n of allNames.slice(0, 33)) {
@@ -40,8 +40,8 @@ async function handler(m) {
         }
         
         text += `\`\`\`\n`;
-        text += `> Halaman 1/3\n\n`;
-        text += `_Gunakan .asmaulhusna [nomor] untuk detail_`;
+        text += `Haalman 1 / 3\n\n`;
+        text += `*Uso.*`;
         
         await m.reply(text);
         return;
@@ -50,13 +50,13 @@ async function handler(m) {
     }
     
     if (!name) {
-        await m.reply('❌ Nama tidak ditemukan!\n_Coba nomor 1-99 atau nama latin_');
+        await m.reply('❌¡El nombre no fue encontrado!\nIntenta nominal 1 - 99 o latin _ nombre');
         return;
     }
     
     let text = `☪️ *ASMAUL HUSNA*\n\n`;
     text += `\`\`\``;
-    text += `📍 Nomor : ${name.index}\n`;
+    text += `📍Número:${name.index}\n`;
     text += `🔤 Latin : ${name.latin}\n`;
     text += `📜 Arab  : ${name.arabic}`;
     text += `\`\`\`\n\n`;

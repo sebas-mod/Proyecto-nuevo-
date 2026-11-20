@@ -6,7 +6,7 @@ const pluginConfig = {
     name: 'startschedule',
     alias: ['startscheduler', 'schedstart', 'resumeschedule'],
     category: 'owner',
-    description: 'Memulai ulang scheduler tertentu atau semua',
+    description: 'Replaying el programador absoluto o todo',
     usage: '.startschedule <nama|all>',
     example: '.startschedule sholat',
     isOwner: true,
@@ -29,12 +29,12 @@ async function handler(m, { sock, args }) {
 \`.startschedule <nama>\`
 
 *Available schedulers:*
-• \`limitreset\` - Daily Limit Reset
+• \`límite\`- Investigación de Límites de Dairy
 • \`groupschedule\` - Group Schedule
-• \`sewa\` - Sewa Checker
+• \`alquiler\`- Alquiler de cheques
 • \`messages\` - Scheduled Messages
 • \`sholat\` - Sholat Scheduler
-• \`all\` - Semua scheduler
+• \`ahl\`- Todo el schedler
 
 *Example:*
 \`.startschedule sholat\`
@@ -49,7 +49,7 @@ async function handler(m, { sock, args }) {
             const wasEnabled = db.setting('autoSholat');
             
             if (wasEnabled) {
-                await m.reply(`ℹ️ Sholat Scheduler sudah dalam keadaan aktif`);
+                await m.reply(`*El programador de Sholat ya está en estado activo*`);
                 return;
             }
             
@@ -59,9 +59,9 @@ async function handler(m, { sock, args }) {
             await m.reply(`▶️ *sᴄʜᴇᴅᴜʟᴇʀ ᴅɪᴍᴜʟᴀɪ*
 
 > Scheduler: *Sholat Scheduler*
-> Status: ✅ Aktif
+> Estado:✅Activo
 
-_Notifikasi waktu sholat akan dikirim ke grup yang mengaktifkan fitur ini_`);
+Para permitir que una notificación de tiempo de desplegable sea enviada al grupo que active está función _`);
             return;
         }
         
@@ -77,13 +77,13 @@ _Notifikasi waktu sholat akan dikirim ke grup yang mengaktifkan fitur ini_`);
             await m.reply(`▶️ *sᴄʜᴇᴅᴜʟᴇʀ ᴅɪᴍᴜʟᴀɪ*
 
 > Scheduler: *${result.name}*
-> Status: ✅ Aktif
+> Estado:✅Activo
 
-_Scheduler telah dimulai kembali_`);
+*El programador ha comenzado de nuevo*`);
         } else {
-            await m.reply(`❌ Scheduler tidak ditemukan atau sudah aktif
+            await m.reply(`❌No se encuentra o ya está activo
 
-Gunakan \`.startschedule\` untuk melihat daftar scheduler`);
+Usa\`- Horario.\`para ver la lista de programadores`);
         }
     } catch (error) {
         console.error('[StartSchedule Error]', error);

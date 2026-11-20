@@ -28,7 +28,7 @@ async function handler(m, { sock }) {
     if (!isImage) {
         return m.reply(
             `🏝️ *ᴛᴏ ɪsʟᴀɴᴅ*\n\n` +
-            `> Kirim/reply gambar untuk suasana pulau\n\n` +
+            `Ksena / respuestas imágenes para alguna isla\n\n` +
             `\`${m.prefix}toisland\``
         )
     }
@@ -45,7 +45,7 @@ async function handler(m, { sock }) {
         
         if (!buffer) {
             m.react('❌')
-            return m.reply(`❌ Gagal mendownload gambar`)
+            return m.reply(`❌Paso de descarga de imagen`)
         }
         
         const result = await _seaartjs.live3d.call(void 0, buffer, PROMPT)

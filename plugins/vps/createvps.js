@@ -55,7 +55,7 @@ async function handler(m, { sock }) {
     }
     
     if (!hasAccess(m.sender, m.isOwner)) {
-        return m.reply(`❌ *ᴀᴋsᴇs ᴅɪᴛᴏʟᴀᴋ*\n\n> Fitur ini hanya untuk Owner/Seller.`)
+        return m.reply(`❌*ᴀᴋSᴇSᴅɪᴛᴏʟᴀᴋ*\n\nEstá característica es sólo para el propietario / vendedor.`)
     }
     
     const hostname = _optionalChain([m, 'access', _4 => _4.text, 'optionalAccess', _5 => _5.trim, 'call', _6 => _6()])
@@ -63,7 +63,7 @@ async function handler(m, { sock }) {
         return m.reply(
             `⚠️ *ᴄᴀʀᴀ ᴘᴀᴋᴀɪ*\n\n` +
             `> \`${m.prefix}${m.command} <hostname>\`\n\n` +
-            `> Contoh: \`${m.prefix}${m.command} myserver\`\n\n` +
+            `> Ejemplo:\`${m.prefix}${m.command} myserver\`\n\n` +
             `📦 *ᴘᴀᴋᴇᴛ ᴛᴇʀsᴇᴅɪᴀ:*\n` +
             Object.entries(VPS_SPECS).map(([cmd, spec]) => 
                 `> \`${m.prefix}${cmd}\` - ${spec.ram} RAM, ${spec.cpu}`
@@ -72,12 +72,12 @@ async function handler(m, { sock }) {
     }
     
     if (!/^[a-zA-Z0-9-]+$/.test(hostname)) {
-        return m.reply(`❌ Hostname hanya boleh huruf, angka, dan dash.`)
+        return m.reply(`❌El nombre de la anfitriona es simplemente bien Letra, números, y dash.`)
     }
     
     const spec = VPS_SPECS[m.command]
     if (!spec) {
-        return m.reply(`❌ Paket VPS tidak ditemukan.`)
+        return m.reply(`❌Los paquetes VPS no se encuentran.`)
     }
     
     const password = generatePassword()
@@ -113,7 +113,7 @@ ssh_pwauth: True`,
         const droplet = response.data.droplet
         const dropletId = droplet.id
         
-        await m.reply(`🕕 *ᴍᴇɴᴜɴɢɢᴜ ᴠᴘs sɪᴀᴘ...*\n\n> ID: \`${dropletId}\`\n> Estimasi: 60 detik`)
+        await m.reply(`🕕 *ᴍᴇɴᴜɴɢɢᴜ ᴠᴘs sɪᴀᴘ...*\n\n> ID: \`${dropletId}\`\nEstimaciones: 60 segundos`)
         
         await new Promise(resolve => setTimeout(resolve, 60000))
         
@@ -123,7 +123,7 @@ ssh_pwauth: True`,
         
         const dropletInfo = infoRes.data.droplet
         const ipv4 = _optionalChain([dropletInfo, 'access', _7 => _7.networks, 'optionalAccess', _8 => _8.v4, 'optionalAccess', _9 => _9.find, 'call', _10 => _10(n => n.type === 'public')])
-        const ip = _optionalChain([ipv4, 'optionalAccess', _11 => _11.ip_address]) || 'Tidak tersedia'
+        const ip = _optionalChain([ipv4, 'optionalAccess', _11 => _11.ip_address]) || 'No disponible'
         
         const detailTxt = `✅ *ᴠᴘs ʙᴇʀʜᴀsɪʟ ᴅɪʙᴜᴀᴛ*\n\n` +
             `╭─「 📋 *ᴅᴇᴛᴀɪʟ ᴠᴘs* 」\n` +
@@ -139,10 +139,10 @@ ssh_pwauth: True`,
             `┃ 🌍 \`ʀᴇɢɪᴏɴ\`: *${region}*\n` +
             `┃ 💿 \`ᴏs\`: *Ubuntu 22.04*\n` +
             `╰───────────────\n\n` +
-            `> ⚠️ Simpan data ini baik-baik!`
+            `♪⚠Disfrute de estos datos Guardar bien!`
         
         await sock.sendMessage(m.sender, { text: detailTxt })
-        await m.reply(`✅ *ᴠᴘs ʙᴇʀʜᴀsɪʟ ᴅɪʙᴜᴀᴛ*\n\n> Data dikirim ke private chat.`)
+        await m.reply(`✅*ᴠᴘSʙᴇʀʜᴀSɪʟ ᴅɪʙᴜᴀᴛ*\n\nDatos enviados a la charla primaria.`)
         
     } catch (err) {
         return m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName))

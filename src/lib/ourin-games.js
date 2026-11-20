@@ -39,9 +39,9 @@ const WIN_MESSAGES = [
 ];
 
 const TIMEOUT_MESSAGES = [
-  "⏱️ *Yah telat, waktu habis!*",
-  "⏱️ *WAKTU HABIS!*",
-  "⏱️ *Telat bro, waktu dah abis!*",
+  "⏱¡Sí, el tiempo se acabó!",
+  "⏱(Truenos tiempos)",
+  "⏱*Demasiado tarde hermano, el tiempo se acaba!*",
 ];
 
 const SURRENDER_MESSAGES = [
@@ -66,7 +66,7 @@ class OurinGames {
       answerField: "jawaban",
       emoji: "🎮",
       title: gameType.toUpperCase(),
-      description: `Game ${gameType}`,
+      description: `Juego${gameType}`,
       timeout: 60000,
       cooldown: 5,
       hasImage: false,
@@ -83,7 +83,7 @@ class OurinGames {
 
   createHandler(gameType) {
     const cfg = this.registry.get(gameType);
-    if (!cfg) throw new Error(`Game "${gameType}" not registered`);
+    if (!cfg) throw new Error(`Juego${gameType}" not registered`);
 
     const handler = async (m, { sock }) => {
       const chatId = m.chat;
@@ -93,13 +93,13 @@ class OurinGames {
         if (session && session.gameType === gameType) {
           const remaining = _ouringamedatajs.getRemainingTime.call(void 0, chatId);
           const answer = session.question[cfg.answerField];
-          let text = `⚠️ *Eh ada game jalan nih, jawab dulu!*\n\n`;
+          let text = `⚠*Ahí juego calle aquí, conteste! *\n\n`;
           if (cfg.questionField && session.question[cfg.questionField]) {
             text += `\`\`\`${session.question[cfg.questionField]}\`\`\`\n\n`;
           }
           text += `💡 Hint: *${_ouringamedatajs.getHint.call(void 0, answer, cfg.hintCount)}*\n`;
-          text += `⏱️ Sisa: *${_ouringamedatajs.formatRemainingTime.call(void 0, remaining)}*\n\n`;
-          text += `_Jawab langsung atau ketik "nyerah"\nSetiap salah, hint akan bertambah_`;
+          text += `⏱Restante: *${_ouringamedatajs.formatRemainingTime.call(void 0, remaining)}*\n\n`;
+          text += `# Tan largo o cuando es difícil #\nCada mal, las pistas crecerán`;
           await sock.sendPreview(
             m.chat,
             {
@@ -118,7 +118,7 @@ class OurinGames {
       const question = _ouringamedatajs.getRandomItem.call(void 0, cfg.dataFile);
       if (!question) {
         await m.reply(
-          "❌ *ᴅᴀᴛᴀ ᴛɪᴅᴀᴋ ᴛᴇʀsᴇᴅɪᴀ*\n\n> Data game tidak tersedia!",
+          "❌*ᴅᴀᴛᴀ ᴛɪᴅᴀᴋ ᴛᴇʀSᴇᴅɪᴀ*\n\nEl juego de datos no está disponible!",
         );
         return;
       }
@@ -140,9 +140,9 @@ class OurinGames {
           caption += `> ${question[cfg.questionField]}\n`;
         }
         caption += `💡 Hint: *${_ouringamedatajs.getHint.call(void 0, answer, cfg.hintCount)}*\n`;
-        caption += `⏱️ Waktu: *${cfg.timeout / 1000} detik*\n`;
-        caption += `🎁 Hadiah: *Limit, Koin, EXP (random)*\n\n`;
-        caption += `_Jawab langsung atau ketik "nyerah"\nSetiap salah, hint akan bertambah_`;
+        caption += `⏱*Tiempo*${cfg.timeout / 1000}segundo*\n`;
+        caption += `🎁Hyatt: * Límite, Tela, EXP ( aleatorio ) *\n\n`;
+        caption += `# Tan largo o cuando es difícil #\nCada mal, las pistas crecerán`;
 
         sentMsg = await sock.sendMessage(
           chatId,
@@ -159,9 +159,9 @@ class OurinGames {
           text += `\`\`\`${question[cfg.questionField]}\`\`\`\n\n`;
         }
         text += `💡 Hint: *${_ouringamedatajs.getHint.call(void 0, answer, cfg.hintCount)}*\n`;
-        text += `⏱️ Waktu: *${cfg.timeout / 1000} detik*\n`;
-        text += `🎁 Hadiah: *Limit, Koin, EXP (random)*\n\n`;
-        text += `_Jawab langsung atau ketik "nyerah"\nSetiap salah, hint akan bertambah_`;
+        text += `⏱*Tiempo*${cfg.timeout / 1000}segundo*\n`;
+        text += `🎁Hyatt: * Límite, Tela, EXP ( aleatorio ) *\n\n`;
+        text += `# Tan largo o cuando es difícil #\nCada mal, las pistas crecerán`;
 
         sentMsg = await _ourincontextjs.sendGamePreview.call(void 0, 
           sock,
@@ -177,8 +177,8 @@ class OurinGames {
 
       _ouringamedatajs.setSessionTimer.call(void 0, chatId, async () => {
         let text = `${pick(TIMEOUT_MESSAGES)}\n\n`;
-        text += `Jawaban: *${answer}*\n\n`;
-        text += `_Gak ada yang bisa jawab nih~_`;
+        text += `Respuesta: *${answer}*\n\n`;
+        text += `Estoy seguro de que cualquiera puede responder a eso.`;
         await m.reply(text);
       });
     };
@@ -196,8 +196,8 @@ class OurinGames {
         _ouringamedatajs.endSession.call(void 0, chatId);
         const answer = session.question[cfg.answerField];
         let text = `${pick(SURRENDER_MESSAGES)}\n\n`;
-        text += `Jawaban: *${answer}*\n\n`;
-        text += `_@${m.sender.split("@")[0]} menyerah_`;
+        text += `Respuesta: *${answer}*\n\n`;
+        text += `_@${m.sender.split("@")[0]}Rendirse`;
         await m.reply(text, { mentions: [m.sender] });
         return true;
       }
@@ -220,7 +220,7 @@ class OurinGames {
         let totalExp = 0;
 
         if (cfg.rewards === false || cfg.rewards === null) {
-          // umm, maaf yak, kalau sc ini banyak kurangnya
+          //Lo siento mucho menos que eso.
         } else if (cfg.rewards) {
           totalLimit = cfg.rewards.limit || cfg.rewards.energi || 0;
           totalBalance = cfg.rewards.koin || cfg.rewards.balance || 0;
@@ -243,7 +243,7 @@ class OurinGames {
           totalLimit += fastResult.bonus.limit;
           totalBalance += fastResult.bonus.koin;
           totalExp += fastResult.bonus.exp;
-          bonusText = `\n\n${fastResult.praise}\n⚡ *BONUS KILAT:* +${fastResult.bonus.limit} Limit, +${fastResult.bonus.koin} Koin\n⏱️ Waktu: *${(fastResult.elapsed / 1000).toFixed(1)}s*`;
+          bonusText = `\n\n${fastResult.praise}\n⚡* Bono KILIT: * +${fastResult.bonus.limit}Límite, +${fastResult.bonus.koin}Monedas\n⏱*Tiempo*${(fastResult.elapsed / 1000).toFixed(1)}s*`;
         }
 
         if (totalLimit > 0) db.updateEnergi(m.sender, totalLimit);
@@ -256,14 +256,14 @@ class OurinGames {
         db.save();
 
         let text = `${pick(WIN_MESSAGES)}\n\n`;
-        text += `Jawaban: *${answer}*\n`;
-        text += `Pemenang: *@${m.sender.split("@")[0]}*\n`;
-        text += `Percobaan: *${session.attempts}x*\n\n`;
+        text += `Respuesta: *${answer}*\n`;
+        text += `Ganador: *@${m.sender.split("@")[0]}*\n`;
+        text += `Intento: *${session.attempts}x*\n\n`;
 
         if (totalLimit > 0 || totalBalance > 0 || totalExp > 0) {
           let parts = [];
-          if (totalLimit > 0) parts.push(`+${totalLimit} Limit`);
-          if (totalBalance > 0) parts.push(`+${totalBalance} Koin`);
+          if (totalLimit > 0) parts.push(`+${totalLimit}Límite`);
+          if (totalBalance > 0) parts.push(`+${totalBalance}Monedas`);
           if (totalExp > 0) parts.push(`+${totalExp} EXP`);
           text += `🎁 ${parts.join(", ")}`;
         }
@@ -278,7 +278,7 @@ class OurinGames {
         const percent = Math.round(result.similarity * 100);
         await m.react("🔥");
         await m.reply(
-          `🔥 *Hampir!* Jawabanmu *${percent}%* mirip!\n_Sisa waktu: *${_ouringamedatajs.formatRemainingTime.call(void 0, remaining)}*_`,
+          `🔥 *Casi!* Jawabanmu *${percent}% * similar!\n*Tiempo de sosa*${_ouringamedatajs.formatRemainingTime.call(void 0, remaining)}*_`,
         );
         return false;
       }
@@ -288,7 +288,7 @@ class OurinGames {
         await m.react("❌");
         const hint = _ouringamedatajs.getProgressiveHint.call(void 0, answer, session.attempts);
         await m.reply(
-          `❌ Belum bener! Hint: *${hint}*\n_Sisa: *${_ouringamedatajs.formatRemainingTime.call(void 0, remaining)}*_`,
+          `❌¡Eel @-@ bier!${hint}*\nRestante: *${_ouringamedatajs.formatRemainingTime.call(void 0, remaining)}*_`,
         );
       }
 
@@ -300,7 +300,7 @@ class OurinGames {
 
   createPlugin(gameType, overrides = {}) {
     const cfg = this.registry.get(gameType);
-    if (!cfg) throw new Error(`Game "${gameType}" not registered`);
+    if (!cfg) throw new Error(`Juego${gameType}" not registered`);
 
     const { handler, answerHandler } = this.createHandler(gameType);
 

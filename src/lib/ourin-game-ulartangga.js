@@ -29,7 +29,7 @@ const DICE_STICKERS = [
 ];
 
 /**
- * Draw game board with player positions
+* Juego de tablero con un jugador positivo
  * @param {string} boardImageURL - URL of the board image
  * @param {number|null} user1 - Position of player 1 (1-100) or null
  * @param {number|null} user2 - Position of player 2 (1-100) or null

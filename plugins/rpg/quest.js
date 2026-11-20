@@ -4,7 +4,7 @@ const pluginConfig = {
   name: "quest",
   alias: ["misi", "mission", "bounty"],
   category: "rpg",
-  description: "Ambil quest harian untuk reward bonus",
+  description: "Día de la Ambulancia para reencarnar el bono",
   usage: ".quest",
   example: ".quest",
   isOwner: false,
@@ -67,20 +67,20 @@ async function handler(m, { sock }) {
   if (sub === "claim") {
     const questId = args[1];
     if (!questId || !user.quest[questId]) {
-      return m.reply(`Hmm.. Misi itu nggak ada di daftar kamu kak! 📜❌`);
+      return m.reply(`Esa misiónónónónónónónónónónónónónónónónónónónón no está en su lista,¡¡Sí!📜❌`);
     }
 
     const quest = QUESTS.find((q) => q.id === questId);
     if (!quest) {
-      return m.reply(`ID misinya salah kak! Cek lagi papan bounty ya! 🔍`);
+      return m.reply(`ID misinya incorrecto hermano! Comprueba otra vez papan bounty si! 🔍`);
     }
 
     if (user.quest[questId].progress < quest.target) {
-      return m.reply(`Misi ini belum selesai kak!\nProgress kamu: *${user.quest[questId].progress}/${quest.target}* 🏃‍♂️💦`);
+      return m.reply(`¡Está misiónónónónónónónónónónónónónónónónónónónónónónón aún no ha terminado!\nSu progreso: *${user.quest[questId].progress}/${quest.target}* 🏃‍♂️💦`);
     }
 
     if (user.quest[questId].claimed) {
-      return m.reply(`Hadiah misi ini udah kamu ambil kak! 😒`);
+      return m.reply(`¡Está en la misiónónónónónónónónónónónónónónónónónónónónónónónón que tommasté, hermante!😒`);
     }
 
     user.koin = (user.koin || 0) + quest.reward.money;
@@ -88,12 +88,12 @@ async function handler(m, { sock }) {
     user.quest[questId].claimed = true;
 
     db.save();
-    let txt = `💰 *MISI SELESAI!!* 💰\n\n`;
-    txt += `Kamu berhasil nyelesaiin misi *${quest.name}*!\n`;
-    txt += `Ini hadiah buat kamu kak:\n`;
-    txt += `💵 Uang Misi: *+Rp ${quest.reward.money.toLocaleString("id-ID")}*\n`;
-    txt += `📈 EXP Bonus: *+${quest.reward.exp}*\n\n`;
-    txt += `> _"Kerja bagus kak!" - Resepsionis Guild_ 👩‍💼`;
+    let txt = `💰> #91; Misiónónónónónónónónónónónónónónónón Terminado!💰\n\n`;
+    txt += `Lo hiciste.${quest.name}*!\n`;
+    txt += `Este es un regalo para ti, hermana:\n`;
+    txt += `💵Misi Vue: * + Rp${quest.reward.money.toLocaleString("id-ID")}*\n`;
+    txt += `📈Bono de la EXP: * +${quest.reward.exp}*\n\n`;
+    txt += `- = = Sincronización, corregido por elderman = = @ elder _ hombre👩‍💼`;
     return m.reply(txt);
   }
 
@@ -101,37 +101,37 @@ async function handler(m, { sock }) {
     const questId = args[1];
     const quest = QUESTS.find((q) => q.id === questId);
     if (!quest) {
-      return m.reply(`Misi nggak ketemu! Liat daftar lengkapnya di \`.quest\``);
+      return m.reply(`Obtener la lista completa de las listas.\`. búsqueda.\``);
     }
 
     if (user.quest[questId]) {
-      return m.reply(`Kamu udah ngambil misi ini kak! Kerjain dulu yuk! ⚔️`);
+      return m.reply(`Tienes que trabajar con está misiónónónónónónónónónónónónónónón.⚔♪`);
     }
 
     user.quest[questId] = { progress: 0, claimed: false, takenAt: Date.now() };
     db.save();
 
-    let txt = `📜 *MISI DIAMBIL!* 📜\n\n`;
-    txt += `Kamu mengambil satu kertas misi dari Papan Bounty! 📜✨\n`;
-    txt += `🎯 Target: *${quest.name}* (${quest.desc})\n`;
-    txt += `🎁 Hadiah: *Rp ${quest.reward.money.toLocaleString("id-ID")}* & *${quest.reward.exp} EXP*\n\n`;
-    txt += `> _"Semoga berhasil di perjalanan ya kak!"_ 💖`;
+    let txt = `📜* Misiónónónónónónónónónónónónónónónónónón Tomado!📜\n\n`;
+    txt += `¡Tomate un papel de missionón de Papan Bounty!📜✨\n`;
+    txt += `🎯 Objetivo: *${quest.name}* (${quest.desc})\n`;
+    txt += `🎁Premio: *Rp${quest.reward.money.toLocaleString("id-ID")}* & *${quest.reward.exp} EXP*\n\n`;
+    txt += `Ojalá lo hizo en el camino, hermana!💖`;
     return m.reply(txt);
   }
 
-  let txt = `📌 *PAPAN BOUNTY (MISI HARIAN)* 📌\n\n`;
-  txt += `Selesaikan tugas harian ini buat dapat hadiah bonus yuk kak!\n\n`;
+  let txt = `📌*El papel de la botella*📌\n\n`;
+  txt += `Finalizar la asignación de hoy para obtener un regalo para Yuk yuk\n\n`;
 
   for (const quest of QUESTS) {
     const userQuest = user.quest[quest.id];
     let status = "📜 Tersedia";
     if (userQuest) {
       if (userQuest.claimed) {
-        status = "✅ Selesai";
+        status = "✅Terminado";
       } else if (userQuest.progress >= quest.target) {
         status = "🎁 Siap Claim";
       } else {
-        status = `🏃 Sedang Dikerjakan (${userQuest.progress}/${quest.target})`;
+        status = `🏃Placa de trabajo (${userQuest.progress}/${quest.target})`;
       }
     }
 
@@ -139,10 +139,10 @@ async function handler(m, { sock }) {
     txt += `   ├ Tugas: ${quest.desc}\n`;
     txt += `   ├ Reward: Rp ${quest.reward.money.toLocaleString("id-ID")} & ${quest.reward.exp} EXP\n`;
     txt += `   ├ Status: *${status}*\n`;
-    txt += `   └ Ambil: \`${m.prefix}quest take ${quest.id}\`\n\n`;
+    txt += `   └Toma:\`${m.prefix}quest take ${quest.id}\`\n\n`;
   }
 
-  txt += `> 💡 Kalau misi udah selesai, ketik: \`.quest claim <id_misi>\``;
+  txt += `♪💡Ya sabes, todo el tiempo, hemos terminado aquí.\`. reclamación de búsqueda.<id_misi>\``;
 
   await m.reply(txt);
 }

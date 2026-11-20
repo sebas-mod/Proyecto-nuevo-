@@ -9,7 +9,7 @@ const pluginConfig = {
   name: "ocr",
   alias: ["totext", "imagetotext", "readtext"],
   category: "tools",
-  description: "Extract teks dari gambar (Offline/Local)",
+  description: "Exdetectar texto de la imagen (Desactivado / Local )",
   usage: ".ocr (reply gambar)",
   example: ".ocr",
   isOwner: false,
@@ -25,13 +25,13 @@ async function handler(m, { sock }) {
   if (!isImage) {
     return m.reply(
       `⚠️ *ᴄᴀʀᴀ ᴘᴀᴋᴀɪ*\n\n` +
-        `> Reply gambar dengan \`${m.prefix}ocr\`\n\n` +
-        `> Media yang didukung:\n` +
+        `# Responder dibujar con\`${m.prefix}ocr\`\n\n` +
+        `El respaldo @-@ up Media:\n` +
         `> JPG, PNG, GIF, WEBP`,
     );
   }
   await m.react("🕕");
-  await m.reply(`🕕 *ᴍᴇᴍᴘʀᴏsᴇs...*\n\n> Mengekstrak teks dari gambar...`);
+  await m.reply(`🕕*ᴍᴇᴍᴘʀᴏSᴇ- Sí.\n\nExtracting the text from the picture.`);
   try {
     let buffer;
     if (m.quoted && m.quoted.isMedia) {
@@ -41,7 +41,7 @@ async function handler(m, { sock }) {
     }
     if (!buffer || buffer.length === 0) {
       await m.react("❌");
-      return m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> Tidak dapat download gambar`);
+      return m.reply(`❌*ɢᴀɢᴀʟ*\n\n* No se puede descargar la imagen`);
     }
     const Tesseract = await getTesseract();
     const {
@@ -51,7 +51,7 @@ async function handler(m, { sock }) {
     if (!extractedText || extractedText.length === 0) {
       await m.react("❌");
       return m.reply(
-        `❌ *ᴛɪᴅᴀᴋ ᴀᴅᴀ ᴛᴇᴋs*\n\n> Tidak ada teks yang terdeteksi di gambar`,
+        `❌*ᴛɪᴅᴀᴋ ᴀᴅᴀ ᴛᴇᴋs ♪\n\n*Ningún texto detectado en la imagen`,
       );
     }
     await m.react("✅");
@@ -63,7 +63,7 @@ async function handler(m, { sock }) {
         .map((l) => `┃ ${l}`)
         .join("\n")}\n` +
       `╰┈┈┈┈┈┈┈┈⬡\n\n` +
-      `> Total: ${extractedText.length} karakter`;
+      `> Total: ${extractedText.length}caracter`;
     await _ourincontextjs.sendToolsPreview.call(void 0, 
       sock,
       m.chat,

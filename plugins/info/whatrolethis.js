@@ -5,7 +5,7 @@ const config = {
   name: "whatrolethis",
   alias: ["whatrole", "cekrole", "cekakses"],
   category: "info",
-  description: "Cek persyaratan akses banyak fitur sekaligus",
+  description: "Compruebe los términos de las acciones muchas características veces",
   usage: ".whatrolethis <nama_fitur1> <nama_fitur2> ...",
   example: ".whatrolethis hd jpm",
   isOwner: false,
@@ -20,14 +20,14 @@ const config = {
 async function handler(m, { sock }) {
   if (m.args.length === 0) {
     return m.reply(
-      `🔍 *PENGECEKAN AKSES FITUR*\n\n` +
-      `Sistem untuk mengetahui detail informasi persyaratan akses sebuah fitur atau beberapa fitur sekaligus.\n\n` +
-      `*PENGGUNAAN:*\n` +
+      `🔍> 91; INCREATING ACCESS FUTURE > 93;\n\n` +
+      `El sistema para conocer detalles de la información establece una función acUR o algunas características a la vez.\n\n` +
+      `*Uso:*\n` +
       `- *${m.prefix}whatrolethis <nama_fitur1> <nama_fitur2> ...*\n\n` +
-      `*CONTOH PENGGUNAAN:*\n` +
+      `*Ejemplo de uso:*\n` +
       `- *${m.prefix}whatrolethis hd jpm warn*\n\n` +
-      `*PENJELASAN:*\n` +
-      `Masukkan perintah beserta satu atau banyak nama fitur yang ingin kamu cek. Pisahkan dengan spasi.`
+      `*Explicación:*\n` +
+      `Insertar el comando con una o varias funciones que deseas comprobar.`
     );
   }
 
@@ -36,14 +36,14 @@ async function handler(m, { sock }) {
   const db = _ourindatabasejs.getDatabase.call(void 0, );
   const overrides = db.setting("capprem") || {};
   
-  let responseText = `🔍 *DETAIL AKSES FITUR*\n\n`;
+  let responseText = `🔍* DETALLES ACCESO FIR *\n\n`;
   
   for (const cmd of m.args) {
     const targetCommand = cmd.toLowerCase();
     const plugin = _ourinpluginsjs.getPlugin.call(void 0, targetCommand);
     
     if (!plugin) {
-      responseText += `❌ *${targetCommand}* : Tidak ditemukan!\n\n`;
+      responseText += `❌ *${targetCommand}* ¡Descubierto!\n\n`;
       continue;
     }
     
@@ -53,15 +53,15 @@ async function handler(m, { sock }) {
     
     let roles = [];
     
-    if (plugin.config.isOwner) roles.push("Owner Only 👑");
-    if (plugin.config.isAdmin) roles.push("Admin Grup 👮");
-    if (plugin.config.isBotAdmin) roles.push("Bot Admin 🤖");
-    if (plugin.config.isGroup) roles.push("Grup Only 👥");
+    if (plugin.config.isOwner) roles.push("Propietario Only👑");
+    if (plugin.config.isAdmin) roles.push("Administrador del grupo👮");
+    if (plugin.config.isBotAdmin) roles.push("*Aminencia*🤖");
+    if (plugin.config.isGroup) roles.push("Grupo Only👥");
     if (plugin.config.isPrivate) roles.push("Private Chat 📱");
     if (isPremium) roles.push("Premium 💎");
     
     if (roles.length === 0) {
-      roles.push("Free / Semua Orang 🆓");
+      roles.push("Libres / Todos🆓");
     }
     
     let listRoles = roles.map(r => `  - ${r}`).join("\n");

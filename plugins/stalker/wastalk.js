@@ -73,17 +73,17 @@ async function handler(m, { sock }) {
         let res = `\t\t\t\t*▾ WHATSAPP ▾*\n\n` +
                   `*° Country :* ${country ? country.toUpperCase() : '-'}\n` +
                   `*° Name :* ${name}\n` +
-                  `*° Format Number :* ${formattedNumber}\n` +
-                  `*° Url Api :* wa.me/${num.split('@')[0]}\n` +
+                  `*°Número de formato: *${formattedNumber}\n` +
+                  `*°Url Fuego: * wa. me /${num.split('@')[0]}\n` +
                   `*° Mentions :* @${num.split('@')[0]}\n` +
                   `*° Status :* ${_optionalChain([bio, 'optionalAccess', _7 => _7.status]) || '-'}\n` +
                   `*° Date Status :* ${_optionalChain([bio, 'optionalAccess', _8 => _8.setAt]) ? _momenttimezone2.default.call(void 0, bio.setAt).tz('Asia/Jakarta').format('LLLL') : '-'}\n\n`;
 
         if (business) {
-            res += `\t\t\t\t*▾ INFO BUSINESS ▾*\n\n` +
+            res += `\t\t\t\t*▾INFO BUSINESS▾*\n\n` +
                    `*° BusinessId :* ${business.wid}\n` +
-                   `*° Website :* ${business.website ? business.website : '-'}\n` +
-                   `*° Email :* ${business.email ? business.email : '-'}\n` +
+                   `*°Sitio web: *${business.website ? business.website : '-'}\n` +
+                   `*°Correo:*${business.email ? business.email : '-'}\n` +
                    `*° Category :* ${business.category}\n` +
                    `*° Address :* ${business.address ? business.address : '-'}\n` +
                    `*° Timezone :* ${_optionalChain([business, 'access', _9 => _9.business_hours, 'optionalAccess', _10 => _10.timezone]) ? business.business_hours.timezone : '-'}\n` +

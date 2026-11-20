@@ -5,7 +5,7 @@ const pluginConfig = {
   name: "mutegc",
   alias: ["mutegrup", "mutebot", "blockbot", "lockbot"],
   category: "group",
-  description: "Blokir command bot untuk member, hanya admin/owner yang bisa pakai",
+  description: "Bot de comando bloque para la foto, sólo admin / propietario puede utilizar",
   usage: ".mutegc",
   example: ".mutegc",
   isOwner: false,
@@ -25,23 +25,23 @@ async function handler(m, { sock }) {
 
   if (groupData.mutegc) {
     return m.reply(
-      `🔇 *Mute GC Sudah Aktif*\n\n` +
-        `> Member tidak bisa menggunakan command bot di grup ini\n` +
-        `> Hanya admin grup dan owner bot yang bisa akses\n\n` +
-        `_Ketik *${m.prefix}unmutegc* untuk membuka_`
+      `🔇* Mute GC Ya Active *\n\n` +
+        `*No puedo usar el comando bot en este grupo*\n` +
+        `# Sólo administrador del grupo y dueña que pueden conseguir la acción #\n\n` +
+        `# Tickety #${m.prefix}unmutegc * para abrir _`
     );
   }
 
   db.setGroup(m.chat, { mutegc: true });
   const ctx = _ourincontextjs.saluranCtx.call(void 0, );
-  const groupName = _optionalChain([m, 'access', _ => _.groupMetadata, 'optionalAccess', _2 => _2.subject]) || "grup ini";
+  const groupName = _optionalChain([m, 'access', _ => _.groupMetadata, 'optionalAccess', _2 => _2.subject]) || "este grupo";
 
   return m.reply(
-    `🔇 *Mute GC Aktif*\n\n` +
-      `> Grup: *${groupName}*\n` +
-      `> Member tidak bisa menggunakan command bot\n` +
-      `> Admin grup dan owner bot tetap bisa akses\n\n` +
-      `_Ketik *${m.prefix}unmutegc* untuk membuka_`,
+    `🔇* Mute GC Active *\n\n` +
+      `*${groupName}*\n` +
+      `*No puede usar el comando bot*\n` +
+      `* Amin grupo y dueña * * Aún puede ser un acto *\n\n` +
+      `# Tickety #${m.prefix}unmutegc * para abrir _`,
     { contextInfo: ctx }
   );
 }

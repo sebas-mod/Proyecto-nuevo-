@@ -5,7 +5,7 @@ const pluginConfig = {
     name: 'anime-gen',
     alias: ['animegen', 'aianimegen', 'genai-anime'],
     category: 'ai',
-    description: 'Generate AI anime art dari prompt',
+    description: 'Generar arte de anime AI del impulso',
     usage: '.anime-gen <prompt>',
     example: '.anime-gen girl, vibrant color, smilling',
     isOwner: false,
@@ -23,30 +23,30 @@ async function handler(m, { sock }) {
     if (!prompt) {
         return m.reply(
             `🎨 *ᴀɴɪᴍᴇ ᴀʀᴛ ɢᴇɴᴇʀᴀᴛᴏʀ*\n\n` +
-            `> Generate gambar anime AI dari prompt!\n\n` +
+            `# Generar imagen anime AI del impulso!\n\n` +
             `*ᴄᴀʀᴀ ᴘᴀᴋᴀɪ:*\n` +
             `> \`${m.prefix}anime-gen <deskripsi>\`\n\n` +
             `*ᴄᴏɴᴛᴏʜ:*\n` +
             `> \`${m.prefix}anime-gen girl, vibrant color, smilling, yellow pink gradient hair\`\n` +
             `> \`${m.prefix}anime-gen boy, dark aesthetic, silver hair, red eyes\`\n\n` +
             `*ᴛɪᴘs:*\n` +
-            `> • Gunakan bahasa Inggris\n` +
-            `> • Makin detail prompt, makin bagus hasil\n` +
-            `> • Tambahkan style: vibrant, dark, pastel, etc`
+            `♪•Uso del idioma inglés\n` +
+            `♪•Hacer el detalle rápido, hacer buen uso\n` +
+            `♪•Añadir grapa: vibrante, con estrellas, pastel, etc`
         )
     }
     
     m.react('🕕')
 
     try {
-        const NEOXR_APIKEY = _optionalChain([_configjs2.default, 'access', _ => _.APIkey, 'optionalAccess', _2 => _2.neoxr]) || 'Milik-Bot-OurinMD'
+        const NEOXR_APIKEY = _optionalChain([_configjs2.default, 'access', _ => _.APIkey, 'optionalAccess', _2 => _2.neoxr]) || 'Millik - Eurinprobable'
         const apiUrl = `https://api.neoxr.eu/api/ai-anime?q=${encodeURIComponent(prompt)}&apikey=${NEOXR_APIKEY}`
         
         const data = await _ourinhttpjs.f.call(void 0, apiUrl)
         
         if (!_optionalChain([data, 'optionalAccess', _3 => _3.status]) || !_optionalChain([data, 'optionalAccess', _4 => _4.data, 'optionalAccess', _5 => _5.url])) {
             m.react('❌')
-            return m.reply('❌ *ɢᴀɢᴀʟ*\n\n> Gagal generate gambar. Coba lagi nanti!')
+            return m.reply('❌*ɢᴀɢᴀʟ*\n\n¡Inténtalo de nuevo más tarde!')
         }
         
         const result = data.data  

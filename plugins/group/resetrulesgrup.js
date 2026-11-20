@@ -3,7 +3,7 @@ const pluginConfig = {
     name: 'resetrulesgrup',
     alias: ['resetgrouprules'],
     category: 'group',
-    description: 'Reset rules grup ke default (admin only)',
+    description: 'Reiniciar reglas grupo a predeterminado ( administrador solamente )',
     usage: '.resetrulesgrup',
     example: '.resetrulesgrup',
     isOwner: false,
@@ -23,8 +23,8 @@ function handler(m) {
     
     m.reply(
         `✅ *ɢʀᴜᴘ ʀᴜʟᴇs ᴅɪʀᴇsᴇᴛ*\n` +
-        `Rules grup berhasil direset ke default!\n` +
-        `Ketik \`${m.prefix}rulesgrup\` untuk melihat.`
+        `¡Las reglas del grupo lograron reasentarse a la predeterminación!\n` +
+        `Escribe\`${m.prefix}rulesgrup\`para ver.`
     )
 }
 

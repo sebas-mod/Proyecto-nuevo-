@@ -8,7 +8,7 @@ const pluginConfig = {
   name: "pindl",
   alias: ["pinterestdl", "pindownload", "pintdl"],
   category: "download",
-  description: "Download gambar/video dari Pinterest",
+  description: "Descargar imagen / video desde Pinterest",
   usage: ".pindl <url>",
   example: ".pindl https://pin.it/xxx",
   isOwner: false,
@@ -24,20 +24,20 @@ async function handler(m, { sock }) {
   if (!url) {
     return m.reply(
       `📌 *ᴘɪɴᴛᴇʀᴇsᴛ ᴅᴏᴡɴʟᴏᴀᴅ*\n\n` +
-        `> Download gambar/video dari Pinterest\n\n` +
+        `* Descargas imágenes / videos de Pinterest\n\n` +
         `*ᴄᴏɴᴛᴏʜ:*\n` +
         `> \`${m.prefix}pindl https://pin.it/xxx\`\n` +
         `> \`${m.prefix}pindl https://pinterest.com/pin/xxx\``,
     );
   }
   if (!url.includes("pinterest") && !url.includes("pin.it")) {
-    return m.reply("❌ URL tidak valid. Gunakan link Pinterest.");
+    return m.reply("❌URL inválida.");
   }
   m.react("🕕");
   try {
     const res = await _axios2.default.get(`https://api.azbry.com/api/download/pinterest?url=${encodeURIComponent(url)}`);
     if (!res.data || !res.data.status || !res.data.result) {
-      throw new Error("Gagal mengambil data dari API Pinterest.");
+      throw new Error("Datos de la prueba de API Pinterest.");
     }
 
     const data = res.data.result;
@@ -56,7 +56,7 @@ async function handler(m, { sock }) {
     }
 
     if (mediaList.length === 0) {
-      throw new Error("Tidak ada media ditemukan");
+      throw new Error("No se encontraron medios");
     }
 
     for (const media of mediaList) {
@@ -127,7 +127,7 @@ async function handler(m, { sock }) {
         } catch (err) {
             console.error("[PinDL HLS Error]:", err.message);
             try {
-                // Fallback: Pinterest memblokir generic axios (403), jadi download manual pakai User-Agent
+                //Fallback: Pinterest bloqueando un genéricoxios ( 403 ), así que descarga manual utilizando el usuario - Agente
                 const fallbackBuffer = await _axios2.default.get(media.url, { 
                     responseType: 'arraybuffer',
                     headers: {
@@ -157,12 +157,12 @@ async function handler(m, { sock }) {
           const mp4Path = _path2.default.join(tempPath, `pin-${id}.mp4`);
           try {
             const raw = await _ourinhttpjs.f.call(void 0, media.url, "buffer");
-            if (!raw) throw new Error("Gagal download GIF");
+            if (!raw) throw new Error("Fighters descargas GIF");
             _fs2.default.writeFileSync(gifPath, raw);
             await _ourinffmpegjs.queueFFmpeg.call(void 0, 
               `ffmpeg -y -ignore_loop 0 -i "${gifPath}" -t 30 -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2" -c:v libx264 -pix_fmt yuv420p -movflags faststart -preset ultrafast -an "${mp4Path}"`,
             );
-            if (!_fs2.default.existsSync(mp4Path)) throw new Error("Gagal convert GIF");
+            if (!_fs2.default.existsSync(mp4Path)) throw new Error("GIF convertido stuntman");
             await sock.sendMedia(m.chat, _fs2.default.readFileSync(mp4Path), null, m, {
               type: "video",
               gifPlayback: true,

@@ -2,7 +2,7 @@
     name: 'kapan',
     alias: ['when'],
     category: 'fun',
-    description: 'Tanya bot kapan sesuatu',
+    description: 'Pregunta bot atpan algo',
     usage: '.kapan <pertanyaan>',
     example: '.kapan aku nikah?',
     isOwner: false,
@@ -16,32 +16,32 @@
 
 const answers = [
     'Besok mungkin?',
-    'Tahun depan kayaknya.',
-    '3 hari lagi!',
-    'Hmm, masih lama sih.',
+    'El año próximo es el río.',
+    '¡Tres días!',
+    'Bueno, ha pasado un tiempo.',
     'Sebentar lagi kok!',
-    'Kalau sudah waktunya, pasti terjadi.',
-    'Bulan depan!',
-    'Entah kapan, yang penting sabar.',
-    'Dalam waktu dekat!',
-    '10 tahun lagi mungkin?',
+    'Si es la primera vez, tiene que ocurrir.',
+    'Mes depan!',
+    'Discuss, tan pronto como sea paciente.',
+    '¡En poco tiempo!',
+    '¿Diez años más quizás?',
     'Nggak lama lagi!',
-    'Kalau jodoh, pasti ketemu.',
+    'Usted es un matrimonio arreglado, así que lo veré más tarde.',
     'Hmm, susah diprediksi.',
     'Minggu depan!',
-    'Kalau usahanya lebih keras, lebih cepat!',
+    '¡Eres más duro, más rápido!',
     'Pas waktunya tepat.',
     'Secepatnya, tenang aja.',
     'Ntar kalo udah siap.',
-    'Dalam hitungan hari!',
-    'Saat kamu sudah siap menerimanya.'
+    '¡En la cuenta de días!',
+    'Cuando esté listo para recibirlo.'
 ];
 
 async function handler(m) {
     const text = _optionalChain([m, 'access', _ => _.text, 'optionalAccess', _2 => _2.trim, 'call', _3 => _3()]);
     
     if (!text) {
-        return m.reply(`⏰ *ᴋᴀᴘᴀɴ*\n\n> Masukkan pertanyaan!\n\n*Contoh:*\n> .kapan aku nikah?`);
+        return m.reply(`⏰*ᴋᴀᴘᴀɴ*\n\n¡Disfruta de la pregunta!\n\n*Ejemplo:*\nSí. ¿Qué tal si me casaré?`);
     }
     
     const answer = answers[Math.floor(Math.random() * answers.length)];

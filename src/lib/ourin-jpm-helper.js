@@ -38,7 +38,7 @@ async function fetchGroupsSafe(sock) {
     }
 
     global.isFetchingGroups = false
-    throw new Error('Gagal fetch groups setelah beberapa percobaan')
+    throw new Error('Los combatientes buscan grupos después de algunos experimentos')
 }
 
 function clearGroupCache() {
