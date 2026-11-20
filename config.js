@@ -9,7 +9,7 @@ const config = {
   },
 
   owner: {
-    name: "FallZx Infinity", //Nombre propietario
+    name: "Sebas MD", //Nombre propietario
     number: ["62xxxxxxxxx"], //Formato: 628xxx(sin + o 0 )
   },
 
@@ -31,7 +31,7 @@ const config = {
   bot: {
     name: "AL MIKU", //El nombre del bot
     version: "3.5", //Versión del bot
-    developer: "ᴢᴀɴɴ", //Nombre desarrollador
+    developer: "Sebas MD", //Nombre desarrollador
   },
 
   assets: {
