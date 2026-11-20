@@ -1,0 +1,103 @@
+"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _fs = require('fs'); var _fs2 = _interopRequireDefault(_fs);
+var _path = require('path'); var _path2 = _interopRequireDefault(_path);
+var _ourindatabasejs = require('../../src/lib/ourin-database.js');
+var _configjs = require('../../config.js');
+var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
+const pluginConfig = {
+  name: "ganti-namaowner",
+  alias: ["setnamaowner", "setnameowner", "setownername"],
+  category: "owner",
+  description: "Ganti nama owner (utama atau tambahan)",
+  usage: ".ganti-namaowner <nomor> <nama baru>",
+  example: ".ganti-namaowner 628xxx Fauzan",
+  isOwner: true,
+  isPremium: false,
+  isGroup: false,
+  isPrivate: false,
+  cooldown: 5,
+  energi: 0,
+  isEnabled: true,
+};
+
+async function handler(m, { sock, config }) {
+  const db = _ourindatabasejs.getDatabase.call(void 0, );
+  const input = m.args;
+
+  if (!input[0]) {
+    const nameMap = db.setting("ownerNames") || {};
+    const mainOwnerNum = _optionalChain([config, 'access', _ => _.owner, 'optionalAccess', _2 => _2.number, 'optionalAccess', _3 => _3[0]]) || "";
+    const mainName = _optionalChain([config, 'access', _4 => _4.owner, 'optionalAccess', _5 => _5.name]) || "Owner";
+    let list = `👤 *ᴏᴡɴᴇʀ ɴᴀᴍᴇ ʟɪsᴛ*\n\n`;
+    list += `👑 Main: *${mainName}* (${mainOwnerNum})\n`;
+    const entries = Object.entries(nameMap);
+    if (entries.length > 0) {
+      entries.forEach(([num, name]) => {
+        list += `👤 ${num}: *${name}*\n`;
+      });
+    } else {
+      list += `\n> Belum ada nama custom untuk owner tambahan`;
+    }
+    list += `\n\n*Penggunaan:*\n`;
+    list += `\`${m.prefix}ganti-namaowner <nomor> <nama>\`\n`;
+    list += `\`${m.prefix}ganti-namaowner main <nama>\` — ganti nama owner utama`;
+    return m.reply(list);
+  }
+
+  if (input[0].toLowerCase() === "main") {
+    const newName = input.slice(1).join(" ").trim();
+    if (!newName) {
+      return m.reply(
+        `👤 *ɢᴀɴᴛɪ ɴᴀᴍᴀ ᴏᴡɴᴇʀ ᴜᴛᴀᴍᴀ*\n\n> Nama saat ini: *${_optionalChain([config, 'access', _6 => _6.owner, 'optionalAccess', _7 => _7.name]) || "-"}*\n\n\`${m.prefix}ganti-namaowner main <nama baru>\``,
+      );
+    }
+    try {
+      const configPath = _path2.default.join(process.cwd(), "config.js");
+      let configContent = _fs2.default.readFileSync(configPath, "utf8");
+      configContent = configContent.replace(
+        /owner:\s*\{[\s\S]*?name:\s*['"]([^'"]*)['"]/,
+        (match, oldName) =>
+          match
+            .replace(`'${oldName}'`, `'${newName}'`)
+            .replace(`"${oldName}"`, `'${newName}'`),
+      );
+      _fs2.default.writeFileSync(configPath, configContent);
+      config.owner.name = newName;
+      return m.reply(
+        `✅ *ʙᴇʀʜᴀsɪʟ*\n\n> Nama owner utama diganti ke: *${newName}*`,
+      );
+    } catch (error) {
+      return m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
+    }
+  }
+
+  const targetNumber = input[0].replace(/[^0-9]/g, "");
+  const newName = input.slice(1).join(" ").trim();
+
+  if (!targetNumber || targetNumber.length < 10) {
+    return m.reply(
+      `❌ *ɢᴀɢᴀʟ*\n\n> Nomor tidak valid\n\n\`${m.prefix}ganti-namaowner 628xxx NamaOwner\``,
+    );
+  }
+
+  if (!newName) {
+    const currentName = _configjs.getOwnerName.call(void 0, targetNumber);
+    return m.reply(
+      `👤 *ɴᴀᴍᴀ ᴏᴡɴᴇʀ*\n\n> ${targetNumber}: *${currentName}*\n\n\`${m.prefix}ganti-namaowner ${targetNumber} <nama baru>\``,
+    );
+  }
+
+  const nameMap = db.setting("ownerNames") || {};
+  nameMap[targetNumber] = newName;
+  db.setting("ownerNames", nameMap);
+
+  return m.reply(
+    `✅ *ʙᴇʀʜᴀsɪʟ*\n\n> Nama owner *${targetNumber}* diganti ke: *${newName}*`,
+  );
+}
+
+exports.config = pluginConfig; exports.handler = handler;
+
+if (exports.default && typeof exports.default === 'object') {
+  module.exports = exports.default;
+  module.exports.default = exports.default;
+}

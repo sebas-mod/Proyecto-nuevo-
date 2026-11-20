@@ -1,0 +1,60 @@
+"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _nodefetch = require('node-fetch'); var _nodefetch2 = _interopRequireDefault(_nodefetch);
+var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
+
+const pluginConfig = {
+  name: "izen",
+  alias: ["skiplink", "izen"],
+  category: "tools",
+  description: "Bypass shortlink / skiplink menggunakan izen",
+  usage: ".izen link",
+  example: ".izen https://sfl.gl/xxxxx",
+  isOwner: false,
+  isPremium: false,
+  isGroup: false,
+  isPrivate: false,
+  cooldown: 5,
+  energi: 1,
+  isEnabled: true,
+};
+
+async function handler(m, { args, sock }) {
+  if (!args[0]) {
+    let txt = `🔗 *SKIPLINK BYPASS* 🔗\n\n`;
+    txt += `Halo kak! Punya link yang ribet ngelewatin iklan? Sini aku bantu lewatin biar langsung ke tujuan akhir!\n\n`;
+    txt += `*Cara Pakai:*\n`;
+    txt += `👉 \`${m.prefix}izen <link>\`\n\n`;
+    txt += `*Contoh:*\n`;
+    txt += `👉 \`${m.prefix}izen https://sfl.gl/xxxxx\``;
+    return m.reply(txt);
+  }
+
+  await m.react("⏳");
+  
+  try {
+    const res = await _nodefetch2.default.call(void 0, `https://anabot.my.id/api/tools/izenLOL?url=${encodeURIComponent(args[0])}&apikey=freeApikey`);
+    const json = await res.json();
+    
+    if (!_optionalChain([json, 'access', _ => _.data, 'optionalAccess', _2 => _2.result, 'optionalAccess', _3 => _3.result])) {
+       return m.reply("❌ Waduh kak, gagal ngelewatin link-nya nih! Coba link lain ya.");
+    }
+    
+    let txt = `✅ *BERHASIL BYPASS LINK!* ✅\n\n`;
+    txt += `*Link Asli:* \n`;
+    txt += `🔗 ${args[0]}\n\n`;
+    txt += `*Hasil Bypass:* \n`;
+    txt += `🚀 ${json.data.result.result}\n\n`;
+    txt += `Semoga ngebantu ya kak! ✨`;
+    
+    await m.reply(txt);
+    await m.react("✅");
+  } catch (e) {
+    m.reply(`❌ Maaf kak, terjadi kesalahan sistem! 😭\nError: ${e.message}`);
+  }
+}
+
+exports.config = pluginConfig; exports.handler = handler;
+
+if (exports.default && typeof exports.default === 'object') {
+  module.exports = exports.default;
+  module.exports.default = exports.default;
+}

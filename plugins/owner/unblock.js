@@ -1,0 +1,58 @@
+"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
+var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
+const pluginConfig = {
+    name: ['unblock', 'unblocknomor'],
+    alias: [],
+    category: 'owner',
+    description: 'Buka blokir nomor WhatsApp',
+    usage: '.unblock <nomor/reply/mention>',
+    example: '.unblock 628xxx',
+    isOwner: true,
+    cooldown: 5,
+    energi: 0,
+    isEnabled: true
+}
+
+async function handler(m, { sock }) {
+    let targetJid = null
+
+    if (_optionalChain([m, 'access', _ => _.mentionedJid, 'optionalAccess', _2 => _2.length]) > 0) {
+        targetJid = m.mentionedJid[0]
+    } else if (m.quoted) {
+        targetJid = m.quoted.sender || m.quoted.participant
+    } else if (m.args[0]) {
+        let num = m.args[0].replace(/[^0-9]/g, '')
+        if (!num) return m.reply('❌ Nomor tidak valid.')
+        targetJid = num + '@s.whatsapp.net'
+    } else if (!m.isGroup) {
+        targetJid = m.chat
+    }
+
+    if (!targetJid) {
+        return m.reply(
+            '⚠️ *ᴄᴀʀᴀ ᴘᴀᴋᴀɪ*\n\n' +
+            '> `.unblock 628xxx` — Unblock via nomor\n' +
+            '> `.unblock` (reply pesan) — Unblock pengirim\n' +
+            '> `.unblock @mention` — Unblock yang di-mention\n' +
+            '> `.unblock` (di private chat) — Unblock user ini'
+        )
+    }
+
+    try {
+        await sock.updateBlockStatus(targetJid, 'unblock')
+        await m.react('✅')
+        return m.reply(
+            `✅ *ɴᴏᴍᴏʀ ᴅɪ-ᴜɴʙʟᴏᴄᴋ*\n\n` +
+            `> Target: @${targetJid.split('@')[0]}`,
+            { mentions: [targetJid] }
+        )
+    } catch (err) {
+        return m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName))
+    }
+}
+
+exports.config = pluginConfig; exports.handler = handler;
+if (exports.default && typeof exports.default === 'object') {
+  module.exports = exports.default;
+  module.exports.default = exports.default;
+}

@@ -1,0 +1,107 @@
+"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _ourinschedulerjs = require('../../src/lib/ourin-scheduler.js');
+var _ourinsholatschedulerjs = require('../../src/lib/ourin-sholat-scheduler.js');
+var _ourindatabasejs = require('../../src/lib/ourin-database.js');
+var _ourinsholatapijs = require('../../src/lib/ourin-sholat-api.js');
+var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
+const pluginConfig = {
+    name: 'cekschedule',
+    alias: ['cekscheduler', 'schedulerstatus', 'schedstatus'],
+    category: 'owner',
+    description: 'Melihat status semua scheduler bot',
+    usage: '.cekschedule',
+    example: '.cekschedule',
+    isOwner: true,
+    isPremium: false,
+    isGroup: false,
+    isPrivate: false,
+    cooldown: 3,
+    energi: 0,
+    isEnabled: true
+};
+
+async function handler(m, { sock }) {
+    try {
+        const status = _ourinschedulerjs.getFullSchedulerStatus.call(void 0, );
+        const db = _ourindatabasejs.getDatabase.call(void 0, );
+        const sholatEnabled = db.setting('autoSholat') || false;
+
+        let text = `📊 *sᴄʜᴇᴅᴜʟᴇʀ sᴛᴀᴛᴜs*\n\n`;
+
+        for (const sched of status.schedulers) {
+            const statusIcon = sched.running ? '✅' : '❌';
+            text += `${statusIcon} *${sched.name}*\n`;
+            text += `   └ Key: \`${sched.key}\`\n`;
+            text += `   └ ${sched.description}\n`;
+
+            if (sched.lastRun && sched.lastRun !== '-' && sched.lastRun !== 'Never') {
+                text += `   └ Last: ${sched.lastRun}\n`;
+            }
+
+            if (sched.stats) {
+                if (sched.stats.totalResets) {
+                    text += `   └ Total Resets: ${sched.stats.totalResets}\n`;
+                }
+                if (sched.stats.activeMessages !== undefined) {
+                    text += `   └ Active: ${sched.stats.activeMessages} | Sent: ${sched.stats.totalSent}\n`;
+                }
+            }
+            text += `\n`;
+        }
+
+        const sholatIcon = sholatEnabled ? '✅' : '❌';
+        text += `${sholatIcon} *Sholat Scheduler*\n`;
+        text += `   └ Key: \`sholat\`\n`;
+        text += `   └ Notifikasi waktu sholat (real-time)\n`;
+
+        if (sholatEnabled) {
+            const kotaSetting = db.setting('autoSholatKota') || { id: '1301', nama: 'KOTA JAKARTA' };
+            text += `   └ Lokasi: ${kotaSetting.nama}\n`;
+
+            try {
+                const { schedule } = await _ourinsholatapijs.getTodaySchedule.call(void 0, kotaSetting.id);
+                const times = _ourinsholatapijs.extractPrayerTimes.call(void 0, schedule);
+                const now = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Jakarta' }));
+                const currentTime = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
+
+                let nextSholat = null;
+                let nextTime = null;
+
+                for (const [name, time] of Object.entries(times)) {
+                    if (time > currentTime && time !== '-') {
+                        nextSholat = name.charAt(0).toUpperCase() + name.slice(1);
+                        nextTime = time;
+                        break;
+                    }
+                }
+
+                if (!nextSholat) {
+                    nextSholat = 'Imsak';
+                    nextTime = times.imsak;
+                }
+
+                text += `   └ Next: ${nextSholat} (${nextTime} WIB)\n`;
+            } catch (e) {
+                text += `   └ _Gagal memuat jadwal_\n`;
+            }
+        }
+
+        text += `\n`;
+        text += `━━━━━━━━━━━━━━━━━━━\n`;
+        text += `✅ Aktif: ${status.summary.totalActive + (sholatEnabled ? 1 : 0)}\n`;
+        text += `❌ Nonaktif: ${status.summary.totalInactive + (!sholatEnabled ? 1 : 0)}\n\n`;
+
+        text += `> Gunakan \`.stopschedule <key>\` untuk stop\n`;
+        text += `> Gunakan \`.startschedule <key>\` untuk start`;
+
+        await m.reply(text);
+    } catch (error) {
+        console.error('[CekSchedule Error]', error);
+        await m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
+    }
+}
+
+exports.config = pluginConfig; exports.handler = handler;
+if (exports.default && typeof exports.default === 'object') {
+  module.exports = exports.default;
+  module.exports.default = exports.default;
+}

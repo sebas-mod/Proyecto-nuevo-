@@ -1,0 +1,56 @@
+"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }const pluginConfig = {
+    name: 'setname',
+    alias: ['setnamebot', 'setbotnama'],
+    category: 'tools',
+    description: 'Mengubah nama profil bot',
+    usage: '.setname <nama baru>',
+    example: '.setname Ourin-AI',
+    isOwner: true,
+    isPremium: false,
+    isGroup: false,
+    isPrivate: false,
+    cooldown: 10,
+    energi: 0,
+    isEnabled: true
+}
+
+async function handler(m, { sock }) {
+    const newName = _optionalChain([m, 'access', _ => _.text, 'optionalAccess', _2 => _2.trim, 'call', _3 => _3()])
+    
+    if (!newName) {
+        await m.reply(
+            `⚠️ *ᴄᴀʀᴀ ᴘᴀᴋᴀɪ*\n\n` +
+            `> \`${m.prefix}setname Nama Bot Baru\``
+        )
+        return
+    }
+    
+    if (newName.length < 1 || newName.length > 25) {
+        await m.reply(
+            `⚠️ *ᴠᴀʟɪᴅᴀsɪ*\n\n` +
+            `> Nama bot harus 1-25 karakter.`
+        )
+        return
+    }
+    
+    try {
+        await sock.updateProfileName(newName)
+        
+        await m.reply(
+            `✅ *ɴᴀᴍᴀ ʙᴏᴛ ᴅɪᴜʙᴀʜ*\n\n` +
+            `> Nama bot sekarang: *${newName}*`
+        )
+    } catch (error) {
+        await m.reply(
+            `❌ *ɢᴀɢᴀʟ*\n\n` +
+            `> Tidak dapat mengubah nama bot.\n` +
+            `> _${error.message}_`
+        )
+    }
+}
+
+exports.config = pluginConfig; exports.handler = handler;
+if (exports.default && typeof exports.default === 'object') {
+  module.exports = exports.default;
+  module.exports.default = exports.default;
+}
