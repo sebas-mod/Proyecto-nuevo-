@@ -96,7 +96,7 @@ async function handler(m) {
         return m.reply('❌*ᴏɴʟʏᴀᴅᴍɪɴ ɴᴏɴᴀᴋᴛɪꜰ*\n\n*Para ser llevado por todos los hombres*')
     }
 
-    return m.reply('❌Discusiones inválidas. Uso:`on`o`apagado`')
+    return m.reply('❌Opción inválida. Usa `on` o `off`')
 }
 
 exports.config = pluginConfig; exports.handler = handler;

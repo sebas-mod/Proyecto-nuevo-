@@ -303,7 +303,7 @@ function createUserProfile(data) {
   } = data;
 
   const statusEmoji =
-    status === "Propietario"
+    status === "Owner"
       ? EMOJIS.owner
       : status === "Premium"
         ? EMOJIS.premium

@@ -80,13 +80,13 @@ async function pddikti(input) {
 
     let path;
     switch (mode) {
-      case "all":   path = `/búsqueda/all/${encodeURIComponent(query)}`; break;
+      case "all":   path = `/pencarian/all/${encodeURIComponent(query)}`; break;
       case "mhs":
       case "mahasiswa":
-        path = `/búsqueda/mhs/${encodeURIComponent(query)}`; break;
-      case "dosen": path = `/búsqueda/dosen/${encodeURIComponent(query)}`; break;
-      case "pt":    path = `/búsqueda/pt/${encodeURIComponent(query)}`; break;
-      case "prodi": path = `/búsqueda/prodi/${encodeURIComponent(query)}`; break;
+        path = `/pencarian/mhs/${encodeURIComponent(query)}`; break;
+      case "dosen": path = `/pencarian/dosen/${encodeURIComponent(query)}`; break;
+      case "pt":    path = `/pencarian/pt/${encodeURIComponent(query)}`; break;
+      case "prodi": path = `/pencarian/prodi/${encodeURIComponent(query)}`; break;
       default:
         return { Status: false, Code: 400, Input: input, Result: null,
           Error: `Unknown mode '${mode}'. Usar: all | mhs | dosen | pt | prodi | detail` };

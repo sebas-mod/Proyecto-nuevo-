@@ -242,7 +242,7 @@ async function handler(m, { sock }) {
     const action = normalizeAction(args[1], "");
     if (!action) {
       await m.reply(
-        "❌Usa:`- El método anticuário.`o`. método anticuoto eliminar.`",
+        "❌Usa: `.anticustom metode kick` o `.anticustom metode remove`",
       );
       return;
     }
@@ -292,7 +292,7 @@ async function handler(m, { sock }) {
   }
 
   await m.reply(
-    "❌Subcomando inválido. Uso: en, apagado, lista, añadir, del, método, cancelar",
+    "❌Subcomando inválido. Uso: on, off, list, add, del, metode, cancel",
   );
 }
 

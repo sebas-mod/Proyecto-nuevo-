@@ -33,8 +33,8 @@ function handler(m) {
             `Para detectar mensajes de phising como enlaces de clics, cuentas de verificación, palsu de log, shortener steal, URL IP, punycodes, y pola @-@ type.\n\n` +
             `> \`${m.prefix}antiphising on\`\n` +
             `> \`${m.prefix}antiphising off\`\n` +
-            `> \`${m.prefix}patada de método antifraseante\`\n` +
-            `> \`${m.prefix}método antifrasecado eliminar\``
+            `> \`${m.prefix}antiphising metode kick\`\n` +
+            `> \`${m.prefix}antiphising metode remove\``
         )
     }
 
@@ -58,7 +58,7 @@ function handler(m) {
             db.setGroup(m.chat, { antiphising: 'on', antiphisingMode: 'remove' })
             return m.reply('✅ *AntiPhising mode DELETE diaktifkan*')
         }
-        return m.reply('❌¡Método inválido!`Patito`o`Retirar`')
+        return m.reply('❌¡Método inválido. Usa `kick` o `remove`')
     }
 
     if (option === 'kick') {
@@ -71,7 +71,7 @@ function handler(m) {
         return m.reply('✅ *AntiPhising mode DELETE diaktifkan*')
     }
 
-    return m.reply('❌¡Opsi inválido!`on`.`apagado`.`metodo kick`.`metodo remove`')
+    return m.reply('❌Opción inválida. Usa `on`, `off`, `metode kick` o `metode remove`')
 }
 
 exports.config = pluginConfig; exports.handler = handler;

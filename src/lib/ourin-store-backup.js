@@ -63,9 +63,9 @@ async function createDatabaseBackup() {
                     if (entry.name.endsWith('.zip')) continue
                     
                     if (entry.isDirectory()) {
-                        archive.directory(fullPath, `base de datos/${entry.name}`)
+                        archive.directory(fullPath, `database/${entry.name}`)
                     } else if (entry.isFile()) {
-                        archive.file(fullPath, { name: `base de datos/${entry.name}` })
+                        archive.file(fullPath, { name: `database/${entry.name}` })
                     }
                 }
                 

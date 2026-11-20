@@ -113,7 +113,7 @@ async function comparationAnswerHandler(m, sock) {
     const text = m.body.trim();
     const textLower = text.toLowerCase();
 
-    if (textLower === "batal" || textLower === "cancel") {
+    if (textLower === "batal" || textLower === "cancel" || textLower === "cancelar") {
         delete user.compare_session;
         db.save();
         await m.reply(`🚪El debate está fuera de las listas.`);

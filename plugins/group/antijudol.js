@@ -33,8 +33,8 @@ function handler(m) {
             `# Detective Content Justul like judi, slots, acor, maxganar, togel, foto de bonificación, enlaces alternativos, y un pequeño pola lindo.\n\n` +
             `> \`${m.prefix}antijudol on\`\n` +
             `> \`${m.prefix}antijudol off\`\n` +
-            `> \`${m.prefix}antijudgment método patada\`\n` +
-            `> \`${m.prefix}método antijuguli eliminar\``
+            `> \`${m.prefix}antijudol metode kick\`\n` +
+            `> \`${m.prefix}antijudol metode remove\``
         )
     }
 
@@ -58,7 +58,7 @@ function handler(m) {
             db.setGroup(m.chat, { antijudol: 'on', antijudolMode: 'remove' })
             return m.reply('✅ *AntiJudol mode DELETE diaktifkan*')
         }
-        return m.reply(`❌¡Método inválido!\`Patito\`o\`Retirar\``)
+        return m.reply(`❌Método inválido. Usa \`kick\` o \`remove\``)
     }
 
     if (option === 'kick') {
@@ -71,7 +71,7 @@ function handler(m) {
         return m.reply('✅ *AntiJudol mode DELETE diaktifkan*')
     }
 
-    return m.reply('❌¡Opsi inválido!`on`.`apagado`.`metodo kick`.`metodo remove`')
+    return m.reply('❌Opción inválida. Usa `on`, `off`, `metode kick` o `metode remove`')
 }
 
 exports.config = pluginConfig; exports.handler = handler;
