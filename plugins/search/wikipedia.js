@@ -21,7 +21,7 @@ const pluginConfig = {
 const LANG = "id";
 const LIMIT = 5;
 const BASE = `https://${LANG}.wikipedia.org`;
-const API = `${BASE}/w/fuego.php`;
+const API = `${BASE}/w/api.php`;
 const UA = "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Mobile Safari/537.36";
 
 function decodeHtml(text) {

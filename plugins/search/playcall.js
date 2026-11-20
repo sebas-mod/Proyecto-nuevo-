@@ -20,7 +20,7 @@ const pluginConfig = {
 async function handler(m, { sock, text }) {
   const query = _optionalChain([m, 'access', _ => _.text, 'optionalAccess', _2 => _2.trim, 'call', _3 => _3()]);
   if (!query)
-    return m.reply(`🎵*ᴘʟᴀʏ ᴄᴀʟʟ*\n\n# Ponga el dildo @-@ en @-@ el poste @-@\n\`Ejemplo:${m.prefix}carta de playcall amor a Starla\``);
+    return m.reply(`🎵*ᴘʟᴀʏ ᴄᴀʟʟ*\n\n# Ponga el dildo @-@ en @-@ el poste @-@\n\`Ejemplo:${m.prefix}playcall de playcall amor a Starla\``);
 
   if (!global.voipClient) {
     return m.reply("La llamada de sonido no está activada ( VoipClient, pero realy ).");

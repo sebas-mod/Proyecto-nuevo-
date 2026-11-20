@@ -22,7 +22,7 @@ async function handler(m, { sock }) {
     if (!newName) {
         await m.reply(
             `⚠️ *ᴄᴀʀᴀ ᴘᴀᴋᴀɪ*\n\n` +
-            `> \`${m.prefix}Zombre gc Nomre Grupo Nuevo\``
+            `> \`${m.prefix}setnamegc gc Nomre Grupo Nuevo\``
         )
         return
     }

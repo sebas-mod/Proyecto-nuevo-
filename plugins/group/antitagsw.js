@@ -32,7 +32,7 @@ async function handler(m, { sock, db }) {
             `> (groupStatusMentionMessage)\n\n` +
             `\`\`\`━━━ ᴘɪʟɪʜᴀɴ ━━━\`\`\`\n` +
             `> \`${m.prefix}antitagsw on\` → Aktifkan\n` +
-            `> \`${m.prefix}antitaghap\` →Desactiva`
+            `> \`${m.prefix}antitagsw\` →Desactiva`
         )
         return
     }

@@ -40,7 +40,7 @@ async function checkPrompt(prompt) {
 
 async function getResult(sessionHash, eventId) {
   const res = await _axios2.default.get(
-    `${SPACE_URL}/gradio_api/queue/datos?session_hash=${sessionHash}`,
+    `${SPACE_URL}/gradio_api/queue/data?session_hash=${sessionHash}`,
     {
       timeout: 180000,
       responseType: "stream",
@@ -136,7 +136,7 @@ function extractUrl(output) {
   const path = text.match(/\/tmp\/gradio\/[^"'\\\s]+?\.(webp|png|jpg|jpeg)/);
 
   if (path) {
-    return `${SPACE_URL}/gradio_api/archivo=${path[0]}`;
+    return `${SPACE_URL}/gradio_api/file=${path[0]}`;
   }
 
   return "";
@@ -157,7 +157,7 @@ async function Txt2Img2(prompt) {
     const sessionHash = _nodecrypto2.default.randomBytes(8).toString("hex");
 
     const joinRes = await _axios2.default.post(
-      `${SPACE_URL}/ graohajir fuego / cola / unirse?`,
+      `${SPACE_URL}/gradio_api/queue/join?`,
       {
         data: [prompt, [], "Distilled (4 steps)", 0, true, 1024, 1024, 4, 1, false],
         event_data: null,

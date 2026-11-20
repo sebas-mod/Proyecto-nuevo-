@@ -24,7 +24,7 @@ async function handler(m, { sock }) {
         return m.reply(
             `⚠️ *ᴊᴀᴅɪʙᴏᴛ ꜱᴜᴅᴀʜ ᴀᴋᴛɪꜰ*\n\n` +
             `# Número You 've become a bot\n` +
-            `> Escribe\`${m.prefix}Stopkebot\`para detener`
+            `> Escribe\`${m.prefix}stopjadibot\`para detener`
         )
     }
 

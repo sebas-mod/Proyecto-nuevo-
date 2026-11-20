@@ -25,8 +25,8 @@ async function handler(m, { sock }) {
       `*Uso:*\n` +
       `- *${m.prefix}capenergi <nama_fitur1> <nama_fitur2> ... <jumlah>*\n\n` +
       `*Ejemplo de uso:*\n` +
-      `- *${m.prefix}Capenergi hd jpm 5 * ( FITR HD TO JPM para cortar 5 energías )\n` +
-      `- *${m.prefix}hd n0 capenergi * (la fuente HD se convierte en energía gradiente )\n\n` +
+      `- *${m.prefix}capenergi hd jpm 5 * ( FITR HD TO JPM para cortar 5 energías )\n` +
+      `- *${m.prefix}capenergi n0 capenergi * (la fuente HD se convierte en energía gradiente )\n\n` +
       `*Explicación:*\n` +
       `Ponga una o varias características en la fuente que desea cambiar.\n` +
       `2. El fin debe ser un nuevo número de fragmentos de energía.`

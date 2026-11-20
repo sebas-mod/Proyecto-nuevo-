@@ -37,7 +37,7 @@ async function handler(m, { sock }) {
   const input = m.args.join(" ");
   if (!input || !input.includes("|")) {
     return m.reply(
-      `😂*ᴍᴇᴍᴇSᴛɪᴄᴋᴇʀ*\n\n* Formatt: Top * Down *\n\n\`Epirame:${m.prefix}Cuando estoy cansado de ti\``,
+      `😂*ᴍᴇᴍᴇSᴛɪᴄᴋᴇʀ*\n\n* Formatt: Top * Down *\n\n\`Epirame:${m.prefix}smeme estoy cansado de ti\``,
     );
   }
   const [top, bottom] = input.split("|").map((s) => s.trim());

@@ -124,7 +124,7 @@ async function getMaatSign() {
   });
 
   const res = await api.get(
-    `/fuego/archivo/get_maat_sign.json?${params.toString()}`,
+    `/api/file/get_maat_sign.json?${params.toString()}`,
     {
       headers: traceHeaders(),
     },
@@ -271,7 +271,7 @@ async function queryTranscode(id) {
   });
 
   const res = await api.get(
-    `/fuego/archivo/video_trans_query.json?${params.toString()}`,
+    `/api/file/video_trans_query.json?${params.toString()}`,
     {
       headers: traceHeaders(),
     },
@@ -376,7 +376,7 @@ async function queryBatch(msgId) {
   });
 
   const res = await api.get(
-    `/fuego/meitu_ai/query_batch.json?${params.toString()}`,
+    `/api/meitu_ai/query_batch.json?${params.toString()}`,
     {
       headers: {
         ...traceHeaders(),

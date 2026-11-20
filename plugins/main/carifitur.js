@@ -79,7 +79,7 @@ async function loadAllPlugins() {
       for (const file of files) {
         try {
           const plugin = await Promise.resolve().then(() => _interopRequireWildcard(require(
-            `archivo://${_path2.default.join(categoryPath, file).replace(/\\/g, "/")}`
+            `file://${_path2.default.join(categoryPath, file).replace(/\\/g, "/")}`
           )));
           if (plugin.config && plugin.config.name) {
             plugins.push({

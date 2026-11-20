@@ -73,7 +73,7 @@ function handler(m, { sock }) {
             `${modeList}` +
             `╰───────────────\n\n` +
             `*ꜰʟᴀɢ sᴛᴏʀᴇ:*\n` +
-            `> \`${m.prefix}tormenta de botmodas\`- Orden manual\n\n` +
+            `> \`${m.prefix}botmode de botmodas\`- Orden manual\n\n` +
             `El futuro por grupo`
         )
     }
@@ -117,7 +117,7 @@ function handler(m, { sock }) {
         `> Mode: *${mode.toUpperCase()}* (${MODES[mode].name})\n` +
         `*${m.chat.split('@')[0]}*\n` +
         extraInfo +
-        `\n\n> Escribe\`${m.prefix}menú\`para ver el menú.`
+        `\n\n> Escribe\`${m.prefix}menuú\`para ver el menú.`
     )
 }
 

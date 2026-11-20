@@ -49,8 +49,8 @@ function isToxic(text, toxicList) {
 
 function gpMsg(key, replacements = {}) {
     const defaults = {
-        antitoxicWarn: '⚠@ % usuario % cite cashmere.\nAdvertencia al % advierte % del % max%, la siguiente brecha podría ser - % método %.',
-        antitoxicAction: '🚫@ % user % di - % method % due toxic. ( % advertido % / % max% )',
+        antitoxicWarn: '⚠ @%user% dijo palabras ofensivas.\nAdvertencia %warn% de %max%; la próxima infracción puede terminar en %method%.',
+        antitoxicAction: '🚫 @%user% fue %method% por ser tóxico. (%warn%/%max%)',
     }
     let text = _optionalChain([_configjs2.default, 'access', _ => _.groupProtection, 'optionalAccess', _2 => _2[key]]) || defaults[key] || ''
     for (const [k, v] of Object.entries(replacements)) {

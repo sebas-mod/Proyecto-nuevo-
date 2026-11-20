@@ -57,8 +57,8 @@ async function handler(m, { sock }) {
             `📱 *AUTOREPLY PRIVATE*\n\n` +
             `Status: *${currentStatus ? '✅ AKTIF' : '❌ NONAKTIF'}*\n\n` +
             `*Comando Disponible:*\n` +
-            `• *${m.prefix}autorepronunciablemente primate on *—Activa private\n` +
-            `• *${m.prefix}autoreprotegidamente primate *—Desactiva private`
+            `• *${m.prefix}autoreply private on* — Activa el autoreply en privado\n` +
+            `• *${m.prefix}autoreply private off* — Desactiva el autoreply en privado`
         )
     }
     
@@ -188,19 +188,19 @@ async function handler(m, { sock }) {
         text += `Efectiva en Grupo: *${effectiveStatus ? '✅ AKTIF' : '❌ NONAKTIF'}*\n`
         text += `REPOSENTANTES PERALIZNO Total (Grupo ): *${customReplies.length}*\n\n`
         text += `*MANAJEMEN Grupo:*\n`
-        text += `• *${m.prefix}*—Activar en este grupo\n`
-        text += `• *${m.prefix}*—Desactivar en este grupo\n`
-        text += `• *${m.prefix}Agregue autoreply<trigger>♪<reply>*—Añadir respuesta personalizada\n`
-        text += `• *${m.prefix}autoreply del<trigger>*—Elimina respuesta personalizada\n`
-        text += `• *${m.prefix}lista de autoreply *—Mira todos los desencadenantes de este grupo.\n`
-        text += `• *${m.prefix}autoreply restablecer*—Elimina Kupa personalizado en este grupo\n\n`
+        text += `• *${m.prefix}autoreply on* — Activar en este grupo\n`
+        text += `• *${m.prefix}autoreply off* — Desactivar en este grupo\n`
+        text += `• *${m.prefix}autoreply add <trigger>|<reply>* — Añadir respuesta personalizada\n`
+        text += `• *${m.prefix}autoreply del <trigger>* — Elimina respuesta personalizada\n`
+        text += `• *${m.prefix}autoreply list* — Mira todos los triggers de este grupo.\n`
+        text += `• *${m.prefix}autoreply reset* — Elimina TODOS los triggers personalizados de este grupo\n\n`
         
         if (m.isOwner) {
             text += `* Manajemen GLOBAL ( Propietario):\n`
             text += `• *${m.prefix}autoreply global add <trigger>|<reply>*\n`
             text += `• *${m.prefix}autoreply global del <trigger>*\n`
-            text += `• *${m.prefix}lista mundial de autorelly *—El activo @-@ activ Trigger\n`
-            text += `• *${m.prefix}autorepronuncilemente primate on / off *—Toggle bot responder in dharka\n\n`
+            text += `• *${m.prefix}autoreply global list* — Triggers globales activos\n`
+            text += `• *${m.prefix}autoreply private on/off* — Activa o desactiva las respuestas del bot en privado\n\n`
         }
         
         text += `* CARA EXPLOSIONS:\n`
@@ -233,7 +233,7 @@ async function handler(m, { sock }) {
                 `❌*Formato Incorrecto*\n\n` +
                 `Forte de uso: * desencadena xyreply *\n\n` +
                 `*Text Only:*\n` +
-                `• ${m.prefix}Soy un tonto, soy un tonto{name}!👋\n\n` +
+                `• ${m.prefix}ar add hola|Hola {name}! 👋\n\n` +
                 `*Con Imagen:*\n` +
                 `1. Responder imagen +${m.prefix}ar add trigger|caption\n` +
                 `2. Imagen xenol + leyenda${m.prefix}ar add trigger|caption\n\n` +

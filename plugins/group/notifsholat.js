@@ -37,7 +37,7 @@ function handler(m, { sock, db }) {
             `Ubicación: *${kotaSetting.nama}*\n\n` +
             `*Ajustes Grupo:*\n` +
             `• *${m.prefix}# Nada es holac #—Activar notivo en este grupo\n` +
-            `• *${m.prefix}Nada es un apatamiento—Desactivar el notivo en este grupo\n\n` +
+            `• *${m.prefix}notifsholat off* — Desactiva las notificaciones en este grupo\n\n` +
             `*CARA Trabaja:*\n` +
             `1. Envío de mp3 adzan pasado de la entrada de imagen en el momento de la sesión\n` +
             `Siga el verdadero @-@ manejador de tiempo de myquran.\n` +

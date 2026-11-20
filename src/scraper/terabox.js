@@ -22,7 +22,7 @@ async function TeraBoxDL(url) {
     }
 
     const response = await _axios2.default.post(
-      `${CONFIG.base}/ telegrama / bot / búsqueda / video`,
+      `${CONFIG.base}/telegram/bot/search/video`,
       { url },
       {
         headers: {

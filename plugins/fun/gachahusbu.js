@@ -185,7 +185,7 @@ async function handler(m, { sock }) {
   const cmd = m.command.toLowerCase();
   if (cmd === "husbuku" || cmd === "suamiku") {
     if (!user.husbu) {
-      return m.reply(`⚠¡No tienes el Hubbu todavía!\nPor favor, sólo da un paso.${m.prefix}¡Gachahushbu para empezar!`);
+      return m.reply(`⚠️ *¡Todavía no tienes un husbu!*\nEscribe *${m.prefix}gachahusbu* para empezar.`);
     }
     m.react("🕕");
     const husbu = user.husbu;
@@ -229,31 +229,31 @@ async function handler(m, { sock }) {
   if (cmd === "gachahusbu" || cmd === "gachasuami") {
     if (user.husbu) {
       m.react("😡");
-      let pesanStatus = user.husbu.married ? "Dia sudah menjadi suamimu!" : "¡Está tratando de derretir tu corazón!";
+      let pesanStatus = user.husbu.married ? "¡Él ya es tu esposo!" : "¡Está tratando de derretir tu corazón!";
       return m.reply(
         `⚠- * ¡Ya tienes a Husbu!\n\n` +
         `Nombre: *${user.husbu.name}*\n` +
         `Tier: *${user.husbu.tier}*\n` +
         `Affection: *${user.husbu.affection}/100*\n\n` +
-        `No seas malo, ahora eres una hushmother.${pesanStatus}Escribe *${m.prefix}Mi marido para interactuar con ella.`
+        `¡No seas avariciosa! Cuida al husbu que ya tienes. ${pesanStatus} Escribe *${m.prefix}husbuku* para interactuar con él.`
       );
     }
 
     const sub = (m.args[0] || "").toLowerCase();
 
     if (sub !== "start") {
-      const panduan = `💕# 91 # SISTEM GACA # Oh, Dios mío #💕\n\n` +
+      const panduan = `💕 SISTEMA GACHA HUSBANDO 💕\n\n` +
         `Las simulaciones de kencan alienígenas son interactivas para conseguir su anime masculino!\n\n` +
         `*Uso Comando:*\n` +
-        `• *${m.prefix}gachahushbu *—Respaldar este menú de scouting\n` +
-        `• *${m.prefix}Husbuku—Rompe el panel interactuando con su hushbus.\n` +
-        `• *${m.prefix}No te metas en esto, mamá.—Desplazar el estado de husmu y restablecer\n\n` +
-        `A91; EXPLOSION ALLENDS CERITA:\n` +
-        `Uno, pon tu dedo en el botón, vas a ser arrastrado de vuelta a tu vida.\n` +
-        `2, 3 fases de la sociedad del amor\n` +
-        `Tres.\n` +
-        `Cuatro.\n` +
-        `Cinco.`;
+        `• *${m.prefix}gachahusbu* — Abre este menú de guía\n` +
+        `• *${m.prefix}husbuku* — Abre el panel de interacción con tu husbu\n` +
+        `• *${m.prefix}tinggalinhusbu* — Abandona a tu husbu y reinicia su estado\n\n` +
+        `✨ HISTORIA COMPLETA:\n` +
+        `1. Consigue tu primer husbu.\n` +
+        `2. Atraviesa las 3 fases del amor\n` +
+        `3. Interactúa, cuida y sube su afecto.\n` +
+        `4. Cásate con tu husbu y forma una familia.\n` +
+        `5. ¡Disfruta del viaje!`;
 
       const msg = _ourin.generateWAMessageFromContent.call(void 0, m.chat, {
         viewOnceMessage: {
@@ -308,7 +308,7 @@ async function handler(m, { sock }) {
   if (cmd === "husbuaction") {
     if (!user.husbu) {
       m.react("❌");
-      return m.reply(`¡No tienes el Hushma todavía!${m.prefix}Gachahushbu para conseguir su primer marido.`);
+      return m.reply(`¡Todavía no tienes un husbu! Escribe *${m.prefix}gachahusbu* para conseguir tu primer husbu.`);
     }
 
     const action = (m.args[0] || "").toLowerCase();
@@ -323,7 +323,7 @@ async function handler(m, { sock }) {
     }
     if (action === "kafe") {
       return sendHusbuMessage(m, sock, husbu, `*${husbu.name}* mentraktirmu en kafe favoritnya. Cuando memesan cafe, el menanyakan selera minumanmu.`, [
-        { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "☕ Kopi Pahit", id: `${m.prefix}Husbuction DANJANAKOJI` }) },
+        { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "☕ Kopi Pahit", id: `${m.prefix}husbuaction kencan_kopi` }) },
         { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "🍓 Strawberry Milk", id: `${m.prefix}husbuaction kencan_matcha` }) }
       ]);
     }
@@ -335,7 +335,7 @@ async function handler(m, { sock }) {
     }
     if (action === "belanja") {
       return sendHusbuMessage(m, sock, husbu, `Ustedes vayan al centro comercial.${husbu.name}* Ofrézcale algo.`, [
-        { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "👕 Jaket Keren Pasangan", id: `${m.prefix}Husbuction Drench attire` }) },
+        { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "👕 Jaket Keren Pasangan", id: `${m.prefix}husbuaction kencan_baju` }) },
         { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "💍 Cincin Mewah", id: `${m.prefix}husbuaction kencan_perhiasan` }) }
       ]);
     }
@@ -352,8 +352,8 @@ async function handler(m, { sock }) {
 
     if (action === "peluk") {
       return sendHusbuMessage(m, sock, husbu, `Miras la espalda grande${husbu.name}* Buena oportunidad, ¡lo estás tocando!`, [
-        { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "🤗 Peluk Pinggangnya", id: `${m.prefix}Husbuction intikalakan` }) },
-        { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "💪 Pegang Tangannya Erat", id: `${m.prefix}Husbuction intikau delante` }) }
+        { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "🤗 Peluk Pinggangnya", id: `${m.prefix}husbuaction intim_belakang` }) },
+        { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "💪 Pegang Tangannya Erat", id: `${m.prefix}husbuaction intim_depan` }) }
       ]);
     }
     if (action === "cium") {
@@ -365,7 +365,7 @@ async function handler(m, { sock }) {
     if (action === "tidur") {
       return sendHusbuMessage(m, sock, husbu, `El malamstanc, usted está en la misma habitación, que le está tirando en sus brazos.`, [
         { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "🫂 Senderan di Dadanya", id: `${m.prefix}husbuaction intim_kelon` }) },
-        { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "🔥Responde con Gairah", id: `${m.prefix}Husbuction intimaxpanas` }) }
+        { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "🔥Responde con Gairah", id: `${m.prefix}husbuaction intim_panas` }) }
       ]);
     }
     if (action === "mandi") {

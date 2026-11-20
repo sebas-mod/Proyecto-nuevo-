@@ -45,7 +45,7 @@ async function handler(m) {
     await m.reply(
         `✅ *ɪɴᴛʀᴏ ᴅɪsᴀᴠᴇ!*\n` +
         `El orden de intro grupo fue alterado con éxEstá bien.\n` +
-        `Escribe *${m.prefix}Introducción para ver los resultados.`
+        `Escribe *${m.prefix}introón para ver los resultados.`
     )
 }
 

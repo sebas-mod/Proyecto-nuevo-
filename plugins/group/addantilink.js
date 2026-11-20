@@ -26,7 +26,7 @@ function handler(m) {
             `* Ponga en el enlace de dominio / patrón a bloque\n\n` +
             `\`Contoh:\`\n` +
             `\`${m.prefix}addantilink tiktok.com\`\n` +
-            `\`${m.prefix}Hay una charla de baile. whatsapp. com\`\n` +
+            `\`${m.prefix}addantilink una charla de baile. whatsapp. com\`\n` +
             `\`${m.prefix}addantilink instagram.com\``
         )
     }
@@ -45,7 +45,7 @@ function handler(m) {
         `✅ *ᴀɴᴛɪʟɪɴᴋ ᴅɪᴛᴀᴍʙᴀʜ*\n\n` +
         `> Enlace:\`${link}\`\n` +
         `> Total: *${antilinkList.length}* link\n\n` +
-        `> Usa \`${m.prefix}listantilinks\`para ver la lista`
+        `> Usa \`${m.prefix}listantilink\`para ver la lista`
     )
 }
 

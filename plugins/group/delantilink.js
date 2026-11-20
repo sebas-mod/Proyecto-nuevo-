@@ -33,7 +33,7 @@ function handler(m) {
             txt += `> ${i + 1}. \`${l}\`\n`
         })
         txt += `\n> Total: *${antilinkList.length}* enlace`
-        txt += `\n\n\`${m.prefix}delantilinks<domain>\`para elimina`
+        txt += `\n\n\`${m.prefix}delantilink<domain>\`para elimina`
         
         return m.reply(txt)
     }

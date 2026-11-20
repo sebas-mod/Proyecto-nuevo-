@@ -28,18 +28,18 @@ async function handler(m, { sock }) {
     const args = m.args
     if (!args[0] && !m.quoted && (!m.mentionedJid || m.mentionedJid.length === 0)) {
         return m.reply(
-            `⚠♪SISTEM WARNING GRUPP♪\n\n` +
-            `El hasia de gutión es un fracaso para la foto grupo.\n` +
-            `Base de advertencia: *${maxWarns}veces * (Automatización de Kickk )\n\n` +
+            `⚠️ SISTEMA DE ADVERTENCIAS DEL GRUPO\n\n` +
+            `El sistema de advertencias está activo en este grupo.\n` +
+            `Límite de advertencias: *${maxWarns} veces* (expulsión automática)\n\n` +
             `*Uso:*\n` +
             `• *${m.prefix}warn @user <alasan>* — Memberi warning\n` +
-            `• *${m.prefix}advierte a mamáx <angka>*—Cambio de límite máximo de advertencia\n` +
-            `• *${m.prefix}listwarn *—Ver lista de fotos con problemas\n` +
-            `• *${m.prefix}resetwarn @user* —Eliminar todas las fotos de advertencia\n\n` +
+            `• *${m.prefix}warn max <angka>* — Cambia el límite máximo de advertencias\n` +
+            `• *${m.prefix}listwarn* — Ver la lista de miembros con advertencias\n` +
+            `• *${m.prefix}resetwarn @user* — Elimina todas las advertencias\n\n` +
             `*Explicación ALUR Uso:*\n` +
-            `Uno, la primera vez que haces una brecha, darles SP1:${m.prefix}mensaje de usuario de Spam *\n` +
-            `Dos, utilizarán su mensaje como advertencia número uno.\n` +
-            `3, si repite el ataque, advertir la próxima vez con una nueva razón:${m.prefix}warn @user Berkata grosero*\n` +
+            `1. La primera vez que infringe, dale una advertencia: *${m.prefix}warn @user spam*\n` +
+            `2. Su mensaje quedará registrado como la advertencia número uno.\n` +
+            `3. Si reincide, adviértele de nuevo con otro motivo: *${m.prefix}warn @user grosero*\n` +
             `4. Si el total de alerta de vídeo alcanza límite máximo (actual *${maxWarns}* ), el bot automanezar el kickk @-@ pistola.\n` +
             `Cinco, la brecha se puede ver completamente escribiendo.${m.prefix}listwarn @user*.`
         )

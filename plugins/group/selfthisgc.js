@@ -29,7 +29,7 @@ async function handler(m, { sock }) {
     return m.reply(
       `ℹ️ *ɢʀᴜᴘ ɪɴɪ sᴜᴅᴀʜ ᴍᴏᴅᴇ sᴇʟꜰ*\n\n` +
         `*Solo responde al propietario* *Sí, pero el bot está solo*\n\n` +
-        `*Usarlo*${m.prefix}public public public`,
+        `*Usarlo*${m.prefix}publicthisgc public public`,
     );
   }
 
@@ -47,7 +47,7 @@ async function handler(m, { sock }) {
       `♪•Propietario bot\n` +
       `♪•Vive por ti mismo (de mí)\n\n` +
       `📋Otro Grupo no está afectado\n\n` +
-      `*Usarlo*${m.prefix}public public public`,
+      `*Usarlo*${m.prefix}publicthisgc public public`,
   );
 }
 

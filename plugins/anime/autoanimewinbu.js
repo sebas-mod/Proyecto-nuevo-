@@ -33,7 +33,7 @@ async function handler(m, { sock, args }) {
                 return m.reply(
                     `❌¡No hay objetivo de grupo!\n\n` +
                     `# To include so grupo prima #\n` +
-                    `> \`${m.prefix}autoaniewinbu addgrup\`(en el objetivo del grupo )\n` +
+                    `> \`${m.prefix}autoanimewinbu addgrup\`(en el objetivo del grupo )\n` +
                     `> \`${m.prefix}autoanimewinbu addgrup 120363xxx@g.us\``
                 )
             }
@@ -206,14 +206,14 @@ async function handler(m, { sock, args }) {
                 text: `🎬 *ᴀᴜᴛᴏ ᴀɴɪᴍᴇ ᴡɪɴʙᴜ*\n\n` +
                     `> Status: *${running ? '🟢 ON' : '🔴 OFF'}*\n\n` +
                     `*ᴄᴏᴍᴍᴀɴᴅs:*\n` +
-                    `> \`${m.prefix}Aaw comienza\` —Empieza auto-check\n` +
+                    `> \`${m.prefix}aaw comienza\` —Empieza auto-check\n` +
                     `> \`${m.prefix}aaw stop\` — Hentikan\n` +
                     `> \`${m.prefix}aaw estado\` —Mira estado\n` +
                     `> \`${m.prefix}aaw comprueba\` —Control de manal ahora\n` +
-                    `> \`${m.prefix}lista de paredes\` —Nueva lista de Anime\n` +
+                    `> \`${m.prefix}aaw de paredes\` —Nueva lista de Anime\n` +
                     `> \`${m.prefix}aaw addgrup\` —Añadir objetivo grup\n` +
                     `> \`${m.prefix}aaw delgrup\` —Quitar el objetivo del grupo\n` +
-                    `> \`${m.prefix}intervalo de espera 10\` —Cambia interval\n` +
+                    `> \`${m.prefix}aaw de espera 10\` —Cambia interval\n` +
                     `> \`${m.prefix}aaw restablecer\` —Registro enviado`,
                 interactiveButtons: [
                     {

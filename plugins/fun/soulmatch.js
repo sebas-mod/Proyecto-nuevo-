@@ -74,7 +74,7 @@ async function handler(m, { sock }) {
     const [nama1, nama2] = text.split('|').map(n => n.trim())
     
     if (!nama1 || !nama2) {
-        return m.reply(`❌Inserte 2 nombres con forte:\`${m.prefix}nombre de la anfitriona 1.\``)
+        return m.reply(`❌Inserte 2 nombres con forte:\`${m.prefix}soulmatch de la anfitriona 1.\``)
     }
     
     await m.react('🕕')

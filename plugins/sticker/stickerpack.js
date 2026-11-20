@@ -100,7 +100,7 @@ async function handler(m, { sock }) {
         `│  ✦ ${m.prefix}stickerpack <query>\n` +
         `╰──────────────⬣\n\n` +
         `*${m.prefix}stickerpack anime*\n` +
-        `*${m.prefix}Cabina de palos\n\n` +
+        `*${m.prefix}stickerpack de palos\n\n` +
         `.☘︎ ݁˖`,
     );
   }

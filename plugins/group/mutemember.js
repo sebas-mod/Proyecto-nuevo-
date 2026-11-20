@@ -90,7 +90,7 @@ async function handler(m, { sock }) {
         `┃ 📊 ᴛᴏᴛᴀʟ ᴍᴜᴛᴇ: \`${mutedMembers.length}\` ᴍᴇᴍʙᴇʀ\n` +
         `╰┈┈⬡\n\n` +
         `Todos los mensajes de está foto serán interceptados por automatización\n` +
-        `> Usa \`${m.prefix}no de contrabando\`para unmute`,
+        `> Usa \`${m.prefix}unmutemember de contrabando\`para unmute`,
         { mentions: [targetJid] }
     )
 }

@@ -21,7 +21,7 @@ async function handler(m, { sock }) {
     if (!m.text && _optionalChain([m, 'access', _4 => _4.args, 'optionalAccess', _5 => _5.length]) === 0) {
         await m.reply(
             `⚠️ *ᴄᴀʀᴀ ᴘᴀᴋᴀɪ*\n\n` +
-            `> \`${m.prefix}nuevos setdeskgc Decryption\`\n` +
+            `> \`${m.prefix}setdeskgc setdeskgc Decryption\`\n` +
             `> \`${m.prefix}setdeskgc clear\`- Quitar la descripción`
         )
         return

@@ -27,7 +27,7 @@ async function handler(m, { sock }) {
         `Emime detalles film de URL\n\n` +
         `*Formato:*\n` +
         `> \`${m.prefix}filmget <url>\`\n\n` +
-        `> Usa \`${m.prefix}El peecula<judul>\`La peelícula.`,
+        `> Usa \`${m.prefix}film peecula<judul>\`La peelícula.`,
     );
   }
 

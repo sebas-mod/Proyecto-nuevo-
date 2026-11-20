@@ -27,7 +27,7 @@ async function handler(m, { sock }) {
       `> *${m.prefix}txt2img2 <deskripsi>*\n\n` +
       `*Ejemplo:*\n` +
       `> *${m.prefix}txt2img2 Mobil Lamborghini revuelto*\n` +
-      `> *${m.prefix}nxT2img2 Kucking lucu utilizando sombrero *\n\n` +
+      `> *${m.prefix}txt2img2 Kucking lucu utilizando sombrero *\n\n` +
       `EfformProsses old @-@ fashioned generation, about 30 - 60 segundos _`
     );
   }

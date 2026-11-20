@@ -52,12 +52,12 @@ function handler(m) {
             return m.reply(`❌* Por no mencionar el recordatorio de dormir * en este gráfico`)
         }
         _ourinnotifschedulerjs.toggleNotif.call(void 0, 'tidur', sender, chatJid, false)
-        return m.reply(`✅*Recorde de dormir desactivado*🔕\n\n> Escribe\`${m.prefix}durmiendo\`para reactivar`)
+        return m.reply(`✅*Recorde de dormir desactivado*🔕\n\n> Escribe\`${m.prefix}notiftidur\`para reactivar`)
     }
 
     if (sub === 'on') {
         if (_optionalChain([existing, 'optionalAccess', _4 => _4.enabled]) && args.length === 1) {
-            return m.reply(`⚠- [ Sleeping Beauty ] - [ Sleeping Beauty Opens > - [ Sleeping *\n\n⏰Programado:${existing.jadwal.map(j => `*${j}*`).join(', ')}¡Vaya!\n\n> Usa \`${m.prefix}Edición de la notificación del sueño\`cambiar el habilitado`)
+            return m.reply(`⚠- [ Sleeping Beauty ] - [ Sleeping Beauty Opens > - [ Sleeping *\n\n⏰Programado:${existing.jadwal.map(j => `*${j}*`).join(', ')}¡Vaya!\n\n> Usa \`${m.prefix}notiftidurón de la notificación del sueño\`cambiar el habilitado`)
         }
 
         if (existing && args.length === 1) {

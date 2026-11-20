@@ -50,11 +50,11 @@ function randomCb() {
 let _cachedV = null;
 async function fetchLatestVersion() {
   if (_cachedV) return _cachedV;
-  const res = await gc.get(`${RECAPTCHA_BASE}fuego.js`, {
+  const res = await gc.get(`${RECAPTCHA_BASE}api.js`, {
     headers: { referer: 'https://www.google.com/' },
   });
   const m = String(res.data).match(/releases\/([\w-]+)\//);
-  if (!m) throw new Error('cogidor de versi fallido ( v ) del fuego.');
+  if (!m) throw new Error('fallo al obtener la versión del collector (v) desde api.js');
   _cachedV = m[1];
   return _cachedV;
 }
@@ -71,7 +71,7 @@ function extractRresp(body) {
 
 async function solveRecaptchaV3({ sitekey, url, action, hl = 'id', retries = 2 } = {}) {
   if (!sitekey) throw new Error('sitekey wajib diisi');
-  const base = `${RECAPTCHA_BASE}Fuego`;
+  const base = `${RECAPTCHA_BASE}api2/`;
   const params = {
     ar: '1',
     k: sitekey,
@@ -134,7 +134,7 @@ async function solveRecaptchaV3({ sitekey, url, action, hl = 'id', retries = 2 }
 
 async function lookupUser(discordId, recaptchaToken) {
   const res = await _axios2.default.post(
-    `${BASE}/fuego/user/lookup`,
+    `${BASE}/api/user/lookup`,
     new URLSearchParams({ id: discordId }).toString(),
     {
       timeout: 20000,

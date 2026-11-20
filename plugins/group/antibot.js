@@ -24,7 +24,7 @@ const pluginConfig = {
 
 function gpMsg(key, replacements = {}) {
   const defaults = {
-    antibot: "🤖*Estoy tan feliz*—@ % usuario % detectado como bot y patadas.",
+    antibot: "🤖 *AntiBot* — @%user% fue detectado como bot y expulsado.",
   };
   let text = _optionalChain([_configjs2.default, 'access', _ => _.groupProtection, 'optionalAccess', _2 => _2[key]]) || defaults[key] || "";
   for (const [k, v] of Object.entries(replacements)) {

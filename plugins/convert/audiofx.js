@@ -108,7 +108,7 @@ async function handler(m, { sock }) {
     if (!fx) {
         return m.reply(
             `❌ Efek *${effectName}* not found\n\n` +
-            `Escribe *${m.prefix}audiosoundxlista * para una lista de los efectos`
+            `Escribe *${m.prefix}audiofx * para una lista de los efectos`
         )
     }
 

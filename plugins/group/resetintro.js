@@ -32,7 +32,7 @@ async function handler(m) {
     await m.reply(
         `✅ *ɪɴᴛʀᴏ ᴅɪʀᴇsᴇᴛ!*\n` +
         `Intro grupo regresswa predeterminado.\n\n` +
-        `Escribe *${m.prefix}Introducción para ver los resultados.`
+        `Escribe *${m.prefix}introón para ver los resultados.`
     )
 }
 

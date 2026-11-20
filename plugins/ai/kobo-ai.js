@@ -26,7 +26,7 @@ async function handler(m, { sock }) {
         `*Uso:*\n` +
         `> *${m.prefix}kobo-ai <pertanyaan>*\n\n` +
         `*Ejemplo:*\n` +
-        `> *${m.prefix}Kobo - ai Kobo otra vez ¿Qué?`
+        `> *${m.prefix}kobo-ai - ai Kobo otra vez ¿Qué?`
     );
   }
 

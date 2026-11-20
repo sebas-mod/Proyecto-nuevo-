@@ -22,7 +22,7 @@ async function extract(url) {
   const form = new FormData();
   form.append("url", url);
 
-  const res = await fetch(`${BASE_URL}/fuego/extraza de traza`, {
+  const res = await fetch(`${BASE_URL}/api/extract`, {
     method: "POST",
     body: form,
   });

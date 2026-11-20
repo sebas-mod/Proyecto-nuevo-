@@ -25,7 +25,7 @@ function handler(m, { sock }) {
     if (group.mute) return m.reply('❌Grup \'s in a state of mute.')
 
     db.setGroup(m.chat, { ...group, mute: true })
-    m.reply(`✅Grupo *${groupName}* Sucesivamente en - mute by @${m.sender.split('@')[0]}\n\nSólo el administrador puede enviar un mensaje.\nEscribe *${m.prefix}Para reabrir.`, { mentions: [m.sender] })
+    m.reply(`✅Grupo *${groupName}* Sucesivamente en - mute by @${m.sender.split('@')[0]}\n\nSólo el administrador puede enviar un mensaje.\nEscribe *${m.prefix}unmute reabrir.`, { mentions: [m.sender] })
 }
 
 function isMuted(groupJid, db) {

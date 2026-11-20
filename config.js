@@ -68,7 +68,7 @@ const config = {
   },
 
   vercel: {
-    //Fresado de la vercel token:https://vercel.com/account/tokens
+    // Obtén tu token de Vercel en: https://vercel.com/account/tokens
     token: "", //Vercel Token para la función de dewloy ( Si. Defloy quiere trabajar, es un relleno requerido )
   },
 
@@ -123,28 +123,28 @@ const config = {
 
   groupProtection: {
     antilink: "⚠ *Antilink* — @%user% mengirim link.\nPesan dihapus.",
-    antilinkKick: "⚠Antilinks—@ % usuario % di - patada debido al envío de enlaces.",
+    antilinkKick: "⚠ *Antilink* — @%user% fue expulsado por enviar enlaces.",
     antilinkGc: "⚠ *Antilink WA* — @%user% mengirim link WA.\nPesan dihapus.",
     antilinkGcKick:
-      "⚠Antilinks WA—@ % user % di - kick for send WA links.",
+      "⚠ *Antilink WA* — @%user% fue expulsado por enviar enlaces de WhatsApp.",
     antilinkAll: "⚠ *Antilink* — @%user% mengirim link.\nPesan dihapus.",
-    antilinkAllKick: "⚠Antilinks—@ % usuario % di - patada debido al envío de enlaces.",
-    antitagsw: "⚠* AntiTagd *—Estado de la etiqueta de @ % usuario % dispus.",
-    antiviewonce: "👁*Vista*—De @%user%",
-    antiremove: "🗑AntiDelete—@ % usuario % memoriza mensajes:",
-    antiswgc: "⚠AntiSWGC—Gak allí",
-    antihidetag: "⚠ *AntiHidetag* — Hidetag dari @%user% dihapus.",
+    antilinkAllKick: "⚠ *Antilink* — @%user% fue expulsado por enviar enlaces.",
+    antitagsw: "⚠ *AntiTagSW* — Se eliminó una mención de estado de @%user%.",
+    antiviewonce: "👁️ *ViewOnce* — De @%user%",
+    antiremove: "🗑️ *AntiDelete* — @%user% eliminó un mensaje:",
+    antiswgc: "⚠ *AntiSWGC* — Se eliminó un estado de grupo de @%user%",
+    antihidetag: "⚠ *AntiHidetag* — Se eliminó un hidetag de @%user%.",
     antitoxicWarn:
-      "⚠@ % usuario % cite cashmere.\nAdvertencia al % advierte % del % max%, la siguiente brecha podría ser - % método %.",
-    antitoxicAction: "🚫@ % user % di - % method % due toxic. ( % advertido % / % max% )",
-    antidocument: "⚠* AntiDoment *—Documento de @ % usuario % dispus.",
-    antisticker: "⚠AntiStickers—Pegatina de @ % usuario % dispus.",
-    antimedia: "⚠AntiMedia—Medios de @ % usuario % dispuus.",
-    antibot: "🤖*Estoy tan feliz*—@ % usuario % detectado como bot y patadas.",
-    notAdmin: "⚠No es administrador, no puede borrar mensajes.",
+      "⚠ @%user% dijo palabras ofensivas.\nAdvertencia %warn% de %max%; la próxima infracción puede terminar en %method%.",
+    antitoxicAction: "🚫 @%user% fue %method% por ser tóxico. (%warn%/%max%)",
+    antidocument: "⚠ *AntiDocument* — Se eliminó un documento de @%user%.",
+    antisticker: "⚠ *AntiSticker* — Se eliminó un sticker de @%user%.",
+    antimedia: "⚠ *AntiMedia* — Se eliminó un archivo multimedia de @%user%.",
+    antibot: "🤖 *AntiBot* — @%user% fue detectado como bot y expulsado.",
+    notAdmin: "⚠ El bot no es administrador, no puede eliminar mensajes.",
   },
 
-  errorTemplate: `☢Kayaknya comando\`{prefix}{command}\`Hay un control.\nPor favor, intente de nuevo más tarde,{pushName}\n\nSi tiene algún problema, por favor deje una conexión con el propietario del propietario.`,
+  errorTemplate: `☢ Parece que el comando \`{prefix}{command}\` tuvo un problema.\nInténtalo de nuevo más tarde, {pushName}\n\n_Si el problema continúa, contacta al dueño del bot_`,
 
   features: {
     antiCall: false, //Si es verdad, el bot rechazará llamadas.
@@ -241,15 +241,15 @@ const config = {
 
   //  APIkey
   APIkey: {
-    //Puedes listar enhttps://api.lolhuman.xyz,Entonces, agarre el fuego.
-    lolhuman: "AMIGEE - MYA - Uuringathered ( Zann, HAUSAAND, KEISA, Danzz )",
-    //Puedes listar enhttps://api.neoxr.eu,Entonces, agarre el fuego.
+    // Puedes registrarte en https://api.lolhuman.xyz y tomar tu apikey
+    lolhuman: "APIKey-Milik-Bot-OurinMD(Zann,HyuuSATANN,Keisya,Danzz)",
+    // Puedes registrarte en https://api.neoxr.eu y tomar tu apikey
     neoxr: "Milik-Bot-OurinMD",
     fgsi: "fgsiapi-20c1605c-6d",
     google: "AIzaSyAS-KiW0SrwiYKwexeBcGPijBVHFg2R_vo",
-    groq: process.env.GROQ_API_KEY || "", //Fuego llave para la función de trancripción ( gratis en consola. groq )
+    groq: process.env.GROQ_API_KEY || "",     // API Key de Groq para la función de transcripción (gratis en console.groq.com)
     betabotz: "Btz-67YfP",
-    //Puedes listar enhttps://covenant.sbs,Y agarre el fuego.
+    // Puedes registrarte en https://covenant.sbs y tomar tu apikey
     covenant: "cov_live_bb660c9e5f735e46d808b7ae362914cfe35c2936739ee2b2",
     onlym: "ONLym-783d29",
     obscura: "obs-byOn9RVGMzvPXZQTsP9W",

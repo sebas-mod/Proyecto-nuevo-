@@ -20,7 +20,7 @@ async function handler(m, { sock }) {
     
     if (!kategori) {
         return m.reply(
-            `\`Contoh: ${m.prefix}hombre inteligente superior\``
+            `\`Contoh: ${m.prefix}top inteligente superior\``
         )
     }
     

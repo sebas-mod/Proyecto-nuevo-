@@ -49,7 +49,7 @@ async function handler(m, { sock }) {
       `├┈┈⬡「 👥*Participante (${absen.peserta.length})* 」\n` +
       `${list}\n` +
       `╰┈┈┈┈┈┈┈┈⬡\n\n` +
-      `Escribe *${m.prefix}absene * para el presente`,
+      `Escribe *${m.prefix}absen * para el presente`,
     { mentions: [...absen.peserta, absen.createdBy] },
   );
 }

@@ -79,7 +79,7 @@ async function handler(m, { sock }) {
         `⚠️ *ɴᴏᴛɪꜰ ʟᴀʙᴇʟ ᴀʟʀᴇᴀᴅʏ ᴀᴄᴛɪᴠᴇ*\n\n` +
           `> Status: *✅ ON*\n` +
           `El nuevo Notifkasi de la etiqueta ya está activo en este grupo.\n\n` +
-          `*Usarlo*\`${m.prefix}notificación\`para desactivando._`,
+          `*Usarlo*\`${m.prefix}notifgantitagón\`para desactivando._`,
       );
     }
     db.setGroup(m.chat, { notifLabelChange: true });
@@ -96,7 +96,7 @@ async function handler(m, { sock }) {
         `⚠️ *ɴᴏᴛɪꜰ ʟᴀʙᴇʟ ᴀʟʀᴇᴀᴅʏ ɪɴᴀᴄᴛɪᴠᴇ*\n\n` +
           `> Status: *❌ OFF*\n` +
           `La etiqueta ' s negativa en este grupo.\n\n` +
-          `*Usarlo*\`${m.prefix}notificación\`para activando._`,
+          `*Usarlo*\`${m.prefix}notifgantitagón\`para activando._`,
       );
     }
     db.setGroup(m.chat, { notifLabelChange: false });
@@ -111,8 +111,8 @@ async function handler(m, { sock }) {
       `\`\`\`━━━ ᴘɪʟɪʜᴀɴ ━━━\`\`\`\n` +
       `> \`${m.prefix}notifgantitag on\` → Aktifkan\n` +
       `> \`${m.prefix}notifgantitag off\` → Nonaktifkan\n` +
-      `> \`${m.prefix}notificación\` →Global ON (propietario)\n` +
-      `> \`${m.prefix}noifgantitag off al\` →Global OFF (propietario)\n\n` +
+      `> \`${m.prefix}notifgantitagón\` →Global ON (propietario)\n` +
+      `> \`${m.prefix}notifgantitag off al\` →Global OFF (propietario)\n\n` +
       `♪📋* Está característica dirá el momento: *\n` +
       `♪•Admin añadir etiqueta a miembro\n` +
       `♪•Admin desbloquea la etiqueta de la foto\n` +

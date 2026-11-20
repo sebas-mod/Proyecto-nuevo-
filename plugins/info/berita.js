@@ -95,12 +95,12 @@ async function handler(m) {
             for (const [key, val] of Object.entries(NEWS_SOURCES)) {
                 txt += `> ${val.emoji} \`${m.prefix}${key}\` - ${val.name}\n`
             }
-            txt += `\n_Atau usa: \`${m.prefix}noticia<sumber>\`¿Qué?`
+            txt += `\n_Atau usa: \`${m.prefix}berita<sumber>\`¿Qué?`
             return m.reply(txt)
         }
         
         if (!NEWS_SOURCES[arg]) {
-            return m.reply(`❌La fuente de las noticias no fue encontrada.\n> Usa:\`${m.prefix}noticia\`para ver la lista.`)
+            return m.reply(`❌La fuente de las noticias no fue encontrada.\n> Usa:\`${m.prefix}berita\`para ver la lista.`)
         }
         source = arg
     }

@@ -1337,25 +1337,25 @@ Authentication : Successful
          ⚠️  OURIN 3.5 — SETUP PAIRING CODE  ⚠️
 ======================================================
 
-WhatsApp número para emparejar unset en config. js!
-Valor actual:${rawNumber || "(kosong)"}"
+¡El número de WhatsApp para el emparejamiento no está configurado en config.js!
+Valor actual : "${rawNumber || "(vacío)"}"
 
-PETUNJUK PENGISIAN DI PTERODACTYL:
-Abre Archivo Manager en Pterodactyl.
-2. Edit archivo "config.js".
-Por parte de la sesión, introduzca el número activo de la aplicación:
+INSTRUCCIONES EN PTERODACTYL:
+1. Abre el File Manager en Pterodactyl.
+2. Edita el archivo "config.js".
+3. En la sección "session", introduce el número de WhatsApp activo:
    session: {
-paringNumber:xxxxxxxxxx", // ejemplo: "6281234567890"
+     pairingNumber: "628xxxxxxxxxx", // ejemplo: "6281234567890"
      usePairingCode: true,
    }
-4, el Guardar un archivo config, js, luego un servidor de retart en consola.
+4. Guarda el archivo config.js y reinicia el servidor en la consola.
 
 ======================================================
 `);
         return;
       }
 
-      colors.logger.info("pairing", `Preparación de la solicitud de código de unión${validNumber}...`);
+      colors.logger.info("pairing", `Preparando la solicitud del Pairing Code para ${validNumber}...`);
 
       let pairingCode = null;
       for (let attempt = 1; attempt <= 3; attempt++) {

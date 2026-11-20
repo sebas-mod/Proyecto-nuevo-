@@ -73,7 +73,7 @@ function _extractSessionId(setCookieArr) {
 
 async function _routePreview(query, sessionCookie = "") {
   const headers = sessionCookie ? { Cookie: sessionCookie } : {};
-  const res = await _vyrRequest("POST", `${_BASE}/fuego/search/route-preview`, { query }, headers);
+  const res = await _vyrRequest("POST", `${_BASE}/api/search/route-preview`, { query }, headers);
   if (res.status !== 200) throw new Error(`request failed [rp] status=${res.status}`);
   const sid = _extractSessionId(res.headers["set-cookie"]);
   return { route: res.data, sessionId: sid };

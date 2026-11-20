@@ -138,15 +138,15 @@ async function sendWaifuMessage(m, sock, waifu, textContent, customButtons = nul
     } else if (waifu.affection < 100) {
       buttons = [
         { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "🫂 Peluk", id: `${m.prefix}waifuaction peluk` }) },
-        { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "💋 Cium", id: `${m.prefix}cium de waifutación` }) },
-        { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "🛏️ Tidur Bareng", id: `${m.prefix}waifuaction duerme` }) },
-        { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "🛁 Mandi Bareng", id: `${m.prefix}waifuation mandi` }) },
+        { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "💋 Cium", id: `${m.prefix}waifuaction cium` }) },
+        { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "🛏️ Tidur Bareng", id: `${m.prefix}waifuaction tidur` }) },
+        { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "🛁 Mandi Bareng", id: `${m.prefix}waifuaction mandi` }) },
       ];
     } else {
       if (!waifu.married) {
         buttons = [
           { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "💍 Nikahi Dia", id: `${m.prefix}waifuaction nikah` }) },
-          { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "💝 Minta Hadiah", id: `${m.prefix}waifuaction premio` }) },
+          { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "💝 Minta Hadiah", id: `${m.prefix}waifuaction hadiah` }) },
         ];
       } else {
         buttons = [
@@ -194,7 +194,7 @@ async function handler(m, { sock }) {
   const cmd = m.command.toLowerCase();
   if (cmd === "waifuku" || cmd === "istriku") {
     if (!user.waifu) {
-      return m.reply(`⚠¡No tienes un waifu todavía!\nPor favor, sólo da un paso.${m.prefix}Gachawaifu * para empezar!`);
+      return m.reply(`⚠️ *¡Todavía no tienes un waifu!*\nEscribe *${m.prefix}gachawaifu* para empezar.`);
     }
     m.react("🕕");
     const waifu = user.waifu;
@@ -238,31 +238,31 @@ async function handler(m, { sock }) {
   if (cmd === "gachawaifu" || cmd === "gachaistri") {
     if (user.waifu) {
       m.react("😡");
-      let pesanStatus = user.waifu.married ? "Dia sudah menjadi istrimu!" : "Dia sangat mencintaimu!";
+      let pesanStatus = user.waifu.married ? "¡Ella ya es tu esposa!" : "¡Ella te ama mucho!";
       return m.reply(
         `⚠- * ¡Ya tienes un waifu!\n\n` +
         `Nombre: *${user.waifu.name}*\n` +
         `Tier: *${user.waifu.tier}*\n` +
         `Affection: *${user.waifu.affection}/100*\n\n` +
-        `No seas malo, eres el Waifu que tienes ahora.${pesanStatus}Escribe *${m.prefix}Mi waifu * para interactuar con ella.`
+        `¡No seas avaricioso! Cuida al waifu que ya tienes. ${pesanStatus} Escribe *${m.prefix}waifuku* para interactuar con ella.`
       );
     }
 
     const sub = (m.args[0] || "").toLowerCase();
 
     if (sub !== "start") {
-      const panduan = `💕91; SISTEM GACA WAIFU💕\n\n` +
+      const panduan = `💕 SISTEMA GACHA WAIFU 💕\n\n` +
         `Las simulaciones interactivas de la cancana virtual consiguen waifu de tus sueños, cerca de su hatini, y se casan con él!\n\n` +
         `*Uso Comando:*\n` +
-        `• *${m.prefix}gachawaifu—Respaldar este menú de scouting\n` +
-        `• *${m.prefix}Waifsuku *—Busto el panel interactuando con su waifu\n` +
-        `• *${m.prefix}*Quedarse en el futuro*—Desplazamiento de Waifu y estado de reajuste\n\n` +
-        `A91; EXPLOSION ALLENDS CERITA:\n` +
-        `Uno, pon tu primer Waifu.\n` +
-        `2, 3 fases de la sociedad del amor\n` +
-        `Tres.\n` +
-        `Cuatro.\n` +
-        `Cinco.`;
+        `• *${m.prefix}gachawaifu* — Abre este menú de guía\n` +
+        `• *${m.prefix}waifuku* — Abre el panel de interacción con tu waifu\n` +
+        `• *${m.prefix}tinggalinwaifu* — Abandona a tu waifu y reinicia su estado\n\n` +
+        `✨ HISTORIA COMPLETA:\n` +
+        `1. Consigue tu primer waifu.\n` +
+        `2. Atraviesa las 3 fases del amor\n` +
+        `3. Interactúa, cuida y sube su afecto.\n` +
+        `4. Cásate con tu waifu y forma una familia.\n` +
+        `5. ¡Disfruta del viaje!`;
 
       const msg = _ourin.generateWAMessageFromContent.call(void 0, m.chat, {
         viewOnceMessage: {
@@ -317,7 +317,7 @@ async function handler(m, { sock }) {
   if (cmd === "waifuaction") {
     if (!user.waifu) {
       m.react("❌");
-      return m.reply(`¡No tienes el Waifu todavía!${m.prefix}Gachawaifu para conseguir tu primer waifu.`);
+      return m.reply(`¡Todavía no tienes un waifu! Escribe *${m.prefix}gachawaifu* para conseguir tu primer waifu.`);
     }
 
     const action = (m.args[0] || "").toLowerCase();
@@ -344,7 +344,7 @@ async function handler(m, { sock }) {
     }
     if (action === "belanja") {
       return sendWaifuMessage(m, sock, waifu, `Ustedes están vagando por el centro de un centro comercial de élite.`, [
-        { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "👗 Baju Lucu", id: `${m.prefix}Ropa de cita de Waifuction` }) },
+        { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "👗 Baju Lucu", id: `${m.prefix}waifuaction kencan_baju` }) },
         { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "💎 Perhiasan", id: `${m.prefix}waifuaction kencan_perhiasan` }) }
       ]);
     }
@@ -361,8 +361,8 @@ async function handler(m, { sock }) {
 
     if (action === "peluk") {
       return sendWaifuMessage(m, sock, waifu, `Estás mirando *${waifu.name}¿Cómo te sientes con eso?`, [
-        { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "🤗De Belakang", id: `${m.prefix}Waifuction intikalakan` }) },
-        { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "💑 Berhadapan", id: `${m.prefix}Waifustion intikau por delante` }) }
+        { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "🤗De Belakang", id: `${m.prefix}waifuaction intim_belakang` }) },
+        { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "💑 Berhadapan", id: `${m.prefix}waifuaction intim_depan` }) }
       ]);
     }
     if (action === "cium") {
@@ -374,7 +374,7 @@ async function handler(m, { sock }) {
     if (action === "tidur") {
       return sendWaifuMessage(m, sock, waifu, `Estás tumbado en una cama que ha acolchado.`, [
         { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "🫂 Peluk Pulas", id: `${m.prefix}waifuaction intim_kelon` }) },
-        { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "🔥 Pemanasan", id: `${m.prefix}waifuction intimationpanas` }) }
+        { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "🔥 Pemanasan", id: `${m.prefix}waifuaction intim_panas` }) }
       ]);
     }
     if (action === "mandi") {

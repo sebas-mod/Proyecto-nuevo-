@@ -30,7 +30,7 @@ async function handler(m, { sock }) {
     return m.reply(
       `ℹ️ *ɢʀᴜᴘ ɪɴɪ sᴜᴅᴀʜ ᴍᴏᴅᴇ ᴘᴜʙʟɪᴄ*\n\n` +
         `# Responde todas las fotos de este grupo\n\n` +
-        `*Usarlo*${m.prefix}autothisgc para cerrar el acceso _`,
+        `*Usarlo*${m.prefix}selfthisgc para cerrar el acceso _`,
     );
   }
 
@@ -47,7 +47,7 @@ async function handler(m, { sock }) {
       `*Ahora respondiendo a todas las fotos de este grupo*\n` +
       `# Modo de sobrescribir activo global para este grupo #\n\n` +
       `📋Otro Grupo no está afectado\n\n` +
-      `*Usarlo*${m.prefix}autoestegc para cerrar acciones de nuevo _`,
+      `*Usarlo*${m.prefix}selfthisgc para cerrar acciones de nuevo _`,
   );
 }
 

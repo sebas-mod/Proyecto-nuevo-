@@ -186,8 +186,8 @@ function buildGuideMessage(m, status, mode, rules) {
     `> \`${m.prefix}anticustom list\`\n` +
     `> \`${m.prefix}anticustom del <judul>\`\n\n` +
     `Usted quiere cambiar el modo predeterminado:\n` +
-    `> \`${m.prefix}anticuoto método patada\`\n` +
-    `> \`${m.prefix}método anticustoto eliminar\``
+    `> \`${m.prefix}anticustom método patada\`\n` +
+    `> \`${m.prefix}anticustométodo anticustoto eliminar\``
   );
 }
 

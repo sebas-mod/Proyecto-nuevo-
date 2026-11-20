@@ -26,7 +26,7 @@ async function handler(m, { sock }) {
         `*Uso:*\n` +
         `> *${m.prefix}waguri-ai <pertanyaan>*\n\n` +
         `*Ejemplo:*\n` +
-        `> *${m.prefix}Waguri @-@ ai Waguri @-@ san, hola!`
+        `> *${m.prefix}waguri-ai @-@ ai Waguri @-@ san, hola!`
     );
   }
 

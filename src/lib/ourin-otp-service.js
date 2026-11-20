@@ -42,7 +42,7 @@ async function getCountries() {
         return countryCache
     }
 
-    const { data } = await _axios2.default.get(`${BASE_URL}/pais.php`, { timeout: 15000 })
+    const { data } = await _axios2.default.get(`${BASE_URL}/negara.php`, { timeout: 15000 })
 
     if (!data.success) throw new Error(data.message || 'Tome la lista de estado.')
 

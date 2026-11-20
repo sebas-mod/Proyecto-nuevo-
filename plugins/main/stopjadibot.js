@@ -32,7 +32,7 @@ async function handler(m, { sock }) {
     if (!_ourinjadibotmanagerjs.isJadibotActive.call(void 0, sender)) {
         return m.reply(
             `❌ *ᴋᴀᴍᴜ ᴛɪᴅᴀᴋ ᴀᴅᴀʟᴀʜ ᴊᴀᴅɪʙᴏᴛ*\n\n` +
-            `> Escribe\`${m.prefix}Así que el peso\`para convertirse en un bot`
+            `> Escribe\`${m.prefix}jadibotí que el peso\`para convertirse en un bot`
         )
     }
 
@@ -50,7 +50,7 @@ async function handler(m, { sock }) {
             `♪📱Número: *@${sender.split('@')[0]}*\n` +
             `> ⏱️ Uptime: *${uptime}*\n` +
             `♪💾Session: *Guardado*\n\n` +
-            `Escribe\`${m.prefix}Así que el peso\`Para reactivar.`,
+            `Escribe\`${m.prefix}jadibotí que el peso\`Para reactivar.`,
             { mentions: [sender] }
         )
     } catch (e) {

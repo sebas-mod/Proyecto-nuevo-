@@ -453,7 +453,7 @@ async function handler(m, { sock }) {
     `> \`${m.prefix}welcome on\` → Activar\n` +
     `> \`${m.prefix}welcome off\` → Desactivar\n` +
     `> \`${m.prefix}welcome on all\` → Activar en todos los grupos (dueño)\n` +
-    `> \`${m.prefix}Bienvenido a Al\` →Global OFF (propietario)\n` +
+    `> \`${m.prefix}welcome a Al\` →Global OFF (propietario)\n` +
     `> \`${m.prefix}setwelcome\` → Custom pesan\n` +
     `> \`${m.prefix}resetwelcome\` →Restablecer predeterminado`,
   );

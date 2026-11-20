@@ -54,7 +54,7 @@ async function handler(m, { sock }) {
     return m.reply(
       `⚠️ *ᴄᴀʀᴀ ᴘᴀᴋᴀɪ*\n\n` +
         `Responder a un mensaje de disparo +\`${m.prefix}terima\`\n` +
-        `> O\`${m.prefix}recibe @tag\``,
+        `> O\`${m.prefix}terima @tag\``,
     );
   }
 

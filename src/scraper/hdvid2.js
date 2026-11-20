@@ -147,7 +147,7 @@ async function createJob(originalVideoUrl) {
 
 async function getJob(jobId) {
   return await getJson(
-    `/ fuego / web / unblurimage / v1 / video - potencial${jobId}`,
+    `/api/web/unblurimage/v1/video-enhancer/get-job/${jobId}`,
   );
 }
 

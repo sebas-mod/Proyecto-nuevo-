@@ -202,7 +202,7 @@ async function comparationAnswerHandler(m, sock) {
         await m.reply(`Comparación de tramitación de untara:\n* 1.${device1.label}*\n*2. ${device2.label}*\n\nEspera un minuto, se están recordando los datos del debate..`);
 
         try {
-            const compareUrl = `https://api.neoxr.eu/api/compare?item1=${encodeURIComponent(device1.name)}&vs=${encodeURIComponent(device2.name)}&type=${session.type}&apikey=${NEOXR_APIKEY}`;
+            const compareUrl = `https://api.neoxr.eu/api/compare?item1=${encodeURIComponent(device1.name)}&item2=${encodeURIComponent(device2.name)}&type=${session.type}&apikey=${NEOXR_APIKEY}`;
             const response = await _axios2.default.get(compareUrl, { timeout: 60000 });
             const resData = response.data;
 

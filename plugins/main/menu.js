@@ -600,7 +600,7 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
                         {
                           title: "👑 𝗢𝘄𝗻𝗲𝗿",
                           description: "Información del propietario del bot",
-                          id: `${m.prefix}propietario`,
+                          id: `${m.prefix}owner`,
                         },
                       ],
                     },
@@ -857,7 +857,7 @@ ${readmore}${s}`
           buttonsMessage: {
             buttons: [
               {
-                buttonId: `${m.prefix}propietario`,
+                buttonId: `${m.prefix}owner`,
                 buttonText: {
                   displayText: '🧀 Propietario',
                 },

@@ -264,7 +264,7 @@ if (!_perf) {
     const initToken = "gAAAAAC" + this._encodeConfig(initCfg);
 
     const prepareRes = await _fetch(
-      `${this.baseUrl}/ backend - anon / sentinel / chat - peticiones / preparar`,
+      `${this.baseUrl}/backend-anon/sentinel/chat-requirements/prepare`,
       {
         method: "POST",
         headers: this._headers(),
@@ -291,7 +291,7 @@ if (!_perf) {
     if (turnstile) finalizeBody.turnstile = turnstile;
 
     const finalizeRes = await _fetch(
-      `${this.baseUrl}/ backend - anon / sentinel / chat - peticiones / finalize`,
+      `${this.baseUrl}/backend-anon/sentinel/chat-requirements/finalize`,
       {
         method: "POST",
         headers: this._headers(),
@@ -354,7 +354,7 @@ if (!_perf) {
         parts: [
           {
             content_type: "image_asset_pointer",
-            asset_pointer: `archivo-service://${image.fileId}`,
+            asset_pointer: `file-service://${image.fileId}`,
             size_bytes: image.sizeBytes,
             width: image.width,
             height: image.height,

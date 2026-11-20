@@ -8,7 +8,7 @@ async function uploadToTermai(buffer, filename = 'image.jpg') {
   const form = new (0, _formdata2.default)()
   form.append('file', buffer, { filename })
 
-  const response = await _axios2.default.post(`${termaiDomain}/fuego/upload?key=${termaiKey}`, form, {
+  const response = await _axios2.default.post(`${termaiDomain}/api/upload?key=${termaiKey}`, form, {
     headers: { ...form.getHeaders(), 'User-Agent': 'Mozilla/5.0' },
     timeout: 60000
   })

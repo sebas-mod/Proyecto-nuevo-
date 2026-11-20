@@ -8,29 +8,29 @@ const CACHE_MAX_SIZE = 5000;
 function gpMsg(key, replacements = {}) {
   const defaults = {
     antilink: "⚠ *Antilink* — @%user% mengirim link.\nPesan dihapus.",
-    antilinkKick: "⚠Antilinks—@ % usuario % di - patada debido al envío de enlaces.",
+    antilinkKick: "⚠ *Antilink* — @%user% fue expulsado por enviar enlaces.",
     antilinkGc: "⚠ *Antilink WA* — @%user% mengirim link WA.\nPesan dihapus.",
     antilinkGcKick:
-      "⚠Antilinks WA—@ % user % di - kick for send WA links.",
+      "⚠ *Antilink WA* — @%user% fue expulsado por enviar enlaces de WhatsApp.",
     antilinkAll: "⚠ *Antilink* — @%user% mengirim link.\nPesan dihapus.",
-    antilinkAllKick: "⚠Antilinks—@ % usuario % di - patada debido al envío de enlaces.",
-    antitagsw: "⚠* AntiTagd *—Estado de la etiqueta de @ % usuario % dispus.",
-    antiswgc: "⚠AntiSWGC—El grupo de cama tipo % tipo * de @ % usuario % disputa.",
+    antilinkAllKick: "⚠ *Antilink* — @%user% fue expulsado por enviar enlaces.",
+    antitagsw: "⚠ *AntiTagSW* — Se eliminó una mención de estado de @%user%.",
+    antiswgc: "⚠ *AntiSWGC* — Se eliminó un estado de grupo de @%user%",
     antijudol:
       "⚠ *AntiJudol* — @%user% terdeteksi kirim konten judol.\nPesan dihapus.",
-    antijudolKick: "⚠AntiJudol—@ % user % di - kick porque envía un contenido jusole.",
+    antijudolKick: "⚠ *AntiJudol* — @%user% fue expulsado por enviar contenido de apuestas.",
     antiphising:
       "⚠ *AntiPhising* — @%user% terdeteksi kirim konten phising.\nPesan dihapus.",
     antiphisingKick:
-      "⚠AntiPhising—@ % user % di - kick porque envía contenido phising.",
+      "⚠ *AntiPhising* — @%user% fue expulsado por enviar contenido de phishing.",
     anticustom:
       "⚠ *AntiCustom* — @%user% melanggar rule custom *%rule%*.\nPesan dihapus.",
     anticustomKick:
-      "⚠AntiCutom—@ % user % di - kick because of nemar rule custom * % rule % *.",
-    antiviewonce: "👁*Vista*—De @%user%",
-    antiremove: "🗑AntiDelete—@ % usuario % memoriza mensajes:",
-    antihidetag: "⚠ *AntiHidetag* — Hidetag dari @%user% dihapus.",
-    notAdmin: "⚠No es administrador, no puede borrar mensajes.",
+      "⚠ *AntiCustom* — @%user% fue expulsado por incumplir la regla *%rule%*.",
+    antiviewonce: "👁️ *ViewOnce* — De @%user%",
+    antiremove: "🗑️ *AntiDelete* — @%user% eliminó un mensaje:",
+    antihidetag: "⚠ *AntiHidetag* — Se eliminó un hidetag de @%user%.",
+    notAdmin: "⚠ El bot no es administrador, no puede eliminar mensajes.",
   };
   let text = _optionalChain([_configjs2.default, 'access', _ => _.groupProtection, 'optionalAccess', _2 => _2[key]]) || defaults[key] || "";
   for (const [k, v] of Object.entries(replacements)) {

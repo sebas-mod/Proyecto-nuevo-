@@ -675,7 +675,7 @@ async function executeAction(action, m, sock) {
     case "PINS": {
       const query = action.params.query;
       if (!query)
-        return [{ ok: false, msg: "Qbúsqueda de fuego no encontrado" }];
+        return [{ ok: false, msg: "No se encontró la consulta de búsqueda" }];
       try {
         const data = await _btchdownloader.pinterest.call(void 0, query);
         const pinResults = _optionalChain([data, 'optionalAccess', _11 => _11.result, 'optionalAccess', _12 => _12.result, 'optionalAccess', _13 => _13.result, 'optionalAccess', _14 => _14.slice, 'call', _15 => _15(0, 5)]);

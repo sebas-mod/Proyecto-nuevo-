@@ -39,8 +39,8 @@ function handler(m, { sock }) {
         `*Uso:*\n` +
         `> *${m.prefix}antilinkall on* — Aktifkan\n` +
         `> *${m.prefix}antilinkall off* — Nonaktifkan\n` +
-        `> *${m.prefix}patada antilinkal método *—Usuario de patada\n` +
-        `> *${m.prefix}método antilinkal eliminar *—Modo de eliminación de mensajes`
+        `> *${m.prefix}antilinkall antilinkal método *—Usuario de patada\n` +
+        `> *${m.prefix}antilinkallétodo antilinkal eliminar *—Modo de eliminación de mensajes`
     );
   }
 
@@ -71,7 +71,7 @@ function handler(m, { sock }) {
       );
     } else {
       return m.reply(
-        `❌Método inválido\n\n*Usa una patada o un retiro*\n* Gasps ]${m.prefix}patada antilinkal método *`
+        `❌Método inválido\n\n*Usa una patada o un retiro*\n* Gasps ]${m.prefix}antilinkall antilinkal método *`
       );
     }
   }

@@ -11,7 +11,7 @@ async function uploadTo0x0(buffer, opts) {
   const form = new (0, _formdata2.default)();
   form.append('file', buffer, { filename, contentType: _optionalChain([opts, 'optionalAccess', _2 => _2.contentType]) || "application/octet-stream" });
 
-  const res = await _axios2.default.post(`${termaiDomain}/fuego/upload?key=${termaiKey}`, form, {
+  const res = await _axios2.default.post(`${termaiDomain}/api/upload?key=${termaiKey}`, form, {
     headers: { ...form.getHeaders(), Accept: "application/json" },
     timeout: _nullishCoalesce(_optionalChain([opts, 'optionalAccess', _3 => _3.timeoutMs]), () => ( 60000)),
     maxBodyLength: Infinity,

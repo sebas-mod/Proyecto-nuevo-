@@ -88,7 +88,7 @@ async function handler(m, { args, sock }) {
     }
     txt += contentTxt.trim().split("\n").map(line => line.trim() ? `${line}` : ``).join("\n");
     txt += `\n\n`;
-    txt += `Quieres descargar lagunya, pa fusor\`${m.prefix}tiempo de juego\`solo hermano!😉`;
+    txt += `Quieres descargar lagunya, pa fusor\`${m.prefix}playsc de juego\`solo hermano!😉`;
     if (thumb) {
       await sock.sendMedia(m.chat, thumb, txt.trim(), m, { type: "image" });
     } else {

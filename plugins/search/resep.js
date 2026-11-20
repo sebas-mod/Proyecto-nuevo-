@@ -23,7 +23,7 @@ const pluginConfig = {
 
 async function handler(m, { sock, text }) {
     if (!text) {
-        return m.reply(`🍳*Búsqueda RESEP*\n\nEl tipo de nombre de la comida que desea buscar para la recepción.\n*Ejemplo:*${m.prefix}Prescripción de Sooch frito`);
+        return m.reply(`🍳*Búsqueda RESEP*\n\nEl tipo de nombre de la comida que desea buscar para la recepción.\n*Ejemplo:*${m.prefix}resepón de Sooch frito`);
     }
 
     await m.react("🕕");

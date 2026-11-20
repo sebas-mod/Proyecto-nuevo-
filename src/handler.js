@@ -318,7 +318,7 @@ try {
     .filter((f) => f.endsWith(".js") && !f.startsWith("_"));
   for (const file of gameFiles) {
     try {
-      const plugin = _interopRequireWildcard(require(`. / plugins / juego /${file}`));
+      const plugin = _interopRequireWildcard(require(`../plugins/game/${file}`));
       const name = file.replace(".js", "");
       if (plugin.answerHandler) cachedGamePlugins.set(name, plugin);
     } catch (e42) { }
@@ -1690,7 +1690,7 @@ const { defoult: fs } = aghult importa ( spans )
 
         if (pluginCat === "game" && grpData.game === false) {
           await m.reply(
-            `🎮* Juego de imágenes NOCIVAS*\n\nLa función de juego está siendo desactivada en este grupo por admin.\nSolicitud de administrador para reactivar con comandos *${m.prefix}juego en *`
+            `🎮 *FUNCIÓN DE JUEGOS INACTIVA*\n\nLa función de juegos está desactivada en este grupo por el admin.\nPide al admin que la reactive con el comando *${m.prefix}game on*`
           );
           return;
         }
