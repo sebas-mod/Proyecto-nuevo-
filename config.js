@@ -10,12 +10,12 @@ const config = {
 
   owner: {
     name: "Sebas MD", //Nombre propietario
-    number: ["62xxxxxxxxx"], //Formato: 628xxx(sin + o 0 )
+    number: ["5491138403093"], //Formato: 5491138403093 (sin + o 0 )
   },
 
   session: {
     dir: "./session", //Sesión de ubicación de almacenamiento WhatsApp
-    pairingNumber: "62xxxxxxxx", //Insert active WhatsApp number (por ejemplo: 6281234567890 + )
+    pairingNumber: "5491138403093", //Insert active WhatsApp number (por ejemplo: 5491138403093)
     usePairingCode: true, // true = Pairing Code, false = QR Code
     maxReconnectAttempts: 5,
     reconnectInterval: 15000,
