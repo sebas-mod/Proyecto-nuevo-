@@ -13,7 +13,6 @@ const pluginConfig = {
 async function handler(m, { sock }) {
     const backupContents = [
         '📁 database/*.json (semua file JSON)',
-        '📁 database/cpanel/* (data cPanel)',
         '📄 storage/database.json (main database)',
         '📄 db.json (root database)',
         '📄 database/main/*.json (main database)',

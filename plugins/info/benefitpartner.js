@@ -28,11 +28,6 @@ async function handler(m) {
     txt += `├Propietario de mando de acusado específico\n`
     txt += `└ Prioritas support\n\n`
 
-    txt += `📦 *Panel Pterodactyl*\n`
-    txt += `├Puede crear servidor en sí\n`
-    txt += `├ Akses panel management\n`
-    txt += `└Peel seller 's Nose.\n\n`
-
     txt += `💎*Bono*\n`
     txt += `├+ 200. 000 EXP durante la activación\n`
     txt += `├+ 20. 000 Tela durante la actividad\n`

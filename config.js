@@ -215,50 +215,6 @@ const config = {
     debugLog: false, // Show stack traces
   },
 
-  //puede dikosongin
-  pterodactyl: {
-    server1: {
-      domain: "",
-      apikey: "",
-      capikey: "",
-      egg: "15",
-      nestid: "5",
-      location: "1",
-    },
-    server2: {
-      domain: "",
-      apikey: "",
-      capikey: "",
-      egg: "15",
-      nestid: "5",
-      location: "1",
-    },
-    server3: {
-      domain: "",
-      apikey: "",
-      capikey: "",
-      egg: "15",
-      nestid: "5",
-      location: "1",
-    },
-    server4: {
-      domain: "",
-      apikey: "",
-      capikey: "",
-      egg: "15",
-      nestid: "5",
-      location: "1",
-    },
-    server5: {
-      domain: "",
-      apikey: "",
-      capikey: "",
-      egg: "15",
-      nestid: "5",
-      location: "1",
-    },
-  },
-
   digitalocean: {
     token: "",
     region: "sgp1",

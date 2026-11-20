@@ -5,7 +5,7 @@ const pluginConfig = {
     name: 'botmode',
     alias: ['setmode', 'mode'],
     category: 'owner',
-    description: 'Configurar el bot modelo ( md / cpanel / tormenta / pushkonak / al )',
+    description: 'Configurar el modo del bot ( md / store / pushkontak / otp / all )',
     usage: '.botmode <mode>',
     example: '.botmode store',
     isOwner: true,
@@ -17,12 +17,11 @@ const pluginConfig = {
     isEnabled: true
 }
 
-const VALID_MODES = ['md', 'cpanel', 'store', 'pushkontak', 'otp', 'all']
+const VALID_MODES = ['md', 'store', 'pushkontak', 'otp', 'all']
 
 const MODE_DESCRIPTIONS = {
-    md: 'Modo predeterminado, todas las características excepto para panel / tormenta / pushkontak',
-    cpanel: 'Panel de modo, principal + grupo + pegatina + propietario + herramientas + panel',
-    store: 'Manual de almacenamiento de modo, principal + grupo + pegatina + propietario + tormenta',
+    md: 'Modo predeterminado, todas las funciones excepto pushkontak y store',
+    store: 'Modo tienda, principal + grupo + sticker + propietario + store',
     pushkontak: 'Modo de pushkongak, principal + grupo + pegatina + propietario + pushkontak',
     otp: 'OTP modo de servicio, principal + grupo + pegatina + propietario + otp',
     all: 'Modo completo, las características de ablución de todos los modos se pueden actuar'

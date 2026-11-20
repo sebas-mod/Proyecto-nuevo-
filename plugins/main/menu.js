@@ -74,8 +74,7 @@ const CATEGORY_EMOJIS = {
   cecan: "💃",
   stalker: "🕵️",
   tts: "🗣️",
-  vps: "🌊",
-  panel: "🖥️"
+  vps: "🌊"
 };
 function toSmallCaps(text) {
   const smallCaps = {
@@ -174,18 +173,15 @@ function getSortedCategories(m, botMode) {
     "ephoto",
     "jpm",
     "pushkontak",
-    "panel",
     "store"
   ];
   let modeAllowedMap = {
     md: null,
-    cpanel: ["main", "group", "sticker", "owner", "tools", "panel"],
     store: ["main", "group", "sticker", "owner", "store"],
     pushkontak: ["main", "group", "sticker", "owner", "pushkontak"],
   };
   let modeExcludeMap = {
-    md: ["panel", "pushkontak", "store"],
-    cpanel: null,
+    md: ["pushkontak", "store"],
     store: null,
     pushkontak: null,
   };
@@ -301,7 +297,6 @@ async function buildMenuText(
     "ephoto",
     "jpm",
     "pushkontak",
-    "panel",
     "store"
   ];
   const sortedCategories = [...categories].sort((a, b) => {
@@ -311,13 +306,11 @@ async function buildMenuText(
   });
   let modeAllowedMap = {
     md: null,
-    cpanel: ["main", "group", "sticker", "owner", "tools", "panel"],
     store: ["main", "group", "sticker", "owner", "store"],
     pushkontak: ["main", "group", "sticker", "owner", "pushkontak"],
   };
   let modeExcludeMap = {
-    md: ["panel", "pushkontak", "store"],
-    cpanel: null,
+    md: ["pushkontak", "store"],
     store: null,
     pushkontak: null,
   };

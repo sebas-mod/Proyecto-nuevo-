@@ -45,7 +45,6 @@ const CATEGORY_EMOJIS = {
   media: "🎬",
   info: "ℹ️",
   religi: "☪️",
-  panel: "🖥️",
   user: "📊",
   linode: "☁️",
   random: "🎲",
@@ -191,13 +190,11 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
   });
   let modeAllowedMap = {
     md: null,
-    cpanel: ["main", "group", "sticker", "owner", "tools", "panel"],
     store: ["main", "group", "sticker", "owner", "store"],
     pushkontak: ["main", "group", "sticker", "owner", "pushkontak"],
   };
   let modeExcludeMap = {
-    md: ["panel", "pushkontak", "store"],
-    cpanel: null,
+    md: ["pushkontak", "store"],
     store: null,
     pushkontak: null,
   };

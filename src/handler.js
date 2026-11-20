@@ -1572,7 +1572,6 @@ const { defoult: fs } = aghult importa ( spans )
         const jadibotBlockedCategories = [
           "owner",
           "sewa",
-          "panel",
           "store",
           "pushkontak",
         ];
@@ -1618,10 +1617,9 @@ const { defoult: fs } = aghult importa ( spans )
         all: { allowed: null, excluded: null, name: "All Features" },
         md: {
           allowed: null,
-          excluded: ["pushkontak", "store", "panel", "otp"],
+          excluded: ["pushkontak", "store", "otp"],
           name: "Multi Device",
         },
-        cpanel: { allowed: [...baseAllowed, "tools", "panel"], name: "CPanel" },
         pushkontak: {
           allowed: [...baseAllowed, "pushkontak"],
           name: "Push Kontak",
@@ -1642,7 +1640,6 @@ const { defoult: fs } = aghult importa ( spans )
         ephoto: "md",
         religi: "md",
         info: "md",
-        panel: "cpanel",
         pushkontak: "pushkontak",
         store: "store",
         otp: "otp",

@@ -4,7 +4,7 @@ const pluginConfig = {
     alias: ['setmode', 'mode'],
     category: 'group',
     description: 'Configura Mode bot para este grupo',
-    usage: '.botmode <md/cpanel/pushkontak/store/otp/all>',
+    usage: '.botmode <md/pushkontak/store/otp/all>',
     example: '.botmode store',
     isOwner: false,
     isPremium: false,
@@ -21,18 +21,12 @@ const MODES = {
         name: 'Multi-Device',
         desc: 'Modo predeterminado con todas las características de soporte',
         allowedCategories: null,
-        excludeCategories: ['cpanel', 'pushkontak', 'store']
+        excludeCategories: ['pushkontak', 'store']
     },
     all: {
         name: 'All Features',
         desc: 'Todas las características de todos los modos pueden ser actuadas',
         allowedCategories: null,
-        excludeCategories: null
-    },
-    cpanel: {
-        name: 'CPanel Pterodactyl',
-        desc: 'Modos especiales para el servidor de peel',
-        allowedCategories: ['main', 'group', 'sticker', 'owner', 'tools', 'panel'],
         excludeCategories: null
     },
     pushkontak: {

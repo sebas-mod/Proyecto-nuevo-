@@ -75,7 +75,6 @@ OURIN 3.5/
 │   ├── islamic/             # Fitur religi Islam (Adzan, Doa, Zakat)
 │   ├── main/                # Menu utama, help, ping, dan informasi bot
 │   ├── owner/               # Perintah khusus owner & channel tools
-│   ├── panel/               # Manajemen panel Pterodactyl
 │   ├── rpg/                 # Sistem game RPG terintegrasi
 │   ├── search/              # Pencarian web, lagu, video, BMKG gempa
 │   ├── tools/               # Alat bantu (amprem, viuprem, reactch, pomodoro)

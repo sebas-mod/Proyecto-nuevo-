@@ -5,15 +5,12 @@ var _ourindatabasejs = require('../../src/lib/ourin-database.js');
 
 
 var _ourinjadibotdatabasejs = require('../../src/lib/ourin-jadibot-database.js');
-var _fs = require('fs'); var _fs2 = _interopRequireDefault(_fs);
-var _path = require('path'); var _path2 = _interopRequireDefault(_path);
 
 
 
 
 
 var _ourinlidjs = require('../../src/lib/ourin-lid.js');
-var _botmodejs = require('../group/botmode.js');
 const pluginConfig = {
   name: "addowner",
   alias: ["addown", "setowner", "delowner", "dedown", "ownerlist", "listowner"],
@@ -69,52 +66,6 @@ function extractNumber(m) {
   return targetNumber;
 }
 
-function savePanelConfig() {
-  try {
-    const configPath = _path2.default.join(process.cwd(), "config.js");
-    let content = _fs2.default.readFileSync(configPath, "utf8");
-
-    const ownerPanelsStr = JSON.stringify(_configjs2.default.pterodactyl.ownerPanels || []);
-    content = content.replace(
-      /ownerPanels:\s*\[.*?\]/s,
-      `ownerPanels: ${ownerPanelsStr}`,
-    );
-
-    const sellersStr = JSON.stringify(_configjs2.default.pterodactyl.sellers || []);
-    content = content.replace(/sellers:\s*\[.*?\]/s, `sellers: ${sellersStr}`);
-
-    _fs2.default.writeFileSync(configPath, content, "utf8");
-    return true;
-  } catch (e) {
-    console.error("[AddOwner] Failed to save panel config:", e.message);
-    return false;
-  }
-}
-
-function removeFromSellers(targetNumber) {
-  if (!_configjs2.default.pterodactyl.sellers) return false;
-  const idx = _configjs2.default.pterodactyl.sellers.findIndex(
-    (s) => String(s).trim() === String(targetNumber).trim(),
-  );
-  if (idx !== -1) {
-    _configjs2.default.pterodactyl.sellers.splice(idx, 1);
-    return true;
-  }
-  return false;
-}
-
-function removeFromOwnerPanels(targetNumber) {
-  if (!_configjs2.default.pterodactyl.ownerPanels) return false;
-  const idx = _configjs2.default.pterodactyl.ownerPanels.findIndex(
-    (s) => String(s).trim() === String(targetNumber).trim(),
-  );
-  if (idx !== -1) {
-    _configjs2.default.pterodactyl.ownerPanels.splice(idx, 1);
-    return true;
-  }
-  return false;
-}
-
 function toMentionJid(value) {
   const number = String(value || "").replace(/[^0-9]/g, "");
   return number ? `${number}@s.whatsapp.net` : null;
@@ -123,16 +74,11 @@ function toMentionJid(value) {
 async function handler(m, { sock, jadibotId, isJadibot }) {
   const db = _ourindatabasejs.getDatabase.call(void 0, );
   const cmd = m.command.toLowerCase();
-  const groupMode = m.isGroup ? _botmodejs.getGroupMode.call(void 0, m.chat, db) : "private";
-  const isCpanelMode = m.isGroup && groupMode === "cpanel";
 
   const isAdd = ["addowner", "addown", "setowner"].includes(cmd);
   const isDel = ["delowner", "dedown"].includes(cmd);
   const isList = ["ownerlist", "listowner"].includes(cmd);
 
-  if (!_configjs2.default.pterodactyl) _configjs2.default.pterodactyl = {};
-  if (!_configjs2.default.pterodactyl.ownerPanels) _configjs2.default.pterodactyl.ownerPanels = [];
-  if (!_configjs2.default.pterodactyl.sellers) _configjs2.default.pterodactyl.sellers = [];
   if (!db.data.owner) db.data.owner = [];
 
   if (isList) {
@@ -151,31 +97,6 @@ async function handler(m, { sock, jadibotId, isJadibot }) {
         txt += `${i + 1}. 👑 @${number}${name !== "Owner" ? ` — *${name}*` : ""}\n`;
       });
       txt += `\nTotal: *${jbOwners.length}* propietario`;
-      return m.reply(txt, { mentions });
-    } else if (isCpanelMode) {
-      const panelOwners = _configjs2.default.pterodactyl.ownerPanels || [];
-      const fullOwners = db.data.owner || [];
-      const allOwners = [...new Set([...panelOwners, ...fullOwners])];
-
-      if (allOwners.length === 0) {
-        return m.reply(
-          `📋*ᴅᴀꜰᴛᴀʀ ᴏᴡɴᴇʀ ᴘᴀɴᴇʟ*\n\nY hay un propietario de un panel registrado.`,
-        );
-      }
-      let txt = `📋* Registrate Propietario PANEL*\n\n`;
-      const mentions = allOwners.map(toMentionJid).filter(Boolean);
-      allOwners.forEach((s, i) => {
-        const label =
-          panelOwners.includes(s) && fullOwners.includes(s)
-            ? "👑🖥️"
-            : fullOwners.includes(s)
-              ? "👑"
-              : "🖥️";
-        const number = String(s || "").replace(/[^0-9]/g, "");
-        const name = _configjs.getOwnerName.call(void 0, number);
-        txt += `${i + 1}. ${label} @${number}${name !== "Owner" ? ` — *${name}*` : ""}\n`;
-      });
-      txt += `\nTotal: *${allOwners.length}*Propietario*👑Fuhl,🖥* Panel*`;
       return m.reply(txt, { mentions });
     } else {
       const configOwners = (_optionalChain([_configjs2.default, 'access', _7 => _7.owner, 'optionalAccess', _8 => _8.number]) || []).map(String);
@@ -248,65 +169,9 @@ async function handler(m, { sock, jadibotId, isJadibot }) {
     return;
   }
 
-  if (isCpanelMode) {
-    if (isAdd) {
-      if (_configjs2.default.pterodactyl.ownerPanels.includes(targetNumber)) {
-        return m.reply(`❌ \`${targetNumber}\`Ha sido propietario de un panel.`);
-      }
-
-      let roleChanged = "";
-      if (removeFromSellers(targetNumber)) {
-        roleChanged = `\n♪⚡Auto @-@ actualización desde Vendedor a Panel de Oferta.`;
-      }
-
-      _configjs2.default.pterodactyl.ownerPanels.push(targetNumber);
-      if (savePanelConfig()) {
-        await m.react("👑");
-        return m.reply(
-          `✅♪ Trabajar para añadir ♪${targetNumber}* como propietario del panel${roleChanged}`,
-        );
-      } else {
-        _configjs2.default.pterodactyl.ownerPanels = _configjs2.default.pterodactyl.ownerPanels.filter(
-          (s) => s !== targetNumber,
-        );
-        return m.reply(`❌Pegajoso conduce a config.`);
-      }
-    } else if (isDel) {
-      const ownerList = _configjs2.default.pterodactyl.ownerPanels || [];
-      const found = ownerList.find(
-        (o) => String(o).trim() === String(targetNumber).trim(),
-      );
-      if (!found) {
-        return m.reply(
-          `❌ \`${targetNumber}\`No el dueño del panel.\n\n* Lista actual:${ownerList.join(", ") || "empty"}`,
-        );
-      }
-      _configjs2.default.pterodactyl.ownerPanels = ownerList.filter(
-        (s) => String(s).trim() !== String(targetNumber).trim(),
-      );
-      if (savePanelConfig()) {
-        await m.react("✅");
-        return m.reply(
-          `✅Resultado de la memorización${targetNumber}* del propietario del panel`,
-        );
-      } else {
-        return m.reply(`❌Pegajoso conduce a config.`);
-      }
-    }
-  } else {
     if (isAdd) {
       if (db.data.owner.includes(targetNumber)) {
         return m.reply(`❌ \`${targetNumber}\`Es un propietario completo.`);
-      }
-
-      let roleChanged = "";
-      if (removeFromSellers(targetNumber)) {
-        roleChanged = `\n♪⚡Auto @-@ actualización del Vendedor`;
-        savePanelConfig();
-      }
-      if (removeFromOwnerPanels(targetNumber)) {
-        roleChanged = `\n♪⚡Auto @-@ actualización del Propietario del Panel`;
-        savePanelConfig();
       }
 
       db.data.owner.push(targetNumber);
@@ -320,7 +185,7 @@ async function handler(m, { sock, jadibotId, isJadibot }) {
       const displayName = customName || _configjs.getOwnerName.call(void 0, targetNumber);
       await m.react("👑");
       return m.reply(
-        `✅♪ Trabajar para añadir ♪${targetNumber}* como propietario completo${customName ? ` (${customName})` : ""}${roleChanged}`,
+        `✅♪ Trabajar para añadir ♪${targetNumber}* como propietario completo${customName ? ` (${customName})` : ""}`,
       );
     } else if (isDel) {
       const index = db.data.owner.indexOf(targetNumber);
@@ -337,7 +202,6 @@ async function handler(m, { sock, jadibotId, isJadibot }) {
       await m.react("✅");
       return m.reply(`✅Resultado de la memorización${targetNumber}* del propietario completo`);
     }
-  }
 }
 
 
@@ -345,7 +209,7 @@ async function handler(m, { sock, jadibotId, isJadibot }) {
 
 
 
-exports.config = pluginConfig; exports.handler = handler; exports.removeFromSellers = removeFromSellers; exports.removeFromOwnerPanels = removeFromOwnerPanels;
+exports.config = pluginConfig; exports.handler = handler;
 
 if (exports.default && typeof exports.default === 'object') {
   module.exports = exports.default;

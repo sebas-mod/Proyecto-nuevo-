@@ -44,7 +44,6 @@ const CATEGORY_EMOJIS = {
   media: "🎬",
   info: "ℹ️",
   religi: "☪️",
-  panel: "🖥️",
   user: "📊",
   jpm: "📢",
   pushkontak: "📱",
@@ -134,10 +133,9 @@ async function handler(m, { sock, db }) {
     const botMode = groupData.botMode || "md";
 
     let modeExcludeMap = {
-      md: ["panel", "pushkontak", "store"],
-      store: ["panel", "pushkontak", "jpm", "ephoto", "cpanel"],
-      pushkontak: ["panel", "store", "jpm", "ephoto", "cpanel"],
-      cpanel: ["pushkontak", "store", "jpm", "ephoto"],
+      md: ["pushkontak", "store"],
+      store: ["pushkontak", "jpm", "ephoto"],
+      pushkontak: ["store", "jpm", "ephoto"],
     };
 
     try {
@@ -176,7 +174,6 @@ async function handler(m, { sock, db }) {
       "premium",
       "jpm",
       "pushkontak",
-      "panel",
       "ephoto",
       "store"
     ];
