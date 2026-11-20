@@ -3,7 +3,7 @@ const pluginConfig = {
   name: "instagramdl",
   alias: ["igdl", "ig", "instagram"],
   category: "download",
-  description: "Download video/foto Instagram",
+  description: "Descargar vídeo/foto de Instagram",
   usage: ".instagramdl <url>",
   example: ".instagramdl https://www.instagram.com/reel/xxx",
   isOwner: false,
@@ -24,7 +24,7 @@ async function handler(m, { sock }) {
     return m.reply(
       `📸 *ɪɴsᴛᴀɢʀᴀᴍ ᴅᴏᴡɴʟᴏᴀᴅᴇʀ*\n\n` +
         `> \`${m.prefix}igdl <url>\`\n\n` +
-        `*ᴄᴏɴᴛᴏʜ:*\n` +
+        `*ᴇᴊᴇᴍᴘʟᴏ:*\n` +
         `> \`${m.prefix}igdl https://www.instagram.com/reel/xxx\`\n` +
         `> \`${m.prefix}igdl https://www.instagram.com/p/xxx\``,
     );
@@ -32,7 +32,7 @@ async function handler(m, { sock }) {
 
   if (!IG_REGEX.test(url)) {
     return m.reply(
-      `❌URL inválida. Use enlaces de lnstagram ( carrete / post / almacenamiento ).`,
+      `❌ Enlace no válido. Usa enlaces de Instagram (reel / post / historias).`,
     );
   }
 
@@ -43,16 +43,16 @@ async function handler(m, { sock }) {
 
     if (!_optionalChain([result, 'optionalAccess', _4 => _4.media, 'optionalAccess', _5 => _5.length])) {
       await m.react("❌");
-      return m.reply(`❌Los luchadores toman medios.`);
+      return m.reply(`❌ No se encontraron medios en el enlace.`);
     }
 
     const isStory = url.includes("/stories/");
     let caption = `📸 *Instagram ${isStory ? "Story" : "Downloader"}*\n\n`;
     if (result.username && result.username !== "-") {
-      caption += `👤 *Author*: @${result.username}\n`;
+      caption += `👤 *Autor*: @${result.username}\n`;
     }
     if (result.caption) {
-      caption += `📝 *Caption*:\n${result.caption}\n`;
+      caption += `📝 *Descripción*:\n${result.caption}\n`;
     }
     caption = caption.trim();
 
@@ -76,7 +76,7 @@ async function handler(m, { sock }) {
     await m.react("✅");
   } catch (err) {
     await m.react("❌");
-    return m.reply(`❌ *ɢᴀɢᴀʟ ᴍᴇɴɢᴜɴᴅᴜʜ*\n\n> ${err.message}`);
+    return m.reply(`❌ *ɴᴏ sᴇ ᴘᴜᴅᴏ ᴅᴇsᴄᴀʀɢᴀʀ*\n\n> ${err.message}`);
   }
 }
 

@@ -8,8 +8,8 @@ const pluginConfig = {
     name: 'attp',
     alias: ['attp2', 'attp3'],
     category: 'sticker',
-    description: 'Membuat sticker animated text',
-    usage: '.attp <teks>',
+    description: 'Crea un sticker de texto animado',
+    usage: '.attp <texto>',
     example: '.attp Hello World',
     isOwner: false,
     isPremium: false,
@@ -31,12 +31,12 @@ async function handler(m, { sock }) {
     if (!text) {
         return m.reply(
             `🎨 *ᴀɴɪᴍᴀᴛᴇᴅ ᴛᴇxᴛ sᴛɪᴄᴋᴇʀ*\n\n` +
-            `*Pon los textos para pegatinas*\n\n` +
+            `*Escribe el texto del sticker*\n\n` +
             `> Ejemplo:\`${m.prefix}attp Hello World\``
         )
     }
     if (text.length > 100) {
-        return m.reply(`❌Las pruebas son demasiado largas! 100 caracteres al máximo.`)
+        return m.reply(`❌ El texto es demasiado largo. Máximo 100 caracteres.`)
     }
     m.react('🕕')
     try {
@@ -48,7 +48,7 @@ async function handler(m, { sock }) {
         }
         const stickerUrl = data.data.url
         const stickerRes = await _ourinhttpjs.f.call(void 0, stickerUrl, 'buffer')
-        if (!stickerRes) throw new Error('Steenace descarga pegatinas del servidor')
+        if (!stickerRes) throw new Error('Descarga el sticker generado desde el servidor')
         let finalSticker = stickerRes
         try {
             finalSticker = await _ourinexifjs.addExifToWebp.call(void 0, stickerRes, {

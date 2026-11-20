@@ -412,7 +412,7 @@ async function handler(m, { sock }) {
   const currentStatus = groupData.goodbye === true;
   if (sub === "on" && sub2 === "all") {
     if (!m.isOwner) {
-      return m.reply(`❌¡Sólo el propietario puede usar está característica!`);
+      return m.reply(`❌ ¡Solo el propietario puede usar esta función!`);
     }
     m.react("🕕");
     try {
@@ -426,7 +426,7 @@ async function handler(m, { sock }) {
       m.react("✅");
       return m.reply(
         `✅ *ɢᴏᴏᴅʙʏᴇ ɢʟᴏʙᴀʟ ᴏɴ*\n\n` +
-        `*Adiós activado en*${count}* grupo!`,
+        `*Despedida activada en* ${count} *grupos.*`,
       );
     } catch (err) {
       m.react("☢");
@@ -435,7 +435,7 @@ async function handler(m, { sock }) {
   }
   if (sub === "off" && sub2 === "all") {
     if (!m.isOwner) {
-      return m.reply(`❌¡Sólo el propietario puede usar está característica!`);
+      return m.reply(`❌ ¡Solo el propietario puede usar esta función!`);
     }
     m.react("🕕");
     try {
@@ -449,7 +449,7 @@ async function handler(m, { sock }) {
       m.react("✅");
       return m.reply(
         `❌ *ɢᴏᴏᴅʙʏᴇ ɢʟᴏʙᴀʟ ᴏꜰꜰ*\n\n` +
-        `*Adiós está desactivado*${count}* grupo!`,
+        `*Despedida desactivada en* ${count} *grupos.*`,
       );
     } catch (err) {
       m.react("☢");
@@ -461,16 +461,16 @@ async function handler(m, { sock }) {
       return m.reply(
         `⚠️ *ɢᴏᴏᴅʙʏᴇ ᴀʟʀᴇᴀᴅʏ ᴀᴄᴛɪᴠᴇ*\n\n` +
         `> Status: *✅ ON*\n` +
-        `- Se ha activado el adiós en este grupo.\n\n` +
-        `*Usarlo*\`${m.prefix}Adiós.\`para desactivando._`,
+        `La despedida ya está activada en este grupo.\n\n` +
+        `*Para desactivarla:* \`${m.prefix}goodbye off\`_`,
       );
     }
     db.setGroup(m.chat, { goodbye: true, leave: true });
     return m.reply(
       `✅ *ɢᴏᴏᴅʙʏᴇ ᴀᴋᴛɪꜰ*\n\n` +
-      `*¡El mensaje de adiós se activa con éxito!*\n` +
-      `La salida se dará un mensaje.\n\n` +
-      `*Usarlo*\`${m.prefix}Adiós.\`para mensajes personalizados. _`,
+      `*¡La despedida se activó correctamente!*\n` +
+      `Los miembros que salgan recibirán un mensaje.\n\n` +
+      `*Para personalizarla:* \`${m.prefix}setgoodbye\`_`,
     );
   }
   if (sub === "off") {
@@ -478,26 +478,26 @@ async function handler(m, { sock }) {
       return m.reply(
         `⚠️ *ɢᴏᴏᴅʙʏᴇ ᴀʟʀᴇᴀᴅʏ ɪɴᴀᴄᴛɪᴠᴇ*\n\n` +
         `> Status: *❌ OFF*\n` +
-        `- Adiós ha estado fuera de la red.\n\n` +
-        `*Usarlo*\`${m.prefix}Adiós\`para activando._`,
+        `La despedida ya está desactivada en este grupo.\n\n` +
+        `*Para activarla:* \`${m.prefix}goodbye on\`_`,
       );
     }
     db.setGroup(m.chat, { goodbye: false, leave: false });
     return m.reply(
       `❌ *ɢᴏᴏᴅʙʏᴇ ɴᴏɴᴀᴋᴛɪꜰ*\n\n` +
-      `* Mensaje de adiós activado con éxito.*\n` +
-      `La salida no se dará.`,
+      `*La despedida se desactivó correctamente.*\n` +
+      `Los miembros que salgan no recibirán mensaje.`,
     );
   }
   m.reply(
     `👋 *ɢᴏᴏᴅʙʏᴇ sᴇᴛᴛɪɴɢs*\n\n` +
     `> Status: *${currentStatus ? "✅ ON" : "❌ OFF"}*\n\n` +
-    `\`\`\`━━━ ᴘɪʟɪʜᴀɴ ━━━\`\`\`\n` +
-    `> \`${m.prefix}goodbye on\` → Aktifkan\n` +
-    `> \`${m.prefix}goodbye off\` → Nonaktifkan\n` +
-    `> \`${m.prefix}adiós a Alll\` →Global ON (propietario)\n` +
-    `> \`${m.prefix}adiós\` →Global OFF (propietario)\n` +
-    `> \`${m.prefix}setgoodbye\` → Custom pesan\n` +
+    `\`\`\`━━━ ᴏᴘᴄɪᴏɴᴇs ━━━\`\`\`\n` +
+    `> \`${m.prefix}goodbye on\` → Activar\n` +
+    `> \`${m.prefix}goodbye off\` → Desactivar\n` +
+    `> \`${m.prefix}goodbye on all\` → Activar en todos (dueño)\n` +
+    `> \`${m.prefix}goodbye off all\` → Desactivar en todos (dueño)\n` +
+    `> \`${m.prefix}setgoodbye\` → Mensaje personalizado\n` +
     `> \`${m.prefix}resetgoodbye\` →Restablecer predeterminado`,
   );
 }

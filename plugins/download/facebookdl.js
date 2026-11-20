@@ -5,7 +5,7 @@ const pluginConfig = {
     name: 'facebookdl',
     alias: ['fbdown', 'fb', 'facebook', 'fbdl'],
     category: 'download',
-    description: 'Download video Facebook',
+    description: 'Descargar vídeo de Facebook',
     usage: '.facebookdl <url>',
     example: '.facebookdl https://www.facebook.com/watch?v=xxx',
     isOwner: false,
@@ -22,7 +22,7 @@ async function handler(m, { sock }) {
     
     if (!url) {
         return m.reply(
-            `⚠♪ CARA PACKAI ♪\n\n` +
+            `⚠ *CÓMO USARLO*\n\n` +
             `- \`${m.prefix}facebookdl <url>\`\n\n` +
             `*Ejemplo:*\n` +
             `- \`${m.prefix}fbdown https://www.facebook.com/watch?v=xxx\``
@@ -30,7 +30,7 @@ async function handler(m, { sock }) {
     }
     
     if (!url.match(/facebook\.com|fb\.watch|fb\.com/i)) {
-        return m.reply(`❌URL inválida. Use enlace Facebook.`)
+        return m.reply(`❌ Enlace no válido. Usa un enlace de Facebook.`)
     }
     
     await m.react('🕕')
@@ -40,7 +40,7 @@ async function handler(m, { sock }) {
         
         if (!_optionalChain([data, 'optionalAccess', _4 => _4.status]) || !data.result || !data.result.medias || data.result.medias.length === 0) {
             await m.react('❌')
-            return m.reply(`❌Stebuli tomó otro video.\n\nNota: El sistema actual no ha descargado aún la foto de Facebook, sólo el vídeo. _`)
+            return m.reply(`❌ No se pudo obtener el vídeo.\n\n_Nota: esta función no descarga fotos de Facebook, solo vídeos._`)
         }
         
         //Encontrar HD si está disponible, más SD, otro elemento firme
@@ -50,16 +50,16 @@ async function handler(m, { sock }) {
         
         if (!video || !video.url) {
             await m.react('❌')
-            return m.reply(`❌El vídeo no se encontró en el enlace.\n\nNota: El sistema actual no ha descargado aún la foto de Facebook, sólo el vídeo. _`)
+            return m.reply(`❌ No se encontró ningún vídeo en el enlace.\n\n_Nota: esta función no descarga fotos de Facebook, solo vídeos._`)
         }
         
-        let caption = `🎥 *FACEBOOK DOWNLOADER*\n\n`
-        caption += `*Judul:* ${data.result.title || "Video Facebook"}\n`
-        caption += `*Kualitas:* ${video.quality ? video.quality.toUpperCase() : "Normal"}\n`
+        let caption = `🎥 *DESCARGAS DE FACEBOOK*\n\n`
+        caption += `*Título:* ${data.result.title || "Video Facebook"}\n`
+        caption += `*Calidad:* ${video.quality ? video.quality.toUpperCase() : "Normal"}\n`
         if (video.formattedSize) {
-            caption += `*Ukuran:* ${video.formattedSize}\n`
+            caption += `*Tamaño:* ${video.formattedSize}\n`
         }
-        caption += `\nNota: Está característica no admite las publicaciones de fotos. _`
+        caption += `\n_Nota: esta función no admite publicaciones de fotos._`
 
         await sock.sendMedia(m.chat, video.url, caption, m, {
             type: 'video',

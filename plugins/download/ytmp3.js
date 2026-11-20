@@ -4,7 +4,7 @@ const pluginConfig = {
   name: "ytmp3",
   alias: ["youtubemp3", "ytaudio"],
   category: "download",
-  description: "Download audio YouTube",
+  description: "Descargar audio de YouTube",
   usage: ".ytmp3 <url>",
   example: ".ytmp3 https://youtube.com/watch?v=xxx",
   cooldown: 20,
@@ -29,7 +29,7 @@ async function getAudioDownload(url) {
     return { download: fallback.dl, title: fallback.title, isFallback: true };
   }
 
-  throw new Error(_optionalChain([fallback, 'optionalAccess', _7 => _7.mess]) || "Stempel obtiene una descarga de audio de URL");
+  throw new Error(_optionalChain([fallback, 'optionalAccess', _7 => _7.mess]) || "Descarga el audio de un enlace de YouTube");
 }
 
 async function handler(m, { sock }) {
@@ -37,7 +37,7 @@ async function handler(m, { sock }) {
   if (!url)
     return m.reply(`Ejemplo:${m.prefix}ytmp3 https://youtube.com/watch?v=xxx`);
   if (!url.includes("youtube.com") && !url.includes("youtu.be"))
-    return m.reply("❌URL debe ser YouTube");
+    return m.reply("❌ El enlace debe ser de YouTube");
 
   m.react("🕕");
 

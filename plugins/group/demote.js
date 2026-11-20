@@ -4,7 +4,7 @@ const pluginConfig = {
     name: 'demote',
     alias: ['unadmin', 'turunkan'],
     category: 'group',
-    description: 'Administración inferior a la foto regular',
+    description: 'Quita el rol de administrador a un miembro',
     usage: '.demote @user',
     example: '.demote @user',
     isOwner: false,
@@ -29,9 +29,9 @@ async function handler(m, { sock }) {
 
     if (!target) {
         await m.reply(
-            `❌ *ᴛᴀʀɢᴇᴛ ᴛɪᴅᴀᴋ ᴅɪᴛᴇᴍᴜᴋᴀɴ*\n\n` +
-            `¡Ezely ordena un usuario o una mención!\n` +
-            `> Ejemplo:\`${m.prefix}degradar @user\``
+            `❌ *ᴜsᴜᴀʀɪᴏ ɴᴏ ᴇɴᴄᴏɴᴛʀᴀᴅᴏ*\n\n` +
+            `¡Responde a un usuario o menciónalo!\n` +
+            `> Ejemplo:\`${m.prefix}demote @usuario\``
         )
         return
     }
@@ -41,24 +41,24 @@ async function handler(m, { sock }) {
         const participant = groupMeta.participants.find(p => _ourinlidjs.getParticipantJid.call(void 0, p) === target)
 
         if (!participant) {
-            await m.reply(`❌*ɢᴀɢᴀʟ*\n\n¡No se encontró al usuario en el grupo!`)
+            await m.reply(`❌ *ɢᴀɢᴀʟ*\n\n¡No se encontró al usuario en el grupo!`)
             return
         }
 
         if (!participant.admin) {
-            await m.reply(`❌*ɢᴀɢᴀʟ*\n\n¡Ez Usuario no es un administrador!`)
+            await m.reply(`❌ *ɢᴀɢᴀʟ*\n\n¡Este usuario no es administrador!`)
             return
         }
 
         if (participant.admin === 'superadmin') {
-            await m.reply(`❌*ɢᴀɢᴀʟ*\n\n*No puede demotar al dueño del grupo!`)
+            await m.reply(`❌ *ɢᴀɢᴀʟ*\n\n*No puedes quitar el rol al dueño del grupo!*`)
             return
         }
 
         await sock.groupParticipantsUpdate(m.chat, [target], 'demote')
 
         await m.reply(
-            `@${target.split('@')[0]}Ya no es un administrador.`,
+            `@${target.split('@')[0]} ya no es administrador.`,
             { mentions: [target] }
         )
 

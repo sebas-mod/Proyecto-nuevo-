@@ -19,7 +19,7 @@ const pluginConfig = {
   name: "allmenu",
   alias: ["fullmenu", "am", "allcommand", "semua"],
   category: "main",
-  description: "Menampilkan semua command lengkap per kategori",
+  description: "Muestra todos los comandos, agrupados por categoría",
   usage: ".allmenu",
   example: ".allmenu",
   isOwner: false,
@@ -139,29 +139,29 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
     }
   } catch (e) { }
 
-  const userLimit = (m.isPremium || m.isOwner) ? "∞ Unlimited" : (_optionalChain([user, 'optionalAccess', _14 => _14.limit]) || 0);
+  const userLimit = (m.isPremium || m.isOwner) ? "∞ Ilimitado" : (_optionalChain([user, 'optionalAccess', _14 => _14.limit]) || 0);
   const botName = _optionalChain([botConfig, 'access', _15 => _15.bot, 'optionalAccess', _16 => _16.name]) || "Remi AI";
   const devName = _optionalChain([botConfig, 'access', _17 => _17.bot, 'optionalAccess', _18 => _18.developer]) || "Ell";
   const botVersion = _optionalChain([botConfig, 'access', _19 => _19.bot, 'optionalAccess', _20 => _20.version]) || "11.0.0";
   const pushName = m.pushName || "User";
   const timeNow = new Date().toLocaleTimeString('id-ID', { timeZone: 'Asia/Jakarta' }).replace(/\./g, ':');
 
-  txt += `✦*Información User*\n`;
-  txt += `•Nombre:${pushName}\n`;
-  txt += `• Status : ${userRole}\n`;
-  txt += `•Límite:${userLimit}\n\n`;
-  txt += `✦Información del Tejado\n`;
-  txt += `•Nombre:${botName}\n`;
-  txt += `•Función:${totalFeatures} fitur\n`;
-  txt += `•Versi:${botVersion}\n`;
-  txt += `•Tiempo:${timeNow} WIB\n\n`;
-  txt += `✦*Esto es demasiado*\n`;
+  txt += `✦ *Información del usuario*\n`;
+  txt += `• Nombre : ${pushName}\n`;
+  txt += `• Rango  : ${userRole}\n`;
+  txt += `• Límite : ${userLimit}\n\n`;
+  txt += `✦ *Información del bot*\n`;
+  txt += `• Nombre : ${botName}\n`;
+  txt += `• Funciones : ${totalFeatures}\n`;
+  txt += `• Versión : ${botVersion}\n`;
+  txt += `• Hora : ${timeNow} WIB\n\n`;
+  txt += `✦ *Ventajas*\n`;
   txt += `• Fast response\n`;
   txt += `• Stable system\n`;
   txt += `• Multi feature\n`;
   txt += `• User friendly\n\n`;
-  txt += `Por favor, seleccione un menú en está olla.\n`;
-  txt += `Utilice sus necesidades y no olvide utilizarlas sabiamente.\n\n`;
+  txt += `Elige un menú de la lista de abajo.\n`;
+  txt += `Usa los comandos con cabeza.\n\n`;
   const categoryOrder = [
     "owner",
     "main",

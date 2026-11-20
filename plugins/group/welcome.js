@@ -383,7 +383,7 @@ async function handler(m, { sock }) {
       m.react("✅");
       return m.reply(
         `✅ *ᴡᴇʟᴄᴏᴍᴇ ɢʟᴏʙᴀʟ ᴏɴ*\n\n` +
-        `Bienvenido activado en${count}* grupo!`,
+        `Bienvenida activada en *${count}* grupos.`,
       );
     } catch (err) {
       m.react("☢");
@@ -406,7 +406,7 @@ async function handler(m, { sock }) {
       m.react("✅");
       return m.reply(
         `❌ *ᴡᴇʟᴄᴏᴍᴇ ɢʟᴏʙᴀʟ ᴏꜰꜰ*\n\n` +
-        `# Welcomme desactivated in #${count}* grupo!`,
+        `Bienvenida desactivada en *${count}* grupos.`,
       );
     } catch (err) {
       m.react("☢");
@@ -418,16 +418,16 @@ async function handler(m, { sock }) {
       return m.reply(
         `⚠️ *ᴡᴇʟᴄᴏᴍᴇ ᴀʟʀᴇᴀᴅʏ ᴀᴄᴛɪᴠᴇ*\n\n` +
         `> Status: *✅ ON*\n` +
-        `Ez Welcomme está activo en este grupo.\n\n` +
-        `*Usarlo*\`${m.prefix}Bienvenido.\`para desactivando._`,
+        `La bienvenida ya está activada en este grupo.\n\n` +
+        `*Para desactivarla:* \`${m.prefix}welcome off\`_`,
       );
     }
     db.setGroup(m.chat, { welcome: true });
     return m.reply(
       `✅ *ᴡᴇʟᴄᴏᴍᴇ ᴀᴋᴛɪꜰ*\n\n` +
-      `¡Ezecomme mensaje activado con éxito!\n` +
-      `Seremos capaces de conseguir uno nuevo.\n\n` +
-      `*Usarlo*\`${m.prefix}setwelcome\`para mensajes personalizados. _`,
+      `¡La bienvenida se activó correctamente!\n` +
+      `Los nuevos miembros recibirán el mensaje de bienvenida.\n\n` +
+      `*Para personalizarlo:* \`${m.prefix}setwelcome\`_`,
     );
   }
   if (sub === "off") {
@@ -435,24 +435,24 @@ async function handler(m, { sock }) {
       return m.reply(
         `⚠️ *ᴡᴇʟᴄᴏᴍᴇ ᴀʟʀᴇᴀᴅʏ ɪɴᴀᴄᴛɪᴠᴇ*\n\n` +
         `> Status: *❌ OFF*\n` +
-        `Ez Welcomme ha sido deshabilitado en este grupo.\n\n` +
-        `*Usarlo*\`${m.prefix}Bienvenidos\`para activando._`,
+        `La bienvenida ya está desactivada en este grupo.\n\n` +
+        `*Para activarla:* \`${m.prefix}welcome on\`_`,
       );
     }
     db.setGroup(m.chat, { welcome: false });
     return m.reply(
       `❌ *ᴡᴇʟᴄᴏᴍᴇ ɴᴏɴᴀᴋᴛɪꜰ*\n\n` +
-      `El mensaje de Welcomme es con éxito deshabilitado.\n` +
-      `Eso no va a mercado.`,
+      `La bienvenida se desactivó correctamente.\n` +
+      `Los nuevos miembros ya no recibirán mensaje.`,
     );
   }
   m.reply(
     `👋 *ᴡᴇʟᴄᴏᴍᴇ sᴇᴛᴛɪɴɢs*\n\n` +
     `> Status: *${currentStatus ? "✅ ON" : "❌ OFF"}*\n\n` +
-    `\`\`\`━━━ ᴘɪʟɪʜᴀɴ ━━━\`\`\`\n` +
-    `> \`${m.prefix}welcome on\` → Aktifkan\n` +
-    `> \`${m.prefix}welcome off\` → Nonaktifkan\n` +
-    `> \`${m.prefix}bienvenidos a Al\` →Global ON (propietario)\n` +
+    `\`\`\`━━━ ᴏᴘᴄɪᴏɴᴇs ━━━\`\`\`\n` +
+    `> \`${m.prefix}welcome on\` → Activar\n` +
+    `> \`${m.prefix}welcome off\` → Desactivar\n` +
+    `> \`${m.prefix}welcome on all\` → Activar en todos los grupos (dueño)\n` +
     `> \`${m.prefix}Bienvenido a Al\` →Global OFF (propietario)\n` +
     `> \`${m.prefix}setwelcome\` → Custom pesan\n` +
     `> \`${m.prefix}resetwelcome\` →Restablecer predeterminado`,

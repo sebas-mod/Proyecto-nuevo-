@@ -28,7 +28,7 @@ const pluginConfig = {
   name: "menu",
   alias: ["help", "bantuan", "commands", "m"],
   category: "main",
-  description: "Adjuntar el menú principal del bot",
+  description: "Muestra el menú principal del bot",
   usage: ".menu",
   example: ".menu",
   isOwner: false,
@@ -256,26 +256,26 @@ async function buildMenuText(
   const totalUsers = db.getUserCount();
   let txt = `${greeting}\n\n`;
   txt += `      ${m.pushName || "User"}\n\n`;
-  txt += `Hola Kawan🌱\n`;
-  txt += `Presentate yo${_optionalChain([botConfig, 'access', _3 => _3.bot, 'optionalAccess', _4 => _4.name]) || "Denia Al"}, buatan ${_optionalChain([botConfig, 'access', _5 => _5.bot, 'optionalAccess', _6 => _6.developer]) || "Alesha"}Estoy listo para ayudar.\n`;
-  txt += `Sus necesidades, comenzando desde las descargas\n`;
-  txt += `Video, juego, firmar la luz, buscar\n`;
-  txt += `I.V., pegatinas de bikin, etc.\n\n`;
+  txt += `Hola, amigo 🌱\n`;
+  txt += `Soy ${_optionalChain([botConfig, 'access', _3 => _3.bot, 'optionalAccess', _4 => _4.name]) || "Denia Al"}, creado por ${_optionalChain([botConfig, 'access', _5 => _5.bot, 'optionalAccess', _6 => _6.developer]) || "Alesha"}. Estoy listo para ayudarte.\n`;
+  txt += `Todo lo que necesitas, desde descargas\n`;
+  txt += `vídeos, juegos, stickers y búsquedas\n`;
+  txt += `IA, crear stickers y mucho más.\n\n`;
 
-  txt += `♪INFO USUARIO♪\n`;
-  txt += `╭   •Nombre:${m.pushName || "User"}\n`;
-  txt += `┆   • Status : ${userRole}\n`;
-  txt += `┆   • Mode : ${(botConfig.mode || "public").toUpperCase()}\n`;
-  txt += `┆   •Número:${m.sender.split("@")[0]}\n`;
-  txt += `┆   •Tiempo:${timeStr} WIB\n`;
+  txt += `*INFO DEL USUARIO*\n`;
+  txt += `╭   • Nombre : ${m.pushName || "User"}\n`;
+  txt += `┆   • Rango  : ${userRole}\n`;
+  txt += `┆   • Modo   : ${(botConfig.mode || "public").toUpperCase()}\n`;
+  txt += `┆   • Número : ${m.sender.split("@")[0]}\n`;
+  txt += `┆   • Hora   : ${timeStr} WIB\n`;
   txt += `╰➤------------------------------\n`;
 
-  txt += `♪Info del bot♪\n`;
-  txt += `╭  • Name : ${_optionalChain([botConfig, 'access', _7 => _7.bot, 'optionalAccess', _8 => _8.name]) || "Ourin-AI"}\n`;
-  txt += `┆  • Author : ${_optionalChain([botConfig, 'access', _9 => _9.bot, 'optionalAccess', _10 => _10.developer]) || "Owner"}\n`;
-  txt += `┆  •Versi:${_optionalChain([botConfig, 'access', _11 => _11.bot, 'optionalAccess', _12 => _12.version]) || "1.2.0"}\n`;
+  txt += `*INFO DEL BOT*\n`;
+  txt += `╭  • Nombre : ${_optionalChain([botConfig, 'access', _7 => _7.bot, 'optionalAccess', _8 => _8.name]) || "Ourin-AI"}\n`;
+  txt += `┆  • Autor  : ${_optionalChain([botConfig, 'access', _9 => _9.bot, 'optionalAccess', _10 => _10.developer]) || "Owner"}\n`;
+  txt += `┆  • Versión: ${_optionalChain([botConfig, 'access', _11 => _11.bot, 'optionalAccess', _12 => _12.version]) || "1.2.0"}\n`;
   txt += `┆  • Type script : OURIN x ${_optionalChain([botConfig, 'access', _13 => _13.bot, 'optionalAccess', _14 => _14.developer]) || "Owner"}\n`;
-  txt += `┆  • Uptime : ${uptimeFormatted}\n`;
+  txt += `┆  • Activo : ${uptimeFormatted}\n`;
   txt += `╰➤------------------------------\n`;
   const categoryOrder = [
     "owner",
@@ -353,7 +353,7 @@ async function buildMenuText(
     categoryLines.push(`${prefix}menucat ${category} ${emoji}`);
   }
   if (categoryLines.length > 0) {
-    txt += ` ✦Menú LINE✦\n`;
+    txt += ` ✦ MENÚ ✦\n`;
     txt += `╭   • ${categoryLines[0]}\n`;
     for (let i = 1; i < categoryLines.length; i++) {
       txt += `┆   • ${categoryLines[i]}\n`;
@@ -451,7 +451,7 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
     imageBuffer = _fs2.default.readFileSync(botConfig.assets["ourin"])
     thumbBuffer = _fs2.default.readFileSync(botConfig.assets["ourin2"])
   } catch (e) {
-    console.error("Activos de carga de los combatientes:", e.message);
+    console.error("Cargando el menú:", e.message);
   }
   const prefix = _optionalChain([botConfig, 'access', _29 => _29.command, 'optionalAccess', _30 => _30.prefix]) || ".";
   const saluranId = _optionalChain([botConfig, 'access', _31 => _31.saluran, 'optionalAccess', _32 => _32.id]) || "120363400911374213@newsletter";
@@ -519,7 +519,7 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
       const count = item.type === "category" ? (_optionalChain([categories, 'access', _39 => _39.sorted, 'access', _40 => _40.find, 'call', _41 => _41(x => x.cat.toLowerCase() === item.key), 'optionalAccess', _42 => _42.cmds, 'access', _43 => _43.length]) || 0) : 0;
       return [{
         title: `${item.emoji} ${item.label}`,
-        description: count ? `${count}comando disponible` : "Abre este menú",
+        description: count ? `${count} comandos disponibles` : "Abrir este menú",
         id,
       }];
     });
@@ -596,7 +596,7 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
                       rows: [
                         {
                           title: "📚 𝗦𝗲𝗺𝘂𝗮 𝗠𝗲𝗻𝘂",
-                          description: "Mira todo el comando disponible.",
+                          description: "Muestra todos los comandos disponibles.",
                           id: `${m.prefix}allmenu`,
                         },
                         {
@@ -606,7 +606,7 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
                         },
                         {
                           title: "👑 𝗢𝘄𝗻𝗲𝗿",
-                          description: "Propietario de información bot",
+                          description: "Información del propietario del bot",
                           id: `${m.prefix}propietario`,
                         },
                       ],
@@ -693,7 +693,7 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
           }
           if (!availableCats.has(key)) continue;
           const count = _optionalChain([categories, 'access', _68 => _68.sorted, 'access', _69 => _69.find, 'call', _70 => _70(x => x.cat.toLowerCase() === key), 'optionalAccess', _71 => _71.cmds, 'access', _72 => _72.length]) || 0;
-          rows.push({ title: `${emoji} ${toMonoUpperBold(label)}`, description: `${count}comando disponible`, id: `${prefix}menucat ${key}` });
+          rows.push({ title: `${emoji} ${toMonoUpperBold(label)}`, description: `${count} comandos disponibles`, id: `${prefix}menucat ${key}` });
         }
 
         const sections = [];
@@ -791,7 +791,7 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
 ${readmore}${s}`
                   },
                   footer: {
-                    text: "Seleccione botones para obtener más información"
+                    text: "Selecciona un botón para ver más información"
                   },
                   contextInfo: {
                     isForwarded: true,
@@ -809,14 +809,14 @@ ${readmore}${s}`
                       limited_time_offer: {
                         text: `${greeting}`,
                         url: "Hai",
-                        copy_code: "Dibuat oleh " + _optionalChain([_configjs2.default, 'access', _89 => _89.bot, 'optionalAccess', _90 => _90.developer]),
+                        copy_code: "Creado por " + _optionalChain([_configjs2.default, 'access', _89 => _89.bot, 'optionalAccess', _90 => _90.developer]),
                         expiration_time: Date.now() + 1000000,
                       },
                       bottom_sheet: {
                         in_thread_buttons_limit: 2,
                         divider_indices: [1, 2, 3, 4, 5, 999],
-                        list_title: "Por favor, seleccione el menú que desea.",
-                        button_title: "🍅 Selengkapnya",
+                        list_title: "Elige el menú que quieras abrir.",
+                        button_title: "🍅 Ver todo",
                       },
                       tap_target_configuration: {
                         title: " X ",
@@ -836,7 +836,7 @@ ${readmore}${s}`
                       {
                         name: "cta_url",
                         buttonParamsJson: JSON.stringify({
-                          display_text: "🍫Propietario Nosotros",
+                          display_text: "🍫 Nosotros",
                           url: `https://wa.me/${_optionalChain([botConfig, 'access', _91 => _91.owner, 'optionalAccess', _92 => _92.number, 'optionalAccess', _93 => _93[0]])}`,
                           merchant_url: `https://wa.me/${_optionalChain([_configjs2.default, 'access', _94 => _94.owner, 'optionalAccess', _95 => _95.number, 'optionalAccess', _96 => _96[0]])}`,
                         })
@@ -844,7 +844,7 @@ ${readmore}${s}`
                       {
                         name: "quick_reply",
                         buttonParamsJson: JSON.stringify({
-                          display_text: "🍛 Dapatkan Script ( Gratis )",
+                          display_text: "🍛 Obtener el script (gratis)",
                           id: `${m.prefix}sc`
                         })
                       }
@@ -866,14 +866,14 @@ ${readmore}${s}`
               {
                 buttonId: `${m.prefix}propietario`,
                 buttonText: {
-                  displayText: '🧀Propietario',
+                  displayText: '🧀 Propietario',
                 },
                 type: 1,
               },
               {
                 buttonId: `${m.prefix}allmenu`,
                 buttonText: {
-                  displayText: '💐 Allmenu',
+                  displayText: '💐 Todos los comandos',
                 },
                 type: 1,
               },
@@ -881,7 +881,7 @@ ${readmore}${s}`
             locationMessage: {
               jpegThumbnail: await _sharp3.default.call(void 0, _fs2.default.readFileSync(_configjs2.default.assets["ourin"])).resize(300, 170).toBuffer(),
               name: _configjs2.default.bot.name,
-              address: `Versionreal:${_configjs2.default.bot.version}`
+              address: `Versión: ${_configjs2.default.bot.version}`
             },
             contentText: `✦ *ʜᴇʟʟᴏ, ${m.pushName}*
 

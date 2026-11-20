@@ -8,7 +8,7 @@ const pluginConfig = {
   name: "emojitoimage",
   alias: ["emoji2img", "emojiimg", "e2i"],
   category: "tools",
-  description: "Conversiones de Emoji a la imagen ED ( Estilo de manzana )",
+  description: "Convierte un emoji en imagen (estilo Apple)",
   usage: ".emojitoimage <emoji> [style]",
   example: ".emojitoimage 😳 apple",
   cooldown: 5,
@@ -39,7 +39,7 @@ async function handler(m, { sock }) {
         `> \`${m.prefix}emojitoimage <emoji> [style]\`\n\n` +
         `*Ejemplo:*\n` +
         `> \`${m.prefix}emojitoimage 😳 apple\`\n\n` +
-        `*Style disponible:*\n` +
+        `*Estilos disponibles:*\n` +
         `> ${STYLES.join(", ")}`,
     );
   }
@@ -54,7 +54,7 @@ async function handler(m, { sock }) {
 
     if (!_optionalChain([data, 'optionalAccess', _9 => _9.status]) || !_optionalChain([data, 'optionalAccess', _10 => _10.data, 'optionalAccess', _11 => _11.url])) {
       m.react("❌");
-      return m.reply("❌*ɢᴀɢᴀʟ*\n\n*Emoji no se encuentra ni error de API*");
+      return m.reply("❌ *ɴᴏ sᴇ ᴘᴜᴅᴏ*\n\n*Emoji no encontrado o error de la API*");
     }
 
     const imgUrl = data.data.url;
@@ -62,7 +62,7 @@ async function handler(m, { sock }) {
     await sock.sendMedia(
       m.chat,
       imgUrl,
-      `🖼️ *ᴇᴍᴏᴊɪ ᴛᴏ ɪᴍᴀɢᴇ*\n\n> Emoji: ${emoji}\n> Style: ${validStyle}\n> Code: ${data.data.code || "-"}`,
+      `🖼️ *ᴇᴍᴏᴊɪ ᴛᴏ ɪᴍᴀɢᴇ*\n\n> Emoji: ${emoji}\n> Estilo: ${validStyle}\n> Code: ${data.data.code || "-"}`,
       m,
       { type: "image", contextInfo: _ourincontextjs.saluranCtx.call(void 0, ) },
     );

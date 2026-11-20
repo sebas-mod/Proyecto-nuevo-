@@ -106,7 +106,7 @@ const pluginConfig = {
   name: ["tiktok", "tt", "ttmp4"],
   alias: ["tiktokdl", "ttdown"],
   category: "download",
-  description: "Download video/slide TikTok tanpa watermark",
+  description: "Descarga vídeo o fotos de TikTok sin marca de agua",
   usage: ".tiktok <url>",
   example: ".tiktok https://vt.tiktok.com/xxx",
   isOwner: false,
@@ -125,7 +125,7 @@ async function handler(m, { sock }) {
   if (!text) {
     m.react("❌");
     return m.reply(
-      `📌Ejemplo: *${prefix + command} https://vt.tiktok.com/...*`,
+      `📌 Ejemplo: *${prefix + command} https://vt.tiktok.com/...*`,
     );
   }
   m.react("🕕");
@@ -135,7 +135,7 @@ async function handler(m, { sock }) {
     const musicButton = {
       name: "quick_reply",
       buttonParamsJson: JSON.stringify({
-        display_text: "🎵 Ambil Music",
+        display_text: "🎵 Descargar audio",
         id: `${prefix}ttmp3 ${text}`,
       }),
     };
@@ -147,18 +147,18 @@ async function handler(m, { sock }) {
 
       const caption =
         `🎵 *𝗧 𝗜 𝗞 𝗧 𝗢 𝗞  -  𝗗 𝗢 𝗪 𝗡 𝗟 𝗢 𝗔 𝗗 𝗘 𝗥*\n\n` +
-        `- Author: *${result.author.nickname}* (${result.author.fullname})\n` +
-        `- Caption: ${result.title || "-"}\n` +
-        `- Music: ${result.music_info.title} - ${result.music_info.author}\n` +
-        `- Duration: ${result.duration}\n` +
-        `- Uploaded: ${result.taken_at}\n` +
-        `- Region: ${result.region}\n\n` +
+        `- Autor:  *${result.author.nickname}* (${result.author.fullname})\n` +
+        `- Descripción:  ${result.title || "-"}\n` +
+        `- Música:  ${result.music_info.title} - ${result.music_info.author}\n` +
+        `- Duración:  ${result.duration}\n` +
+        `- Publicado:  ${result.taken_at}\n` +
+        `- Región:  ${result.region}\n\n` +
         `* Estadísticas de vídeo:\n` +
-        `- Views: *${result.stats.views}*\n` +
-        `- Likes: *${result.stats.likes}*\n` +
-        `- Comments: *${result.stats.comment}*\n` +
-        `- Shares: *${result.stats.share}*\n` +
-        `- Downloads: *${result.stats.download}*`;
+        `- Vistas:  *${result.stats.views}*\n` +
+        `- Me gusta:  *${result.stats.likes}*\n` +
+        `- Comentarios:  *${result.stats.comment}*\n` +
+        `- Compartidos:  *${result.stats.share}*\n` +
+        `- Descargas:  *${result.stats.download}*`;
 
       await sock.sendButton(m.chat, videoItem.url, caption, m, {
         type: "video",
@@ -167,17 +167,17 @@ async function handler(m, { sock }) {
     } else {
       const caption =
         `📸 *𝗧 𝗜 𝗞 𝗧 𝗢 𝗞  -  𝗗 𝗢 𝗪 𝗡 𝗟 𝗢 𝗔 𝗗 𝗘 𝗥*\n\n` +
-        `- Author: *${result.author.nickname}* (${result.author.fullname})\n` +
-        `- Caption: ${result.title || "-"}\n` +
-        `- Music: ${result.music_info.title} - ${result.music_info.author}\n` +
-        `- Uploaded: ${result.taken_at}\n` +
-        `- Region: ${result.region}\n\n` +
-        `* Contenido de la estadística: *\n` +
-        `- Views: *${result.stats.views}*\n` +
-        `- Likes: *${result.stats.likes}*\n` +
-        `- Comments: *${result.stats.comment}*\n` +
-        `- Shares: *${result.stats.share}*\n` +
-        `- Downloads: *${result.stats.download}*`;
+        `- Autor:  *${result.author.nickname}* (${result.author.fullname})\n` +
+        `- Descripción:  ${result.title || "-"}\n` +
+        `- Música:  ${result.music_info.title} - ${result.music_info.author}\n` +
+        `- Publicado:  ${result.taken_at}\n` +
+        `- Región:  ${result.region}\n\n` +
+        `*Estadísticas:*\n` +
+        `- Vistas:  *${result.stats.views}*\n` +
+        `- Me gusta:  *${result.stats.likes}*\n` +
+        `- Comentarios:  *${result.stats.comment}*\n` +
+        `- Compartidos:  *${result.stats.share}*\n` +
+        `- Descargas:  *${result.stats.download}*`;
 
       const slides = _optionalChain([result, 'access', _9 => _9.data, 'optionalAccess', _10 => _10.map, 'call', _11 => _11((zan, idx) => ({
         image: { url: zan.url },
@@ -191,7 +191,7 @@ async function handler(m, { sock }) {
         { quoted: m },
       );
 
-      await sock.sendButton(m.chat, null, `📸Slide successfully delivered!\nEl botón cae en la burbuja para la temporada.`, m, {
+      await sock.sendButton(m.chat, null, `📸 ¡Fotos enviadas!\nDesliza para ver todas.`, m, {
         buttons: [musicButton],
       });
     }
@@ -199,7 +199,7 @@ async function handler(m, { sock }) {
   } catch (e) {
     console.error(e);
     m.react("❌");
-    m.reply("Inténtalo de nuevo más tarde, o podemos intentarlo." + m.prefix + "tt2");
+    m.reply("Inténtalo de nuevo más tarde." + m.prefix + "tt2");
   }
 }
 

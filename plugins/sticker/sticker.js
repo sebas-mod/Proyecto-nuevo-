@@ -10,7 +10,7 @@ const pluginConfig = {
     name: 'sticker',
     alias: ['s', 'stiker', 'stickergif'],
     category: 'sticker',
-    description: 'Crear una pegatina de la imagen / video con la cosecha / tamaño opsi',
+    description: 'Crea un sticker desde una imagen o vídeo (recorte, tamaño o forma)',
     usage: '.s [--crop] [--resize WxH] [--circle] [--rounded]',
     example: '.s --crop\n.s --resize 256x256\n.s --circle\n.s --rounded',
     isOwner: false,
@@ -70,13 +70,13 @@ async function processImage(inputPath, outputPath, options) {
     }
     
     if (options.circle) {
-        filters.push(`formato=rgba`)
+        filters.push(`format=rgba`)
         filters.push(`geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='if(gt(pow(X-W/2,2)+pow(Y-H/2,2),pow(min(W,H)/2,2)),0,255)'`)
     }
     
     if (options.rounded) {
         const radius = 50
-        filters.push(`formato=rgba`)
+        filters.push(`format=rgba`)
         filters.push(`geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='if(lt(X,${radius})*lt(Y,${radius})*gt(pow(${radius}-X,2)+pow(${radius}-Y,2),pow(${radius},2)),0,if(gt(X,W-${radius})*lt(Y,${radius})*gt(pow(X-W+${radius},2)+pow(${radius}-Y,2),pow(${radius},2)),0,if(lt(X,${radius})*gt(Y,H-${radius})*gt(pow(${radius}-X,2)+pow(Y-H+${radius},2),pow(${radius},2)),0,if(gt(X,W-${radius})*gt(Y,H-${radius})*gt(pow(X-W+${radius},2)+pow(Y-H+${radius},2),pow(${radius},2)),0,255))))'`)
     }
     
@@ -119,14 +119,14 @@ async function handler(m, { sock, config: botConfig }) {
     if (!isImage && !isVideo) {
         await m.reply(
             `🖼️ *sᴛɪᴄᴋᴇʀ ᴍᴀᴋᴇʀ*\n\n` +
-            `Ksena / respuesta imagen o video con caption:\n` +
+            `Responde a una imagen o vídeo (o envíalo con el texto):\n` +
             `\`${m.prefix}s\`\n\n` +
-            `*ᴏᴘsɪ:*\n` +
-            `♪\`- Crop.\`- Crop es una mierda.\n` +
-            `> \`--resize WxH\` - Resize ke ukuran\n` +
-            `> \`--circle\` - Bentuk lingkaran\n` +
-            `♪\`- Redonda.\`- Novato de sudút.\n\n` +
-            `*ᴄᴏɴᴛᴏʜ:*\n` +
+            `*ᴏᴘᴄɪᴏɴᴇs:*\n` +
+            `> \`--crop\` - Recorta al centro\n` +
+            `> \`--resize WxH\` - Redimensiona al tamaño indicado\n` +
+            `> \`--circle\` - Forma circular\n` +
+            `> \`--rounded\` - Esquinas redondeadas\n\n` +
+            `*ᴇᴊᴇᴍᴘʟᴏ:*\n` +
             `> \`${m.prefix}s --crop\`\n` +
             `> \`${m.prefix}s --resize 256x256\`\n` +
             `> \`${m.prefix}s --circle\`\n` +
@@ -148,7 +148,7 @@ async function handler(m, { sock, config: botConfig }) {
         }
         
         if (!buffer) {
-            await m.reply('❌Steennad descargando medios!')
+            await m.reply('❌ ¡Falta el medio! Responde a una imagen o vídeo.')
             await m.react('❌')
             return
         }
@@ -163,11 +163,11 @@ async function handler(m, { sock, config: botConfig }) {
             _fs2.default.writeFileSync(tempVideo, buffer)
             
             try {
-                const { stdout } = await execAsync(`ffprobe - v error - forma de las mostxentries = duración - de predeterminado = noprintapers = 1: nokey = 1${tempVideo}"`)
+                const { stdout } = await execAsync(`ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 "${tempVideo}"`)
                 const duration = parseFloat(stdout.trim())
                 
                 if (duration > 10) {
-                    await m.reply(`❌¡El video es demasiado largo!\n\n> Duración:${duration.toFixed(1)}segundo\nMáximo: 10 segundos`)
+                    await m.reply(`❌ ¡El vídeo es demasiado largo!\n\n> Duración: ${duration.toFixed(1)} s\n> Máximo: 10 segundos`)
                     await m.react('☢')
                     if (_fs2.default.existsSync(tempVideo)) _fs2.default.unlinkSync(tempVideo)
                     return

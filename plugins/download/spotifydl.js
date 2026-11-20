@@ -4,8 +4,8 @@ const pluginConfig = {
   name: "spotifydl",
   alias: ["spdl", "spotify-dl", "spotdl"],
   category: "download",
-  description: "Su canción favorita es de Spotify sin el cinturón!",
-  usage: ".spdl <link>",
+  description: "Descarga tu canción favorita de Spotify.",
+  usage: ".spdl <enlace>",
   example: ".spdl https://open.spotify.com/track/...",
   cooldown: 15,
   energi: 1,
@@ -16,7 +16,7 @@ async function handler(m, { sock }) {
   const text = _optionalChain([m, 'access', _ => _.text, 'optionalAccess', _2 => _2.trim, 'call', _3 => _3()]);
 
   if (!text || !/open\.spotify\.com\/track/i.test(text)) {
-    return m.reply("❌ *Waduh, link Spotify-nya mana nih atau kurang tepat!*\n\nKamu harus memasukkan tautan (link) lagu dari Spotify yang valid. Pastikan itu adalah link ke track/lagu ya! \n\nContoh: `.spdl https://open.spotify.com/track/3RY0NyQQXxuAiyk5eAS4fC`");
+    return m.reply("❌ *Falta el enlace de Spotify o no es válido.*\n\nDebes enviar un enlace válido a una canción de Spotify (track).\n\nEjemplo: `.spdl https://open.spotify.com/track/3RY0NyQQXxuAiyk5eAS4fC`");
   }
 
   await m.react("🕕");
@@ -28,7 +28,7 @@ async function handler(m, { sock }) {
 
     if (!data.status || !data.result || !data.result.url) {
       await m.react("❌");
-      return m.reply("⚠¡Aguanta para llevar la canción!\n\nServidor no responde a las cadenas de contrabando válidas.");
+      return m.reply("⚠ No se pudo obtener la canción.\n\nEl servidor no respondió con un enlace válido.");
     }
 
     const { title, artist, url } = data.result;
@@ -46,7 +46,7 @@ async function handler(m, { sock }) {
   } catch (error) {
     console.error("[Spotify DL Error]", error);
     await m.react("❌");
-    m.reply("😔* It 's a misconception when processing the Spotify Testimony. * Por favor, inténtelo de nuevo más tarde!");
+    m.reply("😔 *No se pudo procesar la canción de Spotify.* Inténtalo de nuevo más tarde.");
   }
 }
 

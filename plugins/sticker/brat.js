@@ -7,9 +7,9 @@ const pluginConfig = {
   name: "brat",
   alias: ["bratmenu", "bratimg", "brattext"],
   category: "sticker",
-  description: "Fresco de la variante de la med y hematoma de la pegatina del generador",
+  description: "Genera stickers brat de distintas variantes",
   usage: ".brat | .bratimg <text>",
-  example: ".bratimg Hai semua",
+  example: ".bratimg Hola a todos",
   isOwner: false,
   isPremium: false,
   isGroup: false,
@@ -22,48 +22,48 @@ const pluginConfig = {
 const BRAT_VARIANTS = [
   {
     title: "Brat Default",
-    description: "Sticker brat versi biasa",
+    description: "Sticker brat normal",
     command: "bratimg",
   },
   {
     title: "Brat Green",
-    description: "Variant brat warna hijau",
+    description: "Variante brat verde",
     command: "bratgreen",
   },
   {
     title: "Brat Cewek",
-    description: "Variant brat cewek",
+    description: "Variante brat chica",
     command: "bratcewek",
   },
   {
     title: "Brat Vermeil",
-    description: "Variant brat Vermeil",
+    description: "Variante brat Vermeil",
     command: "bratvermeil",
   },
-  { title: "Brat HD", description: "Variant brat HD", command: "brathd" },
+  { title: "Brat HD", description: "Variante brat HD", command: "brathd" },
   {
     title: "Brat Video",
-    description: "Sticker brat animated",
+    description: "Sticker brat animado",
     command: "bratvid",
   },
   {
     title: "Brat Video V2",
-    description: "Sticker brat video v2",
+    description: "Sticker brat vídeo v2",
     command: "bratvid2",
   },
   {
     title: "Brat Vermeil Video",
-    description: "Variant brat Vermeil video",
+    description: "Variante brat Vermeil video",
     command: "bratvermeilvid",
   },
   {
     title: "Brat Gojo",
-    description: "Variant brat Gojo",
+    description: "Variante brat Gojo",
     command: "bratgojo",
   },
   {
     title: "Brat Gojo Video",
-    description: "Variant brat Gojo video",
+    description: "Variante brat Gojo video",
     command: "bratgojovid",
   },
 ];
@@ -78,15 +78,15 @@ function buildVariantRows(prefix, text) {
 
 async function sendBratMenu(m, sock, text) {
   const caption =
-    "🌿* Quieres hacer una mocosa de yak, adelante y elegir una variedad de cejas y buffel brat en la capucha *";
+    "🌿 *Elige una variante de sticker brat*";
   const buttons = [
     {
       name: "single_select",
       buttonParamsJson: JSON.stringify({
-        title: "🌾 Pilih Variant Brat",
+        title: "🌾 Elige la variante de brat",
         sections: [
           {
-            title: "Variant Brat",
+            title: "Variantes de Brat",
             rows: buildVariantRows(m.prefix, text),
           },
         ],
@@ -101,7 +101,7 @@ async function sendBratMenu(m, sock, text) {
     m,
     {
       buttons,
-      footer: "Elija su variedad favorita de mocos.",
+      footer: "Elige tu variante favorita.",
     },
   );
 }
@@ -117,7 +117,7 @@ async function handler(m, { sock }) {
 
   if (!text) {
     return m.reply(
-      `🖼♪ʙʀᴀᴛ ɪᴍᴀɢᴇ*\n\n*Pon los mensajes*\n\n\`Ejemplo:${m.prefix}bratimg Hola a todos\``,
+      `🖼 *ʙʀᴀᴛ ɪᴍᴀɢᴇ*\n\n*Escribe el texto*\n\n\`Ejemplo: ${m.prefix}bratimg Hola a todos\``,
     );
   }
 

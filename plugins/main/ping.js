@@ -8,7 +8,7 @@ const pluginConfig = {
   name: "ping",
   alias: ["speed", "p", "latency", "sys", "status"],
   category: "main",
-  description: "Compruebe la entrada y el estado de los verdaderos sistemas de bot @@ ( Canvas Epic )",
+  description: "Muestra la latencia y el estado del sistema del bot",
   usage: ".ping",
   example: ".ping",
   isOwner: false,
