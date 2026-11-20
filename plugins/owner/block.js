@@ -32,9 +32,9 @@ async function handler(m, { sock }) {
         return m.reply(
             '⚠️ *ᴄᴀʀᴀ ᴘᴀᴋᴀɪ*\n\n' +
             '> `.block 628xxx` — Blokir via nomor\n' +
-            '♪`- Bloque.`(responder mensaje)—Bloqueo\n' +
-            '♪`. bloque @ mención` —Bloquear el uno en @-@ mención\n' +
-            '♪`- Bloque.`(en la charla primaria )—Bloquear este usuario'
+            '•`- Bloque.`(responder mensaje)—Bloqueo\n' +
+            '•`. bloque @ mención` —Bloquear el uno en mención\n' +
+            '•`- Bloque.`(en la charla primaria )—Bloquear este usuario'
         )
     }
 

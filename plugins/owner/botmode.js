@@ -96,7 +96,7 @@ async function handler(m, { sock }) {
 
     let extraInfo = ''
     if (mode === 'store' && m.isGroup) {
-        extraInfo = `\n\n📋♪Modo de Manal♪\nAkemin necesita un manual de conaffción ón de anciano`
+        extraInfo = `\n\n📋Modo de Manal•\nAkemin necesita un manual de conaffción ón de anciano`
     }
 
     await m.reply(

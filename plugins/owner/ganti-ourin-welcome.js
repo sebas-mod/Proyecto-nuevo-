@@ -22,7 +22,7 @@ async function handler(m, { sock }) {
     const isImage = m.isImage || (m.quoted && m.quoted.type === 'imageMessage')
     
     if (!isImage) {
-        return m.reply(`🖼♪ɢᴀɴᴛɪ ᴏᴜʀɪɴ-ᴡᴇʟᴄᴏᴍᴇ.ᴊᴘɢ*\n\n# Ksently / réplica imágenes para reemplazar\nâ a Archivo: activos / imágenes / nuestroin - bienvenidos.`)
+        return m.reply(`🖼ɢᴀɴᴛɪ ᴏᴜʀɪɴ-ᴡᴇʟᴄᴏᴍᴇ.ᴊᴘɢ*\n\n# Ksently / réplica imágenes para reemplazar\nâ a Archivo: activos / imágenes / nuestroin - bienvenidos.`)
     }
     
     try {
@@ -40,7 +40,7 @@ async function handler(m, { sock }) {
         await m.reply(`⏳La jaula subió una foto..`)
         try {
             const newUrl = await _ourinuploaderjs.updateAssetUrl.call(void 0, 'ourin-welcome', buffer, 'ourin-welcome.jpg')
-            m.reply(`✅*ʙᴇʀʜᴀSɪʟ*\n\nEstoGambar ourin - welcome. Jpg ha sido transferido a la nueva URL:\n♪${newUrl}\n" Config has been updated as a reality "!`)
+            m.reply(`✅*ʙᴇʀʜᴀSɪʟ*\n\nEstoGambar ourin - welcome. Jpg ha sido transferido a la nueva URL:\n•${newUrl}\n" Config has been updated as a reality "!`)
         } catch (e) {
             m.reply(`❌Gagalm subió la imagen:${e.message}`)
         }

@@ -35,7 +35,7 @@ async function handler(m, { sock }) {
         `> *${m.prefix}terabox <link>*\n\n` +
         `*Ejemplo:*\n` +
         `> *${m.prefix}terabox https://terabox.com/s/xxx*\n\n` +
-        `*El archivo enviado como documento, probablemente viejo @-@ de moda*`,
+        `*El archivo enviado como documento, probablemente viejo de moda*`,
     );
   }
 
@@ -46,14 +46,14 @@ async function handler(m, { sock }) {
 
     if (!result.status) {
       m.react("☢");
-      return m.reply(`❌* TeraboxFallido*\n\n♪${result.error}`);
+      return m.reply(`❌* TeraboxFallido*\n\n•${result.error}`);
     }
 
     let caption =
       `📦 *TeraBox*\n\n` +
       `> 📌 ${result.file_name}\n` +
       `> 📏 Size: ${result.file_size}\n` +
-      `♪⏱️ Duración:${result.duration}`;
+      `•⏱️ Duración:${result.duration}`;
 
     if (result.thumbnail) {
       await sock.sendMedia(m.chat, result.thumbnail, caption, m, {

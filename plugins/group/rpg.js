@@ -22,7 +22,7 @@ async function handler(m, { sock }) {
 
   if (args !== "on" && args !== "off") {
     return m.reply(
-      `⚔♪\n\n` +
+      `⚔\n\n` +
         `Utilice este comando para configurar la foto de acción a la función RPG.\n\n` +
         `• *${m.prefix}* - * Puede jugar RPG*\n` +
         `• *${m.prefix}* - * Can 't play RPG*\n\n` +

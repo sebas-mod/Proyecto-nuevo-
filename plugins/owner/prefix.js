@@ -109,7 +109,7 @@ function handler(m, { sock }) {
             if (args.length === 0) {
                 return m.reply(
                     `🔄 *ɢᴀɴᴛɪ/sᴇᴛ ᴘʀᴇғɪx*\n\n` +
-                    `♪ Todos los prefijosxcon una nueva\n\n` +
+                    `• Todos los prefijosxcon una nueva\n\n` +
                     `*Formato:*\n` +
                     `> \`${m.prefix}${cmd} <prefix1> <prefix2> ...\`\n\n` +
                     `*Ejemplo:*\n` +

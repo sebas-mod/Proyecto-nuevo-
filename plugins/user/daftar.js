@@ -179,17 +179,17 @@ function buildRewardPreview(user) {
   const rewards = getRegistrationRewards();
 
   if (_optionalChain([user, 'optionalAccess', _26 => _26.hasClaimedRegisterReward])) {
-    return `🎁*Estado Bono*\nUsted ha reclamado su primera lista de bonos.\n*El resign no consigue una regrado*`;
+    return `🎁*Estado Bono*\nYa reclamaste tu bono de registro.\n*No puedes reclamarlo dos veces.*`;
   }
 
-  return `🎁Primera lista de bonificación\n♪💰+${rewards.koin.toLocaleString("id-ID")} Koin\n> ⚡ +${rewards.energi} Energi\n> ⭐ +${rewards.exp.toLocaleString("id-ID")} EXP`;
+  return `🎁 Bono de registro\n•💰+${rewards.koin.toLocaleString("id-ID")} Koin\n> ⚡ +${rewards.energi} Energi\n> ⭐ +${rewards.exp.toLocaleString("id-ID")} EXP`;
 }
 
 function buildConfirmationRewardBlock(user) {
   const rewards = getRegistrationRewards();
 
   if (_optionalChain([user, 'optionalAccess', _27 => _27.hasClaimedRegisterReward])) {
-    return `╭┈┈⬡「 🎁*ʙᴏɴᴜs ♪」\n┃La primera lista de bonos ya se ha tomado\n┃Relist ya no se vuelve a enloquecer\n╰┈┈┈┈┈┈┈┈⬡`;
+    return `╭┈┈⬡「 🎁*ʙᴏɴᴜs •」\n┃Ya reclamaste tu bono de registro\n┃No puedes reclamarlo dos veces\n╰┈┈┈┈┈┈┈┈⬡`;
   }
 
   return `╭┈┈⬡「 🎁 *ʀᴇᴡᴀʀᴅs* 」\n┃ 💰 +${rewards.koin.toLocaleString("id-ID")} Koin\n┃ ⚡ +${rewards.energi} Energi\n┃ ⭐ +${rewards.exp.toLocaleString("id-ID")} EXP\n╰┈┈┈┈┈┈┈┈⬡`;
@@ -199,7 +199,7 @@ function buildSuccessRewardBlock(alreadyClaimedReward) {
   const rewards = getRegistrationRewards();
 
   if (alreadyClaimedReward) {
-    return `╭┈┈⬡「 🎁*ʙᴏɴᴜs ♪」\n┃La lista de bonos se ha reclamado\n┃No hay resorts adicionales está vez\n╰┈┈┈┈┈┈┈┈⬡`;
+    return `╭┈┈⬡「 🎁*ʙᴏɴᴜs •」\n┃Bono de registro ya reclamado\n┃No hay bonos adicionales esta vez\n╰┈┈┈┈┈┈┈┈⬡`;
   }
 
   return `╭┈┈⬡「 🎁 *ʀᴇᴡᴀʀᴅs* 」\n┃ 💰 +${rewards.koin.toLocaleString("id-ID")} Koin\n┃ ⚡ +${rewards.energi} Energi\n┃ ⭐ +${rewards.exp.toLocaleString("id-ID")} EXP\n╰┈┈┈┈┈┈┈┈⬡`;
@@ -208,16 +208,16 @@ function buildSuccessRewardBlock(alreadyClaimedReward) {
 function buildUserDataBlock(name, age, gender) {
   return (
     `╭┈┈⬡「 📋 *ᴅᴀᴛᴀ* 」\n` +
-    `┃ 📛Nombre: *${name || "-"}*\n` +
-    `┃ 🎂Edad: *${age ? `${age} tahun` : "-"}*\n` +
-    `┃ 👤 Gender: *${gender || "-"}*\n` +
+    `┃ 📛 Nombre: *${name || "-"}*\n` +
+    `┃ 🎂 Edad: *${age ? `${age} años` : "-"}*\n` +
+    `┃ 👤 Género: *${gender || "-"}*\n` +
     `╰┈┈┈┈┈┈┈┈⬡`
   );
 }
 
 function buildWelcomeMessage(user, registrationRequired, prefix) {
   const benefits = [
-    `🗂Los datos de su cuenta se guardan más rápidamente`,
+    `🗂 Tus datos se guardan y se cargan automáticamente`,
     `${buildRewardPreview(user)}`,
   ];
 
@@ -225,35 +225,35 @@ function buildWelcomeMessage(user, registrationRequired, prefix) {
     benefits.splice(
       1,
       0,
-      `🔓Siempre y cuando su lista pueda acceder a todos los comandos`,
+      `🔓 Acceso completo a todos los comandos del bot`,
     );
   }
 
   return (
-    `👋 *sᴇʟᴀᴍᴀᴛ ᴅᴀᴛᴀɴɢ ᴅɪ ᴍᴇɴᴜ ᴅᴀꜰᴛᴀʀ*\n\n` +
-    `✨Con la lista, los datos de su cuenta son más seguros y la experiencia de robot es más completa.\n\n` +
-    `🌟*Manfaat Registrate*\n` +
+    `👋 *BIENVENIDO AL REGISTRO*\n\n` +
+    `✨ Al registrarte, tus datos quedan guardados y la experiencia con el bot es más completa.\n\n` +
+    `🌟 *Ventajas de registrarte*\n` +
     `${benefits.map((item) => `> ${item}`).join("\n")}\n\n` +
-    `📝*Pregunta 1/4*\n` +
-    `¿Quién es tu nombre?\n\n` +
-    `📌* Obligatorio respuesta essaje sí *\n` +
-    `*Al batallón: respuesta*\`cancelar\`o escribe\`${prefix}bataldaftar\``
+    `📝 *Pregunta 1/4*\n` +
+    `¿Cuál es tu nombre?\n\n` +
+    `📌 *Responde escribiendo tu nombre*\n` +
+    `*Para cancelar:*\`cancelar\` o escribe \`${prefix}bataldaftar\``
   );
 }
 
 function buildConfirmationPrompt(session, user) {
   return (
-    `✅ *ᴘᴇʀᴛᴀɴʏᴀᴀɴ 4/4*\n\n` +
+    `✅ *CONFIRMACIÓN 4/4*\n\n` +
     `¿Los próximos datos son correctos?\n\n` +
     `${buildUserDataBlock(session.name, session.age, session.gender)}\n\n` +
     `${buildConfirmationRewardBlock(user)}\n\n` +
-    `🛠Si se equivoca, puede revisar por acción.\n\n` +
+    `🛠 Si algo está mal, puedes corregirlo así.\n\n` +
     `* Responder este mensaje con: *\n` +
-    `♪\`si\`para guarda\n` +
-    `♪\`revisi nombre\`Para renombrar\n` +
-    `♪\`revisi edad\`Para el uso común.\n` +
-    `♪\`revisiones de género\`Para género @-@ embers.\n` +
-    `♪\`cancelar\`para cancela`
+    `•\`si\` para guardar\n` +
+    `•\`revisi nombre\` para cambiar el nombre\n` +
+    `•\`revisi edad\` para cambiar la edad\n` +
+    `•\`revisi genero\` para cambiar el género\n` +
+    `•\`cancelar\` para cancelar`
   );
 }
 
@@ -271,7 +271,7 @@ async function handler(m, { sock }) {
 
   if (getRegistrationSessionEntry(m.sender).session) {
     return m.reply(
-      `📝¡Hay un sesi @-@ sign active!\n\n` +
+      `📝¡Hay un sesi sign active!\n\n` +
       `Responder el último mensaje bot para añadir\n` +
       `- Sí.\`${m.prefix}bataldaftar\``,
     );
@@ -314,7 +314,7 @@ async function registrationAnswerHandler(m, sock) {
     const name = normalizeRegistrationName(text);
 
     if (name.length < 2 || name.length > 30) {
-      await m.reply(`❌El nombre debe ser 2 @-@ 30 caracteres!`);
+      await m.reply(`❌El nombre debe ser 2 30 caracteres!`);
       return true;
     }
 
@@ -341,7 +341,7 @@ async function registrationAnswerHandler(m, sock) {
 
     if (!/^\d+$/.test(text) || Number.isNaN(age) || age < 1 || age > 100) {
       await m.reply(
-        `❌¡La edad no es válida!\n\nAquí va el número general de 1 @-@ 100 *`,
+        `❌¡La edad no es válida!\n\nAquí va el número general de 1 100 *`,
       );
       return true;
     }
@@ -399,7 +399,7 @@ async function registrationAnswerHandler(m, sock) {
     const name = normalizeRegistrationName(text);
 
     if (name.length < 2 || name.length > 30) {
-      await m.reply(`❌El nombre debe ser 2 @-@ 30 caracteres!`);
+      await m.reply(`❌El nombre debe ser 2 30 caracteres!`);
       return true;
     }
 
@@ -422,7 +422,7 @@ async function registrationAnswerHandler(m, sock) {
 
     if (!/^\d+$/.test(text) || Number.isNaN(age) || age < 1 || age > 100) {
       await m.reply(
-        `❌¡La edad no es válida!\n\nAquí va el número general de 1 @-@ 100 *`,
+        `❌¡La edad no es válida!\n\nAquí va el número general de 1 100 *`,
       );
       return true;
     }
@@ -490,7 +490,7 @@ async function registrationAnswerHandler(m, sock) {
     }
 
     if (
-      ["revisi umur", "ubah umur", "edit umur", "revisi usia"].includes(lowText)
+      ["revisi umur", "ubah umur", "edit umur", "revisi usia", "revisi edad"].includes(lowText)
     ) {
       session.step = "revise_age";
 
@@ -508,7 +508,7 @@ async function registrationAnswerHandler(m, sock) {
     }
 
     if (
-      ["revisi gender", "ubah gender", "edit gender", "revisi jk"].includes(
+      ["revisi gender", "ubah gender", "edit gender", "revisi jk", "revisi genero"].includes(
         lowText,
       )
     ) {
@@ -533,14 +533,14 @@ async function registrationAnswerHandler(m, sock) {
     ) {
       await m.reply(
         `❌¡Revive no específico!\n\n` +
-        `> Responder:\`revisi nombre\`.\`revisi edad\`, o\`revisiones de género\``,
+        `> Responde:\`revisi nombre\`.\`revisi edad\`, o\`revisi genero\``,
       );
       return true;
     }
 
     if (!["ya", "y", "iya", "yes", "lanjut", "confirm"].includes(lowText)) {
       await m.reply(
-        `❌¡Paso inválido!\n\n> Responder:\`si\`.\`revisi nombre\`.\`revisi edad\`.\`revisiones de género\`, o\`cancelar\``,
+        `❌ ¡Paso inválido!\n\n> Responde:\`si\`.\`revisi nombre\`.\`revisi edad\`.\`revisi genero\`, o\`cancelar\``,
       );
       return true;
     }

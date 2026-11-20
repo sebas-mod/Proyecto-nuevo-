@@ -22,7 +22,7 @@ async function handler(m, { sock, db }) {
   
   if (!arg) {
     const status = db.setting("autobio_status") || false;
-    const text = db.setting("autobio_text") || "♪🕒 {clock}♪⏳ {runtime}";
+    const text = db.setting("autobio_text") || "•🕒 {clock}•⏳ {runtime}";
     const intervalMs = db.setting("autobio_interval") || 60000;
     
     return m.reply(
@@ -33,10 +33,10 @@ async function handler(m, { sock, db }) {
       `*Uso:*\n` +
       `- *${m.prefix}autobio on/off* — Menyalakan/mematikan fitur\n` +
       `- *${m.prefix}autobio cambia cada<waktu>*—Administra intervalo.\`Autobio cambia cada 30 segundos.\`o\`1 hora\`\n` +
-      `- *${m.prefix}autobio<teks>*—Gestionar bio @-@ texto\n\n` +
+      `- *${m.prefix}autobio<teks>*—Gestionar bio texto\n\n` +
       `*PLACEHOLDER Disponible:*\n` +
       `-\`{clock}\` —Adjuntar reloj actual\n` +
-      `-\`{runtime}\` —Mostrar largo @-@ term tanning bot\n` +
+      `-\`{runtime}\` —Mostrar largo term tanning bot\n` +
       `-\`{botname}\` —Adjuntar el nombre de bot de config\n` +
       `-\`{version}\` —Adjuntar la versión bot -`
     );
@@ -75,7 +75,7 @@ async function handler(m, { sock, db }) {
     if (timeStr.includes("d") || timeStr.includes("detik")) ms = value * 1000;
     else if (timeStr.includes("m") || timeStr.includes("menit")) ms = value * 60000;
     else if (timeStr.includes("j") || timeStr.includes("jam")) ms = value * 3600000;
-    else ms = value * 60000; //♪ Predeterminado to minutes ♪
+    else ms = value * 60000; //• Predeterminado to minutes •
 
     if (ms < 10000) {
       return m.reply("❌*Fallido*\n\nEl intervalo mínimo es de 10 segundos de para que unhit spam de WhatsApp servidor.");

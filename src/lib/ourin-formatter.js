@@ -17,7 +17,7 @@ var _ourintimejs = require('./ourin-time.js'); var timeHelper = _interopRequireW
 * Perfil{string}- Versión - Versión del bot
 * @ proprie{string}- Hora de hacer el bot
 * @ proprie{number}Total Características - total características
-* @ proprie{string}Modo @-@ Modo bot
+* @ proprie{string}Modo Modo bot
 * @ proprie{string}Plataforma - Plataforma bot
  */
 
@@ -96,7 +96,7 @@ const EMOJIS = {
 };
 
 /**
-* Tiempo de actualización de formato es una cadena de perfil @-@ muy baja
+* Tiempo de actualización de formato es una cadena de perfil muy baja
 * @ param{number}ms - Tiempo de actualización en milisegundos
  * @returns {string} Formatted uptime string
  * @example
@@ -171,7 +171,7 @@ function formatFileSize(bytes) {
 /**
 * Garis horizontal de la manta
 * @ param{number}longitud - longitud
-* @ param{string}♪─- Un personaje para el garaje.
+* @ param{string}•─- Un personaje para el garaje.
  * @returns {string} String garis
  */
 function createLine(length = 20, char = CHARS.horizontal) {
@@ -206,7 +206,7 @@ function createFooter(width = 20) {
 
 /**
 * Cuerpo de baris de barco con bala
-* @ param{string}texT @-@ Text para bar
+* @ param{string}texT Text para bar
  * @param {string} [prefix='│'] - Prefix baris
 * @ param{string}*Toletes*◦* * *Milona magra*
  * @returns {string} Formatted body line
@@ -377,7 +377,7 @@ function createCategoryMenu(category, prefix = _optionalChain([_configjs2.defaul
 }
 
 /**
-* Menú Crea camori con sub @-@ descripción
+* Menú Crea camori con sub descripción
 * @ param{Object}datos - Datos del menú de categoría
  * @returns {string} Formatted category section
  */
@@ -509,7 +509,7 @@ function getTimeGreeting() {
   const hour = timeHelper.getHour();
 
   if (hour >= 4 && hour < 10) return "Buenos días🌅";
-  if (hour >= 10 && hour < 15) return "Buenas tardes☀♪";
+  if (hour >= 10 && hour < 15) return "Buenas tardes☀";
   if (hour >= 15 && hour < 18) return "Buenas tardes🌇";
   return "Buenas noches🌙";
 }
@@ -528,7 +528,7 @@ function capitalize(str) {
 
 /**
 * Truncate texSi es demasiado largo
-* @ param{string}texT @-@ Text a @-@ truncate
+* @ param{string}texT Text a truncate
 * @ param{number}max_ Full- Top de la línea
 * @ param{string}*Suffi*x- Sí.xsi di-truncate
  * @returns {string} Truncated text

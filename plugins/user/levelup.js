@@ -46,7 +46,7 @@ function handler(m, { sock }) {
     const status = user.settings.levelupNotif !== false ? 'ON ✅' : 'OFF ❌'
     return m.reply(
         `🔔 *ʟᴇᴠᴇʟ ᴜᴘ ɴᴏᴛɪꜰ*\n\n` +
-        `♪ A Status this moment: ♪${status}*\n\n` +
+        `• A Status this moment: •${status}*\n\n` +
         `╭┈┈⬡「 📋 *ᴜsᴀɢᴇ* 」\n` +
         `┃ > \`.levelup on\` - Aktifkan\n` +
         `┃ > \`.levelup off\` - Nonaktifkan\n` +

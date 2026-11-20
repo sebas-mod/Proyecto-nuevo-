@@ -25,7 +25,7 @@ Por favor siga el segundo curso más directo.
 
 Las acciones se otorgarán después de que se verifique con éxito el siguiente estado.`;
 
-//En @-@ conjunto de memoria para sesión verificada activada (fall - cerrado por defecto )
+//En conjunto de memoria para sesión verificada activada (fall - cerrado por defecto )
 const verifiedUsers = new Map();
 
 /**

@@ -104,7 +104,7 @@ async function handler(m, { sock }) {
 
         if (mediaList.length === 0) {
             m.react('❌')
-            return m.reply('❌Pegatina @-@ fotos de tikTok')
+            return m.reply('❌Pegatina fotos de tikTok')
         }
 
         try {

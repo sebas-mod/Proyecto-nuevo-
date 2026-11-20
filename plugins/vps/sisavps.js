@@ -59,7 +59,7 @@ async function handler(m, { sock }) {
         txt += `┃ ✅ Terpakai: *${dropletsUsed}* droplet\n`
         txt += `┃ 📋Restante: *${dropletsRemaining}* droplet\n`
         txt += `╰─────────────\n\n`
-        txt += `♪👤Correo:${account.email}\n`
+        txt += `•👤Correo:${account.email}\n`
         txt += `> ✅ Status: ${account.status}`
         
         await m.reply(txt)

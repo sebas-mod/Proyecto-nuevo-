@@ -35,7 +35,7 @@ async function handler(m, { sock }) {
         await sock.sendMessage(m.chat, {
             text: `🛑 *sᴇᴍᴜᴀ ᴊᴀᴅɪʙᴏᴛ ᴅɪʜᴇɴᴛɪᴋᴀɴ*\n\n` +
                 `> 📊 Total: *${stopped.length}* jadibot\n` +
-                `♪💾Session: *Guardado*\n\n` +
+                `•💾Session: *Guardado*\n\n` +
                 `Detenido:${names}\n\n` +
                 `Para todas las sesiones a ser mantenidos y reactivados.`,
             mentions: stopped.map(id => id + '@s.whatsapp.net')

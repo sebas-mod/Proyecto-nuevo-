@@ -39,7 +39,7 @@ async function handler(m, { sock }) {
     const ctx = _ourincontextjs.saluranCtx.call(void 0, );
     return m.reply(
       `📖* Auto Read Active >\n\n` +
-        `♪ Para la automatización leer mensajes en ♪`,
+        `• Para la automatización leer mensajes en •`,
       { contextInfo: ctx }
     );
   }

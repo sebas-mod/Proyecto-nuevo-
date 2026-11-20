@@ -63,7 +63,7 @@ async function handler(m, context) {
       return m.reply(
         `⚠*Antiviro* *Golpéalo*\n\n` +
           `> Status: *✅ ON*\n` +
-          `*Proyecciones de anti @-@ virte*xYa está funcionando en este grupo.`
+          `*Proyecciones de anti virte*xYa está funcionando en este grupo.`
       );
     }
     if (db.setGroup) db.setGroup(m.chat, { antivirtex: true });
@@ -79,7 +79,7 @@ async function handler(m, context) {
       return m.reply(
         `⚠*Antíviro* *Te quiero, nena*\n\n` +
           `> Status: *❌ OFF*\n` +
-          `*Proyecciones de anti @-@ virte*xFuera de la red.`
+          `*Proyecciones de anti virte*xFuera de la red.`
       );
     }
     if (db.setGroup) db.setGroup(m.chat, { antivirtex: false });

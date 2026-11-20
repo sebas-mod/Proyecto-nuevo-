@@ -209,7 +209,7 @@ const CONNECTION_CLOSED_REASONS = [
   {
     match: /logged out/i,
     reason: "Logged out",
-    action: "I 'm in a @-@ logout of a trap.",
+    action: "I 'm in a logout of a trap.",
     fatal: true,
   },
   {
@@ -420,8 +420,8 @@ async function startJadibot(sock, m, userJid, usePairing = true) {
             image: qrBuffer,
             caption:
               `🤖 *ᴊᴀᴅɪʙᴏᴛ — Qʀ ᴄᴏᴅᴇ*\n\n` +
-              `Escanea códigoQR es por ser un bot.\n\n` +
-              `♪⏱♪xen 20 segundos\n` +
+              `Escanea este código QR para vincular el bot.\n\n` +
+              `• ⏱️ Válido por 20 segundos\n` +
               `> 📊 QR Count: ${qrCount}/3`,
           },
           { quoted: m },
@@ -468,11 +468,11 @@ async function startJadibot(sock, m, userJid, usePairing = true) {
           .sendMessage(m.chat, {
             text:
               `✅ *ᴊᴀᴅɪʙᴏᴛ ᴛᴇʀʜᴜʙᴜɴɢ*\n\n` +
-              `♪📱Número: *@${id}*\n` +
+              `• 📱 Número: *@${id}*\n` +
               `> 🟢 Status: *Online*\n` +
-              `♪⏱️ Empieza: *${new Date().toLocaleTimeString("id-ID")}*\n\n` +
+              `• ⏱️ Inicio: *${new Date().toLocaleTimeString("id-ID")}*\n\n` +
               `¡Está activo y listo para recibir órdenes!\n\n` +
-              `> ℹ️ Escribe \`${m.prefix || "."}Stopkebot\`para detener`,
+              `> ℹ️ Escribe \`${m.prefix || "."}stopjadibot\` para detener`,
             mentions: [userJid],
           })
           .catch((e) => {
@@ -528,12 +528,12 @@ async function startJadibot(sock, m, userJid, usePairing = true) {
         await safeSend(sock, _optionalChain([m, 'optionalAccess', _38 => _38.chat]), {
           text:
             `${statusEmoji} *ᴊᴀᴅɪʙᴏᴛ ᴅɪsᴄᴏɴɴᴇᴄᴛᴇᴅ*\n\n` +
-            `♪📱Número: *@${id}*\n` +
+            `• 📱 Número: *@${id}*\n` +
             `> 🔢 Code: \`${errorInfo.code}\`\n` +
-            `♪📋Razón: *${errorInfo.reason}*\n` +
+            `• 📋 Motivo: *${errorInfo.reason}*\n` +
             `> ℹ️ ${errorInfo.action}\n\n` +
             (errorInfo.fatal
-              ? `♪⚠*Sesión está siendo destruida*\`.\`Para reventar.`
+              ? `•⚠*La sesión será eliminada*\`.\`Vuelve a vincular el bot.`
               : ""),
           mentions: [userJid],
         });
@@ -543,10 +543,10 @@ async function startJadibot(sock, m, userJid, usePairing = true) {
         await safeSend(sock, _optionalChain([m, 'optionalAccess', _39 => _39.chat]), {
           text:
             `🔄 *ᴊᴀᴅɪʙᴏᴛ ʀᴇᴄᴏɴɴᴇᴄᴛɪɴɢ...*\n\n` +
-            `♪📱Número: *@${id}*\n` +
-            `♪📋Razón: *${errorInfo.reason}*\n` +
-            `♪🔁Intento: *${attempts + 1}/${MAX_RECONNECT_ATTEMPTS}*\n\n` +
-            `Reconect in${RECONNECT_INTERVAL / 1000}segundo...`,
+            `• 📱 Número: *@${id}*\n` +
+            `• 📋 Motivo: *${errorInfo.reason}*\n` +
+            `• 🔁 Intento: *${attempts + 1}/${MAX_RECONNECT_ATTEMPTS}*\n\n` +
+            `Reconectando en ${RECONNECT_INTERVAL / 1000} segundos...`,
           mentions: [userJid],
         });
 
@@ -667,11 +667,11 @@ async function startJadibot(sock, m, userJid, usePairing = true) {
           {
             text:
               `🔗 *ᴘᴀɪʀɪɴɢ ᴄᴏᴅᴇ*\n\n` +
-              `Introduzca su siguiente código en WhatsApp:\n\n` +
-              `♪📱* Ajustes→Dispositivos vinculados→Enlace a un dispositivo *\n\n` +
+              `Introduce este código en WhatsApp:\n\n` +
+              `• 📱 Ajustes → Dispositivos vinculados → Vincular un dispositivo\n\n` +
               `\`\`\`${pairingCode}\`\`\`\n\n` +
-              `♪🕕Código vendido por unos minutos.\n` +
-              `♪⚠No comparta este código con nadie.`,
+              `• 🕕 El código caduca en unos minutos.\n` +
+              `• ⚠️ No compartas este código con nadie.`,
             contextInfo: _ourincontextjs.saluranCtx.call(void 0, ),
             interactiveButtons: [
               {

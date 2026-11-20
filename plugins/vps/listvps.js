@@ -47,7 +47,7 @@ async function handler(m, { sock }) {
         const droplets = response.data.droplets || []
         
         if (droplets.length === 0) {
-            return m.reply(`📋*ʟɪSᴛ ᴠᴘs ♪\n\nNo hay VPS disponible.`)
+            return m.reply(`📋*ʟɪSᴛ ᴠᴘs •\n\nNo hay VPS disponible.`)
         }
         
         let txt = `📋 *ʟɪsᴛ ᴠᴘs ᴅɪɢɪᴛᴀʟᴏᴄᴇᴀɴ*\n`

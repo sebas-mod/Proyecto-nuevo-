@@ -406,7 +406,7 @@ async function handleSmartTriggers(m, sock, db) {
         .replace(/{name}/g, m.pushName || "User")
         .replace(/{tag}/g, `@${m.sender.split("@")[0]}`)
         .replace(/{sender}/g, m.sender.split("@")[0])
-        .replace(/{botname}/g, _optionalChain([_configjs2.default, 'access', _15 => _15.bot, 'optionalAccess', _16 => _16.name]) || "♪")
+        .replace(/{botname}/g, _optionalChain([_configjs2.default, 'access', _15 => _15.bot, 'optionalAccess', _16 => _16.name]) || "Bot")
         .replace(/{time}/g, timeHelper.formatTime("HH:mm:ss"))
         .replace(/{date}/g, timeHelper.formatDate("DD MMMM YYYY"));
 
@@ -616,7 +616,7 @@ async function messageHandler(msg, sock, options = {}) {
               groupData.autoSambut.pesanList = [groupData.autoSambut.pesan];
             }
 
-            const pList = groupData.autoSambut.pesanList || ["Hola{user}¡Bienvenido!🙇‍♂♪"];
+            const pList = groupData.autoSambut.pesanList || ["Hola {user}, ¡bienvenido! 🙇‍♂"];
             const randomMsg = pList[Math.floor(Math.random() * pList.length)];
 
             let sambutan = randomMsg
@@ -1432,7 +1432,7 @@ const { defoult: fs } = aghult importa ( spans )
           `${storeCommand.content}\n\n` +
           `───────────────\n` +
           `> 👁️ Views: ${storeData[m.command.toLowerCase()].views}\n` +
-          `♪💳Escribe\`${m.prefix}pago\`para pagar`;
+          `• 💳 Escribe \`${m.prefix}pago\` para pagar`;
 
         if (storeCommand.hasImage && storeCommand.imagePath) {
           try {
@@ -1493,7 +1493,7 @@ const { defoult: fs } = aghult importa ( spans )
           `${storeCommand.content}\n\n` +
           `───────────────\n` +
           `> 👁️ Views: ${storeData[m.command.toLowerCase()].views}\n` +
-          `♪💳Escribe\`${m.prefix}pago\`para pagar`;
+          `• 💳 Escribe \`${m.prefix}pago\` para pagar`;
 
         if (storeCommand.hasImage && storeCommand.imagePath) {
           try {
@@ -1697,7 +1697,7 @@ const { defoult: fs } = aghult importa ( spans )
 
         if (pluginCat === "rpg" && grpData.rpg === false) {
           await m.reply(
-            `⚔♪\n\nLa función RPG está siendo desactivada en este grupo por admin.\nSolicitud de administrador para reactivar con comandos *${m.prefix}rpg on*`
+            `⚔ *FUNCIÓN RPG INACTIVA*\n\nLa función RPG está desactivada en este grupo por el admin.\nPide al admin que la reactive con el comando *${m.prefix}rpg on*`
           );
           return;
         }

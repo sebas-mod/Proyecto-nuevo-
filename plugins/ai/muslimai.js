@@ -62,7 +62,7 @@ class MuslimAI {
 async function handler(m, { sock }) {
     const text = m.args.join(' ')
     if (!text) {
-        return m.reply(`☪♪ᴍᴜSʟɪᴍ ᴀɪ*\n\nHe aquí una pregunta sobre el Islam\n\n\`Ejemplo:${m.prefix}¿Qué es un shoalat?\``)
+        return m.reply(`☪ᴍᴜSʟɪᴍ ᴀɪ*\n\nHe aquí una pregunta sobre el Islam\n\n\`Ejemplo:${m.prefix}¿Qué es un shoalat?\``)
     }
 
     m.react('🕕')

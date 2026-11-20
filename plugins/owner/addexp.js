@@ -69,7 +69,7 @@ async function handler(m, { sock }) {
     await m.react('✅')
     
     await m.reply(
-        `✅♪ Trabajar en el plus e ♪x*${formatNumber(amount)}* ke *@${targetJid.split('@')[0]}*`,
+        `✅ Trabajar en el plus e •x*${formatNumber(amount)}* ke *@${targetJid.split('@')[0]}*`,
         { mentions: [targetJid] }
     )
 }

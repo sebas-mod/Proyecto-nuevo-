@@ -166,7 +166,7 @@ async function handler(m, { sock }) {
         
         await sock.sendImageAsSticker(m.chat, buffer, m, {
             packname: _optionalChain([_configjs2.default, 'access', _ => _.sticker, 'optionalAccess', _2 => _2.packname]) || 'Ourin-AI',
-            author: _optionalChain([_configjs2.default, 'access', _3 => _3.sticker, 'optionalAccess', _4 => _4.author]) || '♪'
+            author: _optionalChain([_configjs2.default, 'access', _3 => _3.sticker, 'optionalAccess', _4 => _4.author]) || 'Bot'
         })
         
         m.react('✅')

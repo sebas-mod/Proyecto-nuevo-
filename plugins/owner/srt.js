@@ -40,12 +40,12 @@ async function handler(m, { sock, args }) {
         const action = _optionalChain([args, 'access', _ => _[0], 'optionalAccess', _2 => _2.toLowerCase, 'call', _3 => _3()]);
 
         if (!action) {
-            return m.reply(`🛠♪SYSTETLES SHUFFLE Responder THUMB ( SRT )♪\n\nBienvenido al menóde reprogramming ón de auto @ - @. Este permite que el bot reemplace con imágenes * minivuira * revuelto por automatización de la colección que guardas.\n\nAgut es una lista de commanños disperibles:\n- *. srt on *: Activando el shuffle @ - @ como fumbles.\n- *. srt off *: desactivar las características de la mucama y volver a la cohermentinsción tempprana.\n- *. srt c *: Bloquear captura de imagen para añadir nuevas coros a la base de datos.\n- *. srt d *: Cubre el sesi de captura de la imagen.\n- *. srt list *: Adjuntar toda la colección de imágenes almacenadas en la base de datos de arranque.\nRemoción de la imagen de la base de datos romana.`);
+            return m.reply(`🛠SYSTETLES SHUFFLE Responder THUMB ( SRT )•\n\nBienvenido al menóde reprogramming ón de auto @ - @. Este permite que el bot reemplace con imágenes * minivuira * revuelto por automatización de la colección que guardas.\n\nAgut es una lista de commanños disperibles:\n- *. srt on *: Activando el shuffle @ - @ como fumbles.\n- *. srt off *: desactivar las características de la mucama y volver a la cohermentinsción tempprana.\n- *. srt c *: Bloquear captura de imagen para añadir nuevas coros a la base de datos.\n- *. srt d *: Cubre el sesi de captura de la imagen.\n- *. srt list *: Adjuntar toda la colección de imágenes almacenadas en la base de datos de arranque.\nRemoción de la imagen de la base de datos romana.`);
         }
 
         if (action === 'on') {
             db.setting('srtEnabled', true);
-            await m.reply('✅* CUENTAS DE LA TRIBUNAL FUTURO *\n\nEstá característica ha sido globalizada. Cada peso @-@ basado bot consolidado ahora mostrará una imagen aleatoria de la carpeta de shuffle que se ha recogido.');
+            await m.reply('✅* CUENTAS DE LA TRIBUNAL FUTURO *\n\nEstá característica ha sido globalizada. Cada peso basado bot consolidado ahora mostrará una imagen aleatoria de la carpeta de shuffle que se ha recogido.');
         } 
         else if (action === 'off') {
             db.setting('srtEnabled', false);

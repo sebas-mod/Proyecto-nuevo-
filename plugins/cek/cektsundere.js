@@ -19,15 +19,15 @@ async function handler(m) {
     const mentioned = m.mentionedJid[0] || m.sender
                     
     let desc = ''
-    if (percent >= 90) desc = 'B @-@ don \'t mean I love it!😤💢'
+    if (percent >= 90) desc = 'B don \'t mean I love it!😤💢'
     else if (percent >= 70) desc = '¡No me malinterpretes!😳'
-    else if (percent >= 50) desc = 'Y @-@ yah!👉👈'
+    else if (percent >= 50) desc = 'Y yah!👉👈'
     else if (percent >= 30) desc = 'Agak tsundere dikit~ 😊'
     else desc = 'Bukan tsundere, jujur aja kok 💕'
     
     let txt = mentioned === m.sender ? `Hola @${mentioned.split('@')[0]}
     
-Tu nivel bajo @-@ *${percent}%*
+Tu nivel bajo *${percent}%*
 \`\`\`${desc}\`\`\`` : `Quieres comprobar el nivel de inseguridad${mentioned.split('@')[0]} yak? 
     
 Es tan grande como una dingleberry.${percent}%*

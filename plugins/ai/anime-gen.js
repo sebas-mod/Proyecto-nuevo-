@@ -30,9 +30,9 @@ async function handler(m, { sock }) {
             `> \`${m.prefix}anime-gen girl, vibrant color, smilling, yellow pink gradient hair\`\n` +
             `> \`${m.prefix}anime-gen boy, dark aesthetic, silver hair, red eyes\`\n\n` +
             `*ᴛɪᴘs:*\n` +
-            `♪•Uso del idioma inglés\n` +
-            `♪•Hacer el detalle rápido, hacer buen uso\n` +
-            `♪•Añadir grapa: vibrante, con estrellas, pastel, etc`
+            `••Uso del idioma inglés\n` +
+            `••Hacer el detalle rápido, hacer buen uso\n` +
+            `••Añadir grapa: vibrante, con estrellas, pastel, etc`
         )
     }
     

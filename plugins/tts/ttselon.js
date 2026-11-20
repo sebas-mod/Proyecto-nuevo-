@@ -47,7 +47,7 @@ async function handler(m, { sock }) {
   const text = _optionalChain([m, 'access', _ => _.text, 'optionalAccess', _2 => _2.trim, 'call', _3 => _3()]);
   if (!text)
     return m.reply(
-      `🚀*ᴇʟᴏɴ ᴍᴜSᴋ ᴛᴛs ♪\n\n> Usa: \`${m.prefix}ttselon <text>\``,
+      `🚀*ᴇʟᴏɴ ᴍᴜSᴋ ᴛᴛs •\n\n> Usa: \`${m.prefix}ttselon <text>\``,
     );
 
   m.react("🚀");

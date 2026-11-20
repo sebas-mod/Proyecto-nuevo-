@@ -22,7 +22,7 @@ const pluginConfig = {
 
 async function handler(m, { sock, text }) {
   if (!text) {
-    return m.reply("❌* Wallow, dijo el kuncinkinya vacio!\n\nUsted debe poner en un vídeo @-@ contraseña líder que desea buscar.\n\nEjemplo de uso:`. yts canción de la unwinninonesia.`");
+    return m.reply("❌* Wallow, dijo el kuncinkinya vacio!\n\nUsted debe poner en un vídeo contraseña líder que desea buscar.\n\nEjemplo de uso:`. yts canción de la unwinninonesia.`");
   }
 
   await m.react("🕕");
@@ -74,7 +74,7 @@ Ya he hecho está nota de vídeo sobre el mensaje que solicitó.😎
         locationMessage: {
           jpegThumbnail: thumbnailBuffer,
           name: firstVideo.title,
-          address: `📺 Channel: ${firstVideo.author.name}♪⏱️ Duración:${firstVideo.timestamp}`
+          address: `📺 Channel: ${firstVideo.author.name}•⏱️ Duración:${firstVideo.timestamp}`
         },
         contentText: contentText,
         footerText: _configjs2.default.bot.name,

@@ -6,7 +6,7 @@ const path = require("path");
 const colors = require("./ourin-logger.js");
 
 /**
-* Inicialización de Anti @-@ Ban Ourin System
+* Inicialización de Anti Ban Ourin System
  * @param {Object} sock - Baileys socket instance
  */
 async function initializeOurinAntiban(sock) {
@@ -15,7 +15,7 @@ async function initializeOurinAntiban(sock) {
     if (!fs.existsSync(antibanDir)) {
       fs.mkdirSync(antibanDir, { recursive: true });
     }
-    colors.logger.success("ANTIBAN", "Anti @-@ Ban Processing Modul está activo.");
+    colors.logger.success("ANTIBAN", "Anti Ban Processing Modul está activo.");
     return true;
   } catch (error) {
     colors.logger.warn("ANTIBAN", `Inisialisasi antiban: ${error.message}`);

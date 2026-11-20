@@ -167,7 +167,7 @@ async function startWizard(m, sock, mode, isFirstSetup = false) {
       `*Pregunta 1/4*\n` +
       `Judulnya que?\n\n` +
       `Responder este mensaje con cualquier regla que quieras\n` +
-      `> Ejemplo:\`Anti @-@ Word Kotor\``,
+      `> Ejemplo:\`Anti Word Kotor\``,
   );
 }
 
@@ -315,7 +315,7 @@ async function replyHandler(m, { sock }) {
 
   if (session.step === "title") {
     if (text.length < 2 || text.length > 40) {
-      await m.reply("❌Judul debe ser 2 @-@ 40 caracteres sí.");
+      await m.reply("❌Judul debe ser 2 40 caracteres sí.");
       return true;
     }
 
@@ -328,12 +328,12 @@ async function replyHandler(m, { sock }) {
         `Oke, judulnya *${session.title}*.\n\n` +
         `Ahora, dame las palabras que quiero leer.\n\n` +
         `Usted puede elegir uno de los fuertes:\n` +
-        `♪ Contiene ♪: Enviar palabra separada un coma o un nuevo barril\n` +
+        `• Contiene •: Enviar palabra separada un coma o un nuevo barril\n` +
         `*Rege*x*: comienza la respuesta con\`regex:\`\n\n` +
         `Ejemplo contains:\n` +
         `> \`anjing, goblok, tolol\`\n\n` +
         `Ejemplo regex:\n` +
-        `♪\`regex: (anj|perro|a+n+j+)\`\n\n` +
+        `•\`regex: (anj|perro|a+n+j+)\`\n\n` +
         `* Responder ordene esto con su respuesta *`,
     );
     return true;

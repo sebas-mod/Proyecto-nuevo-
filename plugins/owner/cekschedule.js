@@ -51,7 +51,7 @@ async function handler(m, { sock }) {
         const sholatIcon = sholatEnabled ? '✅' : '❌';
         text += `${sholatIcon} *Sholat Scheduler*\n`;
         text += `   └ Key: \`sholat\`\n`;
-        text += `   └Aviso de tiempo de choque (real @-@ time )\n`;
+        text += `   └Aviso de tiempo de choque (real time )\n`;
 
         if (sholatEnabled) {
             const kotaSetting = db.setting('autoSholatKota') || { id: '1301', nama: 'KOTA JAKARTA' };

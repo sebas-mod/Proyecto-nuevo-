@@ -83,7 +83,7 @@ async function handler(m, { sock, db }) {
     `- Grupo V4👥 —Usando contextInfo ganda grupo forwarm, mostrar ordenado con una etiqueta de bahtín\n\n` +
     `- * V5 Simple *✨ —El texto de Mensaje es simplemente desarmado con fotos de perfil que se unen, no sólo es usted capaz de acceder a la información\n\n` +
     `- * V6 Video *🎥 —Enviar un video de la emocionante bienvenida completada saht de la captura para la foto\n\n` +
-    `- * V7 InteractiveQuoted ♪💬 —Enviar mensajes interactivos y citas falsas de unirse a la gente\n\n` +
+    `- * V7 InteractiveQuoted •💬 —Enviar mensajes interactivos y citas falsas de unirse a la gente\n\n` +
     `- * V8 Super Simple *👋 —Los textos de Pessan son muy cortos sin ningún hispanico ( Dzh: Hola @ usuario, bienvenido a grupo. )\n\n` +
     `# Elige el tipo de bienvenida del charco en el bayou👇`;
   await sock.sendButton(

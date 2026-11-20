@@ -563,7 +563,7 @@ function healPlayer(mcUser) {
   const cost = Math.floor((mcUser.maxHp - mcUser.hp) * 500);
   if (mcUser.hp >= mcUser.maxHp) return { error: "❤¡El HP está lleno!" };
   if ((mcUser.money || 0) < cost)
-    return { error: `💸Dinero al @-@ Dinero!${formatMoney(cost)}` };
+    return { error: `💸Dinero al Dinero!${formatMoney(cost)}` };
   mcUser.money -= cost;
   mcUser.hp = mcUser.maxHp;
   return { success: true, cost, hp: mcUser.hp };

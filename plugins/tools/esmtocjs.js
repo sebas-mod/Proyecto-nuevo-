@@ -132,7 +132,7 @@ async function handler(m, { sock }) {
             `# Responder code ESM with${m.prefix}esmtocjs\n\n` +
             `> *Ejemplo ESM:*\n` +
             `> \`import axios from 'axios'\`\n` +
-            `♪\`exfunción por defecto del puerto ( ){}\``
+            `•\`exfunción por defecto del puerto ( ){}\``
         )
     }
 

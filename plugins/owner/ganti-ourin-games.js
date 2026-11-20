@@ -6,7 +6,7 @@ const pluginConfig = {
     name: 'ganti-ourin-games.jpg',
     alias: ['gantigames', 'setouringames'],
     category: 'owner',
-    description: 'Imagen Cambia nuestrain @-@ juegos.',
+    description: 'Imagen Cambia nuestrain juegos.',
     usage: '.ganti-ourin-games.jpg (reply/kirim gambar)',
     example: '.ganti-ourin-games.jpg',
     isOwner: true,
@@ -22,7 +22,7 @@ async function handler(m, { sock }) {
     const isImage = m.isImage || (m.quoted && m.quoted.type === 'imageMessage')
     
     if (!isImage) {
-        return m.reply(`🖼♪ɢᴀɴᴛɪ ᴏᴜʀɪɴ-ɢᴀᴍᴇs.ᴊᴘɢ*\n\n# Ksently / réplica imágenes para reemplazar\nArchivo: activos / imágenes / nuestroin - juegos.`)
+        return m.reply(`🖼ɢᴀɴᴛɪ ᴏᴜʀɪɴ-ɢᴀᴍᴇs.ᴊᴘɢ*\n\n# Ksently / réplica imágenes para reemplazar\nArchivo: activos / imágenes / nuestroin - juegos.`)
     }
     
     try {
@@ -40,7 +40,7 @@ async function handler(m, { sock }) {
         await m.reply(`⏳La jaula subió una foto..`)
         try {
             const newUrl = await _ourinuploaderjs.updateAssetUrl.call(void 0, 'ourin-games', buffer, 'ourin-games.jpg')
-            m.reply(`✅*ʙᴇʀʜᴀSɪʟ*\n\nPara Imagen ourin @-@ juegos. Jpg ha sido transferido a la nueva URL:\n♪${newUrl}\n" Config has been updated as a reality "!`)
+            m.reply(`✅*ʙᴇʀʜᴀSɪʟ*\n\nPara Imagen ourin juegos. Jpg ha sido transferido a la nueva URL:\n•${newUrl}\n" Config has been updated as a reality "!`)
         } catch (e) {
             m.reply(`❌Gagalm subió la imagen:${e.message}`)
         }

@@ -22,11 +22,11 @@ async function handler(m, { sock }) {
             `⚠️ *ᴠᴀʟɪᴅᴀsɪ ɢᴀɢᴀʟ*\n\n` +
             `¡Fata no es válida!\n\n` +
             `*Formato:*\n` +
-            `♪\`- Encuesta. Pregunta. Epopsi1, opciones.\`\n\n` +
+            `•\`- Encuesta. Pregunta. Epopsi1, opciones.\`\n\n` +
             `*Ejemplo:*\n` +
-            `♪\`¿Qué pasa?\`\n\n` +
+            `•\`¿Qué pasa?\`\n\n` +
             `*Opsi adicional:*\n` +
-            `♪\`.poll multi | pregunta | opsi1, opsi2, opsi3, dst\`\n` +
+            `•\`.poll multi | pregunta | opsi1, opsi2, opsi3, dst\`\n` +
             `Soop (para selección de ganda )`
         );
         return;

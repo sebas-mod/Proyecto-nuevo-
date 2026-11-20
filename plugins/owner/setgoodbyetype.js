@@ -83,7 +83,7 @@ async function handler(m, { sock, db }) {
     `- Grupo V4👥 —Usando contextInfo ganda grupo forwarm, mostrar ordenado con una etiqueta de bahtín\n\n` +
     `- * V5 Simple *✨ —Texto de Mensaje simplemente disertó fotos de perfil fuera, no sólo es usted capaz de acceder a los nombres informativos\n\n` +
     `- * V6 Video *🎥 —Envío de vídeo de separaciones estéticas completo a la autocaptura para el miembro\n\n` +
-    `- * V7 InteractiveQuoted ♪💬 —Enviar mensajes interactivos y citas falsas de la persona que sale\n\n` +
+    `- * V7 InteractiveQuoted •💬 —Enviar mensajes interactivos y citas falsas de la persona que sale\n\n` +
     `- * V8 Super Simple *👋 —Los textos de Pessan son muy cortos sin ningún tipo de assemo ( lassas: Adiós @ usuario, de grupo. )\n\n` +
     `Elige el tipo de despedida de charco en el crudo👇`;
   await sock.sendButton(

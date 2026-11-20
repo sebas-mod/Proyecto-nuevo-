@@ -214,7 +214,7 @@ async function handler(m, { args }) {
         txt += `\n`;
       }
       if (pt.length) {
-        txt += `🏛(Altísimo @-@ PITCHED ):\n`;
+        txt += `🏛(Altísimo PITCHED ):\n`;
         for (const p of pt) txt += `- ${p.nama} (${_nullishCoalesce(_nullishCoalesce(p.nama_singkat, () => ( p.sinkatan_pt)), () => ( "-"))})\n`;
         txt += `\n`;
       }

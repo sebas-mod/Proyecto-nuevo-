@@ -23,7 +23,7 @@ async function handler(m, { sock, args }) {
             `Ezely un mensaje que quieres poner!\n\n` +
             `*Como usarlo:*\n` +
             `*Responde mensajes*→escribe\`Pinchat.\`\n` +
-            `Opcional:\`- Pinchat 24.\`( 24 @-@ hora pin )`
+            `Opcional:\`- Pinchat 24.\`( 24 hora pin )`
         );
         return;
     }

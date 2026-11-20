@@ -18,7 +18,7 @@ const pluginConfig = {
 
 async function handler(m, { sock }) {
     if (m.args.length < 3) {
-        return m.reply(`💼*ɪꜰᴀᴛ ᴜSᴀʜᴀ/ʙɪSɴɪs ♪\n\n> Formato: tgl bln thn\n\n\`Ejemplo:${m.prefix}sifatusahabisnis 1 1 2000\``)
+        return m.reply(`💼*ɪꜰᴀᴛ ᴜSᴀʜᴀ/ʙɪSɴɪs •\n\n> Formato: tgl bln thn\n\n\`Ejemplo:${m.prefix}sifatusahabisnis 1 1 2000\``)
     }
     
     const [tgl, bln, thn] = m.args

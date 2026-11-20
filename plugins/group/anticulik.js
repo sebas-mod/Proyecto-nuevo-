@@ -40,7 +40,7 @@ async function handler(m, { sock }) {
     db.setting("anticulik", "on");
     const ctx = _ourincontextjs.saluranCtx.call(void 0, );
     return m.reply(
-      `🛡Anti @-@ Culik Active\n\n` +
+      `🛡Anti Culik Active\n\n` +
         `*Será automatizado sin permiso*\n` +
         `Una - la única manera de que un bot se une: *${m.prefix}* por propietario\n\n` +
         `*Eso añade más botas a la advertencia*`,
@@ -51,7 +51,7 @@ async function handler(m, { sock }) {
   if (option === "off") {
     db.setting("anticulik", "off");
     return m.reply(
-      `🛡Anti @-@ Curik Nonactive\n\n` +
+      `🛡Anti Curik Nonactive\n\n` +
         `*No saldrá automáticamente si se añade a un grupo*\n` +
         `Cualquiera puede añadir una bota a un grupo.`
     );

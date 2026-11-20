@@ -7,7 +7,7 @@ const pluginConfig = {
   name: ["gachawaifu", "waifuaction", "tinggalinwaifu", "waifuku", "istriku"],
   alias: ["gachaistri"],
   category: "fun",
-  description: "Gacha waifu su sueño, así que sus sentimientos, y así es su compañero!",
+  description: "Gacha waifu de tus sueños: conquista su corazón y cásate con ella.",
   usage: ".gachawaifu | .waifuku | .tinggalinwaifu",
   example: ".gachawaifu",
   isOwner: false,
@@ -205,7 +205,7 @@ async function handler(m, { sock }) {
       `💎 *Tier:* ${waifu.tier}\n` +
       `💞 *Affection:* ${waifu.affection}/100\n` +
       `💍 *Status:* ${statusPernikahan}\n\n` +
-      `Continuar las interacciones eligiendo una de las acciones @-@ weenie en este swab!`;
+      `Continuar las interacciones eligiendo una de las acciones weenie en este swab!`;
 
     m.react("✅");
     return await sendWaifuMessage(m, sock, waifu, textContent, null);
@@ -417,15 +417,15 @@ async function handler(m, { sock }) {
     }
     else if (action === "intim_belakang") {
       affectionChange = Math.floor(Math.random() * 10) + 10;
-      responseText = `🤗You 're hard @-@ pressed from behind. *${waifu.name}* Un poco sorprendido, pero se sentía seguro y cómodo estando a tu alrededor.`;
+      responseText = `🤗You 're hard pressed from behind. *${waifu.name}* Un poco sorprendido, pero se sentía seguro y cómodo estando a tu alrededor.`;
     }
     else if (action === "intim_depan") {
       affectionChange = Math.floor(Math.random() * 15) + 5;
-      responseText = `💑Usted está tirando de la cintura con un @-@ en duro y usted está mirando al amor @-@ vendedor amoroso.`;
+      responseText = `💑Usted está tirando de la cintura con un en duro y usted está mirando al amor vendedor amoroso.`;
     }
     else if (action === "intim_kening") {
       affectionChange = Math.floor(Math.random() * 10) + 5;
-      responseText = `😚Usted ronca su frente con mucha suavidad, es un beso puro y le hace sentir muy bien @-@ le gustó.`;
+      responseText = `😚Usted ronca su frente con mucha suavidad, es un beso puro y le hace sentir muy bien le gustó.`;
     }
     else if (action === "intim_bibir") {
       affectionChange = Math.floor(Math.random() * 15) + 15;
@@ -437,11 +437,11 @@ async function handler(m, { sock }) {
     }
     else if (action === "intim_panas") {
       affectionChange = Math.floor(Math.random() * 20) + 15;
-      responseText = `🔥You 're sing soft @-@ bobbing, besos her mouth, and making her face red, she 's susuring, " Hold her tonight. "`;
+      responseText = `🔥You 're sing soft bobbing, besos her mouth, and making her face red, she 's susuring, " Hold her tonight. "`;
     }
     else if (action === "intim_punggung") {
       affectionChange = Math.floor(Math.random() * 10) + 10;
-      responseText = `🛁You 're gaping at her soft @-@ mouthed lips, she 's sounding soft because she 's feeling relaxed after a long day.`;
+      responseText = `🛁You 're gaping at her soft mouthed lips, she 's sounding soft because she 's feeling relaxed after a long day.`;
     }
     else if (action === "intim_bahu") {
       affectionChange = Math.floor(Math.random() * 15) + 15;
@@ -460,14 +460,14 @@ async function handler(m, { sock }) {
       user.fun.pasangan = waifuJid;
       db.setUser(waifuJid, { fun: { pasangan: m.sender }, name: waifu.name });
 
-      responseText = `💍* You 're Oficial TO LIVE with${waifu.name.toUpperCase()}*💍\n\nSiéntese en las estrellas y déles un anillo de diamante, grita y dice que sí, ¡quiero ser tuyo para siempre!\n\nComo regalo de boda, usted consigue:\n-⚡5000 Límite/Energía\n-💰100, 000 Saldo / Kain\n\nSus giras están en la función.\`Mira al novio.\`¡El par oficial con él!`;
+      responseText = `💍 *¡TE HAS CASADO CON ${waifu.name.toUpperCase()}!* 💍\n\nTe arrodillas bajo las estrellas y le entregas un anillo de diamantes. Ella llora de emoción y dice: "Sí, quiero estar contigo para siempre".\n\nComo regalo de boda recibes:\n- ⚡ 5000 de límite/energía\n- 💰 100.000 de saldo/koin\n\n¡Ahora son pareja oficial!`;
       affectionChange = 0;
     }
     else if (action === "hadiah") {
-      if (waifu.affection < 100) return m.reply(`⚠¡No te ha amado lo suficiente para darte un regalo!`);
+      if (waifu.affection < 100) return m.reply(`⚠ ¡Todavía no te quiere lo suficiente para darte un regalo!`);
       affectionChange = 0;
       user.limit = (user.limit || 0) + 500;
-      responseText = `💝 *${waifu.name}* Con una sonrisa feliz te trae un pequeño amor agradable!\nTu obteniendo⚡500 Límite/Energía!`;
+      responseText = `💝 *${waifu.name}* te sonríe feliz y te entrega un pequeño regalo.\n¡Has recibido ⚡ 500 de límite/energía!`;
     }
     else if (["mesra", "rayu"].includes(action)) {
       if (!waifu.married) return m.reply(`¡Este truco es para marido y mujer!`);

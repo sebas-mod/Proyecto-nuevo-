@@ -4,7 +4,7 @@ const pluginConfig = {
     name: 'notifmakan',
     alias: ['jadwalmakan', 'makanreminder'],
     category: 'group',
-    description: 'Auto @-@ recordatorio de alimentación',
+    description: 'Auto recordatorio de alimentación',
     usage: '.notifmakan on <jam1,jam2,...> [menu] / off / edit <jam1,jam2,...> [menu]',
     example: '.notifmakan on 07.00,12.00,19.00 Nasi Padang',
     isOwner: false,
@@ -29,7 +29,7 @@ function handler(m) {
             ? (existing.enabled ? '✅ Aktif' : '❌ Nonaktif')
             : '⚪Aún no configurado'
 
-        let info = `🍽*El alimento @-@ Recordar*\n\n`
+        let info = `🍽*El alimento Recordar*\n\n`
         info += `📌 *Status:* ${status}\n`
 
         if (existing) {
@@ -42,8 +42,8 @@ function handler(m) {
         info += `> \`${m.prefix}notifmakan on 07.00,12.00 Arroz Goreng\`\n`
         info += `> \`${m.prefix}notifmakan edit 08.00,13.00\`\n`
         info += `> \`${m.prefix}notifmakan off\`\n`
-        info += `\n♪💡Las horas pueden usar un cero o un dos ( 07. 00 / 07: 00 ) _\n`
-        info += `♪💡# Doble hora puede, rompe con comas #`
+        info += `\n•💡Las horas pueden usar un cero o un dos ( 07. 00 / 07: 00 ) _\n`
+        info += `•💡# Doble hora puede, rompe con comas #`
 
         return m.reply(info)
     }
@@ -63,7 +63,7 @@ function handler(m) {
 
         if (existing && args.length === 1) {
             _ourinnotifschedulerjs.toggleNotif.call(void 0, 'makan', sender, chatJid, true)
-            return m.reply(`✅>#91; ¡El recordatorio de alimentos es re @-@ activado! ]🔔\n\n⏰Programado:${existing.jadwal.map(j => `*${j}*`).join(', ')} WIB`)
+            return m.reply(`✅>#91; ¡El recordatorio de alimentos es re activado! ]🔔\n\n⏰Programado:${existing.jadwal.map(j => `*${j}*`).join(', ')} WIB`)
         }
 
         const timeInput = args[1]
@@ -86,7 +86,7 @@ function handler(m) {
             reply += `> 🕐 *${j}* WIB _(${label})_\n`
         }
         if (menu) reply += `\n🍴* Menú: *${menu}_`
-        reply += `\n\n♪💡" Las notificaciones se enviarán a este gráfico todos los días ".`
+        reply += `\n\n•💡" Las notificaciones se enviarán a este gráfico todos los días ".`
 
         return m.reply(reply)
     }
@@ -109,7 +109,7 @@ function handler(m) {
         const menu = args.slice(2).join(' ').trim() || existing.menu || ''
         _ourinnotifschedulerjs.setNotifMakan.call(void 0, sender, chatJid, jadwal, menu)
 
-        let reply = `✅ *Jadwal come diperbarui!* ✏♪\n\n`
+        let reply = `✅ *Jadwal come diperbarui!* ✏\n\n`
         reply += `⏰*Jadwal nuevo:*\n`
         for (const j of jadwal) {
             const label = getMealLabel(j)

@@ -69,7 +69,7 @@ async function handler(m, { sock, args, text }) {
                 listTxt += `> 👤 by ${item.creator_username}\n\n`;
             }
 
-            listTxt += `♪💡* Cita (por ejemplo: 1 ) * para seleccionar y activar AI, o tipos\`cancelar\`para cancelando.`;
+            listTxt += `•💡* Cita (por ejemplo: 1 ) * para seleccionar y activar AI, o tipos\`cancelar\`para cancelando.`;
 
             const db = _ourindatabasejs.getDatabase.call(void 0, );
             const user = db.getUser(m.sender);

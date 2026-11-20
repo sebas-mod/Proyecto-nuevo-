@@ -134,14 +134,14 @@ Los mejores deseos para ella.`,
       prefix,
     );
   }
-  let msg = `👋🏻 *SAYONARA MEMBER* 👋🏻\n\n`;
+  let msg = `👋🏻 *HASTA PRONTO* 👋🏻\n\n`;
   msg += `${header}\n`;
   msg += `${emoji} ${farewell}, *@${username}* 🤍\n\n`;
-  msg += `📌* GRUPO INFO ]\n`;
-  msg += `♪🏠*Nombre*:${groupName}\n`;
-  msg += `♪👥* SUSA SUSA *${memberCount}\n`;
-  msg += `♪📅 *Fecha*: ${now.format("DD/MM/YYYY")}\n\n`;
-  msg += `💌*Mensaje*\n♪「 ${quote} 」\n\n🌸Te veré más tarde, tomodachi.🤍`;
+  msg += `📌 *INFO DEL GRUPO*\n`;
+  msg += `• 🏠 *Nombre:* ${groupName}\n`;
+  msg += `• 👥 *Miembros:* ${memberCount}\n`;
+  msg += `• 📅 *Fecha:* ${now.format("DD/MM/YYYY")}\n\n`;
+  msg += `💌 *Mensaje*\n• 「 ${quote} 」\n\n🌸 Te veremos pronto. 🤍`;
 
   return msg;
 

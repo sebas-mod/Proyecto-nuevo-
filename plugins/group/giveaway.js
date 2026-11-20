@@ -579,9 +579,9 @@ async function handler(m, { sock }) {
   if (cmd === "giveaway") {
     await m.reply(
       "🎁* GIVEWAKE MINUTE *\n\n" +
-        `┃ ${prefix}dar un largo @-@ término crear—Crea giveaway\n` +
+        `┃ ${prefix}dar un largo término crear—Crea giveaway\n` +
         `┃ ${prefix}Lista de distribución—Mira registrate\n` +
-        `┃ ${prefix}♪ dame un descanso ♪—Elimina giveaway\n` +
+        `┃ ${prefix}• dame un descanso •—Elimina giveaway\n` +
         `┃ ${prefix}giveawayreroll — Reroll pemenang\n\n` +
         `> Alias: ga, gacreate, galist, gadelete, gareroll`,
     );

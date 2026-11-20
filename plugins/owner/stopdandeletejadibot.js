@@ -68,7 +68,7 @@ async function handler(m, { sock }) {
 
         await sock.sendMessage(m.chat, {
             text: `🗑️ *ᴊᴀᴅɪʙᴏᴛ ᴅɪʜᴀᴘᴜs*\n\n` +
-                `♪📱Número: *@${id}*\n` +
+                `•📱Número: *@${id}*\n` +
                 `> 🗑️ Status: *Deleted*\n\n` +
                 `El período de sesiones se ha visto comprometido de manera de servicio.\n` +
                 `User necesita\`.\`Repetido para crear una nueva sesión.`,

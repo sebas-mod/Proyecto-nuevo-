@@ -65,7 +65,7 @@ async function handler(m, { sock }) {
             `💫 *sᴏᴜʟ ᴍᴀᴛᴄʜ*\n\n` +
             `¡Estoy tan cansada de que dos personas se vean atrapadas!\n\n` +
             `*Formato:*\n` +
-            `♪\`Soulmatch. Nombre 1.\`\n\n` +
+            `•\`Soulmatch. Nombre 1.\`\n\n` +
             `*Ejemplo:*\n` +
             `> \`.soulmatch Raiden|Mei\``
         )

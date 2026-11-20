@@ -481,7 +481,7 @@ async function startGroupScheduleChecker(sock) {
                 );
                 try {
                   await groupScheduleSock.sendMessage(groupId, {
-                    text: `⚠♪ɢᴀɢᴀʟ ᴀᴜᴛᴏ ᴏᴘᴇɴ*\n\n* No es un administrador, no puede cambiar la configuración del grupo.*\nAsí que utilicemos el bot como administrador para habilitar está característica.`,
+                    text: `⚠ɢᴀɢᴀʟ ᴀᴜᴛᴏ ᴏᴘᴇɴ*\n\n* No es un administrador, no puede cambiar la configuración del grupo.*\nAsí que utilicemos el bot como administrador para habilitar está característica.`,
                   });
                 } catch (e2) { }
               } else {
@@ -519,7 +519,7 @@ async function startGroupScheduleChecker(sock) {
                 );
                 try {
                   await groupScheduleSock.sendMessage(groupId, {
-                    text: `⚠♪ɢᴀɢᴀʟ ᴀᴜᴛᴏ ᴄʟᴏSᴇ*\n\n* No es un administrador, no puede cambiar la configuración del grupo.*\nAsí que utilicemos el bot como administrador para habilitar está característica.`,
+                    text: `⚠ɢᴀɢᴀʟ ᴀᴜᴛᴏ ᴄʟᴏSᴇ*\n\n* No es un administrador, no puede cambiar la configuración del grupo.*\nAsí que utilicemos el bot como administrador para habilitar está característica.`,
                   });
                 } catch (e3) { }
               } else {
@@ -617,7 +617,7 @@ async function startSewaChecker(sock) {
             const minutes = Math.floor(remaining / 60000);
             await sewaSock.sendText(
               groupId,
-              `⚠♪ HUMMING ♪\n\nAhorra el tiempo de alquiler *${minutes}minuto*!\nUn contacto del propietario por un período.\n\nSi no se ha extendido, las botas se automatizarán.`,
+              `⚠ HUMMING •\n\nAhorra el tiempo de alquiler *${minutes}minuto*!\nUn contacto del propietario por un período.\n\nSi no se ha extendido, las botas se automatizarán.`,
               null,
               {
                 contextInfo: _ourincontextjs.saluranCtx.call(void 0, ),
@@ -693,11 +693,11 @@ function startAutoBioChecker(sock) {
       const status = db.setting("autobio_status");
       if (!status) return;
 
-      const template = db.setting("autobio_text") || "♪🕒 {clock}♪⏳ {runtime}";
+      const template = db.setting("autobio_text") || "•🕒 {clock}•⏳ {runtime}";
 
       const clock = _momenttimezone2.default.call(void 0, ).tz(TZ).format("HH:mm");
       const runtime = formatUptime(process.uptime());
-      const botname = _optionalChain([_configjs2.default, 'access', _30 => _30.bot, 'optionalAccess', _31 => _31.name]) || "♪";
+      const botname = _optionalChain([_configjs2.default, 'access', _30 => _30.bot, 'optionalAccess', _31 => _31.name]) || "Bot";
       const version = _optionalChain([_configjs2.default, 'access', _32 => _32.bot, 'optionalAccess', _33 => _33.version]) || "1.0.0";
 
       const newBio = template

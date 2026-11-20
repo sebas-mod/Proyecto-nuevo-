@@ -9,16 +9,16 @@ const notifCronJobs = new Map()
 let refreshJob = null
 
 const MAKAN_MESSAGES = [
-    '🍽# Hora de comer #{label}*\n\n⏰*{jam}¿Qué demonios?\n\nNo omitas tu comida, necesitas consumo de energía para mantenerla productiva.💪\n{menu}\n\n📌♪ Establecer por @{sender}¿Qué?',
+    '🍽# Hora de comer #{label}*\n\n⏰*{jam}¿Qué demonios?\n\nNo omitas tu comida, necesitas consumo de energía para mantenerla productiva.💪\n{menu}\n\n📌 Establecer por @{sender}¿Qué?',
     '🥗* Heeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee{sender}, las horas han terminado{jam}aquí!*\n\nEs hora de un cuerpo completo.🍛\n¡La comida nutritiva es mantener el calcetín!\n{menu}',
-    '🍜*Reminder come{label}*\n\n⏰*{jam}¿Qué demonios?\n\nPareja vacio bikin humor feo lho😤\nComamos antes de continuar la actividad.\n{menu}\n\n📌♪ Establecer por @{sender}¿Qué?',
+    '🍜*Reminder come{label}*\n\n⏰*{jam}¿Qué demonios?\n\nPareja vacio bikin humor feo lho😤\nComamos antes de continuar la actividad.\n{menu}\n\n📌 Establecer por @{sender}¿Qué?',
     '🍜 *Come Antes WOYY @{sender}*\n\nUsar?{menu}',
 ]
 
 const TIDUR_MESSAGES = [
-    '🌙¡El tiempo es el descanso!\n\n⏰*{jam}¿Qué demonios?\n\nBaja el teléfono. Cierra los ojos.😴\n¡Pon suficiente aliento fresco en la cama!\n*Feliz noche*🌟\n\n📌♪ Establecer por @{sender}¿Qué?',
-    '💤*Ya hora{jam}aquí @{sender}*\n\nDescanse, no siga luchando🛏♪\nEs la inversión más preciosa\nSueño en, sí✨',
-    '😴*Noches deslumbrantes*\n\n⏰*{jam}¿Qué demonios?\n\nEl HP es un enemigo dormido.📵\n¡Apague las notificaciones y los cambios ahora!\n*Buenas noches*🌜\n\n📌♪ Establecer por @{sender}¿Qué?',
+    '🌙¡El tiempo es el descanso!\n\n⏰*{jam}¿Qué demonios?\n\nBaja el teléfono. Cierra los ojos.😴\n¡Pon suficiente aliento fresco en la cama!\n*Feliz noche*🌟\n\n📌 Establecer por @{sender}¿Qué?',
+    '💤*Ya hora{jam}aquí @{sender}*\n\nDescanse, no siga luchando🛏\nEs la inversión más preciosa\nSueño en, sí✨',
+    '😴*Noches deslumbrantes*\n\n⏰*{jam}¿Qué demonios?\n\nEl HP es un enemigo dormido.📵\n¡Apague las notificaciones y los cambios ahora!\n*Buenas noches*🌜\n\n📌 Establecer por @{sender}¿Qué?',
     '*TURU WOYY @{sender}*\n\n⏰ Udah jam *{jam}*',
 ]
 

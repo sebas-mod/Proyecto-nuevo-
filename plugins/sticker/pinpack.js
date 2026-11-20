@@ -71,11 +71,11 @@ async function handler(m, { sock }) {
 
     if (!results || results.length === 0) {
       await m.react("✘");
-      return m.reply(`──.✦ ──\n\n*No se encontraron resultados para:*${query}* .☘︎ ݁˖`);
+      return m.reply(`──.✦ ──\n\n*No se encontraron resultados para:* ${query} ☘︎ ݁˖`);
     }
 
     await m.reply(
-      `──.✦ ──\n\nContrabando *${results.length}* imágenes de Pinterest\nAquí está la línea que se converge en el paquete de pegatina..☘♪˖`,
+      `──.✦ ──\n\nDescargando *${results.length}* imágenes de Pinterest\nPreparando el paquete de stickers...☘˖`,
     );
 
     const stickerBuffers = [];
@@ -96,11 +96,11 @@ async function handler(m, { sock }) {
 
     if (!stickerBuffers.length) {
       await m.react("✘");
-      return m.reply(`──.✦ ──\n\n# Gafall download the picture. #☘♪˖`);
+      return m.reply(`──.✦ ──\n\nNo se pudo descargar la imagen.☘˖`);
     }
 
     const packname = `Pinterest: ${query}`;
-    const author = _optionalChain([_configjs2.default, 'access', _9 => _9.bot, 'optionalAccess', _10 => _10.developer]) || _optionalChain([_configjs2.default, 'access', _11 => _11.sticker, 'optionalAccess', _12 => _12.author]) || "♪";
+    const author = _optionalChain([_configjs2.default, 'access', _9 => _9.bot, 'optionalAccess', _10 => _10.developer]) || _optionalChain([_configjs2.default, 'access', _11 => _11.sticker, 'optionalAccess', _12 => _12.author]) || "Bot";
 
     try {
       await sock.sendStickerPack(m.chat, stickerBuffers, m, {
@@ -115,7 +115,7 @@ async function handler(m, { sock }) {
     } catch (packErr) {
       console.error("[PinPack] Pack send failed:", packErr.message);
       await m.reply(
-        `──.✦ ──\n\n♪ Pack fail, enviar uno a la vez. ♪☘♪˖`,
+        `──.✦ ──\n\n• Falló el envío del paquete; enviando uno por uno.☘˖`,
       );
 
       let sent = 0;
@@ -147,11 +147,11 @@ async function handler(m, { sock }) {
       if (sent > 0) {
         await m.react("✓");
         await m.reply(
-          `──.✦ ──\n\n♪ Trabajar mi manera ♪${sent}* Pegatina que *${packname}* .☘︎ ݁˖`,
+          `──.✦ ──\n\n• Enviados ${sent} stickers de *${packname}*.☘︎ ݁˖`,
         );
       } else {
         await m.react("✘");
-        await m.reply(`──.✦ ──\n\n- Sí.☘♪˖`);
+        await m.reply(`──.✦ ──\n\n• No se pudo enviar ningún sticker. ☘˖`);
       }
     }
   } catch (error) {

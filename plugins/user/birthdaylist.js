@@ -43,7 +43,7 @@ async function handler(m, { sock }) {
         return m.reply(
             `❌ *ᴛɪᴅᴀᴋ ᴀᴅᴀ ᴅᴀᴛᴀ*\n\n` +
             `No hay fotos que pongan a luzDay\n\n` +
-            `Desocupados: setbirthday DD @-@ MMs`
+            `Desocupados: setbirthday DD MMs`
         )
     }
     

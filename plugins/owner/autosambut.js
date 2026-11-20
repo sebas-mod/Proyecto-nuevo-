@@ -47,7 +47,7 @@ async function handler(m, { sock, db }) {
     groupData.autoSambut = {
       enabled: false,
       delayMs: 2 * 60 * 60 * 1000,
-      pesanList: ["Hola{user}¡Bienvenido!🙇‍♂♪"],
+      pesanList: ["Hola{user}¡Bienvenido!🙇‍♂"],
       lastChats: {}
     };
     database.setGroup(m.chat, { autoSambut: groupData.autoSambut });
@@ -61,7 +61,7 @@ async function handler(m, { sock, db }) {
   }
   // Fallback
   if (!Array.isArray(groupData.autoSambut.pesanList) || groupData.autoSambut.pesanList.length === 0) {
-    groupData.autoSambut.pesanList = ["Hola{user}¡Bienvenido!🙇‍♂♪"];
+    groupData.autoSambut.pesanList = ["Hola{user}¡Bienvenido!🙇‍♂"];
   }
 
   if (!action) {
@@ -84,7 +84,7 @@ async function handler(m, { sock, db }) {
       `• *${m.prefix}autosambut del<angka>*—Borrar mensajes en el número de secuencia absoluta\n\n` +
       `*Explicación Exclusivo para:*\n` +
       `1. Use el tiempo de formato: * s * ( segundos ), * m * ( minutos ), * h * ( reloj ), * d * ( día ).${m.prefix}autosambut delay 30m*\n` +
-      `2 " Use.{name}* para llamarme propietario, y *{user}* para mí @-@ mencionista propietario.\n` +
+      `2 " Use.{name}* para llamarme propietario, y *{user}* para mí mencionista propietario.\n` +
       `3, el aggrega el attrant al final de cada comando, la anausción en èo grupo será copido directamente al bot de KlA grupo!`
     );
   }
@@ -176,7 +176,7 @@ async function handler(m, { sock, db }) {
         database.setGroup(jid, { autoSambut: gData.autoSambut });
         count++;
       }
-      return m.reply(`💬* Mensaje Nuevo Tammed to Global List (P.S.A.)${count}grupo)!*\n\nMensaje registrado:\n♪${newMsg}"`);
+      return m.reply(`💬* Mensaje Nuevo Tammed to Global List (P.S.A.)${count}grupo)!*\n\nMensaje registrado:\n•${newMsg}"`);
     }
 
     return m.reply(`💬* Sends Nuevo¡Trabaja en el parque!\nAhora existe${groupData.autoSambut.pesanList.length}El pienso al azar está en la lista.`);
@@ -208,10 +208,10 @@ async function handler(m, { sock, db }) {
         database.setGroup(jid, { autoSambut: gData.autoSambut });
         count++;
       }
-      return m.reply(`🗑Mensaje, el globo resultante @-@ como borrado${count}grupo)!*\n\nEliminado:\n♪${removedMsg}"`);
+      return m.reply(`🗑Mensaje, el globo resultante como borrado${count}grupo)!*\n\nEliminado:\n•${removedMsg}"`);
     }
 
-    return m.reply(`🗑* Resultados de sentido eliminados*\n\nEliminado:\n♪${removedMsg}♪\nPor favor, enumera un saludo:${groupData.autoSambut.pesanList.length}`);
+    return m.reply(`🗑* Resultados de sentido eliminados*\n\nEliminado:\n•${removedMsg}•\nPor favor, enumera un saludo:${groupData.autoSambut.pesanList.length}`);
   }
 
   if (action === "pesan") {

@@ -139,7 +139,7 @@ ssh_pwauth: True`,
             `┃ 🌍 \`ʀᴇɢɪᴏɴ\`: *${region}*\n` +
             `┃ 💿 \`ᴏs\`: *Ubuntu 22.04*\n` +
             `╰───────────────\n\n` +
-            `♪⚠Disfrute de estos datos Guardar bien!`
+            `•⚠Disfrute de estos datos Guardar bien!`
         
         await sock.sendMessage(m.sender, { text: detailTxt })
         await m.reply(`✅*ᴠᴘSʙᴇʀʜᴀSɪʟ ᴅɪʙᴜᴀᴛ*\n\nDatos enviados a la charla primaria.`)

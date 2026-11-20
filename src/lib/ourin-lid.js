@@ -106,7 +106,7 @@ function getCachedJid(lid) {
 
 /**
 * Comproba si JID es un forte LID
-* @ param{string}jid @-@ JID para interceptar
+* @ param{string}jid JID para interceptar
 * @ devuelves{boolean}Cierto si LD
  */
 function isLid(jid) {
@@ -118,7 +118,7 @@ function isLid(jid) {
 * Comproba si JID es el resultado equivocado de la convergencia LED
 * ( JID CON SUFFIx@ s. Whatsappp. Net pero el número es LED número, no número de teléfono )
 * NUMBER LED SOLO: Muy largo, no comenzó con el código de estado normal
-* @ param{string}jid @-@ JID para interceptar
+* @ param{string}jid JID para interceptar
 * @ devuelves{boolean}Verdadero si lo posible llevó a un LID ya conversado
  */
 function isLidConverted(jid) {
@@ -265,7 +265,7 @@ function isLidConverted(jid) {
 El LID tiene un ID único que es diferente del número de teléfonos.
 * Está función sólo tiene la oportunidadx, para conseguir un número ágil
 * Use resolve Live From Participants with group metadata.
-* @ param{string}Jid @-@ JID QUE LUZ LID
+* @ param{string}Jid JID QUE LUZ LID
 * @ devuelves{string}JID en forte @ s. whatsapp.
  */
 function lidToJid(jid) {

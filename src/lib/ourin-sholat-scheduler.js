@@ -16,7 +16,7 @@ const SHOLAT_MESSAGES = {
   terbit:
     "☀# El tiempo está cayendo #\n\nMathaari ha sido mordido.\n¡Feliz vida hoy!",
   dhuha:
-    "🌤♪ DHUHA TIEMPO ♪\n\n\" Hi Brother, the time of Sholat Dhuha has come. \"\nNo olvides el shalaut Dhuha 2 @-@ 8 Raakat.",
+    "🌤 DHUHA TIEMPO •\n\n\" Hi Brother, the time of Sholat Dhuha has come. \"\nNo olvides el shalaut Dhuha 2 8 Raakat.",
   dzuhur:
     "🌞*Tiempo DZUHUR*\n\n\" Hi Brother, the time of Sholat Dhuhur has come \".\nDisfruta del wudhu y pronto.",
   ashar:
@@ -165,7 +165,7 @@ async function sendSholatNotifications(sholat, waktu) {
     let message = `${SHOLAT_MESSAGES[sholat] || `🕌 *WAKTU ${sholat.toUpperCase()}*`}\n\n⏰ *${waktu} WIB*\n📍 *${kotaSetting.nama}*`;
 
     if (closeGroup && isSholatTime) {
-      message += `\n\n♪🔒♪ Grupo cerrado ♪${duration}minutos para mostrar _`;
+      message += `\n\n•🔒 Grupo cerrado •${duration}minutos para mostrar _`;
     }
 
     for (const groupId of groupList) {

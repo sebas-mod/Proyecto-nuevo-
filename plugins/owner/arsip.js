@@ -65,8 +65,8 @@ async function handler(m, { sock }) {
     return m.reply(
       "📁 *ᴀʀsɪᴘ ᴄʜᴀᴛ*\n\n" +
         "> `.arsip 628xxx` — Arsipkan chat\n" +
-        "♪`- Césped artificial.`(en la charla primaria )—Arsisikan está charla\n" +
-        "♪`- Césped artificial.`(responder mensaje)—Archivar el chat del remitente\n" +
+        "•`- Césped artificial.`(en la charla primaria )—Arsisikan está charla\n" +
+        "•`- Césped artificial.`(responder mensaje)—Archivar el chat del remitente\n" +
         "> `.arsip buka 628xxx` — Buka arsip chat\n" +
         "> `.arsip semua` — Arsipkan semua chat",
     );

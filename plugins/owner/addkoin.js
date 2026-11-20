@@ -47,7 +47,7 @@ async function handler(m, { sock }) {
         return m.reply(
             `💰 *ᴀᴅᴅ ᴋᴏɪɴ*\n\n` +
             `> \`.addkoin <jumlah>\` - ke diri sendiri\n` +
-            `♪\`Addkain.<jumlah>@ usuario\`- A otra persona.\n` +
+            `•\`Addkain.<jumlah>@ usuario\`- A otra persona.\n` +
             `> Max: 9.000.000.000.000 (9T)\n\n` +
             `\`Contoh: ${m.prefix}addkoin 100000\``
         )

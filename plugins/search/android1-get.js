@@ -60,7 +60,7 @@ async function handler(m, { sock }) {
 
       m.react("✅");
     } else {
-      let caption = `♪⚠♪ En el agujero ♪`;
+      let caption = `•⚠ En el agujero •`;
 
       await sock.sendMessage(
         m.chat,

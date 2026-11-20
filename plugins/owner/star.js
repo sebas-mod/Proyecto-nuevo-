@@ -15,8 +15,8 @@ async function handler(m, { sock }) {
     if (!m.quoted) {
         return m.reply(
             '⭐ *sᴛᴀʀ ᴍᴇssᴀɢᴇ*\n\n' +
-            '♪`Estrella.`(responder mensaje)—Da estrella\n' +
-            '♪`.star elimina`(responder mensaje)—Elimina estrella'
+            '•`Estrella.`(responder mensaje)—Da estrella\n' +
+            '•`.star elimina`(responder mensaje)—Elimina estrella'
         )
     }
 

@@ -126,9 +126,9 @@ async function handler(m, context) {
       `┃ 🌐*Servidor:*${result.message}\n` +
       `┃ 🕒*Tiempo:*${new Date(result.fetched_at).toLocaleString('id-ID', { timeZone: 'Asia/Jakarta' })}\n` +
       `╰┈┈┈┈┈┈┈┈⬡\n\n` +
-      `♪🔒* ¡Ahorra tu dispositivo!\n` +
-      `♪📱Login en:https://viu.com (elige "Login via correo")\n` +
-      `♪⚠No cambie su contraseña. Ag se puede utilizar juntos.`;
+      `•🔒* ¡Ahorra tu dispositivo!\n` +
+      `•📱Login en:https://viu.com (elige "Login via correo")\n` +
+      `•⚠No cambie su contraseña. Ag se puede utilizar juntos.`;
 
     await m.reply(resultText);
     try {

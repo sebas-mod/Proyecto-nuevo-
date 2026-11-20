@@ -39,7 +39,7 @@ async function handler(m, { sock }) {
         return m.reply(
             '🔇 *ᴍᴜᴛᴇ ᴄʜᴀᴛ*\n\n' +
             '> `.mutechat 628xxx` — Mute chat\n' +
-            '♪`Mutechat.`(en la charla primaria )—Está charla de Mute\n' +
+            '•`Mutechat.`(en la charla primaria )—Está charla de Mute\n' +
             '> `.mutechat buka 628xxx` — Unmute chat'
         )
     }

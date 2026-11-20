@@ -120,7 +120,7 @@ async function handler(m, { sock }) {
   } catch (error) {
     console.error("[PAP Search]", error.message);
     await m.react("☢");
-    m.reply("😔PAP @-@ nivel stuntman, Pinterest servidor puede estar en problemas.");
+    m.reply("😔PAP nivel stuntman, Pinterest servidor puede estar en problemas.");
   }
 }
 

@@ -130,7 +130,7 @@ async function handler(m, { sock }) {
         txt += `*Comando:*\n`
         txt += `> \`.antitoxic on/off\`\n`
         txt += `> \`.antitoxic warn <1-10>\`\n`
-        txt += `♪\`antito.xic método kick / delete\`\n`
+        txt += `•\`antito.xic método kick / delete\`\n`
         txt += `> \`.addtoxic <kata>\`\n`
         txt += `> \`.deltoxic <kata>\`\n`
         txt += `> \`.listtoxic\``
@@ -175,7 +175,7 @@ async function handler(m, { sock }) {
         return
     }
 
-    await m.reply(`❌Sub @-@ comando unknown.\n> Escribe\`antito.xic\`para ver la lista de comandos.`)
+    await m.reply(`❌Sub comando unknown.\n> Escribe\`antito.xic\`para ver la lista de comandos.`)
 }
 
 exports.config = pluginConfig; exports.handler = handler; exports.isToxic = isToxic; exports.handleToxicMessage = handleToxicMessage; exports.DEFAULT_TOXIC_WORDS = DEFAULT_TOXIC_WORDS;

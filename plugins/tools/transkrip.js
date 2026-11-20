@@ -59,7 +59,7 @@ async function handler(m, { sock }) {
     if (!groqKey) {
         return m.reply(
             `❌ *ɢᴀɢᴀʟ*\n\n` +
-            `♪ Tener llave gema todavía no establecido\n` +
+            `• Tener llave gema todavía no establecido\n` +
             `> Set di config.js → APIkey.groq\n` +
             `* Grated in*https://console.groq.com`
         );

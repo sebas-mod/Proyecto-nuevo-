@@ -121,7 +121,7 @@ async function replyHandler(m, sock) {
         })
 
     } catch (error) {
-        await sock.sendMessage(m.chat, { text: `😅Sulapnya fallido...\n\n♪${error.message}` })
+        await sock.sendMessage(m.chat, { text: `😅Sulapnya fallido...\n\n•${error.message}` })
     }
 
     return true

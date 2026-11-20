@@ -288,7 +288,7 @@ class OurinGames {
         await m.react("❌");
         const hint = _ouringamedatajs.getProgressiveHint.call(void 0, answer, session.attempts);
         await m.reply(
-          `❌¡Eel @-@ bier!${hint}*\nRestante: *${_ouringamedatajs.formatRemainingTime.call(void 0, remaining)}*_`,
+          `❌¡Eel bier!${hint}*\nRestante: *${_ouringamedatajs.formatRemainingTime.call(void 0, remaining)}*_`,
         );
       }
 

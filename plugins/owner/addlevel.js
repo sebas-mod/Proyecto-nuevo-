@@ -39,7 +39,7 @@ async function handler(m, { sock }) {
     if (!targetJid || levels <= 0) {
         return m.reply(
             `📊 *ADD LEVEL*\n\n` +
-            `El sistema para añadir nivel a la entrada @-@ miembro de estilo.\n\n` +
+            `El sistema para añadir nivel a la entrada miembro de estilo.\n\n` +
             `*Uso:*\n` +
             `- *${m.prefix}addlevel de adición<jumlah>*— (a diri propio)\n` +
             `- *${m.prefix}addlevel de adición<jumlah>@ user *—(a otros)\n\n` +

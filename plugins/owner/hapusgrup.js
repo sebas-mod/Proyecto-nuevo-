@@ -24,8 +24,8 @@ async function handler(m, { sock }) {
     if (!targetJid || !targetJid.endsWith('@g.us')) {
         return m.reply(
             '🗑️ *ʜᴀᴘᴜs ɢʀᴜᴘ*\n\n' +
-            '♪`- Despejen el grupo.`( dentro de la ranura )—Sal de este grupo\n' +
-            '♪`- Despejen el grupo.<id_grup>` —Dejar el grupo absoluto\n\n' +
+            '•`- Despejen el grupo.`( dentro de la ranura )—Sal de este grupo\n' +
+            '•`- Despejen el grupo.<id_grup>` —Dejar el grupo absoluto\n\n' +
             '⚠*Para estar fuera del grupo, no para borrar*'
         )
     }

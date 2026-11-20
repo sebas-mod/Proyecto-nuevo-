@@ -6,7 +6,7 @@ const pluginConfig = {
   name: "sewabot",
   alias: ["sewa"],
   category: "owner",
-  description: "Toggle y gestionar el sistema de alquiler @-@ bot",
+  description: "Toggle y gestionar el sistema de alquiler bot",
   usage: ".sewabot <on/off/leave/status>",
   example: ".sewabot on",
   isOwner: true,
@@ -35,7 +35,7 @@ async function handler(m, { sock }) {
         `*Comando Disponible:*\n` +
         `• *${m.prefix}sewabot on *—Activar el sistema de alquiler\n` +
         `• *${m.prefix}sewabot off* —Desactivar el sistema de alquiler\n` +
-        `• *${m.prefix}sewabot leave *—Dejar todo lo que no @-@ whitelist grup\n\n` +
+        `• *${m.prefix}sewabot leave *—Dejar todo lo que no whitelist grup\n\n` +
         `*KELOLA Alquiler:*\n` +
         `• *${m.prefix}addsewa<link> <durasi>*—Añadir grupo + auto\n` +
         `• *${m.prefix}delsewa<link/id>*—Retirar el grupo de la lista blanca\n` +
@@ -99,7 +99,7 @@ async function handler(m, { sock }) {
     db.db.data.sewa.enabled = true;
     db.db.write();
     await m.react("🕕");
-    await m.reply(`🕕Sistema de alquiler activado, auto @-@ Deja procesamiento..`);
+    await m.reply(`🕕Sistema de alquiler activado, auto Deja procesamiento..`);
     try {
       global.isFetchingGroups = true;
       const allGroups = await sock.groupFetchAllParticipating();

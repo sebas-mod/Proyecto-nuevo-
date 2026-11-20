@@ -29,7 +29,7 @@ async function handler(m, { sock }) {
     txt += `👉 \`${m.prefix}confess número|mensaje\`\n\n`;
     txt += `*Ejemplo:*\n`;
     txt += `> \`${m.prefix}¡Me encanta tu sonrisa!\`\n\n`;
-    txt += `♪🤫Relájate, tu identidad es 100% segura y bien @-@ hecha!`;
+    txt += `• 🤫 Tranquilo, tu identidad es 100% anónima y segura.`;
     return m.reply(txt);
   }
 
@@ -73,11 +73,11 @@ async function handler(m, { sock }) {
   }
 
   const confessText = `💌* ¡Hay un servicio secreto hecho por usted! >💌\n\n` +
-    `Alguien ha estado en silencio enviándote mensajes.\n\n` +
-    `💬*Isi Mensaje:*\n` +
+    `Alguien te envió un mensaje anónimo.\n\n` +
+    `💬 *Mensaje:*\n` +
     `\`\`\`${message}\`\`\`\n\n` +
-    `♪🔒Para que Mensaje enviara de manera anónima.\n` +
-    `♪✉¡No puedes pedirme que me des la vuelta!`;
+    `• 🔒 Tu mensaje se enviará de forma anónima.\n` +
+    `• ✉ Nadie podrá saber quién lo envió.`;
 
   try {
     const sentMsg = await sock.sendMessage(targetJid, {
@@ -99,10 +99,10 @@ async function handler(m, { sock }) {
       global.confessData.delete(sentMsg.key.id);
     }, 24 * 60 * 60 * 1000);
 
-    let successTxt = `✅* MESFESS SLAMS SLAPPING *✅\n\n`;
-    successTxt += `♪📱Enviado a:\`${targetNumber}\`\n`;
-    successTxt += `♪🔒Su identidad es segura. ¡Sexos!\n\n`;
-    successTxt += `Cocinaré mi camino aquí.😉`;
+    let successTxt = `✅ *MENSAJE ENVIADO* ✅\n\n`;
+    successTxt += `• 📱 Enviado a: \`${targetNumber}\`\n`;
+    successTxt += `• 🔒 Tu identidad está a salvo. ¡Listo!\n\n`;
+    successTxt += `Gracias por confiar en el bot. 😉`;
     await m.reply(successTxt);
   } catch (error) {
     m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
@@ -127,10 +127,10 @@ async function replyHandler(m, { sock }) {
   const saluranName = _optionalChain([_configjs2.default, 'access', _18 => _18.saluran, 'optionalAccess', _19 => _19.name]) || _optionalChain([_configjs2.default, 'access', _20 => _20.bot, 'optionalAccess', _21 => _21.name]) || "Ourin-AI";
 
   const replyText = `💌* NO REFECTO FEESS Aquí Hermano! ]💌\n\n` +
-    `El hombre que envió tadis hace un rato nueva votación su mensaje:\n\n` +
-    `💬*Isi Respuesta:*\n` +
+    `Alguien respondió de forma anónima a tu mensaje:\n\n` +
+    `💬 *Respuesta:*\n` +
     `\`\`\`${replyMessage}\`\`\`\n\n` +
-    `♪🔒Relájate, tu identidad sigue siendo segura!`;
+    `• 🔒 Tranquilo, tu identidad sigue siendo anónima.`;
 
   try {
     await sock.sendMessage(confessInfo.senderChat, {

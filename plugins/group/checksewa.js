@@ -4,7 +4,7 @@ const pluginConfig = {
     name: 'checksewa',
     alias: ['ceksewa', 'sisasewa'],
     category: 'group',
-    description: 'Compruebe el alquiler @-@ a @-@ hora bot en este grupo',
+    description: 'Compruebe el alquiler a hora bot en este grupo',
     usage: '.checksewa',
     example: '.checksewa',
     isOwner: false,

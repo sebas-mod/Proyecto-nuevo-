@@ -21,7 +21,7 @@ const pluginConfig = {
   name: "schedule",
   alias: ["sched", "jadwal", "timer"],
   category: "owner",
-  description: "Bikin recuerda o gratis @-@ rango con text personalizado",
+  description: "Bikin recuerda o gratis rango con text personalizado",
   usage:
     ".schedule <add/edit/list/kategori/preset/detail/del/status> [options]",
   example: ".schedule preset sekolah 06:30",
@@ -347,7 +347,7 @@ function parsePlannerInput(m, args) {
 
   if (!raw) {
     throw new Error(
-      "❌Formato:`. Calendario añadido.<HH:MM>♪<kategori>♪<judul>♪<pesan>*Apunto* *repetúa*`",
+      "❌Formato:`. Calendario añadido.<HH:MM>•<kategori>•<judul>•<pesan>*Apunto* *repetúa*`",
     );
   }
 
@@ -385,7 +385,7 @@ function parsePlannerInput(m, args) {
 
   if (segments.length < 3) {
     throw new Error(
-      "❌Nuevo plano es mínimo:`. Calendario añadido.<HH:MM>♪<kategori>♪<judul>♪<pesan>`",
+      "❌Nuevo plano es mínimo:`. Calendario añadido.<HH:MM>•<kategori>•<judul>•<pesan>`",
     );
   }
 
@@ -422,7 +422,7 @@ function parsePresetInput(m, args) {
 
   if (!timeInfo) {
     throw new Error(
-      "❌Formato:`Predeterminado del programa.<nama> <HH:MM>♪<judul>♪<pesan>*Apunto* *repetúa*`",
+      "❌Formato:`Predeterminado del programa.<nama> <HH:MM>•<judul>•<pesan>*Apunto* *repetúa*`",
     );
   }
 
@@ -472,7 +472,7 @@ function parseEditInput(m, args, task) {
 
   if (!raw) {
     throw new Error(
-      "❌Formato edit:`. edición de horario.<id> <HH:MM>♪<kategori>♪<judul>♪<pesan>*Apunto* *repetúa*`o`. edición de horario.<id>Timme = 8: 00 p.m.x- Oye, repite.`",
+      "❌Formato edit:`. edición de horario.<id> <HH:MM>•<kategori>•<judul>•<pesan>*Apunto* *repetúa*`o`. edición de horario.<id>Timme = 8: 00 p.m.x- Oye, repite.`",
     );
   }
 

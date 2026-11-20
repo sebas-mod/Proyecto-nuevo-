@@ -66,7 +66,7 @@ async function handler(m, { sock }) {
   const db = _ourindatabasejs.getDatabase.call(void 0, )
   const paymentCfg = _configjs2.default.payment || {}
   const customText = db.setting('customPaymentText') || paymentCfg.customText || ''
-  const botName = _optionalChain([_configjs2.default, 'access', _ => _.bot, 'optionalAccess', _2 => _2.name]) || '♪'
+  const botName = _optionalChain([_configjs2.default, 'access', _ => _.bot, 'optionalAccess', _2 => _2.name]) || 'Bot'
   const ownerName = _optionalChain([_configjs2.default, 'access', _3 => _3.owner, 'optionalAccess', _4 => _4.name]) || 'Propietario'
 
   const text = buildPaymentText(paymentCfg, customText, botName, ownerName)

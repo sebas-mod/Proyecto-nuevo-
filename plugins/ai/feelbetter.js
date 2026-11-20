@@ -41,7 +41,7 @@ async function handler(m, { sock }) {
     if (!result.status) {
       await m.react("☢");
       return m.reply(
-        `❌*FeelBetter Fallido*\n\n♪${result.error || "Gagal mendapatkan respons"}`
+        `❌*FeelBetter Fallido*\n\n•${result.error || "Gagal mendapatkan respons"}`
       );
     }
 

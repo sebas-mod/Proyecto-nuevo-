@@ -131,7 +131,7 @@ async function handler(m, { sock, jadibotId, isJadibot }) {
       if (_ourinjadibotdatabasejs.addJadibotPremium.call(void 0, jadibotId, targetNumber)) {
         await m.react("💎");
         return m.reply(
-          `✅♪ Trabajar para añadir ♪${targetNumber}* Como un jabot premium`,
+          `✅ Trabajar para añadir •${targetNumber}* Como un jabot premium`,
         );
       } else {
         return m.reply(`❌ \`${targetNumber}\`Es una prima en este Skebot`);

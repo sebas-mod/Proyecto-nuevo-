@@ -63,7 +63,7 @@ async function handler(m, { sock }) {
     if (!targetJid) {
         return m.reply(
             `🔊 *UNMUTE MEMBER*\n\n` +
-            `♪Hacer una foto muda determinada\n\n` +
+            `•Hacer una foto muda determinada\n\n` +
             `\`Contoh:\`\n` +
             `> ${m.prefix}unmutemember @user\n` +
             `> ${m.prefix}unmutemember 6281234567890\n` +

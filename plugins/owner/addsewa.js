@@ -88,7 +88,7 @@ async function tryJoinGroup(sock, inviteCode, groupId) {
   if (!inviteCode)
     return {
       joined: false,
-      reason: "No hay código de invitación, externo @-@ botas construidas.",
+      reason: "No hay código de invitación, externo botas construidas.",
     };
   try {
     const botJid = _optionalChain([sock, 'access', _9 => _9.user, 'optionalAccess', _10 => _10.id, 'optionalAccess', _11 => _11.split, 'call', _12 => _12(":"), 'access', _13 => _13[0]]) + "@s.whatsapp.net";

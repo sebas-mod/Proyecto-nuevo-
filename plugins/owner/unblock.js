@@ -32,9 +32,9 @@ async function handler(m, { sock }) {
         return m.reply(
             '⚠️ *ᴄᴀʀᴀ ᴘᴀᴋᴀɪ*\n\n' +
             '> `.unblock 628xxx` — Unblock via nomor\n' +
-            '♪`. desbloquear.`(responder mensaje)—Desbloquear el remitente\n' +
-            '♪`. desbloquear @ mención` —Desbloquear la mención en @-@\n' +
-            '♪`. desbloquear.`(en la charla primaria )—Desbloquear a este usuario'
+            '•`. desbloquear.`(responder mensaje)—Desbloquear el remitente\n' +
+            '•`. desbloquear @ mención` —Desbloquear la mención en \n' +
+            '•`. desbloquear.`(en la charla primaria )—Desbloquear a este usuario'
         )
     }
 

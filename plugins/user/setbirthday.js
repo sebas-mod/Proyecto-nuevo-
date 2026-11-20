@@ -53,7 +53,7 @@ async function handler(m) {
     const month = parseInt(match[2])
     
     if (month < 1 || month > 12) {
-        return m.reply(`❌¡Toros no válidos! ( 1 @-@ 12 )`)
+        return m.reply(`❌¡Toros no válidos! ( 1 12 )`)
     }
     
     const daysInMonth = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]

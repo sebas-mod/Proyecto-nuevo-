@@ -104,7 +104,7 @@ function isEmail(str) {
 
 /**
 * Mención de parálisis de texn
-* @ param{string}texT @-@ Texn que contiene mención
+* @ param{string}texT Texn que contiene mención
 * @ devuelve *
  * @example
  * parseMention('@6281234567890 hello'); // ['6281234567890']
@@ -127,7 +127,7 @@ function escapeRegex(str) {
 
 /**
  * Deep clone object
-* @ param{Object}*Obtexto a @-@ clone*
+* @ param{Object}*Obtexto a clone*
  * @returns {Object} Cloned object
  */
 function deepClone(obj) {
@@ -156,7 +156,7 @@ function deepMerge(target, source) {
 
 /**
 * Búfer de búsqueda de URL
-* @ param{string}url @-@ URL para embrague
+* @ param{string}url URL para embrague
  * @param {Object} [options={}] - Axios options
 * @ devuelve { Promesa<Buffer>Buffer of the family
  * @example
@@ -176,7 +176,7 @@ async function fetchBuffer(url, options = {}) {
 
 /**
 * Buscar JSON desde URL
-* @ param{string}url @-@ URL para embrague
+* @ param{string}url URL para embrague
  * @param {Object} [options={}] - Axios options
  * @returns {Promise<Object>} JSON response
  * @example
@@ -196,7 +196,7 @@ async function fetchJson(url, options = {}) {
 
 /**
 * Fetch text de URL
-* @ param{string}url @-@ URL para embrague
+* @ param{string}url URL para embrague
  * @param {Object} [options={}] - Axios options
  * @returns {Promise<string>} Text response
  */
@@ -214,7 +214,7 @@ async function fetchText(url, options = {}) {
 
 /**
 * Descarga de archivo de URL y guardar a la ruta
-* @ param{string}url @-@ archivo URL para descargas
+* @ param{string}url archivo URL para descargas
 * @ param{string}Posh - Archivo de ruta para cargar el archivo
 * @ devuelve { Promesa<string>archivo Path guardado
  */
@@ -254,7 +254,7 @@ function sha256(str) {
 
 /**
  * Encode string ke Base64
-* @ param{string}*Canta a la @-@ codificación*
+* @ param{string}*Canta a la codificación*
  * @returns {string} Base64 encoded string
  */
 function toBase64(str) {
@@ -272,7 +272,7 @@ function fromBase64(str) {
 
 /**
 * Comproba si el deber es un archivo
-* @ param{string}Posh @-@ Send to Intern
+* @ param{string}Posh Send to Intern
 * @ devuelves{boolean}Es verdad si llenasxists y es archivo
  */
 function isFile(filePath) {
@@ -328,7 +328,7 @@ function readJsonFile(filePath, defaultValue = {}) {
 * Turlis objeto a json archivo
 * @ param{string} filePath - Path archivo JSON
 * @ param{Object}datos - Datos para escribir
-* @ param{boolean}♪ Es formación ♪
+* @ param{boolean}• Es formación •
 * @ devuelves{boolean}Verdadero si exitoso
  */
 function writeJsonFile(filePath, data, pretty = true) {
@@ -475,7 +475,7 @@ function unique(array) {
 /**
  * Group array by key
  * @param {Array<Object>} array - Array of objects
-* @ param{string}llave @-@ clave para agrupar
+* @ param{string}llave clave para agrupar
  * @returns {Object} Grouped object
  */
 function groupBy(array, key) {
@@ -492,7 +492,7 @@ function groupBy(array, key) {
 /**
  * Sort array of objects by key
  * @param {Array<Object>} array - Array of objects
-* @ param{string}llave @-@ para clasificar
+* @ param{string}llave para clasificar
 * @ param{string}Orden
  * @returns {Array<Object>} Sorted array
  */

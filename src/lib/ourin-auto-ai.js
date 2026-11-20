@@ -49,8 +49,8 @@ Necesito un grupo.
 - Destaque:
 Feliz mensaje de las botas que son el usuario de respuesta.
 - WARN: Da warning a member. Necesito objetivo.
-La convergencia del usuario de respuesta enviado / di @-@ a las pegatinas.
-- Un enlace anti @-@ en grupo.
+La convergencia del usuario de respuesta enviado / di a las pegatinas.
+- Un enlace anti en grupo.
 Obtener las fotos en Pinterest.
 
 ═══════════════════════════════════════
@@ -103,7 +103,7 @@ pie de página: terminado! ( opcional )
 
 Importante: texEl equipo de WAJB tiene el titular {{IE_0}... { / Iehaz 0} para cada URL. displayNames opcional, coma separado.
 
-4. LIST (cuando el usuario solicita información de formato corto @-@ lista de valor ):
+4. LIST (cuando el usuario solicita información de formato corto lista de valor ):
 [RICH:LIST]
 Título: Info
 filas: Nobre de la Uin AI; Versi Dz2. 4. 5; Desarrollo·Voces Globales
@@ -814,7 +814,7 @@ async function executeAction(action, m, sock) {
           db.save();
           results.push({
             ok: true,
-            msg: `@${targetNum}di @-@ kick por 3xadvertencia`,
+            msg: `@${targetNum}di kick por 3xadvertencia`,
           });
         } catch (e3) {}
       }

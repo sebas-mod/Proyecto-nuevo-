@@ -47,7 +47,7 @@ function handler(m) {
         txt += `╰┈┈┈┈┈┈┈┈⬡\n\n`
     }
     
-    txt += `♪ Predeterminado: ♪${DEFAULT_BLOCKED_LINKS.length}* link\n`
+    txt += `• Predeterminado: •${DEFAULT_BLOCKED_LINKS.length}* link\n`
     txt += `> Custom: *${customList.length}* link\n\n`
     txt += `\`${m.prefix}*Hay una línea de baile*<link>\`para anade\n`
     txt += `\`${m.prefix}delantilink <link>\` para eliminar`

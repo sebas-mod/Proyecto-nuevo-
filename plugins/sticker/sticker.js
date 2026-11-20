@@ -178,7 +178,7 @@ async function handler(m, { sock, config: botConfig }) {
         }
         
         const packname = options.packname || _optionalChain([botConfig, 'access', _ => _.sticker, 'optionalAccess', _2 => _2.packname]) || _optionalChain([botConfig, 'access', _3 => _3.bot, 'optionalAccess', _4 => _4.name]) || 'Ourin-AI'
-        const author = options.author || _optionalChain([botConfig, 'access', _5 => _5.sticker, 'optionalAccess', _6 => _6.author]) || _optionalChain([botConfig, 'access', _7 => _7.owner, 'optionalAccess', _8 => _8.name]) || '♪'
+        const author = options.author || _optionalChain([botConfig, 'access', _5 => _5.sticker, 'optionalAccess', _6 => _6.author]) || _optionalChain([botConfig, 'access', _7 => _7.owner, 'optionalAccess', _8 => _8.name]) || 'Bot'
         
         const hasProcessing = options.crop || options.resize || options.circle || options.rounded
         

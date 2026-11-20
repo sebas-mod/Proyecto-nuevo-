@@ -61,7 +61,7 @@ async function handler(m, { sock }) {
     caption += `- Hecho por Cuenta:${r.created_at || "-"}\n`;
     caption += `- Último acceso:${r.last_login || "-"}\n\n`;
     
-    caption += `🛡♪GUILD INFO♪\n`;
+    caption += `🛡GUILD INFO•\n`;
     caption += `- Nombre de Guid:${r.guild_name && r.guild_name !== "None" ? r.guild_name : "Tidak ada guild"}\n`;
     if (r.guild_name && r.guild_name !== "None") {
       caption += `  - Level Guild: ${r.guild_level || "-"}\n`;

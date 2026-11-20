@@ -154,7 +154,7 @@ async function handler(m, { sock, db }) {
       }
     } catch (error) {
       await m.reply(
-        `❌ *ᴇʀʀᴏʀ*\n\n` + `*Wah @-@ ho @-@ pom @-@ pom @-@ pom @-@ pom @-@ pom @-@ pom @-@ pom @-@@ pom @-@ pom @-@@ pom @-@ pom @-@ pom @-@ pom @-@\n` + `> _${error.message}_`,
+        `❌ *ᴇʀʀᴏʀ*\n\n` + `*Wah ho pom pom pom pom pom pom pom @ pom pom @ pom pom pom pom \n` + `> _${error.message}_`,
       );
     }
     return;

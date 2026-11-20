@@ -28,7 +28,7 @@ const truths = [
   "¿Quién es tu manteno más hermoso?",
   "¿Alguna vez le has mentido a un padre de una escuela?",
   "¿Cuál es la cosa más ridícula que has visto en tu historia en la búsqueda de Google?",
-  "¿Quién es el más divertido @-@ como miembro de este grupo?",
+  "¿Quién es el más divertido como miembro de este grupo?",
   "El último lugar en el que lloraste fue ¿por qué razón?",
   "¿Cuántas cuentas de saldo están en su cuenta ahora?",
   "¿Alguna vez has conocido el atascamiento de alguien?",
@@ -44,8 +44,8 @@ const dares = [
   "Ksena VN mujer que Mewing sigma skibidi con un tono series a grupo.",
   "Las cinco pegatinas más absurdas que tienes en este grupo ahora mismo.",
   "Etiqueta uno de los adminidores grupo y diga a su culo feo hoy.",
-  "Tu bio @-@ doc se convirtió en una mentira. Yo era un imbécil por un día.",
-  "¡El ángulo más obsceno del grupo más genial @-@ miembro de combate!",
+  "Tu bio doc se convirtió en una mentira. Yo era un imbécil por un día.",
+  "¡El ángulo más obsceno del grupo más genial miembro de combate!",
   "Buat 1 puisi alay tentang ayam goreng, bacakan lewat VN!",
   "Soy un niño de verdad y etiquetaré a tres tipos en este grupo.",
   "¡Mantén tu nombre completo en la voz de la vocalización VN!",
@@ -66,7 +66,7 @@ async function handler(m, { sock }) {
       let challengeText = "";
 
       if (isTruth) {
-        typeLabel = "🗣- ♪ VERDAD ♪🗣♪\n_ ( Debe respondió con una respuesta muy honesta! ) _";
+        typeLabel = "🗣- • VERDAD •🗣\n_ ( Debe respondió con una respuesta muy honesta! ) _";
         challengeText = truths[Math.floor(Math.random() * truths.length)];
       } else {
         typeLabel = "🔥DARE🔥\n¡Debe hacer, shrieba a grupo!";

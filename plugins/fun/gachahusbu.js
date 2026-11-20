@@ -7,7 +7,7 @@ const pluginConfig = {
   name: ["gachahusbu", "husbuaction", "tinggalinhusbu", "husbuku", "suamiku"],
   alias: ["gachasuami"],
   category: "fun",
-  description: "Gacha hushbu tus sueños, tu odio @-@ buts, y así es tu compañero!",
+  description: "Gacha husbando de tus sueños: conquista su corazón y cásate con él.",
   usage: ".gachahusbu | .husbuku | .tinggalinhusbu",
   example: ".gachahusbu",
   isOwner: false,
@@ -196,7 +196,7 @@ async function handler(m, { sock }) {
       `💎 *Tier:* ${husbu.tier}\n` +
       `💞 *Affection:* ${husbu.affection}/100\n` +
       `💍 *Status:* ${statusPernikahan}\n\n` +
-      `Continuar las interacciones eligiendo una de las acciones @-@ weenie en este swab!`;
+      `Continuar las interacciones eligiendo una de las acciones weenie en este swab!`;
 
     m.react("✅");
     return await sendHusbuMessage(m, sock, husbu, textContent, null);
@@ -261,7 +261,7 @@ async function handler(m, { sock }) {
             messageContextInfo: { deviceListMetadata: {}, deviceListMetadataVersion: 2 },
             interactiveMessage: {
               body: { text: panduan },
-              footer: { text: "Peel @-@ puffle in the bayou to call your soul mate 's clone!" },
+              footer: { text: "Peel puffle in the bayou to call your soul mate 's clone!" },
               nativeFlowMessage: {
                 buttons: [
                   { name: "quick_reply", buttonParamsJson: JSON.stringify({ display_text: "🎲¡Llama a Husbando ahora!", id: `${m.prefix}gachahusbu start` }) }
@@ -377,7 +377,7 @@ async function handler(m, { sock }) {
 
     if (action === "kencan_taman") {
       affectionChange = Math.floor(Math.random() * 10) + 10;
-      responseText = `🌳 *${husbu.name}* tanto como el viento @-@ llenado y mercado tiempo durmiendo en su vuelta en el escenario.`;
+      responseText = `🌳 *${husbu.name}* tanto como el viento llenado y mercado tiempo durmiendo en su vuelta en el escenario.`;
     }
     else if (action === "kencan_mall") {
       affectionChange = Math.floor(Math.random() * 15) + 10;
@@ -389,7 +389,7 @@ async function handler(m, { sock }) {
     }
     else if (action === "kencan_matcha") {
       affectionChange = -(Math.floor(Math.random() * 10) + 5);
-      responseText = `🍓Te compró una menta, pero eres un poco menos @-@ bellied, y parece aburrido y simplemente no dice nada.`;
+      responseText = `🍓Te compró una menta, pero eres un poco menos bellied, y parece aburrido y simplemente no dice nada.`;
     }
     else if (action === "kencan_romantis") {
       affectionChange = Math.floor(Math.random() * 15) + 10;
@@ -452,14 +452,14 @@ async function handler(m, { sock }) {
       user.fun.pasangan = husbuJid;
       db.setUser(husbuJid, { fun: { pasangan: m.sender }, name: husbu.name });
 
-      responseText = `💍* You Oficial RECEPTED THE LAMARAN${husbu.name.toUpperCase()}*💍\n\n¿Te está mirando mientras empuja el anillo del hermoso diamante, donde vas a ser mi esposa para siempre?\n\nComo su primer aliento, usted consigue:\n-⚡5000 Límite/Energía\n-💰100, 000 Saldo / Kain\n\nSus giras están en la función.\`Mira al novio.\`¡El par oficial con él!`;
+      responseText = `💍 *¡ACEPTASTE LA PROPUESTA DE ${husbu.name.toUpperCase()}!* 💍\n\nTe mira mientras te entrega un anillo de diamantes y te pregunta si serás su esposa para siempre.\n\nComo regalo de boda recibes:\n- ⚡ 5000 de límite/energía\n- 💰 100.000 de saldo/koin\n\n¡Ahora son pareja oficial!`;
       affectionChange = 0;
     }
     else if (action === "hadiah") {
-      if (husbu.affection < 100) return m.reply(`⚠Escucha, estoy ocupado, no me molestes!`);
+      if (husbu.affection < 100) return m.reply(`⚠ Todavía no te quiere lo suficiente para darte un regalo.`);
       affectionChange = 0;
       user.koin = (user.koin || 0) + 5000;
-      responseText = `💝 *${husbu.name}* Te y una tarjeta de crédito y sonríe, y lo llevan todo lo que puedas, buscaño.\nTu obteniendo💰5, 000 Monedas de mi marido!`;
+      responseText = `💝 *${husbu.name}* te da una tarjeta y sonríe: \"Toma todo lo que quieras\".\n¡Has recibido 💰 5000 monedas de tu esposo!`;
     }
     else if (["mesra", "rayu"].includes(action)) {
       if (!husbu.married) return m.reply(`¡Este truco es para marido y mujer!`);

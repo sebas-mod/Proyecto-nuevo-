@@ -40,7 +40,7 @@ async function handler(m, { sock }) {
     } catch (error) {
         await m.reply(
             `❌ *ᴇʀʀᴏʀ*\n\n` +
-            `♪ Hacer un grupo de personas. ♪\n` +
+            `• Hacer un grupo de personas. •\n` +
             `> _${error.message}_`
         );
     }

@@ -33,10 +33,10 @@ async function handler(m) {
     
     let txt = mentioned === m.sender ? `Hola @${mentioned.split('@')[0]}
     
-Tu loco @-@ tasa de actuación *${percent}%*
+Tu loco tasa de actuación *${percent}%*
 \`\`\`${desc}\`\`\`` : `Quieres revisar los niveles locos${mentioned.split('@')[0]} yak? 
     
-Su loco @-@ culo es tan grande como${percent}%*
+Su loco culo es tan grande como${percent}%*
 \`\`\`${desc}\`\`\``
     
     await m.reply(txt, { mentions: [mentioned] })

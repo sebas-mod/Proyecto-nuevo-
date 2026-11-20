@@ -21,7 +21,7 @@ if (!global.tembakSessions) global.tembakSessions = {};
 const SESSION_TIMEOUT = 3600000;
 const romanticQuotes = [
   "No soy piloto, pero puedo hacer que tu corazón vuele alto conmigo.💕",
-  "¿Sabes por qué amo a los hujans?🌧♪",
+  "¿Sabes por qué amo a los hujans?🌧",
   "Eres la razón por la que sonrío sin poder hacerlo.😊",
   "Si eres una estrella, quiero ser la que siempre te ve.✨",
   "Necesito GPS, porque mi corazón te está mostrando.💘",

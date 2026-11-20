@@ -87,7 +87,7 @@ async function modeStock(m) {
 
 async function modeWatch(watchItems, m, sock) {
   const wants = watchItems.map((w) => w.toLowerCase());
-  await m.reply(`👀 *Watching for:* ${watchItems.join(", ")}\n- Max5 iteraciones ( ~ 2. 5 minutos ). Re @-@ ejecutar para exTiende.`);
+  await m.reply(`👀 *Watching for:* ${watchItems.join(", ")}\n- Max5 iteraciones ( ~ 2. 5 minutos ). Re ejecutar para exTiende.`);
 
   for (let i = 1; i <= 5; i++) {
     const r = await gag2Fetch();

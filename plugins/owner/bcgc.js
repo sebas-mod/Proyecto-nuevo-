@@ -202,7 +202,7 @@ async function handler(m, { sock }) {
 
     await m.reply(
       `📢Grup de radiodifusión cargado\n\n` +
-        `♪📝Mensaje: *${text.substring(0, 50)}${text.length > 50 ? "..." : ""}*\n` +
+        `•📝Mensaje: *${text.substring(0, 50)}${text.length > 50 ? "..." : ""}*\n` +
         `> 📷 Media: *${mediaBuffer ? mediaType : "Tidak ada"}*\n` +
         `> 👥 Objetivo: *${groupIds.length}* grup\n` +
         `> ⏱️ Jeda: *${formatDelay(jeda)}*\n` +
@@ -220,9 +220,9 @@ async function handler(m, { sock }) {
         delete global.statusBcgc;
         await m.reply(
           `⏹* Paleta de Grupo de Radiodifusión *\n\n` +
-            `♪✅Exito: *${success}*\n` +
-            `♪❌Fallido: *${failed}*\n` +
-            `♪⏸Restante: *${groupIds.length - success - failed}*`,
+            `•✅Exito: *${success}*\n` +
+            `•❌Fallido: *${failed}*\n` +
+            `•⏸Restante: *${groupIds.length - success - failed}*`,
         );
         return;
       }
@@ -286,8 +286,8 @@ async function handler(m, { sock }) {
     m.react("✅");
     await m.reply(
       `✅¡Grupo de radiodifusión está terminado!\n\n` +
-        `♪✅Exito: *${success}*\n` +
-        `♪❌Fallido: *${failed}*\n` +
+        `•✅Exito: *${success}*\n` +
+        `•❌Fallido: *${failed}*\n` +
         `> 📊 Total: *${groupIds.length}*`,
     );
   } catch (e) {
@@ -302,14 +302,14 @@ async function handleSetDelay(m, db, input) {
 
   if (!input) {
     return m.reply(
-      `⏱♪Pahuda Grupo de la camara ancha♪\n\n` +
-        `El tiempo @-@ viaje de los mensajes va a cada grupo.\n` +
+      `⏱•Pahuda Grupo de la camara ancha•\n\n` +
+        `El tiempo viaje de los mensajes va a cada grupo.\n` +
         `Bastante largo para jeda, lo suficientamante seguro de la determinación del spam.\n\n` +
         `Pausa está vez:${formatDelay(current)}* (*${current}ms*)\n\n` +
         `*Como usarlo:*\n` +
         `> *${m.prefix}jedabcgc <angka><satuan>*\n\n` +
         `*SATUAN:*\n` +
-        `♪ ♪—segundo•* m *—minuto•* h *—hora•* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *— el\n\n` +
+        `• •—segundo•* m *—minuto•* h *—hora•* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *— el\n\n` +
         `*Ejemplo:*\n` +
         `> *${m.prefix}jedabcgc 5s* → 5 detik\n` +
         `> *${m.prefix}jedabcgc 2m* → 2 menit\n` +
@@ -326,7 +326,7 @@ async function handleSetDelay(m, db, input) {
   return m.reply(
     `✅* Pausa radiodifusión Grupo Subido *\n\n` +
       `Anteriormente en Salem...${formatDelay(current)}* (*${current}ms*)\n` +
-      `♪ Ahora ♪${formatDelay(ms)}* (*${ms}ms*)\n\n` +
+      `• Ahora •${formatDelay(ms)}* (*${ms}ms*)\n\n` +
       `Estigación 100 grupo:${Math.ceil((100 * ms) / 60000)}minuto*`,
   );
 }

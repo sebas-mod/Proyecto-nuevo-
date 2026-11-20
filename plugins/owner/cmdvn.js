@@ -30,7 +30,7 @@ function handler(m) {
             `> \`${m.prefix}cmdvn on\` —Comando vía VN\n` +
             `> \`${m.prefix}cmdvn off\` —Comando a través de text (predeterminado)\n\n` +
             `EzSaat On, enviar VN con un nombre de comandante\n` +
-            `♪→dispara. menú`
+            `•→dispara. menú`
         )
     }
 
@@ -39,8 +39,8 @@ function handler(m) {
         return m.reply(
             `✅ *ᴄᴍᴅ ᴠɴ ᴀᴋᴛɪꜰ*\n\n` +
             `La nota de voz de Kseni contiene un nombre de comandante\n` +
-            `♪ ♪ ♪ ♪ ♪\n` +
-            `♪→dispara. menú`
+            `• • •\n` +
+            `•→dispara. menú`
         )
     }
 

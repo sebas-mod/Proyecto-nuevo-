@@ -223,7 +223,7 @@ const config = {
   },
 
 
-  //Usted desea ordenarlo, es un deber @-@ llenar yak
+  //Usted desea ordenarlo, es un deber llenar yak
   //Pon el apkey en:https://aistudio.google.com/apikey
   geminiApiKey: "",
 

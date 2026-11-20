@@ -23,7 +23,7 @@ async function handler(m, { sock }) {
       `❌ *ᴛɪᴅᴀᴋ ᴀᴅᴀ ᴀʙsᴇɴ*\n\n` +
         `¡Hay una sesión de absesión en este grupo!\n\n` +
         `*El adicto puede ser cuidadoso con\n` +
-        `♪ Comiencen un bosen ♪ ♪ Para olvidar ♪`,
+        `• Comiencen un bosen • Para olvidar •`,
     );
   }
   const absen = global.absensi[chatId];

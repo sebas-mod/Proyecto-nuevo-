@@ -99,7 +99,7 @@ async function handler(m, { sock, db }) {
       database.setting("autoSholatCloseGroup", false);
       await m.react("🔓");
       return m.reply(
-        `🔓♪ Fumble Shuffle Grupo Automático Dislabel. ♪\n\n` +
+        `🔓 Fumble Shuffle Grupo Automático Dislabel. •\n\n` +
         `Ahora el grupo no será cerrado mientras lucha aviar, por lo que los ramblings pueden continuar sin servicio.`
       );
     }
@@ -137,7 +137,7 @@ async function handler(m, { sock, db }) {
       await m.react("📍");
       return m.reply(
         `📍" The Memory Locations are Refurbished! "\n\n` +
-        `Un montón de programas controlados por sholar @-@ se recalibran ahora para conformarse con la * región${result.lokasi}**.`
+        `Un montón de programas controlados por sholar se recalibran ahora para conformarse con la * región${result.lokasi}**.`
       );
     } catch (e) {
       await m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
@@ -236,7 +236,7 @@ async function runAutoSholat(sock) {
           }, duration * 60 * 1000);
         }
         
-        console.log(`Penyiaran adzan ${sholat}Con éxito${groupList.length}Un montón de paralelo @-@ como grupos.`);
+        console.log(`Penyiaran adzan ${sholat}Con éxito${groupList.length}Un montón de paralelo como grupos.`);
       } catch (error) {
         global.isFetchingGroups = false;
         console.error("Tengo un fallo en el verdugo:", error.message);

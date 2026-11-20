@@ -18,7 +18,7 @@ const pluginConfig = {
 };
 
 const celebrationQuotes = [
-  "¡Larga @-@ lema de término al matrimonio!💍",
+  "¡Larga lema de término al matrimonio!💍",
   "De amigo a amor, hermoso!💕",
   "Love is in the air! 💖",
   "Couple goals detected! 💑",

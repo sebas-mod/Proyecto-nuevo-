@@ -33,7 +33,7 @@ async function handler(m) {
     
     let txt = mentioned === m.sender ? `Hola @${mentioned.split('@')[0]}
     
-Tu duro @-@ en @-@ el nivel @-@ spot${percent}%*
+Tu duro en el nivel spot${percent}%*
 \`\`\`${desc}\`\`\`` : `Quieres comprobar el nivel de ferocidad${mentioned.split('@')[0]} yak? 
     
 Es tan alto como un hombre en sus brazos${percent}%*

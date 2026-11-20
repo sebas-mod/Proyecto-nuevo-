@@ -79,7 +79,7 @@ async function handler(m, { sock, db, uptime, config: botConfig }) {
     const table = [
       "📊* Estadísticas",
       "Key | Value",
-      `♪${statsObj.bot};;Version | ${statsObj.version};;Uptime | ${statsObj.uptime}`,
+      `•${statsObj.bot};;Version | ${statsObj.version};;Uptime | ${statsObj.uptime}`,
       `Users | ${statsObj.database.users}; Premium${statsObj.database.premium};;Groups | ${statsObj.database.groups}`,
       `Platform | ${statsObj.system.platform};;Node | ${statsObj.system.node};;CPU Load | ${statsObj.system.cpuLoad}`,
       `RAM | ${statsObj.system.ram};;Heap | ${statsObj.system.heap};;Updated | ${statsObj.updated}`,

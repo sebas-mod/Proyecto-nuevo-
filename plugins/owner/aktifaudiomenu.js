@@ -43,7 +43,7 @@ async function handler(m, { sock, db }) {
 
     if (option === 'gak' || option === 'off' || option === '0' || option === 'nonaktif') {
         if (!current) {
-            return m.reply(`⚠¡El menú Audio está fuera de la línea @-@!`)
+            return m.reply(`⚠¡El menú Audio está fuera de la línea !`)
         }
         db.setting('audioMenu', false)
         await db.save()

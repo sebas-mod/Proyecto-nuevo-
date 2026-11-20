@@ -20,7 +20,7 @@ async function handler(m) {
                     
     let desc = ''
     if (percent >= 90) desc = 'Eres mía para siempre ~🔪💕'
-    else if (percent >= 70) desc = 'No se acerque a él.👁♪'
+    else if (percent >= 70) desc = 'No se acerque a él.👁'
     else if (percent >= 50) desc = 'Overprotective sedikit~ 🫂'
     else if (percent >= 30) desc = 'Agak posesif 😅'
     else desc = 'Normal kok, santai~ 😊'

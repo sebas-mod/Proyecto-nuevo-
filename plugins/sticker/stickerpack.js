@@ -124,11 +124,11 @@ async function handler(m, { sock }) {
 
     if (!detail.status || !_optionalChain([detail, 'access', _8 => _8.stickers, 'optionalAccess', _9 => _9.length])) {
       await m.react("✘");
-      return m.reply(`──.✦ ──\n\nPara gafl tomar un detalle de la caja de pegatina.☘♪˖`);
+      return m.reply(`──.✦ ──\n\nNo se pudieron obtener los detalles del paquete de stickers.☘˖`);
     }
 
     await m.reply(
-      `──.✦ ──\n\nContrabando *${randPick.name}*\n> ${Math.min(detail.stickers.length, MAX_STICKERS)} sticker .☘︎ ݁˖`,
+      `──.✦ ──\n\nDescargando *${randPick.name}*\n> ${Math.min(detail.stickers.length, MAX_STICKERS)} stickers ☘︎ ݁˖`,
     );
 
     const limited = detail.stickers.slice(0, MAX_STICKERS);
@@ -147,11 +147,11 @@ async function handler(m, { sock }) {
 
     if (!stickerBuffers.length) {
       await m.react("✘");
-      return m.reply(`──.✦ ──\n\n*Ganas de descarga de saltos.*☘♪˖`);
+      return m.reply(`──.✦ ──\n\n*No se pudo descargar ningún sticker.*☘˖`);
     }
 
     const packname = randPick.name || _optionalChain([_configjs2.default, 'access', _10 => _10.sticker, 'optionalAccess', _11 => _11.packname]) || "Ourin-AI";
-    const author = _optionalChain([_configjs2.default, 'access', _12 => _12.bot, 'optionalAccess', _13 => _13.developer]) || _optionalChain([_configjs2.default, 'access', _14 => _14.sticker, 'optionalAccess', _15 => _15.author]) || "♪";
+    const author = _optionalChain([_configjs2.default, 'access', _12 => _12.bot, 'optionalAccess', _13 => _13.developer]) || _optionalChain([_configjs2.default, 'access', _14 => _14.sticker, 'optionalAccess', _15 => _15.author]) || "Bot";
 
     try {
       await sock.sendStickerPack(m.chat, stickerBuffers, m, {
@@ -166,7 +166,7 @@ async function handler(m, { sock }) {
     } catch (packErr) {
       console.error("[StickerPack] Pack send failed:", packErr.message);
       await m.reply(
-        `──.✦ ──\n\n♪ Pack fail, enviar uno a la vez. ♪☘♪˖`,
+        `──.✦ ──\n\n• Falló el envío del paquete; enviando uno por uno.☘˖`,
       );
 
       let sent = 0;
@@ -198,11 +198,11 @@ async function handler(m, { sock }) {
       if (sent > 0) {
         await m.react("✓");
         await m.reply(
-          `──.✦ ──\n\n♪ Trabajar mi manera ♪${sent}* Pegatina que *${packname}* .☘︎ ݁˖`,
+          `──.✦ ──\n\n• Enviados ${sent} stickers de *${packname}*.☘︎ ݁˖`,
         );
       } else {
         await m.react("✘");
-        await m.reply(`──.✦ ──\n\n- Sí.☘♪˖`);
+        await m.reply(`──.✦ ──\n\n• No se pudo enviar ningún sticker. ☘˖`);
       }
     }
   } catch (error) {

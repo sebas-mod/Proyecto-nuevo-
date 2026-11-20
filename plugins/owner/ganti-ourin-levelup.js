@@ -20,14 +20,14 @@ const pluginConfig = {
 
 async function handler(m, { sock }) {
     const isImage = m.isImage || (m.quoted && m.quoted.type === 'imageMessage')
-    if (!isImage) return m.reply(`🖼♪ɢᴀɴᴛɪ¿Qué?\n\n# Ksently / réplica imágenes para reemplazar\nâ a Archivo: activos / imágenes / nuestrain - nivelup.`)
+    if (!isImage) return m.reply(`🖼ɢᴀɴᴛɪ¿Qué?\n\n# Ksently / réplica imágenes para reemplazar\nâ a Archivo: activos / imágenes / nuestrain - nivelup.`)
     try {
         let buffer = m.quoted && m.quoted.isMedia ? await m.quoted.download() : await m.download()
         if (!buffer) return m.reply('❌Paso de descarga de imagen')
         await m.reply(`⏳La jaula subió una foto..`)
         try {
             const newUrl = await _ourinuploaderjs.updateAssetUrl.call(void 0, 'ourin-levelup', buffer, 'ourin-levelup.jpg')
-            m.reply(`✅*ʙᴇʀʜᴀSɪʟ*\n\nEstoGambar ourin - nivelup. Jpg ha sido transferido a la nueva URL:\n♪${newUrl}\n" Config has been updated as a reality "!`)
+            m.reply(`✅*ʙᴇʀʜᴀSɪʟ*\n\nEstoGambar ourin - nivelup. Jpg ha sido transferido a la nueva URL:\n•${newUrl}\n" Config has been updated as a reality "!`)
         } catch (e) {
             m.reply(`❌Gagalm subió la imagen:${e.message}`)
         }

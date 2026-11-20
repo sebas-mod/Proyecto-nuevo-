@@ -24,7 +24,7 @@ async function handler(m, { sock }) {
     return m.reply(
       `🎮* FRANURA JUEGO GRUPP *\n\n` +
         `Utilice este comando para configurar la foto de acción en la función de juego.\n\n` +
-        `• *${m.prefix}game ♪ Dame en ♪ - ♪ Puede jugar juego ♪\n` +
+        `• *${m.prefix}game • Dame en • - • Puede jugar juego •\n` +
         `• *${m.prefix}game # Dame de encima # - # No puedo jugar #\n\n` +
         `* Catalán: * Admin todavía puede acceder al juego aunque presionado.`,
     );

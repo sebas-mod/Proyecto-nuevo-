@@ -6,7 +6,7 @@ var _ourinutilsjs = require('./ourin-utils.js');
 /**
  * @typedef {Object} MessageOptions
 * @ proprie{Object}Mensaje a
-* @ proprie{boolean}♪
+* @ proprie{boolean}•
 *Voy a morir* *voy a morir*
  */
 
@@ -26,7 +26,7 @@ var _ourinutilsjs = require('./ourin-utils.js');
 * Mensajes Ksender texn
  * @param {Object} sock - Socket connection
  * @param {string} jid - JID tujuan
-* @ param{string}texT @-@ Text para enviar
+* @ param{string}texT Text para enviar
 * @ param{MessageOptions}* Echotions *{}- Opsia de mensaje
  * @returns {Promise<Object>} Sent message
  * @example
@@ -50,8 +50,8 @@ async function sendText(sock, jid, text, options = {}) {
 * Mensaje Ksender con respuesta
  * @param {Object} sock - Socket connection
  * @param {string} jid - JID tujuan
-* @ param{string}texT @-@ Text para enviar
-* @ param{Object}- La cita de Mensaje se hace en @-@ respuesta
+* @ param{string}texT Text para enviar
+* @ param{Object}- La cita de Mensaje se hace en respuesta
  * @returns {Promise<Object>} Sent message
  */
 async function sendReply(sock, jid, text, quoted) {
@@ -63,7 +63,7 @@ async function sendReply(sock, jid, text, quoted) {
  * @param {Object} sock - Socket connection
  * @param {string} jid - JID tujuan
 * @ param { Buffer { Buffer} Takstring } image
-* @ param{string}*Capción* *Capción @-@ dibujo de la Capción*
+* @ param{string}*Capción* *Capción dibujo de la Capción*
 * @ param{MessageOptions}* Echotions *{}- Opsia de mensaje
  * @returns {Promise<Object>} Sent message
  * @example
@@ -335,7 +335,7 @@ async function sendReact(sock, jid, emoji, key) {
 * Mensaje de Ksender con incinerador de escribir
  * @param {Object} sock - Socket connection
  * @param {string} jid - JID tujuan
-* @ param{string}texT @-@ Text para enviar
+* @ param{string}texT Text para enviar
 * @ param{number}Delay
 * @ param{MessageOptions}* Echotions *{}- Opsia de mensaje
  * @returns {Promise<Object>} Sent message
@@ -401,11 +401,11 @@ async function deleteMessage(sock, jid, key) {
 /**
 * He hecho el mensaje de citas tonto para respuesta falsa
  * @param {string} jid - JID pengirim
-* @ param{string}texT @-@ Text mensaje
+* @ param{string}texT Text mensaje
 * @ param{string}- El nombre del remitente
  * @returns {Object} Dummy quoted message
  */
-function createQuotedDummy(jid, text, pushName = "♪") {
+function createQuotedDummy(jid, text, pushName = "•") {
   return {
     key: {
       fromMe: false,
@@ -423,12 +423,12 @@ function createQuotedDummy(jid, text, pushName = "♪") {
 * Mensaje de persecución con vista previa de enlace de miniatura
  * @param {Object} sock - Socket connection
  * @param {string} jid - JID tujuan
-* @ param{string}texT @-@ Text mensaje
+* @ param{string}texT Text mensaje
  * @param {Object} preview - Preview data
  * @param {string} preview.title - Judul preview
  * @param {string} preview.body - Body preview
-* @ param{string}texT @-@ Texmenú
-♪ Los diarios del vampiro ♪
+* @ param{string}texT Texmenú
+• Los diarios del vampiro •
 * @ param{MessageOptions}* Echotions *{}- Opsia de mensaje
  * @returns {Promise<Object>} Sent message
  */

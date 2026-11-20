@@ -40,7 +40,7 @@ async function handler(m, { sock }) {
         await m.reply(`⏳La jaula subió una foto..`)
         try {
             const newUrl = await _ourinuploaderjs.updateAssetUrl.call(void 0, 'ourin-mp4', buffer, 'ourin.mp4')
-            m.reply(`✅*ʙᴇʀʜᴀSɪʟ*\n\n" Archivo ourin. ". " mp4 has been transferred to the new URL:\n♪${newUrl}\n" Config has been updated as a reality "!`)
+            m.reply(`✅*ʙᴇʀʜᴀSɪʟ*\n\n" Archivo ourin. ". " mp4 has been transferred to the new URL:\n•${newUrl}\n" Config has been updated as a reality "!`)
         } catch (e) {
             m.reply(`❌Archivo cargado de Gagalm:${e.message}`)
         }

@@ -38,10 +38,10 @@ async function handler(m, { sock }) {
         await sock.sendMessage(m.chat, {
             text:
                 `🗑️ *ᴅᴀᴛᴀ ᴅɪʀᴇsᴇᴛ*\n\n` +
-                `♪📁 Archivo restablecido: *${result.resetCount}/${result.total}*\n` +
+                `•📁 Archivo restablecido: *${result.resetCount}/${result.total}*\n` +
                 `> 💾 Backup: \`${result.backupFolder}/\`\n\n` +
                 `Todos los datos han sido restaurados por defecto.\n\n` +
-                `♪⚠Reinicie el bot para hacer sincronizar datos`
+                `•⚠Reinicie el bot para hacer sincronizar datos`
         }, { quoted: m })
         return
     }
@@ -85,7 +85,7 @@ async function handler(m, { sock }) {
     }
 
     txt += `\n> 📦 Total: *${(totalSize / 1024).toFixed(1)} KB*\n`
-    txt += `♪💾Reverso automático creado antes de reiniciar\n\n`
+    txt += `•💾Reverso automático creado antes de reiniciar\n\n`
     txt += `Escribe\`${m.prefix}hapusdata ya\`60 segundos para completar.`
 
     await sock.sendMessage(m.chat, {

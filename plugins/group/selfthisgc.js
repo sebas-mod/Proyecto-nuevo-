@@ -44,8 +44,8 @@ async function handler(m, { sock }) {
   return m.reply(
     `🔒 *ᴍᴏᴅᴇ sᴇʟꜰ ᴀᴋᴛɪꜰ*\n\n` +
       `Este grupo está respondiendo sólo:\n` +
-      `♪•Propietario bot\n` +
-      `♪•Vive por ti mismo (de mí)\n\n` +
+      `••Propietario bot\n` +
+      `••Vive por ti mismo (de mí)\n\n` +
       `📋Otro Grupo no está afectado\n\n` +
       `*Usarlo*${m.prefix}publicthisgc public public`,
   );

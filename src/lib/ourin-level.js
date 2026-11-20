@@ -24,7 +24,7 @@ async function checkAndNotifyLevelUp(sock, m, db, user, oldExp, newExp) {
   const { createCanvas, loadImage, GlobalFonts } =
     await Promise.resolve().then(() => _interopRequireWildcard(require("@napi-rs/canvas")));
   /**
-* Fungi para hacer un Anime @-@ temático Nivel Subir imagen
+* Fungi para hacer un Anime temático Nivel Subir imagen
    * @param {Object} data - Data user
 * @ param{string}datos. Nombre - nombre del usuario
 * @ param{number}datos.

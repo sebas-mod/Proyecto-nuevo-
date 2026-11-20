@@ -57,7 +57,7 @@ async function handler(m, { sock }) {
   
   let msg = `✅* SITUACIÓN DE LA HEAVILY *\n\n`;
   if (successList.length > 0) {
-    msg += `*Exito (FREE🆓♪\n${successList.map(f => `- ${f}`).join("\n")}\n\n`;
+    msg += `*Exito (FREE🆓\n${successList.map(f => `- ${f}`).join("\n")}\n\n`;
   }
   if (failedList.length > 0) {
     msg += `* Impresionantemente (no se encuentra ):\n${failedList.map(f => `- ${f}`).join("\n")}\n\n`;

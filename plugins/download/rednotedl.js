@@ -37,7 +37,7 @@ async function handler(m, { sock }) {
 
     if (!result.status) {
       m.react("☢");
-      return m.reply(`❌*RedNote Fallido*\n\n♪${result.error}`);
+      return m.reply(`❌*RedNote Fallido*\n\n•${result.error}`);
     }
 
     if (result.type === "video" && _optionalChain([result, 'access', _4 => _4.results, 'optionalAccess', _5 => _5[0]])) {

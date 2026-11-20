@@ -38,7 +38,7 @@ async function handler(m, { sock, text }) {
     const results = data.result.slice(0, 5);
     const firstResult = results[0];
 
-    let contentText = `✨* EL PRESIDENTE DE SPOTIFY search *✨\n\nMe las arreglé para encontrar algunas de las palabras clave @-@ canciones basadas.${text}* El trono es su lista:\n\n`;
+    let contentText = `✨* EL PRESIDENTE DE SPOTIFY search *✨\n\nMe las arreglé para encontrar algunas de las palabras clave canciones basadas.${text}* El trono es su lista:\n\n`;
 
     results.forEach((t, i) => {
       contentText += `*${i + 1}. ${t.title}*\n`;
@@ -47,7 +47,7 @@ async function handler(m, { sock, text }) {
       contentText += `   🔗Enlace:${t.url}\n\n`;
     });
 
-    contentText += `Puedes mezclar una melodía en la parte superior y usar el comando\`.<link>\`O el putt @-@ presión de puck en este pantano para la primera canción.🚀`;
+    contentText += `Puedes mezclar una melodía en la parte superior y usar el comando\`.<link>\`O el putt presión de puck en este pantano para la primera canción.🚀`;
 
     let thumbnailBuffer = null;
     try {

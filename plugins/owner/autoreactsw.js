@@ -43,7 +43,7 @@ async function handler(m) {
         return m.reply(
             `✅ *ᴀᴜᴛᴏ ʀᴇᴀᴄᴛ sᴛᴏʀʏ ᴀᴋᴛɪꜰ*\n\n` +
             `> Emoji: *${emoji}*\n` +
-            `♪ Para la automatización leer todas las historias de la WA ♪`
+            `• Para la automatización leer todas las historias de la WA •`
         )
     }
 

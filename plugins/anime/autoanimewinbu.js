@@ -44,10 +44,10 @@ async function handler(m, { sock, args }) {
 
             return sock.sendMessage(m.chat, {
                 text: `✅ *ᴀᴜᴛᴏ ᴀɴɪᴍᴇ sᴛᴀʀᴛᴇᴅ*\n\n` +
-                    `♪📲Objetivos de grupo: *${groups.length}*\n` +
+                    `•📲Objetivos de grupo: *${groups.length}*\n` +
                     `> ⏱️ Interval: *${interval}minuto*\n` +
                     `> 🎞️ Filter: *Pixeldrain 720p+*\n` +
-                    `♪⏰Maxedad: * 24 horas *\n\n` +
+                    `•⏰Maxedad: * 24 horas *\n\n` +
                     `Se inició el primer cheque..`,
                 interactiveButtons: [
                     {
@@ -82,9 +82,9 @@ async function handler(m, { sock, args }) {
             let txt = `📊 *ᴀᴜᴛᴏ ᴀɴɪᴍᴇ sᴛᴀᴛᴜs*\n\n`
             txt += `> 🔄 Status: *${running ? '🟢 ON' : '🔴 OFF'}*\n`
             txt += `> 💾 Auto-start: *${state.enabled ? 'Ya' : 'Tidak'}*\n`
-            txt += `♪📋## Sent: *${sent.size}* episode\n`
+            txt += `•📋## Sent: *${sent.size}* episode\n`
             txt += `> ⏱️ Interval: *${state.interval || 5}minuto*\n`
-            txt += `♪📲Objetivos de grupo: *${groups.length}*\n`
+            txt += `•📲Objetivos de grupo: *${groups.length}*\n`
 
             if (groups.length > 0) {
                 txt += `\n*Grupo:*\n`

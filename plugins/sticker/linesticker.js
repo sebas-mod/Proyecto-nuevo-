@@ -75,7 +75,7 @@ async function handler(m, { sock }) {
             `┃ 🎬 *Animated:* ${isAnimated ? 'Ya' : 'Tidak'}\n` +
             `┃ 📊 *Total:* ${stickerUrls.length}\n` +
             `╰┈┈┈┈┈┈┈┈⬡\n\n` +
-            `♪🕕Enviando sticker...`
+            `•🕕Enviando sticker...`
         )
         
         const maxStickers = Math.min(stickerUrls.length, 10)

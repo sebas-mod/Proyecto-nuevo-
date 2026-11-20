@@ -92,8 +92,8 @@ async function handler(m, { sock, db }) {
     `La pantalla allmenu muestra toda la lista de comandos de arranque en una página.📖✨\n` +
     `Variable actual: * V${current} — ${_optionalChain([VARIANTS, 'access', _6 => _6[`v${current}`], 'optionalAccess', _7 => _7.name]) || "Unknown"}* 🎯\n\n` +
     `*Explicación VARIANT:*\n\n` +
-    `- * V1 Simple Text ♪📝 —Lista de comandos se llamaxno imagen regular o contextInfo, mareo y rápido @-@ presionado\n\n` +
-    `- * V2 Imágenes + Context ♪🖼♪—Imagen cabezal allmenu + conte completoxtfo con boletines informativos, pantalla estandarizada informativa\n\n` +
+    `- * V1 Simple Text •📝 —Lista de comandos se llamaxno imagen regular o contextInfo, mareo y rápido presionado\n\n` +
+    `- * V2 Imágenes + Context •🖼—Imagen cabezal allmenu + conte completoxtfo con boletines informativos, pantalla estandarizada informativa\n\n` +
     `- * V3 Doucuments *📄 —Allmenu envió como documento de llenado con miniatura pequeña y verificar respuesta de citas, visto como archivo remi\n\n` +
     `- * Botón Interactivo V4 *🔘 —Mensaje interactivo con pinguol de un soloxecto para seleccionar categoría y rapidogreply para la navegación, pantalla moderna\n\n` +
     `- * V5 NativeFlow *✨ —Mensaje de flujo de Native con límite\n\n` +

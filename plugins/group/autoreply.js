@@ -126,7 +126,7 @@ async function handler(m, { sock }) {
             await db.save()
             
             m.react('🗑️')
-            return m.reply(`🗑♪ GLOBAL AUTOREPLY SHOPPUS ♪\n\n# Los desencadenantes #${trigger}* ¡Interrumpido exitosamente!`)
+            return m.reply(`🗑 GLOBAL AUTOREPLY SHOPPUS •\n\n# Los desencadenantes #${trigger}* ¡Interrumpido exitosamente!`)
         }
         
         if (subAction === 'list' || !subAction) {
@@ -350,7 +350,7 @@ async function handler(m, { sock }) {
         
         m.react('🗑️')
         return m.reply(
-            `🗑♪ AUTOREPLY TO Elimina ♪\n\n` +
+            `🗑 AUTOREPLY TO Elimina •\n\n` +
             `Trigger *${trigger}* ¡Interrumpido exitosamente!\n` +
             `Restante: *${customReplies.length}* replies`
         )
@@ -407,7 +407,7 @@ async function handler(m, { sock }) {
         
         db.setGroup(m.chat, { ...groupData, customReplies: [] })
         m.react('🗑️')
-        return m.reply(`🗑♪ᴀᴜᴛᴏʀᴇᴘʟʏ ᴅɪʀᴇSᴇᴛ*\n\n¡Todo el diupus personalizado!`)
+        return m.reply(`🗑ᴀᴜᴛᴏʀᴇᴘʟʏ ᴅɪʀᴇSᴇᴛ*\n\n¡Todo el diupus personalizado!`)
     }
     
     return m.reply(`❌*ᴀᴄᴛɪᴏɴ ᴛɪᴅᴀᴋ ᴠᴀʟɪᴅ*\n\n> Usa: \`on\`.\`apagado\`.\`privacidad en / apagado\`.\`añadir\`.\`del\`.\`lista\`.\`restablecer\``)

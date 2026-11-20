@@ -38,7 +38,7 @@ async function handler(m, { sock }) {
     const data = res.data;
     if (!data.status || !data.result) {
       await m.react("❌");
-      return m.reply("⚠♪Quillbot no pudo procesar el texto.");
+      return m.reply("⚠Quillbot no pudo procesar el texto.");
     }
 
     await m.reply(data.result);

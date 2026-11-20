@@ -86,7 +86,7 @@ async function handler(m, context) {
       }
     } catch (apiErr) {
       const errMsg = apiErr.response?.data?.message || apiErr.message || 'El truco envía reacciones.';
-      return m.reply(`❌* Steendom envía reacción al Canal: *\n♪${errMsg}`);
+      return m.reply(`❌* Steendom envía reacción al Canal: *\n•${errMsg}`);
     }
   }
 

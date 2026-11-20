@@ -9,7 +9,7 @@ const pluginConfig = {
     name: 'ping2',
     alias: ['speed2', 'p2', 'latency2', 'sys2', 'status2'],
     category: 'main',
-    description: 'Compruebe la entrada y el estado de los verdaderos sistemas de bot @-@',
+    description: 'Compruebe la entrada y el estado de los verdaderos sistemas de bot ',
     usage: '.ping2',
     example: '.ping2',
     isOwner: false,
@@ -107,7 +107,7 @@ async function handler(m, { sock }) {
 
         const tableData = [
             ['WA Roundtrip', `${waRoundtrip} ms`],
-            ['Su velocidad @-@ respuesta bot.', `${totalExec} ms`],
+            ['Su velocidad respuesta bot.', `${totalExec} ms`],
             ['Status', 'Online'],
             ['Hostname', _os2.default.hostname()],
             ['Platform', `${_os2.default.platform()} ${_os2.default.arch()}`],

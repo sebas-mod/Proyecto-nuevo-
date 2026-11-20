@@ -49,7 +49,7 @@ async function handler(m, { sock }) {
     await m.reply(
       `🎬 *ᴘʀᴏsᴇs ᴡɪɴᴋ ᴇɴʜᴀɴᴄᴇ ᴅɪᴍᴜʟᴀɪ*\n\n` +
         `# Video otra vez procesado AI Wink lo dejó ser Ultra HD #✨\n` +
-        `Estimaciones 1 @-@ 5 minutos, por favor sea paciente!`,
+        `Estimaciones 1 5 minutos, por favor sea paciente!`,
     );
 
     const result = await _winkjs2.default.call(void 0, videoBuffer, {

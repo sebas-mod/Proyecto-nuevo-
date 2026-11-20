@@ -25,7 +25,7 @@ async function handler(m, { sock }) {
 
     let txt = `🤖 *ᴅᴀꜰᴛᴀʀ ᴊᴀᴅɪʙᴏᴛ*\n\n`
     txt += `> 📊 Total: *${sessions.length}* session\n`
-    txt += `♪🟢Activo: *${active.length}*\n`
+    txt += `•🟢Activo: *${active.length}*\n`
     txt += `> ⚫ Offline: *${sessions.length - active.length}*\n\n`
 
     sessions.forEach((s, i) => {

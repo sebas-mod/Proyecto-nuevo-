@@ -6,7 +6,7 @@ const pluginConfig = {
     name: 'ganti-asset',
     alias: ['gantiasset', 'setasset'],
     category: 'owner',
-    description: 'Todas @-@ en @-@ una herramienta para reemplazar un activo interactivo',
+    description: 'Todas en una herramienta para reemplazar un activo interactivo',
     usage: '.ganti-asset (reply media)',
     example: '.ganti-asset',
     isOwner: true,
@@ -32,7 +32,7 @@ async function handler(m, { sock }) {
         const isMedia = isImage || isVideo || isAudio || isDocument;
 
         if (!isMedia) {
-            return m.reply(`🖼♪ɢᴀɴᴛɪ ᴀssᴇᴛ*\n\n# Silai contest media (imagen / video / audio / documento ) con mensajes\`${m.prefix}ganti-asset\``);
+            return m.reply(`🖼ɢᴀɴᴛɪ ᴀssᴇᴛ*\n\n# Silai contest media (imagen / video / audio / documento ) con mensajes\`${m.prefix}ganti-asset\``);
         }
 
         m.react('🕕');
@@ -162,19 +162,19 @@ async function gantiAssetAnswerHandler(m, sock) {
     const isFontUpload = session.isFontUpload;
 
     if (session.imageKeys && session.imageKeys.includes(selectedKey) && !isImageUpload) {
-        await m.reply(`❌¡Formal no es algo!\n♪ Asset ♪${selectedKey}* Necesito un archivo de imagen.`);
+        await m.reply(`❌¡Formal no es algo!\n• Asset •${selectedKey}* Necesito un archivo de imagen.`);
         return true;
     }
     if (session.videoKeys && session.videoKeys.includes(selectedKey) && !isVideoUpload) {
-        await m.reply(`❌¡Formal no es algo!\n♪ Asset ♪${selectedKey}* Necesito un archivo de vídeo.`);
+        await m.reply(`❌¡Formal no es algo!\n• Asset •${selectedKey}* Necesito un archivo de vídeo.`);
         return true;
     }
     if (session.audioKeys && session.audioKeys.includes(selectedKey) && !isAudioUpload) {
-        await m.reply(`❌¡Formal no es algo!\n♪ Asset ♪${selectedKey}* Necesito un audio de archivo.`);
+        await m.reply(`❌¡Formal no es algo!\n• Asset •${selectedKey}* Necesito un audio de archivo.`);
         return true;
     }
     if (session.fontKeys && session.fontKeys.includes(selectedKey) && !isFontUpload) {
-        await m.reply(`❌¡Formal no es algo!\n♪ Asset ♪${selectedKey}* Necesita un archivo de documento de fuente.`);
+        await m.reply(`❌¡Formal no es algo!\n• Asset •${selectedKey}* Necesita un archivo de documento de fuente.`);
         return true;
     }
 
@@ -189,7 +189,7 @@ async function gantiAssetAnswerHandler(m, sock) {
 
     try {
         const newPath = await _ourinuploaderjs.updateAssetUrl.call(void 0, selectedKey, session.buffer, filename);
-        await m.reply(`✅*Exito*\n\n♪ Asset ♪${selectedKey}* ha sido cambiado a:\n♪${newPath}\n" Config has been updated as a reality "!`);
+        await m.reply(`✅*Exito*\n\n• Asset •${selectedKey}* ha sido cambiado a:\n•${newPath}\n" Config has been updated as a reality "!`);
         delete global.gantiAssetSessions[m.chat];
         await m.react('✅');
     } catch (e) {

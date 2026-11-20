@@ -15,7 +15,7 @@ const pluginConfig = {
   name: "addowner",
   alias: ["addown", "setowner", "delowner", "dedown", "ownerlist", "listowner"],
   category: "owner",
-  description: "Kelola propietario bot ( modo @-@ consciente )",
+  description: "Kelola propietario bot ( modo consciente )",
   usage: ".addowner <nomor/@tag/reply>",
   example: ".addowner 6281234567890",
   isOwner: true,
@@ -149,7 +149,7 @@ async function handler(m, { sock, jadibotId, isJadibot }) {
       if (_ourinjadibotdatabasejs.addJadibotOwner.call(void 0, jadibotId, targetNumber)) {
         await m.react("👑");
         return m.reply(
-          `✅♪ Trabajar para añadir ♪${targetNumber}* como el dueño se convirtió en el trasero`,
+          `✅ Trabajar para añadir •${targetNumber}* como el dueño se convirtió en el trasero`,
         );
       } else {
         return m.reply(
@@ -185,7 +185,7 @@ async function handler(m, { sock, jadibotId, isJadibot }) {
       const displayName = customName || _configjs.getOwnerName.call(void 0, targetNumber);
       await m.react("👑");
       return m.reply(
-        `✅♪ Trabajar para añadir ♪${targetNumber}* como propietario completo${customName ? ` (${customName})` : ""}`,
+        `✅ Trabajar para añadir •${targetNumber}* como propietario completo${customName ? ` (${customName})` : ""}`,
       );
     } else if (isDel) {
       const index = db.data.owner.indexOf(targetNumber);

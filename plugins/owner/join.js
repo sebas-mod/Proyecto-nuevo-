@@ -125,16 +125,16 @@ async function handler(m, { sock }) {
 
     if (!result.success) {
       m.react("❌");
-      return m.reply(`❌*Fallido Join*\n\n♪${result.error}`);
+      return m.reply(`❌*Fallido Join*\n\n•${result.error}`);
     }
 
     m.react("✅");
     const ctx = _ourincontextjs.saluranCtx.call(void 0, );
     return m.reply(
       `✅*Exito Join!*\n\n` +
-        `♪🏠Nombre: *${result.subject}*\n` +
+        `•🏠Nombre: *${result.subject}*\n` +
         `> 👥 Member: *${result.members}*\n` +
-        `♪👤Propietario: *${result.owner}*`,
+        `•👤Propietario: *${result.owner}*`,
       { contextInfo: ctx }
     );
   }
@@ -168,9 +168,9 @@ async function handler(m, { sock }) {
 
   resultText +=
     `\n*Resultado:*\n` +
-    `♪✅Exito: *${successCount}*\n` +
-    `♪⚠*Ya photo:*${alreadyCount}*\n` +
-    `♪❌Fallido: *${failedCount}*\n` +
+    `•✅Exito: *${successCount}*\n` +
+    `•⚠*Ya photo:*${alreadyCount}*\n` +
+    `•❌Fallido: *${failedCount}*\n` +
     `> 📊 Total: *${inviteCodes.length}*`;
 
   m.react(successCount > 0 ? "✅" : "❌");

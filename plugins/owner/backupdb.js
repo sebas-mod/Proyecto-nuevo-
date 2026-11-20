@@ -34,7 +34,7 @@ async function handler(m, { sock }) {
             `📦 Size: ${result.size}\n` +
             `📁 Files: ${result.files}\n` +
             `🔖 Schema: v${_ourinstorebackupjs.SCHEMA_VERSION}\n\n` +
-            `*Escribe @-@ respaldo seguro, permitible con actualizaciones futuras.*\n` +
+            `*Escribe respaldo seguro, permitible con actualizaciones futuras.*\n` +
             `El respaldo ha sido enviado al propietario principal.`
         )
     } else {

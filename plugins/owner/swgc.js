@@ -109,7 +109,7 @@ async function handler(m, { sock, db }) {
 
     if (!pendingData) {
       await m.reply(
-        `⚠Por favor, re @-@ enviar medios +. swgc *`,
+        `⚠Por favor, re enviar medios +. swgc *`,
       );
       return;
     }
@@ -181,7 +181,7 @@ async function handler(m, { sock, db }) {
       }
     } catch (error) {
       await m.reply(
-        `❌ *ᴇʀʀᴏʀ*\n\n` + `♪ Pending the storm ♪\n` + `> _${error.message}_`,
+        `❌ *ᴇʀʀᴏʀ*\n\n` + `• Pending the storm •\n` + `> _${error.message}_`,
       );
     }
     return;

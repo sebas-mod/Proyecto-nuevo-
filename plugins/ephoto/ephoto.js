@@ -50,7 +50,7 @@ const pluginConfig = {
     ],
     alias: ['ephoto'],
     category: 'ephoto',
-    description: '# Crea eeck text fresco con un estilo @-@',
+    description: '# Crea eeck text fresco con un estilo ',
     usage: '.<effect> <text>',
     example: '.glitchtext Ourin-AI',
     isOwner: false,

@@ -28,7 +28,7 @@ async function handler(m, context) {
       }
       const jid = id.includes('@newsletter') ? id : `${id}@newsletter`;
       await sock.newsletterFollow(jid);
-      return m.reply(`✅Resultado sigue @-@ canal\`${jid}\``);
+      return m.reply(`✅Resultado sigue canal\`${jid}\``);
     }
 
     if (cmd === 'unfollowch') {

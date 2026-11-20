@@ -29,7 +29,7 @@ const characters = {
   furina: {
     name: "Furina",
     instruction:
-      "You 're Furina from Genshin Impact, speak of a relaxed but elegant, a little dramatic, proud but still warm, don 't be too long, lil @-@ limber to the core like a chat, and sometimes you can hit a straight or a stray theme.",
+      "You 're Furina from Genshin Impact, speak of a relaxed but elegant, a little dramatic, proud but still warm, don 't be too long, lil limber to the core like a chat, and sometimes you can hit a straight or a stray theme.",
   },
   zeta: {
     name: "Zeta",
@@ -99,7 +99,7 @@ async function handler(m) {
       .map((s) => s.trim());
     if (personaArgs.length < 2 || !personaArgs[0] || !personaArgs[1])
       return m.reply(
-        `❌Formato incorrecto!\n\n*Sí. * * Auto @-@ ai add up*\n\n* Hombre *:x¡Te odio!xai,..`,
+        `❌Formato incorrecto!\n\n*Sí. * * Auto ai add up*\n\n* Hombre *:x¡Te odio!xai,..`,
       );
     const pName = personaArgs[0].toLowerCase().replace(/\s+/g, "_");
     const pInstruction = personaArgs.slice(1).join("|").trim();
@@ -133,7 +133,7 @@ async function handler(m) {
       );
     delete db.db.data.autoai_personas[pKey];
     db.save();
-    return m.reply(`✅ Persona "${pKey}♪ Trabajar mi camino a través ♪`);
+    return m.reply(`✅ Persona "${pKey}• Trabajar mi camino a través •`);
   }
 
   if (subcmd === "enablecommand" || subcmd === "enablecmd") {
@@ -286,7 +286,7 @@ Todos los comandos (excepto el propietario ) están bloqueados cuando AutoAI est
       db.db.data.autoai_global.enabled = false;
       db.save();
       return m.reply(
-        `🌐*ᴀᴜᴛᴏ ᴀɪ ɢʟᴏʙᴀʟ ᴅɪɴᴏɴᴀᴋᴛɪ♪ᴋᴀɴ*\n\nAKUAI sólo está activo en el set @ - @ up grupo`,
+        `🌐*ᴀᴜᴛᴏ ᴀɪ ɢʟᴏʙᴀʟ ᴅɪɴᴏɴᴀᴋᴛɪ•ᴋᴀɴ*\n\nAKUAI sólo está activo en el set @ - @ up grupo`,
       );
     }
   }
@@ -329,7 +329,7 @@ Todos los comandos (excepto el propietario ) están bloqueados cuando AutoAI est
     txt += `* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\n\n`;
     txt += `*Mode AutoAI:*\n`;
     txt += `- *No puedo caminar la acción* *el cinturón* *el cinturón* *el cinturón*\n`;
-    txt += `♪Sólo un chat normal♪\n\n`;
+    txt += `•Sólo un chat normal•\n\n`;
     txt += `*Ejemplo:*\n`;
     txt += `> .autoai on --ourinmode=furina --type=text\n`;
     txt += `- Eres un maldito ne.xA\n`;
@@ -345,7 +345,7 @@ Todos los comandos (excepto el propietario ) están bloqueados cuando AutoAI est
       ? `\n\n* Global sigue activo, pero este grupo optó... fuera\n# Vete al infierno # # ve al rizo #`
       : "";
     return m.reply(
-      `🤖*ᴀᴜᴛᴏ ᴀɪ ᴅɪɴᴏɴᴀᴋᴛɪ♪ᴋᴀɴ*\n\nEl grupo ha sido jugado\nTodo el comando está de vuelta en.${globalStatus}`,
+      `🤖*ᴀᴜᴛᴏ ᴀɪ ᴅɪɴᴏɴᴀᴋᴛɪ•ᴋᴀɴ*\n\nEl grupo ha sido jugado\nTodo el comando está de vuelta en.${globalStatus}`,
     );
   }
 

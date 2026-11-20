@@ -55,7 +55,7 @@ async function handler(m, { sock, text }) {
             listTxt += `*${i + 1}.* ${item.name}\n`;
         }
 
-        listTxt += `\n♪💡* Número de contenedor (por ejemplo: 1 ) * para ver el desprendimiento del recipiente, o la axila\`cancelar\`Para deshacer la búsqueda.`;
+        listTxt += `\n•💡* Número de contenedor (por ejemplo: 1 ) * para ver el desprendimiento del recipiente, o la axila\`cancelar\`Para deshacer la búsqueda.`;
         const db = _ourindatabasejs.getDatabase.call(void 0, );
         const user = db.getUser(m.sender);
 
@@ -87,7 +87,7 @@ async function resepAnswerHandler(m, sock) {
     if (Date.now() - session.time > SESSION_TIMEOUT) {
         delete user.resep_session;
         db.save();
-        await m.reply(`⏰* SECIÓN DEL AGUA*\n\nSesi @-@ la prescripción de búsqueda se ha terminado debido a más de 5 minutos.`);
+        await m.reply(`⏰* SECIÓN DEL AGUA*\n\nSesi la prescripción de búsqueda se ha terminado debido a más de 5 minutos.`);
         return true;
     }
 

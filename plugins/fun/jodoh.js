@@ -180,7 +180,7 @@ async function handler(m, { sock }) {
     text += `> ✨ _Dijodohkan berdasarkan data registrasi_\n`;
   }
   if (registrationRequired) {
-    text += `♪🔒Modo de Ez es la lista activa, sólo se seleccionan las fotos seleccionadas\n`;
+    text += `•🔒Modo de Ez es la lista activa, sólo se seleccionan las fotos seleccionadas\n`;
   }
   text += `> _"${quote}"_`;
 

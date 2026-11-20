@@ -51,7 +51,7 @@ async function handler(m, { sock, text }) {
             listTxt += `*${i + 1}.* ${item.name} by ${item.authorName}\n`;
         }
 
-        listTxt += `\n♪💡* Cita (por ejemplo: 1 ) * para descargar paquetes, o tipos\`cancelar\`Para deshacer la búsqueda.`;
+        listTxt += `\n•💡* Cita (por ejemplo: 1 ) * para descargar paquetes, o tipos\`cancelar\`Para deshacer la búsqueda.`;
         
         const db = _ourindatabasejs.getDatabase.call(void 0, );
         const user = db.getUser(m.sender);
@@ -140,7 +140,7 @@ async function downloadStickerlyPack(sock, m, packUrl) {
         }
 
         const packname = packInfo.name || "Sticker.ly Pack";
-        const author = packInfo.authorName || _configjs2.default.sticker.author || "♪";
+        const author = packInfo.authorName || _configjs2.default.sticker.author || "Bot";
         const urlsToProcess = stickerUrls.slice(0, 20);
         
         try {

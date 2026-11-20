@@ -68,7 +68,7 @@ async function handler(m, { sock, args, text }) {
             listTxt += `*${i + 1}.* ${item.label}\n`;
         }
 
-        listTxt += `\n♪💡* Números de presupuesto (por ejemplo: 1 ) * para seleccionar la primera trampa, o primera trampa\`cancelar\`para cancelando.`;
+        listTxt += `\n•💡* Números de presupuesto (por ejemplo: 1 ) * para seleccionar la primera trampa, o primera trampa\`cancelar\`para cancelando.`;
 
         const db = _ourindatabasejs.getDatabase.call(void 0, );
         const user = db.getUser(m.sender);
@@ -135,7 +135,7 @@ async function comparationAnswerHandler(m, sock) {
         db.save();
 
         await m.react("✅");
-        await m.reply(`Bien, tú eliges${selected.label}* con tipo *${session.type}* para la primera desviación.\n\n¿De qué estás hablando?\n\n♪💡* Contiene el nombre del segundo dispositivo para buscar (por ejemplo: iphone 17 pro max- ¿Qué?`);
+        await m.reply(`Bien, tú eliges${selected.label}* con tipo *${session.type}* para la primera desviación.\n\n¿De qué estás hablando?\n\n•💡* Contiene el nombre del segundo dispositivo para buscar (por ejemplo: iphone 17 pro max- ¿Qué?`);
         return true;
     }
 
@@ -166,7 +166,7 @@ async function comparationAnswerHandler(m, sock) {
                 listTxt += `*${i + 1}.* ${item.label}\n`;
             }
 
-            listTxt += `\n♪💡* Cita (o piloto: 1 ) * para seleccionar segunda trampa, o izquierda\`cancelar\`para cancelando.`;
+            listTxt += `\n•💡* Cita (o piloto: 1 ) * para seleccionar segunda trampa, o izquierda\`cancelar\`para cancelando.`;
 
             session.results = searchResults;
             session.step = 3;
@@ -180,7 +180,7 @@ async function comparationAnswerHandler(m, sock) {
         } catch (error) {
             console.error("[Compare Search 2 Error]", error);
             await m.react("☢");
-            await m.reply("Es un error buscar la segunda trampa. Intente de nuevo más tarde o izquierda @-@ lado de la mano.`cancelar`.");
+            await m.reply("Es un error buscar la segunda trampa. Intente de nuevo más tarde o izquierda lado de la mano.`cancelar`.");
             return true;
         }
     }

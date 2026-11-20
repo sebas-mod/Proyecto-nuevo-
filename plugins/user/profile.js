@@ -152,7 +152,7 @@ async function handler(m, { sock }) {
   caption += `- * Papel / Pacto: *${role}\n`;
   caption += `- * Cuando de nivel esto: *${user.rpg.level}\n`;
   caption += `- *Total Exp:* ${formatNumber(userExp)} XP\n`;
-  caption += `- *Salud (Health):* ❤♪${user.rpg.health} / ${user.rpg.maxHealth}\n`;
+  caption += `- *Salud (Health):* ❤${user.rpg.health} / ${user.rpg.maxHealth}\n`;
   caption += `- *Mana (Magic):* 💧 ${user.rpg.mana} / ${user.rpg.maxMana}\n`;
   caption += `- *Stamina:* ⚡ ${user.rpg.stamina} / ${user.rpg.maxStamina}\n`;
   caption += `- *Progress Ke Level ${user.rpg.level + 1}:*\n  ${getLevelBar(expInLevel, expNeeded)}\n  _${formatNumber(expInLevel)} / ${formatNumber(expNeeded)} XP_\n`;

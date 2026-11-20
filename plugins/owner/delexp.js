@@ -44,8 +44,8 @@ async function handler(m, { sock }) {
     if (!targetJid || amount <= 0) {
         return m.reply(
             `⭐ *ᴅᴇʟ ᴇxᴘ*\n\n` +
-            `♪\`- Sí.xp<jumlah>\`- de ti mismo.\n` +
-            `♪\`- Sí.xp<jumlah>@ usuario\`- del usuario\n\n` +
+            `•\`- Sí.xp<jumlah>\`- de ti mismo.\n` +
+            `•\`- Sí.xp<jumlah>@ usuario\`- del usuario\n\n` +
             `\`Contoh: ${m.prefix}delexp 5000\``
         )
     }

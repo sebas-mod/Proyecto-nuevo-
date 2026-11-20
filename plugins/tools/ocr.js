@@ -26,7 +26,7 @@ async function handler(m, { sock }) {
     return m.reply(
       `⚠️ *ᴄᴀʀᴀ ᴘᴀᴋᴀɪ*\n\n` +
         `# Responder dibujar con\`${m.prefix}ocr\`\n\n` +
-        `El respaldo @-@ up Media:\n` +
+        `El respaldo up Media:\n` +
         `> JPG, PNG, GIF, WEBP`,
     );
   }
@@ -51,7 +51,7 @@ async function handler(m, { sock }) {
     if (!extractedText || extractedText.length === 0) {
       await m.react("❌");
       return m.reply(
-        `❌*ᴛɪᴅᴀᴋ ᴀᴅᴀ ᴛᴇᴋs ♪\n\n*Ningún texto detectado en la imagen`,
+        `❌*ᴛɪᴅᴀᴋ ᴀᴅᴀ ᴛᴇᴋs •\n\n*Ningún texto detectado en la imagen`,
       );
     }
     await m.react("✅");

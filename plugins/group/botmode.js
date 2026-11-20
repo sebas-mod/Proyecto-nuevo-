@@ -104,7 +104,7 @@ function handler(m, { sock }) {
     let extraInfo = ''
     if (mode === 'store') {
         const products = _optionalChain([newGroupData, 'access', _5 => _5.storeConfig, 'optionalAccess', _6 => _6.products]) || []
-        extraInfo = `\n\n📋♪ Modo de Manal ♪\n` +
+        extraInfo = `\n\n📋 Modo de Manal •\n` +
             `Akemin necesita un manual de conaffción ón de anciano\n` +
             `> Product: \`${products.length}\` item\n\n` +
             `*ᴘᴀɴᴅᴜᴀɴ:*\n` +

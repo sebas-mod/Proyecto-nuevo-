@@ -40,14 +40,14 @@ async function handler(m, { sock }) {
             `1. La primera vez que infringe, dale una advertencia: *${m.prefix}warn @user spam*\n` +
             `2. Su mensaje quedará registrado como la advertencia número uno.\n` +
             `3. Si reincide, adviértele de nuevo con otro motivo: *${m.prefix}warn @user grosero*\n` +
-            `4. Si el total de alerta de vídeo alcanza límite máximo (actual *${maxWarns}* ), el bot automanezar el kickk @-@ pistola.\n` +
+            `4. Si el total de alerta de vídeo alcanza límite máximo (actual *${maxWarns}* ), el bot automanezar el kickk pistola.\n` +
             `Cinco, la brecha se puede ver completamente escribiendo.${m.prefix}listwarn @user*.`
         )
     }
     if (_optionalChain([args, 'access', _ => _[0], 'optionalAccess', _2 => _2.toLowerCase, 'call', _3 => _3()]) === 'max') {
         const newMax = parseInt(args[1])
         if (isNaN(newMax) || newMax < 1 || newMax > 20) {
-            return m.reply(`❌*Fallido*\n\nEl límite de referencia de las advertencias debe ser 1 @-@ 20.\nEjemplo: *${m.prefix}warn max 5*`)
+            return m.reply(`❌*Fallido*\n\nEl límite de referencia de las advertencias debe ser 1 20.\nEjemplo: *${m.prefix}warn max 5*`)
         }
         groupData.maxWarnings = newMax
         db.setGroup(m.chat, groupData)
@@ -63,7 +63,7 @@ async function handler(m, { sock }) {
     
     if (!targetUser) {
         await m.reply(
-            `⚠♪ CARA PACKAI ♪\n\n` +
+            `⚠ CARA PACKAI •\n\n` +
             `# Responder orden #\`${m.prefix}warn alasan\`\n` +
             `> O:\`${m.prefix}warn @user alasan\``
         )

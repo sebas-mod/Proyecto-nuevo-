@@ -130,7 +130,7 @@ async function handler(m, { sock, text }) {
             `*Como usarlo:*\n` +
             `- Escribe\`${m.prefix}bandingkan-hp <hp pertama> | <hp kedua>\`\n` +
             `- Ejemplo:\`${m.prefix}bandingkan-hp iphone 13 | samsung s22\`\n\n` +
-            `Así que debe utilizar el signo de la recta (extracto ) como un entre @-@ entre @-@ entre @-@ @-@ el @-@ nombres HP!`
+            `Así que debe utilizar el signo de la recta (extracto ) como un entre entre entre  el nombres HP!`
         );
     }
 

@@ -28,7 +28,7 @@ async function handler(m, { sock }) {
       `*Ejemplo:*\n` +
       `> *${m.prefix}txt2img2 Mobil Lamborghini revuelto*\n` +
       `> *${m.prefix}txt2img2 Kucking lucu utilizando sombrero *\n\n` +
-      `EfformProsses old @-@ fashioned generation, about 30 - 60 segundos _`
+      `EfformProsses old fashioned generation, about 30 - 60 segundos _`
     );
   }
 
@@ -39,7 +39,7 @@ async function handler(m, { sock }) {
 
     if (!result.status) {
       m.react("☢");
-      return m.reply(`❌*Generate Fallido*\n\n♪${result.error}`);
+      return m.reply(`❌*Generate Fallido*\n\n•${result.error}`);
     }
 
     await sock.sendMedia(m.chat, result.url, `🎨 *Flux Klein 4B*\n\n> Prompt: *${result.prompt}*`, m, {

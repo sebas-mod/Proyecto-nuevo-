@@ -27,11 +27,11 @@ async function handler(m, { sock }) {
   if (!name || name.length < 2) {
     return m.reply(
       "📢 *ʙᴜᴀᴛ sᴀʟᴜʀᴀɴ*\n\n" +
-        "♪`- Por \" Saluran \"`\n" +
-        "♪`.buatsaluran Nombre|Descripción`\n\n" +
+        "•`- Por \" Saluran \"`\n" +
+        "•`.buatsaluran Nombre|Descripción`\n\n" +
         "📝 Contoh:\n" +
-        "♪`- Canal de información.`\n" +
-        "♪`Haaga el canal Info para nuestro bot de actualización más reciente.`",
+        "•`- Canal de información.`\n" +
+        "•`Haaga el canal Info para nuestro bot de actualización más reciente.`",
     );
   }
 

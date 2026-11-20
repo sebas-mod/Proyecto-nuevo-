@@ -47,7 +47,7 @@ async function handler(m, { sock }) {
   if (option === "off") {
     db.setting("autoTyping", false);
     return m.reply(
-      `⌨♪ Demasiado no está activa ♪\n\n` +
+      `⌨• Demasiado no está activa •\n\n` +
         `# Nunca voy a mostrar un indicador de escribir #`
     );
   }

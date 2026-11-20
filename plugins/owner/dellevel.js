@@ -43,7 +43,7 @@ async function handler(m, { sock }) {
       `📊 *ᴅᴇʟ ʟᴇᴠᴇʟ*\n\n` +
         `╭┈┈⬡「 📋 *ᴜsᴀɢᴇ* 」\n` +
         `┃ > \`.dellevel <jumlah>\` - ke diri sendiri\n` +
-        `┃♪\`- Dellevel.<jumlah>@ usuario\`- A otra persona.\n` +
+        `┃•\`- Dellevel.<jumlah>@ usuario\`- A otra persona.\n` +
         `╰┈┈┈┈┈┈┈┈⬡\n\n` +
         `> Ejemplo:\`${m.prefix}dellevel 5\``,
     );

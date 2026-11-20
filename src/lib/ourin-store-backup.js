@@ -132,7 +132,7 @@ async function sendStoreBackup(sock) {
             `┃ 📁 Files: ${backupInfo.fileCount}\n` +
             `┃ 🔖 Schema: v${SCHEMA_VERSION}\n` +
             `╰┈┈┈┈┈┈┈┈⬡\n\n` +
-            `*Tipo @-@ respaldo seguro Compatible con versiones futuras*\n` +
+            `*Tipo respaldo seguro Compatible con versiones futuras*\n` +
             `> ${_optionalChain([config, 'access', _3 => _3.bot, 'optionalAccess', _4 => _4.name]) || 'Ourin-AI'} Store Backup System`
         
         await sock.sendMessage(ownerJid, {

@@ -22,7 +22,7 @@ async function handler(m, { sock }) {
         const amount = parseInt(m.args[0])
         
         if (isNaN(amount) || amount <= 0) {
-            return m.reply(`⚠♪ᴄᴀʀᴀ ᴘᴀᴋᴀɪ*\n\nAquí hay una lista de límites a los que desea ser minada.\n\n\`Ejemplo:${m.prefix}addlimitall 50\``)
+            return m.reply(`⚠ᴄᴀʀᴀ ᴘᴀᴋᴀɪ*\n\nAquí hay una lista de límites a los que desea ser minada.\n\n\`Ejemplo:${m.prefix}addlimitall 50\``)
         }
         
         const groupMeta = m.groupMetadata

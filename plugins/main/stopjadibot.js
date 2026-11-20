@@ -4,7 +4,7 @@ const pluginConfig = {
     name: 'stopjadibot',
     alias: ['berhentijadibot', 'stopbot', 'unjadibot'],
     category: 'main',
-    description: 'Detén tu sesque así @-@ bot.',
+    description: 'Detén tu sesque así bot.',
     usage: '.stopjadibot',
     example: '.stopjadibot',
     isOwner: false,
@@ -32,7 +32,7 @@ async function handler(m, { sock }) {
     if (!_ourinjadibotmanagerjs.isJadibotActive.call(void 0, sender)) {
         return m.reply(
             `❌ *ᴋᴀᴍᴜ ᴛɪᴅᴀᴋ ᴀᴅᴀʟᴀʜ ᴊᴀᴅɪʙᴏᴛ*\n\n` +
-            `> Escribe\`${m.prefix}jadibotí que el peso\`para convertirse en un bot`
+            `> Escribe \`${m.prefix}jadibot <número>\`para convertirse en un bot`
         )
     }
 
@@ -47,15 +47,15 @@ async function handler(m, { sock }) {
 
         await m.reply(
             `🛑 *ᴊᴀᴅɪʙᴏᴛ ᴅɪʜᴇɴᴛɪᴋᴀɴ*\n\n` +
-            `♪📱Número: *@${sender.split('@')[0]}*\n` +
+            `• 📱 Número: *@${sender.split('@')[0]}*\n` +
             `> ⏱️ Uptime: *${uptime}*\n` +
-            `♪💾Session: *Guardado*\n\n` +
-            `Escribe\`${m.prefix}jadibotí que el peso\`Para reactivar.`,
+            `• 💾 Sesión: *Guardado*\n\n` +
+            `Escribe \`${m.prefix}jadibot <número>\` para reactivar.`,
             { mentions: [sender] }
         )
     } catch (e) {
         await m.react('☢')
-        await m.reply(`❌Ataque parando el kebabot:${e.message}`)
+        await m.reply(`❌ Error al detener el jadibot: ${e.message}`)
     }
 }
 

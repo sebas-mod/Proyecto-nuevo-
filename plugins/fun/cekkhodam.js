@@ -17,7 +17,7 @@ const pluginConfig = {
     isEnabled: true
 }
 const KHODAMS = [
-    { name: "Harimau Putih", meaning: "Eres fuerte y bien @-@ moda como un harimau, porque tu predecesor heredó mucho poder sobre ti." },
+    { name: "Harimau Putih", meaning: "Eres fuerte y bien moda como un harimau, porque tu predecesor heredó mucho poder sobre ti." },
     { name: "Lampu Tertidur", meaning: "Es como el sueño, pero siempre está dando su luz cálida" },
     { name: "Panda Ompong", meaning: "Eres horrenda y siempre exitosa, haciendo que la gente sonríe a tu raro." },
     { name: "Bebek Karet", meaning: "Siempre estás tranquilo y alegre, capaz de manejar una ola de problemas con una sonrisa." },
@@ -26,7 +26,7 @@ const KHODAMS = [
     { name: "Sabun Wangi", meaning: "Llevas tu dulce y dulce fragancia dondequiera que estés." },
     { name: "Semut Kecil", meaning: "Usted es un trabajador duro y siempre puede ser utilizado en cualquier situación." },
     { name: "Cupcake Pelangi", meaning: "Eres una manesa y una atleta, siempre con alegría y alegría." },
-    { name: "Robot Mini", meaning: "Usted ' es sofisticado y siempre listo para ayudar con la alta inteligencia tecnológica @-@." },
+    { name: "Robot Mini", meaning: "Usted ' es sofisticado y siempre listo para ayudar con la alta inteligencia tecnológica ." },
     { name: "Ikan Terbang", meaning: "Eres único y lleno de sorpresas, superando siempre los límites." },
     { name: "Ayam Goreng", meaning: "Siempre te tratan y te esperan personas, llenas de crueldad a cada paso." },
     { name: "Kecoa Terbang", meaning: "Siempre sorprende y no puede permitirse llenar una habitación." },

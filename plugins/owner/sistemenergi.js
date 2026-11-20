@@ -24,7 +24,7 @@ async function handler(m, { sock }) {
   
   if (!mode || (mode !== "on" && mode !== "off")) {
     return m.reply(
-      `🎛♪ Controol Siststreets energise ♪\n\n` +
+      `🎛 Controol Siststreets energise •\n\n` +
       `Las principales características de control para reactivar o desactivar todo el sistema energético de los globales.\n\n` +
       `* SITUACIÓN Cuando esto:\n` +
       `- Mode: *${currentStatus ? "AKTIF 🔋" : "NONAKTIF (UNLIMITED) ♾️"}*\n\n` +

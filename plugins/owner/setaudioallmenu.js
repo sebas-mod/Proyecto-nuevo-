@@ -27,7 +27,7 @@ async function handler(m, { sock }) {
             `*Uso:*\n` +
             `• *${m.prefix}% s—Nota de voz de PTT con respuesta de un mensaje de asli\n` +
             `• *${m.prefix}*O un 2*—Nota de voz PTT con respuesta encuesta falsa\n` +
-            `• *${m.prefix}*O un mundo de menús @-@ tres*—Música de audio regular con respuesta falsa texn\n` +
+            `• *${m.prefix}*O un mundo de menús tres*—Música de audio regular con respuesta falsa texn\n` +
             `• *${m.prefix}% s—Música de audio regular con respuesta falso troli\n\n` +
             `*Explicación VARIAN:*\n` +
             `- * Variante 1 yup2 * convertirá automáticamente el archivo MP3 en Opus ( Nota de voz ) murni utiliza ffmpeg, tanto como el esquema más natural de la voz original.\n` +

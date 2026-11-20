@@ -54,7 +54,7 @@ async function handler(m, { sock }) {
         })
         
         await m.react('✅')
-        return m.reply(`✅*ᴜᴋSᴇs ♪\n\n- Así que, es un éxito.`)
+        return m.reply(`✅*ᴜᴋSᴇs •\n\n- Así que, es un éxito.`)
         
     } catch (err) {
         return m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName))

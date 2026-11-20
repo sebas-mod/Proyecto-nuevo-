@@ -20,7 +20,7 @@ async function handler(m) {
                     
     let desc = ''
     if (percent >= 90) desc = 'Setia sampai mati! 💍💕'
-    else if (percent >= 70) desc = '¡Tan leal y verdadero!❤♪'
+    else if (percent >= 70) desc = '¡Tan leal y verdadero!❤'
     else if (percent >= 50) desc = 'Cukup setia~ 😊'
     else if (percent >= 30) desc = 'Hmm... kadang goyah 😅'
     else desc = 'Playboy/Playgirl mode? 😏'

@@ -424,13 +424,13 @@ Por favor escaneaQSiguiente código R utiliza WhatsApp en su teléfono:
       const sc = _optionalChain([d, 'optionalAccess', _40 => _40.error, 'optionalAccess', _41 => _41.output, 'optionalAccess', _42 => _42.statusCode]);
 
       const STATUS_MESSAGES = {
-        400: "⚠♪ Bad Request ♪—Mensaje / solicitud inválida, probar retart",
+        400: "⚠ Bad Request •—Mensaje / solicitud inválida, probar retart",
         401: "🔐 Unauthorized — Session expired, perlu login ulang",
         403: "🚫Forbidden—Las acciones son recortadas por WhatsApp, número de comprobación",
         404: "❓No se encontró—Recursos no encontrados",
         405: "🚧Método no permitido—Operación no autorizada",
         408: "⏱️ Timeout — Koneksi timeout, cek internet",
-        410: "📛♪ Voy ♪—DE Sesión DE PÁRRAFO DEL SERVICIO, RESTART",
+        410: "📛 Voy •—DE Sesión DE PÁRRAFO DEL SERVICIO, RESTART",
         428: "🔄 Connection Required — Perlu reconnect",
         440: "⚡ Session Conflict — Login di perangkat lain",
         500: "💥 Internal Server Error — Server WhatsApp error",
@@ -515,7 +515,7 @@ Authentication : Successful
         await sock.uploadPreKeys();
         colors.logger.success("session", "Sip, pre-keys udah dikirim ke server nih");
       } catch (e) {
-        colors.logger.warn("session", `falló subidas pre @-@ teclas:${e.message}`);
+        colors.logger.warn("session", `falló subidas pre teclas:${e.message}`);
       }
 
       const n = _optionalChain([sock, 'access', _47 => _47.user, 'optionalAccess', _48 => _48.id, 'optionalAccess', _49 => _49.split, 'call', _50 => _50(":"), 'access', _51 => _51[0]]) || _optionalChain([sock, 'access', _52 => _52.user, 'optionalAccess', _53 => _53.id, 'optionalAccess', _54 => _54.split, 'call', _55 => _55("@"), 'access', _56 => _56[0]]);

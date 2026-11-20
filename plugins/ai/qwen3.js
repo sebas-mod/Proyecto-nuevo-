@@ -29,7 +29,7 @@ async function handler(m, { sock }) {
         `*Ejemplo:*\n` +
         `> *${m.prefix}¿Qué es un aprendizaje automático?\n` +
         `> *${m.prefix}qwen3 Crea resep plato Indonesia*\n\n` +
-        `* Modelo 80B, tan viejo @-@ de moda pero la respuesta es buena*`
+        `* Modelo 80B, tan viejo de moda pero la respuesta es buena*`
     );
   }
 
@@ -41,7 +41,7 @@ async function handler(m, { sock }) {
     if (!result.status) {
       await m.react("☢");
       return m.reply(
-        `❌*Qwen3 Fallido*\n\n♪${result.error || "Gagal mendapatkan respons"}`
+        `❌*Qwen3 Fallido*\n\n•${result.error || "Gagal mendapatkan respons"}`
       );
     }
 

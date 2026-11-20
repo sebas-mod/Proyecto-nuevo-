@@ -125,13 +125,13 @@ const PP_CACHE_TTL = 5 * 60 * 1000;
 * @ promenory
 * @ proprie{boolean}isForwarded - Es el mensaje reenviado
 * @ proprie{number}Resultado de reenvío - Surging
-* @ proprie{Object}exOtros recursos @-@ ExRespuesta de la publicidad (tornilla)
+* @ proprie{Object}exOtros recursos ExRespuesta de la publicidad (tornilla)
  */
 
 /**
  * @typedef {Object} SerializedMessage
 * @ proprie{string}id - unic id mensaje
-* Perfil{string}chat @-@ chat JID / grupo
+* Perfil{string}chat chat JID / grupo
  * @property {string} sender - JID pengirim
 * @ proprie{string}- NUMBER NUMBER
 * @ proprie{string}PushName - Nombre de la pantalla del remitente
@@ -141,12 +141,12 @@ const PP_CACHE_TTL = 5 * 60 * 1000;
 * Perfil{boolean}istemium - Es el remitente un usuario premiere
 * @ proprie{boolean}isBanned - Se envían discos
 * @ proprie{boolean}- ¿El remitente es el bot?
-* @ proprie{string}Tipo @-@
+* @ proprie{string}Tipo 
 * @ proprie{string}Cuerpo - ISI te messagexn
 * @ proprie{string}Comando... Comando sin prefix
 * @ proprie{string}prefix- Prefi.xque usado
  * @property {string[]} args - Array argumen
-* @ proprie{string}texT @-@ Text después del comando
+* @ proprie{string}texT Text después del comando
 * @ proprie{boolean}isaCommand - Es el mensaje un comando
 * @ proprie{boolean}- ¿Hay medios?
 * @ proprie{boolean}- ¿La foto?
@@ -180,7 +180,7 @@ const PP_CACHE_TTL = 5 * 60 * 1000;
 
 /**
 * Decode JID es un formador más limpio
-* @ param{string}Jid @-@ JID para ser decodificado
+* @ param{string}Jid JID para ser decodificado
 * @ devuelve { cadena dknul } ya en --decodificación o nul
  */
 function decodeJid(jid) {
@@ -210,7 +210,7 @@ function getMessageType(message) {
 /**
 # Got text / cuerpo del tipo de mensaje
 * @ param{Object}Mensaje - Mensaje de Objeciones WhatsApp
-* @ param{string}Tipo @-@
+* @ param{string}Tipo 
 * @ devuelves{string}Text/body mensaje
  */
 function getMessageBody(message, type) {
@@ -262,7 +262,7 @@ function getMessageBody(message, type) {
 
 /**
 * Comando y argumento pares del mensaje corporal
-* @ param{string}Body @-@ Mensaje corporal
+* @ param{string}Body Mensaje corporal
 * @ param{string}prefix- Prefi.xcomando
 * @ devuelves{Object}Información del comando
  */
@@ -326,7 +326,7 @@ function parseCommand(body, prefix) {
 /**
 * Serializar el mensaje citado con el conte completoxn
 * @ param{Object}Mensaje - Objeciones del mensaje principal
-* @ param{string}Tipo @-@
+* @ param{string}Tipo 
  * @param {Object} sock - Socket connection
  * @param {Object[]} participants - Group participants for LID resolution
  * @param {Object} originalMsgKey - Original message key containing participantAlt
@@ -455,7 +455,7 @@ async function serializeQuotedMessage(
 /**
 * Crear un context ingo for fake responder
  * @param {string} jid - JID pengirim palsu
-* @ param{string}texT @-@ Texno mensaje falso
+* @ param{string}texT Texno mensaje falso
  * @param {string} [title] - Title/judul
 * @ param{string} [body] - Body adicional
 * @ param{Buffer}# Thumbnail # # Thumbnail pictures #
@@ -483,7 +483,7 @@ function createContextInfo(jid, text, title = "", body = "", thumbnail = null) {
 * Serializar mensaje WhatsApp a objeto completo con características completas
  * @param {Object} sock - Socket connection Baileys
 * @ param{Object}msg - Mensaje bruto del evento Baileys
-* @ param{Object}♪ Stor
+* @ param{Object}• Stor
 * @ devuelve { Promesa<SerializedMessage>Objeciones del mensaje ya serializado
  */
 async function serialize(sock, msg, store = {}) {
@@ -803,7 +803,7 @@ async function serialize(sock, msg, store = {}) {
 
   /**
 * Responder text con opciones
-* @ param{string}texT @-@ Text) Respuesta
+* @ param{string}texT Text) Respuesta
 * @ param{Object}* Echotions *{}- Más operaciones
    * @returns {Promise<Object>} Sent message
    */
@@ -1003,7 +1003,7 @@ async function serialize(sock, msg, store = {}) {
                   degreesLatitude: 0,
                   degreesLongitude: 0,
                   name: _optionalChain([_configjs2.default, 'access', _145 => _145.bot, 'optionalAccess', _146 => _146.name]) || "Ourin-AI",
-                  address: "♪",
+                  address: "•",
                   jpegThumbnail: await _sharp2.default.call(void 0, thumbnailBuf).resize(300, 300).toBuffer(),
                 }
               },
@@ -1220,7 +1220,7 @@ async function serialize(sock, msg, store = {}) {
 
   /**
 * Responder text con las mensiones automáticas
-* @ param{string}texT @-@ Texcompartido
+* @ param{string}texT Texcompartido
    * @returns {Promise<Object>} Sent message
    */
   m.replyWithMentions = async (text) => {
@@ -1432,7 +1432,7 @@ END:VCARD`;
 
   /**
 * Responder con cita falsa
-* @ param{string}texT @-@ Text) Respuesta
+* @ param{string}texT Text) Respuesta
    * @param {string} fakeJid - JID palsu
    * @param {string} fakeText - Text palsu di quote
 * @ param{Object}* Echotions *{}- Más operaciones
@@ -1448,7 +1448,7 @@ END:VCARD`;
       message: {
         conversation: fakeText,
       },
-      pushName: options.pushName || "♪",
+      pushName: options.pushName || "Bot",
     };
 
     return sock.sendMessage(
@@ -1474,7 +1474,7 @@ END:VCARD`;
 
   /**
 * Responder con miniatura ( e)xTernal ad responder )
-* @ param{string}texT @-@ Text) Respuesta
+* @ param{string}texT Text) Respuesta
    * @param {Object} preview - Preview options
    * @param {string} preview.title - Judul
    * @param {string} [preview.body] - Body

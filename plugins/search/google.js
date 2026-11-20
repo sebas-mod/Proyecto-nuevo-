@@ -39,7 +39,7 @@ async function handler(m) {
 
     if (!result.status) {
       m.react("☢");
-      return m.reply(`❌*Google Fallido*\n\n♪${result.error}`);
+      return m.reply(`❌*Google Fallido*\n\n•${result.error}`);
     }
 
     const items = result.results.slice(0, 10);

@@ -372,7 +372,7 @@ async function main() {
         } catch (error) {
           _ourinloggerjs.logger.error("ANTIBAN", `Fallido inisialisasi:${error.message}`);
         }
-        _ourinloggerjs.logConnection.call(void 0, "connected", _optionalChain([sock, 'access', _23 => _23.user, 'optionalAccess', _24 => _24.name]) || "♪");
+        _ourinloggerjs.logConnection.call(void 0, "connected", _optionalChain([sock, 'access', _23 => _23.user, 'optionalAccess', _24 => _24.name]) || "Bot");
         _ourinschedulerjs.loadScheduledMessages.call(void 0, sock);
         _ourinschedulerjs.startGroupScheduleChecker.call(void 0, sock);
         _ourinschedulerjs.startSewaChecker.call(void 0, sock);

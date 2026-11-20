@@ -42,8 +42,8 @@ async function handler(m, { sock }) {
     if (!targetJid || amount <= 0) {
         return m.reply(
             `⚡ *ᴅᴇʟ ᴇɴᴇʀɢɪ*\n\n` +
-            `♪\`- Delenergi.<jumlah>\`- de ti mismo.\n` +
-            `♪\`- Delenergi.<jumlah>@ usuario\`- del usuario\n\n` +
+            `•\`- Delenergi.<jumlah>\`- de ti mismo.\n` +
+            `•\`- Delenergi.<jumlah>@ usuario\`- del usuario\n\n` +
             `\`Contoh: ${m.prefix}delenergi 50\``
         )
     }

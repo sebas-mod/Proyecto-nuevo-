@@ -128,19 +128,19 @@ Tanoshii jikan o issho ni sugoso ne~`,
       prefix,
     );
   }
-  let msg = `👋🏻* Bienvenido a enviarnos nuevos *👋🏻\n\n`;
+  let msg = `👋🏻 *¡BIENVENIDO, MIEMBRO NUEVO!* 👋🏻\n\n`;
   msg += `${header}\n`;
   msg += `${emoji} ${greeting}, *@${username}* 💫\n\n`;
-  msg += `📌* GRUPO INFO ]\n`;
-  msg += `♪🏠*Nombre*:${groupName}\n`;
+  msg += `📌 *INFO DEL GRUPO*\n`;
+  msg += `• 🏠 *Nombre:* ${groupName}\n`;
   msg += `> 👥 *Member* : ${memberCount}\n`;
-  msg += `♪📅 *Fecha*: ${_momenttimezone2.default.call(void 0, ).tz("Asia/Jakarta").format("DD/MM/YYYY")}\n`;
+  msg += `• 📅 *Fecha:* ${_momenttimezone2.default.call(void 0, ).tz("Asia/Jakarta").format("DD/MM/YYYY")}\n`;
 
   if (groupDesc) {
-    msg += `\n📝*Descripción*\n♪❝ ${groupDesc.slice(0, 120)}${groupDesc.length > 120 ? "..." : ""} ❞\n`;
+    msg += `\n📝 *Descripción*\n• ❝ ${groupDesc.slice(0, 120)}${groupDesc.length > 120 ? "..." : ""} ❞\n`;
   }
 
-  msg += `\n✨Consejo de hoy\n♪「 ${quote} 」\n\n🌸Mi Yoroshiku ne ~ ojalá tau si!🤍`;
+  msg += `\n✨ Consejo de hoy\n• 「 ${quote} 」\n\n🌸 ¡Que tengas una gran estancia! 🤍`;
 
   return msg;
 }

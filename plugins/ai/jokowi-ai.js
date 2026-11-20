@@ -22,7 +22,7 @@ async function handler(m, { sock }) {
   if (!text) {
     return m.reply(
       `🏛️ *Pak Jokowi*\n\n` +
-        `Hombre Solo—President RI 's ex@ - @ novio.\n♪Simple, sabio, y le gusta el rubor\n\n` +
+        `Hombre Solo—President RI 's ex@ - @ novio.\n•Simple, sabio, y le gusta el rubor\n\n` +
         `*Uso:*\n` +
         `> *${m.prefix}jokowi-ai <pertanyaan>*\n\n` +
         `*Ejemplo:*\n` +

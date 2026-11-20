@@ -40,8 +40,8 @@ async function handler(m, { sock }) {
         
         const responseText = `🔒 *ᴍᴏᴅᴇ sᴇʟꜰ ᴀᴋᴛɪꜰ*\n\n` +
             `Sí, ahora es sólo una llamada telefónica:\n` +
-            `♪•Propietario bot\n` +
-            `♪•Vive por ti mismo (de mí)\n\n` +
+            `••Propietario bot\n` +
+            `••Vive por ti mismo (de mí)\n\n` +
             `Desempleado. Público para abrir un accesorio`;
         await m.reply(responseText);
         console.log(`[Mode] Changed to SELF by ${m.pushName} (${m.sender})`);

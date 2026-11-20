@@ -39,7 +39,7 @@ async function handler(m, { sock }) {
         return m.reply(
             '📌 *ᴘɪɴ ᴄʜᴀᴛ*\n\n' +
             '> `.pinchat 628xxx` — Pin chat\n' +
-            '♪`Pinchat.`(en la charla primaria )—Esto es divertido.\n' +
+            '•`Pinchat.`(en la charla primaria )—Esto es divertido.\n' +
             '> `.pinchat buka 628xxx` — Unpin chat'
         )
     }

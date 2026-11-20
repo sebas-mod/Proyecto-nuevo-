@@ -30,7 +30,7 @@ function handler(m) {
             `🎣 *ᴀɴᴛɪᴘʜɪsɪɴɢ*\n\n` +
             `> Status: *${status.toUpperCase()}*\n` +
             `> Mode: *${mode.toUpperCase()}*\n\n` +
-            `Para detectar mensajes de phising como enlaces de clics, cuentas de verificación, palsu de log, shortener steal, URL IP, punycodes, y pola @-@ type.\n\n` +
+            `Para detectar mensajes de phising como enlaces de clics, cuentas de verificación, palsu de log, shortener steal, URL IP, punycodes, y pola type.\n\n` +
             `> \`${m.prefix}antiphising on\`\n` +
             `> \`${m.prefix}antiphising off\`\n` +
             `> \`${m.prefix}antiphising metode kick\`\n` +

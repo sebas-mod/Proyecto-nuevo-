@@ -42,7 +42,7 @@ async function handler(m) {
 
     if (!result.status) {
       m.react("☢");
-      return m.reply(`❌*Agencia de correo electrónico de Fierce Bicin*\n\n♪${result.error}`);
+      return m.reply(`❌*Agencia de correo electrónico de Fierce Bicin*\n\n•${result.error}`);
     }
 
     const userData = db.getUser(m.sender) || {};
@@ -52,7 +52,7 @@ async function handler(m) {
     m.react("✅");
     return m.reply(
       `📧* Correo electrónico de Aminal hecho!\n\n` +
-        `♪📬Correo: *${result.email}*\n\n` +
+        `•📬Correo: *${result.email}*\n\n` +
         `Ahora puede utilizar este correo electrónico para hacer una lista de cualquier cosa.\n` +
         `Ver mensajes entrantes con *${m.prefix}tempmail inbox*\n\n` +
         `Este correo electrónico es para el registro, no lo utilice por razones importantes.`
@@ -75,7 +75,7 @@ async function handler(m) {
 
     if (!result.status) {
       m.react("☢");
-      return m.reply(`❌* Stenched Inbo Choksx*\n\n♪${result.error}`);
+      return m.reply(`❌* Stenched Inbo Choksx*\n\n•${result.error}`);
     }
 
     if (result.count === 0) {
@@ -92,7 +92,7 @@ async function handler(m) {
 
     for (const msg of result.messages) {
       txt += `*━━━━━━━━━━━━━━━━━━━━*\n`;
-      txt += `♪📧De: *${msg.from}*\n`;
+      txt += `•📧De: *${msg.from}*\n`;
       txt += `> 📌 Subjek: *${msg.subject}*\n`;
       txt += `> 🕐 ${msg.created_at}\n`;
       txt += `> 📝 ${_optionalChain([msg, 'access', _12 => _12.body_text, 'optionalAccess', _13 => _13.substring, 'call', _14 => _14(0, 500)]) || "(tidak ada isi)"}\n\n`;

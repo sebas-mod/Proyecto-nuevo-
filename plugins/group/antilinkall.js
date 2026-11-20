@@ -32,7 +32,7 @@ function handler(m, { sock }) {
         `> Status: *${status === "on" ? "Aktif ✅" : "Nonaktif ❌"}*\n` +
         `> Mode: *${mode.toUpperCase()}*\n\n` +
         `*DETEKSI:*\n` +
-        `♪• https:///http://(con protokol)\n` +
+        `•• https:///http://(con protokol)\n` +
         `> • www. (subdomain)\n` +
         `> • Domain extension (.com, .id, .io, .net, dll)\n` +
         `> • Shortlink (bit.ly, t.me, tinyurl, dll)\n\n` +
@@ -48,7 +48,7 @@ function handler(m, { sock }) {
     db.setGroup(m.chat, { antilinkall: "on" });
     return m.reply(
       `✅Antilinks All Active\n\n` +
-        `Todos los enlaces serán auto @-@ detectable\n♪ Decline el dominio e ♪xtensions, no sólo http / https`
+        `Todos los enlaces serán auto detectable\n• Decline el dominio e •xtensions, no sólo http / https`
     );
   }
 

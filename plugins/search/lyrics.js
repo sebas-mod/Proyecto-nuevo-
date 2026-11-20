@@ -74,7 +74,7 @@ async function handler(m, { sock }) {
         
     } catch (error) {
         m.react('☢')
-        m.reply(`Bueno, la letra del servidor está tomando pies fríos.😭¡Inténtalo de nuevo más tarde!🛠♪✨`)
+        m.reply(`Bueno, la letra del servidor está tomando pies fríos.😭¡Inténtalo de nuevo más tarde!🛠✨`)
     }
 }
 

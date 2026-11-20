@@ -127,7 +127,7 @@ async function handler(m, { args }) {
       contentTxt += `📈 Persentase: ${p.persen}\n\n`;
     }
 
-    let txt = `🍽️ *Resultado Calcula KALKULATOR MBG* 🍽♪\n\n`;
+    let txt = `🍽️ *Resultado Calcula KALKULATOR MBG* 🍽\n\n`;
     txt += contentTxt.trim().split("\n").map(line => line.trim() ? `${line}` : ``).join("\n");
 
     await m.reply(txt);

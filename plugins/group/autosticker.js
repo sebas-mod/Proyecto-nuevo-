@@ -39,20 +39,20 @@ async function handler(m, { sock }) {
     
     if (arg === 'on' || arg === '1' || arg === 'aktif') {
         if (current) {
-            return m.reply(`🖼♪ᴀᴜᴛᴏSᴛɪᴄᴋᴇʀ*\n\n¡Dios mío!`)
+            return m.reply(`🖼ᴀᴜᴛᴏSᴛɪᴄᴋᴇʀ*\n\n¡Dios mío!`)
         }
         db.setGroup(m.chat, { autosticker: true })
         await db.save()
-        return m.reply(`🖼♪ᴀᴜᴛᴏSᴛɪᴄᴋᴇʀ*\n\n♪✅Activado correctamente!\nImagen / video automatizará a las pegatinas`)
+        return m.reply(`🖼ᴀᴜᴛᴏSᴛɪᴄᴋᴇʀ*\n\n•✅Activado correctamente!\nImagen / video automatizará a las pegatinas`)
     }
     
     if (arg === 'off' || arg === '0' || arg === 'nonaktif') {
         if (!current) {
-            return m.reply(`🖼♪ᴀᴜᴛᴏSᴛɪᴄᴋᴇʀ*\n\n¡Dios mío!`)
+            return m.reply(`🖼ᴀᴜᴛᴏSᴛɪᴄᴋᴇʀ*\n\n¡Dios mío!`)
         }
         db.setGroup(m.chat, { autosticker: false })
         await db.save()
-        return m.reply(`🖼♪ᴀᴜᴛᴏSᴛɪᴄᴋᴇʀ*\n\n♪❌Desactivado correctamente!`)
+        return m.reply(`🖼ᴀᴜᴛᴏSᴛɪᴄᴋᴇʀ*\n\n•❌Desactivado correctamente!`)
     }
     
     return m.reply(`❌ Usa: \`${m.prefix}autosticker on/off\``)
@@ -94,7 +94,7 @@ async function autoStickerHandler(m, sock) {
         if (isImage) {
             await sock.sendImageAsSticker(m.chat, buffer, m, {
                 packname: _optionalChain([_configjs2.default, 'access', _12 => _12.sticker, 'optionalAccess', _13 => _13.packname]) || 'Ourin',
-                author: _optionalChain([_configjs2.default, 'access', _14 => _14.sticker, 'optionalAccess', _15 => _15.author]) || '♪'
+                author: _optionalChain([_configjs2.default, 'access', _14 => _14.sticker, 'optionalAccess', _15 => _15.author]) || 'Bot'
             })
         } else if (isVideo) {
             const videoMsg = msg.videoMessage || _optionalChain([content, 'optionalAccess', _16 => _16.message, 'optionalAccess', _17 => _17.videoMessage])
@@ -103,7 +103,7 @@ async function autoStickerHandler(m, sock) {
             
             await sock.sendVideoAsSticker(m.chat, buffer, m, {
                 packname: _optionalChain([_configjs2.default, 'access', _19 => _19.sticker, 'optionalAccess', _20 => _20.packname]) || 'Ourin',
-                author: _optionalChain([_configjs2.default, 'access', _21 => _21.sticker, 'optionalAccess', _22 => _22.author]) || '♪'
+                author: _optionalChain([_configjs2.default, 'access', _21 => _21.sticker, 'optionalAccess', _22 => _22.author]) || 'Bot'
             })
         }
         

@@ -37,7 +37,7 @@ async function handler(m) {
         await m.react('✅')
         return m.reply(
             `✅ *ᴀᴜᴛᴏ ʀᴇᴀᴅ sᴛᴏʀʏ ᴀᴋᴛɪꜰ*\n\n` +
-            `♪ Para la automatización leer todas las historias de la WA ♪`
+            `• Para la automatización leer todas las historias de la WA •`
         )
     }
 

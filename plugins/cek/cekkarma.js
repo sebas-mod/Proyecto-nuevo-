@@ -22,7 +22,7 @@ async function handler(m) {
     if (percent >= 80) desc = 'Karma baik! Surga menantimu~ ✨'
     else if (percent >= 60) desc = 'Cukup baik, terus tingkatkan! 🙏'
     else if (percent >= 40) desc = 'Netral, perbanyak kebaikan~ ⚖️'
-    else if (percent >= 20) desc = '¡Cuidado con el karma malo!⚠♪'
+    else if (percent >= 20) desc = '¡Cuidado con el karma malo!⚠'
     else desc = 'Wah perlu banyak tobat nih... 😱'
     
     let txt = mentioned === m.sender ? `Hola @${mentioned.split('@')[0]}

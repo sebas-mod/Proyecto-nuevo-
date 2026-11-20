@@ -45,8 +45,8 @@ async function handler(m, { sock }) {
     if (!targetJid || amount <= 0) {
         return m.reply(
             `💰 *ᴅᴇʟ ᴋᴏɪɴ*\n\n` +
-            `♪\`Delkain.<jumlah>\`- de ti mismo.\n` +
-            `♪\`Delkain.<jumlah>@ usuario\`- del usuario\n\n` +
+            `•\`Delkain.<jumlah>\`- de ti mismo.\n` +
+            `•\`Delkain.<jumlah>@ usuario\`- del usuario\n\n` +
             `\`Contoh: ${m.prefix}delkoin 50000\``
         )
     }

@@ -4,7 +4,7 @@ const pluginConfig = {
     name: 'notiftidur',
     alias: ['jadwaltidur', 'tidurreminder', 'sleepreminder'],
     category: 'group',
-    description: 'Recordatorio de memoria Auto @-@',
+    description: 'Recordatorio de memoria Auto ',
     usage: '.notiftidur on <jam1,jam2,...> / off / edit <jam1,jam2,...>',
     example: '.notiftidur on 22.00',
     isOwner: false,
@@ -41,8 +41,8 @@ function handler(m) {
         info += `> \`${m.prefix}notiftidur on 22.00,23.30\`\n`
         info += `> \`${m.prefix}notiftidur edit 23.00\`\n`
         info += `> \`${m.prefix}notiftidur off\`\n`
-        info += `\n♪💡Las horas pueden usar un punto o punto dos ( 22. 00 / 22: 00 ) _\n`
-        info += `♪💡# Doble hora puede, rompe con comas #`
+        info += `\n•💡Las horas pueden usar un punto o punto dos ( 22. 00 / 22: 00 ) _\n`
+        info += `•💡# Doble hora puede, rompe con comas #`
 
         return m.reply(info)
     }
@@ -82,7 +82,7 @@ function handler(m) {
         for (const j of jadwal) {
             reply += `> 🕐 *${j}* WIB\n`
         }
-        reply += `\n♪💡" Las notificaciones se enviarán a este gráfico todos los días ".`
+        reply += `\n•💡" Las notificaciones se enviarán a este gráfico todos los días ".`
 
         return m.reply(reply)
     }
@@ -104,7 +104,7 @@ function handler(m) {
 
         _ourinnotifschedulerjs.setNotifTidur.call(void 0, sender, chatJid, jadwal)
 
-        let reply = `✅* Tiempo de cama actualizado!✏♪\n\n`
+        let reply = `✅* Tiempo de cama actualizado!✏\n\n`
         reply += `⏰*Jadwal nuevo:*\n`
         for (const j of jadwal) {
             reply += `> 🕐 *${j}* WIB\n`

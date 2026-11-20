@@ -21,11 +21,11 @@ async function handler(m) {
   const canceled = _daftarjs.clearRegistrationSession.call(void 0, m.sender);
 
   if (!canceled) {
-    return m.reply(`❌No tiene una señal activa @-@ off session.`);
+    return m.reply(`❌No tiene una señal activa off session.`);
   }
 
   return m.reply(
-    `✅El signo @-@ up fue cancelado.\n\n` +
+    `✅El signo up fue cancelado.\n\n` +
       `Disfrute de los Starys de nuevo con:\`${m.prefix}daftar\``,
   );
 }

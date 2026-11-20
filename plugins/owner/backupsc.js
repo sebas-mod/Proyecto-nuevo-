@@ -8,7 +8,7 @@ const pluginConfig = {
   name: "backupsc",
   alias: ["backup", "backupscript", "backupsource"],
   category: "owner",
-  description: "Botín Skript backend en zhakk @-@ tack",
+  description: "Botín Skript backend en zhakk tack",
   usage: ".backupsc",
   example: ".backupsc",
   isOwner: true,

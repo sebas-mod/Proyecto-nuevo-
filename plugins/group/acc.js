@@ -94,8 +94,8 @@ async function handler(m, { sock }) {
             await m.react('✅')
             return m.reply(
                 `✅ *${label.toUpperCase()}Todo*\n\n` +
-                `♪✅Exito:${success}\n` +
-                `♪❌Fallido:${failed}\n` +
+                `•✅Exito:${success}\n` +
+                `•❌Fallido:${failed}\n` +
                 `> 📊 Total: ${results.length}`
             )
         }

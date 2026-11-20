@@ -157,7 +157,7 @@ async function handler(m, { sock }) {
             _optionalChain([error, 'access', _13 => _13.response, 'optionalAccess', _14 => _14.data, 'optionalAccess', _15 => _15.message]) ||
             error.message
 
-        m.reply(`❌*DEPLOY Fallido*\n\nFue un error intentar subir el proyecto a Vercel.\n\n* Sombra de error: *\n♪${err}`)
+        m.reply(`❌*DEPLOY Fallido*\n\nFue un error intentar subir el proyecto a Vercel.\n\n* Sombra de error: *\n•${err}`)
     }
 }
 

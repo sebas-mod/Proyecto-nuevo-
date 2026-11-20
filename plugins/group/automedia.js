@@ -43,7 +43,7 @@ async function handler(m, { sock }) {
         }
         db.setGroup(m.chat, { automedia: true })
         await db.save()
-        return m.reply(`🎬*ᴀᴜᴛᴏᴍᴇᴅɪᴀ*\n\n♪✅Activado correctamente!\n*Bajora va a automatizar así que imagen / vídeo*`)
+        return m.reply(`🎬*ᴀᴜᴛᴏᴍᴇᴅɪᴀ*\n\n•✅Activado correctamente!\n*Bajora va a automatizar así que imagen / vídeo*`)
     }
     
     if (arg === 'off' || arg === '0' || arg === 'nonaktif') {
@@ -52,7 +52,7 @@ async function handler(m, { sock }) {
         }
         db.setGroup(m.chat, { automedia: false })
         await db.save()
-        return m.reply(`🎬*ᴀᴜᴛᴏᴍᴇᴅɪᴀ*\n\n♪❌Desactivado correctamente!`)
+        return m.reply(`🎬*ᴀᴜᴛᴏᴍᴇᴅɪᴀ*\n\n•❌Desactivado correctamente!`)
     }
     
     return m.reply(`❌ Usa: \`${m.prefix}automedia on/off\``)

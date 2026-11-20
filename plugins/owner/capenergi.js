@@ -20,7 +20,7 @@ const config = {
 async function handler(m, { sock }) {
   if (m.args.length < 2) {
     return m.reply(
-      `⚙♪ SISTETS CAP Energía ♪\n\n` +
+      `⚙ SISTETS CAP Energía •\n\n` +
       `El sistema de modificación dinámica se dibuja en energía para muchas características a la vez.\n\n` +
       `*Uso:*\n` +
       `- *${m.prefix}capenergi <nama_fitur1> <nama_fitur2> ... <jumlah>*\n\n` +

@@ -5,7 +5,7 @@ const pluginConfig = {
   name: "rvo",
   alias: ["readvo", "readviewonce", "readview"],
   category: "tools",
-  description: "Lea un mensaje de @-@ (ver una vez )",
+  description: "Lea un mensaje de (ver una vez )",
   usage: ".rvo (reply pesan view once)",
   example: ".rvo",
   isOwner: false,
@@ -21,7 +21,7 @@ async function handler(m, { sock }) {
   const quoted = m.quoted;
   if (!quoted) {
     return m.reply(
-      `Responder ordenó a uno @-@ tiempo @-@ sólo revisión para abrirla.\n\n\`Ejemplo:${m.prefix}rvo\`(respuesta vista una vez mensaje )`,
+      `Responder ordenó a uno tiempo sólo revisión para abrirla.\n\n\`Ejemplo:${m.prefix}rvo\`(respuesta vista una vez mensaje )`,
     );
   }
 
@@ -102,7 +102,7 @@ async function handler(m, { sock }) {
       msg =
         "Los medios de comunicación caducaron o ya fueron eliminados del servidor WhatsApp.\n\nTo Mensaje View Once is too old or overcast to be used for the Hando automas of the WhatsApp system and can 't be smuggled more.";
     }
-    m.reply(`❌*Fierce hace la vista una vez*\n\n♪${msg}`);
+    m.reply(`❌*Fierce hace la vista una vez*\n\n•${msg}`);
   }
 }
 

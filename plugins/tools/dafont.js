@@ -73,7 +73,7 @@ async function handler(m, { sock }) {
 
     if (!result.status) {
       m.react("☢");
-      return m.reply(`❌*DaFont Fallido*\n\n♪${result.error}`);
+      return m.reply(`❌*DaFont Fallido*\n\n•${result.error}`);
     }
 
     const items = result.results.slice(0, 10);

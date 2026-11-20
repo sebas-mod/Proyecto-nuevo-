@@ -34,7 +34,7 @@ async function handler(m, { sock }) {
         `> *${m.prefix}dailymotiondl <link>*\n\n` +
         `*Ejemplo:*\n` +
         `> *${m.prefix}dailymotiondl https://www.dailymotion.com/video/xxx*\n\n` +
-        `Las conversiones de Ez Prosses pueden ser antiguas @-@ de moda`,
+        `Las conversiones de Ez Prosses pueden ser antiguas de moda`,
     );
   }
 
@@ -45,13 +45,13 @@ async function handler(m, { sock }) {
 
     if (!result.status) {
       m.react("☢");
-      return m.reply(`❌*Dailymotion Fallido*\n\n♪${result.error}`);
+      return m.reply(`❌*Dailymotion Fallido*\n\n•${result.error}`);
     }
 
     let caption =
       `🎬 *Dailymotion*\n\n` +
       `> 📌 ${result.title}\n` +
-      `♪⏱️ Duración:${result.duration}\n` +
+      `•⏱️ Duración:${result.duration}\n` +
       `> 📺 Kualitas: ${result.quality}`;
 
     if (result.thumbnail) {

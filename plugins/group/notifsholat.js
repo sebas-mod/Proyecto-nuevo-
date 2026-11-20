@@ -40,7 +40,7 @@ function handler(m, { sock, db }) {
             `• *${m.prefix}notifsholat off* — Desactiva las notificaciones en este grupo\n\n` +
             `*CARA Trabaja:*\n` +
             `1. Envío de mp3 adzan pasado de la entrada de imagen en el momento de la sesión\n` +
-            `Siga el verdadero @-@ manejador de tiempo de myquran.\n` +
+            `Siga el verdadero manejador de tiempo de myquran.\n` +
             `Si el NoACTIF del Personal Global, el grupo no será enviado al personal, incluso si el Grupo del Personal está en la línea.\n` +
             `4.`
         );

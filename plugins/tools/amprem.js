@@ -97,7 +97,7 @@ async function handler(m, context) {
     }
     cancelState(userId);
     await react(sock, m, '🛑');
-    return m.reply(`✅La mano derecha @-@ a @-@ movimiento de luz de mano se cancela.\nEscribe\`${p}amprem correo@tu.com\`Para revalorizar.`);
+    return m.reply(`✅La mano derecha a movimiento de luz de mano se cancela.\nEscribe\`${p}amprem correo@tu.com\`Para revalorizar.`);
   }
 
   //Cheque de permiso de primera calidad para halagar.

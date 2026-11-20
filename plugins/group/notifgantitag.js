@@ -87,7 +87,7 @@ async function handler(m, { sock }) {
       `✅ *ɴᴏᴛɪꜰ ʟᴀʙᴇʟ ᴀᴋᴛɪꜰ*\n\n` +
         `¡Al cambio de las notificaciones de fotos de etiquetas está habilitado!\n` +
         `Sí, te avisaré cuando el laboratorio cambie.\n\n` +
-        `♪ ♪`,
+        `• •`,
     );
   }
   if (sub === "off") {
@@ -113,9 +113,9 @@ async function handler(m, { sock }) {
       `> \`${m.prefix}notifgantitag off\` → Nonaktifkan\n` +
       `> \`${m.prefix}notifgantitagón\` →Global ON (propietario)\n` +
       `> \`${m.prefix}notifgantitag off al\` →Global OFF (propietario)\n\n` +
-      `♪📋* Está característica dirá el momento: *\n` +
-      `♪•Admin añadir etiqueta a miembro\n` +
-      `♪•Admin desbloquea la etiqueta de la foto\n` +
+      `•📋* Está característica dirá el momento: *\n` +
+      `••Admin añadir etiqueta a miembro\n` +
+      `••Admin desbloquea la etiqueta de la foto\n` +
       `> • Label member berubah`,
   );
 }

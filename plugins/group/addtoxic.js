@@ -29,7 +29,7 @@ async function handler(m, { sock }) {
     }
     
     if (word.length < 2) {
-        return m.reply(`❌*ɢᴀɢᴀʟ*\n\n- # Demasiado corto @-@ line # - # Demasiado corto @-@ term ( menos 2 @-@ letra )`)
+        return m.reply(`❌*ɢᴀɢᴀʟ*\n\n- # Demasiado corto line # - # Demasiado corto term ( menos 2 letra )`)
     }
     
     if (word.length > 30) {

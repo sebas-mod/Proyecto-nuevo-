@@ -50,7 +50,7 @@ async function handler(m, { sock }) {
         text += `┃  🛒 *ʙᴜʏ ꜰɪᴛᴜʀ*\n`
         text += `╰━━━━━━━━━━━━━━━━━╯\n\n`
         
-        text += `♪ Precio: ♪${formatNumber(PRICE_PER_FEATURE)}* bal/fitur\n`
+        text += `• Precio: •${formatNumber(PRICE_PER_FEATURE)}* bal/fitur\n`
         text += `> Monedas: *${formatNumber(user.koin || 0)}*\n\n`
         
         text += `╭┈┈⬡「 📋 *ꜰɪᴛᴜʀ* 」\n`
@@ -113,7 +113,7 @@ async function handler(m, { sock }) {
         `┃ 💰 sɪsᴀ: *${formatNumber(newKoin)}*\n` +
         `╰┈┈⬡\n\n` +
         `> _${feature.desc}_\n\n` +
-        `♪💡Consejo: Así * Premium * para desbloquear tata!`
+        `•💡Consejo: Así * Premium * para desbloquear tata!`
     )
 }
 

@@ -12,7 +12,7 @@ const pluginConfig = {
   name: 'pomodoro',
   alias: ['pomo', 'fokus', 'stoppomodoro'],
   category: 'tools',
-  description: 'Temporizador de productividad Pomodoro: enfoque, descanso, y auto @-@ recordatorio',
+  description: 'Temporizador de productividad Pomodoro: enfoque, descanso, y auto recordatorio',
   usage: '.pomodoro [menit_fokus] [menit_istirahat] | .pomodoro status | .pomodoro stop',
   example: '.pomodoro 25 5',
   isOwner: false,

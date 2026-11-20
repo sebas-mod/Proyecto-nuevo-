@@ -284,7 +284,7 @@ async function handler(m, { sock }) {
     }
 
     if (reloadFailed.length) {
-      replyText += `⚠♪ ♪ ♪ ♪ ♪\n`;
+      replyText += `⚠ • •\n`;
       replyText += reloadFailed
         .slice(0, 10)
         .map(

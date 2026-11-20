@@ -11,7 +11,7 @@ const pluginConfig = {
   name: "carifitur",
   alias: ["searchcmd", "findcmd", "cari", "search", "cf"],
   category: "main",
-  description: "Búsqueda de palabras clave basadas en keyWord @-@ con detalles completos",
+  description: "Búsqueda de palabras clave basadas en keyWord con detalles completos",
   usage: ".carifitur <keyword>",
   example: ".carifitur sticker",
   isOwner: false,

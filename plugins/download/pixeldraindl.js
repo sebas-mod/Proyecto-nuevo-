@@ -26,7 +26,7 @@ async function handler(m, { sock }) {
   if (!url || !url.includes("pixeldrain.com")) {
     return m.reply(
       `📥 *ᴘɪxᴇʟᴅʀᴀɪɴ ᴅᴏᴡɴʟᴏᴀᴅ*\n\n` +
-        `♪ Down in the field of Pi ♪xeldrin\n\n` +
+        `• Down in the field of Pi •xeldrin\n\n` +
         `*Formato:*\n` +
         `> \`${m.prefix}pixeldraindl <url>\`\n\n` +
         `*Ejemplo:*\n` +
@@ -72,7 +72,7 @@ async function handler(m, { sock }) {
       })
     } else if (sizeInMB > 100) {
       await m.reply(
-        `⚠♪ꜰɪʟᴇ ᴛᴇʀʟᴀʟᴜ ʙᴇSᴀʀ*\n\n> Archivo${file.size}Desiado grande para enviar\nDescarga de enlaces Gunwild en la parte superior`,
+        `⚠ꜰɪʟᴇ ᴛᴇʀʟᴀʟᴜ ʙᴇSᴀʀ*\n\n> Archivo${file.size}Desiado grande para enviar\nDescarga de enlaces Gunwild en la parte superior`,
       );
     }
 

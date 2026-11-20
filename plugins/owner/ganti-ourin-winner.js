@@ -6,7 +6,7 @@ const pluginConfig = {
     name: 'ganti-ourin-winner.jpg',
     alias: ['gantiourinwinner', 'setourinwinner'],
     category: 'owner',
-    description: 'Imagen Cambia nuestrain @-@ ganador.',
+    description: 'Imagen Cambia nuestrain ganador.',
     usage: '.ganti-ourin-winner.jpg (reply/kirim gambar)',
     example: '.ganti-ourin-winner.jpg',
     isOwner: true,
@@ -40,7 +40,7 @@ async function handler(m, { sock }) {
         await m.reply(`⏳La jaula subió una foto..`)
         try {
             const newUrl = await _ourinuploaderjs.updateAssetUrl.call(void 0, 'ourin-winner', buffer, 'ourin-winner.jpg')
-            m.reply(`✅*ʙᴇʀʜᴀSɪʟ*\n\nPara Imagen ourin @-@ ganador. Jpg ha sido transferido a la nueva URL:\n♪${newUrl}\n" Config has been updated as a reality "!`)
+            m.reply(`✅*ʙᴇʀʜᴀSɪʟ*\n\nPara Imagen ourin ganador. Jpg ha sido transferido a la nueva URL:\n•${newUrl}\n" Config has been updated as a reality "!`)
         } catch (e) {
             m.reply(`❌Gagalm subió la imagen:${e.message}`)
         }

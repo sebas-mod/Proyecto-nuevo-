@@ -41,7 +41,7 @@ async function handler(m) {
     const text = _optionalChain([m, 'access', _ => _.text, 'optionalAccess', _2 => _2.trim, 'call', _3 => _3()]);
     
     if (!text) {
-        return m.reply(`⚖♪ʜᴀʀᴜSᴋᴀʜ*\n\n¡Disfruta de la pregunta!\n\n*Ejemplo:*\nLo siento. ¿Debo decir amor?`);
+        return m.reply(`⚖ʜᴀʀᴜSᴋᴀʜ*\n\n¡Disfruta de la pregunta!\n\n*Ejemplo:*\nLo siento. ¿Debo decir amor?`);
     }
     
     const answer = answers[Math.floor(Math.random() * answers.length)];

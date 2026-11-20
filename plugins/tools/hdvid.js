@@ -51,7 +51,7 @@ async function handler(m, { sock }) {
       return m.reply(`❌*Voy a estar aquí*\n\nLo sentimos hermano, la suma máxNu de video cuma 50MB`);
     }
 
-    await m.reply(`🎞* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *🎞♪\n\nVideo Kazak está siendo procesado en HD!✨\nEstimaciones de tiempo colgado en el tamaño de vídeo, por favor ser paciente, hermano!`);
+    await m.reply(`🎞* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *🎞\n\nVideo Kazak está siendo procesado en HD!✨\nEstimaciones de tiempo colgado en el tamaño de vídeo, por favor ser paciente, hermano!`);
 
     const tempDir = _os2.default.tmpdir();
     const inputPath = _path2.default.join(tempDir, `input-hd-${Date.now()}.mp4`);

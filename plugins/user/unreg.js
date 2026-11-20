@@ -22,7 +22,7 @@ async function handler(m, { sock }) {
 
   if (!_optionalChain([user, 'optionalAccess', _ => _.isRegistered])) {
     return m.reply(
-      `❌¡No estás en la lista!\n\n` + `♪ Para hacer con\`${m.prefix}daftar\``,
+      `❌¡No estás en la lista!\n\n` + `• Para hacer con\`${m.prefix}daftar\``,
     );
   }
 

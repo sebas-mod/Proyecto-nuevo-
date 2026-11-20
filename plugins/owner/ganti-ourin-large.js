@@ -21,7 +21,7 @@ async function handler(m, { sock }) {
     const isImage = m.isImage || (m.quoted && m.quoted.type === 'imageMessage')
     
     if (!isImage) {
-        return m.reply(`🖼♪ᴏᴜʀɪɴ ʟᴀʀɢᴇ ᴘʀᴇSᴇᴛ*\n\nEscoger / responder imágenes para reemplazar grandes fotos ( ourin. jpg, ourin - v8. jpg, ourin - v10.\nSólo asegúrate de que la imagen sea deseada.`)
+        return m.reply(`🖼ᴏᴜʀɪɴ ʟᴀʀɢᴇ ᴘʀᴇSᴇᴛ*\n\nEscoger / responder imágenes para reemplazar grandes fotos ( ourin. jpg, ourin - v8. jpg, ourin - v10.\nSólo asegúrate de que la imagen sea deseada.`)
     }
     
     await m.react('🕕')

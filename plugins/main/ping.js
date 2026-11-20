@@ -348,15 +348,15 @@ async function handler(m, { sock }) {
       `🧠 *Uso MEMORI*\n` +
       `> ◦ *Total RAM:* ${fmtSize(data.totalMem)}\n` +
       `> ◦ *Dipakai:* ${fmtSize(data.usedMem)} (${data.memPct}%)\n` +
-      `♪◦*Restante Bebas:*${fmtSize(data.freeMem)}\n\n` +
+      `•◦*Restante Bebas:*${fmtSize(data.freeMem)}\n\n` +
       `📦 *MEMORI NODEJS*\n` +
       `> ◦ *RSS:* ${fmtSize(data.memNode.rss)}\n` +
       `> ◦ *Heap Total:* ${fmtSize(data.memNode.heapTotal)}\n` +
       `> ◦ *Heap Used:* ${fmtSize(data.memNode.heapUsed)}\n` +
       `> ◦ *External:* ${fmtSize(data.memNode.external)}\n\n` +
       `⏱*El tiempo está encendido*\n` +
-      `♪◦*Uptime Servidor:*${data.upOS}\n` +
-      `♪◦* Tiempo de subida picado: *${data.upBot}\n\n` +
+      `•◦*Uptime Servidor:*${data.upOS}\n` +
+      `•◦* Tiempo de subida picado: *${data.upBot}\n\n` +
       `El sistema es estable y completó el cálculo en el tiempo de ejecución *${data.ping}ms*.`;
 
     await sock.sendMessage(m.chat, { image: imageBuffer, caption: caption }, { quoted: m });

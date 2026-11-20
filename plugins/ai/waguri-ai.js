@@ -5,7 +5,7 @@ const pluginConfig = {
   name: "waguri-ai",
   alias: ["waguriai", "waguri"],
   category: "ai",
-  description: "Chat con Waguri @-@ san—La chica peluda que olvidó sus gafas",
+  description: "Chat con Waguri san—La chica peluda que olvidó sus gafas",
   usage: ".waguri-ai <pertanyaan>",
   example: ".waguri-ai Waguri-san, halo!",
   isOwner: false,
@@ -26,7 +26,7 @@ async function handler(m, { sock }) {
         `*Uso:*\n` +
         `> *${m.prefix}waguri-ai <pertanyaan>*\n\n` +
         `*Ejemplo:*\n` +
-        `> *${m.prefix}waguri-ai @-@ ai Waguri @-@ san, hola!`
+        `> *${m.prefix}waguri-ai ai Waguri san, hola!`
     );
   }
 
