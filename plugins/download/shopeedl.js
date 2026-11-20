@@ -46,7 +46,7 @@ async function handler(m, { sock }) {
   const url = m.args[0] || _optionalChain([m, 'access', _ => _.text, 'optionalAccess', _2 => _2.trim, 'call', _3 => _3()]);
 
   if (!url || !url.includes("shopee")) {
-    return m.reply("❌ Masukkan link video Shopee yang valid.\n\nContoh: `.shopeedl https://shopee.co.id/...`");
+    return m.reply("❌ Introduce un enlace de video de Shopee válido.\n\nEjemplo: `.shopeedl https://shopee.co.id/...`");
   }
 
   await m.react("🕕");

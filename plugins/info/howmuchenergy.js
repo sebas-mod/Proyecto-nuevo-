@@ -6,7 +6,7 @@ const config = {
   alias: ["cekenergi"],
   category: "info",
   description: "Comprobación del uso energético de muchas características a la vez",
-  usage: ".howmuchenergy <nama_fitur1> <nama_fitur2> ...",
+  usage: ".howmuchenergy <comando1> <comando2> ...",
   example: ".howmuchenergy hd jpm",
   isOwner: false,
   isPremium: false,
@@ -20,10 +20,10 @@ const config = {
 async function handler(m, { sock }) {
   if (m.args.length === 0) {
     return m.reply(
-      `🔍* INDIAN INVESTIGATING *\n\n` +
-      `El sistema para saber qué es necesario un enorme pedazo de energía para usar una o varias características a la vez.\n\n` +
+      `🔍 CONSULTAR ENERGÍA\n\n` +
+      `Muestra cuánta energía consume uno o varios comandos.\n\n` +
       `*Uso:*\n` +
-      `- *${m.prefix}howmuchenergy <nama_fitur1> <nama_fitur2> ...*\n\n` +
+      `- *${m.prefix}howmuchenergy <comando1> <comando2> ...*\n\n` +
       `*Ejemplo de uso:*\n` +
       `- *${m.prefix}howmuchenergy hd jpm*\n\n` +
       `*Explicación:*\n` +

@@ -4,7 +4,7 @@ const pluginConfig = {
     alias: ['addmember', 'invite'],
     category: 'group',
     description: 'Añadir un miembrob a grupo ( soporte múltile )',
-    usage: '.add <nomor1> [nomor2] [nomor3]... [link_grup]',
+    usage: '.add <número1> [número2] [número3]... [enlace_grupo]',
     example: '.add 6281234567890 6281234567890',
     isOwner: false,
     isPremium: false,
@@ -26,7 +26,7 @@ async function handler(m, { sock }) {
             `Cara llevas\n` +
             `DALTON 1.\`${m.prefix}add <nomor>\`\n` +
             `> 2. Multiple: \`${m.prefix}add <nomor1> <nomor2> ...\`\n` +
-            `> 3. Di private: \`${m.prefix}add <nomor> <link_grup>\`\n\n` +
+            `> 3. En privado: \`${m.prefix}add <número> <enlace_grupo>\`\n\n` +
             `> Ejemplo:\n` +
             `> \`${m.prefix}add 6281234567890\`\n` +
             `> \`${m.prefix}add 628123 628456 628789\`\n` +

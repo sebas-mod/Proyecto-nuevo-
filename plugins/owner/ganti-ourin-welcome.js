@@ -7,7 +7,7 @@ const pluginConfig = {
     alias: ['gantiwelcome', 'setourinwelcome'],
     category: 'owner',
     description: 'Imagen Cambia nuestrain - bienvenido.',
-    usage: '.ganti-ourin-welcome.jpg (reply/kirim gambar)',
+    usage: '.ganti-ourin-welcome.jpg (responde o envía una imagen)',
     example: '.ganti-ourin-welcome.jpg',
     isOwner: true,
     isPremium: false,

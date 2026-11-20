@@ -7,7 +7,7 @@ const pluginConfig = {
     alias: ['gantigoodbye', 'setouringoodbye'],
     category: 'owner',
     description: 'Imagen Cambia nuestrain -Adiós.',
-    usage: '.ganti-ourin-goodbye.jpg (reply/kirim gambar)',
+    usage: '.ganti-ourin-goodbye.jpg (responde o envía una imagen)',
     example: '.ganti-ourin-goodbye.jpg',
     isOwner: true,
     isPremium: false,

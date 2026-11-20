@@ -5,7 +5,7 @@ const pluginConfig = {
     alias: ['jadwaltidur', 'tidurreminder', 'sleepreminder'],
     category: 'group',
     description: 'Recordatorio de memoria Auto ',
-    usage: '.notiftidur on <jam1,jam2,...> / off / edit <jam1,jam2,...>',
+    usage: '.notiftidur on <hora1,hora2,...> / off / edit <hora1,hora2,...>',
     example: '.notiftidur on 22.00',
     isOwner: false,
     isPremium: false,

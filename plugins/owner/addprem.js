@@ -16,9 +16,9 @@ const pluginConfig = {
     "premlist",
   ],
   category: "owner",
-  description: "Kelola premium users",
+  description: "Gestiona los usuarios premium",
   usage:
-    "- ¿Qué?<nomor/@tag>[el]\n- Dios.<nomor/@tag>\n- Escucha.\n- Lo siento.<nomor/@tag>",
+    ".addprem <número/@tag> [días]\n.delprem <número/@tag>\n.listprem\n.setprem <número/@tag> <días>",
   example: ".addprem 6281234567890 30",
   isOwner: true,
   isPremium: false,

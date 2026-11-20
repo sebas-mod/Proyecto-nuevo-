@@ -89,7 +89,7 @@ async function handler(m, { sock, db }) {
 
     let report =
       `✅ *ʙʀᴏᴀᴅᴄᴀsᴛ sᴡɢᴄ sᴇʟᴇsᴀɪ*\n\n` +
-      `> Total: *${total}* grup\n` +
+      `> Total: *${total}* grupos\n` +
       `*Con éxito*${success}* ✅\n` +
       `(Sumperando)${failed}* ❌`;
 

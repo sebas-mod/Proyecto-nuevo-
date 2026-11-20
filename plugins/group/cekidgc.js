@@ -98,7 +98,7 @@ async function handler(m, { sock }) {
     const groupDesc = groupMeta.desc || "—";
     const descPreview =
       groupDesc.length > 120 ? groupDesc.slice(0, 120) + "..." : groupDesc;
-    const isRestrict = groupMeta.restrict ? "Admin Only" : "Semua Member";
+    const isRestrict = groupMeta.restrict ? "Solo admins" : "Todos los miembros";
     const isAnnounce = groupMeta.announce ? "Aktif" : "Nonaktif";
     const isCommunity = groupMeta.isCommunity ? "✓ Ya" : "✘No";
     const joinMode = groupMeta.joinApprovalMode ? "Perlu Approval" : "Bebas";

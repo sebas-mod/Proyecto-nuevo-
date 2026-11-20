@@ -3,7 +3,7 @@ const pluginConfig = {
     name: 'ptv',
     alias: ['pvideo', 'circlevideo'],
     category: 'tools',
-    description: 'Kirim video sebagai PTV (circle video)',
+    description: 'Envía un video como PTV (video circular)',
     usage: '.ptv (reply video)',
     example: '.ptv',
     isOwner: false,

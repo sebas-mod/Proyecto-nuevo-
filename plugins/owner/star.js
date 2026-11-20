@@ -3,7 +3,7 @@
     alias: [],
     category: 'owner',
     description: 'Agregar / Eliminar estrellas a mensajes',
-    usage: '.star (reply pesan) atau .star hapus (reply pesan)',
+    usage: '.star (responde a un mensaje) o .star eliminar (responde a un mensaje)',
     example: '.star',
     isOwner: true,
     cooldown: 3,

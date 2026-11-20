@@ -109,7 +109,7 @@ async function handler(m, { args }) {
     let contentTxt = `💰 *Dana :* ${formatRupiah(uang)}\n\n`;
     contentTxt += `⏳*Duración MBG:*\n`;
     contentTxt += `${data.durasi.tahun}Año,${data.durasi.bulan}Mes,${data.durasi.hari} HARI\n`;
-    contentTxt += `${data.durasi.jam}Hora,${data.durasi.menit}Minuto,${data.durasi.detik} DETIK\n`;
+    contentTxt += `${data.durasi.jam} horas, ${data.durasi.menit} minutos, ${data.durasi.detik} segundos\n`;
     contentTxt += `_ ( Basado en las diseminaciones ~ Rp${(data.pengeluaran / 1000000000).toFixed(1)}Mil millones/el)_\n\n`;
     
     contentTxt += `🍱* Como porsi maya:\n`;

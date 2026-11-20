@@ -3,7 +3,7 @@
     alias: [],
     category: 'owner',
     description: 'Nuevo campo de grupo',
-    usage: '.buatgrup <nama>|<nomor1,nomor2,...>|<durasi_menit>',
+    usage: '.buatgrup <nombre>|<número1,número2,...>|<duración_minutos>',
     example: '.buatgrup Grup Baru|628xxx,628yyy|60',
     isOwner: true,
     cooldown: 5,

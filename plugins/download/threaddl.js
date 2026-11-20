@@ -58,7 +58,7 @@ async function handler(m, { sock }) {
   const url = _optionalChain([m, 'access', _6 => _6.text, 'optionalAccess', _7 => _7.trim, 'call', _8 => _8()]);
   
   if (!url || !/threads/i.test(url)) {
-    return m.reply("❌ *Waduh, Link Threads-nya mana nih?*\n\nKamu harus memasukkan tautan (link) dari postingan Threads yang ingin diunduh. Pastikan linknya benar ya! \n\nContoh: `.tdl https://www.threads.net/@zuck/post/xxx`");
+    return m.reply("❌ *¡Falta el enlace de Threads!*\n\nDebes enviar el enlace de la publicación de Threads que quieres descargar. ¡Asegúrate de que sea correcto! \n\nEjemplo: `.tdl https://www.threads.net/@zuck/post/xxx`");
   }
 
   await m.react("🕕");

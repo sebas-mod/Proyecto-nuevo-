@@ -3,7 +3,7 @@
     alias: [],
     category: 'owner',
     description: 'Mute/unmute chat',
-    usage: '.mutechat <nomor/reply> atau .mutechat buka <nomor>',
+    usage: '.mutechat <número/responde> o .mutechat abrir <número>',
     example: '.mutechat 628xxx',
     isOwner: true,
     cooldown: 3,

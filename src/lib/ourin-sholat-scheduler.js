@@ -162,7 +162,7 @@ async function sendSholatNotifications(sholat, waktu) {
       "isya",
     ].includes(sholat);
 
-    let message = `${SHOLAT_MESSAGES[sholat] || `🕌 *WAKTU ${sholat.toUpperCase()}*`}\n\n⏰ *${waktu} WIB*\n📍 *${kotaSetting.nama}*`;
+    let message = `${SHOLAT_MESSAGES[sholat] || `🕌 *HORA DE ${sholat.toUpperCase()}*`}\n\n⏰ *${waktu} WIB*\n📍 *${kotaSetting.nama}*`;
 
     if (closeGroup && isSholatTime) {
       message += `\n\n•🔒 Grupo cerrado •${duration}minutos para mostrar _`;

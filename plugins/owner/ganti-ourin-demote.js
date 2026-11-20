@@ -7,7 +7,7 @@ const pluginConfig = {
     alias: ['gantiourindemote', 'setourindemote'],
     category: 'owner',
     description: 'Imagen Cambia nuestrain - demote.',
-    usage: '.ganti-ourin-demote.jpg (reply/kirim gambar)',
+    usage: '.ganti-ourin-demote.jpg (responde o envía una imagen)',
     example: '.ganti-ourin-demote.jpg',
     isOwner: true,
     isPremium: false,

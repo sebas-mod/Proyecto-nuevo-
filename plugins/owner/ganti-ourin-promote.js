@@ -7,7 +7,7 @@ const pluginConfig = {
     alias: ['gantiourinpromote', 'setourinpromote'],
     category: 'owner',
     description: 'Imagen Cambia nuestrain - rapidez.',
-    usage: '.ganti-ourin-promote.jpg (reply/kirim gambar)',
+    usage: '.ganti-ourin-promote.jpg (responde o envía una imagen)',
     example: '.ganti-ourin-promote.jpg',
     isOwner: true,
     isPremium: false,

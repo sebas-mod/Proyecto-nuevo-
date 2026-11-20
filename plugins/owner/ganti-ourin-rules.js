@@ -7,7 +7,7 @@ const pluginConfig = {
     alias: ['gantirules', 'setourinrules'],
     category: 'owner',
     description: 'Imagen Cambia nuestrain - reglas.',
-    usage: '.ganti-ourin-rules.jpg (reply/kirim gambar)',
+    usage: '.ganti-ourin-rules.jpg (responde o envía una imagen)',
     example: '.ganti-ourin-rules.jpg',
     isOwner: true,
     isPremium: false,

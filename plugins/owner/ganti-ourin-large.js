@@ -6,7 +6,7 @@ const pluginConfig = {
     alias: ['setourinlarge', 'gantiourinlarge'],
     category: 'owner',
     description: 'Preset: Cambia image ourin. Jpg, serta ourin - v7 horange ourin - v11. Jpg una vez',
-    usage: '.ourin-large (reply/kirim gambar)',
+    usage: '.ourin-large (responde o envía una imagen)',
     example: '.ourin-large',
     isOwner: true,
     isPremium: false,

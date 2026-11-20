@@ -6,7 +6,7 @@ const config = {
   alias: ["whatrole", "cekrole", "cekakses"],
   category: "info",
   description: "Compruebe los términos de las acciones muchas características veces",
-  usage: ".whatrolethis <nama_fitur1> <nama_fitur2> ...",
+  usage: ".whatrolethis <comando1> <comando2> ...",
   example: ".whatrolethis hd jpm",
   isOwner: false,
   isPremium: false,
@@ -20,10 +20,10 @@ const config = {
 async function handler(m, { sock }) {
   if (m.args.length === 0) {
     return m.reply(
-      `🔍* INCREATING ACCESS FUTURE *\n\n` +
-      `El sistema para conocer detalles de la información establece una función acUR o algunas características a la vez.\n\n` +
+      `🔍 CONSULTAR ACCESO\n\n` +
+      `Muestra qué rol (owner, premium o free) requiere uno o varios comandos.\n\n` +
       `*Uso:*\n` +
-      `- *${m.prefix}whatrolethis <nama_fitur1> <nama_fitur2> ...*\n\n` +
+      `- *${m.prefix}whatrolethis <comando1> <comando2> ...*\n\n` +
       `*Ejemplo de uso:*\n` +
       `- *${m.prefix}whatrolethis hd jpm warn*\n\n` +
       `*Explicación:*\n` +

@@ -7,7 +7,7 @@ const pluginConfig = {
     alias: ['gantiourinaudio', 'setourinaudio'],
     category: 'owner',
     description: 'Ganti audio ourin.mp3',
-    usage: '.ganti-ourin.mp3 (reply/kirim audio)',
+    usage: '.ganti-ourin.mp3 (responde o envía un audio)',
     example: '.ganti-ourin.mp3',
     isOwner: true,
     isPremium: false,

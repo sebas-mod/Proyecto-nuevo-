@@ -7,7 +7,7 @@ const pluginConfig = {
     alias: ['gantippkosong', 'setppkosong'],
     category: 'owner',
     description: 'Pp vacio dibujo Cambia.',
-    usage: '.ganti-pp-kosong.jpg (reply/kirim gambar)',
+    usage: '.ganti-pp-kosong.jpg (responde o envía una imagen)',
     example: '.ganti-pp-kosong.jpg',
     isOwner: true,
     isPremium: false,

@@ -8,7 +8,7 @@ const pluginConfig = {
   alias: ["setnamaowner", "setnameowner", "setownername"],
   category: "owner",
   description: "Propietario Cambia ( principal o añadir )",
-  usage: ".ganti-namaowner <nomor> <nama baru>",
+  usage: ".ganti-namaowner <número> <nombre nuevo>",
   example: ".ganti-namaowner 628xxx Fauzan",
   isOwner: true,
   isPremium: false,
@@ -38,7 +38,7 @@ async function handler(m, { sock, config }) {
       list += `\n*Hay un nombre personalizado para el propietario añadido*`;
     }
     list += `\n\n*Uso:*\n`;
-    list += `\`${m.prefix}ganti-namaowner<nomor> <nama>\`\n`;
+    list += `\`${m.prefix}ganti-namaowner <número> <nombre>\`\n`;
     list += `\`${m.prefix}ganti-namaowner juega<nama>\` —Cambiar el nombre del propietario principal`;
     return m.reply(list);
   }

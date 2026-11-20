@@ -7,7 +7,7 @@ const pluginConfig = {
     alias: ['gantirpg', 'setourinrpg'],
     category: 'owner',
     description: 'Arregle imágenes de nuestroin - rpg.',
-    usage: '.ganti-ourin-rpg.jpg (reply/kirim gambar)',
+    usage: '.ganti-ourin-rpg.jpg (responde o envía una imagen)',
     example: '.ganti-ourin-rpg.jpg',
     isOwner: true,
     isPremium: false,

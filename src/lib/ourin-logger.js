@@ -205,7 +205,7 @@ function logMessage(info) {
   const senderName = pushName || num;
 
   console.log("");
-  console.log(`  ${cWhite("╭─")} ${_chalk2.default.bgWhiteBright("Hey, ada pesan masuk nih :3")} ${cGray("•")} ${chatType === "private" ? _chalk2.default.yellow("Private") : _chalk2.default.whiteBright("Dari Grup") + " " + _chalk2.default.bgCyanBright(location)}`);
+  console.log(`  ${cWhite("╭─")} ${_chalk2.default.bgWhiteBright("Ey, llegó un mensaje :3")} ${cGray("•")} ${chatType === "private" ? _chalk2.default.yellow("Private") : _chalk2.default.whiteBright("Dari Grup") + " " + _chalk2.default.bgCyanBright(location)}`);
   console.log(`  ${cWhite("│")}  👤 ${_chalk2.default.greenBright(senderName)} ${cGray(`(${num})`)}`);
   console.log(`  ${cWhite("│")}  📱 ${_chalk2.default.yellowBright(info.device || "Unknown")} ${_chalk2.default.red(`• ${time} • ${typeTag}`)}`);
   const maxWidth = 55;

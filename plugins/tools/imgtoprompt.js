@@ -55,7 +55,7 @@ async function handler(m, { sock }) {
             _fs2.default.unlinkSync(tmpFile);
         } catch (e) {}
         if (result.status === 'eror' || !result.prompt) {
-            return await m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> ${result.msg || 'Tidak dapat menghasilkan prompt dari gambar ini'}`);
+            return await m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> ${result.msg || 'No se pudo generar un prompt con esta imagen'}`);
         }
         const responseText = `🎨 *ɪᴍᴀɢᴇ ᴛᴏ ᴘʀᴏᴍᴘᴛ*\n\n` +
             `\`\`\`${result.prompt}\`\`\`\n\n` +

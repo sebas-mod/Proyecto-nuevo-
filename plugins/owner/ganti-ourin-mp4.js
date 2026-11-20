@@ -7,7 +7,7 @@ const pluginConfig = {
     alias: ['gantiourinvideo', 'setourinvideo'],
     category: 'owner',
     description: 'Ganti video ourin.mp4',
-    usage: '.ganti-ourin.mp4 (reply/kirim video)',
+    usage: '.ganti-ourin.mp4 (responde o envía un video)',
     example: '.ganti-ourin.mp4',
     isOwner: true,
     isPremium: false,

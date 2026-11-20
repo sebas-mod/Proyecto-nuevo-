@@ -47,10 +47,10 @@ function formatDuration(str) {
       str.toLowerCase(),
     )
   )
-    return "Permanent";
+    return "Permanente";
   const match = str.match(/^(\d+)([iIdDmMyYhH])$/);
   if (!match) return str;
-  const units = { i: "menit", h: "jam", d: "hari", m: "bulan", y: "tahun" };
+  const units = { i: "minutos", h: "horas", d: "días", m: "meses", y: "años" };
   return `${match[1]} ${units[match[2].toLowerCase()] || match[2]}`;
 }
 

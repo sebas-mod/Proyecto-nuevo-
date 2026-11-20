@@ -5,7 +5,7 @@ const pluginConfig = {
     alias: ['delpartner', 'listpartner'],
     category: 'owner',
     description: 'Kellola bot partner list',
-    usage: '.addpartner <nomor/@tag> [hari]\n.delpartner <nomor/@tag>\n.listpartner\n.cekpartner <nomor/@tag>',
+    usage: '.addpartner <número/@tag> [días]\n.delpartner <número/@tag>\n.listpartner\n.cekpartner <número/@tag>',
     example: '.addpartner 6281234567890 30',
     isOwner: true,
     isPremium: false,

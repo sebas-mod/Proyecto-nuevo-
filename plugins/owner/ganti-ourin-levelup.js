@@ -7,7 +7,7 @@ const pluginConfig = {
     alias: ['gantiourinlevelup', 'setourinlevelup'],
     category: 'owner',
     description: 'Imagen Cambia nuestrain - nivelup.',
-    usage: '.ganti-ourin-levelup.jpg (reply/kirim gambar)',
+    usage: '.ganti-ourin-levelup.jpg (responde o envía una imagen)',
     example: '.ganti-ourin-levelup.jpg',
     isOwner: true,
     isPremium: false,

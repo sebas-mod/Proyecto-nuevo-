@@ -306,7 +306,7 @@ async function startJadibot(sock, m, userJid, usePairing = true) {
   if (usePairing) {
     const lastAttempt = rateLimit.get(id) || 0;
     if (Date.now() - lastAttempt < 60000) {
-      throw new Error("Tunggu 1 menit sebelum mencoba lagi.");
+      throw new Error("Espera 1 minuto antes de intentar de nuevo.");
     }
     rateLimit.set(id, Date.now());
   }

@@ -3,7 +3,7 @@
   alias: [],
   category: "owner",
   description: "Arsipkan/buka arsip chat",
-  usage: ".arsip <nomor/reply> atau .arsip buka <nomor>",
+  usage: ".arsip <número/responde> o .arsip abrir <número>",
   example: ".arsip 628xxx",
   isOwner: true,
   cooldown: 3,

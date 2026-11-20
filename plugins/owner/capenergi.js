@@ -6,7 +6,7 @@ const config = {
   alias: ["setenergi"],
   category: "owner",
   description: "Cambiar el corte energético de muchas características a la vez.",
-  usage: ".capenergi <nama_fitur1> <nama_fitur2> ... <jumlah>",
+  usage: ".capenergi <comando1> <comando2> ... <cantidad>",
   example: ".capenergi hd fakedev 5",
   isOwner: true,
   isPremium: false,
@@ -20,16 +20,16 @@ const config = {
 async function handler(m, { sock }) {
   if (m.args.length < 2) {
     return m.reply(
-      `⚙ SISTETS CAP Energía •\n\n` +
-      `El sistema de modificación dinámica se dibuja en energía para muchas características a la vez.\n\n` +
+      `⚙ SISTEMA DE ENERGÍA POR COMANDO\n\n` +
+      `Cambia el consumo de energía de varios comandos a la vez.\n\n` +
       `*Uso:*\n` +
-      `- *${m.prefix}capenergi <nama_fitur1> <nama_fitur2> ... <jumlah>*\n\n` +
+      `- *${m.prefix}capenergi <comando1> <comando2> ... <cantidad>*\n\n` +
       `*Ejemplo de uso:*\n` +
-      `- *${m.prefix}capenergi hd jpm 5 * ( FITR HD TO JPM para cortar 5 energías )\n` +
-      `- *${m.prefix}capenergi n0 capenergi * (la fuente HD se convierte en energía gradiente )\n\n` +
+      `- *${m.prefix}capenergi hd jpm 5* (hd y jpm pasan a costar 5 de energía)\n` +
+      `- *${m.prefix}capenergi hd 0* (hd pasa a ser gratis)\n\n` +
       `*Explicación:*\n` +
-      `Ponga una o varias características en la fuente que desea cambiar.\n` +
-      `2. El fin debe ser un nuevo número de fragmentos de energía.`
+      `1. Escribe uno o varios comandos cuyo coste quieres cambiar.\n` +
+      `2. Al final debe ir el nuevo número de energía.`
     );
   }
 

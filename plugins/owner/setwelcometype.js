@@ -35,7 +35,7 @@ const VARIANTS = {
   },
   4: { name: "Group", desc: "ContextInfo group style", emoji: "👥" },
   5: { name: "Simple", desc: "Mensaje", emoji: "✨" },
-  6: { name: "Video", desc: "Kirim video perkenalan", emoji: "🎥" },
+  6: { name: "Video", desc: "Envía un video de presentación", emoji: "🎥" },
   7: { name: "Interactive Quoted", desc: "Mensaje interactivo con cita falsa", emoji: "💬" },
   8: { name: "Super Simple", desc: "Texto de Mensaje es muy corto sin ninguna decoración", emoji: "👋" },
 };

@@ -7,7 +7,7 @@ const pluginConfig = {
     alias: ['gantiourin2', 'setourin2'],
     category: 'owner',
     description: 'Imagen Cambia nuestrain2.',
-    usage: '.ganti-ourin2.jpg (reply/kirim gambar)',
+    usage: '.ganti-ourin2.jpg (responde o envía una imagen)',
     example: '.ganti-ourin2.jpg',
     isOwner: true,
     isPremium: false,

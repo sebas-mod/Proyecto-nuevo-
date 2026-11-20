@@ -162,7 +162,7 @@ Puedes mezclar algo de acción de vez en cuando si quieres.
 const fallbackResponses = [
   "Estaba pensando.",
   "Lo siento, estaba pensando en en en blanco por un tiempo.",
-  "Eh tunggu sebentar ya, aku loading dulu...",
+  "Un momento, déjame cargar...",
   "Aduh, otakku lag nih, coba lagi ya!",
   "¿En qué estás pensando?",
 ];

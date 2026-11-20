@@ -3,7 +3,7 @@
     alias: [],
     category: 'owner',
     description: 'Pin/unpin chat',
-    usage: '.pinchat <nomor/reply> atau .pinchat buka <nomor>',
+    usage: '.pinchat <número/responde> o .pinchat abrir <número>',
     example: '.pinchat 628xxx',
     isOwner: true,
     cooldown: 3,

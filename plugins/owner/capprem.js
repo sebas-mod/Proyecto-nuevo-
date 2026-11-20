@@ -6,7 +6,7 @@ const config = {
   alias: ["cappremium", "setprem"],
   category: "owner",
   description: "Rocíe muchas características a la vez para ser una prima",
-  usage: ".capprem <nama_fitur1> <nama_fitur2> ...",
+  usage: ".capprem <comando1> <comando2> ...",
   example: ".capprem hd jpm warn",
   isOwner: true,
   isPremium: false,
@@ -20,14 +20,14 @@ const config = {
 async function handler(m, { sock }) {
   if (m.args.length === 0) {
     return m.reply(
-      `💎* PREMUM DE LA CAPITUACIÓN SISTEMA >\n\n` +
-      `Systemaxclusivos para cimiar el estado de las acones muchas características se subsidertieron en Premium.\n\n` +
+      `💎 SISTEMA DE COMANDOS PREMIUM\n\n` +
+      `Marca varios comandos como exclusivos de Premium a la vez.\n\n` +
       `*Uso:*\n` +
-      `- *${m.prefix}capprem<nama_fitur1> <nama_fitur2>...—Las semillas son muchas de ellas.\n\n` +
+      `- *${m.prefix}capprem <comando1> <comando2> ...*\n\n` +
       `*Ejemplo de uso:*\n` +
       `- *${m.prefix}capprem hd jpm warn*\n\n` +
       `*Explicación:*\n` +
-      `Ponga una o más características que Premium quiere umar.`
+      `Escribe uno o varios comandos que quieras limitar a Premium.`
     );
   }
 

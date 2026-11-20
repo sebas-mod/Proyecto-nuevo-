@@ -101,7 +101,7 @@ async function handler(m, { args }) {
 
   if (!url) {
     return m.reply(
-      `*📝 VIDEO TRANSCRIBE*\n\n\`\`\`${m.prefix}video-transcribe <url_video> [bahasa]\`\`\`\n\nContoh:\n\`${m.prefix}video-transcribe https://youtu.be/... id\``
+      `*📝 TRANSCRIBIR VIDEO*\n\n\`\`\`${m.prefix}video-transcribe <url_video> [idioma]\`\`\`\n\nEjemplo:\n\`${m.prefix}video-transcribe https://youtu.be/... es\``
     );
   }
 
@@ -125,7 +125,7 @@ async function handler(m, { args }) {
   } catch (err) {
     console.error("[VideoTranscribe]", err.message);
     m.react("☢");
-    m.reply(`❌*Fallido:*${err.message || "Gagal memproses video"}`);
+    m.reply(`❌*Fallido:*${err.message || "No se pudo procesar el video"}`);
   }
 }
 

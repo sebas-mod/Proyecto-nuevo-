@@ -7,7 +7,7 @@ const pluginConfig = {
     alias: ['gantiourinwinner', 'setourinwinner'],
     category: 'owner',
     description: 'Imagen Cambia nuestrain ganador.',
-    usage: '.ganti-ourin-winner.jpg (reply/kirim gambar)',
+    usage: '.ganti-ourin-winner.jpg (responde o envía una imagen)',
     example: '.ganti-ourin-winner.jpg',
     isOwner: true,
     isPremium: false,

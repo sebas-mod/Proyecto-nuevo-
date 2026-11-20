@@ -31,12 +31,12 @@ async function handler(m, { sock }) {
         `┃ \`${m.prefix}invoicemaker <toko>|<invoice>|<tanggal>|<status>|<items>|<total>\`\n` +
         `╰┈┈⬡\n\n` +
         `╭┈┈⬡「 📝 *ᴘᴀʀᴀᴍᴇᴛᴇʀ* 」\n` +
-        `┃ •Tienda: Tienda de nombres\n` +
-        `┃ •involice: nogor involice\n` +
+        `┃ •tienda: Nombre de la tienda\n` +
+        `┃ •factura: Número de factura\n` +
         `┃ • fecha: Formato DD/MM/YYYY\n` +
         `┃ • status: paid/unpaid\n` +
-        `┃ •items: Name: unit: precio ( cosmetica )\n` +
-        `┃ • total: Total harga\n` +
+        `┃ •items: nombre: cantidad: precio (separados por coma)\n` +
+        `┃ •total: precio total\n` +
         `╰┈┈⬡\n\n` +
         `> Ejemplo:\n` +
         `\`${m.prefix}invoicemaker TokoKu|INV001|15/01/2026|paid|Arroz Goreng:1x:15000,Es Te:2x6000\``,

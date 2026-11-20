@@ -7,7 +7,7 @@ const pluginConfig = {
     alias: ['gantiourinv8', 'setourinv8'],
     category: 'owner',
     description: 'Imagen Cambia ourin - v8.',
-    usage: '.ganti-ourin-v8.jpg (reply/kirim gambar)',
+    usage: '.ganti-ourin-v8.jpg (responde o envía una imagen)',
     example: '.ganti-ourin-welcome.jpg',
     isOwner: true,
     isPremium: false,

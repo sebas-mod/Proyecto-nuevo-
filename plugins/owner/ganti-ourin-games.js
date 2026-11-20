@@ -7,7 +7,7 @@ const pluginConfig = {
     alias: ['gantigames', 'setouringames'],
     category: 'owner',
     description: 'Imagen Cambia nuestrain juegos.',
-    usage: '.ganti-ourin-games.jpg (reply/kirim gambar)',
+    usage: '.ganti-ourin-games.jpg (responde o envía una imagen)',
     example: '.ganti-ourin-games.jpg',
     isOwner: true,
     isPremium: false,

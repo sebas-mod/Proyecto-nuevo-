@@ -49,7 +49,7 @@ async function handler(m) {
       `*Como usarlo:*\n` +
       `> \`${m.prefix}bcpcjeda <angka><satuan>\`\n\n` +
       `*SATUAN:*\n` +
-      `• \`s\` — detik\n• \`m\` — menit\n• \`h\` — jam\n• \`d\` — hari\n\n` +
+      `• \`s\` — segundos\n• \`m\` — minutos\n• \`h\` — horas\n• \`d\` — días\n\n` +
       `*Ejemplo:*\n` +
       `> \`${m.prefix}bcpcjeda 5s\` → 5 detik\n` +
       `> \`${m.prefix}bcpcjeda 2m\` → 2 menit\n` +

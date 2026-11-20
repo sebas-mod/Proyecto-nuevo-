@@ -5,7 +5,7 @@ const pluginConfig = {
     alias: ['jadwalmakan', 'makanreminder'],
     category: 'group',
     description: 'Auto recordatorio de alimentación',
-    usage: '.notifmakan on <jam1,jam2,...> [menu] / off / edit <jam1,jam2,...> [menu]',
+    usage: '.notifmakan on <hora1,hora2,...> [menú] / off / edit <hora1,hora2,...> [menú]',
     example: '.notifmakan on 07.00,12.00,19.00 Nasi Padang',
     isOwner: false,
     isPremium: false,

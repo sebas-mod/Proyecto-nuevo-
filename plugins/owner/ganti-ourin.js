@@ -7,7 +7,7 @@ const pluginConfig = {
     alias: ['gantiourin', 'setourin'],
     category: 'owner',
     description: 'Imagen Cambia nuestrain. jpg ( menú de miniatura )',
-    usage: '.ganti-ourin.jpg (reply/kirim gambar)',
+    usage: '.ganti-ourin.jpg (responde o envía una imagen)',
     example: '.ganti-ourin.jpg',
     isOwner: true,
     isPremium: false,

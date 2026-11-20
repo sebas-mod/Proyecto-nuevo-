@@ -6,7 +6,7 @@ const config = {
   alias: ["capgratis", "setfree"],
   category: "owner",
   description: "Rocíe muchas características una vez un gradiente",
-  usage: ".capfree <nama_fitur1> <nama_fitur2> ...",
+  usage: ".capfree <comando1> <comando2> ...",
   example: ".capfree hd jpm warn",
   isOwner: true,
   isPremium: false,
@@ -20,14 +20,14 @@ const config = {
 async function handler(m, { sock }) {
   if (m.args.length === 0) {
     return m.reply(
-      `🆓91; SISTETAS CAP Gratis\n\n` +
-      `El sistema para restaurar el estado de acción de muchas características a la vez se convierte en un público gradiente.\n\n` +
+      `🆓 SISTEMA DE COMANDOS GRATIS\n\n` +
+      `Hace gratuitos varios comandos a la vez.\n\n` +
       `*Uso:*\n` +
-      `- *${m.prefix}capfree gorra<nama_fitur1> <nama_fitur2>...—Las semillas son muchas de ellas.\n\n` +
+      `- *${m.prefix}capfree <comando1> <comando2> ...*\n\n` +
       `*Ejemplo de uso:*\n` +
       `- *${m.prefix}capfree hd jpm warn*\n\n` +
       `*Explicación:*\n` +
-      `Introduzca una o más características que quieren ser libres.`
+      `Escribe uno o varios comandos que quieras dejar sin coste.`
     );
   }
 

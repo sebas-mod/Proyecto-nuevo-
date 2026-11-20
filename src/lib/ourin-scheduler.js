@@ -229,7 +229,7 @@ const schedulerRegistry = {
   sewaChecker: {
     name: "Sewa Checker",
     key: "sewaChecker",
-    description: "Cek expired sewa setiap 10 menit",
+    description: "Comprueba los alquileres vencidos cada 10 minutos",
   },
   scheduledMessages: {
     name: "Schedule Planner",
@@ -275,7 +275,7 @@ function getFullSchedulerStatus() {
         name: "Sewa Checker",
         key: "sewa",
         running: activeCronJobs.has("sewaChecker"),
-        description: "Cek expired sewa setiap 10 menit",
+        description: "Comprueba los alquileres vencidos cada 10 minutos",
         lastRun: "-",
         stats: {},
       },
@@ -666,7 +666,7 @@ async function startSewaChecker(sock) {
 
   const job = new (0, _cron.CronJob)("*/10 * * * *", doCheck, null, true, TZ);
   activeCronJobs.set("sewaChecker", job);
-  _ourinloggerjs.logger.info("Scheduler",    "Sistem cek sewa jalan (tiap 10 menit)",);
+  _ourinloggerjs.logger.info("Scheduler",    "Sistema de control de alquileres activo (cada 10 minutos)",);
 }
 
 function startAutoBioChecker(sock) {

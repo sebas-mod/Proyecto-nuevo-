@@ -5,7 +5,7 @@ const pluginConfig = {
     alias: ['belifitur', 'purchasefeature', 'buyfeature'],
     category: 'user',
     description: 'Comprar una característica premium ( 1 característica = 30,000 monedas )',
-    usage: '.buyfitur [nama_fitur]',
+    usage: '.buyfitur [comando]',
     example: '.buyfitur',
     isOwner: false,
     isPremium: false,

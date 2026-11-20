@@ -32,7 +32,7 @@ async function handler(m, { sock }) {
         const isMedia = isImage || isVideo || isAudio || isDocument;
 
         if (!isMedia) {
-            return m.reply(`🖼ɢᴀɴᴛɪ ᴀssᴇᴛ*\n\n# Silai contest media (imagen / video / audio / documento ) con mensajes\`${m.prefix}ganti-asset\``);
+            return m.reply(`*GANTI ASSET*\n\nEnvía o responde con un archivo (imagen, video, audio o documento) usando \`${m.prefix}ganti-asset\``);
         }
 
         m.react('🕕');
