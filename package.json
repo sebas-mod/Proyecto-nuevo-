@@ -78,7 +78,6 @@
     "qs": "^6.14.1",
     "rate-limiter-flexible": "^9.1.1",
     "sharp": "^0.34.1",
-    "skia-canvas": "^3.0.8",
     "tesseract.js": "^7.0.0",
     "tough-cookie": "^6.0.0",
     "undici": "^7.22.0",
