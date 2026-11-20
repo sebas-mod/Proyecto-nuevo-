@@ -28,7 +28,7 @@ async function handler(m) {
         `Un campo de correo electrónico temporal que se puede enviar a usted.—fit crear una lista de cuentas sin el correo original.\n\n` +
         `*Uso:*\n` +
         `> *${m.prefix}tempmail crear *—Bikinis nuevo correo electrónico\n` +
-        `> *${m.prefix}inbo tempmailx*—Compruebe los mensajes entrantes\n\n` +
+        `> *${m.prefix}tempmail tempmailx*—Compruebe los mensajes entrantes\n\n` +
         (saved
           ? `Awish on correo: *${saved}*\n`
           : `*Tienes un correo, amigo*${m.prefix}tempmail create* dulu\n`) +

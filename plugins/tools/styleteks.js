@@ -72,7 +72,7 @@ async function handler(m, { text, sock }) {
 
     helpMsg += `\n*Como usarlo:*\n`;
     helpMsg += `- Escribe\`${m.prefix}styleteks <Nama Font> | <Teks>\`\n`;
-    helpMsg += `- Ejemplo:\`${m.prefix}Estilos rústicos.\`\n\n`;
+    helpMsg += `- Ejemplo:\`${m.prefix}styleteks Double Struck | Hola Mundo\`\n\n`;
     helpMsg += `APOPER PAPPING FIT PIT NUMBER ON THE TAPER (hagamos pequeño / grande ) y use el garis set como mezclador!`;
 
     if (!text || !text.includes('|')) {
@@ -88,7 +88,7 @@ async function handler(m, { text, sock }) {
 
         if (!teksAsli) {
             await m.react('❌');
-            return m.reply(`❌*Texto Vacio*\n\nNo se olvide de introducir un texto que desee cambiarse después de la línea recta.\nEjemplo:\`${m.prefix}Estilos de curvas @ Hola Usa\``);
+            return m.reply(`❌*Texto Vacio*\n\nNo se olvide de introducir un texto que desee cambiarse después de la línea recta.\nEjemplo:\`${m.prefix}styleteks Double Struck | Hola Mundo\``);
         }
 
         let hasil = "";
@@ -117,7 +117,7 @@ async function handler(m, { text, sock }) {
 
         if (!found) {
             await m.react('❌');
-            return m.reply(`❌NO FONDO\n\nEstilo de fuente *${parts[0].trim()}* no registrado.\nPor favor escribe\`${m.prefix}estilos\`para ver la lista de fuentes disponibles.`);
+            return m.reply(`❌NO FONDO\n\nEstilo de fuente *${parts[0].trim()}* no registrado.\nPor favor escribe\`${m.prefix}styleteks\`para ver la lista de fuentes disponibles.`);
         }
 
         await sock.sendMessage(m.chat, {

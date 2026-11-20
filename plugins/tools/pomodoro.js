@@ -87,9 +87,9 @@ async function handler(m, context) {
       if (phase === 'fokus') {
         if (r.cycle >= 4) {
           runs.delete(key);
-          return say(`🍅 ${tag} 🎉" N.o 91; N.o.: " El Gran Año del Año ".\nTome un descanso de 15 @-@ 30 @-@ minuto para refrescar su mente.`);
+          return say(`🍅 ${tag} 🎉 *¡Sesión completada!*\nToma un descanso de 15 a 30 minutos para refrescar la mente.`);
         }
-        say(`🍅 ${tag} ⏰>#91; ¡El tiempo de enfoque se ha acabado!\nPor favor, descansa.${r.brk}minuto*—Estira tu cuerpo y bebe agua.`);
+        say(`🍅 ${tag} ⏰ ¡El tiempo de enfoque terminó!\nDescansa ${r.brk} minutos: estira el cuerpo y bebe agua.`);
         go('istirahat', r.brk);
       } else {
         r.cycle++;

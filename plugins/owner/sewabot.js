@@ -33,15 +33,15 @@ async function handler(m, { sock }) {
         `Status: *${currentStatus ? "✅ AKTIF" : "❌ NONAKTIF"}*\n` +
         `Grupo de lista: *${sewaGroups.length}*\n\n` +
         `*Comando Disponible:*\n` +
-        `• *${m.prefix}Sewabot en *—Activar el sistema de alquiler\n` +
-        `• *${m.prefix}Sewabot fuera—Desactivar el sistema de alquiler\n` +
+        `• *${m.prefix}sewabot on *—Activar el sistema de alquiler\n` +
+        `• *${m.prefix}sewabot off* —Desactivar el sistema de alquiler\n` +
         `• *${m.prefix}sewabot leave *—Dejar todo lo que no @-@ whitelist grup\n\n` +
         `*KELOLA Alquiler:*\n` +
         `• *${m.prefix}addsewa<link> <durasi>*—Añadir grupo + auto\n` +
         `• *${m.prefix}delsewa<link/id>*—Retirar el grupo de la lista blanca\n` +
-        `• *${m.prefix}renovasewa<link/id> <durasi>*—Renovar alquiler\n` +
-        `• *${m.prefix}listillo *—Mira todos los grupos listados.\n` +
-        `• *${m.prefix}checkrent—Verifique el alquiller de rettante ( en grupo )\n\n` +
+        `• *${m.prefix}renewsewa<link/id> <durasi>*—Renovar alquiler\n` +
+        `• *${m.prefix}listsewa *—Mira todos los grupos listados.\n` +
+        `• *${m.prefix}checksewa—Verifique el alquiller de rettante ( en grupo )\n\n` +
         `*Formato Duración:*\n` +
         `30i (minuto)\u2022 12h ( reloj )\u2022 7d (día)\u2022 1m (mes)\u2022 1y (año)\u2022 Lifetyme\n\n` +
         `*CARA Trabaja:*\n` +
@@ -68,7 +68,7 @@ async function handler(m, { sock }) {
       Date.now() - pending.timestamp < 60000
     ) {
       return m.reply(
-        `🕕Ya hay una mención de un final\n\nEscribe *${m.prefix}sewabot confirma * para continuar\nEscribe *${m.prefix}swatbot cancelar * para baton`,
+        `🕕Ya hay una mención de un final\n\nEscribe *${m.prefix}sewabot confirma * para continuar\nEscribe *${m.prefix}sewabot cancelar * para baton`,
       );
     }
     pendingConfirmations.set(m.sender, {
@@ -84,7 +84,7 @@ async function handler(m, { sock }) {
         `Si activado:\n` +
         `• ✅ ${sewaGroups.length}grupo ter- whitelist remaining secure\n` +
         `• ❌¡Todos los demás grupos quedarán atrás!\n\n` +
-        `Escribe *${m.prefix}sewabot confirma * para continuar\nEscribe *${m.prefix}swatbot cancelar * para baton\n\n` +
+        `Escribe *${m.prefix}sewabot confirma * para continuar\nEscribe *${m.prefix}sewabot cancelar * para baton\n\n` +
         `💡Asegúrese de que el grupo blanco ya es importante con:\n*${m.prefix}addsewa <link grup> <durasi>*`,
     );
   }
@@ -92,7 +92,7 @@ async function handler(m, { sock }) {
     const pending = pendingConfirmations.get(m.sender);
     if (!pending || pending.type !== "sewabot_on") {
       return m.reply(
-        `❌No hay mención de la pendiente\nEscribe *${m.prefix}solía estar en basura`,
+        `❌No hay mención de la pendiente\nEscribe *${m.prefix}sewabotía estar en basura`,
       );
     }
     pendingConfirmations.delete(m.sender);

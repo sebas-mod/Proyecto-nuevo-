@@ -125,7 +125,7 @@ async function fetchCompare(id1, id2) {
 async function handler(m, { sock, text }) {
     if (!text || !text.includes('|')) {
         return m.reply(
-            `⚖* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *#91; door closes * *#93; door closes *\n\n` +
+            `⚖️ *COMPARADOR DE MÓVILES*\n\n` +
             `Está función le ayudará a comparar las especificaciones del dos con la mejor manera de elegir!\n\n` +
             `*Como usarlo:*\n` +
             `- Escribe\`${m.prefix}bandingkan-hp <hp pertama> | <hp kedua>\`\n` +

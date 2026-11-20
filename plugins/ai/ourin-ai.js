@@ -26,7 +26,7 @@ async function handler(m, { sock }) {
         `*Uso:*\n` +
         `> *${m.prefix}ourin-ai <pertanyaan>*\n\n` +
         `*Ejemplo:*\n` +
-        `> *${m.prefix}Eres un nodo, ¿no?`
+        `> *${m.prefix}ourin-ai hola, ¿cómo estás?`
     );
   }
 

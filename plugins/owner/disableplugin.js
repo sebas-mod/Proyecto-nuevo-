@@ -30,7 +30,7 @@ async function findPluginFile(pluginName) {
     for (const file of files) {
       try {
         const filePath = _path2.default.join(categoryPath, file);
-        const plugin = await Promise.resolve().then(() => _interopRequireWildcard(require(`archivo://${filePath.replace(/\\/g, "/")}`)));
+        const plugin = await Promise.resolve().then(() => _interopRequireWildcard(require(`file://${filePath.replace(/\\/g, "/")}`)));
 
         if (!plugin.config) continue;
 

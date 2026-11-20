@@ -48,7 +48,7 @@ async function handler(m, { sock }) {
     txt += `> • \`1d\` = 1 hari\n\n`;
 
     txt += `*ᴄᴏɴᴛᴏʜ:*\n`;
-    txt += `> \`${m.prefix}autobackkup en 6h\`- Retrocede cada seis horas.`;
+    txt += `> \`${m.prefix}autobackup on 6h\`- Retrocede cada seis horas.`;
 
     return m.reply(txt);
   }
@@ -64,9 +64,9 @@ async function handler(m, { sock }) {
           `⚠️ *ɪɴᴛᴇʀᴠᴀʟ ᴅɪʙᴜᴛᴜʜᴋᴀɴ*\n\n` +
             `> \`${m.prefix}autobackup on <interval>\`\n\n` +
             `*ᴄᴏɴᴛᴏʜ:*\n` +
-            `> \`${m.prefix}autobackkup en 30m\`- 30 minutos.\n` +
-            `> \`${m.prefix}autobackkup en 6h\`- No, seis horas.\n` +
-            `> \`${m.prefix}autobackend on 1 d\`- No un día.`,
+            `> \`${m.prefix}autobackup on 30m\`- 30 minutos.\n` +
+            `> \`${m.prefix}autobackup on 6h\`- No, seis horas.\n` +
+            `> \`${m.prefix}autobackup on 1 d\`- No un día.`,
         );
       }
 
@@ -99,7 +99,7 @@ async function handler(m, { sock }) {
       return m.reply(
         `❌ *ᴀᴜᴛᴏ ʙᴀᴄᴋᴜᴘ ᴅɪɴᴏɴᴀᴋᴛɪꜰᴋᴀɴ*\n\n` +
           `The backkup 's been stopped.\n` +
-          `> Usa \`${m.prefix}autobackkup en<interval>\`Para reactivar.`,
+          `> Usa \`${m.prefix}autobackup on <interval>\`Para reactivar.`,
       );
     }
 

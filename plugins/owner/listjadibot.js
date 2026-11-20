@@ -36,7 +36,7 @@ async function handler(m, { sock }) {
 
     txt += `\n> \`${m.prefix}listjadibotaktif\` — Detail aktif\n`
     txt += `> \`${m.prefix}stopalljadibot\` — Stop semua\n`
-    txt += `> \`${m.prefix}stopdandeletekebot @ usuario\` —Elimina session`
+    txt += `> \`${m.prefix}stopdandeletejadibot @ usuario\` —Elimina session`
 
     const mentions = sessions.map(s => s.jid)
 

@@ -21,11 +21,11 @@ async function handler(m, { sock }) {
   const [link, kata] = text;
   if (!link)
     return m.reply(
-      `* Enlace NGL De él MANA *\nEpirame:\`${_optionalChain([m, 'optionalAccess', _4 => _4.prefix])}sendnglhttps://ngl.link/xxxx| hola`,
+      `* Enlace NGL De él MANA *\nEpirame:\`${_optionalChain([m, 'optionalAccess', _4 => _4.prefix])}sendngl https://ngl.link/xxxx | hola`,
     );
   if (!kata)
     return m.reply(
-      `* The SAME Palabra MANA *\n\nEjemplo:\`${_optionalChain([m, 'optionalAccess', _5 => _5.prefix])}sendnglhttps://ngl.link/xxxx| hola`,
+      `* The SAME Palabra MANA *\n\nEjemplo:\`${_optionalChain([m, 'optionalAccess', _5 => _5.prefix])}sendngl https://ngl.link/xxxx | hola`,
     );
   m.react("🎴");
 

@@ -1,8 +1,8 @@
 const axios = require('axios');
 
 const BASE_URL = 'https://am.zervida.my.id';
-const API_LINK = `${BASE_URL}/fuego/amprem/enlace`;
-const API_CLAIM = `${BASE_URL}/fuego/amprem/claim`;
+const API_LINK = `${BASE_URL}/api/amprem/link`;
+const API_CLAIM = `${BASE_URL}/api/amprem/claim`;
 const TIMEOUT_MS = 5 * 60 * 1000;
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const LINK_RE = /^https?:\/\/alight-creative\.firebaseapp\.com\/\S+$/i;
@@ -58,11 +58,11 @@ async function claim(sock, m, email, link) {
       );
       return react(sock, m, '✅');
     }
-    await send(sock, m, `⚠* Sigue llorando " #93; ' no lo entiende ".\n\nError:${data.error || data.message || 'Coba lagi nanti'}`);
+    await send(sock, m, `⚠️ *No se pudo reclamar.*\n\nError: ${data.error || data.message || 'Inténtalo de nuevo más tarde'}`);
     return react(sock, m, '❌');
   } catch (err) {
     const errMsg = err.response?.data?.error || err.response?.data?.message || err.message || 'Coba lagi nanti';
-    await send(sock, m, `❌*Fallido klaim:*${errMsg}`);
+    await send(sock, m, `❌ *Falló la reclamación:* ${errMsg}`);
     return react(sock, m, '❌');
   }
 }

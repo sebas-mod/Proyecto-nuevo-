@@ -30,8 +30,8 @@ async function handler(m) {
             `> Status: *${current.enabled ? '✅ ON' : '❌ OFF'}*\n` +
             `> Emoji: *${current.emoji}*\n\n` +
             `*ᴄᴀʀᴀ ᴘᴀᴋᴀɪ:*\n` +
-            `> \`${m.prefix}autoreaccionarcon\` —Activación (por defecto emoji🔥)\n` +
-            `> \`${m.prefix}autoreaccionarcon😍\` —Activar con emoji\n` +
+            `> \`${m.prefix}autoreactsw\` —Activación (por defecto emoji🔥)\n` +
+            `> \`${m.prefix}autoreactsw😍\` —Activar con emoji\n` +
             `> \`${m.prefix}autoreactsw off\` — Matikan`
         )
     }

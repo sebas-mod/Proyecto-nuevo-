@@ -29,8 +29,8 @@ async function handler(m, { sock }) {
       `* SITUACIÓN Cuando esto:\n` +
       `- Mode: *${currentStatus ? "AKTIF 🔋" : "NONAKTIF (UNLIMITED) ♾️"}*\n\n` +
       `*Uso:*\n` +
-      `- *${m.prefix}energía del sistema en *—Cortaciones de energía viva\n` +
-      `- *${m.prefix}energía del sistema *—Detener los cortes de energía (Modo ilimitado )\n\n` +
+      `- *${m.prefix}sistemenergiía del sistema en *—Cortaciones de energía viva\n` +
+      `- *${m.prefix}sistemenergiía del sistema *—Detener los cortes de energía (Modo ilimitado )\n\n` +
       `*Ejemplo de uso:*\n` +
       `- *${m.prefix}sistemenergi on*`
     );

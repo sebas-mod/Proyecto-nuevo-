@@ -23,7 +23,7 @@ async function handler(m, { sock }) {
       `💎* PREMUM DE LA CAPITUACIÓN SISTEMA >\n\n` +
       `Systemaxclusivos para cimiar el estado de las acones muchas características se subsidertieron en Premium.\n\n` +
       `*Uso:*\n` +
-      `- *${m.prefix}Caphor<nama_fitur1> <nama_fitur2>...—Las semillas son muchas de ellas.\n\n` +
+      `- *${m.prefix}capprem<nama_fitur1> <nama_fitur2>...—Las semillas son muchas de ellas.\n\n` +
       `*Ejemplo de uso:*\n` +
       `- *${m.prefix}capprem hd jpm warn*\n\n` +
       `*Explicación:*\n` +

@@ -57,7 +57,7 @@ async function handler(m, { sock, plugins }) {
         `⚠* Formatt Incorrecto*\n\n` +
           `Formato:\`${m.prefix}addakses <command> <durasi> <target>\`\n\n` +
           `*Ejemplo:*\n` +
-          `> \`${m.prefix}addases addowner 30d @ usuario\`(30 El)\n` +
+          `> \`${m.prefix}addakses addowner 30d @ usuario\`(30 El)\n` +
           `> \`${m.prefix}addakses unban permanent @user\` (Selamanya)\n\n` +
           `* Soporte de Duración: * 1h, 1d, 30d, 1y`,
       );

@@ -27,8 +27,8 @@ function handler(m) {
         return m.reply(
             `🎤 *ᴄᴍᴅ ᴠᴏɪᴄᴇ ɴᴏᴛᴇ*\n\n` +
             `> Status: *${status}*\n\n` +
-            `> \`${m.prefix}cmdvn en\` —Comando vía VN\n` +
-            `> \`${m.prefix}cmdvn apagado\` —Comando a través de text (predeterminado)\n\n` +
+            `> \`${m.prefix}cmdvn on\` —Comando vía VN\n` +
+            `> \`${m.prefix}cmdvn off\` —Comando a través de text (predeterminado)\n\n` +
             `EzSaat On, enviar VN con un nombre de comandante\n` +
             `♪→dispara. menú`
         )
@@ -49,7 +49,7 @@ function handler(m) {
         return m.reply(`❌ CMD VN *desactivado*. Comando via texEs normal.`)
     }
 
-    return m.reply(`❌ Usa \`${m.prefix}cmdvn en\`o\`${m.prefix}cmdvn off\``)
+    return m.reply(`❌ Usa \`${m.prefix}cmdvn on\`o\`${m.prefix}cmdvn off\``)
 }
 
 exports.config = pluginConfig; exports.handler = handler;

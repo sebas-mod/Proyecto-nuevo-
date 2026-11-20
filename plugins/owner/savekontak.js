@@ -104,8 +104,8 @@ async function handler(m, { sock, args }) {
             `The exacerbate system of the roup that the bot 's following.\n` +
             `Nombre de la base: *${baseName}*\n\n` +
             `*Uso:*\n` +
-            `• *${m.prefix || "."}savekongak<nama>*—Contener con el nombre personalizado\n` +
-            `• *${m.prefix || "."}Savekonkak *—Contener con el nombre predeterminado\n\n` +
+            `• *${m.prefix || "."}savekontak<nama>*—Contener con el nombre personalizado\n` +
+            `• *${m.prefix || "."}savekontak *—Contener con el nombre predeterminado\n\n` +
             `*Explicación ALUR Uso:*\n` +
             `1. Elija las minificiones del grupo de la cúanga * Elija Grupo * en los crumps, o klick * todos grupo * para exTraigan los contrats globales.\n` +
             `Dos, la primera persona que se pierda el primer orden de la primera ronda será la primera que perder.\n` +

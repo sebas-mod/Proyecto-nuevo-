@@ -40,7 +40,7 @@ async function handler(m, { sock }) {
     }
 
     const buffer = await quoted.download();
-    if (!buffer) throw new Error("Descarga sin problemas medios");
+    if (!buffer) throw new Error("Fallido download");
 
     const caption = originalCaption ? `\`Pesan :\`\n> ${originalCaption}` : "";
 

@@ -80,9 +80,9 @@ async function handler(m, { sock }) {
         `> Sesi activo: *${stats.activeSessions}*\n\n` +
         `*Usage:*\n` +
         `> \`${m.prefix}sistemdaftar on\` - Wajibkan daftar\n` +
-        `> \`${m.prefix}lista de sistemas apagado\` - Matikan obligatorio registrate\n` +
-        `> \`${m.prefix}Lista del sistema de las estadísticas\`- Mira las estadísticas.\n\n` +
-        `Si ON, el usuario debe\`${m.prefix}registrate\`antes de usar el comando`,
+        `> \`${m.prefix}sistemdaftar off\` - Matikan obligatorio registrate\n` +
+        `> \`${m.prefix}sistemdaftar stats\`- Mira las estadísticas.\n\n` +
+        `Si ON, el usuario debe\`${m.prefix}daftar\`antes de usar el comando`,
     );
   }
 

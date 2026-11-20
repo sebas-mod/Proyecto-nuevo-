@@ -38,8 +38,8 @@ async function handler(m, { sock, config }) {
       list += `\n*Hay un nombre personalizado para el propietario añadido*`;
     }
     list += `\n\n*Uso:*\n`;
-    list += `\`${m.prefix}cambia-namaowner<nomor> <nama>\`\n`;
-    list += `\`${m.prefix}cambia-namaowner juega<nama>\` —Cambiar el nombre del propietario principal`;
+    list += `\`${m.prefix}ganti-namaowner<nomor> <nama>\`\n`;
+    list += `\`${m.prefix}ganti-namaowner juega<nama>\` —Cambiar el nombre del propietario principal`;
     return m.reply(list);
   }
 
@@ -47,7 +47,7 @@ async function handler(m, { sock, config }) {
     const newName = input.slice(1).join(" ").trim();
     if (!newName) {
       return m.reply(
-        `👤*ɢᴀɴᴛɪ ɴᴀᴍᴀ ᴏᴡɴᴇʀ ᴜᴛᴀᴍᴀ*\n\nNombre actual: *${_optionalChain([config, 'access', _6 => _6.owner, 'optionalAccess', _7 => _7.name]) || "-"}*\n\n\`${m.prefix}cambia-namaowner juega<nama baru>\``,
+        `👤*ɢᴀɴᴛɪ ɴᴀᴍᴀ ᴏᴡɴᴇʀ ᴜᴛᴀᴍᴀ*\n\nNombre actual: *${_optionalChain([config, 'access', _6 => _6.owner, 'optionalAccess', _7 => _7.name]) || "-"}*\n\n\`${m.prefix}ganti-namaowner juega<nama baru>\``,
       );
     }
     try {
@@ -75,14 +75,14 @@ async function handler(m, { sock, config }) {
 
   if (!targetNumber || targetNumber.length < 10) {
     return m.reply(
-      `❌*ɢᴀɢᴀʟ*\n\n# Número no es válido #\n\n\`${m.prefix}cambia-namaowner 628xxx NamaOwner\``,
+      `❌*ɢᴀɢᴀʟ*\n\n# Número no es válido #\n\n\`${m.prefix}ganti-namaowner 628xxx NamaOwner\``,
     );
   }
 
   if (!newName) {
     const currentName = _configjs.getOwnerName.call(void 0, targetNumber);
     return m.reply(
-      `👤 *ɴᴀᴍᴀ ᴏᴡɴᴇʀ*\n\n> ${targetNumber}: *${currentName}*\n\n\`${m.prefix}cambia-namaowner${targetNumber} <nama baru>\``,
+      `👤 *ɴᴀᴍᴀ ᴏᴡɴᴇʀ*\n\n> ${targetNumber}: *${currentName}*\n\n\`${m.prefix}ganti-namaowner${targetNumber} <nama baru>\``,
     );
   }
 

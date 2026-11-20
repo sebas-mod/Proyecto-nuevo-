@@ -41,8 +41,8 @@ async function handler(m, { sock }) {
             `📊 *ADD LEVEL*\n\n` +
             `El sistema para añadir nivel a la entrada @-@ miembro de estilo.\n\n` +
             `*Uso:*\n` +
-            `- *${m.prefix}nivel de adición<jumlah>*— (a diri propio)\n` +
-            `- *${m.prefix}nivel de adición<jumlah>@ user *—(a otros)\n\n` +
+            `- *${m.prefix}addlevel de adición<jumlah>*— (a diri propio)\n` +
+            `- *${m.prefix}addlevel de adición<jumlah>@ user *—(a otros)\n\n` +
             `*Ejemplo de uso:*\n` +
             `- *${m.prefix}addlevel 5*\n` +
             `- *${m.prefix}addlevel 10 @user*`

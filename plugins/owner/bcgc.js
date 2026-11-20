@@ -103,7 +103,7 @@ async function handler(m, { sock }) {
         `> Broadcast: *${enabled ? "✅ Aktif" : "❌ Nonaktif"}*\n` +
         `> Jeda: *${formatDelay(jeda)}* (*${jeda}ms*)\n\n` +
         `*Uso:*\n` +
-        `> *${m.prefix}bcgc en *—Activa broadcast\n` +
+        `> *${m.prefix}bcgc on *—Activa broadcast\n` +
         `> *${m.prefix}bcgc off *—Desactiva broadcast\n` +
         `> *${m.prefix}bcgc<pesan>*—Ksender broadcaster text\n` +
         `> *${m.prefix}bcgc * (respuesta foto / video / audio / documento )—Kseng con medios\n` +
@@ -118,14 +118,14 @@ async function handler(m, { sock }) {
 
   if (global.statusBcgc) {
     return m.reply(
-      `❌Sesamo Caminata de radiodifusión\n\n# Tickety #${m.prefix}Para detener la primera.`,
+      `❌Sesamo Caminata de radiodifusión\n\n# Tickety #${m.prefix}stopbcgc detener la primera.`,
     );
   }
 
   const enabled = db.setting("bcgcEnabled");
   if (!enabled) {
     return m.reply(
-      `❌Bisturí de Aún no Active\n\n# Tickety #${m.prefix}bcgc en * usado para activar.`,
+      `❌Bisturí de Aún no Active\n\n# Tickety #${m.prefix}bcgc on * usado para activar.`,
     );
   }
 
@@ -313,7 +313,7 @@ async function handleSetDelay(m, db, input) {
         `*Ejemplo:*\n` +
         `> *${m.prefix}jedabcgc 5s* → 5 detik\n` +
         `> *${m.prefix}jedabcgc 2m* → 2 menit\n` +
-        `> *${m.prefix}jadabcgc 1h→1 hora`,
+        `> *${m.prefix}jedabcgc 1h→1 hora`,
     );
   }
 

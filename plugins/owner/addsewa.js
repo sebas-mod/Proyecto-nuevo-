@@ -184,7 +184,7 @@ async function handler(m, { sock }) {
         await new Promise((r) => setTimeout(r, 2000));
         await sock.sendText(
           groupId,
-          `👋* All hola! *, presentación, yo${_optionalChain([_configjs2.default, 'access', _21 => _21.bot, 'optionalAccess', _22 => _22.name])}\n\n- Qué desperdicio.${formatDuration(durationStr)}*\n- Saldré en: *${expiredStr}*\n\nKetik *${m.prefix}El menú para ver las características de este bot.`,
+          `👋* All hola! *, presentación, yo${_optionalChain([_configjs2.default, 'access', _21 => _21.bot, 'optionalAccess', _22 => _22.name])}\n\n- Qué desperdicio.${formatDuration(durationStr)}*\n- Saldré en: *${expiredStr}*\n\nKetik *${m.prefix}menu menú para ver las características de este bot.`,
           null,
           {
             contextInfo: _ourincontextjs.saluranCtx.call(void 0, ),

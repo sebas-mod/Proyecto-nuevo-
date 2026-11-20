@@ -137,7 +137,7 @@ async function uploadToTermai(buffer) {
   const form = new (0, _formdata2.default)();
   form.append("file", buffer, { filename: `archivo.${ext}` });
 
-  const res = await _nodefetch2.default.call(void 0, `${termaiDomain}/fuego/upload?key=${termaiKey}`, {
+  const res = await _nodefetch2.default.call(void 0, `${termaiDomain}/api/upload?key=${termaiKey}`, {
     method: "POST",
     body: form,
     headers: form.getHeaders(),

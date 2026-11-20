@@ -23,8 +23,8 @@ function handler(m) {
         return m.reply(
             `📝 *sᴇᴛ ʙᴏᴛ ʀᴜʟᴇs*\n\n` +
             `*Pon nuevas reglas de texto*\n\n` +
-            `\`Contoh:\`\n` +
-            `\`${m.prefix}4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,\\respeta el sésamo.\``
+            `Ejemplo:\n` +
+            `\`${m.prefix}setrules Prohibido enviar spam\``
         )
     }
     
@@ -33,7 +33,7 @@ function handler(m) {
     m.reply(
         `✅ *ʙᴏᴛ ʀᴜʟᴇs ᴅɪᴜᴘᴅᴀᴛᴇ*\n\n` +
         `¡Ezacuum bot 's been reformed!\n` +
-        `> Escribe\`${m.prefix}reglas\`para ver.`
+        `> Escribe\`${m.prefix}rules\`para ver.`
     )
 }
 

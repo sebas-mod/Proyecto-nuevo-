@@ -121,7 +121,7 @@ async function handler(m, { sock }) {
     text +=
       `╰───────⬡\n\n` +
       `Total: ${scrapers.length} scraper\n\n` +
-      `> Usa \`${m.prefix}gangtiscrapper<nama>\`con el código de respuesta`;
+      `> Usa \`${m.prefix}gantiscraper<nama>\`con el código de respuesta`;
 
     return m.reply(text);
   }
@@ -130,8 +130,8 @@ async function handler(m, { sock }) {
     return m.reply(
       `🔄*Cambia SCRAPER*\n\n` +
         `Responder código nuevo Scrapper con la leyenda:\n` +
-        `\`${m.prefix}gangtiscrapper\`- Detector automático de expuerto\n` +
-        `\`${m.prefix}gantiscrapper nombre de archivo\`- Nombre de archivo personalizado\n\n` +
+        `\`${m.prefix}gantiscraper\`- Detector automático de expuerto\n` +
+        `\`${m.prefix}gantiscraper nombre de archivo\`- Nombre de archivo personalizado\n\n` +
         `📋* Mira la lista de los scriper: *\n` +
         `\`${m.prefix}gantiscraper list\`\n\n` +
         `⚠️ *Advertencia:*\nEl código antiguo será mochileado antes de que se cambie.`,

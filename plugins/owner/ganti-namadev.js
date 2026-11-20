@@ -21,7 +21,7 @@ async function handler(m, { sock, config }) {
     const newName = m.args.join(' ')
     
     if (!newName) {
-        return m.reply(`👨‍💻*ɢᴀɴᴛɪ ɴᴀᴍᴀ ᴅᴇᴠᴇʟᴏᴘᴇʀ*\n\nNombre actual: *${_optionalChain([config, 'access', _ => _.bot, 'optionalAccess', _2 => _2.developer]) || '-'}*\n\n*Uso:*\n\`${m.prefix}cambia-namadev<nama baru>\``)
+        return m.reply(`👨‍💻*ɢᴀɴᴛɪ ɴᴀᴍᴀ ᴅᴇᴠᴇʟᴏᴘᴇʀ*\n\nNombre actual: *${_optionalChain([config, 'access', _ => _.bot, 'optionalAccess', _2 => _2.developer]) || '-'}*\n\n*Uso:*\n\`${m.prefix}ganti-namadev<nama baru>\``)
     }
     
     try {

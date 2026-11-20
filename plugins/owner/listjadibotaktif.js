@@ -41,7 +41,7 @@ async function handler(m, { sock }) {
         txt += `   ⏱️ *${uptime}* — 👤 @${owner}\n\n`
     })
 
-    txt += `> \`${m.prefix}Stopaljabot\` —Hentikan todo`
+    txt += `> \`${m.prefix}stopalljadibot\` —Hentikan todo`
 
     const mentions = active.flatMap(s => [s.jid, s.ownerJid].filter(Boolean))
 

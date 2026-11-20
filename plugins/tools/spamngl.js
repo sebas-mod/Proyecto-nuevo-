@@ -19,10 +19,10 @@ const pluginConfig = {
 async function handler(m, { sock }) {
     const text = _optionalChain([m, 'access', _ => _.text, 'optionalAccess', _2 => _2.split, 'call', _3 => _3('|')])
     const [ link, kata, jumlah ] = text
-    if(!link) return m.reply(`* Enlace NGL De él MANA *\nEpirame:\`${_optionalChain([m, 'optionalAccess', _4 => _4.prefix])}spamngl https://ngl.link/xxxx♪ 10 ♪`)
-    if(!kata) return m.reply(`* The SAME Palabra MANA *\n\nEjemplo:\`${_optionalChain([m, 'optionalAccess', _5 => _5.prefix])}spamngl https://ngl.link/xxxx♪ 10 ♪`)
-    if(!jumlah) return m.reply(`(Cantidad MANA MANA )\n\nEjemplo:\`${_optionalChain([m, 'optionalAccess', _6 => _6.prefix])}spamngl https://ngl.link/xxxx♪ 10 ♪`)
-    if(isNaN(jumlah)) return m.reply(`* El SUPLIO DE NUMOU DE De él Debe *\n\nEpirame:\`${_optionalChain([m, 'optionalAccess', _7 => _7.prefix])}spamngl https://ngl.link/xxxx♪ 10 ♪`)
+    if(!link) return m.reply(`*Falta el enlace NGL*\nEjemplo:\`${_optionalChain([m, 'optionalAccess', _4 => _4.prefix])}spamngl https://ngl.link/xxxx | hola | 10\``)
+    if(!kata) return m.reply(`*Falta el texto*\n\nEjemplo:\`${_optionalChain([m, 'optionalAccess', _5 => _5.prefix])}spamngl https://ngl.link/xxxx | hola | 10\``)
+    if(!jumlah) return m.reply(`*Falta la cantidad*\n\nEjemplo:\`${_optionalChain([m, 'optionalAccess', _6 => _6.prefix])}spamngl https://ngl.link/xxxx | hola | 10\``)
+    if(isNaN(jumlah)) return m.reply(`*La cantidad debe ser un número*\n\nEjemplo:\`${_optionalChain([m, 'optionalAccess', _7 => _7.prefix])}spamngl https://ngl.link/xxxx | hola | 10\``)
     m.react('🎴')
     
     try {

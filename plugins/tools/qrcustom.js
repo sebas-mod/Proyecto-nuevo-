@@ -74,7 +74,7 @@ async function handler(m, { sock }) {
             params.append('image', imageUrl)
         }
         
-        const apiUrl = `${BASE_URL}/fuego/v1/tools/qrcustom?${params.toString()}`
+        const apiUrl = `${BASE_URL}/api/v1/tools/qrcustom?${params.toString()}`
         
         await sock.sendMessage(m.chat, {
             image: { url: apiUrl },

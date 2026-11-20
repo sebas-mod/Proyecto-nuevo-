@@ -86,7 +86,7 @@ async function handler(m, { sock }) {
 
     txt += `\n> 📦 Total: *${(totalSize / 1024).toFixed(1)} KB*\n`
     txt += `♪💾Reverso automático creado antes de reiniciar\n\n`
-    txt += `Escribe\`${m.prefix}hapusdata si\`60 segundos para completar.`
+    txt += `Escribe\`${m.prefix}hapusdata ya\`60 segundos para completar.`
 
     await sock.sendMessage(m.chat, {
         text: txt,
@@ -102,7 +102,7 @@ async function handler(m, { sock }) {
                 name: 'quick_reply',
                 buttonParamsJson: JSON.stringify({
                     display_text: '❌ Batalkan',
-                    id: `${m.prefix}menú`
+                    id: `${m.prefix}menuú`
                 })
             }
         ]

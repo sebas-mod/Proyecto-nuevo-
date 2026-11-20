@@ -76,12 +76,12 @@ async function handler(m, { sock, db }) {
       `Wastu Idle Brick: *${formatTime(delayMs)}*\n` +
       `Julio san Random: *${totalPesan}Saludo*\n\n` +
       `*Uso Principal:*\n` +
-      `• *${m.prefix}autowelcome on / off *—Enciende la función en este grupo\n` +
-      `• *${m.prefix}retraso de los autowelcome<waktu>*—Cambio de tiempo de ocio\n\n` +
+      `• *${m.prefix}autosambut on / off *—Enciende la función en este grupo\n` +
+      `• *${m.prefix}autosambut delay <waktu>*—Cambio de tiempo de ocio\n\n` +
       `* EXCICIÓN ACASADA *:\n` +
-      `• *${m.prefix}lista de autowelcome *—Mira todos los saps que han sido registrados\n` +
-      `• *${m.prefix}autowelcome add<teks>*—Añádase una nueva bienvenida a la lista\n` +
-      `• *${m.prefix}autowelcome del<angka>*—Borrar mensajes en el número de secuencia absoluta\n\n` +
+      `• *${m.prefix}autosambut list *—Mira todos los saps que han sido registrados\n` +
+      `• *${m.prefix}autosambut add<teks>*—Añádase una nueva bienvenida a la lista\n` +
+      `• *${m.prefix}autosambut del<angka>*—Borrar mensajes en el número de secuencia absoluta\n\n` +
       `*Explicación Exclusivo para:*\n` +
       `1. Use el tiempo de formato: * s * ( segundos ), * m * ( minutos ), * h * ( reloj ), * d * ( día ).${m.prefix}autosambut delay 30m*\n` +
       `2 " Use.{name}* para llamarme propietario, y *{user}* para mí @-@ mencionista propietario.\n` +
@@ -149,14 +149,14 @@ async function handler(m, { sock, db }) {
     groupData.autoSambut.pesanList.forEach((text, index) => {
       listText += `*${index + 1}.* ${text}\n\n`;
     });
-    listText += `*Usarlo*\`${m.prefix}autowelcome del<angka>\`para memorizar uno.`;
+    listText += `*Usarlo*\`${m.prefix}autosambut del<angka>\`para memorizar uno.`;
     return m.reply(listText);
   }
 
   if (action === "add") {
     const newMsg = args.slice(1).filter(v => v !== '--global').join(" ").trim();
     if (!newMsg) {
-      return m.reply(`Ayúdame a entrar en el texto de bienvenida.\nEjemplo:\`${m.prefix}Aumenta Hola mi jefe{user}!\``);
+      return m.reply(`Ayúdame a entrar en el texto de bienvenida.\nEjemplo:\`${m.prefix}autosambut Hola mi jefe{user}!\``);
     }
 
     groupData.autoSambut.pesanList.push(newMsg);
@@ -215,10 +215,10 @@ async function handler(m, { sock, db }) {
   }
 
   if (action === "pesan") {
-    return m.reply(`⚠️ Comando\`mensaje\`ha sido hospedado y reemplazado por un sistema aleatorio.\nPor favor usa\`${m.prefix}autowelcome add<teks>\`Para agregar un saludo, o\`${m.prefix}lista de los productos de la máquina\`Para ver la lista de tarjetas.`);
+    return m.reply(`⚠️ Comando\`mensaje\`ha sido hospedado y reemplazado por un sistema aleatorio.\nPor favor usa\`${m.prefix}autosambut add<teks>\`Para agregar un saludo, o\`${m.prefix}autosambut list\`Para ver la lista de tarjetas.`);
   }
 
-  return m.reply(`Comando inválido.\`${m.prefix}autowelcome\`Sin suerte para ver el libro de guía.`);
+  return m.reply(`Comando inválido.\`${m.prefix}autosambut\`Sin suerte para ver el libro de guía.`);
 }
 
 exports.config = pluginConfig; exports.handler = handler;

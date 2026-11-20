@@ -63,7 +63,7 @@ async function findPluginFromFile(pluginsDir, name) {
       if (baseName.toLowerCase() === name.toLowerCase()) {
         const filePath = _path2.default.join(folderPath, file);
         try {
-          const mod = await Promise.resolve().then(() => _interopRequireWildcard(require(`archivo://${filePath.replace(/\\/g, "/")}`)));
+          const mod = await Promise.resolve().then(() => _interopRequireWildcard(require(`file://${filePath.replace(/\\/g, "/")}`)));
           return {
             ...mod.config,
             folder,

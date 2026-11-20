@@ -23,7 +23,7 @@ async function handler(m, { sock }) {
       `🆓91; SISTETAS CAP Gratis\n\n` +
       `El sistema para restaurar el estado de acción de muchas características a la vez se convierte en un público gradiente.\n\n` +
       `*Uso:*\n` +
-      `- *${m.prefix}sin gorra<nama_fitur1> <nama_fitur2>...—Las semillas son muchas de ellas.\n\n` +
+      `- *${m.prefix}capfree gorra<nama_fitur1> <nama_fitur2>...—Las semillas son muchas de ellas.\n\n` +
       `*Ejemplo de uso:*\n` +
       `- *${m.prefix}capfree hd jpm warn*\n\n` +
       `*Explicación:*\n` +

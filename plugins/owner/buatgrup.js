@@ -19,14 +19,14 @@ async function handler(m, { sock }) {
         let txt = `👥* Nuevo GRUPP Crea *👥\n\n`
         txt += `¿Vas a comprar un nuevo grupo de personas?\n\n`
         txt += `*Como usarlo:*\n`
-        txt += `👉 \`${m.prefix}Crear un grupo Nobre Grupo 628xxx, 628yyy\`\n\n`
+        txt += `👉 \`${m.prefix}buatgrup Nuevo Grupo | 628xxx,628yyy | 60\`\n\n`
         txt += `*Detail:*\n`
-        txt += `•Usa\`♪\`para separar el nombre, la participante, y la duración\n`
+        txt += `•Usa\`|\`para separar el nombre, la participante, y la duración\n`
         txt += `•Dividir el número de la participante con coma.\n`
         txt += `•Si el duassis está cargado, el bot pateará todas las fotos y borrará el grupo al final del tiempo!\n`
         txt += `•*Para automatizar a admin*\n\n`
         txt += `*Ejemplo Sin Duración:*\n`
-        txt += `\`${m.prefix}Haz un grupo de Equipo.\`\n\n`
+        txt += `\`${m.prefix}buatgrup Equipo Beta | 628123,628456\`\n\n`
         txt += `* Con Duración ( 60 Minuto Active Age ):\n`
         txt += `\`${m.prefix}buatgrup Equipo Beta | 628123,628456 | 60\``
         return m.reply(txt)

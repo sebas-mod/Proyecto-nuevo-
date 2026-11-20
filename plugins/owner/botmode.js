@@ -59,7 +59,7 @@ async function handler(m, { sock }) {
         txt += `╰┈┈⬡\n\n`
         
         txt += `*ꜰʟᴀɢ sᴛᴏʀᴇ:*\n`
-        txt += `> \`${m.prefix}tormenta de botmodas\`- Orden manual\n`
+        txt += `> \`${m.prefix}botmode de botmodas\`- Orden manual\n`
         txt += `> \`${m.prefix}botmode md\` → Mode default\n`
         txt += `> \`${m.prefix}botmode alll\` →Todo función`
         

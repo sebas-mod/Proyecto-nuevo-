@@ -53,7 +53,7 @@ async function handler(m) {
       `*Ejemplo:*\n` +
       `> \`${m.prefix}bcpcjeda 5s\` → 5 detik\n` +
       `> \`${m.prefix}bcpcjeda 2m\` → 2 menit\n` +
-      `> \`${m.prefix}bccjeda 1h\` →1 hora`
+      `> \`${m.prefix}bcpcjeda 1h\` →1 hora`
     )
   }
 

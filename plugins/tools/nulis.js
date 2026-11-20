@@ -46,9 +46,9 @@ async function handler(m, { sock }) {
   if (!text) {
     return m.reply(
       `⚠️ *ᴄᴀʀᴀ ᴘᴀᴋᴀɪ*\n\n` +
-        `> \`${m.prefix}escribiendo<teks>\`\n\n` +
+        `> \`${m.prefix}nulis<teks>\`\n\n` +
         `> Ejemplo:\n` +
-        `> \`${m.prefix}Te amo para siempre.\``,
+        `> \`${m.prefix}nulis Te amo para siempre.\``,
     );
   }
   if (text.length > 500) {

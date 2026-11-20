@@ -37,7 +37,7 @@ async function handler(m, { sock }) {
 
     const { result } = data;
     
-    let info = `🛡*##91; breathing heavily *#93; *🛡♪\n\n`;
+    let info = `🛡 *RESULTADO DEL ESCANEO* 🛡\n\n`;
     info += `🔗 *URL:* ${result.scanned_url}\n`;
     info += `📊 *Status:* ${result.status_description}\n\n`;
     info += `*DETAIL Escanea:*\n`;

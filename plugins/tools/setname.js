@@ -20,7 +20,7 @@ async function handler(m, { sock }) {
     if (!newName) {
         await m.reply(
             `⚠️ *ᴄᴀʀᴀ ᴘᴀᴋᴀɪ*\n\n` +
-            `> \`${m.prefix}nombre del set de Nuevo\``
+            `> \`${m.prefix}setname del set de Nuevo\``
         )
         return
     }

@@ -32,7 +32,7 @@ async function handler(m, { sock }) {
         const isMedia = isImage || isVideo || isAudio || isDocument;
 
         if (!isMedia) {
-            return m.reply(`🖼♪ɢᴀɴᴛɪ ᴀssᴇᴛ*\n\n# Silai contest media (imagen / video / audio / documento ) con mensajes\`${m.prefix}cambia-asset\``);
+            return m.reply(`🖼♪ɢᴀɴᴛɪ ᴀssᴇᴛ*\n\n# Silai contest media (imagen / video / audio / documento ) con mensajes\`${m.prefix}ganti-asset\``);
         }
 
         m.react('🕕');

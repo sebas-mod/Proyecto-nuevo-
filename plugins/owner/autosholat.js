@@ -57,11 +57,11 @@ async function handler(m, { sock, db }) {
       `* Jadwal Sholat Today: *\n` +
       jadwalText + `\n` +
       `* * Guía de Contención de Fuentes: *\n` +
-      `- Escribe\`${m.prefix}autosholat en\`Para activar el sistema de alerta.\n` +
+      `- Escribe\`${m.prefix}autosholat on\`Para activar el sistema de alerta.\n` +
       `- Escribe\`${m.prefix}autosholat off\`Para detener el sistema de memoria.\n` +
-      `- Escribe\`${m.prefix}autosholat más cerca\`o\`apagado\`Para copiar las fases de la automatización del grupo de arranque.\n` +
-      `- Escribe\`${m.prefix}duración de la autosholat<angka>\`Para determinar cuánto tiempo estará cerrado el grupo ( minutos ).\n` +
-      `- Escribe\`${m.prefix}autosholat ciudad<nama daerah>\`Para sincronizar el tiempo sholat con el área que elija.\n\n` +
+      `- Escribe\`${m.prefix}autosholat close on\` o \`off\`Para copiar las fases de la automatización del grupo de arranque.\n` +
+      `- Escribe\`${m.prefix}autosholat duration <angka>\`Para determinar cuánto tiempo estará cerrado el grupo ( minutos ).\n` +
+      `- Escribe\`${m.prefix}autosholat kota <nama kota>\`Para sincronizar el tiempo sholat con el área que elija.\n\n` +
       `Todos los elementos son preseminales y delgados de Mi centro de datosQuran Fuego._`
     );
   }
@@ -122,7 +122,7 @@ async function handler(m, { sock, db }) {
   if (args === "kota") {
     const kotaName = m.args.slice(1).join(" ").trim();
     if (!kotaName) {
-      return m.reply(`¡Por favor, también nombre la caja!\`${m.prefix}Surabaya ciudad autosholat\`.`);
+      return m.reply(`¡Por favor, también nombre la caja!\`${m.prefix}autosholat kota <nama kota>\`.`);
     }
     await m.react("🔍");
     try {
