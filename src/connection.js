@@ -1334,7 +1334,7 @@ Authentication : Successful
       if (!isPhoneNumberValid(rawNumber, validNumber)) {
         console.log(`
 ======================================================
-         ⚠️  AL MIKU 3.5 — SETUP PAIRING CODE  ⚠️
+         ⚠️  AL MIKU — CÓDIGO DE EMPAREJAMIENTO  ⚠️
 ======================================================
 
 ¡El número de WhatsApp para el emparejamiento no está configurado en config.js!
@@ -1383,9 +1383,9 @@ INSTRUCCIONES EN PTERODACTYL:
        AL MIKU WHATSAPP LOGIN
 ================================
 
-Status : Waiting for authentication
-Method : Pairing Code
-Number : ${validNumber}
+Estado : Esperando autenticación
+Método : Código de emparejamiento
+Número : ${validNumber}
 
 Pairing Code : ${formattedCode}
 
@@ -1397,11 +1397,11 @@ Pairing Code : ${formattedCode}
        AL MIKU WHATSAPP LOGIN
 ================================
 
-Status : Pairing Failed
-Method : Pairing Code
-Number : ${validNumber}
-Gagel tiene código de pareado.
-Saran: Perksa conexión servador de Internet y reiniciar bot.
+Estado : Emparejamiento fallido
+Método : Código de emparejamiento
+Número : ${validNumber}
+No se pudo generar el código.
+Sugerencia: revisa tu conexión a internet y vuelve a iniciar el bot.
 
 ================================
 `);

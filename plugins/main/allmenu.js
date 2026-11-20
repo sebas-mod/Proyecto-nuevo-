@@ -353,7 +353,7 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
                 nativeFlowMessage: {
                   messageParamsJson: JSON.stringify({
                     limited_time_offer: { text: `${greeting}`, url: "Hai", expiration_time: Date.now() + 10000 },
-                    bottom_sheet: { in_thread_buttons_limit: 2, divider_indices: [1, 2, 3, 4, 5, 999], list_title: "Seleccione el menú", button_title: "🍙 See Category" },
+                    bottom_sheet: { in_thread_buttons_limit: 2, divider_indices: [1, 2, 3, 4, 5, 999], list_title: "Seleccione el menú", button_title: "🍙 Ver categorías" },
                     tap_target_configuration: { title: " X ", description: "bomboclard", canonical_url: "https://ourin.site", domain: "shop.example.com", button_index: 0 },
                   }),
                   buttons: [
@@ -567,7 +567,7 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
                   status: "INQUIRY",
                   surface: "CATALOG",
                   message: `★ ${_configjs2.default.bot.name}`,
-                  orderTitle: `📋 ${totalCmds} Commands`,
+                  orderTitle: `📋 ${totalCmds} comandos`,
                   sellerJid: botConfig.botNumber
                     ? `${botConfig.botNumber}@s.whatsapp.net`
                     : m.sender,

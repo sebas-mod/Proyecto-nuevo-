@@ -557,7 +557,7 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
               botConfig.assets["almiku-menu-header-blue"] || botConfig.assets["almiku"],
             ),
             caption: menuCaption,
-            footer: `𝗔𝗟 𝗠𝗜𝗞𝗤 𝗗𝗘𝗟𝗨𝗫𝗘 • 𝗩${botVersion}`,
+            footer: botName,
             interactiveButtons: [
               {
                 name: "single_select",
@@ -622,48 +622,48 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
         const userExp = _nullishCoalesce(_optionalChain([user, 'optionalAccess', _64 => _64.exp]), () => ( 0));
         const userEnergi = _nullishCoalesce(_optionalChain([user, 'optionalAccess', _65 => _65.energi]), () => ( 0));
         const userKoin = _nullishCoalesce(_optionalChain([user, 'optionalAccess', _66 => _66.koin]), () => ( 0));
-        const registered = _optionalChain([user, 'optionalAccess', _67 => _67.isRegistered]) ? "𝗦𝘂𝗱𝗮𝗵" : "𝗕𝗲𝗹𝘂𝗺";
-        const role = m.isOwner ? "𝗕𝘂𝗸𝗮𝗻, 𝘁𝗮𝗽𝗶 𝗢𝘄𝗻𝗲𝗿" : m.isPremium ? "𝗣𝗿𝗲𝗺𝗶𝘂𝗺" : "𝗨𝘀𝗲𝗿";
+        const registered = _optionalChain([user, 'optionalAccess', _67 => _67.isRegistered]) ? "𝗦í" : "𝗡𝗼";
+        const role = m.isOwner ? "𝗣𝗿𝗼𝗽𝗶𝗲𝘁𝗮𝗿𝗶𝗼" : m.isPremium ? "𝗣𝗿𝗲𝗺𝗶𝘂𝗺" : "𝗨𝘀𝘂𝗮𝗿𝗶𝗼";
 
         const menuCaption =
-`✦ ʜᴀɪ ${mention} 👋\n\n` +
-          `ᴡᴇʟᴄᴏᴍᴇ ᴛᴏ ᴀʟ ᴍɪᴋᴜ ᴅᴇʟᴜxᴇ.\n` +
-          `ʏᴏᴜʀ ᴘᴇʀsᴏɴᴀʟ ᴡʜᴀᴛsᴀᴘᴘ ᴀssɪsᴛᴀɴᴛ.\n\n` +
-          `┌───「 ʙᴏᴛ ɪɴғᴏʀᴍᴀᴛɪᴏɴ 」\n` +
-          `├ ɴᴀᴍᴇ : ${botName}\n` +
-          `├ ᴠᴇʀsɪᴏɴ : ${botVersion}\n` +
-          `├ ᴅᴇᴠᴇʟᴏᴘᴇʀ : ${developer}\n` +
-          `└ ʟɪʙʀᴀʀʏ : almiku-baileys\n\n` +
-          `┌───「 ᴜsᴇʀ ɪɴғᴏʀᴍᴀᴛɪᴏɴ 」\n` +
-          `├ ɴᴀᴍᴇ : ${toMonoUpperBold(displayName)}\n` +
-          `├ sᴛᴀᴛᴜs : ${role}\n` +
-          `├ ʟᴇᴠᴇʟ : ${userLevel}\n` +
+`✦ ʜᴏʟᴀ ${mention} 👋\n\n` +
+          `ʙɪᴇɴᴠᴇɴɪᴅᴏ ᴀ ${botName}.\n` +
+          `ᴛᴜ ᴀsɪsᴛᴇɴᴛᴇ ᴘᴇʀsᴏɴᴀʟ ᴇɴ ᴡʜᴀᴛsᴀᴘᴘ.\n\n` +
+          `┌───「 ɪɴғᴏʀᴍᴀᴄɪóɴ ᴅᴇʟ ʙᴏᴛ 」\n` +
+          `├ ɴᴏᴍʙʀᴇ : ${botName}\n` +
+          `├ ᴠᴇʀsɪóɴ : ${botVersion}\n` +
+          `├ ᴅᴇsᴀʀʀᴏʟʟᴀᴅᴏʀ : ${developer}\n` +
+          `└ ʟɪʙʀᴇʀíᴀ : almiku-baileys\n\n` +
+          `┌───「 ɪɴғᴏʀᴍᴀᴄɪóɴ ᴅᴇʟ ᴜsᴜᴀʀɪᴏ 」\n` +
+          `├ ɴᴏᴍʙʀᴇ : ${toMonoUpperBold(displayName)}\n` +
+          `├ ʀᴀɴɢᴏ : ${role}\n` +
+          `├ ɴɪᴠᴇʟ : ${userLevel}\n` +
           `├ ᴇxᴘ : ${userExp}\n` +
-          `├ ᴇɴᴇʀɢʏ : ${userEnergi}\n` +
-          `├ ᴄᴏɪɴs : ${userKoin}\n` +
-          `└ ʀᴇɢɪsᴛᴇʀ : ${registered}\n\n` +
-          `✦ ᴛᴀᴘ ᴛʜᴇ ʙᴜᴛᴛᴏɴ ʙᴇʟᴏᴡ ᴛᴏ ᴇxᴘʟᴏʀᴇ ᴛʜᴇ ᴍᴇɴᴜ.\n\n` +
-          `┌───「 ᴘᴀɴᴇʟ ʜᴏsᴛɪɴɢ 」\n` +
-          `│ ɴᴇᴇᴅ ᴀ ʟᴇɢᴀʟ & ʀᴇʟɪᴀʙʟᴇ ᴘᴀɴᴇʟ?\n` +
-          `└ ${"store.roselynsound.my.id"}\n\n` +
-          `© ғᴀʟʟᴢx sᴛᴏʀᴇ`;
+          `├ ᴇɴᴇʀɢíᴀ : ${userEnergi}\n` +
+          `├ ᴍᴏɴᴇᴅᴀs : ${userKoin}\n` +
+          `└ ʀᴇɢɪsᴛʀᴏ : ${registered}\n\n` +
+          `✦ ᴛᴏᴄᴀ ᴇʟ ʙᴏᴛóɴ ᴅᴇ ᴀʙᴀᴊᴏ ᴘᴀʀᴀ ᴠᴇʀ ᴇʟ ᴍᴇɴú.\n\n` +
+          `┌───「 ᴘᴀɴᴇʟ ᴅᴇ ʜᴏsᴘᴇᴅᴀᴊᴇ 」\n` +
+          `│ ¿ɴᴇᴄᴇsɪᴛᴀs ᴜɴ ᴘᴀɴᴇʟ ʟᴇɢᴀʟ ʏ ꜰɪᴀʙʟᴇ?\n` +
+          `└ store.roselynsound.my.id\n\n` +
+          `© Sebas MD`;
 
         const requested = [
           ["owner", "👑", "Propietario"], ["main", "🏠", "Menú principal"],
-          ["utility", "🔧", "Utility"], ["tools", "🛠️", "Tools"],
-          ["fun", "🎮", "Fun"], ["game", "🎯", "Game"],
-          ["newgame", "🆕", "New Game"], ["download", "📥", "Download"],
-          ["search", "🔍", "Search"], ["sticker", "🖼️", "Sticker"],
-          ["media", "🎬", "Media"], ["ai", "🤖", "AI"],
-          ["group", "👥", "Group"], ["religi", "☪️", "Religi"],
-          ["info", "ℹ️", "Info"], ["cek", "📋", "Cek"],
-          ["user", "👤", "User"], ["canvas", "🎨", "Canvas"],
-          ["random", "🎲", "Random"], ["ephoto", "✨", "Ephoto"],
+          ["utility", "🔧", "Utilidades"], ["tools", "🛠️", "Herramientas"],
+          ["fun", "🎮", "Diversión"], ["game", "🎯", "Juegos"],
+          ["newgame", "🆕", "Juegos nuevos"], ["download", "📥", "Descargas"],
+          ["search", "🔍", "Búsquedas"], ["sticker", "🖼️", "Stickers"],
+          ["media", "🎬", "Multimedia"], ["ai", "🤖", "IA"],
+          ["group", "👥", "Grupos"], ["religi", "☪️", "Religión"],
+          ["info", "ℹ️", "Info"], ["cek", "📋", "Consultas"],
+          ["user", "👤", "Usuarios"], ["canvas", "🎨", "Canvas"],
+          ["random", "🎲", "Aleatorio"], ["ephoto", "✨", "Efectos de foto"],
           ["jpm", "📢", "JPM"], ["asupan", "🍑", "Asupan"],
-          ["maker", "🧰", "Maker"], ["clan", "⚔️", "Clan"],
-          ["convert", "🔄", "Convert Song"], ["downloader", "⬇️", "Downloader"],
-          ["berita", "📰", "Berita"], ["islamic", "🕌", "Islamic"],
-          ["rpg", "🗡️", "RPG"], ["test", "🧪", "Test"],
+          ["maker", "🧰", "Creadores"], ["clan", "⚔️", "Clanes"],
+          ["convert", "🔄", "Convertir audio"], ["downloader", "⬇️", "Descargadores"],
+          ["berita", "📰", "Noticias"], ["islamic", "🕌", "Islámico"],
+          ["rpg", "🗡️", "RPG"], ["test", "🧪", "Pruebas"],
           ["nsfw", "🔞", "NSFW"], ["linode", "☁️", "Linode"],
           ["cecan", "💃", "Cecan"],
           ["stalker", "🕵️", "Stalker"], ["tts", "🗣️", "TTS"],
@@ -673,7 +673,7 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
         for (const [key, emoji, label] of requested) {
           if (key === "owner" && !m.isOwner) continue;
           if (key === "newgame") {
-            rows.push({ title: `${emoji} 𝗡𝗲𝘄 𝗚𝗮𝗺𝗲`, description: "Chess • Dino • MBIM • Plane • TTC", id: `${prefix}gamenew` });
+            rows.push({ title: `${emoji} 𝗝𝘂𝗲𝗴𝗼𝘀 𝗻𝘂𝗲𝘃𝗼𝘀`, description: "Ajedrez • Dino • MBIM • Avión • TTC", id: `${prefix}gamenew` });
             continue;
           }
           if (!availableCats.has(key)) continue;
@@ -689,14 +689,14 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
           {
             name: "single_select",
             buttonParamsJson: JSON.stringify({
-              title: "🍃 𝗠𝗲𝗻𝘂 𝗨𝘁𝗮𝗺𝗮",
+              title: "🍃 𝗠𝗲𝗻𝘂 𝗽𝗿𝗶𝗻𝗰𝗶𝗽𝗮𝗹",
               sections,
             }),
           },
           {
             name: "quick_reply",
             buttonParamsJson: JSON.stringify({
-              display_text: "🆕 𝗡𝗲𝘄 𝗚𝗮𝗺𝗲",
+              display_text: "🆕 𝗝𝘂𝗲𝗴𝗼𝘀 𝗻𝘂𝗲𝘃𝗼𝘀",
               id: `${prefix}gamenew`,
             }),
           },
@@ -715,7 +715,7 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
           m,
           {
             buttons,
-            footer: `𝗔𝗟 𝗠𝗜𝗞𝗤 𝗗𝗘𝗟𝗨𝗫𝗘 • 𝗩${botVersion}`,
+            footer: botName,
             contextInfo: { mentionedJid: [m.sender] },
           },
         );

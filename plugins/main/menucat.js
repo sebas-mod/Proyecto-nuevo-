@@ -343,7 +343,7 @@ async function handler(m, { sock, db }) {
                   nativeFlowMessage: {
                     messageParamsJson: JSON.stringify({
                       limited_time_offer: { text: `${greeting}`, url: "Hai", expiration_time: Date.now() + 10000 },
-                      bottom_sheet: { in_thread_buttons_limit: 2, divider_indices: [1, 2, 3, 4, 5, 999], list_title: "Seleccione el menú", button_title: "🍙 See Category" },
+                      bottom_sheet: { in_thread_buttons_limit: 2, divider_indices: [1, 2, 3, 4, 5, 999], list_title: "Seleccione el menú", button_title: "🍙 Ver categorías" },
                       tap_target_configuration: { title: " X ", description: "bomboclard", canonical_url: "https://ourin.site", domain: "shop.example.com", button_index: 0 },
                     }),
                     buttons: [
@@ -379,12 +379,12 @@ async function handler(m, { sock, db }) {
 
   if (!matchedCat) {
     return m.reply(
-      `❌* CATHEGORI CAN 'T BE FOUND *\n\n> Categoría\`${categoryArg}\`no hay.\n> Escribe\`${prefix}impacto\`Para la lista de caegori.`,
+      `❌ *CATEGORÍA NO ENCONTRADA*\n\n> La categoría \`${categoryArg}\` no existe.\n> Escribe \`${prefix}menucat\` para ver la lista de categorías.`,
     );
   }
 
   if (matchedCat === "owner" && !m.isOwner) {
-    return m.reply(`❌* Cumplimiento de la ACCESO *\n\nA este kagori es para el dueño.`);
+    return m.reply(`❌ *ACCESO DENEGADO*\n\nEsta categoría es solo para el dueño.`);
   }
 
   const pluginCommands = commandsByCategory[matchedCat] || [];
@@ -393,7 +393,7 @@ async function handler(m, { sock, db }) {
 
   if (allCommands.length === 0) {
     return m.reply(
-      `❌*Vacio*\n\n> Categoría\`${matchedCat}\`no tiene ningún comando.`,
+      `❌ *VACÍO*\n\n> La categoría \`${matchedCat}\` no tiene ningún comando.`,
     );
   }
 
@@ -406,9 +406,9 @@ async function handler(m, { sock, db }) {
 
   let txt = ``;
   txt += createBracketBox(emoji, categoryName, commandLines);
-  txt += `Total: \`${allCommands.length}\` commands`;
+  txt += `Total: \`${allCommands.length}\` comandos`;
   if (caseCommands.length > 0) {
-    txt += `\n(${pluginCommands.length} plugin + ${caseCommands.length} case)`;
+    txt += `\n(${pluginCommands.length} plugins + ${caseCommands.length} casos)`;
   }
 
   try {
@@ -540,7 +540,7 @@ async function handler(m, { sock, db }) {
                 nativeFlowMessage: {
                   messageParamsJson: JSON.stringify({
                     limited_time_offer: { text: `${greeting}`, url: "Hai", expiration_time: Date.now() + 10000 },
-                    bottom_sheet: { in_thread_buttons_limit: 2, divider_indices: [1, 2, 3, 4, 5, 999], list_title: "Seleccione el menú", button_title: "🍙 See Category" },
+                    bottom_sheet: { in_thread_buttons_limit: 2, divider_indices: [1, 2, 3, 4, 5, 999], list_title: "Seleccione el menú", button_title: "🍙 Ver categorías" },
                     tap_target_configuration: { title: " X ", description: "bomboclard", canonical_url: "https://ourin.site", domain: "shop.example.com", button_index: 0 },
                   }),
                   buttons: [
