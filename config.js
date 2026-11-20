@@ -215,13 +215,6 @@ const config = {
     debugLog: false, // Show stack traces
   },
 
-  digitalocean: {
-    token: "",
-    region: "sgp1",
-    sellers: [],
-    ownerPanels: [],
-  },
-
 
   //Usted desea ordenarlo, es un deber llenar yak
   //Pon el apkey en:https://aistudio.google.com/apikey

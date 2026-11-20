@@ -72,8 +72,7 @@ const CATEGORY_EMOJIS = {
   linode: "☁️",
   cecan: "💃",
   stalker: "🕵️",
-  tts: "🗣️",
-  vps: "🌊"
+  tts: "🗣️"
 };
 function toSmallCaps(text) {
   const smallCaps = {
@@ -498,7 +497,6 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
       { key: "cecan", label: "Cecan", emoji: "💃", type: "category" },
       { key: "stalker", label: "Stalker", emoji: "🕵️", type: "category" },
       { key: "tts", label: "TTS", emoji: "🗣️", type: "category" },
-      { key: "vps", label: "VPS", emoji: "🌊", type: "category" },
     ];
     const seenRows = new Set();
     const zann_pengin_rehat = categoryMeta.flatMap((item) => {
@@ -672,7 +670,6 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
           ["nsfw", "🔞", "NSFW"], ["linode", "☁️", "Linode"],
           ["cecan", "💃", "Cecan"],
           ["stalker", "🕵️", "Stalker"], ["tts", "🗣️", "TTS"],
-          ["vps", "🌊", "VPS"],
         ];
 
         const rows = [];

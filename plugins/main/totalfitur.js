@@ -25,7 +25,7 @@ const ICONS = {
     canvas: '🎨', anime: '🌸', nsfw: '🔞', utility: '🛠️', economy: '💰',
     stalker: '🔎', random: '🎲', religi: '🕌', islamic: '☪️', cek: '✅',
     store: '🛒', convert: '🔄', tts: '🗣️',
-    otp: '🔑', vps: '☁️', pushkontak: '📱', jpm: '🎰', ephoto: '📸',
+    otp: '🔑', pushkontak: '📱', jpm: '🎰', ephoto: '📸',
     other: '📦'
 }
 

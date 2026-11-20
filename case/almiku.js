@@ -67,7 +67,6 @@ const CATEGORY_EMOJIS = {
   linode: "☁️",
   random: "🎲",
   canvas: "🎨",
-  vps: "🌊",
   store: "🏪",
   premium: "💎",
   convert: "🔄",
