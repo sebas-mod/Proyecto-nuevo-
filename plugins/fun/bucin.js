@@ -1,4 +1,4 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true});var _ouringamedatajs = require('../../src/lib/ourin-game-data.js');
+"use strict";Object.defineProperty(exports, "__esModule", {value: true});var _almikugamedatajs = require('../../src/lib/almiku-game-data.js');
 const pluginConfig = {
     name: 'bucin',
     alias: ['gombal', 'love', 'romantis'],
@@ -16,7 +16,7 @@ const pluginConfig = {
 };
 
 async function handler(m) {
-    const quote = _ouringamedatajs.getRandomItem.call(void 0, 'bucin.json');
+    const quote = _almikugamedatajs.getRandomItem.call(void 0, 'bucin.json');
     
     if (!quote) {
         await m.reply('❌¡Datos no disponibles!');

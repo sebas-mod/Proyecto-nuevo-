@@ -1,6 +1,6 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _ourinschedulerjs = require('../../src/lib/ourin-scheduler.js');
-var _ourindatabasejs = require('../../src/lib/ourin-database.js');
-var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
+"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _almikuschedulerjs = require('../../src/lib/almiku-scheduler.js');
+var _almikudatabasejs = require('../../src/lib/almiku-database.js');
+var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
 const pluginConfig = {
     name: 'cekschedule',
     alias: ['cekscheduler', 'schedulerstatus', 'schedstatus'],
@@ -19,7 +19,7 @@ const pluginConfig = {
 
 async function handler(m, { sock }) {
     try {
-        const status = _ourinschedulerjs.getFullSchedulerStatus.call(void 0, );
+        const status = _almikuschedulerjs.getFullSchedulerStatus.call(void 0, );
 
         let text = `📊 *sᴄʜᴇᴅᴜʟᴇʀ sᴛᴀᴛᴜs*\n\n`;
 
@@ -56,7 +56,7 @@ async function handler(m, { sock }) {
         await m.reply(text);
     } catch (error) {
         console.error('[CekSchedule Error]', error);
-        await m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
+        await m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
     }
 }
 

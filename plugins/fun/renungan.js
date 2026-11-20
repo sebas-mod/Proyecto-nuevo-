@@ -1,5 +1,5 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true});var _ouringamedatajs = require('../../src/lib/ourin-game-data.js');
-var _ourinutilsjs = require('../../src/lib/ourin-utils.js');
+"use strict";Object.defineProperty(exports, "__esModule", {value: true});var _almikugamedatajs = require('../../src/lib/almiku-game-data.js');
+var _almikuutilsjs = require('../../src/lib/almiku-utils.js');
 const pluginConfig = {
     name: 'renungan',
     alias: ['motivasi', 'mutiara'],
@@ -19,7 +19,7 @@ const pluginConfig = {
 async function handler(m, { sock }) {
     m.react('🕕')
     try {
-        await sock.sendMedia(m.chat, _ouringamedatajs.getRandomItem.call(void 0, 'renungan.json'), null, m, {
+        await sock.sendMedia(m.chat, _almikugamedatajs.getRandomItem.call(void 0, 'renungan.json'), null, m, {
             type: 'image'
         })
         m.react('✅')

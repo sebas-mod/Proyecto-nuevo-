@@ -1,6 +1,6 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
-var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
-var _ourinbratjs = require('../../src/lib/ourin-brat.js');
+var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
+var _almikubratjs = require('../../src/lib/almiku-brat.js');
 
 const pluginConfig = {
   name: "bratgreen",
@@ -27,7 +27,7 @@ async function handler(m, { sock }) {
   m.react("🕕");
 
   try {
-    const buffer = await _ourinbratjs.drawBrat.call(void 0, {
+    const buffer = await _almikubratjs.drawBrat.call(void 0, {
       text,
       bgColor: "#8ACE00",
       width: 512,
@@ -49,7 +49,7 @@ async function handler(m, { sock }) {
     m.react("✅");
   } catch (error) {
     m.react("☢");
-    m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
+    m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
   }
 }
 

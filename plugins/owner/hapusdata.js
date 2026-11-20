@@ -1,4 +1,4 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true});var _ourindatabasejs = require('../../src/lib/ourin-database.js');
+"use strict";Object.defineProperty(exports, "__esModule", {value: true});var _almikudatabasejs = require('../../src/lib/almiku-database.js');
 const pluginConfig = {
     name: 'hapusdata',
     alias: ['resetdata', 'cleardata', 'wipedata'],
@@ -30,7 +30,7 @@ async function handler(m, { sock }) {
         pendingReset.delete(m.sender)
         await m.react('🕕')
 
-        const db = _ourindatabasejs.getDatabase.call(void 0, )
+        const db = _almikudatabasejs.getDatabase.call(void 0, )
         const result = db.resetToDefaults()
 
         await m.react('✅')
@@ -46,7 +46,7 @@ async function handler(m, { sock }) {
         return
     }
 
-    const db = _ourindatabasejs.getDatabase.call(void 0, )
+    const db = _almikudatabasejs.getDatabase.call(void 0, )
     const dbPath = db.dbPath
     const fileMap = [
         { key: 'users', label: '👥 Users' },

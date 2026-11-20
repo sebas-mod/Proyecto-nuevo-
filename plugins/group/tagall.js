@@ -1,8 +1,8 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 
-var _ourinlidjs = require('../../src/lib/ourin-lid.js');
-var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
+var _almikulidjs = require('../../src/lib/almiku-lid.js');
+var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
 const pluginConfig = {
   name: "tagall",
   alias: ["all", "everyone"],
@@ -34,7 +34,7 @@ async function handler(m, { sock }) {
     }
 
     const targetParticipants = participants.filter((participant) => {
-      return _ourinlidjs.getParticipantJid.call(void 0, participant) !== m.sender;
+      return _almikulidjs.getParticipantJid.call(void 0, participant) !== m.sender;
     });
 
     if (targetParticipants.length === 0) {
@@ -42,9 +42,9 @@ async function handler(m, { sock }) {
       return;
     }
 
-    const mentions = _ourinlidjs.getParticipantJids.call(void 0, targetParticipants);
+    const mentions = _almikulidjs.getParticipantJids.call(void 0, targetParticipants);
     const memberList = targetParticipants
-      .map((participant) => `@${_ourinlidjs.getParticipantJid.call(void 0, participant).split("@")[0]}`)
+      .map((participant) => `@${_almikulidjs.getParticipantJid.call(void 0, participant).split("@")[0]}`)
       .join("\n")
       .trim();
 
@@ -55,7 +55,7 @@ async function handler(m, { sock }) {
       { mentions: mentions },
     );
   } catch (error) {
-    m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
+    m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
   }
 }
 

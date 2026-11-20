@@ -2,7 +2,7 @@
 var _axios = require('axios'); var _axios2 = _interopRequireDefault(_axios);
 var _fluentffmpeg = require('fluent-ffmpeg'); var _fluentffmpeg2 = _interopRequireDefault(_fluentffmpeg);
 var _ffmpeg = require('@ffmpeg-installer/ffmpeg'); var _ffmpeg2 = _interopRequireDefault(_ffmpeg);
-var _ourincontextjs = require('../../src/lib/ourin-context.js');
+var _almikucontextjs = require('../../src/lib/almiku-context.js');
 _fluentffmpeg2.default.setFfmpegPath(_ffmpeg2.default.path);
 
 const pluginConfig = {

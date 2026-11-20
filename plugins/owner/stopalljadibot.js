@@ -1,5 +1,5 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _ourinjadibotmanagerjs = require('../../src/lib/ourin-jadibot-manager.js');
-var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
+"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _almikujadibotmanagerjs = require('../../src/lib/almiku-jadibot-manager.js');
+var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
 const pluginConfig = {
     name: 'stopalljadibot',
     alias: ['stopsemuajadibot', 'killalljadibots'],
@@ -17,7 +17,7 @@ const pluginConfig = {
 }
 
 async function handler(m, { sock }) {
-    const active = _ourinjadibotmanagerjs.getActiveJadibots.call(void 0, )
+    const active = _almikujadibotmanagerjs.getActiveJadibots.call(void 0, )
 
     if (active.length === 0) {
         return m.reply(`❌No hay jabots activos`)
@@ -26,7 +26,7 @@ async function handler(m, { sock }) {
     await m.react('🕕')
 
     try {
-        const stopped = await _ourinjadibotmanagerjs.stopAllJadibots.call(void 0, )
+        const stopped = await _almikujadibotmanagerjs.stopAllJadibots.call(void 0, )
 
         await m.react('✅')
 
@@ -42,7 +42,7 @@ async function handler(m, { sock }) {
         }, { quoted: m })
     } catch (error) {
         await m.react('☢')
-        await m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName))
+        await m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName))
     }
 }
 

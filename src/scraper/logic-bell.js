@@ -40,8 +40,8 @@ function buildTextMessage(message, history = [], imageBuffer = null) {
 }
 
 function getAiNames(aiFullName = "") {
-  const fullName = String(aiFullName || _optionalChain([_configjs2.default, 'access', _3 => _3.bot, 'optionalAccess', _4 => _4.name]) || "Ourin AI").trim();
-  const nickName = fullName.split(/\s+/)[0] || "Ourin";
+  const fullName = String(aiFullName || _optionalChain([_configjs2.default, 'access', _3 => _3.bot, 'optionalAccess', _4 => _4.name]) || "Al Miku AI").trim();
+  const nickName = fullName.split(/\s+/)[0] || "Al Miku";
   return { fullName, nickName };
 }
 

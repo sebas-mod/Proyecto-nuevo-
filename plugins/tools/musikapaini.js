@@ -1,10 +1,10 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _axios = require('axios'); var _axios2 = _interopRequireDefault(_axios);
 var _formdata = require('form-data'); var _formdata2 = _interopRequireDefault(_formdata);
 var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
-var _ourin = require('ourin');
-var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
-var _ourinapimanagerjs = require('../../src/lib/ourin-apimanager.js'); var _ourinapimanagerjs2 = _interopRequireDefault(_ourinapimanagerjs);
-var _ourincontextjs = require('../../src/lib/ourin-context.js');
+var _almiku = require('almiku');
+var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
+var _almikuapimanagerjs = require('../../src/lib/almiku-apimanager.js'); var _almikuapimanagerjs2 = _interopRequireDefault(_almikuapimanagerjs);
+var _almikucontextjs = require('../../src/lib/almiku-context.js');
 
 const pluginConfig = {
   name: "musikapaini",
@@ -48,7 +48,7 @@ async function handler(m, { sock }) {
 
     if (audioMsg) {
       try {
-        audioBuffer = await _ourin.downloadMediaMessage.call(void 0, 
+        audioBuffer = await _almiku.downloadMediaMessage.call(void 0, 
           { key: m.quoted.key, message: quotedMsg },
           "buffer",
           {},
@@ -87,7 +87,7 @@ async function handler(m, { sock }) {
 
     await m.reply("🔍 *ᴍᴇɴɢɪᴅᴇɴᴛɪꜰɪᴋᴀsɪ...*\n\n> Mencari info lagu...");
 
-    const data = await _ourinapimanagerjs2.default.neoxr.whatMusic(
+    const data = await _almikuapimanagerjs2.default.neoxr.whatMusic(
       {
         url: audioUrl,
         apikey: _optionalChain([_configjs2.default, 'access', _5 => _5.APIkey, 'optionalAccess', _6 => _6.neoxr]) || "Milik-Bot-OurinMD",
@@ -148,7 +148,7 @@ async function handler(m, { sock }) {
     const msgContent = {
       text,
       footer: "🎵 Music Recognition",
-      contextInfo: _ourincontextjs.saluranCtx.call(void 0, ),
+      contextInfo: _almikucontextjs.saluranCtx.call(void 0, ),
     };
 
     if (buttons.length > 0) {
@@ -160,7 +160,7 @@ async function handler(m, { sock }) {
     m.react("✅");
   } catch (error) {
     m.react("☢");
-    m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
+    m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
   }
 }
 

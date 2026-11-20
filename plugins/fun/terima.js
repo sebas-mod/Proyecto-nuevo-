@@ -1,6 +1,6 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { newObj[key] = obj[key]; } } } newObj.default = obj; return newObj; } } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _ourindatabasejs = require('../../src/lib/ourin-database.js');
-var _ourintimejs = require('../../src/lib/ourin-time.js'); var timeHelper = _interopRequireWildcard(_ourintimejs);
-var _ourincontextjs = require('../../src/lib/ourin-context.js');
+"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { newObj[key] = obj[key]; } } } newObj.default = obj; return newObj; } } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _almikudatabasejs = require('../../src/lib/almiku-database.js');
+var _almikutimejs = require('../../src/lib/almiku-time.js'); var timeHelper = _interopRequireWildcard(_almikutimejs);
+var _almikucontextjs = require('../../src/lib/almiku-context.js');
 const pluginConfig = {
   name: "terima",
   alias: ["accept", "yes"],
@@ -29,7 +29,7 @@ const celebrationQuotes = [
 ];
 
 async function handler(m, { sock }) {
-  const db = _ourindatabasejs.getDatabase.call(void 0, );
+  const db = _almikudatabasejs.getDatabase.call(void 0, );
 
   let shooterJid = null;
 
@@ -105,7 +105,7 @@ async function handler(m, { sock }) {
   const dateStr = timeHelper.formatFull("dddd, DD MMMM YYYY");
 
   await m.react("💕");
-  const ctx = _ourincontextjs.saluranCtx.call(void 0, );
+  const ctx = _almikucontextjs.saluranCtx.call(void 0, );
   ctx.mentionedJid = [m.sender, shooterJid];
 
   await m.reply(

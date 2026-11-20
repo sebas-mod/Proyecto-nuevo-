@@ -1,5 +1,5 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { newObj[key] = obj[key]; } } } newObj.default = obj; return newObj; } }var _ourindatabasejs = require('../../src/lib/ourin-database.js');
-var _ourintimejs = require('../../src/lib/ourin-time.js'); var timeHelper = _interopRequireWildcard(_ourintimejs);
+"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { newObj[key] = obj[key]; } } } newObj.default = obj; return newObj; } }var _almikudatabasejs = require('../../src/lib/almiku-database.js');
+var _almikutimejs = require('../../src/lib/almiku-time.js'); var timeHelper = _interopRequireWildcard(_almikutimejs);
 const pluginConfig = {
   name: "listwarn",
   alias: ["warnings", "cekwarn", "warnlist"],
@@ -18,7 +18,7 @@ const pluginConfig = {
 };
 
 async function handler(m, { sock }) {
-  const db = _ourindatabasejs.getDatabase.call(void 0, );
+  const db = _almikudatabasejs.getDatabase.call(void 0, );
   let groupData = db.getGroup(m.chat) || {};
   let warnings = groupData.warnings || {};
   const maxWarns = groupData.maxWarnings || 3;

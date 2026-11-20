@@ -1,7 +1,7 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _axios = require('axios'); var _axios2 = _interopRequireDefault(_axios);
-var _ourinuploaderjs = require('../../src/lib/ourin-uploader.js');
-var _ourinhttpjs = require('../../src/lib/ourin-http.js');
-var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
+var _almikuuploaderjs = require('../../src/lib/almiku-uploader.js');
+var _almikuhttpjs = require('../../src/lib/almiku-http.js');
+var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
 const pluginConfig = {
     name: 'tofigure',
     alias: ['figure', 'figurestyle'],
@@ -39,7 +39,7 @@ async function handler(m, { sock }) {
             return m.reply(`❌Paso de descarga de imagen`)
         }
         
-        const imageUrl = await _ourinuploaderjs.uploadImage.call(void 0, buffer, 'image.jpg')
+        const imageUrl = await _almikuuploaderjs.uploadImage.call(void 0, buffer, 'image.jpg')
         
         const apiUrl = `https://api-faa.my.id/faa/tofigura?url=${encodeURIComponent(imageUrl)}`
         const res = await _axios2.default.get(apiUrl, { responseType: 'arraybuffer' })
@@ -52,7 +52,7 @@ async function handler(m, { sock }) {
         
     } catch (error) {
         m.react('☢')
-        m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName))
+        m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName))
     }
 }
 

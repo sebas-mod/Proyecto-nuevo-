@@ -1,13 +1,13 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { newObj[key] = obj[key]; } } } newObj.default = obj; return newObj; } } function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; } function _nullishCoalesce(lhs, rhsFn) { if (lhs != null) { return lhs; } else { return rhsFn(); } } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _fs = require('fs'); var _fs2 = _interopRequireDefault(_fs);
 var _path = require('path'); var _path2 = _interopRequireDefault(_path);
-var _ourindatabasejs = require('../../src/lib/ourin-database.js');
-var _ourinassetmanagerjs = require('../../src/lib/ourin-asset-manager.js');
+var _almikudatabasejs = require('../../src/lib/almiku-database.js');
+var _almikuassetmanagerjs = require('../../src/lib/almiku-asset-manager.js');
 
 
 
 
 
-var _ourinlidjs = require('../../src/lib/ourin-lid.js');
+var _almikulidjs = require('../../src/lib/almiku-lid.js');
 var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
 
 const pluginConfig = {
@@ -32,13 +32,13 @@ if (!global.registrationSessions) global.registrationSessions = {};
 const SESSION_TIMEOUT = 300000;
 const DEFAULT_REWARDS = { koin: 30000, energi: 300, exp: 300000 };
 const REGISTRATION_IMAGE_CANDIDATES = [
-  "ourin-daftar",
-  "ourin",
+  "almiku-daftar",
+  "almiku",
 ];
 
 function getRegistrationContextInfo() {
   const saluranId = _optionalChain([_configjs2.default, 'access', _ => _.saluran, 'optionalAccess', _2 => _2.id]) || "120363400911374213@newsletter";
-  const saluranName = _optionalChain([_configjs2.default, 'access', _3 => _3.saluran, 'optionalAccess', _4 => _4.name]) || _optionalChain([_configjs2.default, 'access', _5 => _5.bot, 'optionalAccess', _6 => _6.name]) || "Ourin-AI";
+  const saluranName = _optionalChain([_configjs2.default, 'access', _3 => _3.saluran, 'optionalAccess', _4 => _4.name]) || _optionalChain([_configjs2.default, 'access', _5 => _5.bot, 'optionalAccess', _6 => _6.name]) || "Al Miku-AI";
 
   return {
     forwardingScore: 9999,
@@ -62,9 +62,9 @@ function getRegistrationRewards() {
 }
 
 async function getRegistrationImage() {
-  const { getCachedThumb } = await Promise.resolve().then(() => _interopRequireWildcard(require("../../src/lib/ourin-serialize.js")));
+  const { getCachedThumb } = await Promise.resolve().then(() => _interopRequireWildcard(require("../../src/lib/almiku-serialize.js")));
   for (const key of REGISTRATION_IMAGE_CANDIDATES) {
-    const buf = _ourinassetmanagerjs.getAssetBuffer.call(void 0, key);
+    const buf = _almikuassetmanagerjs.getAssetBuffer.call(void 0, key);
     if (buf) return buf;
   }
 
@@ -92,8 +92,8 @@ function shouldBypassRegistrationAnswer(m) {
 function getRegistrationSessionKey(jid) {
   let normalized = String(jid || "").trim();
   if (!normalized) return "";
-  if (_ourinlidjs.isLid.call(void 0, normalized) || _ourinlidjs.isLidConverted.call(void 0, normalized)) {
-    normalized = _ourinlidjs.getCachedJid.call(void 0, normalized) || _ourinlidjs.lidToJid.call(void 0, normalized) || normalized;
+  if (_almikulidjs.isLid.call(void 0, normalized) || _almikulidjs.isLidConverted.call(void 0, normalized)) {
+    normalized = _almikulidjs.getCachedJid.call(void 0, normalized) || _almikulidjs.lidToJid.call(void 0, normalized) || normalized;
   }
   const digits = normalized.replace(/[^0-9]/g, "");
   return digits || normalized.toLowerCase();
@@ -258,7 +258,7 @@ function buildConfirmationPrompt(session, user) {
 }
 
 async function handler(m, { sock }) {
-  const db = _ourindatabasejs.getDatabase.call(void 0, );
+  const db = _almikudatabasejs.getDatabase.call(void 0, );
   const user = db.getUser(m.sender);
 
   if (_optionalChain([user, 'optionalAccess', _28 => _28.isRegistered])) {
@@ -300,7 +300,7 @@ async function registrationAnswerHandler(m, sock) {
 
   const text = m.body.trim();
   const lowText = normalizeSessionText(text);
-  const db = _ourindatabasejs.getDatabase.call(void 0, );
+  const db = _almikudatabasejs.getDatabase.call(void 0, );
 
   if (["batal", "cancel", "batalkan"].includes(lowText)) {
     clearRegistrationSession(m.sender);

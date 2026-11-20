@@ -1,5 +1,5 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
-var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
+var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
 
 const pluginConfig = {
   name: "confess",
@@ -105,7 +105,7 @@ async function handler(m, { sock }) {
     successTxt += `Gracias por confiar en el bot. 😉`;
     await m.reply(successTxt);
   } catch (error) {
-    m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
+    m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
   }
 }
 
@@ -124,7 +124,7 @@ async function replyHandler(m, { sock }) {
   if (!replyMessage) return false;
 
   const saluranId = _optionalChain([_configjs2.default, 'access', _16 => _16.saluran, 'optionalAccess', _17 => _17.id]) || "120363400911374213@newsletter";
-  const saluranName = _optionalChain([_configjs2.default, 'access', _18 => _18.saluran, 'optionalAccess', _19 => _19.name]) || _optionalChain([_configjs2.default, 'access', _20 => _20.bot, 'optionalAccess', _21 => _21.name]) || "Ourin-AI";
+  const saluranName = _optionalChain([_configjs2.default, 'access', _18 => _18.saluran, 'optionalAccess', _19 => _19.name]) || _optionalChain([_configjs2.default, 'access', _20 => _20.bot, 'optionalAccess', _21 => _21.name]) || "Al Miku-AI";
 
   const replyText = `💌* NO REFECTO FEESS Aquí Hermano! ]💌\n\n` +
     `Alguien respondió de forma anónima a tu mensaje:\n\n` +

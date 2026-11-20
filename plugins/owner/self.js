@@ -3,8 +3,8 @@
 * @ llenar plugins / propietario / yo.
 * @ descripción Plugin para habilitar el modo de auto (sólo el arquero propietario )
  */
-var _ourindatabasejs = require('../../src/lib/ourin-database.js');
-var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
+var _almikudatabasejs = require('../../src/lib/almiku-database.js');
+var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
 const pluginConfig = {
     name: 'self',
     alias: ['selfmode', 'private-mode'],
@@ -35,7 +35,7 @@ async function handler(m, { sock }) {
             return await m.reply('*Ya en un modo* *yo*');
         }
         _configjs2.default.mode = 'self';
-        const db = _ourindatabasejs.getDatabase.call(void 0, );
+        const db = _almikudatabasejs.getDatabase.call(void 0, );
         db.setting('botMode', 'self');
         
         const responseText = `🔒 *ᴍᴏᴅᴇ sᴇʟꜰ ᴀᴋᴛɪꜰ*\n\n` +
@@ -47,7 +47,7 @@ async function handler(m, { sock }) {
         console.log(`[Mode] Changed to SELF by ${m.pushName} (${m.sender})`);
     } catch (error) {
         console.error('[Self Command Error]', error);
-        await m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
+        await m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
     }
 }
 

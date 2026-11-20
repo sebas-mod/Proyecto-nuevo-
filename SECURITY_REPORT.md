@@ -1,5 +1,5 @@
 INFORMACIÓN DE LA SEGURIDAD—ESCRITO ESCUELA SÍGUELO EN SALUAN QUÉS PUEDE
-# OURIN 3.5 ULTIMATE EDITION
+# AL MIKU 3.5 ULTIMATE EDITION
 
 Fecha: 19 de noviembre de 2026
 
@@ -7,7 +7,7 @@ Fecha: 19 de noviembre de 2026
 
 # 1. Especificación oficial de la salutación
 
-El sistema de seguridad Ourin 3 requiere que todo el uso siga el canal oficial dos:
+El sistema de seguridad Al Miku 3 requiere que todo el uso siga el canal oficial dos:
 
 1. **CHANNEL 1:**
    `https://whatsapp.com/channel/0029VaBOlsv002TEjlntTE2D`
@@ -17,7 +17,7 @@ Código Saluran:`0029VABOlsv002TEJINTTE2D`
    `https://whatsapp.com/channel/0029Vb8xSqi0AgWJaiZ9Qm16`
 Código Saluran:`0029Vb8xSqi0AgWJaiZ9Qm16`
 
-La embajada URL se mantiene de forma absoluta en el código fuente (`src / lib / ourin - canal - seguridad. js`).
+La embajada URL se mantiene de forma absoluta en el código fuente (`src / lib / almiku - canal - seguridad. js`).
 
 ---
 
@@ -28,7 +28,7 @@ Cada uso no verificado y el intento de ejecutar el comando será bloqueado y rec
 ```text
 ACCESS DENIED — FOLLOW REQUIRED
 
-Para usar todas las funciones de Ourin 3.5, debes seguir nuestros dos canales oficiales.
+Para usar todas las funciones de Al Miku 3.5, debes seguir nuestros dos canales oficiales.
 
 CHANNEL 1:
 https://whatsapp.com/channel/0029VaBOlsv002TEjlntTE2D

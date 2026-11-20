@@ -1,5 +1,5 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _os = require('os'); var _os2 = _interopRequireDefault(_os);
-var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
+var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
 
 const pluginConfig = {
   name: "stats",
@@ -56,7 +56,7 @@ async function handler(m, { sock, db, uptime, config: botConfig }) {
     const premiumUsers = Object.values(users).filter((u) => u.premium).length;
 
     const statsObj = {
-      bot: _optionalChain([botConfig, 'optionalAccess', _7 => _7.bot, 'optionalAccess', _8 => _8.name]) || "Ourin-AI",
+      bot: _optionalChain([botConfig, 'optionalAccess', _7 => _7.bot, 'optionalAccess', _8 => _8.name]) || "Al Miku-AI",
       version: `v${_optionalChain([botConfig, 'optionalAccess', _9 => _9.bot, 'optionalAccess', _10 => _10.version]) || "1.0.0"}`,
       uptime: formatUptime(uptime),
       database: {
@@ -90,7 +90,7 @@ async function handler(m, { sock, db, uptime, config: botConfig }) {
       footer: _optionalChain([botConfig, 'optionalAccess', _11 => _11.bot, 'optionalAccess', _12 => _12.name]),
     });
   } catch (error) {
-    m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
+    m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
   }
 }
 

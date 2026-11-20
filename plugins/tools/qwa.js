@@ -1,7 +1,7 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _axios = require('axios'); var _axios2 = _interopRequireDefault(_axios);
-var _ourinuploaderjs = require('../../src/lib/ourin-uploader.js');
-var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
-var _ourinserializejs = require('../../src/lib/ourin-serialize.js');
+var _almikuuploaderjs = require('../../src/lib/almiku-uploader.js');
+var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
+var _almikuserializejs = require('../../src/lib/almiku-serialize.js');
 var _awesomephonenumber = require('awesome-phonenumber');
 
 const pluginConfig = {
@@ -42,7 +42,7 @@ async function handler(m, { sock }) {
             if (sock.store && sock.store.loadMessage && mainMsg.id) {
                 const originalMainMsg = await sock.store.loadMessage(m.chat, mainMsg.id)
                 if (originalMainMsg) {
-                    const serializedOriginal = await _ourinserializejs.serialize.call(void 0, sock, originalMainMsg)
+                    const serializedOriginal = await _almikuserializejs.serialize.call(void 0, sock, originalMainMsg)
                     if (serializedOriginal && serializedOriginal.quoted) {
                         quoteMsg = serializedOriginal.quoted
                     }
@@ -64,7 +64,7 @@ async function handler(m, { sock }) {
             try {
                 const buffer = await mainMsg.download()
                 if (buffer) {
-                    mainImage = await _ourinuploaderjs.uploadImage.call(void 0, buffer)
+                    mainImage = await _almikuuploaderjs.uploadImage.call(void 0, buffer)
                 }
             } catch (err) {
                 console.error("Stempele descargas / subes media uma:", err)
@@ -76,7 +76,7 @@ async function handler(m, { sock }) {
             try {
                 const buffer = await quoteMsg.download()
                 if (buffer) {
-                    quotedImage = await _ourinuploaderjs.uploadImage.call(void 0, buffer)
+                    quotedImage = await _almikuuploaderjs.uploadImage.call(void 0, buffer)
                 }
             } catch (err) {
                 console.error("Stempellard descargas / subidas media citada:", err)

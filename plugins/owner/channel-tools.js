@@ -69,11 +69,11 @@ async function handler(m, context) {
 
     if (cmd === 'createch') {
       const chName = String(text || '').trim();
-      if (!chName) return m.reply(`Ejemplo:\`${p}El Saluran Saluran Oficial Ourin\``);
+      if (!chName) return m.reply(`Ejemplo:\`${p}El Saluran Saluran Oficial Al Miku\``);
       if (typeof sock.newsletterCreate !== 'function') {
         return m.reply('❌El boletínCreate no está disponible todavía en el bot de socket.');
       }
-      const result = await sock.newsletterCreate(chName, 'Official Channel created via Ourin 3.5');
+      const result = await sock.newsletterCreate(chName, 'Official Channel created via Al Miku 3.5');
       return m.reply(
         `🎉* COOING EXPLOSIONS *\n\n` +
           `📢*Nombre:*${chName}\n` +

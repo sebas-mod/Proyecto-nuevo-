@@ -1,5 +1,5 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true});var _ourinpluginsjs = require('../../src/lib/ourin-plugins.js');
-var _ourindatabasejs = require('../../src/lib/ourin-database.js');
+"use strict";Object.defineProperty(exports, "__esModule", {value: true});var _almikupluginsjs = require('../../src/lib/almiku-plugins.js');
+var _almikudatabasejs = require('../../src/lib/almiku-database.js');
 
 const config = {
   name: "capenergi",
@@ -44,7 +44,7 @@ async function handler(m, { sock }) {
 
   await m.react("🕕");
   
-  const db = _ourindatabasejs.getDatabase.call(void 0, );
+  const db = _almikudatabasejs.getDatabase.call(void 0, );
   const overrides = db.setting("capenergi") || {};
   
   let successList = [];
@@ -52,7 +52,7 @@ async function handler(m, { sock }) {
   
   for (const cmd of commands) {
     const targetCommand = cmd.toLowerCase();
-    const plugin = _ourinpluginsjs.getPlugin.call(void 0, targetCommand);
+    const plugin = _almikupluginsjs.getPlugin.call(void 0, targetCommand);
     if (!plugin) {
       failedList.push(targetCommand);
     } else {

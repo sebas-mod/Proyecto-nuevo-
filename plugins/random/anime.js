@@ -1,7 +1,7 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _axios = require('axios'); var _axios2 = _interopRequireDefault(_axios);
-var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
-var _ourincontextjs = require('../../src/lib/ourin-context.js');
-var _ourin = require('ourin');
+var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
+var _almikucontextjs = require('../../src/lib/almiku-context.js');
+var _almiku = require('almiku');
 
 const nexrayTypes = [
   "waifu", "neko", "shinobu", "megumin", "bully", "cuddle", "cry", "hug",
@@ -49,12 +49,12 @@ async function handler(m, { sock }) {
       const buffer = Buffer.from(res.data);
       const isGif = buffer.length > 3 && buffer[0] === 0x47 && buffer[1] === 0x49 && buffer[2] === 0x46; // "GIF"
       
-      const media = await _ourin.prepareWAMessageMedia.call(void 0, 
+      const media = await _almiku.prepareWAMessageMedia.call(void 0, 
         isGif ? { video: buffer, gifPlayback: true } : { image: buffer },
         { upload: sock.waUploadToServer }
       );
       
-      const msg = _ourin.generateWAMessageFromContent.call(void 0, m.chat, {
+      const msg = _almiku.generateWAMessageFromContent.call(void 0, m.chat, {
         viewOnceMessage: {
           message: {
             messageContextInfo: {
@@ -89,7 +89,7 @@ async function handler(m, { sock }) {
 
   } catch (err) {
     m.react("☢");
-    return m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
+    return m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
   }
 }
 

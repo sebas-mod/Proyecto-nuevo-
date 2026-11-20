@@ -1,4 +1,4 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _ourinjadibotmanagerjs = require('../../src/lib/ourin-jadibot-manager.js');
+"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _almikujadibotmanagerjs = require('../../src/lib/almiku-jadibot-manager.js');
 
 const pluginConfig = {
     name: 'jadibot',
@@ -20,7 +20,7 @@ async function handler(m, { sock }) {
     const sender = m.sender
     if (!sender) return m.reply('❌Stunner ID \'d su número')
 
-    if (_ourinjadibotmanagerjs.isJadibotActive.call(void 0, sender)) {
+    if (_almikujadibotmanagerjs.isJadibotActive.call(void 0, sender)) {
         return m.reply(
             `⚠️ *ᴊᴀᴅɪʙᴏᴛ ꜱᴜᴅᴀʜ ᴀᴋᴛɪꜰ*\n\n` +
             `# Número You 've become a bot\n` +
@@ -45,7 +45,7 @@ async function handler(m, { sock }) {
     }
 
     try {
-        await _ourinjadibotmanagerjs.startJadibot.call(void 0, sock, m, sender, !useQR)
+        await _almikujadibotmanagerjs.startJadibot.call(void 0, sock, m, sender, !useQR)
     } catch (e) {
         await m.reply(
             `❌ *ᴊᴀᴅɪʙᴏᴛ ɢᴀɢᴀʟ*\n\n` +

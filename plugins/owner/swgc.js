@@ -1,11 +1,11 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _ourinassetmanagerjs = require('../../src/lib/ourin-asset-manager.js');
+"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _almikuassetmanagerjs = require('../../src/lib/almiku-asset-manager.js');
 var _filetype = require('file-type');
 var _fs = require('fs'); var _fs2 = _interopRequireDefault(_fs);
 var _path = require('path'); var _path2 = _interopRequireDefault(_path);
 var _configjs = require('../../config.js');
-var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
-var _ouringroupprotectionjs = require('../../src/lib/ourin-group-protection.js');
-var _ourincontextjs = require('../../src/lib/ourin-context.js');
+var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
+var _almikugroupprotectionjs = require('../../src/lib/almiku-group-protection.js');
+var _almikucontextjs = require('../../src/lib/almiku-context.js');
 const botConfig = _configjs.config;
 
 function buildSyntheticSwGcRawMessage(sock, remoteJid, content, messageId) {
@@ -154,7 +154,7 @@ async function handler(m, { sock, db }) {
           content,
           sendResult,
         );
-        await _ouringroupprotectionjs.handleAntiSwGc.call(void 0, syntheticRawMsg, sock, db);
+        await _almikugroupprotectionjs.handleAntiSwGc.call(void 0, syntheticRawMsg, sock, db);
       }
 
       const mediaType = pendingData.rawContent.text
@@ -223,7 +223,7 @@ async function handler(m, { sock, db }) {
         rawContent.ptt = _optionalChain([m, 'access', _16 => _16.quoted, 'access', _17 => _17.msg, 'optionalAccess', _18 => _18.ptt]) || false;
       }
     } catch (e) {
-      await m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
+      await m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
       return;
     }
   } else if (
@@ -255,7 +255,7 @@ async function handler(m, { sock, db }) {
         rawContent.ptt = _optionalChain([m, 'access', _27 => _27.msg, 'optionalAccess', _28 => _28.ptt]) || false;
       }
     } catch (e) {
-      await m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
+      await m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
       return;
     }
   } else if (text && text.trim()) {
@@ -308,7 +308,7 @@ async function handler(m, { sock, db }) {
 
     let thumbnail = null;
     try {
-      thumbnail = _ourinassetmanagerjs.getAssetBuffer.call(void 0, "ourin2");
+      thumbnail = _almikuassetmanagerjs.getAssetBuffer.call(void 0, "almiku2");
     } catch (e) {}
 
     await sock.sendMessage(m.chat, {
@@ -318,13 +318,13 @@ async function handler(m, { sock, db }) {
         `* Total Grupo: *${groupList.length}*\n\n` +
         `Seleccionar grupo de la lista en el sótano: _`,
       contextInfo: {
-        ..._ourincontextjs.saluranCtx.call(void 0, ),
+        ..._almikucontextjs.saluranCtx.call(void 0, ),
         forwardedNewsletterMessageInfo: {
           newsletterJid: _optionalChain([botConfig, 'optionalAccess', _29 => _29.saluran, 'optionalAccess', _30 => _30.id]),
           newsletterName: _optionalChain([botConfig, 'optionalAccess', _31 => _31.saluran, 'optionalAccess', _32 => _32.name]),
         },
       },
-      footer: "OURIN MD",
+      footer: "AL MIKU MD",
       interactiveButtons: [
         {
           name: "single_select",

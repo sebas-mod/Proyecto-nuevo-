@@ -2,9 +2,9 @@
 var _path = require('path'); var _path2 = _interopRequireDefault(_path);
 var _crypto = require('crypto'); var _crypto2 = _interopRequireDefault(_crypto);
 var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
-var _ourindatabasejs = require('../../src/lib/ourin-database.js');
-var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
-var _ourin = require('ourin');
+var _almikudatabasejs = require('../../src/lib/almiku-database.js');
+var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
+var _almiku = require('almiku');
 
 const pluginConfig = {
     name: 'srt',
@@ -36,7 +36,7 @@ function countShuffleImages() {
 
 async function handler(m, { sock, args }) {
     try {
-        const db = _ourindatabasejs.getDatabase.call(void 0, );
+        const db = _almikudatabasejs.getDatabase.call(void 0, );
         const action = _optionalChain([args, 'access', _ => _[0], 'optionalAccess', _2 => _2.toLowerCase, 'call', _3 => _3()]);
 
         if (!action) {
@@ -73,7 +73,7 @@ async function handler(m, { sock, args }) {
             await m.reply(`📂* Registrate Imagen SHUFFLE*\n\nEl sistema encontrado *${files.length}[ imagen guardada. Pitch procesamiento y secuencia de disco para mostrar, por favor espere un momento.`);
             
             try {
-                const opener = _ourin.generateWAMessageFromContent.call(void 0, 
+                const opener = _almiku.generateWAMessageFromContent.call(void 0, 
                     m.chat,
                     {
                         messageContextInfo: { messageSecret: _crypto2.default.randomBytes(32) },
@@ -83,7 +83,7 @@ async function handler(m, { sock, args }) {
                         },
                     },
                     {
-                        userJid: _ourin.jidNormalizedUser.call(void 0, sock.user.id),
+                        userJid: _almiku.jidNormalizedUser.call(void 0, sock.user.id),
                         quoted: m,
                         upload: sock.waUploadToServer,
                     }
@@ -97,7 +97,7 @@ async function handler(m, { sock, args }) {
                     const imgPath = _path2.default.join(SHUFFLE_DIR, files[i]);
                     const imgBuffer = _fs2.default.readFileSync(imgPath);
 
-                    const msg = await _ourin.generateWAMessage.call(void 0, opener.key.remoteJid, { image: imgBuffer }, {
+                    const msg = await _almiku.generateWAMessage.call(void 0, opener.key.remoteJid, { image: imgBuffer }, {
                         upload: sock.waUploadToServer,
                     });
 
@@ -156,7 +156,7 @@ async function handler(m, { sock, args }) {
         
     } catch (error) {
         console.error('SRT List Error:', error);
-        m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
+        m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
     }
 }
 

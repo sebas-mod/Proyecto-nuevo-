@@ -1,5 +1,5 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _ourindatabasejs = require('../../src/lib/ourin-database.js');
-var _ourincontextjs = require('../../src/lib/ourin-context.js');
+"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _almikudatabasejs = require('../../src/lib/almiku-database.js');
+var _almikucontextjs = require('../../src/lib/almiku-context.js');
 const pluginConfig = {
   name: "delsewa",
   alias: ["sewadel", "hapussewa", "removesewa"],
@@ -29,7 +29,7 @@ async function resolveGroupId(sock, input) {
 }
 
 async function handler(m, { sock }) {
-  const db = _ourindatabasejs.getDatabase.call(void 0, );
+  const db = _almikudatabasejs.getDatabase.call(void 0, );
   const input = _optionalChain([m, 'access', _8 => _8.text, 'optionalAccess', _9 => _9.trim, 'call', _10 => _10()]);
 
   if (!db.db.data.sewa) {
@@ -86,7 +86,7 @@ async function handler(m, { sock }) {
         `⛔Este Grupo ha sido intercept de la lista blanca de alquiller.\nLamento haber dejado al grupo.\n\nLlamar al dueño para un renombrado.`,
         null,
         {
-          contextInfo: _ourincontextjs.saluranCtx.call(void 0, ),
+          contextInfo: _almikucontextjs.saluranCtx.call(void 0, ),
         },
       );
       await new Promise((r) => setTimeout(r, 2000));

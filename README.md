@@ -1,4 +1,4 @@
-# OURIN 3.5 — ULTIMATE EDITION (COMMONJS)
+# AL MIKU 3.5 — ULTIMATE EDITION (COMMONJS)
 
 <div align="center">
 
@@ -20,7 +20,7 @@
 
 ## 🌟 Ringkasan Rilis v3.5
 
-El Ourin 3. 5 es la versión de la actualización que integeria las características - la calide de la electrión de la arquitectura multi
+El Al Miku 3. 5 es la versión de la actualización que integeria las características - la calide de la electrión de la arquitectura multi
 
 #🔑Sorotan Principal:
 1. **Full CommonJS Architecture (CJS)**:
@@ -34,7 +34,7 @@ El Ourin 3. 5 es la versión de la actualización que integeria las característ
 * * Reactúa el Canal de WhatsApp (en inglés)`rch.`/`Reatch.`* *: Ksender reaccionar emoji al mensje WhatsApp Channel la cinterelingua de socket con la Fuego Coud de failover.
 * * Viu Premium ( * Viu Premium ( *`- Dios mío.`* *: Realización de Viu Premium Gratic Cuenta de identificán ón de dispasitivos adjuntos de hardware.
 4. **Seguridad Sentral: Obligatorio Follow 2 Saluran WhatsApp**:
-- Middleware se comprometió que verifica la membresía de uso en dos canales oficiales Ourin antes de dar las acciones a todo el comando de arranque.
+- Middleware se comprometió que verifica la membresía de uso en dos canales oficiales Al Miku antes de dar las acciones a todo el comando de arranque.
 - Fail - arquitectura de seguridad cerrada con verificación mecánica oficial`- El verif.`Y una excepción automática para el propietario y el administrador.
 * * * Nueva función Collection * *:
 * * Blackjack Casino Multiplayer ( *`- Lo siento.`* *: full @-@ en multijugador negro @-@ jack con distribuidores automáticos, hits, stands, y doble.
@@ -50,12 +50,12 @@ El Ourin 3. 5 es la versión de la actualización que integeria las característ
 
 ## 📂 Estructura del proyecto
 
-Ourin 3.5 conserva al 100 % la arquitectura original:
+Al Miku 3.5 conserva al 100 % la arquitectura original:
 
 ```
-OURIN 3.5/
+AL MIKU 3.5/
 ├── assets/                  # Recursos visuales, fuentes, audio e imágenes
-├── case/                    # Manejadores de comandos principales (case/ourin.js)
+├── case/                    # Manejadores de comandos principales (case/almiku.js)
 ├── config.js                # Configuración del bot, dueño, sesión y pairing
 ├── data/                    # Datos de apoyo (diccionarios, json, etc.)
 ├── database/                # Almacenamiento local (lowdb / JSON)
@@ -110,7 +110,7 @@ module.exports = {
     usePairingCode: true,           // true = código, false = QR
   },
   bot: {
-    name: "OURIN 3.5 DELUXE",
+    name: "AL MIKU 3.5 DELUXE",
     version: "3.5",
     developer: "Tu nombre",
   },
@@ -140,4 +140,4 @@ Los nuevos usuarios unverificados serán sellados por la naranja. Ellos siguen e
 ---
 
 ## 📄 Lisensi & Hak Cipta
-Proyecto Ourin 3. 5 está listo para el procesamiento automático @-@.
+Proyecto Al Miku 3. 5 está listo para el procesamiento automático @-@.

@@ -1,4 +1,4 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true});var _ourindatabasejs = require('../../src/lib/ourin-database.js');
+"use strict";Object.defineProperty(exports, "__esModule", {value: true});var _almikudatabasejs = require('../../src/lib/almiku-database.js');
 const pluginConfig = {
     name: 'clanleaderboard',
     alias: ['clanlb', 'topclan', 'guildrank'],
@@ -25,7 +25,7 @@ function getRankTitle(level) {
 }
 
 async function handler(m) {
-    const db = _ourindatabasejs.getDatabase.call(void 0, )
+    const db = _almikudatabasejs.getDatabase.call(void 0, )
 
     if (!db.db.data.clans) db.db.data.clans = {}
 

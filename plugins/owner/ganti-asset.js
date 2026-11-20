@@ -1,6 +1,6 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
-var _ourinuploaderjs = require('../../src/lib/ourin-uploader.js');
-var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
+var _almikuuploaderjs = require('../../src/lib/almiku-uploader.js');
+var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
 
 const pluginConfig = {
     name: 'ganti-asset',
@@ -132,7 +132,7 @@ async function handler(m, { sock }) {
         m.react('✅');
     } catch (error) {
         m.react('☢');
-        await m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
+        await m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
     }
 }
 
@@ -188,7 +188,7 @@ async function gantiAssetAnswerHandler(m, sock) {
     await m.react('🕕');
 
     try {
-        const newPath = await _ourinuploaderjs.updateAssetUrl.call(void 0, selectedKey, session.buffer, filename);
+        const newPath = await _almikuuploaderjs.updateAssetUrl.call(void 0, selectedKey, session.buffer, filename);
         await m.reply(`✅*Exito*\n\n• Asset •${selectedKey}* ha sido cambiado a:\n•${newPath}\n" Config has been updated as a reality "!`);
         delete global.gantiAssetSessions[m.chat];
         await m.react('✅');

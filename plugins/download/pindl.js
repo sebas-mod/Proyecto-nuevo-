@@ -1,9 +1,9 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _fs = require('fs'); var _fs2 = _interopRequireDefault(_fs);
 var _axios = require('axios'); var _axios2 = _interopRequireDefault(_axios);
 var _path = require('path'); var _path2 = _interopRequireDefault(_path);
-var _ourinffmpegjs = require('./../../src/lib/ourin-ffmpeg.js');
-var _ourinhttpjs = require('../../src/lib/ourin-http.js');
-var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
+var _almikuffmpegjs = require('./../../src/lib/almiku-ffmpeg.js');
+var _almikuhttpjs = require('../../src/lib/almiku-http.js');
+var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
 const pluginConfig = {
   name: "pindl",
   alias: ["pinterestdl", "pindownload", "pintdl"],
@@ -108,12 +108,12 @@ async function handler(m, { sock }) {
             const ffmpegHdr = `-user_agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36" -headers "Referer: https://www.pinterest.com/"`;
 
             if (!videoStreamUrl) {
-                await _ourinffmpegjs.queueFFmpeg.call(void 0, `ffmpeg -y ${ffmpegHdr} -i "${masterUrl}" -c copy "${outputFile}"`);
+                await _almikuffmpegjs.queueFFmpeg.call(void 0, `ffmpeg -y ${ffmpegHdr} -i "${masterUrl}" -c copy "${outputFile}"`);
             } else {
-                await _ourinffmpegjs.queueFFmpeg.call(void 0, `ffmpeg -y ${ffmpegHdr} -i "${videoStreamUrl}" -c copy "${videoTemp}"`);
+                await _almikuffmpegjs.queueFFmpeg.call(void 0, `ffmpeg -y ${ffmpegHdr} -i "${videoStreamUrl}" -c copy "${videoTemp}"`);
                 if (audioStreamUrl) {
-                    await _ourinffmpegjs.queueFFmpeg.call(void 0, `ffmpeg -y ${ffmpegHdr} -i "${audioStreamUrl}" -c copy "${audioTemp}"`);
-                    await _ourinffmpegjs.queueFFmpeg.call(void 0, `ffmpeg -y -i "${videoTemp}" -i "${audioTemp}" -c copy "${outputFile}"`);
+                    await _almikuffmpegjs.queueFFmpeg.call(void 0, `ffmpeg -y ${ffmpegHdr} -i "${audioStreamUrl}" -c copy "${audioTemp}"`);
+                    await _almikuffmpegjs.queueFFmpeg.call(void 0, `ffmpeg -y -i "${videoTemp}" -i "${audioTemp}" -c copy "${outputFile}"`);
                 } else {
                     _fs2.default.renameSync(videoTemp, outputFile);
                 }
@@ -156,10 +156,10 @@ async function handler(m, { sock }) {
           const gifPath = _path2.default.join(tempPath, `pin-${id}.gif`);
           const mp4Path = _path2.default.join(tempPath, `pin-${id}.mp4`);
           try {
-            const raw = await _ourinhttpjs.f.call(void 0, media.url, "buffer");
+            const raw = await _almikuhttpjs.f.call(void 0, media.url, "buffer");
             if (!raw) throw new Error("Fighters descargas GIF");
             _fs2.default.writeFileSync(gifPath, raw);
-            await _ourinffmpegjs.queueFFmpeg.call(void 0, 
+            await _almikuffmpegjs.queueFFmpeg.call(void 0, 
               `ffmpeg -y -ignore_loop 0 -i "${gifPath}" -t 30 -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2" -c:v libx264 -pix_fmt yuv420p -movflags faststart -preset ultrafast -an "${mp4Path}"`,
             );
             if (!_fs2.default.existsSync(mp4Path)) throw new Error("GIF convertido stuntman");
@@ -196,7 +196,7 @@ async function handler(m, { sock }) {
   } catch (error) {
     console.error("[PinDL] Error:", error);
     m.react("☢");
-    m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
+    m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
   }
 }
 exports.config = pluginConfig; exports.handler = handler;

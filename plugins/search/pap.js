@@ -2,9 +2,9 @@
 
 
 
-var _ourin = require('ourin');
-var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
-var _ourinhttpjs = require('../../src/lib/ourin-http.js');
+var _almiku = require('almiku');
+var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
+var _almikuhttpjs = require('../../src/lib/almiku-http.js');
 
 const pluginConfig = {
   name: "pap",
@@ -35,7 +35,7 @@ async function handler(m, { sock }) {
   try {
     const query = arg;
     
-    const data = await _ourinhttpjs.f.call(void 0, 
+    const data = await _almikuhttpjs.f.call(void 0, 
       `https://api.cuki.biz.id/api/search/pinterest?apikey=cuki-x&query=${encodeURIComponent(query)}&type=image`
     );
 
@@ -53,11 +53,11 @@ async function handler(m, { sock }) {
       return m.reply("⚠EveGambar no está disponible.");
     }
 
-    const mediaMessage = await _ourin.prepareWAMessageMedia.call(void 0, {
+    const mediaMessage = await _almiku.prepareWAMessageMedia.call(void 0, {
       image: { url: imageUrl }
     }, { upload: sock.waUploadToServer });
 
-    const msg = _ourin.generateWAMessageFromContent.call(void 0, m.chat, {
+    const msg = _almiku.generateWAMessageFromContent.call(void 0, m.chat, {
       viewOnceMessage: {
         message: {
           messageContextInfo: {},

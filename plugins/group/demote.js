@@ -1,5 +1,5 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _ourinlidjs = require('../../src/lib/ourin-lid.js');
-var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
+"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _almikulidjs = require('../../src/lib/almiku-lid.js');
+var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
 const pluginConfig = {
     name: 'demote',
     alias: ['unadmin', 'turunkan'],
@@ -38,7 +38,7 @@ async function handler(m, { sock }) {
 
     try {
         const groupMeta = m.groupMetadata
-        const participant = groupMeta.participants.find(p => _ourinlidjs.getParticipantJid.call(void 0, p) === target)
+        const participant = groupMeta.participants.find(p => _almikulidjs.getParticipantJid.call(void 0, p) === target)
 
         if (!participant) {
             await m.reply(`❌ *ɢᴀɢᴀʟ*\n\n¡No se encontró al usuario en el grupo!`)
@@ -63,7 +63,7 @@ async function handler(m, { sock }) {
         )
 
     } catch (error) {
-        m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName))
+        m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName))
     }
 }
 

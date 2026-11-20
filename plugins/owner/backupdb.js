@@ -1,4 +1,4 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true});var _ourinstorebackupjs = require('../../src/lib/ourin-store-backup.js');
+"use strict";Object.defineProperty(exports, "__esModule", {value: true});var _almikustorebackupjs = require('../../src/lib/almiku-store-backup.js');
 const pluginConfig = {
     name: 'backupdb',
     alias: ['dbbackup', 'backupstore', 'storebackup'],
@@ -26,14 +26,14 @@ async function handler(m, { sock }) {
         `\n╰┈┈┈┈┈┈┈┈⬡`
     )
     
-    const result = await _ourinstorebackupjs.sendStoreBackup.call(void 0, sock)
+    const result = await _almikustorebackupjs.sendStoreBackup.call(void 0, sock)
     
     if (result.success) {
         await m.reply(
             `✅*Backup Exito!*\n\n` +
             `📦 Size: ${result.size}\n` +
             `📁 Files: ${result.files}\n` +
-            `🔖 Schema: v${_ourinstorebackupjs.SCHEMA_VERSION}\n\n` +
+            `🔖 Schema: v${_almikustorebackupjs.SCHEMA_VERSION}\n\n` +
             `*Escribe respaldo seguro, permitible con actualizaciones futuras.*\n` +
             `El respaldo ha sido enviado al propietario principal.`
         )

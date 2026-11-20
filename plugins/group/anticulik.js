@@ -1,5 +1,5 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _ourindatabasejs = require('../../src/lib/ourin-database.js');
-var _ourincontextjs = require('../../src/lib/ourin-context.js');
+"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _almikudatabasejs = require('../../src/lib/almiku-database.js');
+var _almikucontextjs = require('../../src/lib/almiku-context.js');
 
 const pluginConfig = {
   name: "anticulik",
@@ -18,7 +18,7 @@ const pluginConfig = {
 };
 
 async function handler(m, { sock }) {
-  const db = _ourindatabasejs.getDatabase.call(void 0, );
+  const db = _almikudatabasejs.getDatabase.call(void 0, );
   const option = _optionalChain([m, 'access', _ => _.text, 'optionalAccess', _2 => _2.toLowerCase, 'call', _3 => _3(), 'optionalAccess', _4 => _4.trim, 'call', _5 => _5()]);
 
   if (!option) {
@@ -38,7 +38,7 @@ async function handler(m, { sock }) {
 
   if (option === "on") {
     db.setting("anticulik", "on");
-    const ctx = _ourincontextjs.saluranCtx.call(void 0, );
+    const ctx = _almikucontextjs.saluranCtx.call(void 0, );
     return m.reply(
       `🛡Anti Culik Active\n\n` +
         `*Será automatizado sin permiso*\n` +
@@ -109,7 +109,7 @@ async function handleAntiCulik(event, sock, db) {
       `*Ser minado por*${inviterMention}sin permiso\n` +
       `# Saldrá de este grupo #\n\n` +
       `*El dueño de Humuki para añadir el bot a la manera correcta*`,
-    contextInfo: _ourincontextjs.saluranCtx.call(void 0, ),
+    contextInfo: _almikucontextjs.saluranCtx.call(void 0, ),
     mentionedJid: inviter ? [inviter] : [],
   });
 

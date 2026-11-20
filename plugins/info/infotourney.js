@@ -2,7 +2,7 @@
 var _cheerio = require('cheerio'); var cheerio = _interopRequireWildcard(_cheerio);
 var _momenttimezone = require('moment-timezone'); var _momenttimezone2 = _interopRequireDefault(_momenttimezone);
 var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
-var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
+var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
 const pluginConfig = {
   name: "infotourney",
   alias: ["tourney", "turnamen", "mltourney"],
@@ -77,7 +77,7 @@ async function handler(m, { sock }) {
     }
 
     const saluranId = _optionalChain([_configjs2.default, 'access', _2 => _2.saluran, 'optionalAccess', _3 => _3.id]) || "120363400911374213@newsletter";
-    const saluranName = _optionalChain([_configjs2.default, 'access', _4 => _4.saluran, 'optionalAccess', _5 => _5.name]) || _optionalChain([_configjs2.default, 'access', _6 => _6.bot, 'optionalAccess', _7 => _7.name]) || "Ourin-AI";
+    const saluranName = _optionalChain([_configjs2.default, 'access', _4 => _4.saluran, 'optionalAccess', _5 => _5.name]) || _optionalChain([_configjs2.default, 'access', _6 => _6.bot, 'optionalAccess', _7 => _7.name]) || "Al Miku-AI";
 
     let text = `🏆 *ɪɴꜰᴏ ᴛᴜʀɴᴀᴍᴇɴ ᴍᴏʙɪʟᴇ ʟᴇɢᴇɴᴅs*\n\n`;
     text += `> 5 Turnamen Terbaru\n\n`;
@@ -104,7 +104,7 @@ async function handler(m, { sock }) {
     await m.react("✅");
   } catch (error) {
     await m.react("☢");
-    m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
+    m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
   }
 }
 

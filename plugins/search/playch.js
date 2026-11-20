@@ -6,7 +6,7 @@ var _path = require('path'); var _path2 = _interopRequireDefault(_path);
 var _child_process = require('child_process');
 var _util = require('util');
 var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
-var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
+var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
 
 const run = _util.promisify.call(void 0, _child_process.exec);
 const pluginConfig = {
@@ -71,7 +71,7 @@ function generateWaveform(audioBuf, samples = 64) {
 async function handler(m, { sock }) {
   const raw = _optionalChain([m, 'access', _2 => _2.text, 'optionalAccess', _3 => _3.trim, 'call', _4 => _4()]) || "";
   let chId = _optionalChain([_configjs2.default, 'optionalAccess', _5 => _5.saluran, 'optionalAccess', _6 => _6.id]);
-  let chName = _optionalChain([_configjs2.default, 'optionalAccess', _7 => _7.saluran, 'optionalAccess', _8 => _8.name]) || _optionalChain([_configjs2.default, 'optionalAccess', _9 => _9.bot, 'optionalAccess', _10 => _10.name]) || "Ourin-AI";
+  let chName = _optionalChain([_configjs2.default, 'optionalAccess', _7 => _7.saluran, 'optionalAccess', _8 => _8.name]) || _optionalChain([_configjs2.default, 'optionalAccess', _9 => _9.bot, 'optionalAccess', _10 => _10.name]) || "Al Miku-AI";
   let q = raw;
 
   const idchMatch = raw.match(/--idch\s+(\S+)/);
@@ -144,7 +144,7 @@ async function handler(m, { sock }) {
   } catch (e) {
     console.error("[PlayCh]", e);
     m.react("☢");
-    m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
+    m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
   }
 }
 exports.config = pluginConfig; exports.handler = handler;

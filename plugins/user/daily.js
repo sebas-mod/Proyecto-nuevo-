@@ -1,5 +1,5 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true});var _ourindatabasejs = require('../../src/lib/ourin-database.js');
-var _ourinformatterjs = require('../../src/lib/ourin-formatter.js');
+"use strict";Object.defineProperty(exports, "__esModule", {value: true});var _almikudatabasejs = require('../../src/lib/almiku-database.js');
+var _almikuformatterjs = require('../../src/lib/almiku-formatter.js');
 const pluginConfig = {
   name: "daily",
   alias: ["claim", "harian", "bonus"],
@@ -19,7 +19,7 @@ const pluginConfig = {
 const DAILY_COOLDOWN = 24 * 60 * 60 * 1000;
 
 async function handler(m, { sock }) {
-  const db = _ourindatabasejs.getDatabase.call(void 0, );
+  const db = _almikudatabasejs.getDatabase.call(void 0, );
   const user = db.getUser(m.sender);
 
   if (!user.cooldowns) user.cooldowns = {};
@@ -49,7 +49,7 @@ async function handler(m, { sock }) {
   user.cooldowns.daily = now;
   db.save();
 
-  const greeting = _ourinformatterjs.getTimeGreeting.call(void 0, );
+  const greeting = _almikuformatterjs.getTimeGreeting.call(void 0, );
 
   let txt = `🎉 *ᴅᴀɪʟʏ ᴄʟᴀɪᴍ sᴜᴋsᴇs*\n`;
   txt += `> ${greeting}, @${m.sender.split("@")[0]}\n\n`;

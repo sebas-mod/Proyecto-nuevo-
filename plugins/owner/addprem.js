@@ -1,10 +1,10 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
-var _ourindatabasejs = require('../../src/lib/ourin-database.js');
+var _almikudatabasejs = require('../../src/lib/almiku-database.js');
 
 
 
 
-var _ourinjadibotdatabasejs = require('../../src/lib/ourin-jadibot-database.js');
+var _almikujadibotdatabasejs = require('../../src/lib/almiku-jadibot-database.js');
 const pluginConfig = {
   name: "addprem",
   alias: [
@@ -51,7 +51,7 @@ function toMentionJid(value) {
 }
 
 async function handler(m, { sock, jadibotId, isJadibot }) {
-  const db = _ourindatabasejs.getDatabase.call(void 0, );
+  const db = _almikudatabasejs.getDatabase.call(void 0, );
   const cmd = m.command.toLowerCase();
 
   const isAdd = ["addprem", "addpremium", "setprem"].includes(cmd);
@@ -62,7 +62,7 @@ async function handler(m, { sock, jadibotId, isJadibot }) {
 
   if (isList) {
     if (isJadibot && jadibotId) {
-      const jbPremiums = _ourinjadibotdatabasejs.getJadibotPremiums.call(void 0, jadibotId);
+      const jbPremiums = _almikujadibotdatabasejs.getJadibotPremiums.call(void 0, jadibotId);
       if (jbPremiums.length === 0) {
         return m.reply(
           `💎Aún no, hay una prima en este kriot.\nUsa\`${m.prefix}*Y voy a estar aquí*\`para anadiendo`,
@@ -128,7 +128,7 @@ async function handler(m, { sock, jadibotId, isJadibot }) {
 
   if (isJadibot && jadibotId) {
     if (isAdd) {
-      if (_ourinjadibotdatabasejs.addJadibotPremium.call(void 0, jadibotId, targetNumber)) {
+      if (_almikujadibotdatabasejs.addJadibotPremium.call(void 0, jadibotId, targetNumber)) {
         await m.react("💎");
         return m.reply(
           `✅ Trabajar para añadir •${targetNumber}* Como un jabot premium`,
@@ -137,7 +137,7 @@ async function handler(m, { sock, jadibotId, isJadibot }) {
         return m.reply(`❌ \`${targetNumber}\`Es una prima en este Skebot`);
       }
     } else if (isDel) {
-      if (_ourinjadibotdatabasejs.removeJadibotPremium.call(void 0, jadibotId, targetNumber)) {
+      if (_almikujadibotdatabasejs.removeJadibotPremium.call(void 0, jadibotId, targetNumber)) {
         await m.react("✅");
         return m.reply(
           `✅Resultado de la memorización${targetNumber}* del jabot premium`,

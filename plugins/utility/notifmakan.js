@@ -1,4 +1,4 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _ourinnotifschedulerjs = require('../../src/lib/ourin-notif-scheduler.js');
+"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _almikunotifschedulerjs = require('../../src/lib/almiku-notif-scheduler.js');
 
 const pluginConfig = {
     name: 'notifmakan',
@@ -22,7 +22,7 @@ function handler(m) {
     const chatJid = m.chat
     const sender = m.sender
 
-    const existing = _ourinnotifschedulerjs.getNotif.call(void 0, 'makan', sender, chatJid)
+    const existing = _almikunotifschedulerjs.getNotif.call(void 0, 'makan', sender, chatJid)
 
     if (!sub || !['on', 'off', 'edit'].includes(sub)) {
         const status = existing
@@ -52,7 +52,7 @@ function handler(m) {
         if (!existing) {
             return m.reply(`❌* No hay una sola persona que esté comiendo * en este gráfico`)
         }
-        _ourinnotifschedulerjs.toggleNotif.call(void 0, 'makan', sender, chatJid, false)
+        _almikunotifschedulerjs.toggleNotif.call(void 0, 'makan', sender, chatJid, false)
         return m.reply(`✅*El recordatorio de comida está desactivado*🔕\n\n> Escribe\`${m.prefix}notifmakan not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not not\`para reactivar`)
     }
 
@@ -62,7 +62,7 @@ function handler(m) {
         }
 
         if (existing && args.length === 1) {
-            _ourinnotifschedulerjs.toggleNotif.call(void 0, 'makan', sender, chatJid, true)
+            _almikunotifschedulerjs.toggleNotif.call(void 0, 'makan', sender, chatJid, true)
             return m.reply(`✅>#91; ¡El recordatorio de alimentos es re activado! ]🔔\n\n⏰Programado:${existing.jadwal.map(j => `*${j}*`).join(', ')} ART`)
         }
 
@@ -71,13 +71,13 @@ function handler(m) {
             return m.reply(`❌* Pon algo de comida!\n\n> Ejemplo:\`${m.prefix}notifmakan on 07.00,12.00,19.00\``)
         }
 
-        const jadwal = _ourinnotifschedulerjs.parseJadwal.call(void 0, timeInput)
+        const jadwal = _almikunotifschedulerjs.parseJadwal.call(void 0, timeInput)
         if (jadwal.length === 0) {
             return m.reply(`❌= = Sincronización, corregido por elderman = =\n\n* Gunwill formfort * HH. * * o * HH: MM *\n> Ejemplo:\`07. 00, 12. 30, 19. 00.\``)
         }
 
         const menu = args.slice(2).join(' ').trim()
-        _ourinnotifschedulerjs.setNotifMakan.call(void 0, sender, chatJid, jadwal, menu)
+        _almikunotifschedulerjs.setNotifMakan.call(void 0, sender, chatJid, jadwal, menu)
 
         let reply = `✅> #91; ¡El recordatorio de comida está encendido!🔔\n\n`
         reply += `⏰ *Jadwal:*\n`
@@ -101,13 +101,13 @@ function handler(m) {
             return m.reply(`❌¡Pon una bolsa nueva!\n\n> Ejemplo:\`${m.prefix}notifmakan edit 08.00,13.00,20.00\``)
         }
 
-        const jadwal = _ourinnotifschedulerjs.parseJadwal.call(void 0, timeInput)
+        const jadwal = _almikunotifschedulerjs.parseJadwal.call(void 0, timeInput)
         if (jadwal.length === 0) {
             return m.reply(`❌= = Sincronización, corregido por elderman = =\n\n* Gunwill formfort * HH. * * o * HH: MM *\n> Ejemplo:\`8: 00, 13: 00, 20: 00.\``)
         }
 
         const menu = args.slice(2).join(' ').trim() || existing.menu || ''
-        _ourinnotifschedulerjs.setNotifMakan.call(void 0, sender, chatJid, jadwal, menu)
+        _almikunotifschedulerjs.setNotifMakan.call(void 0, sender, chatJid, jadwal, menu)
 
         let reply = `✅ *Jadwal come diperbarui!* ✏\n\n`
         reply += `⏰*Jadwal nuevo:*\n`

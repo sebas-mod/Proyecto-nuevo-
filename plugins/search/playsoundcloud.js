@@ -1,6 +1,6 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _soundcloudjs = require('./soundcloud.js');
 var _soundclouddljs = require('../../src/scraper/soundclouddl.js'); var _soundclouddljs2 = _interopRequireDefault(_soundclouddljs);
-var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
+var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
 
 const pluginConfig = {
   name: "playsoundcloud",

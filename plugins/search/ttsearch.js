@@ -3,8 +3,8 @@
 
 
 
-var _ourin = require('ourin');
-var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
+var _almiku = require('almiku');
+var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
 var _tiktoksearchjs = require('../../src/scraper/tiktoksearch.js');
 const pluginConfig = {
   name: "ttsearch",
@@ -64,7 +64,7 @@ async function handler(m, { sock }) {
     }));
 
     try {
-      const opener = _ourin.generateWAMessageFromContent.call(void 0, 
+      const opener = _almiku.generateWAMessageFromContent.call(void 0, 
         m.chat,
         {
           messageContextInfo: { messageSecret: _crypto2.default.randomBytes(32) },
@@ -74,7 +74,7 @@ async function handler(m, { sock }) {
           },
         },
         {
-          userJid: _ourin.jidNormalizedUser.call(void 0, sock.user.id),
+          userJid: _almiku.jidNormalizedUser.call(void 0, sock.user.id),
           quoted: m,
           upload: sock.waUploadToServer,
         },
@@ -86,7 +86,7 @@ async function handler(m, { sock }) {
 
       const generatedMessages = await Promise.all(
         mediaList.map(async (content) => {
-          const msg = await _ourin.generateWAMessage.call(void 0, opener.key.remoteJid, content, {
+          const msg = await _almiku.generateWAMessage.call(void 0, opener.key.remoteJid, content, {
             upload: sock.waUploadToServer,
           });
 
@@ -116,7 +116,7 @@ async function handler(m, { sock }) {
     m.react("✅");
   } catch (error) {
     m.react("☢");
-    m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
+    m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
   }
 }
 

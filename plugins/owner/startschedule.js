@@ -1,6 +1,6 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _ourinschedulerjs = require('../../src/lib/ourin-scheduler.js');
-var _ourindatabasejs = require('../../src/lib/ourin-database.js');
-var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
+"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _almikuschedulerjs = require('../../src/lib/almiku-scheduler.js');
+var _almikudatabasejs = require('../../src/lib/almiku-database.js');
+var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
 const pluginConfig = {
     name: 'startschedule',
     alias: ['startscheduler', 'schedstart', 'resumeschedule'],
@@ -42,7 +42,7 @@ async function handler(m, { sock, args }) {
             return;
         }
         
-        const result = _ourinschedulerjs.startSchedulerByName.call(void 0, target, sock);
+        const result = _almikuschedulerjs.startSchedulerByName.call(void 0, target, sock);
         
         if (result.started) {
             await m.reply(`▶️ *sᴄʜᴇᴅᴜʟᴇʀ ᴅɪᴍᴜʟᴀɪ*
@@ -58,7 +58,7 @@ Usa\`- Horario.\`para ver la lista de programadores`);
         }
     } catch (error) {
         console.error('[StartSchedule Error]', error);
-        await m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
+        await m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
     }
 }
 

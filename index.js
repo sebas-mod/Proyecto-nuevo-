@@ -22,22 +22,22 @@ var _connectionjs = require('./src/connection.js');
 
 
 var _handlerjs = require('./src/handler.js');
-var _ourinpluginsjs = require('./src/lib/ourin-plugins.js');
-var _ourindatabasejs = require('./src/lib/ourin-database.js');
+var _almikupluginsjs = require('./src/lib/almiku-plugins.js');
+var _almikudatabasejs = require('./src/lib/almiku-database.js');
 
 
 
 
 
-var _ourinschedulerjs = require('./src/lib/ourin-scheduler.js');
-var _ouringroupprotectionjs = require('./src/lib/ourin-group-protection.js');
-var _ourinnotifschedulerjs = require('./src/lib/ourin-notif-scheduler.js');
-var _ourinautojpmjs = require('./src/lib/ourin-auto-jpm.js');
-var _ourinmemorymonitorjs = require('./src/lib/ourin-memory-monitor.js');
-var _ourintempcleanerjs = require('./src/lib/ourin-temp-cleaner.js');
-var _ourindataprunerjs = require('./src/lib/ourin-data-pruner.js');
-var _ourinantibanjs = require('./src/lib/ourin-antiban.js');
-var _ourinassetmanagerjs = require('./src/lib/ourin-asset-manager.js');
+var _almikuschedulerjs = require('./src/lib/almiku-scheduler.js');
+var _almikugroupprotectionjs = require('./src/lib/almiku-group-protection.js');
+var _almikunotifschedulerjs = require('./src/lib/almiku-notif-scheduler.js');
+var _almikuautojpmjs = require('./src/lib/almiku-auto-jpm.js');
+var _almikumemorymonitorjs = require('./src/lib/almiku-memory-monitor.js');
+var _almikutempcleanerjs = require('./src/lib/almiku-temp-cleaner.js');
+var _almikudataprunerjs = require('./src/lib/almiku-data-pruner.js');
+var _almikuantibanjs = require('./src/lib/almiku-antiban.js');
+var _almikuassetmanagerjs = require('./src/lib/almiku-asset-manager.js');
 
 
 
@@ -46,7 +46,7 @@ var _ourinassetmanagerjs = require('./src/lib/ourin-asset-manager.js');
 
 
 
-var _ourinloggerjs = require('./src/lib/ourin-logger.js');
+var _almikuloggerjs = require('./src/lib/almiku-logger.js');
 
 //agente inicializado en el principal
 
@@ -104,7 +104,7 @@ const fileStatCache = new Map();
 function startDevWatcher(pluginsPath) {
   if (pluginWatcher) pluginWatcher.close();
 
-  _ourinloggerjs.logger.system("dev", "Hot-Reload watcher active for plugins");
+  _almikuloggerjs.logger.system("dev", "Hot-Reload watcher active for plugins");
 
   pluginWatcher = _fs2.default.watch(
     pluginsPath,
@@ -122,9 +122,9 @@ function startDevWatcher(pluginsPath) {
         if (!_fs2.default.existsSync(fullPath)) {
           fileStatCache.delete(fullPath);
           const pluginName = _path2.default.basename(filename, ".js");
-          const { unloadPlugin } = await Promise.resolve().then(() => _interopRequireWildcard(require("./src/lib/ourin-plugins.js")));
+          const { unloadPlugin } = await Promise.resolve().then(() => _interopRequireWildcard(require("./src/lib/almiku-plugins.js")));
           const result = unloadPlugin(pluginName);
-          if (result.success) _ourinloggerjs.logger.warn("plugin", `removed ${filename}`);
+          if (result.success) _almikuloggerjs.logger.warn("plugin", `removed ${filename}`);
           return;
         }
 
@@ -143,16 +143,16 @@ function startDevWatcher(pluginsPath) {
           });
 
           const { hotReloadPlugin } =
-            await Promise.resolve().then(() => _interopRequireWildcard(require("./src/lib/ourin-plugins.js")));
+            await Promise.resolve().then(() => _interopRequireWildcard(require("./src/lib/almiku-plugins.js")));
           const result = await hotReloadPlugin(fullPath);
           if (!result.success) {
-            _ourinloggerjs.logger.error(
+            _almikuloggerjs.logger.error(
               "plugin",
               `reload failed: ${filename}: ${result.error}`,
             );
           }
         } catch (error) {
-          _ourinloggerjs.logger.error(
+          _almikuloggerjs.logger.error(
             "plugin",
             `reload failed: ${filename}: ${error.message}`,
           );
@@ -163,7 +163,7 @@ function startDevWatcher(pluginsPath) {
     },
   );
 
-  _ourinloggerjs.logger.debug("dev", `Monitoring directory: ${pluginsPath}`);
+  _almikuloggerjs.logger.debug("dev", `Monitoring directory: ${pluginsPath}`);
 }
 
 let srcWatcher = null;
@@ -171,7 +171,7 @@ let srcWatcher = null;
 function startSrcWatcher(srcPath) {
   if (srcWatcher) srcWatcher.close();
 
-  _ourinloggerjs.logger.system("dev", "Pantauan hot-reload buat src udah jalan bosku");
+  _almikuloggerjs.logger.system("dev", "Pantauan hot-reload buat src udah jalan bosku");
 
   srcWatcher = _fs2.default.watch(srcPath, { recursive: true }, (eventType, filename) => {
     if (!filename || !filename.endsWith(".js")) return;
@@ -183,16 +183,16 @@ function startSrcWatcher(srcPath) {
       reloadDebounce.delete("src_" + filename);
       const fullPath = _path2.default.join(srcPath, filename);
       if (!_fs2.default.existsSync(fullPath)) {
-        _ourinloggerjs.logger.warn("dev", `src archivo removed:${filename}`);
+        _almikuloggerjs.logger.warn("dev", `src archivo removed:${filename}`);
         return;
       }
-      _ourinloggerjs.logger.success("dev", `src changed: ${filename}`);
+      _almikuloggerjs.logger.success("dev", `src changed: ${filename}`);
     }, 500);
 
     reloadDebounce.set("src_" + filename, timeout);
   });
 
-  _ourinloggerjs.logger.debug("dev", `Monitoring directory: ${srcPath}`);
+  _almikuloggerjs.logger.debug("dev", `Monitoring directory: ${srcPath}`);
 }
 
 function setupAntiCrash() {
@@ -211,49 +211,49 @@ function setupAntiCrash() {
     );
     if (isIgnored) return;
 
-    _ourinloggerjs.logErrorBox.call(void 0, "uncaught exception", error.message);
-    console.error(_ourinloggerjs.c.gray(error.stack));
-    _ourinloggerjs.logger.system("system", "Engine is still running");
+    _almikuloggerjs.logErrorBox.call(void 0, "uncaught exception", error.message);
+    console.error(_almikuloggerjs.c.gray(error.stack));
+    _almikuloggerjs.logger.system("system", "Engine is still running");
   });
 
   process.on("unhandledRejection", (reason, promise) => {
-    _ourinloggerjs.logErrorBox.call(void 0, "unhandled rejection", String(reason));
-    console.error(_ourinloggerjs.c.gray("Promise:"), promise);
-    _ourinloggerjs.logger.system("system", "Engine is still running");
+    _almikuloggerjs.logErrorBox.call(void 0, "unhandled rejection", String(reason));
+    console.error(_almikuloggerjs.c.gray("Promise:"), promise);
+    _almikuloggerjs.logger.system("system", "Engine is still running");
   });
 
   process.on("warning", (warning) => {
-    _ourinloggerjs.logger.warn("system", `${warning.name}: ${warning.message}`);
+    _almikuloggerjs.logger.warn("system", `${warning.name}: ${warning.message}`);
   });
 
   process.on("SIGINT", async () => {
     console.log("");
-    _ourinloggerjs.logger.system("system", "Received STOP signal (SIGINT)");
-    _ourinloggerjs.logger.info("database", "Saving data to local storage...");
+    _almikuloggerjs.logger.system("system", "Received STOP signal (SIGINT)");
+    _almikuloggerjs.logger.info("database", "Saving data to local storage...");
     try {
-      const db = _ourindatabasejs.getDatabase.call(void 0, );
+      const db = _almikudatabasejs.getDatabase.call(void 0, );
       db.save();
-      _ourinloggerjs.logger.success("database", "All data successfully saved");
+      _almikuloggerjs.logger.success("database", "All data successfully saved");
     } catch (error) {
-      _ourinloggerjs.logger.warn("database", `save failed: ${error.message}`);
+      _almikuloggerjs.logger.warn("database", `save failed: ${error.message}`);
     }
-    _ourinloggerjs.logger.info("system", "Engine stopped safely");
+    _almikuloggerjs.logger.info("system", "Engine stopped safely");
     process.exit(0);
   });
 
   process.on("SIGTERM", () => {
     console.log("");
-    _ourinloggerjs.logger.system("system", "Received TERMINATE signal (SIGTERM)");
+    _almikuloggerjs.logger.system("system", "Received TERMINATE signal (SIGTERM)");
     process.exit(0);
   });
 
-  _ourinloggerjs.logger.success("system", "Sistem anti-crash nyala, aman terkendali 😎");
+  _almikuloggerjs.logger.success("system", "Sistem anti-crash nyala, aman terkendali 😎");
 }
 
 async function main() {
-  try { const { initializeAgent } = require("./src/lib/ourin-agent.js"); await initializeAgent(); } catch (e) {}
-  await _ourinloggerjs.playBootSequence.call(void 0, {
-    name: _optionalChain([_configjs2.default, 'access', _5 => _5.bot, 'optionalAccess', _6 => _6.name]) || "Ourin-AI",
+  try { const { initializeAgent } = require("./src/lib/almiku-agent.js"); await initializeAgent(); } catch (e) {}
+  await _almikuloggerjs.playBootSequence.call(void 0, {
+    name: _optionalChain([_configjs2.default, 'access', _5 => _5.bot, 'optionalAccess', _6 => _6.name]) || "Al Miku-AI",
     version: _optionalChain([_configjs2.default, 'access', _7 => _7.bot, 'optionalAccess', _8 => _8.version]) || "1.0.0",
     developer: _optionalChain([_configjs2.default, 'access', _9 => _9.bot, 'optionalAccess', _10 => _10.developer]) || "Developer",
     mode: _configjs2.default.mode || "public",
@@ -264,11 +264,11 @@ async function main() {
     process.cwd(),
     _optionalChain([_configjs2.default, 'access', _11 => _11.database, 'optionalAccess', _12 => _12.path]) || "./database/main",
   );
-  await _ourindatabasejs.initDatabase.call(void 0, dbPath);
-  const db = _ourindatabasejs.getDatabase.call(void 0, );
+  await _almikudatabasejs.initDatabase.call(void 0, dbPath);
+  const db = _almikudatabasejs.getDatabase.call(void 0, );
 
-  await _ourinloggerjs.spinText.call(void 0, "system", "Lagi muat aset lokal bentar...", { tone: "accent" });
-  await _ourinassetmanagerjs.preloadAssets.call(void 0, _configjs2.default.assets);
+  await _almikuloggerjs.spinText.call(void 0, "system", "Lagi muat aset lokal bentar...", { tone: "accent" });
+  await _almikuassetmanagerjs.preloadAssets.call(void 0, _configjs2.default.assets);
 
   const savedMode = db.setting("botMode");
   if (savedMode && (savedMode === "self" || savedMode === "public"))
@@ -280,14 +280,14 @@ async function main() {
 
   const pCount = Array.isArray(savedPremium) ? savedPremium.length : 0;
   const bCount = Array.isArray(savedBanned) ? savedBanned.length : 0;
-  _ourinloggerjs.logger.success(
+  _almikuloggerjs.logger.success(
     "database",
     `Base de datos cargada con éxito | Modo: ${_configjs2.default.mode} | Premium: ${pCount} | Banned: ${bCount}`,
   );
 
   const pluginsPath = _path2.default.join(process.cwd(), "plugins");
-  const pluginCount = await _ourinpluginsjs.loadPlugins.call(void 0, pluginsPath);
-  _ourinloggerjs.logger.success("plugin", `Sukses carga${pluginCount} plugin!`);
+  const pluginCount = await _almikupluginsjs.loadPlugins.call(void 0, pluginsPath);
+  _almikuloggerjs.logger.success("plugin", `Sukses carga${pluginCount} plugin!`);
 
   if (_optionalChain([_configjs2.default, 'access', _13 => _13.dev, 'optionalAccess', _14 => _14.enabled]) && _optionalChain([_configjs2.default, 'access', _15 => _15.dev, 'optionalAccess', _16 => _16.watchPlugins]))
     startDevWatcher(pluginsPath);
@@ -296,23 +296,23 @@ async function main() {
     startSrcWatcher(srcPath);
   }
 
-  _ourinschedulerjs.initScheduler.call(void 0, _configjs2.default);
+  _almikuschedulerjs.initScheduler.call(void 0, _configjs2.default);
 
   const bootTime = Date.now() - startTime;
-  _ourinloggerjs.logger.success("boot", `Aquí está. Es tan profundo.${bootTime}ms 🚀`);
-  _ourinloggerjs.divider.call(void 0, );
-  await _ourinloggerjs.spinText.call(void 0, "network", "Opening WhatsApp connection tunnel...", {
+  _almikuloggerjs.logger.success("boot", `Aquí está. Es tan profundo.${bootTime}ms 🚀`);
+  _almikuloggerjs.divider.call(void 0, );
+  await _almikuloggerjs.spinText.call(void 0, "network", "Opening WhatsApp connection tunnel...", {
     duration: 900,
     tone: "accent",
   });
-  _ourinloggerjs.logConnection.call(void 0, "connecting", "Lagi nyambungin ke WhatsApp nih...");
+  _almikuloggerjs.logConnection.call(void 0, "connecting", "Lagi nyambungin ke WhatsApp nih...");
   console.log("");
 
   await _connectionjs.startConnection.call(void 0, {
     onRawMessage: async (msg, sock) => {
       try {
-        const db = _ourindatabasejs.getDatabase.call(void 0, );
-        await _ouringroupprotectionjs.handleAntiTagSW.call(void 0, msg, sock, db);
+        const db = _almikudatabasejs.getDatabase.call(void 0, );
+        await _almikugroupprotectionjs.handleAntiTagSW.call(void 0, msg, sock, db);
       } catch (error) { }
     },
 
@@ -325,8 +325,8 @@ async function main() {
         await Promise.race([handlerPromise, timeoutPromise]);
       } catch (error) {
         if (error.message !== "Handler timeout") {
-          _ourinloggerjs.logger.error("HANDLER", error.message);
-          if (_optionalChain([_configjs2.default, 'access', _21 => _21.dev, 'optionalAccess', _22 => _22.debugLog])) console.error(_ourinloggerjs.c.gray(error.stack));
+          _almikuloggerjs.logger.error("HANDLER", error.message);
+          if (_optionalChain([_configjs2.default, 'access', _21 => _21.dev, 'optionalAccess', _22 => _22.debugLog])) console.error(_almikuloggerjs.c.gray(error.stack));
         }
       }
     },
@@ -335,7 +335,7 @@ async function main() {
       try {
         await _handlerjs.groupHandler.call(void 0, update, sock);
       } catch (error) {
-        _ourinloggerjs.logger.error("GROUP", error.message);
+        _almikuloggerjs.logger.error("GROUP", error.message);
       }
     },
 
@@ -343,7 +343,7 @@ async function main() {
       try {
         await _handlerjs.messageUpdateHandler.call(void 0, updates, sock);
       } catch (error) {
-        _ourinloggerjs.logger.error("MSG", error.message);
+        _almikuloggerjs.logger.error("MSG", error.message);
       }
     },
 
@@ -351,33 +351,33 @@ async function main() {
       try {
         await _handlerjs.groupSettingsHandler.call(void 0, update, sock);
       } catch (error) {
-        _ourinloggerjs.logger.error("GROUP", error.message);
+        _almikuloggerjs.logger.error("GROUP", error.message);
       }
     },
 
     onStubMessage: async (msg, sock) => {
       try {
-        const db = _ourindatabasejs.getDatabase.call(void 0, );
+        const db = _almikudatabasejs.getDatabase.call(void 0, );
         await _handlerjs.handleAntiRemoveFromUpsert.call(void 0, msg, sock, db);
       } catch (error) {
-        _ourinloggerjs.logger.error("ANTIDELETE", error.message);
+        _almikuloggerjs.logger.error("ANTIDELETE", error.message);
       }
     },
 
     onConnectionUpdate: async (update, sock) => {
       if (update.connection === "open") {
         try {
-          await _ourinantibanjs.initializeOurinAntiban.call(void 0, sock);
+          await _almikuantibanjs.initializeAlMikuAntiban.call(void 0, sock);
         } catch (error) {
-          _ourinloggerjs.logger.error("ANTIBAN", `Fallido inisialisasi:${error.message}`);
+          _almikuloggerjs.logger.error("ANTIBAN", `Fallido inisialisasi:${error.message}`);
         }
-        _ourinloggerjs.logConnection.call(void 0, "connected", _optionalChain([sock, 'access', _23 => _23.user, 'optionalAccess', _24 => _24.name]) || "Bot");
-        _ourinschedulerjs.loadScheduledMessages.call(void 0, sock);
-        _ourinschedulerjs.startGroupScheduleChecker.call(void 0, sock);
-        _ourinschedulerjs.startSewaChecker.call(void 0, sock);
-        _ourinschedulerjs.initScheduler.call(void 0, _configjs2.default, sock);
-        _ourinautojpmjs.initAutoJpmScheduler.call(void 0, sock);
-        _ourinnotifschedulerjs.initNotifScheduler.call(void 0, sock);
+        _almikuloggerjs.logConnection.call(void 0, "connected", _optionalChain([sock, 'access', _23 => _23.user, 'optionalAccess', _24 => _24.name]) || "Bot");
+        _almikuschedulerjs.loadScheduledMessages.call(void 0, sock);
+        _almikuschedulerjs.startGroupScheduleChecker.call(void 0, sock);
+        _almikuschedulerjs.startSewaChecker.call(void 0, sock);
+        _almikuschedulerjs.initScheduler.call(void 0, _configjs2.default, sock);
+        _almikuautojpmjs.initAutoJpmScheduler.call(void 0, sock);
+        _almikunotifschedulerjs.initNotifScheduler.call(void 0, sock);
         try {
           const { initSahurCron } =
             await Promise.resolve().then(() => _interopRequireWildcard(require("./plugins/religi/autosahur.js")));
@@ -385,22 +385,22 @@ async function main() {
         } catch (e2) { }
         try {
           const { startOtpPoller: _startOtp } =
-            await Promise.resolve().then(() => _interopRequireWildcard(require("./src/lib/ourin-otp-poller.js")));
+            await Promise.resolve().then(() => _interopRequireWildcard(require("./src/lib/almiku-otp-poller.js")));
           _startOtp(sock);
         } catch (e4) { }
 
         try {
           const { getAllJadibotSessions, restartJadibotSession } =
-            await Promise.resolve().then(() => _interopRequireWildcard(require("./src/lib/ourin-jadibot-manager.js")));
+            await Promise.resolve().then(() => _interopRequireWildcard(require("./src/lib/almiku-jadibot-manager.js")));
           const sessions = getAllJadibotSessions();
           if (sessions.length > 0) {
-            _ourinloggerjs.logger.info("JADIBOT", `Restoring ${sessions.length} session(s)`);
+            _almikuloggerjs.logger.info("JADIBOT", `Restoring ${sessions.length} session(s)`);
             for (const session of sessions) {
               try {
                 await restartJadibotSession(sock, session.id);
                 await new Promise((r) => setTimeout(r, 3000));
               } catch (e) {
-                _ourinloggerjs.logger.error(
+                _almikuloggerjs.logger.error(
                   "JADIBOT",
                   `Failed restore ${session.id}: ${e.message}`,
                 );
@@ -408,24 +408,24 @@ async function main() {
             }
           }
         } catch (e) {
-          _ourinloggerjs.logger.error("JADIBOT", `Fallido memulihkan:${e.message}`);
+          _almikuloggerjs.logger.error("JADIBOT", `Fallido memulihkan:${e.message}`);
         }
 
-        const devLabel = _optionalChain([_configjs2.default, 'access', _25 => _25.dev, 'optionalAccess', _26 => _26.enabled]) ? ` ${_ourinloggerjs.c.yellow("• dev")}` : "";
-        _ourinmemorymonitorjs.startMemoryMonitor.call(void 0, );
-        _ourintempcleanerjs.startTempCleaner.call(void 0, );
-        _ourindataprunerjs.startDailyPruner.call(void 0, );
-        _ourinloggerjs.logger.success("YEYYYY", `Todos los sistemas en la carretera son buenos, así que sólo langsug🚀`);
-        _ourinloggerjs.logger.success("NOTE", `Si hay error, por favor se le diga, el problema no es una buena bota: )`);
-        _ourinloggerjs.divider.call(void 0, );
+        const devLabel = _optionalChain([_configjs2.default, 'access', _25 => _25.dev, 'optionalAccess', _26 => _26.enabled]) ? ` ${_almikuloggerjs.c.yellow("• dev")}` : "";
+        _almikumemorymonitorjs.startMemoryMonitor.call(void 0, );
+        _almikutempcleanerjs.startTempCleaner.call(void 0, );
+        _almikudataprunerjs.startDailyPruner.call(void 0, );
+        _almikuloggerjs.logger.success("YEYYYY", `Todos los sistemas en la carretera son buenos, así que sólo langsug🚀`);
+        _almikuloggerjs.logger.success("NOTE", `Si hay error, por favor se le diga, el problema no es una buena bota: )`);
+        _almikuloggerjs.divider.call(void 0, );
       }
     },
   });
 }
 
 main().catch((error) => {
-  _ourinloggerjs.logErrorBox.call(void 0, "Fatal Error", error.message);
-  console.error(_ourinloggerjs.c.gray(error.stack));
+  _almikuloggerjs.logErrorBox.call(void 0, "Fatal Error", error.message);
+  console.error(_almikuloggerjs.c.gray(error.stack));
   process.exit(1);
 });
 

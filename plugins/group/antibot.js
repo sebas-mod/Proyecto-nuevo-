@@ -1,8 +1,8 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _ourindatabasejs = require('../../src/lib/ourin-database.js');
+"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _almikudatabasejs = require('../../src/lib/almiku-database.js');
 
 
 
-var _ourinlidjs = require('../../src/lib/ourin-lid.js');
+var _almikulidjs = require('../../src/lib/almiku-lid.js');
 var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
 const pluginConfig = {
   name: ["antibot", "botdetect"],
@@ -180,7 +180,7 @@ function analyzeBotMessage(m) {
 }
 
 function handler(m, { sock }) {
-  const db = _ourindatabasejs.getDatabase.call(void 0, );
+  const db = _almikudatabasejs.getDatabase.call(void 0, );
   const args = _optionalChain([m, 'access', _30 => _30.args, 'access', _31 => _31[0], 'optionalAccess', _32 => _32.toLowerCase, 'call', _33 => _33()]);
   const groupData = db.getGroup(m.chat) || {};
   const current = groupData.antibot || false;
@@ -225,7 +225,7 @@ function isBotMessage(m) {
 async function detectBot(m, sock) {
   if (!m.isGroup) return false;
 
-  const db = _ourindatabasejs.getDatabase.call(void 0, );
+  const db = _almikudatabasejs.getDatabase.call(void 0, );
   const groupData = db.getGroup(m.chat);
   if (!_optionalChain([groupData, 'optionalAccess', _34 => _34.antibot])) return false;
 
@@ -242,17 +242,17 @@ async function detectBot(m, sock) {
   const myJid = myNumber + "@s.whatsapp.net";
   if (botJid === myJid) return false;
 
-  const botParticipant = _ourinlidjs.findParticipantByNumber.call(void 0, groupMeta.participants, myJid);
+  const botParticipant = _almikulidjs.findParticipantByNumber.call(void 0, groupMeta.participants, myJid);
   if (!_optionalChain([botParticipant, 'optionalAccess', _45 => _45.admin])) return false;
 
-  const targetParticipant = _ourinlidjs.findParticipantByNumber.call(void 0, 
+  const targetParticipant = _almikulidjs.findParticipantByNumber.call(void 0, 
     groupMeta.participants,
     botJid,
   );
   if (_optionalChain([targetParticipant, 'optionalAccess', _46 => _46.admin])) return false;
 
   const targetJidToKick = targetParticipant
-    ? _ourinlidjs.getParticipantJid.call(void 0, targetParticipant)
+    ? _almikulidjs.getParticipantJid.call(void 0, targetParticipant)
     : botJid;
 
   try {

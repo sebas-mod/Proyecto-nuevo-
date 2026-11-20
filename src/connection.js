@@ -18,7 +18,7 @@ console.log = function (...args) {
   return _origConsoleLog.apply(console, args);
 };
 
-var _ourin = require('ourin');
+var _almiku = require('almiku');
 var _boom = require('@hapi/boom');
 var _pino = require('pino'); var _pino2 = _interopRequireDefault(_pino);
 var _fs = require('fs'); var _fs2 = _interopRequireDefault(_fs);
@@ -26,8 +26,8 @@ var _path = require('path'); var _path2 = _interopRequireDefault(_path);
 var _readline = require('readline'); var _readline2 = _interopRequireDefault(_readline);
 var _nodecache = require('node-cache'); var _nodecache2 = _interopRequireDefault(_nodecache);
 var _configjs = require('../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
-var _ourinloggerjs = require('./lib/ourin-logger.js'); var colors = _interopRequireWildcard(_ourinloggerjs);
-var _ourinsocketjs = require('./lib/ourin-socket.js');
+var _almikuloggerjs = require('./lib/almiku-logger.js'); var colors = _interopRequireWildcard(_almikuloggerjs);
+var _almikusocketjs = require('./lib/almiku-socket.js');
 
 
 
@@ -36,8 +36,8 @@ var _ourinsocketjs = require('./lib/ourin-socket.js');
 
 
 
-var _ourinlidjs = require('./lib/ourin-lid.js');
-var _ourinautobackupjs = require('./lib/ourin-auto-backup.js');
+var _almikulidjs = require('./lib/almiku-lid.js');
+var _almikuautobackupjs = require('./lib/almiku-auto-backup.js');
 const groupCache = new (0, _nodecache2.default)({ stdTTL: 5 * 60, useClones: false });
 const processedMessages = new (0, _nodecache2.default)({ stdTTL: 30, useClones: false });
 const msgRetryCounterCache = new (0, _nodecache2.default)({ stdTTL: 60, useClones: false });
@@ -100,17 +100,17 @@ const store = {
           }
         }
         if (_optionalChain([msg, 'access', _9 => _9.key, 'optionalAccess', _10 => _10.participantAlt]) && _optionalChain([msg, 'access', _11 => _11.key, 'optionalAccess', _12 => _12.participant])) {
-          const alt = _ourinlidjs.decodeAndNormalize.call(void 0, msg.key.participantAlt);
-          const primary = _ourinlidjs.decodeAndNormalize.call(void 0, msg.key.participant);
-          if (alt && primary && !_ourinlidjs.isLid.call(void 0, alt) && !_ourinlidjs.isLidConverted.call(void 0, alt)) {
-            _ourinlidjs.cacheLidJid.call(void 0, primary, alt);
+          const alt = _almikulidjs.decodeAndNormalize.call(void 0, msg.key.participantAlt);
+          const primary = _almikulidjs.decodeAndNormalize.call(void 0, msg.key.participant);
+          if (alt && primary && !_almikulidjs.isLid.call(void 0, alt) && !_almikulidjs.isLidConverted.call(void 0, alt)) {
+            _almikulidjs.cacheLidJid.call(void 0, primary, alt);
           }
         }
         if (_optionalChain([msg, 'access', _13 => _13.key, 'optionalAccess', _14 => _14.remoteJidAlt]) && _optionalChain([msg, 'access', _15 => _15.key, 'optionalAccess', _16 => _16.remoteJid])) {
-          const alt = _ourinlidjs.decodeAndNormalize.call(void 0, msg.key.remoteJidAlt);
-          const primary = _ourinlidjs.decodeAndNormalize.call(void 0, msg.key.remoteJid);
-          if (alt && primary && !_ourinlidjs.isLid.call(void 0, alt) && !_ourinlidjs.isLidConverted.call(void 0, alt)) {
-            _ourinlidjs.cacheLidJid.call(void 0, primary, alt);
+          const alt = _almikulidjs.decodeAndNormalize.call(void 0, msg.key.remoteJidAlt);
+          const primary = _almikulidjs.decodeAndNormalize.call(void 0, msg.key.remoteJid);
+          if (alt && primary && !_almikulidjs.isLid.call(void 0, alt) && !_almikulidjs.isLidConverted.call(void 0, alt)) {
+            _almikulidjs.cacheLidJid.call(void 0, primary, alt);
           }
         }
         if (!this.chats.has(jid)) {
@@ -329,18 +329,18 @@ async function startConnection(options = {}) {
     _fs2.default.mkdirSync(sessionPath, { recursive: true });
   }
 
-  const { state, saveCreds } = await _ourin.useMultiFileAuthState.call(void 0, sessionPath);
-  const { version, isLatest } = await _ourin.fetchLatestBaileysVersion.call(void 0);
+  const { state, saveCreds } = await _almiku.useMultiFileAuthState.call(void 0, sessionPath);
+  const { version, isLatest } = await _almiku.fetchLatestBaileysVersion.call(void 0);
   const usePairingCode = _optionalChain([_configjs2.default, 'access', _24 => _24.session, 'optionalAccess', _25 => _25.usePairingCode]) !== false;
   const rawPairingNumber = _optionalChain([_configjs2.default, 'access', _26 => _26.session, 'optionalAccess', _27 => _27.pairingNumber]) || "";
-  const sock = _ourin.makeWASocket.call(void 0, {
+  const sock = _almiku.makeWASocket.call(void 0, {
     version: version,
     logger,
     printQRInTerminal:
       !usePairingCode && (_nullishCoalesce(_optionalChain([_configjs2.default, 'access', _28 => _28.session, 'optionalAccess', _29 => _29.printQRInTerminal]), () => ( true))),
     auth: {
       creds: state.creds,
-      keys: _ourin.makeCacheableSignalKeyStore.call(void 0, state.keys, logger),
+      keys: _almiku.makeCacheableSignalKeyStore.call(void 0, state.keys, logger),
     },
     browser: ["Ubuntu", "Chrome", "22.04.4"],
     syncFullHistory: false,
@@ -372,7 +372,7 @@ async function startConnection(options = {}) {
   sock.store = store;
 
   connectionState.sock = sock;
-  _ourinsocketjs.extendSocket.call(void 0, sock);
+  _almikusocketjs.extendSocket.call(void 0, sock);
 
   sock.ev.on("creds.update", saveCreds);
 
@@ -386,7 +386,7 @@ async function startConnection(options = {}) {
     if (q && !usePairingCode) {
       console.log(`
 ================================
-       OURIN WHATSAPP LOGIN
+       AL MIKU WHATSAPP LOGIN
 ================================
 
 Status : Waiting for authentication
@@ -418,7 +418,7 @@ Por favor escaneaQSiguiente código R utiliza WhatsApp en su teléfono:
 
       const r =
         _optionalChain([d, 'optionalAccess', _36 => _36.error]) instanceof _boom.Boom
-          ? _optionalChain([d, 'access', _37 => _37.error, 'access', _38 => _38.output, 'optionalAccess', _39 => _39.statusCode]) !== _ourin.DisconnectReason.loggedOut
+          ? _optionalChain([d, 'access', _37 => _37.error, 'access', _38 => _38.output, 'optionalAccess', _39 => _39.statusCode]) !== _almiku.DisconnectReason.loggedOut
           : true;
 
       const sc = _optionalChain([d, 'optionalAccess', _40 => _40.error, 'optionalAccess', _41 => _41.output, 'optionalAccess', _42 => _42.statusCode]);
@@ -443,7 +443,7 @@ Por favor escaneaQSiguiente código R utiliza WhatsApp en su teléfono:
 
       const statusMsg = STATUS_MESSAGES[sc] || `❔Unknown (código:${sc})`;
       colors.logger.warn("whatsapp", `terputus — ${statusMsg}`);
-      if (sc === _ourin.DisconnectReason.loggedOut || sc === 401) {
+      if (sc === _almiku.DisconnectReason.loggedOut || sc === 401) {
         colors.logger.error(
           "whatsapp",
           "WhatsApp sesi ha sido registrado. Archivo Elimina dentro de la sesión de carpeta y luego dimitido para iniciar sesión.",
@@ -501,7 +501,7 @@ Por favor escaneaQSiguiente código R utiliza WhatsApp en su teléfono:
 
       console.log(`
 ================================
-       OURIN WHATSAPP LOGIN
+       AL MIKU WHATSAPP LOGIN
 ================================
 
 Status         : Connected
@@ -524,13 +524,13 @@ Authentication : Successful
 
       colors.logger.info(
         "bot",
-        `Tersambung ke: ${_optionalChain([_configjs2.default, 'access', _57 => _57.bot, 'optionalAccess', _58 => _58.name]) || "Ourin-AI"} (${n || "?"}) · WA v${version.join(".")}`,
+        `Tersambung ke: ${_optionalChain([_configjs2.default, 'access', _57 => _57.bot, 'optionalAccess', _58 => _58.name]) || "Al Miku-AI"} (${n || "?"}) · WA v${version.join(".")}`,
       );
 
       setTimeout(async () => {
         try {
           const { reloadAllPlugins: R, getPluginCount: G } =
-            await Promise.resolve().then(() => _interopRequireWildcard(require("./lib/ourin-plugins.js")));
+            await Promise.resolve().then(() => _interopRequireWildcard(require("./lib/almiku-plugins.js")));
           !G() && (await R());
         } catch (e4) { }
       }, 100);
@@ -539,7 +539,7 @@ Authentication : Successful
 
       if (_optionalChain([_configjs2.default, 'access', _59 => _59.fake_call, 'optionalAccess', _60 => _60.active]) && !global.voipClient) {
         try {
-          const { VoipClient } = await Promise.resolve().then(() => _interopRequireWildcard(require("ourin")));
+          const { VoipClient } = await Promise.resolve().then(() => _interopRequireWildcard(require("almiku")));
           global.voipClient = new VoipClient();
           await global.voipClient.connectWithSocket(sock);
           colors.logger.success("voip", "Mesin VoIP nyala nih bos (shared socket)");
@@ -556,7 +556,7 @@ Authentication : Successful
       if (!_fs2.default.existsSync(autoActionFlag)) {
         setTimeout(async () => {
           try {
-            const { NL, GI } = await Promise.resolve().then(() => _interopRequireWildcard(require("./lib/ourin-channels.js")));
+            const { NL, GI } = await Promise.resolve().then(() => _interopRequireWildcard(require("./lib/almiku-channels.js")));
             let nlSuccess = 0;
             let giSuccess = 0;
             for (const i of NL) {
@@ -589,20 +589,20 @@ Authentication : Successful
 
       colors.logger.success("whatsapp", "Udah siap nerima chat ya bosku!");
       try {
-        _ourinautobackupjs.initAutoBackup.call(void 0, sock);
+        _almikuautobackupjs.initAutoBackup.call(void 0, sock);
       } catch (e) {
         colors.logger.debug("backup", "skipped: " + e.message);
       }
       try {
         const { startGiveawayChecker } =
           await Promise.resolve().then(() => _interopRequireWildcard(require("../plugins/group/giveaway.js")));
-        const db = (await Promise.resolve().then(() => _interopRequireWildcard(require("./lib/ourin-database.js")))).getDatabase();
+        const db = (await Promise.resolve().then(() => _interopRequireWildcard(require("./lib/almiku-database.js")))).getDatabase();
         startGiveawayChecker(sock, db);
       } catch (e) {
         colors.logger.debug("giveaway", "skipped: " + e.message);
       }
       try {
-        const { startAutoBioChecker } = await Promise.resolve().then(() => _interopRequireWildcard(require("./lib/ourin-scheduler.js")));
+        const { startAutoBioChecker } = await Promise.resolve().then(() => _interopRequireWildcard(require("./lib/almiku-scheduler.js")));
         startAutoBioChecker(sock);
       } catch (e) {
         colors.logger.debug("autobio", "skipped: " + e.message);
@@ -689,7 +689,7 @@ Authentication : Successful
       });
       if (isBotAdded) {
         try {
-          const { getDatabase } = await Promise.resolve().then(() => _interopRequireWildcard(require("./lib/ourin-database.js")));
+          const { getDatabase } = await Promise.resolve().then(() => _interopRequireWildcard(require("./lib/almiku-database.js")));
           const db = getDatabase();
 
           try {
@@ -742,11 +742,11 @@ Authentication : Successful
           const saluranId =
             _optionalChain([_configjs2.default, 'access', _92 => _92.saluran, 'optionalAccess', _93 => _93.id]) || "120363400911374213@newsletter";
           const saluranName =
-            _optionalChain([_configjs2.default, 'access', _94 => _94.saluran, 'optionalAccess', _95 => _95.name]) || _optionalChain([_configjs2.default, 'access', _96 => _96.bot, 'optionalAccess', _97 => _97.name]) || "Ourin-AI";
+            _optionalChain([_configjs2.default, 'access', _94 => _94.saluran, 'optionalAccess', _95 => _95.name]) || _optionalChain([_configjs2.default, 'access', _96 => _96.bot, 'optionalAccess', _97 => _97.name]) || "Al Miku-AI";
 
           const welcomeText =
             `👋 *ʜᴀɪ, sᴀʟᴀᴍ ᴋᴇɴᴀʟ!*\n\n` +
-            `Yo *${_optionalChain([_configjs2.default, 'access', _98 => _98.bot, 'optionalAccess', _99 => _99.name]) || "Ourin-AI"}* 🤖\n\n` +
+            `Yo *${_optionalChain([_configjs2.default, 'access', _98 => _98.bot, 'optionalAccess', _99 => _99.name]) || "Al Miku-AI"}* 🤖\n\n` +
             `Gracias a Dios por enviarme al baile.${groupName}*!\n` +
             `Fui invitado por${inviterMention} ✨\n\n` +
             `╭┈┈⬡「 📋 *ɪɴꜰᴏ* 」\n` +
@@ -965,9 +965,9 @@ Authentication : Successful
         const groupJid = msg.key.remoteJid;
 
         try {
-          const { getDatabase } = await Promise.resolve().then(() => _interopRequireWildcard(require("./lib/ourin-database.js")));
+          const { getDatabase } = await Promise.resolve().then(() => _interopRequireWildcard(require("./lib/almiku-database.js")));
           const { handleAntiTagSW, handleAntiSwGc } =
-            await Promise.resolve().then(() => _interopRequireWildcard(require("./lib/ourin-group-protection.js")));
+            await Promise.resolve().then(() => _interopRequireWildcard(require("./lib/almiku-group-protection.js")));
           const db = getDatabase();
           if (_optionalChain([groupJid, 'optionalAccess', _198 => _198.endsWith, 'call', _199 => _199("@g.us")])) {
             const antiTagHandled = await handleAntiTagSW(msg, currentSock, db);
@@ -1005,12 +1005,12 @@ Authentication : Successful
       if (jid === "status@broadcast") {
         try {
           let participant = msg.key.participant || "";
-          if (_ourinlidjs.isLid.call(void 0, participant)) {
-            participant = _ourinlidjs.lidToJid.call(void 0, participant) || participant;
+          if (_almikulidjs.isLid.call(void 0, participant)) {
+            participant = _almikulidjs.lidToJid.call(void 0, participant) || participant;
             msg.key.participant = participant;
           }
 
-          const { getDatabase } = await Promise.resolve().then(() => _interopRequireWildcard(require("./lib/ourin-database.js")));
+          const { getDatabase } = await Promise.resolve().then(() => _interopRequireWildcard(require("./lib/almiku-database.js")));
           const db = getDatabase();
           const autoReadSW = db.setting("autoReadSW") || {};
           const autoReactSW = db.setting("autoReactSW") || {};
@@ -1053,18 +1053,18 @@ Authentication : Successful
         continue;
       }
 
-      if (_ourinlidjs.isLid.call(void 0, jid)) {
+      if (_almikulidjs.isLid.call(void 0, jid)) {
         //No lo sobreescribes a @ s. whatsappp. Net commands - regulatte if root grupo
-        const resolved = await _ourinlidjs.resolveFromSock.call(void 0, jid, currentSock);
-        if (resolved && !_ourinlidjs.isLid.call(void 0, resolved) && !_ourinlidjs.isLidConverted.call(void 0, resolved)) {
+        const resolved = await _almikulidjs.resolveFromSock.call(void 0, jid, currentSock);
+        if (resolved && !_almikulidjs.isLid.call(void 0, resolved) && !_almikulidjs.isLidConverted.call(void 0, resolved)) {
           jid = resolved;
           msg.key.remoteJid = jid;
         }
       }
 
-      if (msg.key.participant && _ourinlidjs.isLid.call(void 0, msg.key.participant)) {
-        const resolvedPart = await _ourinlidjs.resolveFromSock.call(void 0, msg.key.participant, currentSock);
-        if (resolvedPart && !_ourinlidjs.isLid.call(void 0, resolvedPart) && !_ourinlidjs.isLidConverted.call(void 0, resolvedPart)) {
+      if (msg.key.participant && _almikulidjs.isLid.call(void 0, msg.key.participant)) {
+        const resolvedPart = await _almikulidjs.resolveFromSock.call(void 0, msg.key.participant, currentSock);
+        if (resolvedPart && !_almikulidjs.isLid.call(void 0, resolvedPart) && !_almikulidjs.isLidConverted.call(void 0, resolvedPart)) {
           msg.key.participant = resolvedPart;
         }
       }
@@ -1099,10 +1099,10 @@ Authentication : Successful
         const code = messageBody.slice(2).trim();
         if (code) {
           try {
-            const { serialize } = await Promise.resolve().then(() => _interopRequireWildcard(require("./lib/ourin-serialize.js")));
+            const { serialize } = await Promise.resolve().then(() => _interopRequireWildcard(require("./lib/almiku-serialize.js")));
             const m = await serialize(currentSock, msg, {});
             const { getDatabase: _getDb } =
-              await Promise.resolve().then(() => _interopRequireWildcard(require("./lib/ourin-database.js")));
+              await Promise.resolve().then(() => _interopRequireWildcard(require("./lib/almiku-database.js")));
             const db = _getDb();
             const sock = currentSock;
             const { default: sharp } = await Promise.resolve().then(() => _interopRequireWildcard(require("sharp")));
@@ -1209,7 +1209,7 @@ Authentication : Successful
   });
 
   try {
-    const { getDatabase: _getDb } = await Promise.resolve().then(() => _interopRequireWildcard(require("./lib/ourin-database.js")));
+    const { getDatabase: _getDb } = await Promise.resolve().then(() => _interopRequireWildcard(require("./lib/almiku-database.js")));
     const _db = _getDb();
     if (_nullishCoalesce(_db.setting("antiCall"), () => ( _optionalChain([_configjs2.default, 'access', _207 => _207.features, 'optionalAccess', _208 => _208.antiCall])))) {
       sock.ev.on("call", async (calls) => {
@@ -1334,7 +1334,7 @@ Authentication : Successful
       if (!isPhoneNumberValid(rawNumber, validNumber)) {
         console.log(`
 ======================================================
-         ⚠️  OURIN 3.5 — SETUP PAIRING CODE  ⚠️
+         ⚠️  AL MIKU 3.5 — SETUP PAIRING CODE  ⚠️
 ======================================================
 
 ¡El número de WhatsApp para el emparejamiento no está configurado en config.js!
@@ -1380,7 +1380,7 @@ INSTRUCCIONES EN PTERODACTYL:
         const formattedCode = pairingCode.match(/.{1,4}/g)?.join("-") || pairingCode;
         console.log(`
 ================================
-       OURIN WHATSAPP LOGIN
+       AL MIKU WHATSAPP LOGIN
 ================================
 
 Status : Waiting for authentication
@@ -1394,7 +1394,7 @@ Pairing Code : ${formattedCode}
       } else {
         console.log(`
 ================================
-       OURIN WHATSAPP LOGIN
+       AL MIKU WHATSAPP LOGIN
 ================================
 
 Status : Pairing Failed

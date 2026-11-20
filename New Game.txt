@@ -1,4 +1,4 @@
-NEW GAMES -> OURIN DELUXE 3.4
+NEW GAMES -> AL MIKU DELUXE 3.4
 
 Added public commands:
 .gamenew / .newgame 
@@ -10,9 +10,9 @@ Added public commands:
 
 Notes:
 - Youhu's case.js, handler.js, shell, eval, jadibot and base de datos were NOT copied.
-- Existing Ourin .tictactoe was preserved to avoid handler/answerHandler conflicts.
+- Existing Al Miku .tictactoe was preserved to avoid handler/answerHandler conflicts.
 - Youhu Tic-Tac-Toe is exposed as .ttc.
-- The plane plugin does NOT keep Youhu's "game" alias because Ourin already uses .game for group game toggle.
-- The five games use Ourin's plugin contract and Ourin's exdesperdiciar la recuperación Fuego de mensajes.
+- The plane plugin does NOT keep Youhu's "game" alias because Al Miku already uses .game for group game toggle.
+- The five games use Al Miku's plugin contract and Al Miku's exdesperdiciar la recuperación Fuego de mensajes.
 - The HTML payload and certificate are still fetched from the same remote sources used by the original Youhu plugins.
-- En charlas de grupo, Ourin Ezxisting. juego en / fuera de control todavía aplicado a la categoría = plugins de juego.
+- En charlas de grupo, Al Miku Ezxisting. juego en / fuera de control todavía aplicado a la categoría = plugins de juego.

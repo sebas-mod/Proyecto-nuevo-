@@ -1,4 +1,4 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _ourin = require('ourin');
+"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _almiku = require('almiku');
 
 const pluginConfig = {
   name: ["sprem", "stickerpremium", "premiumsticker"],
@@ -28,7 +28,7 @@ async function handler(m, { sock }) {
     const msg = _optionalChain([q, 'access', _ => _.message, 'optionalAccess', _2 => _2.stickerMessage]);
     if (!msg) return m.reply("❌Pasear por los datos de las pegatinas");
 
-    const stickerMessage = _ourin.proto.Message.StickerMessage.fromObject({
+    const stickerMessage = _almiku.proto.Message.StickerMessage.fromObject({
       url: msg.url,
       fileSha256: msg.fileSha256,
       fileEncSha256: msg.fileEncSha256,
@@ -57,7 +57,7 @@ async function handler(m, { sock }) {
     const num = _optionalChain([m, 'access', _7 => _7.args, 'optionalAccess', _8 => _8[0], 'optionalAccess', _9 => _9.replace, 'call', _10 => _10(/[^0-9]/g, "")]);
     if (num) targetJid = num + "@s.whatsapp.net";
 
-    const waMsg = _ourin.generateWAMessageFromContent.call(void 0, 
+    const waMsg = _almiku.generateWAMessageFromContent.call(void 0, 
       targetJid,
       { stickerMessage },
       {

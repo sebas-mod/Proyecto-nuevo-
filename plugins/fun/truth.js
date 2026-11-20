@@ -1,4 +1,4 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true});var _ouringamedatajs = require('../../src/lib/ourin-game-data.js');
+"use strict";Object.defineProperty(exports, "__esModule", {value: true});var _almikugamedatajs = require('../../src/lib/almiku-game-data.js');
 const pluginConfig = {
     name: 'truth',
     alias: ['truthq'],
@@ -16,7 +16,7 @@ const pluginConfig = {
 };
 
 async function handler(m) {
-    const question = _ouringamedatajs.getRandomItem.call(void 0, 'truth.json');
+    const question = _almikugamedatajs.getRandomItem.call(void 0, 'truth.json');
     if (!question) {
         await m.reply('❌¡Datos no disponibles!');
         return;

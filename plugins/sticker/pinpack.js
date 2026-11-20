@@ -1,9 +1,9 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _sharp2 = require('sharp'); var _sharp3 = _interopRequireDefault(_sharp2);
 var _axios = require('axios'); var _axios2 = _interopRequireDefault(_axios);
 var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
-var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
-var _ourinhttpjs = require('../../src/lib/ourin-http.js');
-var _ourinexifjs = require('../../src/lib/ourin-exif.js');
+var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
+var _almikuhttpjs = require('../../src/lib/almiku-http.js');
+var _almikuexifjs = require('../../src/lib/almiku-exif.js');
 
 function getSharp() {
   return _sharp3.default;
@@ -66,7 +66,7 @@ async function handler(m, { sock }) {
   await m.react("🕕");
 
   try {
-    const data = await _ourinhttpjs.f.call(void 0, `https://api.siputzx.my.id/api/s/pinterest?query=${query}`);
+    const data = await _almikuhttpjs.f.call(void 0, `https://api.siputzx.my.id/api/s/pinterest?query=${query}`);
     const results = _optionalChain([data, 'optionalAccess', _6 => _6.data, 'optionalAccess', _7 => _7.slice, 'call', _8 => _8(0, MAX_STICKERS)]);
 
     if (!results || results.length === 0) {
@@ -123,7 +123,7 @@ async function handler(m, { sock }) {
         try {
           let exifBuf = buf;
           try {
-            exifBuf = await _ourinexifjs.addExifToWebp.call(void 0, buf, {
+            exifBuf = await _almikuexifjs.addExifToWebp.call(void 0, buf, {
               packname,
               author,
               emojis: ["❤"],
@@ -157,7 +157,7 @@ async function handler(m, { sock }) {
   } catch (error) {
     console.error("[PinPack] Error:", error.message);
     await m.react("✘");
-    m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
+    m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
   }
 }
 

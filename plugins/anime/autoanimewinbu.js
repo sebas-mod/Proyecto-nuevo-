@@ -1,6 +1,6 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _ourinautoanimejs = require('../../src/lib/ourin-auto-anime.js');
+"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _almikuautoanimejs = require('../../src/lib/almiku-auto-anime.js');
 var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
-var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
+var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
 const pluginConfig = {
     name: 'autoanimewinbu',
     alias: ['aaw', 'autoanime'],
@@ -19,12 +19,12 @@ const pluginConfig = {
 
 async function handler(m, { sock, args }) {
     const sub = m.text
-    const state = _ourinautoanimejs.loadState.call(void 0, )
+    const state = _almikuautoanimejs.loadState.call(void 0, )
 
 
     switch (sub) {
         case 'start': {
-            if (_ourinautoanimejs.isRunning.call(void 0, )) {
+            if (_almikuautoanimejs.isRunning.call(void 0, )) {
                 return m.reply(`⚠¡El AutoAnime está en camino!`)
             }
 
@@ -39,8 +39,8 @@ async function handler(m, { sock, args }) {
             }
 
             const interval = state.interval || 5
-            _ourinautoanimejs.startAutoCheck.call(void 0, sock, interval)
-            _ourinautoanimejs.saveState.call(void 0, { ...state, enabled: true })
+            _almikuautoanimejs.startAutoCheck.call(void 0, sock, interval)
+            _almikuautoanimejs.saveState.call(void 0, { ...state, enabled: true })
 
             return sock.sendMessage(m.chat, {
                 text: `✅ *ᴀᴜᴛᴏ ᴀɴɪᴍᴇ sᴛᴀʀᴛᴇᴅ*\n\n` +
@@ -69,14 +69,14 @@ async function handler(m, { sock, args }) {
         }
 
         case 'stop': {
-            _ourinautoanimejs.stopAutoCheck.call(void 0, )
-            _ourinautoanimejs.saveState.call(void 0, { ...state, enabled: false })
+            _almikuautoanimejs.stopAutoCheck.call(void 0, )
+            _almikuautoanimejs.saveState.call(void 0, { ...state, enabled: false })
             return m.reply(`🛑*AutoAnime detenido*`)
         }
 
         case 'status': {
-            const sent = _ourinautoanimejs.loadSent.call(void 0, )
-            const running = _ourinautoanimejs.isRunning.call(void 0, )
+            const sent = _almikuautoanimejs.loadSent.call(void 0, )
+            const running = _almikuautoanimejs.isRunning.call(void 0, )
             const groups = state.groups || []
 
             let txt = `📊 *ᴀᴜᴛᴏ ᴀɴɪᴍᴇ sᴛᴀᴛᴜs*\n\n`
@@ -98,22 +98,22 @@ async function handler(m, { sock, args }) {
 
         case 'cek':
         case 'check': {
-            if (!_ourinautoanimejs.isRunning.call(void 0, )) {
-                _ourinautoanimejs.startAutoCheck.call(void 0, sock, state.interval || 5)
+            if (!_almikuautoanimejs.isRunning.call(void 0, )) {
+                _almikuautoanimejs.startAutoCheck.call(void 0, sock, state.interval || 5)
             }
             await m.reply('🔍 Mengecek anime terbaru...')
             try {
-                await _ourinautoanimejs.runCheck.call(void 0, )
+                await _almikuautoanimejs.runCheck.call(void 0, )
                 return m.reply('✅Comprobación terminado')
             } catch (e) {
-                m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName))
+                m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName))
             }
         }
 
         case 'list': {
             await m.reply('📺 Mengambil daftar anime...')
             try {
-                const list = await _ourinautoanimejs.getOngoingAnimeList.call(void 0, )
+                const list = await _almikuautoanimejs.getOngoingAnimeList.call(void 0, )
                 if (list.length === 0) return m.reply('❌No Anime encontrado')
 
                 let txt = `📺 *ᴅᴀꜰᴛᴀʀ ᴀɴɪᴍᴇ ᴛᴇʀʙᴀʀᴜ*\n\n`
@@ -125,14 +125,14 @@ async function handler(m, { sock, args }) {
 
                 return sock.sendMessage(m.chat, { text: txt }, { quoted: m })
             } catch (e) {
-                m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName))
+                m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName))
             }
         }
 
         case 'reset': {
-            const sent = _ourinautoanimejs.loadSent.call(void 0, )
+            const sent = _almikuautoanimejs.loadSent.call(void 0, )
             const count = sent.size
-            _ourinautoanimejs.saveSent.call(void 0, new Set())
+            _almikuautoanimejs.saveSent.call(void 0, new Set())
             return m.reply(`✅Restablecer! *${count}* episodio fue interrumpido de la historia.\nY todos los episodios están siendo reentregados.`)
         }
 
@@ -159,7 +159,7 @@ async function handler(m, { sock, args }) {
             }
 
             groups.push(grupId)
-            _ourinautoanimejs.saveState.call(void 0, { ...state, groups })
+            _almikuautoanimejs.saveState.call(void 0, { ...state, groups })
             return m.reply(`✅Grupo\`${grupId}\` anadido a target\n* Tital *${groups.length}* grupo`)
         }
 
@@ -179,7 +179,7 @@ async function handler(m, { sock, args }) {
             }
 
             groups.splice(idx, 1)
-            _ourinautoanimejs.saveState.call(void 0, { ...state, groups })
+            _almikuautoanimejs.saveState.call(void 0, { ...state, groups })
             return m.reply(`✅Grupo\`${grupId}\`de la meta\nRestante: *${groups.length}* grupo`)
         }
 
@@ -190,18 +190,18 @@ async function handler(m, { sock, args }) {
                 return m.reply(`❌La intervalación debe ser de 1 a 60 minutos\n\n> Ejemplo:\`${m.prefix}autoanimewinbu interval 10\``)
             }
 
-            _ourinautoanimejs.saveState.call(void 0, { ...state, interval: mins })
+            _almikuautoanimejs.saveState.call(void 0, { ...state, interval: mins })
 
-            if (_ourinautoanimejs.isRunning.call(void 0, )) {
-                _ourinautoanimejs.stopAutoCheck.call(void 0, )
-                _ourinautoanimejs.startAutoCheck.call(void 0, sock, mins)
+            if (_almikuautoanimejs.isRunning.call(void 0, )) {
+                _almikuautoanimejs.stopAutoCheck.call(void 0, )
+                _almikuautoanimejs.startAutoCheck.call(void 0, sock, mins)
             }
 
             return m.reply(`✅Interval se convierte a *${mins}minuto*`)
         }
 
         default: {
-            const running = _ourinautoanimejs.isRunning.call(void 0, )
+            const running = _almikuautoanimejs.isRunning.call(void 0, )
             return sock.sendMessage(m.chat, {
                 text: `🎬 *ᴀᴜᴛᴏ ᴀɴɪᴍᴇ ᴡɪɴʙᴜ*\n\n` +
                     `> Status: *${running ? '🟢 ON' : '🔴 OFF'}*\n\n` +

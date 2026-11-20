@@ -6,8 +6,8 @@ function getSharp() {
 
   return _sharp3.default;
 }
-var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
-var _ourinexifjs = require('../../src/lib/ourin-exif.js');
+var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
+var _almikuexifjs = require('../../src/lib/almiku-exif.js');
 
 const pluginConfig = {
   name: "stickerpack",
@@ -150,7 +150,7 @@ async function handler(m, { sock }) {
       return m.reply(`──.✦ ──\n\n*No se pudo descargar ningún sticker.*☘˖`);
     }
 
-    const packname = randPick.name || _optionalChain([_configjs2.default, 'access', _10 => _10.sticker, 'optionalAccess', _11 => _11.packname]) || "Ourin-AI";
+    const packname = randPick.name || _optionalChain([_configjs2.default, 'access', _10 => _10.sticker, 'optionalAccess', _11 => _11.packname]) || "Al Miku-AI";
     const author = _optionalChain([_configjs2.default, 'access', _12 => _12.bot, 'optionalAccess', _13 => _13.developer]) || _optionalChain([_configjs2.default, 'access', _14 => _14.sticker, 'optionalAccess', _15 => _15.author]) || "Bot";
 
     try {
@@ -174,7 +174,7 @@ async function handler(m, { sock }) {
         try {
           let exifBuf = buf;
           try {
-            exifBuf = await _ourinexifjs.addExifToWebp.call(void 0, buf, {
+            exifBuf = await _almikuexifjs.addExifToWebp.call(void 0, buf, {
               packname,
               author,
               emojis: ["❤"],
@@ -208,7 +208,7 @@ async function handler(m, { sock }) {
   } catch (error) {
     console.error("[StickerPack] Error:", error.message);
     await m.react("✘");
-    m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
+    m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
   }
 }
 

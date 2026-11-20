@@ -1,16 +1,16 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
-var _ourindatabasejs = require('../../src/lib/ourin-database.js');
+var _almikudatabasejs = require('../../src/lib/almiku-database.js');
 
 
 
 
-var _ourinjadibotdatabasejs = require('../../src/lib/ourin-jadibot-database.js');
+var _almikujadibotdatabasejs = require('../../src/lib/almiku-jadibot-database.js');
 
 
 
 
 
-var _ourinlidjs = require('../../src/lib/ourin-lid.js');
+var _almikulidjs = require('../../src/lib/almiku-lid.js');
 const pluginConfig = {
   name: "addowner",
   alias: ["addown", "setowner", "delowner", "dedown", "ownerlist", "listowner"],
@@ -29,7 +29,7 @@ const pluginConfig = {
 
 function cleanJid(jid) {
   if (!jid) return null;
-  if (_ourinlidjs.isLid.call(void 0, jid)) jid = _ourinlidjs.lidToJid.call(void 0, jid);
+  if (_almikulidjs.isLid.call(void 0, jid)) jid = _almikulidjs.lidToJid.call(void 0, jid);
   return jid.includes("@") ? jid : jid + "@s.whatsapp.net";
 }
 
@@ -38,14 +38,14 @@ function extractNumber(m) {
 
   if (m.quoted) {
     let sender = m.quoted.sender || "";
-    if (_ourinlidjs.isLid.call(void 0, sender) || _ourinlidjs.isLidConverted.call(void 0, sender)) {
-      sender = _ourinlidjs.resolveAnyLidToJid.call(void 0, sender, m.groupMembers || []);
+    if (_almikulidjs.isLid.call(void 0, sender) || _almikulidjs.isLidConverted.call(void 0, sender)) {
+      sender = _almikulidjs.resolveAnyLidToJid.call(void 0, sender, m.groupMembers || []);
     }
     targetNumber = _optionalChain([sender, 'optionalAccess', _ => _.replace, 'call', _2 => _2(/[^0-9]/g, "")]) || "";
   } else if (_optionalChain([m, 'access', _3 => _3.mentionedJid, 'optionalAccess', _4 => _4.length])) {
     let jid = cleanJid(m.mentionedJid[0]);
-    if (_ourinlidjs.isLid.call(void 0, jid) || _ourinlidjs.isLidConverted.call(void 0, jid)) {
-      jid = _ourinlidjs.resolveAnyLidToJid.call(void 0, jid, m.groupMembers || []);
+    if (_almikulidjs.isLid.call(void 0, jid) || _almikulidjs.isLidConverted.call(void 0, jid)) {
+      jid = _almikulidjs.resolveAnyLidToJid.call(void 0, jid, m.groupMembers || []);
     }
     targetNumber = _optionalChain([jid, 'optionalAccess', _5 => _5.replace, 'call', _6 => _6(/[^0-9]/g, "")]) || "";
   } else if (m.args[0]) {
@@ -72,7 +72,7 @@ function toMentionJid(value) {
 }
 
 async function handler(m, { sock, jadibotId, isJadibot }) {
-  const db = _ourindatabasejs.getDatabase.call(void 0, );
+  const db = _almikudatabasejs.getDatabase.call(void 0, );
   const cmd = m.command.toLowerCase();
 
   const isAdd = ["addowner", "addown", "setowner"].includes(cmd);
@@ -83,7 +83,7 @@ async function handler(m, { sock, jadibotId, isJadibot }) {
 
   if (isList) {
     if (isJadibot && jadibotId) {
-      const jbOwners = _ourinjadibotdatabasejs.getJadibotOwners.call(void 0, jadibotId);
+      const jbOwners = _almikujadibotdatabasejs.getJadibotOwners.call(void 0, jadibotId);
       if (jbOwners.length === 0) {
         return m.reply(
           `📋*ᴅᴀꜰᴛᴀʀ ᴏᴡɴᴇʀ ᴊᴀᴅɪʙᴏᴛ*\n\nPara ver si hay un propietario registrado.\n> Usa\`${m.prefix}addowner\`para anadiendo.`,
@@ -146,7 +146,7 @@ async function handler(m, { sock, jadibotId, isJadibot }) {
 
   if (isJadibot && jadibotId) {
     if (isAdd) {
-      if (_ourinjadibotdatabasejs.addJadibotOwner.call(void 0, jadibotId, targetNumber)) {
+      if (_almikujadibotdatabasejs.addJadibotOwner.call(void 0, jadibotId, targetNumber)) {
         await m.react("👑");
         return m.reply(
           `✅ Trabajar para añadir •${targetNumber}* como el dueño se convirtió en el trasero`,
@@ -157,7 +157,7 @@ async function handler(m, { sock, jadibotId, isJadibot }) {
         );
       }
     } else if (isDel) {
-      if (_ourinjadibotdatabasejs.removeJadibotOwner.call(void 0, jadibotId, targetNumber)) {
+      if (_almikujadibotdatabasejs.removeJadibotOwner.call(void 0, jadibotId, targetNumber)) {
         await m.react("✅");
         return m.reply(
           `✅Resultado de la memorización${targetNumber}* desde el propietario a jabot`,

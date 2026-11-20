@@ -3,9 +3,9 @@ var _path = require('path'); var _path2 = _interopRequireDefault(_path);
 var _crypto = require('crypto'); var _crypto2 = _interopRequireDefault(_crypto);
 var _child_process = require('child_process');
 var _util = require('util');
-var _ourin = require('ourin');
+var _almiku = require('almiku');
 var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
-var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
+var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
 
 const run = _util.promisify.call(void 0, _child_process.exec)
 
@@ -54,7 +54,7 @@ function generateWaveform(audioBuf, samples = 64) {
 async function handler(m, { sock }) {
     const args = _optionalChain([m, 'access', _ => _.text, 'optionalAccess', _2 => _2.replace, 'call', _3 => _3(/^\.upch\s+/i, ''), 'access', _4 => _4.split, 'call', _5 => _5(" ")]) || []
     const chId = _optionalChain([args, 'access', _6 => _6[0], 'optionalAccess', _7 => _7.includes, 'call', _8 => _8("@newsletter")]) ? args.shift() : _optionalChain([_configjs2.default, 'optionalAccess', _9 => _9.saluran, 'optionalAccess', _10 => _10.id])
-    const chName = _optionalChain([_configjs2.default, 'optionalAccess', _11 => _11.saluran, 'optionalAccess', _12 => _12.name]) || _optionalChain([_configjs2.default, 'optionalAccess', _13 => _13.bot, 'optionalAccess', _14 => _14.name]) || "Ourin-AI"
+    const chName = _optionalChain([_configjs2.default, 'optionalAccess', _11 => _11.saluran, 'optionalAccess', _12 => _12.name]) || _optionalChain([_configjs2.default, 'optionalAccess', _13 => _13.bot, 'optionalAccess', _14 => _14.name]) || "Al Miku-AI"
     const caption = args.join(" ").trim()
 
     const quoted = m.quoted || m
@@ -85,7 +85,7 @@ async function handler(m, { sock }) {
             return m.reply(`✅Tanques enviados con éxito al canal`)
         }
 
-        const mediaBuf = await _ourin.downloadMediaMessage.call(void 0, quoted, "buffer", {})
+        const mediaBuf = await _almiku.downloadMediaMessage.call(void 0, quoted, "buffer", {})
         if (!mediaBuf || mediaBuf.length < 1000) throw new Error("Los medios son demasiado pequeños o descargas de fallos")
 
         if (isImage) {
@@ -124,7 +124,7 @@ async function handler(m, { sock }) {
     } catch (e) {
         console.error("[UpCh]", e)
         await m.react("☢")
-        await m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName))
+        await m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName))
     }
 }
 

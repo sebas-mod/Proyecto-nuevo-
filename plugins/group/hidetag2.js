@@ -1,6 +1,6 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
-var _ourinlidjs = require('../../src/lib/ourin-lid.js');
-var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
+var _almikulidjs = require('../../src/lib/almiku-lid.js');
+var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
 const pluginConfig = {
     name: 'hidetag2',
     alias: ['h2', 'ht2'],
@@ -32,7 +32,7 @@ async function handler(m, { sock }) {
     try {
         m.react('📢')
         const groupMeta = m.groupMetadata
-        const users = _ourinlidjs.getParticipantJids.call(void 0, groupMeta.participants || [])
+        const users = _almikulidjs.getParticipantJids.call(void 0, groupMeta.participants || [])
         const fakeQuoted = {
             key: {
                 fromMe: false,
@@ -40,7 +40,7 @@ async function handler(m, { sock }) {
                 remoteJid: 'status@broadcast'
             },
             message: {
-                conversation: _optionalChain([_configjs2.default, 'access', _4 => _4.bot, 'optionalAccess', _5 => _5.name]) || 'Ourin MD'
+                conversation: _optionalChain([_configjs2.default, 'access', _4 => _4.bot, 'optionalAccess', _5 => _5.name]) || 'Al Miku MD'
             }
         }
         if (m.quoted) {
@@ -132,7 +132,7 @@ async function handler(m, { sock }) {
 
     } catch (err) {
         m.react('☢')
-        m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName))
+        m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName))
     }
 }
 

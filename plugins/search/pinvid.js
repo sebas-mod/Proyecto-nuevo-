@@ -8,9 +8,9 @@ var _crypto = require('crypto'); var _crypto2 = _interopRequireDefault(_crypto);
 
 
 
-var _ourin = require('ourin');
+var _almiku = require('almiku');
 var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
-var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
+var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
 const execAsync = _util.promisify.call(void 0, _child_process.exec);
 const NEOXR_APIKEY = _optionalChain([_configjs2.default, 'access', _ => _.APIkey, 'optionalAccess', _2 => _2.neoxr]) || "Milik-Bot-OurinMD";
 
@@ -139,7 +139,7 @@ async function handler(m, { sock }) {
     m.react("📤");
 
     try {
-      const opener = _ourin.generateWAMessageFromContent.call(void 0, 
+      const opener = _almiku.generateWAMessageFromContent.call(void 0, 
         m.chat,
         {
           messageContextInfo: { messageSecret: _crypto2.default.randomBytes(32) },
@@ -149,7 +149,7 @@ async function handler(m, { sock }) {
           },
         },
         {
-          userJid: _ourin.jidNormalizedUser.call(void 0, sock.user.id),
+          userJid: _almiku.jidNormalizedUser.call(void 0, sock.user.id),
           quoted: m,
           upload: sock.waUploadToServer,
         },
@@ -160,7 +160,7 @@ async function handler(m, { sock }) {
       });
 
       for (const content of mediaList) {
-        const msg = await _ourin.generateWAMessage.call(void 0, opener.key.remoteJid, content, {
+        const msg = await _almiku.generateWAMessage.call(void 0, opener.key.remoteJid, content, {
           upload: sock.waUploadToServer,
         });
 
@@ -186,7 +186,7 @@ async function handler(m, { sock }) {
 
       const saluranId = _optionalChain([_configjs2.default, 'access', _11 => _11.saluran, 'optionalAccess', _12 => _12.id]) || "120363400911374213@newsletter";
       const saluranName =
-        _optionalChain([_configjs2.default, 'access', _13 => _13.saluran, 'optionalAccess', _14 => _14.name]) || _optionalChain([_configjs2.default, 'access', _15 => _15.bot, 'optionalAccess', _16 => _16.name]) || "Ourin-AI";
+        _optionalChain([_configjs2.default, 'access', _13 => _13.saluran, 'optionalAccess', _14 => _14.name]) || _optionalChain([_configjs2.default, 'access', _15 => _15.bot, 'optionalAccess', _16 => _16.name]) || "Al Miku-AI";
 
       for (const content of mediaList) {
         await sock.sendMessage(
@@ -213,7 +213,7 @@ async function handler(m, { sock }) {
   } catch (error) {
     console.error("[PinVid] Error:", error.message);
     m.react("☢");
-    m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
+    m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
   }
 }
 

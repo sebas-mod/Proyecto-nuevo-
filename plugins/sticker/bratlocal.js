@@ -6,7 +6,7 @@ var _os = require('os'); var _os2 = _interopRequireDefault(_os);
 var _child_process = require('child_process');
 var _util = require('util');
 var _nodefetch = require('node-fetch'); var _nodefetch2 = _interopRequireDefault(_nodefetch);
-var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
+var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
 var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
 
 const execFileAsync = _util.promisify.call(void 0, _child_process.execFile);
@@ -434,7 +434,7 @@ async function handler(m, { sock }) {
     await m.react("✅");
   } catch (error) {
     await m.react("☢");
-    m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
+    m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
   }
 }
 

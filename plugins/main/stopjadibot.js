@@ -1,4 +1,4 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true});var _ourinjadibotmanagerjs = require('../../src/lib/ourin-jadibot-manager.js');
+"use strict";Object.defineProperty(exports, "__esModule", {value: true});var _almikujadibotmanagerjs = require('../../src/lib/almiku-jadibot-manager.js');
 
 const pluginConfig = {
     name: 'stopjadibot',
@@ -29,20 +29,20 @@ async function handler(m, { sock }) {
     const sender = m.sender
     if (!sender) return m.reply('❌Stunner ID \'d su número')
 
-    if (!_ourinjadibotmanagerjs.isJadibotActive.call(void 0, sender)) {
+    if (!_almikujadibotmanagerjs.isJadibotActive.call(void 0, sender)) {
         return m.reply(
             `❌ *ᴋᴀᴍᴜ ᴛɪᴅᴀᴋ ᴀᴅᴀʟᴀʜ ᴊᴀᴅɪʙᴏᴛ*\n\n` +
             `> Escribe \`${m.prefix}jadibot <número>\`para convertirse en un bot`
         )
     }
 
-    const status = _ourinjadibotmanagerjs.getJadibotStatus.call(void 0, sender)
+    const status = _almikujadibotmanagerjs.getJadibotStatus.call(void 0, sender)
     const uptime = status ? formatUptime(Date.now() - status.startedAt) : '-'
 
     await m.react('🕕')
 
     try {
-        await _ourinjadibotmanagerjs.stopJadibot.call(void 0, sender, false)
+        await _almikujadibotmanagerjs.stopJadibot.call(void 0, sender, false)
         await m.react('✅')
 
         await m.reply(

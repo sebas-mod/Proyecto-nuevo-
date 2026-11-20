@@ -4,7 +4,7 @@
     category: 'tools',
     description: 'Renombrar el perfil de bot',
     usage: '.setname <nama baru>',
-    example: '.setname Ourin-AI',
+    example: '.setname Al Miku-AI',
     isOwner: true,
     isPremium: false,
     isGroup: false,

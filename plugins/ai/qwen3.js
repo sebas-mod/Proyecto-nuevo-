@@ -1,6 +1,6 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _qwen3js = require('../../src/scraper/qwen3.js');
-var _ourincontextjs = require('../../src/lib/ourin-context.js');
-var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
+var _almikucontextjs = require('../../src/lib/almiku-context.js');
+var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
 
 const pluginConfig = {
   name: "qwen3",
@@ -49,12 +49,12 @@ async function handler(m, { sock }) {
 
     const reply = `${result.answer}`;
     await m.reply(reply.length > 4096 ? reply.slice(0, 4096) + "..." : reply, {
-      contextInfo: _ourincontextjs.saluranCtx.call(void 0, ),
+      contextInfo: _almikucontextjs.saluranCtx.call(void 0, ),
     });
   } catch (e) {
     console.error(e);
     await m.react("☢");
-    m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
+    m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
   }
 }
 

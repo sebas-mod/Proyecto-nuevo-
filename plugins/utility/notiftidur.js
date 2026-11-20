@@ -1,4 +1,4 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _ourinnotifschedulerjs = require('../../src/lib/ourin-notif-scheduler.js');
+"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _almikunotifschedulerjs = require('../../src/lib/almiku-notif-scheduler.js');
 
 const pluginConfig = {
     name: 'notiftidur',
@@ -22,7 +22,7 @@ function handler(m) {
     const chatJid = m.chat
     const sender = m.sender
 
-    const existing = _ourinnotifschedulerjs.getNotif.call(void 0, 'tidur', sender, chatJid)
+    const existing = _almikunotifschedulerjs.getNotif.call(void 0, 'tidur', sender, chatJid)
 
     if (!sub || !['on', 'off', 'edit'].includes(sub)) {
         const status = existing
@@ -51,7 +51,7 @@ function handler(m) {
         if (!existing) {
             return m.reply(`❌* Por no mencionar el recordatorio de dormir * en este gráfico`)
         }
-        _ourinnotifschedulerjs.toggleNotif.call(void 0, 'tidur', sender, chatJid, false)
+        _almikunotifschedulerjs.toggleNotif.call(void 0, 'tidur', sender, chatJid, false)
         return m.reply(`✅*Recorde de dormir desactivado*🔕\n\n> Escribe\`${m.prefix}notiftidur\`para reactivar`)
     }
 
@@ -61,7 +61,7 @@ function handler(m) {
         }
 
         if (existing && args.length === 1) {
-            _ourinnotifschedulerjs.toggleNotif.call(void 0, 'tidur', sender, chatJid, true)
+            _almikunotifschedulerjs.toggleNotif.call(void 0, 'tidur', sender, chatJid, true)
             return m.reply(`✅* Recordatorio de sueño reactivado! *🔔\n\n⏰Programado:${existing.jadwal.map(j => `*${j}*`).join(', ')} ART`)
         }
 
@@ -70,12 +70,12 @@ function handler(m) {
             return m.reply(`❌* Ponte la ropa de dormir!\n\n> Ejemplo:\`${m.prefix}notiftidur on 22.00\``)
         }
 
-        const jadwal = _ourinnotifschedulerjs.parseJadwal.call(void 0, timeInput)
+        const jadwal = _almikunotifschedulerjs.parseJadwal.call(void 0, timeInput)
         if (jadwal.length === 0) {
             return m.reply(`❌= = Sincronización, corregido por elderman = =\n\n* Gunwill formfort * HH. * * o * HH: MM *\n> Ejemplo:\`22. 00\`o\`23\``)
         }
 
-        _ourinnotifschedulerjs.setNotifTidur.call(void 0, sender, chatJid, jadwal)
+        _almikunotifschedulerjs.setNotifTidur.call(void 0, sender, chatJid, jadwal)
 
         let reply = `✅* ¡El recordatorio de sueño es activo! ]🔔\n\n`
         reply += `⏰ *Jadwal:*\n`
@@ -97,12 +97,12 @@ function handler(m) {
             return m.reply(`❌¡Pon una bolsa nueva!\n\n> Ejemplo:\`${m.prefix}notiftidur edit 23.00\``)
         }
 
-        const jadwal = _ourinnotifschedulerjs.parseJadwal.call(void 0, timeInput)
+        const jadwal = _almikunotifschedulerjs.parseJadwal.call(void 0, timeInput)
         if (jadwal.length === 0) {
             return m.reply(`❌= = Sincronización, corregido por elderman = =\n\n* Gunwill formfort * HH. * * o * HH: MM *\n> Ejemplo:\`23. 00\`o\`22. 30\``)
         }
 
-        _ourinnotifschedulerjs.setNotifTidur.call(void 0, sender, chatJid, jadwal)
+        _almikunotifschedulerjs.setNotifTidur.call(void 0, sender, chatJid, jadwal)
 
         let reply = `✅* Tiempo de cama actualizado!✏\n\n`
         reply += `⏰*Jadwal nuevo:*\n`

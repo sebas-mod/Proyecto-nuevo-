@@ -1,5 +1,5 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _ourindatabasejs = require('../../src/lib/ourin-database.js');
-var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
+"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _almikudatabasejs = require('../../src/lib/almiku-database.js');
+var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
 const pluginConfig = {
     name: 'banchat',
     alias: ['bangroup', 'bangrup', 'unbanchat', 'unbangroup'],
@@ -17,7 +17,7 @@ const pluginConfig = {
 }
 
 async function handler(m, { sock }) {
-    const db = _ourindatabasejs.getDatabase.call(void 0, )
+    const db = _almikudatabasejs.getDatabase.call(void 0, )
     const cmd = m.command.toLowerCase()
     const isUnban = ['unbanchat', 'unbangroup'].includes(cmd)
     
@@ -69,7 +69,7 @@ async function handler(m, { sock }) {
                 `Sólo el propietario puede usar las botas.`, {  mentions: [m.sender] })
         
     } catch (error) {
-        m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName))
+        m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName))
     }
 }
 

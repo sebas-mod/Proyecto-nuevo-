@@ -1,6 +1,6 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
-var _ourinhttpjs = require('./../../src/lib/ourin-http.js');
-var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
+var _almikuhttpjs = require('./../../src/lib/almiku-http.js');
+var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
 const pluginConfig = {
     name: 'text2img3',
     alias: [],
@@ -37,7 +37,7 @@ async function handler(m, { sock }) {
     m.react('🕕')
 
     try {
-        const { data } = await _ourinhttpjs.f.call(void 0, `https://api.neoxr.eu/api/stablediff?prompt=${encodeURIComponent(prompt)}&model=default&orientation=potrait&apikey=${_configjs2.default.APIkey.neoxr}`)
+        const { data } = await _almikuhttpjs.f.call(void 0, `https://api.neoxr.eu/api/stablediff?prompt=${encodeURIComponent(prompt)}&model=default&orientation=potrait&apikey=${_configjs2.default.APIkey.neoxr}`)
 
         await sock.sendMedia(m.chat, data.url, null, m, {
             type: 'image'
@@ -45,7 +45,7 @@ async function handler(m, { sock }) {
 
     } catch (error) {
         m.react('☢')
-        m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName))
+        m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName))
     }
 }
 

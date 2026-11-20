@@ -1,5 +1,5 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _ourinjadibotmanagerjs = require('../../src/lib/ourin-jadibot-manager.js');
-var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
+"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _almikujadibotmanagerjs = require('../../src/lib/almiku-jadibot-manager.js');
+var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
 const pluginConfig = {
     name: 'stopdandeletejadibot',
     alias: ['deletejadibot', 'removejadibot', 'hapusjadibot'],
@@ -29,7 +29,7 @@ async function handler(m, { sock }) {
     }
 
     if (!target) {
-        const sessions = _ourinjadibotmanagerjs.getAllJadibotSessions.call(void 0, )
+        const sessions = _almikujadibotmanagerjs.getAllJadibotSessions.call(void 0, )
 
         if (sessions.length === 0) {
             return m.reply(`❌No se ha mantenido ninguna sesión`)
@@ -52,7 +52,7 @@ async function handler(m, { sock }) {
     }
 
     const id = target.replace(/@.+/g, '')
-    const sessions = _ourinjadibotmanagerjs.getAllJadibotSessions.call(void 0, )
+    const sessions = _almikujadibotmanagerjs.getAllJadibotSessions.call(void 0, )
     const session = sessions.find(s => s.id === id)
 
     if (!session) {
@@ -62,7 +62,7 @@ async function handler(m, { sock }) {
     await m.react('🕕')
 
     try {
-        await _ourinjadibotmanagerjs.stopJadibot.call(void 0, target, true)
+        await _almikujadibotmanagerjs.stopJadibot.call(void 0, target, true)
 
         await m.react('✅')
 
@@ -76,7 +76,7 @@ async function handler(m, { sock }) {
         }, { quoted: m })
     } catch (error) {
         await m.react('☢')
-        await m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName))
+        await m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName))
     }
 }
 

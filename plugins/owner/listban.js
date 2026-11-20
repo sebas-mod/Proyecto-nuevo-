@@ -1,5 +1,5 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
-var _ourindatabasejs = require('../../src/lib/ourin-database.js');
+var _almikudatabasejs = require('../../src/lib/almiku-database.js');
 const pluginConfig = {
     name: 'listban',
     alias: ['listbanned', 'banlist'],
@@ -17,7 +17,7 @@ const pluginConfig = {
 }
 
 async function handler(m, { sock }) {
-    const db = _ourindatabasejs.getDatabase.call(void 0, )
+    const db = _almikudatabasejs.getDatabase.call(void 0, )
     const bannedUsers = _configjs2.default.bannedUsers && _configjs2.default.bannedUsers.length > 0 ? _configjs2.default.bannedUsers : (db.setting('bannedUsers') || [])
     
     if (bannedUsers.length === 0) {

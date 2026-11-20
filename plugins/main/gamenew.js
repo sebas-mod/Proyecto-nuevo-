@@ -2,7 +2,7 @@
   name: 'gamenew',
   alias: ['newgame', 'youhugame'],
   category: 'main',
-  description: 'Menú Youhu juego para Ourin',
+  description: 'Menú Youhu juego para Al Miku',
   usage: '.gamenew',
   example: '.gamenew',
   isOwner: false,
@@ -33,7 +33,7 @@ async function handler(m) {
 │  05  ❌⭕  Tic Tac Toe
 │      └─ ${p}ttc
 │
-╰─「 OURIN GAMES 」`);
+╰─「 AL MIKU GAMES 」`);
 }
 
 exports.config = pluginConfig; exports.handler = handler;

@@ -35,9 +35,9 @@ function buildCookie(deviceId, chatId, cookies = {}) {
 }
 
 const CHARACTERS = {
-  "ourin-ai": {
-    name: "Ourin AI",
-    prompt: `You 're Ourin Al, Assistant to WhatsApp, sweet, responsive, you answer in English language with megasia but informative but informative.`,
+  "almiku-ai": {
+    name: "Al Miku AI",
+    prompt: `You 're Al Miku Al, Assistant to WhatsApp, sweet, responsive, you answer in English language with megasia but informative but informative.`,
   },
   "kobo-ai": {
     name: "Kobo Kanaeru",
@@ -57,10 +57,10 @@ const CHARACTERS = {
   },
 };
 
-async function UnlimitedAI(prompt, character = "ourin-ai") {
+async function UnlimitedAI(prompt, character = "almiku-ai") {
   const chatId = _nodecrypto2.default.randomUUID();
   const deviceId = _nodecrypto2.default.randomUUID();
-  const char = CHARACTERS[character] || CHARACTERS["ourin-ai"];
+  const char = CHARACTERS[character] || CHARACTERS["almiku-ai"];
 
   const systemPrompt = `${char.prompt}\n\nPertanyaan user: ${prompt}`;
 

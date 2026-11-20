@@ -1,4 +1,4 @@
-const { getDatabase } = require('../../src/lib/ourin-database.js');
+const { getDatabase } = require('../../src/lib/almiku-database.js');
 
 const pluginConfig = {
   name: 'antivirtex',

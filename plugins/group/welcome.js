@@ -1,15 +1,15 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _momenttimezone = require('moment-timezone'); var _momenttimezone2 = _interopRequireDefault(_momenttimezone);
 var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
-var _ourindatabasejs = require('../../src/lib/ourin-database.js');
-var _ourinwelcomecardjs = require('../../src/lib/ourin-welcome-card.js');
-var _ourinlidjs = require('../../src/lib/ourin-lid.js');
+var _almikudatabasejs = require('../../src/lib/almiku-database.js');
+var _almikuwelcomecardjs = require('../../src/lib/almiku-welcome-card.js');
+var _almikulidjs = require('../../src/lib/almiku-lid.js');
 var _path = require('path'); var _path2 = _interopRequireDefault(_path);
 var _fs = require('fs'); var _fs2 = _interopRequireDefault(_fs);
 var _axios = require('axios'); var _axios2 = _interopRequireDefault(_axios);
-var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
-var _ourincontextjs = require('../../src/lib/ourin-context.js');
-var _ourinassetmanagerjs = require('../../src/lib/ourin-asset-manager.js');
-var _ourin = require('ourin');
+var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
+var _almikucontextjs = require('../../src/lib/almiku-context.js');
+var _almikuassetmanagerjs = require('../../src/lib/almiku-asset-manager.js');
+var _almiku = require('almiku');
 function resolvePlaceholders(
   template,
   username,
@@ -40,7 +40,7 @@ function resolvePlaceholders(
     .replace(/{date}/gi, now.format("DD/MM/YYYY"))
     .replace(/{time}/gi, now.format("HH:mm"))
     .replace(/{day}/gi, dayId)
-    .replace(/{bot}/gi, _optionalChain([_configjs2.default, 'access', _3 => _3.bot, 'optionalAccess', _4 => _4.name]) || "Ourin")
+    .replace(/{bot}/gi, _optionalChain([_configjs2.default, 'access', _3 => _3.bot, 'optionalAccess', _4 => _4.name]) || "Al Miku")
     .replace(/{prefix}/gi, prefix);
 }
 const pluginConfig = {
@@ -146,11 +146,11 @@ Tanoshii jikan o issho ni sugoso ne~`,
 }
 async function sendWelcomeMessage(sock, groupJid, participant, groupMeta) {
   try {
-    const db = _ourindatabasejs.getDatabase.call(void 0, );
+    const db = _almikudatabasejs.getDatabase.call(void 0, );
     const groupData = db.getGroup(groupJid);
     if (_optionalChain([groupData, 'optionalAccess', _8 => _8.welcome]) !== true) return false;
     const welcomeType = db.setting("welcomeType") || 1;
-    const realParticipant = _ourinlidjs.resolveAnyLidToJid.call(void 0, 
+    const realParticipant = _almikulidjs.resolveAnyLidToJid.call(void 0, 
       participant,
       _optionalChain([groupMeta, 'optionalAccess', _9 => _9.participants]) || [],
     );
@@ -172,7 +172,7 @@ async function sendWelcomeMessage(sock, groupJid, participant, groupMeta) {
       _optionalChain([_configjs2.default, 'access', _23 => _23.command, 'optionalAccess', _24 => _24.prefix]) || ".",
     );
     const saluranId = _optionalChain([_configjs2.default, 'access', _25 => _25.saluran, 'optionalAccess', _26 => _26.id]) || "120363400911374213@newsletter";
-    const saluranName = _optionalChain([_configjs2.default, 'access', _27 => _27.saluran, 'optionalAccess', _28 => _28.name]) || _optionalChain([_configjs2.default, 'access', _29 => _29.bot, 'optionalAccess', _30 => _30.name]) || "Ourin-AI";
+    const saluranName = _optionalChain([_configjs2.default, 'access', _27 => _27.saluran, 'optionalAccess', _28 => _28.name]) || _optionalChain([_configjs2.default, 'access', _29 => _29.bot, 'optionalAccess', _30 => _30.name]) || "Al Miku-AI";
     if (welcomeType === 2) {
       const cardBody = _optionalChain([groupData, 'optionalAccess', _31 => _31.welcomeMsg])
         ? resolvePlaceholders(
@@ -190,7 +190,7 @@ async function sendWelcomeMessage(sock, groupJid, participant, groupMeta) {
           body: {
             text: `👋 Welcome *@${userName}*`,
           },
-          footer: { text: _optionalChain([_configjs2.default, 'access', _40 => _40.bot, 'optionalAccess', _41 => _41.name]) || "Ourin-AI" },
+          footer: { text: _optionalChain([_configjs2.default, 'access', _40 => _40.bot, 'optionalAccess', _41 => _41.name]) || "Al Miku-AI" },
           header: { title: "Welcome", hasMediaAttachment: false },
           carouselMessage: {
             cards: [
@@ -201,7 +201,7 @@ async function sendWelcomeMessage(sock, groupJid, participant, groupMeta) {
                 body: {
                   text: cardBody,
                 },
-                footer: { text: _optionalChain([_configjs2.default, 'access', _42 => _42.bot, 'optionalAccess', _43 => _43.name]) || "Ourin-AI" },
+                footer: { text: _optionalChain([_configjs2.default, 'access', _42 => _42.bot, 'optionalAccess', _43 => _43.name]) || "Al Miku-AI" },
                 nativeFlowMessage: {
                   buttons: [
                     {
@@ -219,7 +219,7 @@ async function sendWelcomeMessage(sock, groupJid, participant, groupMeta) {
             carouselCardType: 1,
           },
           contextInfo: {
-            ..._ourincontextjs.saluranCtx.call(void 0, ),
+            ..._almikucontextjs.saluranCtx.call(void 0, ),
             mentionedJid: [realParticipant],
           },
         },
@@ -239,7 +239,7 @@ async function sendWelcomeMessage(sock, groupJid, participant, groupMeta) {
       await sock.sendMessage(groupJid, {
         text: textOnly,
         contextInfo: {
-          ..._ourincontextjs.saluranCtx.call(void 0, ),
+          ..._almikucontextjs.saluranCtx.call(void 0, ),
           mentionedJid: [realParticipant],
           forwardedNewsletterMessageInfo: {
             newsletterName: _optionalChain([_configjs2.default, 'optionalAccess', _53 => _53.saluran, 'optionalAccess', _54 => _54.name]),
@@ -251,7 +251,7 @@ async function sendWelcomeMessage(sock, groupJid, participant, groupMeta) {
       await sock.sendText(groupJid, text, null, {
         mentions: [realParticipant],
         contextInfo: {
-          ..._ourincontextjs.saluranCtx.call(void 0, ),
+          ..._almikucontextjs.saluranCtx.call(void 0, ),
           mentionedJid: [realParticipant],
         },
       });
@@ -274,7 +274,7 @@ async function sendWelcomeMessage(sock, groupJid, participant, groupMeta) {
       );
     } else if (welcomeType === 6) {
       await sock.sendMessage(groupJid, {
-        video: _ourinassetmanagerjs.getAssetBuffer.call(void 0, "ourin-mp4") || { url: "https://files.catbox.moe/k28dhp.mp4" },
+        video: _almikuassetmanagerjs.getAssetBuffer.call(void 0, "almiku-mp4") || { url: "https://files.catbox.moe/k28dhp.mp4" },
         gifPlayback: true,
         caption: text,
         contextInfo: {
@@ -293,11 +293,11 @@ async function sendWelcomeMessage(sock, groupJid, participant, groupMeta) {
         }
       };
 
-      const media = await _ourin.prepareWAMessageMedia.call(void 0, {
+      const media = await _almiku.prepareWAMessageMedia.call(void 0, {
         image: { url: ppUrl }
       }, { upload: sock.waUploadToServer });
 
-      const msg = _ourin.generateWAMessageFromContent.call(void 0, groupJid, {
+      const msg = _almiku.generateWAMessageFromContent.call(void 0, groupJid, {
         viewOnceMessage: {
           message: {
             messageContextInfo: {},
@@ -312,7 +312,7 @@ async function sendWelcomeMessage(sock, groupJid, participant, groupMeta) {
                 text: text
               },
               footer: {
-                text: _optionalChain([_configjs2.default, 'access', _57 => _57.bot, 'optionalAccess', _58 => _58.name]) || "Ourin-AI"
+                text: _optionalChain([_configjs2.default, 'access', _57 => _57.bot, 'optionalAccess', _58 => _58.name]) || "Al Miku-AI"
               },
               contextInfo: {
                 mentionedJid: [realParticipant],
@@ -361,7 +361,7 @@ async function sendWelcomeMessage(sock, groupJid, participant, groupMeta) {
   }
 }
 async function handler(m, { sock }) {
-  const db = _ourindatabasejs.getDatabase.call(void 0, );
+  const db = _almikudatabasejs.getDatabase.call(void 0, );
   const args = m.args || [];
   const sub = _optionalChain([args, 'access', _59 => _59[0], 'optionalAccess', _60 => _60.toLowerCase, 'call', _61 => _61()]);
   const sub2 = _optionalChain([args, 'access', _62 => _62[1], 'optionalAccess', _63 => _63.toLowerCase, 'call', _64 => _64()]);
@@ -387,7 +387,7 @@ async function handler(m, { sock }) {
       );
     } catch (err) {
       m.react("☢");
-      return m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
+      return m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
     }
   }
   if (sub === "off" && sub2 === "all") {
@@ -410,7 +410,7 @@ async function handler(m, { sock }) {
       );
     } catch (err) {
       m.react("☢");
-      return m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
+      return m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
     }
   }
   if (sub === "on") {

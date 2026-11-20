@@ -19,7 +19,7 @@ const pluginConfig = {
 };
 
 async function handler(m, { sock }) {
-  const botName = _optionalChain([_configjs2.default, 'access', _ => _.bot, 'optionalAccess', _2 => _2.name]) || "Ourin-AI";
+  const botName = _optionalChain([_configjs2.default, 'access', _ => _.bot, 'optionalAccess', _2 => _2.name]) || "Al Miku-AI";
   const ownerName = _optionalChain([_configjs2.default, 'access', _3 => _3.owner, 'optionalAccess', _4 => _4.name]) || "Propietario";
   const saluranId = _optionalChain([_configjs2.default, 'access', _5 => _5.saluran, 'optionalAccess', _6 => _6.id]) || "120363400911374213@newsletter";
   const saluranName = _optionalChain([_configjs2.default, 'access', _7 => _7.saluran, 'optionalAccess', _8 => _8.name]) || botName;

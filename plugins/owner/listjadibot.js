@@ -1,4 +1,4 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true});var _ourinjadibotmanagerjs = require('../../src/lib/ourin-jadibot-manager.js');
+"use strict";Object.defineProperty(exports, "__esModule", {value: true});var _almikujadibotmanagerjs = require('../../src/lib/almiku-jadibot-manager.js');
 const pluginConfig = {
     name: 'listjadibot',
     alias: ['jadibotlist', 'alljadibot'],
@@ -16,8 +16,8 @@ const pluginConfig = {
 }
 
 async function handler(m, { sock }) {
-    const sessions = _ourinjadibotmanagerjs.getAllJadibotSessions.call(void 0, )
-    const active = _ourinjadibotmanagerjs.getActiveJadibots.call(void 0, )
+    const sessions = _almikujadibotmanagerjs.getAllJadibotSessions.call(void 0, )
+    const active = _almikujadibotmanagerjs.getActiveJadibots.call(void 0, )
 
     if (sessions.length === 0) {
         return m.reply(`❌No se ha mantenido ninguna sesión`)

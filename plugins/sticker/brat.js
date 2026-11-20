@@ -1,8 +1,8 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _ourinassetmanagerjs = require('../../src/lib/ourin-asset-manager.js');
+"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _almikuassetmanagerjs = require('../../src/lib/almiku-asset-manager.js');
 var _fs = require('fs'); var _fs2 = _interopRequireDefault(_fs);
 var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
-var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
-var _ourinapimanagerjs = require('../../src/lib/ourin-apimanager.js'); var _ourinapimanagerjs2 = _interopRequireDefault(_ourinapimanagerjs);
+var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
+var _almikuapimanagerjs = require('../../src/lib/almiku-apimanager.js'); var _almikuapimanagerjs2 = _interopRequireDefault(_almikuapimanagerjs);
 const pluginConfig = {
   name: "brat",
   alias: ["bratmenu", "bratimg", "brattext"],
@@ -96,7 +96,7 @@ async function sendBratMenu(m, sock, text) {
 
   await sock.sendButton(
     m.chat,
-    _ourinassetmanagerjs.getAssetBuffer.call(void 0, "ourin"),
+    _almikuassetmanagerjs.getAssetBuffer.call(void 0, "almiku"),
     caption,
     m,
     {
@@ -132,7 +132,7 @@ async function handler(m, { sock }) {
     m.react("✅");
   } catch (error) {
     m.react("☢");
-    m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
+    m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
   }
 }
 

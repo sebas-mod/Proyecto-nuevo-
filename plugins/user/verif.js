@@ -6,13 +6,13 @@ const {
   isUserVerified,
   verifyUser,
   revokeUser,
-} = require('../../src/lib/ourin-channel-security.js');
+} = require('../../src/lib/almiku-channel-security.js');
 
 const pluginConfig = {
   name: 'verif',
   alias: ['verify', 'cekverif', 'unverif'],
   category: 'user',
-  description: 'Verifikasi status wajib follow WhatsApp Channel resmi Ourin 3.5',
+  description: 'Verifikasi status wajib follow WhatsApp Channel resmi Al Miku 3.5',
   usage: '.verif atau .cekverif',
   example: '.verif',
   isOwner: false,
@@ -33,7 +33,7 @@ async function handler(m, context) {
   if (cmd === 'cekverif') {
     const verified = isUserVerified(m.sender);
     if (verified || m.isOwner) {
-      return m.reply('✅*Estado: TERVERIFIKASI*\n\nHa cumplido los requisitos y puede utilizar toda la función Ourin 3.');
+      return m.reply('✅*Estado: TERVERIFIKASI*\n\nHa cumplido los requisitos y puede utilizar toda la función Al Miku 3.');
     } else {
       return m.reply(
         `❌* STATUS ] No todavía.\n\n` +
@@ -58,7 +58,7 @@ async function handler(m, context) {
 
   //Comando:. verificar /. verificar.
   if (isUserVerified(m.sender)) {
-    return m.reply('✅Lo ha verificado antes y tiene un pleno acuso a la Fitud Ourin 3. 5.');
+    return m.reply('✅Lo ha verificado antes y tiene un pleno acuso a la Fitud Al Miku 3. 5.');
   }
 
   // Verifikasi channel metadata ketersediaan
@@ -81,7 +81,7 @@ async function handler(m, context) {
       `Estado seguido para ambos canales oficiales verificados con éxito:\n` +
       `✔ Channel 1: Terhubung\n` +
       `✔ Channel 2: Terhubung\n\n` +
-      `Bienvenido a Ourin 3. 5!\`${p}menú\`para empieza.`
+      `Bienvenido a Al Miku 3. 5!\`${p}menú\`para empieza.`
   );
 }
 

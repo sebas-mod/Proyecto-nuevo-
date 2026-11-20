@@ -1,4 +1,4 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _ourindatabasejs = require('../../src/lib/ourin-database.js');
+"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _almikudatabasejs = require('../../src/lib/almiku-database.js');
 
 const pluginConfig = {
   name: "anticustom",
@@ -192,7 +192,7 @@ function buildGuideMessage(m, status, mode, rules) {
 }
 
 async function handler(m, { sock }) {
-  const db = _ourindatabasejs.getDatabase.call(void 0, );
+  const db = _almikudatabasejs.getDatabase.call(void 0, );
   const args = m.args || [];
   const sub = _optionalChain([args, 'access', _5 => _5[0], 'optionalAccess', _6 => _6.toLowerCase, 'call', _7 => _7()]);
   const groupData = db.getGroup(m.chat) || {};
@@ -399,7 +399,7 @@ async function replyHandler(m, { sock }) {
       return true;
     }
 
-    const db = _ourindatabasejs.getDatabase.call(void 0, );
+    const db = _almikudatabasejs.getDatabase.call(void 0, );
     const groupData = db.getGroup(m.chat) || {};
     const currentRules = normalizeRules(groupData.anticustomRules);
     const titleKey = session.title.toLowerCase();

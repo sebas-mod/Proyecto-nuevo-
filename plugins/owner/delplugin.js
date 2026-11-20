@@ -1,7 +1,7 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _fs = require('fs'); var _fs2 = _interopRequireDefault(_fs);
 var _path = require('path'); var _path2 = _interopRequireDefault(_path);
-var _ourinpluginsjs = require('../../src/lib/ourin-plugins.js');
-var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
+var _almikupluginsjs = require('../../src/lib/almiku-plugins.js');
+var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
 
 const pluginConfig = {
   name: "delplugin",
@@ -66,7 +66,7 @@ async function handler(m, { sock }) {
 
     let unloadResult = { success: false };
     try {
-      unloadResult = _ourinpluginsjs.unloadPlugin.call(void 0, found.path) || { success: true };
+      unloadResult = _almikupluginsjs.unloadPlugin.call(void 0, found.path) || { success: true };
     } catch (e) {}
 
     _fs2.default.unlinkSync(found.path);
@@ -82,7 +82,7 @@ async function handler(m, { sock }) {
     return m.reply(replyText);
   } catch (error) {
     await m.react("☢");
-    await m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
+    await m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
   }
 }
 

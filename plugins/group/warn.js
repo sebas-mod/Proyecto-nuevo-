@@ -1,6 +1,6 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _ourindatabasejs = require('../../src/lib/ourin-database.js');
-var _ourinlidjs = require('../../src/lib/ourin-lid.js');
-var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
+"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _almikudatabasejs = require('../../src/lib/almiku-database.js');
+var _almikulidjs = require('../../src/lib/almiku-lid.js');
+var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
 const pluginConfig = {
     name: 'warn',
     alias: ['warning', 'peringatan'],
@@ -19,7 +19,7 @@ const pluginConfig = {
 }
 
 async function handler(m, { sock }) {
-    const db = _ourindatabasejs.getDatabase.call(void 0, )
+    const db = _almikudatabasejs.getDatabase.call(void 0, )
     
     let groupData = db.getGroup(m.chat) || {}
     let warnings = groupData.warnings || {}
@@ -71,7 +71,7 @@ async function handler(m, { sock }) {
     }
     try {
         const groupMeta = m.groupMetadata
-        const participant = groupMeta.participants.find(p => _ourinlidjs.getParticipantJid.call(void 0, p) === targetUser)
+        const participant = groupMeta.participants.find(p => _almikulidjs.getParticipantJid.call(void 0, p) === targetUser)
         if (_optionalChain([participant, 'optionalAccess', _4 => _4.admin])) {
             await m.reply(`❌No puede dar avangua un administrador grupo.`)
             return
@@ -114,7 +114,7 @@ async function handler(m, { sock }) {
             delete warnings[targetUser]
             db.setGroup(m.chat, { ...groupData, warnings: warnings })
         } catch (e) {
-            m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName))
+            m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName))
         }
     } else {
         await m.reply(

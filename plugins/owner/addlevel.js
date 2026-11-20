@@ -1,5 +1,5 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _ourindatabasejs = require('../../src/lib/ourin-database.js');
-var _ourinleveljs = require('./../../src/lib/ourin-level.js');
+"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _almikudatabasejs = require('../../src/lib/almiku-database.js');
+var _almikuleveljs = require('./../../src/lib/almiku-level.js');
 
 const pluginConfig = {
     name: 'addlevel',
@@ -24,7 +24,7 @@ function extractTarget(m) {
 }
 
 async function handler(m, { sock }) {
-    const db = _ourindatabasejs.getDatabase.call(void 0, )
+    const db = _almikudatabasejs.getDatabase.call(void 0, )
     const args = m.args
     
     const numArg = args.find(a => !isNaN(a) && !a.startsWith('@'))
@@ -61,20 +61,20 @@ async function handler(m, { sock }) {
     user.exp = newExp
     
     const mockM = { ...m, sender: targetJid, pushName: m.pushName }
-    const addResult = await _ourinleveljs.checkAndNotifyLevelUp.call(void 0, sock, mockM, db, user, oldExp, newExp)
+    const addResult = await _almikuleveljs.checkAndNotifyLevelUp.call(void 0, sock, mockM, db, user, oldExp, newExp)
     
     db.setUser(targetJid, user)
     
     await m.react('✅')
     
-    const finalLevel = addResult.newLevel || _ourinleveljs.calculateLevel.call(void 0, user.exp)
+    const finalLevel = addResult.newLevel || _almikuleveljs.calculateLevel.call(void 0, user.exp)
     
     await m.reply(
         `✅* GASPS ]\n\n` +
         `Level milik *@${targetJid.split('@')[0]}* ha logrado tanto en la minería *${levels} Level*.\n\n` +
         `* Estadísticas de Terkini: *\n` +
         `- Nivel Ahora: *${finalLevel}*\n` +
-        `- Función Cuando It: *${_ourinleveljs.getRole.call(void 0, finalLevel)}*\n` +
+        `- Función Cuando It: *${_almikuleveljs.getRole.call(void 0, finalLevel)}*\n` +
         `- Total XP: *${user.exp.toLocaleString()}* XP`,
         { mentions: [targetJid] }
     )

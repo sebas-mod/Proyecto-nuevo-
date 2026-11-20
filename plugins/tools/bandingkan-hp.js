@@ -1,7 +1,7 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { newObj[key] = obj[key]; } } } newObj.default = obj; return newObj; } } function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _axios = require('axios'); var _axios2 = _interopRequireDefault(_axios);
 var _cheerio = require('cheerio'); var cheerio = _interopRequireWildcard(_cheerio);
 var _crypto = require('crypto'); var _crypto2 = _interopRequireDefault(_crypto);
-var _ourin = require('ourin');
+var _almiku = require('almiku');
 
 const pluginConfig = {
     name: 'bandingkan-hp',
@@ -192,7 +192,7 @@ async function handler(m, { sock, text }) {
         await m.reply(caption);
 
         if (images.length > 0) {
-            const opener = _ourin.generateWAMessageFromContent.call(void 0, 
+            const opener = _almiku.generateWAMessageFromContent.call(void 0, 
                 m.chat,
                 {
                     messageContextInfo: { messageSecret: _crypto2.default.randomBytes(32) },
@@ -202,7 +202,7 @@ async function handler(m, { sock, text }) {
                     },
                 },
                 {
-                    userJid: _ourin.jidNormalizedUser.call(void 0, sock.user.id),
+                    userJid: _almiku.jidNormalizedUser.call(void 0, sock.user.id),
                     quoted: m,
                     upload: sock.waUploadToServer,
                 }
@@ -213,7 +213,7 @@ async function handler(m, { sock, text }) {
             });
 
             for (const imgUrl of images) {
-                const msg = await _ourin.generateWAMessage.call(void 0, opener.key.remoteJid, { image: { url: imgUrl } }, {
+                const msg = await _almiku.generateWAMessage.call(void 0, opener.key.remoteJid, { image: { url: imgUrl } }, {
                     upload: sock.waUploadToServer,
                 });
 

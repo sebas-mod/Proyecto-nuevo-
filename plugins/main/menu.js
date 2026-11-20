@@ -1,21 +1,21 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { newObj[key] = obj[key]; } } } newObj.default = obj; return newObj; } } function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; } function _nullishCoalesce(lhs, rhsFn) { if (lhs != null) { return lhs; } else { return rhsFn(); } } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _ourinjs = require('../../case/ourin.js');
+"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { newObj[key] = obj[key]; } } } newObj.default = obj; return newObj; } } function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; } function _nullishCoalesce(lhs, rhsFn) { if (lhs != null) { return lhs; } else { return rhsFn(); } } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _almikujs = require('../../case/almiku.js');
 
 
 
 
-var _ourin = require('ourin');
+var _almiku = require('almiku');
 var _canvas = require('@napi-rs/canvas');
 var _sharp2 = require('sharp'); var _sharp3 = _interopRequireDefault(_sharp2);
 var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
 
 
 
-var _ourinformatterjs = require('../../src/lib/ourin-formatter.js');
+var _almikuformatterjs = require('../../src/lib/almiku-formatter.js');
 
 
 
-var _ourinpluginsjs = require('../../src/lib/ourin-plugins.js');
-var _ourindatabasejs = require('../../src/lib/ourin-database.js');
+var _almikupluginsjs = require('../../src/lib/almiku-plugins.js');
+var _almikudatabasejs = require('../../src/lib/almiku-database.js');
 var _fs = require('fs'); var _fs2 = _interopRequireDefault(_fs);
 var _path = require('path'); var _path2 = _interopRequireDefault(_path);
 
@@ -146,8 +146,8 @@ const toMonoUpperBold = (text) => {
     .join("");
 };
 function getSortedCategories(m, botMode) {
-  const categories = _ourinpluginsjs.getCategories.call(void 0, );
-  const commandsByCategory = _ourinpluginsjs.getCommandsByCategory.call(void 0, );
+  const categories = _almikupluginsjs.getCategories.call(void 0, );
+  const commandsByCategory = _almikupluginsjs.getCommandsByCategory.call(void 0, );
   const categoryOrder = [
     "owner",
     "main",
@@ -208,11 +208,11 @@ function getSortedCategories(m, botMode) {
   return { sorted: result, totalCmds, commandsByCategory };
 }
 async function formatTime(date) {
-  const timeHelper = await Promise.resolve().then(() => _interopRequireWildcard(require("../../src/lib/ourin-time.js")));
+  const timeHelper = await Promise.resolve().then(() => _interopRequireWildcard(require("../../src/lib/almiku-time.js")));
   return timeHelper.formatTime("HH:mm");
 }
 async function formatDateShort(date) {
-  const timeHelper = await Promise.resolve().then(() => _interopRequireWildcard(require("../../src/lib/ourin-time.js")));
+  const timeHelper = await Promise.resolve().then(() => _interopRequireWildcard(require("../../src/lib/almiku-time.js")));
   return timeHelper.formatFull("dddd, DD MMMM YYYY");
 }
 async function buildMenuText(
@@ -225,17 +225,17 @@ async function buildMenuText(
 ) {
   const prefix = _optionalChain([botConfig, 'access', _ => _.command, 'optionalAccess', _2 => _2.prefix]) || ".";
   const user = db.getUser(m.sender);
-  const timeHelper = await Promise.resolve().then(() => _interopRequireWildcard(require("../../src/lib/ourin-time.js")));
+  const timeHelper = await Promise.resolve().then(() => _interopRequireWildcard(require("../../src/lib/almiku-time.js")));
   const timeStr = timeHelper.formatTime("HH:mm");
   const dateStr = timeHelper.formatFull("dddd, DD MMMM YYYY");
-  const categories = _ourinpluginsjs.getCategories.call(void 0, );
-  const commandsByCategory = _ourinpluginsjs.getCommandsByCategory.call(void 0, );
+  const categories = _almikupluginsjs.getCategories.call(void 0, );
+  const commandsByCategory = _almikupluginsjs.getCommandsByCategory.call(void 0, );
   let totalCommands = 0;
   for (const category of categories) {
     totalCommands += (commandsByCategory[category] || []).length;
   }
-  const totalCases = _ourinjs.getCaseCount.call(void 0, );
-  const casesByCategory = _ourinjs.getCasesByCategory.call(void 0, );
+  const totalCases = _almikujs.getCaseCount.call(void 0, );
+  const casesByCategory = _almikujs.getCasesByCategory.call(void 0, );
   const totalFeatures = totalCommands + totalCases;
   let userRole = "User",
     roleEmoji = "👤";
@@ -246,8 +246,8 @@ async function buildMenuText(
     userRole = "Premium";
     roleEmoji = "💎";
   }
-  const greeting = _ourinformatterjs.getTimeGreeting.call(void 0, );
-  const uptimeFormatted = _ourinformatterjs.formatUptime.call(void 0, uptime);
+  const greeting = _almikuformatterjs.getTimeGreeting.call(void 0, );
+  const uptimeFormatted = _almikuformatterjs.formatUptime.call(void 0, uptime);
   const totalUsers = db.getUserCount();
   let txt = `${greeting}\n\n`;
   txt += `      ${m.pushName || "User"}\n\n`;
@@ -266,10 +266,10 @@ async function buildMenuText(
   txt += `╰➤------------------------------\n`;
 
   txt += `*INFO DEL BOT*\n`;
-  txt += `╭  • Nombre : ${_optionalChain([botConfig, 'access', _7 => _7.bot, 'optionalAccess', _8 => _8.name]) || "Ourin-AI"}\n`;
+  txt += `╭  • Nombre : ${_optionalChain([botConfig, 'access', _7 => _7.bot, 'optionalAccess', _8 => _8.name]) || "Al Miku-AI"}\n`;
   txt += `┆  • Autor  : ${_optionalChain([botConfig, 'access', _9 => _9.bot, 'optionalAccess', _10 => _10.developer]) || "Owner"}\n`;
   txt += `┆  • Versión: ${_optionalChain([botConfig, 'access', _11 => _11.bot, 'optionalAccess', _12 => _12.version]) || "1.2.0"}\n`;
-  txt += `┆  • Type script : OURIN x ${_optionalChain([botConfig, 'access', _13 => _13.bot, 'optionalAccess', _14 => _14.developer]) || "Owner"}\n`;
+  txt += `┆  • Type script : AL MIKU x ${_optionalChain([botConfig, 'access', _13 => _13.bot, 'optionalAccess', _14 => _14.developer]) || "Owner"}\n`;
   txt += `┆  • Activo : ${uptimeFormatted}\n`;
   txt += `╰➤------------------------------\n`;
   const categoryOrder = [
@@ -372,14 +372,14 @@ function getContextInfo(
 ) {
   const saluranId = _optionalChain([botConfig, 'access', _15 => _15.saluran, 'optionalAccess', _16 => _16.id]) || "120363400911374213@newsletter";
   const saluranName =
-    _optionalChain([botConfig, 'access', _17 => _17.saluran, 'optionalAccess', _18 => _18.name]) || _optionalChain([botConfig, 'access', _19 => _19.bot, 'optionalAccess', _20 => _20.name]) || "Ourin-AI";
+    _optionalChain([botConfig, 'access', _17 => _17.saluran, 'optionalAccess', _18 => _18.name]) || _optionalChain([botConfig, 'access', _19 => _19.bot, 'optionalAccess', _20 => _20.name]) || "Al Miku-AI";
   const saluranLink = _optionalChain([botConfig, 'access', _21 => _21.saluran, 'optionalAccess', _22 => _22.link]) || "";
   const ctx = {
     mentionedJid: [m.sender],
     forwardingScore: 9,
     isForwarded: true,
     externalAdReply: {
-      title: _optionalChain([botConfig, 'access', _23 => _23.bot, 'optionalAccess', _24 => _24.name]) || "Ourin-AI",
+      title: _optionalChain([botConfig, 'access', _23 => _23.bot, 'optionalAccess', _24 => _24.name]) || "Al Miku-AI",
       body: `BOT whatsAPPP MULTI DEVICE`,
       sourceUrl: saluranLink,
       previewType: "VIDEO",
@@ -440,15 +440,15 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
   let videoBuffer = null;
 
   try {
-    imageBuffer = _fs2.default.readFileSync(botConfig.assets["ourin"])
-    thumbBuffer = _fs2.default.readFileSync(botConfig.assets["ourin2"])
+    imageBuffer = _fs2.default.readFileSync(botConfig.assets["almiku"])
+    thumbBuffer = _fs2.default.readFileSync(botConfig.assets["almiku2"])
   } catch (e) {
     console.error("Cargando el menú:", e.message);
   }
   const prefix = _optionalChain([botConfig, 'access', _29 => _29.command, 'optionalAccess', _30 => _30.prefix]) || ".";
   const saluranId = _optionalChain([botConfig, 'access', _31 => _31.saluran, 'optionalAccess', _32 => _32.id]) || "120363400911374213@newsletter";
   const saluranName =
-    _optionalChain([botConfig, 'access', _33 => _33.saluran, 'optionalAccess', _34 => _34.name]) || _optionalChain([botConfig, 'access', _35 => _35.bot, 'optionalAccess', _36 => _36.name]) || "Ourin-AI";
+    _optionalChain([botConfig, 'access', _33 => _33.saluran, 'optionalAccess', _34 => _34.name]) || _optionalChain([botConfig, 'access', _35 => _35.bot, 'optionalAccess', _36 => _36.name]) || "Al Miku-AI";
   const saluranLink =
     _optionalChain([botConfig, 'access', _37 => _37.saluran, 'optionalAccess', _38 => _38.link]) ||
     "https://whatsapp.com/channel/0029VbB37bgBfxoAmAlsgE0t";
@@ -457,8 +457,8 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
     totalCmds,
     commandsByCategory,
   } = getSortedCategories(m, botMode);
-  const greeting = _ourinformatterjs.getTimeGreeting.call(void 0, );
-  const uptimeFormatted = _ourinformatterjs.formatUptime.call(void 0, uptime);
+  const greeting = _almikuformatterjs.getTimeGreeting.call(void 0, );
+  const uptimeFormatted = _almikuformatterjs.formatUptime.call(void 0, uptime);
   const user = await db.getUser(m.sender) || {}
   try {
     const categories = getSortedCategories(m, botMode);
@@ -525,7 +525,7 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
               ? "𝗕𝘂𝗸𝗮𝗻, 𝘁𝗮𝗽𝗶 𝗣𝗿𝗲𝗺𝗶𝘂𝗺"
               : "𝗣𝗲𝗻𝗴𝗴𝘂𝗻𝗮";
           const userName = toMonoUpperBold(displayName);
-          const botName = _optionalChain([botConfig, 'access', _46 => _46.bot, 'optionalAccess', _47 => _47.name]) || "𝗢𝗨𝗥𝗜𝗡 𝗗𝗘𝗟𝗨𝗫𝗘";
+          const botName = _optionalChain([botConfig, 'access', _46 => _46.bot, 'optionalAccess', _47 => _47.name]) || "𝗔𝗟 𝗠𝗜𝗞𝗤 𝗗𝗘𝗟𝗨𝗫𝗘";
           const botVersion = _optionalChain([botConfig, 'access', _48 => _48.bot, 'optionalAccess', _49 => _49.version]) || "3.4";
           const developer = _optionalChain([botConfig, 'access', _50 => _50.bot, 'optionalAccess', _51 => _51.developer]) || "Zann";
           const userLevel = _optionalChain([user, 'optionalAccess', _52 => _52.level]) || 0;
@@ -537,12 +537,12 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
           const menuCaption =
           `✦ ʜᴀɪ ${mention} 👋\n\n` +
             `ᴡᴇʟᴄᴏᴍᴇ ᴛᴏ\n` +
-            `ᴏᴜʀɪɴ ᴅᴇʟᴜxᴇ.\n\n` +
+            `ᴀʟ ᴍɪᴋᴜ ᴅᴇʟᴜxᴇ.\n\n` +
             `┌───「 ʙᴏᴛ ɪɴғᴏʀᴍᴀᴛɪᴏɴ 」\n` +
-            `├ ɴᴀᴍᴇ : ᴏᴜʀɪɴ ᴅᴇʟᴜxᴇ\n` +
+            `├ ɴᴀᴍᴇ : ᴀʟ ᴍɪᴋᴜ ᴅᴇʟᴜxᴇ\n` +
             `├ ᴠᴇʀsɪᴏɴ : ${botVersion}\n` +
             `├ ᴅᴇᴠᴇʟᴏᴘᴇʀ : ${developer}\n` +
-            `└ ʟɪʙʀᴀʀʏ : ourin-baileys\n\n` +
+            `└ ʟɪʙʀᴀʀʏ : almiku-baileys\n\n` +
             `┌───「 ᴜsᴇʀ ɪɴғᴏʀᴍᴀᴛɪᴏɴ 」\n` +
             `├ ɴᴀᴍᴇ : ${userName}\n` +
             `├ sᴛᴀᴛᴜs : ${statusText}\n` +
@@ -559,10 +559,10 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
 
           await sock.sendMessage(m.chat, {
             image: _fs2.default.readFileSync(
-              botConfig.assets["ourin-menu-header-blue"] || botConfig.assets["ourin"],
+              botConfig.assets["almiku-menu-header-blue"] || botConfig.assets["almiku"],
             ),
             caption: menuCaption,
-            footer: `𝗢𝗨𝗥𝗜𝗡 𝗗𝗘𝗟𝗨𝗫𝗘 • 𝗩${botVersion}`,
+            footer: `𝗔𝗟 𝗠𝗜𝗞𝗤 𝗗𝗘𝗟𝗨𝗫𝗘 • 𝗩${botVersion}`,
             interactiveButtons: [
               {
                 name: "single_select",
@@ -620,7 +620,7 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
         //Los datos del usuario siempre proceden de m.
         const displayName = m.pushName || "Usuario";
         const mention = `@${m.sender.split("@")[0]}`;
-        const botName = _optionalChain([botConfig, 'access', _57 => _57.bot, 'optionalAccess', _58 => _58.name]) || "OURIN DELUXE";
+        const botName = _optionalChain([botConfig, 'access', _57 => _57.bot, 'optionalAccess', _58 => _58.name]) || "AL MIKU DELUXE";
         const botVersion = _optionalChain([botConfig, 'access', _59 => _59.bot, 'optionalAccess', _60 => _60.version]) || "3.4";
         const developer = _optionalChain([botConfig, 'access', _61 => _61.bot, 'optionalAccess', _62 => _62.developer]) || "Zann";
         const userLevel = _nullishCoalesce(_optionalChain([user, 'optionalAccess', _63 => _63.level]), () => ( 0));
@@ -632,13 +632,13 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
 
         const menuCaption =
 `✦ ʜᴀɪ ${mention} 👋\n\n` +
-          `ᴡᴇʟᴄᴏᴍᴇ ᴛᴏ ᴏᴜʀɪɴ ᴅᴇʟᴜxᴇ.\n` +
+          `ᴡᴇʟᴄᴏᴍᴇ ᴛᴏ ᴀʟ ᴍɪᴋᴜ ᴅᴇʟᴜxᴇ.\n` +
           `ʏᴏᴜʀ ᴘᴇʀsᴏɴᴀʟ ᴡʜᴀᴛsᴀᴘᴘ ᴀssɪsᴛᴀɴᴛ.\n\n` +
           `┌───「 ʙᴏᴛ ɪɴғᴏʀᴍᴀᴛɪᴏɴ 」\n` +
           `├ ɴᴀᴍᴇ : ${botName}\n` +
           `├ ᴠᴇʀsɪᴏɴ : ${botVersion}\n` +
           `├ ᴅᴇᴠᴇʟᴏᴘᴇʀ : ${developer}\n` +
-          `└ ʟɪʙʀᴀʀʏ : ourin-baileys\n\n` +
+          `└ ʟɪʙʀᴀʀʏ : almiku-baileys\n\n` +
           `┌───「 ᴜsᴇʀ ɪɴғᴏʀᴍᴀᴛɪᴏɴ 」\n` +
           `├ ɴᴀᴍᴇ : ${toMonoUpperBold(displayName)}\n` +
           `├ sᴛᴀᴛᴜs : ${role}\n` +
@@ -708,7 +708,7 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
           },
         ];
 
-        const imagePath = _optionalChain([botConfig, 'access', _73 => _73.assets, 'optionalAccess', _74 => _74["ourin-menu-header-blue"]]) || _optionalChain([botConfig, 'access', _75 => _75.assets, 'optionalAccess', _76 => _76.ourin]);
+        const imagePath = _optionalChain([botConfig, 'access', _73 => _73.assets, 'optionalAccess', _74 => _74["almiku-menu-header-blue"]]) || _optionalChain([botConfig, 'access', _75 => _75.assets, 'optionalAccess', _76 => _76.almiku]);
         if (!imagePath || !_fs2.default.existsSync(imagePath)) {
           await m.reply(menuCaption, { mentions: [m.sender] });
           break;
@@ -721,7 +721,7 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
           m,
           {
             buttons,
-            footer: `𝗢𝗨𝗥𝗜𝗡 𝗗𝗘𝗟𝗨𝗫𝗘 • 𝗩${botVersion}`,
+            footer: `𝗔𝗟 𝗠𝗜𝗞𝗤 𝗗𝗘𝗟𝗨𝗫𝗘 • 𝗩${botVersion}`,
             contextInfo: { mentionedJid: [m.sender] },
           },
         );
@@ -737,8 +737,8 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
           })
           s += "╰─⬣\n\n"
         });
-        const media = await _ourin.prepareWAMessageMedia.call(void 0, {
-          image: _fs2.default.readFileSync(_configjs2.default.assets["ourin"])
+        const media = await _almiku.prepareWAMessageMedia.call(void 0, {
+          image: _fs2.default.readFileSync(_configjs2.default.assets["almiku"])
         }, { upload: sock.waUploadToServer })
         const readmore = String.fromCharCode(8206).repeat(4001)
         await sock.relayMessage(
@@ -870,7 +870,7 @@ ${readmore}${s}`
               },
             ],
             locationMessage: {
-              jpegThumbnail: await _sharp3.default.call(void 0, _fs2.default.readFileSync(_configjs2.default.assets["ourin"])).resize(300, 170).toBuffer(),
+              jpegThumbnail: await _sharp3.default.call(void 0, _fs2.default.readFileSync(_configjs2.default.assets["almiku"])).resize(300, 170).toBuffer(),
               name: _configjs2.default.bot.name,
               address: `Versión: ${_configjs2.default.bot.version}`
             },
@@ -896,7 +896,7 @@ ${readmore}${s}`
           },
         };
 
-        const msg = _ourin.generateWAMessageFromContent.call(void 0, m.chat, content, {
+        const msg = _almiku.generateWAMessageFromContent.call(void 0, m.chat, content, {
           userJid: sock.user.jid,
         });
 
@@ -906,7 +906,7 @@ ${readmore}${s}`
         break
 
       case 4: {
-        const thumbnail = await _sharp3.default.call(void 0, _fs2.default.readFileSync(_configjs2.default.assets["ourin"])).resize(300, 300).toBuffer()
+        const thumbnail = await _sharp3.default.call(void 0, _fs2.default.readFileSync(_configjs2.default.assets["almiku"])).resize(300, 300).toBuffer()
         const qvideo = {
           key: {
             fromMe: false,
@@ -922,8 +922,8 @@ ${readmore}${s}`
             }
           }
         }
-        const media4 = await _ourin.prepareWAMessageMedia.call(void 0, {
-          video: _fs2.default.readFileSync(_configjs2.default.assets["ourin-mp4"]),
+        const media4 = await _almiku.prepareWAMessageMedia.call(void 0, {
+          video: _fs2.default.readFileSync(_configjs2.default.assets["almiku-mp4"]),
           gifPlayback: true
         }, { upload: sock.waUploadToServer });
         let singlePush = categories.sorted.map(cat => {
@@ -948,7 +948,7 @@ ${readmore}${s}`
             })
           }
         })
-        const msg4 = _ourin.generateWAMessageFromContent.call(void 0, m.chat, {
+        const msg4 = _almiku.generateWAMessageFromContent.call(void 0, m.chat, {
           viewOnceMessage: {
             message: {
               messageContextInfo: {},
@@ -1080,7 +1080,7 @@ ${readmore}${s}`
             return "Cuaca no está disponible"
           }
         }
-        const thumbnail = await _sharp3.default.call(void 0, _fs2.default.readFileSync(_configjs2.default.assets["ourin"])).resize(300, 300).toBuffer()
+        const thumbnail = await _sharp3.default.call(void 0, _fs2.default.readFileSync(_configjs2.default.assets["almiku"])).resize(300, 300).toBuffer()
         const qOrder = {
           key: {
             fromMe: false,
@@ -1096,11 +1096,11 @@ ${readmore}${s}`
             }
           }
         }
-        const media4 = await _ourin.prepareWAMessageMedia.call(void 0, {
-          video: _fs2.default.readFileSync(_configjs2.default.assets["ourin-mp4"]),
+        const media4 = await _almiku.prepareWAMessageMedia.call(void 0, {
+          video: _fs2.default.readFileSync(_configjs2.default.assets["almiku-mp4"]),
           gifPlayback: true
         }, { upload: sock.waUploadToServer });
-        const msg4 = _ourin.generateWAMessageFromContent.call(void 0, m.chat, {
+        const msg4 = _almiku.generateWAMessageFromContent.call(void 0, m.chat, {
           viewOnceMessage: {
             message: {
               messageContextInfo: {},
@@ -1272,8 +1272,8 @@ ${readmore}${s}`
           topCmdText += `╭   •eram hay comando\n╰➤-...\n`
         }
 
-        const thumbnail = await _sharp3.default.call(void 0, _fs2.default.readFileSync(_configjs2.default.assets["ourin"])).resize(300, 300).toBuffer()
-        const msg6 = _ourin.generateWAMessageFromContent.call(void 0, m.chat, {
+        const thumbnail = await _sharp3.default.call(void 0, _fs2.default.readFileSync(_configjs2.default.assets["almiku"])).resize(300, 300).toBuffer()
+        const msg6 = _almiku.generateWAMessageFromContent.call(void 0, m.chat, {
           viewOnceMessage: {
             message: {
               messageContextInfo: {},
@@ -1283,7 +1283,7 @@ ${readmore}${s}`
                   locationMessage: {
                     degreesLatitude: 0,
                     degreesLongitude: 0,
-                    name: _optionalChain([_configjs2.default, 'access', _125 => _125.bot, 'optionalAccess', _126 => _126.name]) || "Ourin-AI",
+                    name: _optionalChain([_configjs2.default, 'access', _125 => _125.bot, 'optionalAccess', _126 => _126.name]) || "Al Miku-AI",
                     address: await weatherMenu(),
                     jpegThumbnail: thumbnail
                   }
@@ -1410,12 +1410,12 @@ I'm ${botName}, your intelligent assistant powered by ${_optionalChain([_configj
         case7Text += `╰╯`;
 
 
-        const { getAssetBuffer } = await Promise.resolve().then(() => _interopRequireWildcard(require("../../src/lib/ourin-asset-manager.js")));
-        const imageBuffer = await getAssetBuffer("ourin2");
+        const { getAssetBuffer } = await Promise.resolve().then(() => _interopRequireWildcard(require("../../src/lib/almiku-asset-manager.js")));
+        const imageBuffer = await getAssetBuffer("almiku2");
         const sharp = (await Promise.resolve().then(() => _interopRequireWildcard(require("sharp")))).default;
         const stickerBuf = await sharp(imageBuffer).resize(512, 512).webp().toBuffer();
 
-        const { prepareWAMessageMedia } = await Promise.resolve().then(() => _interopRequireWildcard(require("ourin")));
+        const { prepareWAMessageMedia } = await Promise.resolve().then(() => _interopRequireWildcard(require("almiku")));
         const uploadMedia = await prepareWAMessageMedia({ image: stickerBuf }, { upload: sock.waUploadToServer });
 
         const fakeQuotedSticker = {
@@ -1432,13 +1432,13 @@ I'm ${botName}, your intelligent assistant powered by ${_optionalChain([_configj
           }
         };
 
-        const { generateWAMessageFromContent } = await Promise.resolve().then(() => _interopRequireWildcard(require("ourin")));
+        const { generateWAMessageFromContent } = await Promise.resolve().then(() => _interopRequireWildcard(require("almiku")));
         const menuMedia = await prepareWAMessageMedia({
-          image: await getAssetBuffer("ourin")
+          image: await getAssetBuffer("almiku")
         }, { upload: sock.waUploadToServer });
 
         const videoLive = await prepareWAMessageMedia({
-          video: await getAssetBuffer("ourin-mp4")
+          video: await getAssetBuffer("almiku-mp4")
         }, { upload: sock.waUploadToServer });
 
         const msg = generateWAMessageFromContent(m.chat, {
@@ -1582,14 +1582,14 @@ I'm ${botName}, your intelligent assistant powered by ${_optionalChain([_configj
         }
         case7Text = case7Text.trimEnd();
 
-        const { getAssetBuffer } = await Promise.resolve().then(() => _interopRequireWildcard(require("../../src/lib/ourin-asset-manager.js")));
-        const imageBuffer = await getAssetBuffer("ourin");
-        const favB = await getAssetBuffer("ourin2");
+        const { getAssetBuffer } = await Promise.resolve().then(() => _interopRequireWildcard(require("../../src/lib/almiku-asset-manager.js")));
+        const imageBuffer = await getAssetBuffer("almiku");
+        const favB = await getAssetBuffer("almiku2");
         const sharp = (await Promise.resolve().then(() => _interopRequireWildcard(require("sharp")))).default;
         const thumbBuf = await sharp(imageBuffer).resize(1280, 720).jpeg().toBuffer();
         const favBuf = await sharp(favB).resize(512, 512).jpeg().toBuffer();
 
-        const { prepareWAMessageMedia, generateWAMessageFromContent } = await Promise.resolve().then(() => _interopRequireWildcard(require("ourin")));
+        const { prepareWAMessageMedia, generateWAMessageFromContent } = await Promise.resolve().then(() => _interopRequireWildcard(require("almiku")));
         const uploadMedia = await prepareWAMessageMedia({ image: thumbBuf }, { upload: sock.waUploadToServer, mediaTypeOverride: "thumbnail-link" });
         const uploadFav = await prepareWAMessageMedia({ image: favBuf }, { upload: sock.waUploadToServer, mediaTypeOverride: "thumbnail-link" });
 
@@ -1679,7 +1679,7 @@ I'm ${botName}, your intelligent assistant powered by ${_optionalChain([_configj
     }
     const audioEnabled = db.setting("audioMenu") !== false;
     if (audioEnabled) {
-      const audioUrl = botConfig.assets["ourin-mp3"];
+      const audioUrl = botConfig.assets["almiku-mp3"];
       try {
         switch (menuVariant) {
           case 1:
@@ -1758,7 +1758,7 @@ I'm ${botName}, your intelligent assistant powered by ${_optionalChain([_configj
               }, { quoted: qpoll });
             } catch (err) {
               await sock.sendMessage(m.chat, {
-                audio: _fs2.default.readFileSync(_configjs2.default.assets["ourin-mp3"]),
+                audio: _fs2.default.readFileSync(_configjs2.default.assets["almiku-mp3"]),
                 mimetype: "audio/mpeg",
                 ptt: false,
               }, { quoted: qpoll });
@@ -1776,7 +1776,7 @@ I'm ${botName}, your intelligent assistant powered by ${_optionalChain([_configj
               }
             };
             await sock.sendMessage(m.chat, {
-              audio: _fs2.default.readFileSync(_configjs2.default.assets["ourin-mp3"]),
+              audio: _fs2.default.readFileSync(_configjs2.default.assets["almiku-mp3"]),
               mimetype: "audio/mpeg",
               ptt: false,
             }, { quoted: qtext });
@@ -1848,7 +1848,7 @@ I'm ${botName}, your intelligent assistant powered by ${_optionalChain([_configj
                   sellerJid: botConfig.botNumber
                     ? `${botConfig.botNumber}@s.whatsapp.net`
                     : m.sender,
-                  token: "ourin-menu-v8",
+                  token: "almiku-menu-v8",
                   totalAmount1000: 3333333,
                   totalCurrencyCode: "IDR",
                   contextInfo: {
@@ -1867,7 +1867,7 @@ I'm ${botName}, your intelligent assistant powered by ${_optionalChain([_configj
               await sock.sendMessage(
                 m.chat,
                 {
-                  audio: _fs2.default.readFileSync(_configjs2.default.assets["ourin-mp3"]),
+                  audio: _fs2.default.readFileSync(_configjs2.default.assets["almiku-mp3"]),
                   mimetype: "audio/mpeg",
                 },
                 { quoted: ftroliQuoted },
@@ -1876,7 +1876,7 @@ I'm ${botName}, your intelligent assistant powered by ${_optionalChain([_configj
               await sock.sendMessage(
                 m.chat,
                 {
-                  audio: _fs2.default.readFileSync(_configjs2.default.assets["ourin-mp3"]),
+                  audio: _fs2.default.readFileSync(_configjs2.default.assets["almiku-mp3"]),
                   mimetype: "audio/mpeg",
                   contextInfo: getContextInfo(botConfig, m, thumbBuffer),
                 },

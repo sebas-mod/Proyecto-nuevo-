@@ -1,9 +1,9 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _fs = require('fs'); var _fs2 = _interopRequireDefault(_fs);
 var _path = require('path'); var _path2 = _interopRequireDefault(_path);
 var _lufemboyjs = require('../../src/scraper/lufemboy.js'); var _lufemboyjs2 = _interopRequireDefault(_lufemboyjs);
-var _ourinffmpegjs = require('../../src/lib/ourin-ffmpeg.js');
-var _ourinutilsjs = require('../../src/lib/ourin-utils.js');
-var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
+var _almikuffmpegjs = require('../../src/lib/almiku-ffmpeg.js');
+var _almikuutilsjs = require('../../src/lib/almiku-utils.js');
+var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
 const pluginConfig = {
   name: "cekfemboy",
   alias: ["femboy"],
@@ -30,7 +30,7 @@ async function convertGifToMp4(buffer) {
 
   try {
     _fs2.default.writeFileSync(gifPath, buffer);
-    await _ourinffmpegjs.queueFFmpeg.call(void 0, 
+    await _almikuffmpegjs.queueFFmpeg.call(void 0, 
       `ffmpeg -y -ignore_loop 0 -i "${gifPath}" -t 30 -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2" -c:v libx264 -pix_fmt yuv420p -movflags faststart -preset ultrafast -an "${mp4Path}"`,
     );
     if (!_fs2.default.existsSync(mp4Path)) throw new Error("GIF convertido stuntman");
@@ -58,7 +58,7 @@ async function handler(m, { sock }) {
 
     let buffer = null;
     try {
-      buffer = await _ourinutilsjs.fetchBuffer.call(void 0, result.gif);
+      buffer = await _almikuutilsjs.fetchBuffer.call(void 0, result.gif);
     } catch (e) {}
 
     let videoBuffer = null;
@@ -88,7 +88,7 @@ ${result.hasil}`;
 
     await m.reply(txt, { mentions: [mentioned] });
   } catch (err) {
-    return m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
+    return m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
   }
 }
 

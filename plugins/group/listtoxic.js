@@ -1,4 +1,4 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true});var _ourindatabasejs = require('../../src/lib/ourin-database.js');
+"use strict";Object.defineProperty(exports, "__esModule", {value: true});var _almikudatabasejs = require('../../src/lib/almiku-database.js');
 var _antitoxicjs = require('./antitoxic.js');
 const pluginConfig = {
     name: 'listtoxic',
@@ -18,7 +18,7 @@ const pluginConfig = {
 }
 
 async function handler(m, { sock }) {
-    const db = _ourindatabasejs.getDatabase.call(void 0, )
+    const db = _almikudatabasejs.getDatabase.call(void 0, )
     const groupData = db.getGroup(m.chat) || {}
     
     const customWords = groupData.toxicWords || []

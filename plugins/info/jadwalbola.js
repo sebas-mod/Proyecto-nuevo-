@@ -1,7 +1,7 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _axios = require('axios'); var _axios2 = _interopRequireDefault(_axios);
 var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
-var _ourinhttpjs = require('../../src/lib/ourin-http.js');
-var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
+var _almikuhttpjs = require('../../src/lib/almiku-http.js');
+var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
 const pluginConfig = {
   name: "jadwalbola",
   alias: ["bola", "football", "soccer", "jadwalsepakbola"],
@@ -48,7 +48,7 @@ async function handler(m, { sock }) {
   m.react("🕕");
 
   try {
-    const data = await _ourinhttpjs.f.call(void 0, 
+    const data = await _almikuhttpjs.f.call(void 0, 
       `https://api.neoxr.eu/api/bola?apikey=${NEOXR_APIKEY}`,
     );
 
@@ -81,7 +81,7 @@ async function handler(m, { sock }) {
     }
 
     const saluranId = _optionalChain([_configjs2.default, 'access', _25 => _25.saluran, 'optionalAccess', _26 => _26.id]) || "120363400911374213@newsletter";
-    const saluranName = _optionalChain([_configjs2.default, 'access', _27 => _27.saluran, 'optionalAccess', _28 => _28.name]) || _optionalChain([_configjs2.default, 'access', _29 => _29.bot, 'optionalAccess', _30 => _30.name]) || "Ourin-AI";
+    const saluranName = _optionalChain([_configjs2.default, 'access', _27 => _27.saluran, 'optionalAccess', _28 => _28.name]) || _optionalChain([_configjs2.default, 'access', _29 => _29.bot, 'optionalAccess', _30 => _30.name]) || "Al Miku-AI";
 
     let text = `⚽ *ᴊᴀᴅᴡᴀʟ ᴘᴇʀᴛᴀɴᴅɪɴɢᴀɴ*\n\n`;
     if (filter) text += `> Filter: \`${filter}\`\n\n`;
@@ -105,7 +105,7 @@ async function handler(m, { sock }) {
     await m.reply(text);
   } catch (err) {
     m.react("☢");
-    return m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
+    return m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
   }
 }
 

@@ -4,18 +4,18 @@
 
 
 
-var _ourinlidjs = require('../../src/lib/ourin-lid.js');
+var _almikulidjs = require('../../src/lib/almiku-lid.js');
 var _momenttimezone = require('moment-timezone'); var _momenttimezone2 = _interopRequireDefault(_momenttimezone);
 var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
-var _ourindatabasejs = require('../../src/lib/ourin-database.js');
-var _ourincontextjs = require('../../src/lib/ourin-context.js');
-var _ourinwelcomecardjs = require('../../src/lib/ourin-welcome-card.js');
+var _almikudatabasejs = require('../../src/lib/almiku-database.js');
+var _almikucontextjs = require('../../src/lib/almiku-context.js');
+var _almikuwelcomecardjs = require('../../src/lib/almiku-welcome-card.js');
 
 var _path = require('path'); var _path2 = _interopRequireDefault(_path);
 var _fs = require('fs'); var _fs2 = _interopRequireDefault(_fs);
-var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
-var _ourinassetmanagerjs = require('../../src/lib/ourin-asset-manager.js');
-var _ourin = require('ourin');
+var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
+var _almikuassetmanagerjs = require('../../src/lib/almiku-asset-manager.js');
+var _almiku = require('almiku');
 function resolvePlaceholders(
   template,
   username,
@@ -46,7 +46,7 @@ function resolvePlaceholders(
     .replace(/{date}/gi, now.format("DD/MM/YYYY"))
     .replace(/{time}/gi, now.format("HH:mm"))
     .replace(/{day}/gi, dayId)
-    .replace(/{bot}/gi, _optionalChain([_configjs2.default, 'access', _3 => _3.bot, 'optionalAccess', _4 => _4.name]) || "Ourin")
+    .replace(/{bot}/gi, _optionalChain([_configjs2.default, 'access', _3 => _3.bot, 'optionalAccess', _4 => _4.name]) || "Al Miku")
     .replace(/{prefix}/gi, prefix);
 }
 const pluginConfig = {
@@ -149,30 +149,30 @@ Los mejores deseos para ella.`,
 }
 async function sendGoodbyeMessage(sock, groupJid, participant, groupMeta) {
   try {
-    const db = _ourindatabasejs.getDatabase.call(void 0, );
+    const db = _almikudatabasejs.getDatabase.call(void 0, );
     const groupData = db.getGroup(groupJid);
     if (_optionalChain([groupData, 'optionalAccess', _8 => _8.goodbye]) !== true && _optionalChain([groupData, 'optionalAccess', _9 => _9.leave]) !== true) return false;
     const goodbyeType = db.setting("goodbyeType") || 1;
     if (_optionalChain([groupMeta, 'optionalAccess', _10 => _10.participants])) {
-      _ourinlidjs.cacheParticipantLids.call(void 0, groupMeta.participants);
+      _almikulidjs.cacheParticipantLids.call(void 0, groupMeta.participants);
     }
     let realParticipant = participant;
-    const cachedJid = _ourinlidjs.getCachedJid.call(void 0, participant);
-    if (cachedJid && !_ourinlidjs.isLidConverted.call(void 0, cachedJid)) {
+    const cachedJid = _almikulidjs.getCachedJid.call(void 0, participant);
+    if (cachedJid && !_almikulidjs.isLidConverted.call(void 0, cachedJid)) {
       realParticipant = cachedJid;
-    } else if (_ourinlidjs.isLid.call(void 0, participant)) {
+    } else if (_almikulidjs.isLid.call(void 0, participant)) {
       const lidFormat = participant;
-      const cachedFromLid = _ourinlidjs.getCachedJid.call(void 0, lidFormat);
-      if (cachedFromLid && !_ourinlidjs.isLidConverted.call(void 0, cachedFromLid)) {
+      const cachedFromLid = _almikulidjs.getCachedJid.call(void 0, lidFormat);
+      if (cachedFromLid && !_almikulidjs.isLidConverted.call(void 0, cachedFromLid)) {
         realParticipant = cachedFromLid;
       } else {
-        realParticipant = _ourinlidjs.lidToJid.call(void 0, participant);
+        realParticipant = _almikulidjs.lidToJid.call(void 0, participant);
       }
-    } else if (_ourinlidjs.isLidConverted.call(void 0, participant)) {
+    } else if (_almikulidjs.isLidConverted.call(void 0, participant)) {
       const lidNumber = participant.replace("@s.whatsapp.net", "");
       const lidFormat = lidNumber + "@lid";
-      const cachedFromLid = _ourinlidjs.getCachedJid.call(void 0, lidFormat);
-      if (cachedFromLid && !_ourinlidjs.isLidConverted.call(void 0, cachedFromLid)) {
+      const cachedFromLid = _almikulidjs.getCachedJid.call(void 0, lidFormat);
+      if (cachedFromLid && !_almikulidjs.isLidConverted.call(void 0, cachedFromLid)) {
         realParticipant = cachedFromLid;
       }
     }
@@ -194,7 +194,7 @@ async function sendGoodbyeMessage(sock, groupJid, participant, groupMeta) {
       _optionalChain([_configjs2.default, 'access', _24 => _24.command, 'optionalAccess', _25 => _25.prefix]) || ".",
     );
     const saluranId = _optionalChain([_configjs2.default, 'access', _26 => _26.saluran, 'optionalAccess', _27 => _27.id]) || "120363400911374213@newsletter";
-    const saluranName = _optionalChain([_configjs2.default, 'access', _28 => _28.saluran, 'optionalAccess', _29 => _29.name]) || _optionalChain([_configjs2.default, 'access', _30 => _30.bot, 'optionalAccess', _31 => _31.name]) || "Ourin-AI";
+    const saluranName = _optionalChain([_configjs2.default, 'access', _28 => _28.saluran, 'optionalAccess', _29 => _29.name]) || _optionalChain([_configjs2.default, 'access', _30 => _30.bot, 'optionalAccess', _31 => _31.name]) || "Al Miku-AI";
     if (goodbyeType === 2) {
       const cardBody = _optionalChain([groupData, 'optionalAccess', _32 => _32.goodbyeMsg])
         ? resolvePlaceholders(
@@ -212,7 +212,7 @@ async function sendGoodbyeMessage(sock, groupJid, participant, groupMeta) {
           body: {
             text: `👋 *Sayonara* *@${userName}*`,
           },
-          footer: { text: _optionalChain([_configjs2.default, 'access', _41 => _41.bot, 'optionalAccess', _42 => _42.name]) || "Ourin-AI" },
+          footer: { text: _optionalChain([_configjs2.default, 'access', _41 => _41.bot, 'optionalAccess', _42 => _42.name]) || "Al Miku-AI" },
           header: { title: "Goodbye", hasMediaAttachment: false },
           carouselMessage: {
             cards: [
@@ -223,7 +223,7 @@ async function sendGoodbyeMessage(sock, groupJid, participant, groupMeta) {
                 body: {
                   text: cardBody,
                 },
-                footer: { text: _optionalChain([_configjs2.default, 'access', _43 => _43.bot, 'optionalAccess', _44 => _44.name]) || "Ourin-AI" },
+                footer: { text: _optionalChain([_configjs2.default, 'access', _43 => _43.bot, 'optionalAccess', _44 => _44.name]) || "Al Miku-AI" },
                 nativeFlowMessage: {
                   buttons: [
                     {
@@ -241,7 +241,7 @@ async function sendGoodbyeMessage(sock, groupJid, participant, groupMeta) {
             carouselCardType: 1,
           },
           contextInfo: {
-            ..._ourincontextjs.saluranCtx.call(void 0, ),
+            ..._almikucontextjs.saluranCtx.call(void 0, ),
             mentionedJid: [realParticipant],
           },
         },
@@ -261,7 +261,7 @@ async function sendGoodbyeMessage(sock, groupJid, participant, groupMeta) {
       await sock.sendMessage(groupJid, {
         text: textOnly,
         contextInfo: {
-          ..._ourincontextjs.saluranCtx.call(void 0, ),
+          ..._almikucontextjs.saluranCtx.call(void 0, ),
           mentionedJid: [realParticipant],
           forwardedNewsletterMessageInfo: {
             newsletterName: _optionalChain([_configjs2.default, 'optionalAccess', _54 => _54.saluran, 'optionalAccess', _55 => _55.name]),
@@ -273,7 +273,7 @@ async function sendGoodbyeMessage(sock, groupJid, participant, groupMeta) {
       await sock.sendText(groupJid, text, null, {
         mentions: [realParticipant],
         contextInfo: {
-          ..._ourincontextjs.saluranCtx.call(void 0, ),
+          ..._almikucontextjs.saluranCtx.call(void 0, ),
           mentionedJid: [realParticipant],
         },
       });
@@ -296,7 +296,7 @@ async function sendGoodbyeMessage(sock, groupJid, participant, groupMeta) {
       );
     } else if (goodbyeType === 6) {
       await sock.sendMessage(groupJid, {
-        video: _ourinassetmanagerjs.getAssetBuffer.call(void 0, "ourin-mp4") || { url: "https://files.catbox.moe/k28dhp.mp4" },
+        video: _almikuassetmanagerjs.getAssetBuffer.call(void 0, "almiku-mp4") || { url: "https://files.catbox.moe/k28dhp.mp4" },
         gifPlayback: true,
         caption: text,
         contextInfo: {
@@ -315,11 +315,11 @@ async function sendGoodbyeMessage(sock, groupJid, participant, groupMeta) {
         }
       };
 
-      const media = await _ourin.prepareWAMessageMedia.call(void 0, {
+      const media = await _almiku.prepareWAMessageMedia.call(void 0, {
         image: { url: ppUrl }
       }, { upload: sock.waUploadToServer });
 
-      const msg = _ourin.generateWAMessageFromContent.call(void 0, groupJid, {
+      const msg = _almiku.generateWAMessageFromContent.call(void 0, groupJid, {
         viewOnceMessage: {
           message: {
             messageContextInfo: {},
@@ -334,7 +334,7 @@ async function sendGoodbyeMessage(sock, groupJid, participant, groupMeta) {
                 text: text
               },
               footer: {
-                text: _optionalChain([_configjs2.default, 'access', _58 => _58.bot, 'optionalAccess', _59 => _59.name]) || "Ourin-AI"
+                text: _optionalChain([_configjs2.default, 'access', _58 => _58.bot, 'optionalAccess', _59 => _59.name]) || "Al Miku-AI"
               },
               contextInfo: {
                 mentionedJid: [realParticipant],
@@ -373,7 +373,7 @@ async function sendGoodbyeMessage(sock, groupJid, participant, groupMeta) {
     } else {
       let canvasBuffer = null;
       try {
-        canvasBuffer = await _ourinwelcomecardjs.createGoodbyeCard.call(void 0, 
+        canvasBuffer = await _almikuwelcomecardjs.createGoodbyeCard.call(void 0, 
           userName,
           ppUrl,
           groupName,
@@ -387,7 +387,7 @@ async function sendGoodbyeMessage(sock, groupJid, participant, groupMeta) {
         caption: text,
         mentions: [realParticipant],
         contextInfo: {
-          ..._ourincontextjs.saluranCtx.call(void 0, ),
+          ..._almikucontextjs.saluranCtx.call(void 0, ),
           mentionedJid: [realParticipant],
           forwardedNewsletterMessageInfo: {
             newsletterJid: saluranId,
@@ -404,7 +404,7 @@ async function sendGoodbyeMessage(sock, groupJid, participant, groupMeta) {
   }
 }
 async function handler(m, { sock }) {
-  const db = _ourindatabasejs.getDatabase.call(void 0, );
+  const db = _almikudatabasejs.getDatabase.call(void 0, );
   const args = m.args || [];
   const sub = _optionalChain([args, 'access', _60 => _60[0], 'optionalAccess', _61 => _61.toLowerCase, 'call', _62 => _62()]);
   const sub2 = _optionalChain([args, 'access', _63 => _63[1], 'optionalAccess', _64 => _64.toLowerCase, 'call', _65 => _65()]);
@@ -430,7 +430,7 @@ async function handler(m, { sock }) {
       );
     } catch (err) {
       m.react("☢");
-      return m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
+      return m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
     }
   }
   if (sub === "off" && sub2 === "all") {
@@ -453,7 +453,7 @@ async function handler(m, { sock }) {
       );
     } catch (err) {
       m.react("☢");
-      return m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
+      return m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
     }
   }
   if (sub === "on") {

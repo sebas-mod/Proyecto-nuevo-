@@ -1,5 +1,5 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
-var _ourindatabasejs = require('../../src/lib/ourin-database.js');
+var _almikudatabasejs = require('../../src/lib/almiku-database.js');
 var _fs = require('fs'); var _fs2 = _interopRequireDefault(_fs);
 var _path = require('path'); var _path2 = _interopRequireDefault(_path);
 const pluginConfig = {
@@ -55,7 +55,7 @@ async function handler(m, { sock, db }) {
 
     await sock.sendMessage(m.chat, {
         text: `🎨*ᴇᴛ ᴏᴡɴᴇʀ ᴛʏᴘᴇ*\n\n* Tipo actual: * V${current}*\n> _${VARIANTS[current].name}¿Qué?\n\n* Elija el propietario de la variante:`,
-        footer: _optionalChain([_configjs2.default, 'access', _4 => _4.bot, 'optionalAccess', _5 => _5.name]) || 'Ourin-AI',
+        footer: _optionalChain([_configjs2.default, 'access', _4 => _4.bot, 'optionalAccess', _5 => _5.name]) || 'Al Miku-AI',
         contextInfo: {
             mentionedJid: [m.sender],
             isForwarded: true,

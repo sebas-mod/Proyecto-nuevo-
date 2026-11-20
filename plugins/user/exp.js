@@ -1,5 +1,5 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _ourindatabasejs = require('../../src/lib/ourin-database.js');
-var _ourinleveljs = require('../../src/lib/ourin-level.js');
+"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _almikudatabasejs = require('../../src/lib/almiku-database.js');
+var _almikuleveljs = require('../../src/lib/almiku-level.js');
 
 const pluginConfig = {
     name: 'exp',
@@ -25,7 +25,7 @@ function formatNumber(num) {
 }
 
 async function handler(m, { sock }) {
-    const db = _ourindatabasejs.getDatabase.call(void 0, )
+    const db = _almikudatabasejs.getDatabase.call(void 0, )
     
     let targetJid = m.sender
     let targetName = m.pushName || 'Tu'
@@ -40,8 +40,8 @@ async function handler(m, { sock }) {
     
     const user = db.getUser(targetJid) || db.setUser(targetJid)
     const expDisplay = formatNumber(user.exp || 0)
-    const level = _ourinleveljs.calculateLevel.call(void 0, user.exp || 0)
-    const title = _ourinleveljs.getRole.call(void 0, level)
+    const level = _almikuleveljs.calculateLevel.call(void 0, user.exp || 0)
+    const title = _almikuleveljs.getRole.call(void 0, level)
     
     let text = `*〔 ⭐EXP INFO〕*\n\n`
 

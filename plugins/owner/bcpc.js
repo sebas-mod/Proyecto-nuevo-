@@ -1,5 +1,5 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _ourindatabasejs = require('../../src/lib/ourin-database.js');
-var _ourinlidjs = require('../../src/lib/ourin-lid.js');
+"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _almikudatabasejs = require('../../src/lib/almiku-database.js');
+var _almikulidjs = require('../../src/lib/almiku-lid.js');
 var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
 
 const pluginConfig = {
@@ -35,7 +35,7 @@ function getBcContextInfo() {
 }
 
 async function handler(m, { sock }) {
-  const db = _ourindatabasejs.getDatabase.call(void 0, );
+  const db = _almikudatabasejs.getDatabase.call(void 0, );
   const input = _optionalChain([m, 'access', _7 => _7.fullArgs, 'optionalAccess', _8 => _8.trim, 'call', _9 => _9()]) || _optionalChain([m, 'access', _10 => _10.text, 'optionalAccess', _11 => _11.trim, 'call', _12 => _12()]) || "";
 
   if (!input) {
@@ -82,7 +82,7 @@ async function handler(m, { sock }) {
     const chatsMap = _optionalChain([sock, 'access', _18 => _18.store, 'optionalAccess', _19 => _19.chats]);
     if (chatsMap) {
       for (const [jid] of chatsMap.entries()) {
-        const decoded = _ourinlidjs.decodeAndNormalize.call(void 0, jid);
+        const decoded = _almikulidjs.decodeAndNormalize.call(void 0, jid);
         if (decoded && decoded.endsWith("@s.whatsapp.net")) {
           const num = decoded.split("@")[0];
           if (num !== botNum) privateJids.add(decoded);
@@ -93,7 +93,7 @@ async function handler(m, { sock }) {
     const messagesMap = _optionalChain([sock, 'access', _20 => _20.store, 'optionalAccess', _21 => _21.messages]);
     if (messagesMap) {
       for (const [jid] of messagesMap.entries()) {
-        const decoded = _ourinlidjs.decodeAndNormalize.call(void 0, jid);
+        const decoded = _almikulidjs.decodeAndNormalize.call(void 0, jid);
         if (decoded && decoded.endsWith("@s.whatsapp.net")) {
           const num = decoded.split("@")[0];
           if (num !== botNum) privateJids.add(decoded);
@@ -104,7 +104,7 @@ async function handler(m, { sock }) {
     const contactsObj = _optionalChain([sock, 'access', _22 => _22.store, 'optionalAccess', _23 => _23.contacts]);
     if (contactsObj) {
       for (const jid of Object.keys(contactsObj)) {
-        const decoded = _ourinlidjs.decodeAndNormalize.call(void 0, jid);
+        const decoded = _almikulidjs.decodeAndNormalize.call(void 0, jid);
         if (decoded && decoded.endsWith("@s.whatsapp.net")) {
           const num = decoded.split("@")[0];
           if (num !== botNum) privateJids.add(decoded);

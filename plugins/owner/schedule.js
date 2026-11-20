@@ -1,4 +1,4 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
+"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
 /**
 * @ llenar plugins / propietario / programa.
 * @ descripción Mando para reubicar mensajes programados
@@ -13,7 +13,7 @@
 
 
 
-var _ourinschedulerjs = require('../../src/lib/ourin-scheduler.js');
+var _almikuschedulerjs = require('../../src/lib/almiku-scheduler.js');
 /**
 * Configuración de los plugins
  */
@@ -565,7 +565,7 @@ function parseEditInput(m, args, task) {
 }
 
 function findTaskById(taskId) {
-  return _ourinschedulerjs.getScheduledMessages.call(void 0, ).find((task) => task.id === taskId) || null;
+  return _almikuschedulerjs.getScheduledMessages.call(void 0, ).find((task) => task.id === taskId) || null;
 }
 
 function buildCategoryListText(tasks) {
@@ -614,14 +614,14 @@ function buildListText(tasks, header = null) {
   let text = `${header || `📅 *SCHEDULE PLANNER (${sorted.length})*`}\n\n`;
 
   for (const task of sorted) {
-    const msUntil = _ourinschedulerjs.getMsUntilTime.call(void 0, task.hour, task.minute);
+    const msUntil = _almikuschedulerjs.getMsUntilTime.call(void 0, task.hour, task.minute);
     text += `• *${getTaskTitle(task)}*\n`;
     text += `  🆔 ${task.id}\n`;
     text += `  🏷️ ${getTaskCategory(task)}\n`;
     text += `  ⏰ ${formatClock(task.hour, task.minute)} ART\n`;
     text += `  📍 ${getTaskTargetLabel(task)}\n`;
     text += `  🔄 ${task.repeat ? "Harian" : "Sekali"}\n`;
-    text += `  🕕 ${_ourinschedulerjs.formatTimeRemaining.call(void 0, msUntil)} lagi\n`;
+    text += `  🕕 ${_almikuschedulerjs.formatTimeRemaining.call(void 0, msUntil)} lagi\n`;
     text += `  📝 ${truncateText(getTaskText(task))}\n\n`;
   }
 
@@ -629,7 +629,7 @@ function buildListText(tasks, header = null) {
 }
 
 function buildDetailText(task) {
-  const msUntil = _ourinschedulerjs.getMsUntilTime.call(void 0, task.hour, task.minute);
+  const msUntil = _almikuschedulerjs.getMsUntilTime.call(void 0, task.hour, task.minute);
   return `📌 *DETAIL JADWAL*
 
 🆔 ID: \`${task.id}\`
@@ -638,7 +638,7 @@ function buildDetailText(task) {
 ⏰Tiempo:${formatClock(task.hour, task.minute)} ART
 📍 Objetivo: ${getTaskTargetLabel(task)}
 🔄 Mode: ${task.repeat ? "Harian" : "Sekali"}
-🕕 Next run: ${_ourinschedulerjs.formatTimeRemaining.call(void 0, msUntil)}otra vez
+🕕 Next run: ${_almikuschedulerjs.formatTimeRemaining.call(void 0, msUntil)}otra vez
 🗓️ Creado:${task.createdAt || "-"}
 
 Mensaje custom:
@@ -662,9 +662,9 @@ async function handler(m, { sock, args }) {
         const parsed = parsePlannerInput(m, args);
         const id = `sched_${Date.now()}`;
 
-        await _ourinschedulerjs.scheduleMessage.call(void 0, buildTaskPayload(id, parsed), sock);
+        await _almikuschedulerjs.scheduleMessage.call(void 0, buildTaskPayload(id, parsed), sock);
 
-        const msUntil = _ourinschedulerjs.getMsUntilTime.call(void 0, parsed.hour, parsed.minute);
+        const msUntil = _almikuschedulerjs.getMsUntilTime.call(void 0, parsed.hour, parsed.minute);
 
         await m.reply(`✅* JADWAL MAKES PRETTY*
 
@@ -674,7 +674,7 @@ async function handler(m, { sock, args }) {
 ⏰Tiempo:${parsed.label} ART
 📍 Objetivo: ${parsed.target.label}
 🔄 Mode: ${parsed.repeat ? "Harian" : "Sekali"}
-🕕 Next run: ${_ourinschedulerjs.formatTimeRemaining.call(void 0, msUntil)}otra vez
+🕕 Next run: ${_almikuschedulerjs.formatTimeRemaining.call(void 0, msUntil)}otra vez
 
 Text custom:
 ${truncateText(parsed.customText, 180)}`);
@@ -682,7 +682,7 @@ ${truncateText(parsed.customText, 180)}`);
         await m.reply(
           _optionalChain([error, 'access', _6 => _6.message, 'optionalAccess', _7 => _7.startsWith, 'call', _8 => _8("❌")])
             ? error.message
-            : _ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName),
+            : _almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName),
         );
       }
       break;
@@ -698,14 +698,14 @@ ${truncateText(parsed.customText, 180)}`);
         const parsed = parsePresetInput(m, args);
         const id = `sched_${Date.now()}`;
 
-        await _ourinschedulerjs.scheduleMessage.call(void 0, 
+        await _almikuschedulerjs.scheduleMessage.call(void 0, 
           buildTaskPayload(id, parsed, {
             meta: { presetKey: parsed.presetKey },
           }),
           sock,
         );
 
-        const msUntil = _ourinschedulerjs.getMsUntilTime.call(void 0, parsed.hour, parsed.minute);
+        const msUntil = _almikuschedulerjs.getMsUntilTime.call(void 0, parsed.hour, parsed.minute);
 
         await m.reply(`✅* PRESET JADWAL MADE *
 
@@ -716,7 +716,7 @@ ${truncateText(parsed.customText, 180)}`);
 ⏰Tiempo:${parsed.label} ART
 📍 Objetivo: ${parsed.target.label}
 🔄 Mode: ${parsed.repeat ? "Harian" : "Sekali"}
-🕕 Next run: ${_ourinschedulerjs.formatTimeRemaining.call(void 0, msUntil)}otra vez
+🕕 Next run: ${_almikuschedulerjs.formatTimeRemaining.call(void 0, msUntil)}otra vez
 
 Text custom:
 ${truncateText(parsed.customText, 180)}`);
@@ -724,7 +724,7 @@ ${truncateText(parsed.customText, 180)}`);
         await m.reply(
           _optionalChain([error, 'access', _9 => _9.message, 'optionalAccess', _10 => _10.startsWith, 'call', _11 => _11("❌")])
             ? error.message
-            : _ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName),
+            : _almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName),
         );
       }
       break;
@@ -748,7 +748,7 @@ ${truncateText(parsed.customText, 180)}`);
       try {
         const parsed = parseEditInput(m, args, task);
 
-        await _ourinschedulerjs.scheduleMessage.call(void 0, 
+        await _almikuschedulerjs.scheduleMessage.call(void 0, 
           buildTaskPayload(task.id, parsed, {
             createdAt: task.createdAt,
             meta: { presetKey: task.presetKey || null },
@@ -756,7 +756,7 @@ ${truncateText(parsed.customText, 180)}`);
           sock,
         );
 
-        const msUntil = _ourinschedulerjs.getMsUntilTime.call(void 0, parsed.hour, parsed.minute);
+        const msUntil = _almikuschedulerjs.getMsUntilTime.call(void 0, parsed.hour, parsed.minute);
 
         await m.reply(`✅* JADWAL TRABAJO EN EL DOE *
 
@@ -766,7 +766,7 @@ ${truncateText(parsed.customText, 180)}`);
 ⏰Tiempo:${parsed.label} ART
 📍 Objetivo: ${parsed.target.label}
 🔄 Mode: ${parsed.repeat ? "Harian" : "Sekali"}
-🕕 Next run: ${_ourinschedulerjs.formatTimeRemaining.call(void 0, msUntil)}otra vez
+🕕 Next run: ${_almikuschedulerjs.formatTimeRemaining.call(void 0, msUntil)}otra vez
 
 Text custom:
 ${truncateText(parsed.customText, 180)}`);
@@ -774,14 +774,14 @@ ${truncateText(parsed.customText, 180)}`);
         await m.reply(
           _optionalChain([error, 'access', _12 => _12.message, 'optionalAccess', _13 => _13.startsWith, 'call', _14 => _14("❌")])
             ? error.message
-            : _ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName),
+            : _almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName),
         );
       }
       break;
     }
 
     case "list": {
-      const tasks = _ourinschedulerjs.getScheduledMessages.call(void 0, );
+      const tasks = _almikuschedulerjs.getScheduledMessages.call(void 0, );
 
       if (tasks.length === 0) {
         await m.reply(
@@ -796,7 +796,7 @@ ${truncateText(parsed.customText, 180)}`);
 
     case "kategori":
     case "category": {
-      const tasks = _ourinschedulerjs.getScheduledMessages.call(void 0, );
+      const tasks = _almikuschedulerjs.getScheduledMessages.call(void 0, );
 
       if (tasks.length === 0) {
         await m.reply(
@@ -864,7 +864,7 @@ ${truncateText(parsed.customText, 180)}`);
       }
 
       const existingTask = findTaskById(taskId);
-      const cancelled = _ourinschedulerjs.cancelScheduledMessage.call(void 0, taskId);
+      const cancelled = _almikuschedulerjs.cancelScheduledMessage.call(void 0, taskId);
 
       if (cancelled) {
         await m.reply(
@@ -877,8 +877,8 @@ ${truncateText(parsed.customText, 180)}`);
     }
 
     case "status": {
-      const status = _ourinschedulerjs.getSchedulerStatus.call(void 0, );
-      const tasks = _ourinschedulerjs.getScheduledMessages.call(void 0, );
+      const status = _almikuschedulerjs.getSchedulerStatus.call(void 0, );
+      const tasks = _almikuschedulerjs.getScheduledMessages.call(void 0, );
       const categories = [
         ...new Set(tasks.map((task) => getTaskCategory(task))),
       ];

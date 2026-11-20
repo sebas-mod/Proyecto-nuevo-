@@ -2,7 +2,7 @@
 var _perf_hooks = require('perf_hooks');
 var _os = require('os'); var _os2 = _interopRequireDefault(_os);
 var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
-var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
+var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
 
 const pluginConfig = {
   name: "ping",
@@ -187,7 +187,7 @@ async function createEpicPingCanvas(data) {
     
     ctx.fillStyle = '#cbd5e1';
     ctx.font = 'bold 24px Courier New';
-    ctx.fillText(`Estado: ONLINE | Terminal: OURIN MD`, 50, 110);
+    ctx.fillText(`Estado: ONLINE | Terminal: AL MIKU MD`, 50, 110);
     
     ctx.beginPath();
     ctx.moveTo(50, 130);
@@ -364,7 +364,7 @@ async function handler(m, { sock }) {
 
   } catch (error) {
     await m.react("❌");
-    m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
+    m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
   }
 }
 

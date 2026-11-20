@@ -1,5 +1,5 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; } function _nullishCoalesce(lhs, rhsFn) { if (lhs != null) { return lhs; } else { return rhsFn(); } } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
-var _ourindatabasejs = require('../../src/lib/ourin-database.js');
+var _almikudatabasejs = require('../../src/lib/almiku-database.js');
 const pluginConfig = {
     name: 'autosticker',
     alias: ['autostiker', 'as'],
@@ -18,7 +18,7 @@ const pluginConfig = {
 }
 
 async function handler(m, { sock }) {
-    const db = _ourindatabasejs.getDatabase.call(void 0, )
+    const db = _almikudatabasejs.getDatabase.call(void 0, )
     const args = m.args || []
     const groupData = db.getGroup(m.chat) || {}
     const current = _nullishCoalesce(groupData.autosticker, () => ( false))
@@ -65,7 +65,7 @@ async function autoStickerHandler(m, sock) {
         if (m.isCommand) return false
         if (m.fromMe === true) return false
         
-        const db = _ourindatabasejs.getDatabase.call(void 0, )
+        const db = _almikudatabasejs.getDatabase.call(void 0, )
         const groupData = db.getGroup(m.chat) || {}
         
         if (!groupData.autosticker) return false
@@ -93,7 +93,7 @@ async function autoStickerHandler(m, sock) {
         
         if (isImage) {
             await sock.sendImageAsSticker(m.chat, buffer, m, {
-                packname: _optionalChain([_configjs2.default, 'access', _12 => _12.sticker, 'optionalAccess', _13 => _13.packname]) || 'Ourin',
+                packname: _optionalChain([_configjs2.default, 'access', _12 => _12.sticker, 'optionalAccess', _13 => _13.packname]) || 'Al Miku',
                 author: _optionalChain([_configjs2.default, 'access', _14 => _14.sticker, 'optionalAccess', _15 => _15.author]) || 'Bot'
             })
         } else if (isVideo) {
@@ -102,7 +102,7 @@ async function autoStickerHandler(m, sock) {
             if (duration > 10) return false
             
             await sock.sendVideoAsSticker(m.chat, buffer, m, {
-                packname: _optionalChain([_configjs2.default, 'access', _19 => _19.sticker, 'optionalAccess', _20 => _20.packname]) || 'Ourin',
+                packname: _optionalChain([_configjs2.default, 'access', _19 => _19.sticker, 'optionalAccess', _20 => _20.packname]) || 'Al Miku',
                 author: _optionalChain([_configjs2.default, 'access', _21 => _21.sticker, 'optionalAccess', _22 => _22.author]) || 'Bot'
             })
         }

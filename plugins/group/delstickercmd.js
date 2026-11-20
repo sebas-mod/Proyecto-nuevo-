@@ -1,4 +1,4 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true});var _ourinstickercommandjs = require('../../src/lib/ourin-sticker-command.js');
+"use strict";Object.defineProperty(exports, "__esModule", {value: true});var _almikustickercommandjs = require('../../src/lib/almiku-sticker-command.js');
 const pluginConfig = {
     name: 'delstickercmd',
     alias: ['delcmdsticker', 'removesticker', 'unsticker'],
@@ -20,7 +20,7 @@ async function handler(m, { sock }) {
     const args = m.args || []
     const commandName = args[0]
     if (!commandName && !m.quoted) {
-        const existingCmds = _ourinstickercommandjs.listStickerCommands.call(void 0, )
+        const existingCmds = _almikustickercommandjs.listStickerCommands.call(void 0, )
         if (existingCmds.length === 0) {
             return m.reply(
                 `🖼️ *sᴛɪᴄᴋᴇʀ ᴄᴏᴍᴍᴀɴᴅs*\n\n` +
@@ -47,9 +47,9 @@ async function handler(m, { sock }) {
     let deleted = false
     let deletedCmd = ''
     if (m.quoted) {
-        const stickerHash = _ourinstickercommandjs.getQuotedStickerHash.call(void 0, m)
+        const stickerHash = _almikustickercommandjs.getQuotedStickerHash.call(void 0, m)
         if (stickerHash) {
-            const success = _ourinstickercommandjs.deleteStickerCommand.call(void 0, stickerHash)
+            const success = _almikustickercommandjs.deleteStickerCommand.call(void 0, stickerHash)
             if (success) {
                 deleted = true
                 deletedCmd = 'La respuesta pegatinas'
@@ -58,10 +58,10 @@ async function handler(m, { sock }) {
     }
     if (!deleted && commandName) {
         const cleanCmd = commandName.toLowerCase().replace(/^\./, '')
-        const found = _ourinstickercommandjs.findByCommand.call(void 0, cleanCmd)
+        const found = _almikustickercommandjs.findByCommand.call(void 0, cleanCmd)
         
         if (found) {
-            const success = _ourinstickercommandjs.deleteStickerCommand.call(void 0, found.hash)
+            const success = _almikustickercommandjs.deleteStickerCommand.call(void 0, found.hash)
             if (success) {
                 deleted = true
                 deletedCmd = cleanCmd

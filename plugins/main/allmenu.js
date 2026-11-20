@@ -1,11 +1,11 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { newObj[key] = obj[key]; } } } newObj.default = obj; return newObj; } } function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _botmodejs = require('../group/botmode.js'); var botmodePlugin = _interopRequireWildcard(_botmodejs);
-var _ourin = require('ourin');
+var _almiku = require('almiku');
 var _sharp2 = require('sharp'); var _sharp3 = _interopRequireDefault(_sharp2);
 var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
 var _axios = require('axios'); var _axios2 = _interopRequireDefault(_axios);
 
 
-var _ourinformatterjs = require('../../src/lib/ourin-formatter.js');
+var _almikuformatterjs = require('../../src/lib/almiku-formatter.js');
 var _fs = require('fs'); var _fs2 = _interopRequireDefault(_fs);
 
 
@@ -13,8 +13,8 @@ var _fs = require('fs'); var _fs2 = _interopRequireDefault(_fs);
 
 
 
-var _ourinpluginsjs = require('../../src/lib/ourin-plugins.js');
-var _ourinjs = require('../../case/ourin.js');
+var _almikupluginsjs = require('../../src/lib/almiku-plugins.js');
+var _almikujs = require('../../case/almiku.js');
 const pluginConfig = {
   name: "allmenu",
   alias: ["fullmenu", "am", "allcommand", "semua"],
@@ -69,7 +69,7 @@ function createBracketBox(emoji, title, lines = []) {
   return text;
 }
 function getCommandSymbols(cmdName) {
-  const plugin = _ourinpluginsjs.getPlugin.call(void 0, cmdName);
+  const plugin = _almikupluginsjs.getPlugin.call(void 0, cmdName);
   if (!plugin || !plugin.config) return "";
   const symbols = [];
   if (plugin.config.isOwner) symbols.push("🅞");
@@ -83,7 +83,7 @@ function getCommandSymbols(cmdName) {
 function getContextInfo(botConfig, m, thumbBuffer) {
   const saluranId = _optionalChain([botConfig, 'access', _ => _.saluran, 'optionalAccess', _2 => _2.id]) || "120363400911374213@newsletter";
   const saluranName =
-    _optionalChain([botConfig, 'access', _3 => _3.saluran, 'optionalAccess', _4 => _4.name]) || _optionalChain([botConfig, 'access', _5 => _5.bot, 'optionalAccess', _6 => _6.name]) || "Ourin-AI";
+    _optionalChain([botConfig, 'access', _3 => _3.saluran, 'optionalAccess', _4 => _4.name]) || _optionalChain([botConfig, 'access', _5 => _5.bot, 'optionalAccess', _6 => _6.name]) || "Al Miku-AI";
   const saluranLink = _optionalChain([botConfig, 'access', _7 => _7.saluran, 'optionalAccess', _8 => _8.link]) || "";
   return {
     mentionedJid: [m.sender],
@@ -101,14 +101,14 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
   const user = db.getUser(m.sender);
   const groupData = m.isGroup ? db.getGroup(m.chat) || {} : {};
   const botMode = groupData.botMode || "md";
-  const categories = _ourinpluginsjs.getCategories.call(void 0, );
-  const commandsByCategory = _ourinpluginsjs.getCommandsByCategory.call(void 0, );
-  const casesByCategory = _ourinjs.getCasesByCategory.call(void 0, );
+  const categories = _almikupluginsjs.getCategories.call(void 0, );
+  const commandsByCategory = _almikupluginsjs.getCommandsByCategory.call(void 0, );
+  const casesByCategory = _almikujs.getCasesByCategory.call(void 0, );
   let totalCommands = 0;
   for (const category of categories) {
     totalCommands += (commandsByCategory[category] || []).length;
   }
-  const totalCases = _ourinjs.getCaseCount.call(void 0, );
+  const totalCases = _almikujs.getCaseCount.call(void 0, );
   const totalFeatures = totalCommands + totalCases;
   let userRole = "User",
     roleEmoji = "👤";
@@ -119,7 +119,7 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
     userRole = "Premium";
     roleEmoji = "💎";
   }
-  const greeting = _ourinformatterjs.getTimeGreeting.call(void 0, );
+  const greeting = _almikuformatterjs.getTimeGreeting.call(void 0, );
   let txt = ``;
 
   const weatherCodeMap = {
@@ -240,8 +240,8 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
         await m.reply(txt);
         break;
       case 2:
-        const media = await _ourin.prepareWAMessageMedia.call(void 0, {
-          image: _fs2.default.readFileSync(_configjs2.default.assets["ourin"])
+        const media = await _almiku.prepareWAMessageMedia.call(void 0, {
+          image: _fs2.default.readFileSync(_configjs2.default.assets["almiku"])
         }, { upload: sock.waUploadToServer })
         await sock.relayMessage(
           m.chat,
@@ -327,13 +327,13 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
           }
         }
 
-        const thumbnail = await _sharp3.default.call(void 0, _fs2.default.readFileSync(_configjs2.default.assets["ourin"])).resize(300, 300).toBuffer()
+        const thumbnail = await _sharp3.default.call(void 0, _fs2.default.readFileSync(_configjs2.default.assets["almiku"])).resize(300, 300).toBuffer()
         const qOrder = {
           key: { fromMe: false, participant: '0@s.whatsapp.net', remoteJid: m.sender },
           message: { locationMessage: { degreesLatitude: 0, degreesLongitude: 0, name: await weatherMenu(), jpegThumbnail: thumbnail } }
         }
-        const media4 = await _ourin.prepareWAMessageMedia.call(void 0, { video: _fs2.default.readFileSync(_configjs2.default.assets["ourin-mp4"]), gifPlayback: true }, { upload: sock.waUploadToServer });
-        const msg4 = _ourin.generateWAMessageFromContent.call(void 0, m.chat, {
+        const media4 = await _almiku.prepareWAMessageMedia.call(void 0, { video: _fs2.default.readFileSync(_configjs2.default.assets["almiku-mp4"]), gifPlayback: true }, { upload: sock.waUploadToServer });
+        const msg4 = _almiku.generateWAMessageFromContent.call(void 0, m.chat, {
           viewOnceMessage: {
             message: {
               messageContextInfo: {},
@@ -347,7 +347,7 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
                   forwardingScore: 9,
                   forwardedNewsletterMessageInfo: {
                     newsletterJid: _optionalChain([_configjs2.default, 'access', _30 => _30.saluran, 'optionalAccess', _31 => _31.id]) || "120363400911374213@newsletter",
-                    newsletterName: _optionalChain([_configjs2.default, 'access', _32 => _32.saluran, 'optionalAccess', _33 => _33.name]) || _optionalChain([_configjs2.default, 'access', _34 => _34.bot, 'optionalAccess', _35 => _35.name]) || "Ourin-AI",
+                    newsletterName: _optionalChain([_configjs2.default, 'access', _32 => _32.saluran, 'optionalAccess', _33 => _33.name]) || _optionalChain([_configjs2.default, 'access', _34 => _34.bot, 'optionalAccess', _35 => _35.name]) || "Al Miku-AI",
                     serverMessageId: 127,
                   },
                 },
@@ -396,9 +396,9 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
           }
         }
 
-        const thumbnail = await _sharp3.default.call(void 0, _fs2.default.readFileSync(_configjs2.default.assets["ourin"])).resize(300, 300).toBuffer()
+        const thumbnail = await _sharp3.default.call(void 0, _fs2.default.readFileSync(_configjs2.default.assets["almiku"])).resize(300, 300).toBuffer()
 
-        const msg6 = _ourin.generateWAMessageFromContent.call(void 0, m.chat, {
+        const msg6 = _almiku.generateWAMessageFromContent.call(void 0, m.chat, {
           viewOnceMessage: {
             message: {
               messageContextInfo: {},
@@ -408,7 +408,7 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
                   locationMessage: {
                     degreesLatitude: 0,
                     degreesLongitude: 0,
-                    name: _optionalChain([_configjs2.default, 'access', _39 => _39.bot, 'optionalAccess', _40 => _40.name]) || "Ourin-AI",
+                    name: _optionalChain([_configjs2.default, 'access', _39 => _39.bot, 'optionalAccess', _40 => _40.name]) || "Al Miku-AI",
                     address: await weatherMenu(),
                     jpegThumbnail: thumbnail
                   }
@@ -422,7 +422,7 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
                   forwardingScore: 9,
                   forwardedNewsletterMessageInfo: {
                     newsletterJid: _optionalChain([_configjs2.default, 'access', _41 => _41.saluran, 'optionalAccess', _42 => _42.id]) || "120363400911374213@newsletter",
-                    newsletterName: _optionalChain([_configjs2.default, 'access', _43 => _43.saluran, 'optionalAccess', _44 => _44.name]) || _optionalChain([_configjs2.default, 'access', _45 => _45.bot, 'optionalAccess', _46 => _46.name]) || "Ourin-AI",
+                    newsletterName: _optionalChain([_configjs2.default, 'access', _43 => _43.saluran, 'optionalAccess', _44 => _44.name]) || _optionalChain([_configjs2.default, 'access', _45 => _45.bot, 'optionalAccess', _46 => _46.name]) || "Al Miku-AI",
                     serverMessageId: 127,
                   },
                 },
@@ -442,7 +442,7 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
     }
     const audioEnabled = db.setting("audioMenu") !== false;
     if (audioEnabled) {
-      const audioUrl = botConfig.assets["ourin-mp3"];
+      const audioUrl = botConfig.assets["almiku-mp3"];
       const audioVariant = db.setting("allmenuAudioStyle") || 1;
       try {
         const fs = (await Promise.resolve().then(() => _interopRequireWildcard(require("fs")))).default;
@@ -544,7 +544,7 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
               }
             };
             await sock.sendMessage(m.chat, {
-              audio: fs.readFileSync(_configjs2.default.assets["ourin-mp3"]),
+              audio: fs.readFileSync(_configjs2.default.assets["almiku-mp3"]),
               mimetype: "audio/mpeg",
               ptt: false,
             }, { quoted: qtext });
@@ -572,7 +572,7 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
                   sellerJid: botConfig.botNumber
                     ? `${botConfig.botNumber}@s.whatsapp.net`
                     : m.sender,
-                  token: "ourin-menu-v8",
+                  token: "almiku-menu-v8",
                   totalAmount1000: 3333333,
                   totalCurrencyCode: "IDR",
                   contextInfo: {
@@ -580,7 +580,7 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
                     forwardingScore: 9,
                     forwardedNewsletterMessageInfo: {
                       newsletterJid: "120363351980387532@newsletter",
-                      newsletterName: "Ourin",
+                      newsletterName: "Al Miku",
                       serverMessageId: 127,
                     },
                   },
@@ -591,7 +591,7 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
               await sock.sendMessage(
                 m.chat,
                 {
-                  audio: fs.readFileSync(_configjs2.default.assets["ourin-mp3"]),
+                  audio: fs.readFileSync(_configjs2.default.assets["almiku-mp3"]),
                   mimetype: "audio/mpeg",
                 },
                 { quoted: ftroliQuoted },
@@ -600,7 +600,7 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
               await sock.sendMessage(
                 m.chat,
                 {
-                  audio: fs.readFileSync(_configjs2.default.assets["ourin-mp3"]),
+                  audio: fs.readFileSync(_configjs2.default.assets["almiku-mp3"]),
                   mimetype: "audio/mpeg",
                 },
                 { quoted: m },

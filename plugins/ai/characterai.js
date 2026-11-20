@@ -1,7 +1,7 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _axios = require('axios'); var _axios2 = _interopRequireDefault(_axios);
 var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
-var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
-var _ourindatabasejs = require('../../src/lib/ourin-database.js');
+var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
+var _almikudatabasejs = require('../../src/lib/almiku-database.js');
 
 const NEOXR_APIKEY = _optionalChain([_configjs2.default, 'access', _ => _.APIkey, 'optionalAccess', _2 => _2.neoxr]) || "Milik-Bot-OurinMD";
 
@@ -71,7 +71,7 @@ async function handler(m, { sock, args, text }) {
 
             listTxt += `•💡* Cita (por ejemplo: 1 ) * para seleccionar y activar AI, o tipos\`cancelar\`para cancelando.`;
 
-            const db = _ourindatabasejs.getDatabase.call(void 0, );
+            const db = _almikudatabasejs.getDatabase.call(void 0, );
             const user = db.getUser(m.sender);
             
             user.cai_search_session = {
@@ -86,10 +86,10 @@ async function handler(m, { sock, args, text }) {
         } catch (error) {
             console.error("[CAI Search Error]", error);
             await m.react("☢");
-            m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
+            m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
         }
     } else if (cmd === "off") {
-        const db = _ourindatabasejs.getDatabase.call(void 0, );
+        const db = _almikudatabasejs.getDatabase.call(void 0, );
         if (!db.db.data.characterai) db.db.data.characterai = {};
         
         if (_optionalChain([db, 'access', _3 => _3.db, 'access', _4 => _4.data, 'access', _5 => _5.characterai, 'access', _6 => _6[m.chat], 'optionalAccess', _7 => _7.enabled])) {
@@ -100,7 +100,7 @@ async function handler(m, { sock, args, text }) {
             m.reply(`❌No hay autoCaracter AI activo en èchat.`);
         }
     } else if (cmd === "reset") {
-        const db = _ourindatabasejs.getDatabase.call(void 0, );
+        const db = _almikudatabasejs.getDatabase.call(void 0, );
         if (!db.db.data.characterai) db.db.data.characterai = {};
         
         const chatAi = db.db.data.characterai[m.chat];
@@ -119,7 +119,7 @@ async function handler(m, { sock, args, text }) {
 async function caiAnswerHandler(m, sock) {
     if (!m.body || m.isCommand) return false;
 
-    const db = _ourindatabasejs.getDatabase.call(void 0, );
+    const db = _almikudatabasejs.getDatabase.call(void 0, );
     const user = db.getUser(m.sender);
 
     if (!user || !user.cai_search_session) return false;
@@ -174,7 +174,7 @@ async function caiAnswerHandler(m, sock) {
 async function caiChatHandler(m, sock) {
     if (!m.body || m.isCommand) return false;
 
-    const db = _ourindatabasejs.getDatabase.call(void 0, );
+    const db = _almikudatabasejs.getDatabase.call(void 0, );
     if (!db.db.data.characterai) return false;
 
     const chatAi = db.db.data.characterai[m.chat];

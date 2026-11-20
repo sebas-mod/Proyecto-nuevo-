@@ -1,7 +1,7 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _axios = require('axios'); var _axios2 = _interopRequireDefault(_axios);
 var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
-var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
-var _ourindatabasejs = require('../../src/lib/ourin-database.js');
+var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
+var _almikudatabasejs = require('../../src/lib/almiku-database.js');
 
 const pluginConfig = {
     name: "stickerly",
@@ -53,7 +53,7 @@ async function handler(m, { sock, text }) {
 
         listTxt += `\n•💡* Cita (por ejemplo: 1 ) * para descargar paquetes, o tipos\`cancelar\`Para deshacer la búsqueda.`;
         
-        const db = _ourindatabasejs.getDatabase.call(void 0, );
+        const db = _almikudatabasejs.getDatabase.call(void 0, );
         const user = db.getUser(m.sender);
 
         user.stickerly_session = {
@@ -67,14 +67,14 @@ async function handler(m, { sock, text }) {
     } catch (error) {
         console.error("[Stickerly Search Error]", error);
         await m.react("☢");
-        m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
+        m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
     }
 }
 
 async function stickerlyAnswerHandler(m, sock) {
     if (!m.body || m.isCommand) return false;
     
-    const db = _ourindatabasejs.getDatabase.call(void 0, );
+    const db = _almikudatabasejs.getDatabase.call(void 0, );
     const user = db.getUser(m.sender);
     
     if (!user || !user.stickerly_session) return false;
@@ -181,7 +181,7 @@ async function downloadStickerlyPack(sock, m, packUrl) {
     } catch (error) {
         console.error("[Stickerly Pack Fetch Error]", error);
         await m.react("☢");
-        m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, "stickerly", m.pushName));
+        m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, "stickerly", m.pushName));
     }
 }
 

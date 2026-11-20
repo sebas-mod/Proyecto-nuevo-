@@ -1,8 +1,8 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _ourinexifjs = require('../../src/lib/ourin-exif.js');
+"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _almikuexifjs = require('../../src/lib/almiku-exif.js');
 var _axios = require('axios'); var _axios2 = _interopRequireDefault(_axios);
 var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
-var _ourinhttpjs = require('../../src/lib/ourin-http.js');
-var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
+var _almikuhttpjs = require('../../src/lib/almiku-http.js');
+var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
 const NEOXR_APIKEY = _optionalChain([_configjs2.default, 'access', _ => _.APIkey, 'optionalAccess', _2 => _2.neoxr]) || 'Milik-Bot-OurinMD'
 const pluginConfig = {
     name: 'attp',
@@ -42,16 +42,16 @@ async function handler(m, { sock }) {
     try {
         const color = getRandomColor()
         const url = `https://api.neoxr.eu/api/attp3?text=${encodeURIComponent(text)}&color=${color}&apikey=${NEOXR_APIKEY}`
-        const data = await _ourinhttpjs.f.call(void 0, url)
+        const data = await _almikuhttpjs.f.call(void 0, url)
         if (!_optionalChain([data, 'optionalAccess', _8 => _8.status]) || !_optionalChain([data, 'optionalAccess', _9 => _9.data, 'optionalAccess', _10 => _10.url])) {
             throw new Error('API no devolvió datos válidos')
         }
         const stickerUrl = data.data.url
-        const stickerRes = await _ourinhttpjs.f.call(void 0, stickerUrl, 'buffer')
+        const stickerRes = await _almikuhttpjs.f.call(void 0, stickerUrl, 'buffer')
         if (!stickerRes) throw new Error('Descarga el sticker generado desde el servidor')
         let finalSticker = stickerRes
         try {
-            finalSticker = await _ourinexifjs.addExifToWebp.call(void 0, stickerRes, {
+            finalSticker = await _almikuexifjs.addExifToWebp.call(void 0, stickerRes, {
                 packname: _configjs2.default.sticker.packname,
                 author: _configjs2.default.sticker.author
             })
@@ -62,7 +62,7 @@ async function handler(m, { sock }) {
         m.react('✅')
     } catch (err) {
         m.react('☢')
-        m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName))
+        m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName))
     }
 }
 exports.config = pluginConfig; exports.handler = handler;

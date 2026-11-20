@@ -1,4 +1,4 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _ourindatabasejs = require('../../src/lib/ourin-database.js');
+"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _almikudatabasejs = require('../../src/lib/almiku-database.js');
 var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
 var _axios = require('axios'); var _axios2 = _interopRequireDefault(_axios);
 var _child_process = require('child_process');
@@ -14,8 +14,8 @@ const pluginConfig = {
   description:
     "Toggle auto AI se abstiene de grupo con te selecciónx# O voz",
   usage:
-    ".autoai on/off --ourinmode=<character|custom> --logic=<custom instruction> --type=<text|voice> --mode=<onlychat|assistant>",
-  example: ".autoai on --ourinmode=furina --type=voice --mode=onlychat",
+    ".autoai on/off --almikumode=<character|custom> --logic=<custom instruction> --type=<text|voice> --mode=<onlychat|assistant>",
+  example: ".autoai on --almikumode=furina --type=voice --mode=onlychat",
   isOwner: false,
   isPremium: false,
   isGroup: true,
@@ -72,7 +72,7 @@ async function convertToOggOpus(inputPath) {
 }
 
 async function handler(m) {
-  const db = _ourindatabasejs.getDatabase.call(void 0, );
+  const db = _almikudatabasejs.getDatabase.call(void 0, );
   const args = m.args || [];
   const fullArgs = m.fullArgs || "";
 
@@ -115,7 +115,7 @@ async function handler(m) {
     };
     db.save();
     return m.reply(
-      `✅*Persona anadido*\n\n> Nombre:${personaArgs[0]}\n> Key: ${pName}\n> Logic: ${pInstruction.substring(0, 80)}${pInstruction.length > 80 ? "..." : ""}\n\nGunwill: autoai on - - - ourinmode =${pName}`,
+      `✅*Persona anadido*\n\n> Nombre:${personaArgs[0]}\n> Key: ${pName}\n> Logic: ${pInstruction.substring(0, 80)}${pInstruction.length > 80 ? "..." : ""}\n\nGunwill: autoai on - - - almikumode =${pName}`,
     );
   }
 
@@ -201,7 +201,7 @@ Todos los comandos (excepto el propietario ) están bloqueados cuando AutoAI est
     txt += `*Predeterminado:*\n${builtIn}\n\n`;
     txt += `*Custom:*\n${custom}\n\n`;
     txt += `*Global:* ${db.db.data.autoai_global.enabled ? "✅ Aktif" : "❌ Nonaktif"}\n\n`;
-    txt += `> .autoai on --ourinmode=<key>\n`;
+    txt += `> .autoai on --almikumode=<key>\n`;
     txt += `* Hombre > * Hombre * Sí.\n`;
     txt += `> .autoai hapuspersona nama\n`;
     txt += `> .autoai global on/off`;
@@ -216,11 +216,11 @@ Todos los comandos (excepto el propietario ) están bloqueados cuando AutoAI est
         `❌Formato incorrecto!\n\nSí. Autoai global en / off\n\n" Global current:${db.db.data.autoai_global.enabled ? "✅ Aktif" : "❌ Nonaktif"}`,
       );
     if (globalMode === "on") {
-      const modeMatch = fullArgs.match(/--ourinmode=(\w+)/i);
+      const modeMatch = fullArgs.match(/--almikumode=(\w+)/i);
       const typeMatch = fullArgs.match(/--type=(text|voice)/i);
       const aimodeMatch = fullArgs.match(/--mode=(onlychat|assistant)/i);
       const logicMatch = fullArgs.match(
-        /--logic=(.+?)(?=\s+--(?:ourinmode|type|logic|mode)|$)/i,
+        /--logic=(.+?)(?=\s+--(?:almikumode|type|logic|mode)|$)/i,
       );
       const charKey = modeMatch ? modeMatch[1].toLowerCase() : null;
       const responseType = typeMatch ? typeMatch[1].toLowerCase() : "text";
@@ -292,11 +292,11 @@ Todos los comandos (excepto el propietario ) están bloqueados cuando AutoAI est
   }
 
   const mode = subcmd;
-  const modeMatch = fullArgs.match(/--ourinmode=(\w+)/i);
+  const modeMatch = fullArgs.match(/--almikumode=(\w+)/i);
   const typeMatch = fullArgs.match(/--type=(text|voice)/i);
   const aimodeMatch = fullArgs.match(/--mode=(onlychat|assistant)/i);
   const logicMatch = fullArgs.match(
-    /--logic=(.+?)(?=\s+--(?:ourinmode|type|logic|mode)|$)/i,
+    /--logic=(.+?)(?=\s+--(?:almikumode|type|logic|mode)|$)/i,
   );
   const charKey = modeMatch ? modeMatch[1].toLowerCase() : null;
   const responseType = typeMatch ? typeMatch[1].toLowerCase() : "text";
@@ -314,7 +314,7 @@ Todos los comandos (excepto el propietario ) están bloqueados cuando AutoAI est
     let txt = `🤖 *ᴀᴜᴛᴏ ᴀɪ*\n\n`;
     txt += `> Activando/desactivando auto AI response\n\n`;
     txt += `*Uso:*\n`;
-    txt += `> .autoai on --ourinmode=<karakter|custom> --type=<text|voice> --mode=<onlychat|assistant>\n`;
+    txt += `> .autoai on --almikumode=<karakter|custom> --type=<text|voice> --mode=<onlychat|assistant>\n`;
     txt += `> .autoai off\n`;
     txt += `* Hombre > * Hombre * Sí.\n`;
     txt += `> .autoai hapuspersona nama\n`;
@@ -331,10 +331,10 @@ Todos los comandos (excepto el propietario ) están bloqueados cuando AutoAI est
     txt += `- *No puedo caminar la acción* *el cinturón* *el cinturón* *el cinturón*\n`;
     txt += `•Sólo un chat normal•\n\n`;
     txt += `*Ejemplo:*\n`;
-    txt += `> .autoai on --ourinmode=furina --type=text\n`;
+    txt += `> .autoai on --almikumode=furina --type=text\n`;
     txt += `- Eres un maldito ne.xA\n`;
     txt += `Dios mío.x¡Te odio!xA\n`;
-    txt += `> .autoai global on --ourinmode=furina`;
+    txt += `> .autoai global on --almikumode=furina`;
     return m.reply(txt);
   }
 
@@ -430,7 +430,7 @@ Todos los comandos (excepto el propietario ) están bloqueados cuando AutoAI est
       "custom",
     ].join(", ");
     return m.reply(
-      `❌¡El personaje no es válido!\n\n*El amor solitario*${charList}\n\n> Ejemplo:.autoai on --ourinmode=furina --type=voice`,
+      `❌¡El personaje no es válido!\n\n*El amor solitario*${charList}\n\n> Ejemplo:.autoai on --almikumode=furina --type=voice`,
     );
   }
 

@@ -40,7 +40,7 @@ async function handler(m, { sock }) {
   };
 
   const saluranId = _optionalChain([_configjs2.default, 'access', _4 => _4.saluran, 'optionalAccess', _5 => _5.id]) || "120363400911374213@newsletter";
-  const saluranName = _optionalChain([_configjs2.default, 'access', _6 => _6.saluran, 'optionalAccess', _7 => _7.name]) || _optionalChain([_configjs2.default, 'access', _8 => _8.bot, 'optionalAccess', _9 => _9.name]) || "Ourin-AI";
+  const saluranName = _optionalChain([_configjs2.default, 'access', _6 => _6.saluran, 'optionalAccess', _7 => _7.name]) || _optionalChain([_configjs2.default, 'access', _8 => _8.bot, 'optionalAccess', _9 => _9.name]) || "Al Miku-AI";
 
   await m.reply(
     `📋 *ABSEN Ya Calle NIHH*\n\n` +

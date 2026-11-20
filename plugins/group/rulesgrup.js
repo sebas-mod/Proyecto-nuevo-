@@ -1,6 +1,6 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
-var _ourindatabasejs = require('../../src/lib/ourin-database.js');
-var _ourinassetmanagerjs = require('../../src/lib/ourin-asset-manager.js');
+var _almikudatabasejs = require('../../src/lib/almiku-database.js');
+var _almikuassetmanagerjs = require('../../src/lib/almiku-asset-manager.js');
 
 const pluginConfig = {
     name: "rulesgrup",
@@ -51,12 +51,12 @@ No hay tolerancia para las palabras o palabras de odio.
 Se supone que sigues todas las reglas de aquí.`
 
 async function handler(m, { sock }) {
-    const db = _ourindatabasejs.getDatabase.call(void 0, )
+    const db = _almikudatabasejs.getDatabase.call(void 0, )
     const groupData = db.getGroup(m.chat) || {}
     const customRules = groupData.groupRules
     const rulesText = customRules || DEFAULT_GROUP_RULES
 
-    const imageBuffer = _ourinassetmanagerjs.getAssetBuffer.call(void 0, "ourin-rules")
+    const imageBuffer = _almikuassetmanagerjs.getAssetBuffer.call(void 0, "almiku-rules")
 
     if (imageBuffer) {
         await sock.sendMessage(m.chat, {

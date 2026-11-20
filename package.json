@@ -1,7 +1,7 @@
 {
-  "name": "ourin-md",
+  "name": "almiku-md",
   "version": "3.5.0",
-  "description": "Ourin 3.5 WhatsApp Bot - CommonJS Edition",
+  "description": "Al Miku 3.5 WhatsApp Bot - CommonJS Edition",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -71,7 +71,7 @@
     "node-upload-images": "^1.0.1",
     "node-webpmux": "^3.2.1",
     "openpgp": "^6.3.0",
-    "ourin": "npm:cantarelllaa",
+    "almiku": "npm:cantarelllaa",
     "p-queue": "^9.1.0",
     "pino": "^9.14.0",
     "qrcode": "^1.5.4",

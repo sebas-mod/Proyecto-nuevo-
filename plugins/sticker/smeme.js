@@ -8,7 +8,7 @@ function getSharp() {
 var _fs = require('fs'); var _fs2 = _interopRequireDefault(_fs);
 var _path = require('path'); var _path2 = _interopRequireDefault(_path);
 var _configjs = require('../../config.js');
-var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
+var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
 const pluginConfig = {
   name: "smeme",
   alias: ["memesticker", "memes"],
@@ -136,14 +136,14 @@ async function handler(m, { sock }) {
     });
     const buffer = Buffer.from(response.data);
     await sock.sendImageAsSticker(m.chat, buffer, m, {
-      packname: _optionalChain([_configjs.config, 'access', _10 => _10.sticker, 'optionalAccess', _11 => _11.packname]) || "Ourin-AI",
+      packname: _optionalChain([_configjs.config, 'access', _10 => _10.sticker, 'optionalAccess', _11 => _11.packname]) || "Al Miku-AI",
       author: _optionalChain([_configjs.config, 'access', _12 => _12.sticker, 'optionalAccess', _13 => _13.author]) || "Bot",
     });
     m.react("✅");
   } catch (error) {
     console.log("[SMEME] Error:", error.message);
     m.react("☢");
-    m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
+    m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
   }
 }
 exports.config = pluginConfig; exports.handler = handler;

@@ -1,7 +1,7 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { newObj[key] = obj[key]; } } } newObj.default = obj; return newObj; } } function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _axios = require('axios'); var _axios2 = _interopRequireDefault(_axios);
-var _ourinlidjs = require('../../src/lib/ourin-lid.js');
-var _ourintimejs = require('../../src/lib/ourin-time.js'); var timeHelper = _interopRequireWildcard(_ourintimejs);
-var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
+var _almikulidjs = require('../../src/lib/almiku-lid.js');
+var _almikutimejs = require('../../src/lib/almiku-time.js'); var timeHelper = _interopRequireWildcard(_almikutimejs);
+var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
 const pluginConfig = {
     name: 'groupinfo',
     alias: ['infogroup', 'gcinfo', 'infogc', 'gc'],
@@ -32,14 +32,14 @@ async function handler(m, { sock, db }) {
         const admins = participants.filter(p => p.admin)
 
         let ownerJid = null
-        if (groupMeta.owner) ownerJid = _ourinlidjs.resolveAnyLidToJid.call(void 0, groupMeta.owner, participants)
+        if (groupMeta.owner) ownerJid = _almikulidjs.resolveAnyLidToJid.call(void 0, groupMeta.owner, participants)
         if (!ownerJid || ownerJid.includes('@lid')) {
             const superAdmin = participants.find(p => p.admin === 'superadmin')
-            if (superAdmin) ownerJid = _ourinlidjs.getParticipantJid.call(void 0, superAdmin)
+            if (superAdmin) ownerJid = _almikulidjs.getParticipantJid.call(void 0, superAdmin)
         }
         if (!ownerJid || ownerJid.includes('@lid')) {
             const firstAdmin = admins[0]
-            if (firstAdmin) ownerJid = _ourinlidjs.getParticipantJid.call(void 0, firstAdmin)
+            if (firstAdmin) ownerJid = _almikulidjs.getParticipantJid.call(void 0, firstAdmin)
         }
 
         const group = db.getGroup(m.chat) || {}
@@ -113,7 +113,7 @@ async function handler(m, { sock, db }) {
             await m.reply(text, { mentions })
         }
     } catch (error) {
-        m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName))
+        m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName))
     }
 }
 

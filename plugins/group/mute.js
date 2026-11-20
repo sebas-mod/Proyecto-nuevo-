@@ -1,4 +1,4 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true});var _ourindatabasejs = require('../../src/lib/ourin-database.js');
+"use strict";Object.defineProperty(exports, "__esModule", {value: true});var _almikudatabasejs = require('../../src/lib/almiku-database.js');
 const pluginConfig = {
     name: 'mute',
     alias: ['bisukan'],
@@ -18,7 +18,7 @@ const pluginConfig = {
 }
 
 function handler(m, { sock }) {
-    const db = _ourindatabasejs.getDatabase.call(void 0, )
+    const db = _almikudatabasejs.getDatabase.call(void 0, )
     const group = db.getGroup(m.chat) || {}
     const groupName = m.groupMetadata.subject
 

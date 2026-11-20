@@ -1,8 +1,8 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _sharp = require('sharp'); var _sharp2 = _interopRequireDefault(_sharp);
 var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
 var _axios = require('axios'); var _axios2 = _interopRequireDefault(_axios);
-var _ourin = require('ourin');
-var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
+var _almiku = require('almiku');
+var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
 
 const pluginConfig = {
   name: "cekidgc",
@@ -119,7 +119,7 @@ async function handler(m, { sock }) {
     } catch (e3) {}
 
     const saluranId = _optionalChain([_configjs2.default, 'access', _11 => _11.saluran, 'optionalAccess', _12 => _12.id]) || "120363400911374213@newsletter";
-    const saluranName = _optionalChain([_configjs2.default, 'access', _13 => _13.saluran, 'optionalAccess', _14 => _14.name]) || _optionalChain([_configjs2.default, 'access', _15 => _15.bot, 'optionalAccess', _16 => _16.name]) || "Ourin-AI";
+    const saluranName = _optionalChain([_configjs2.default, 'access', _13 => _13.saluran, 'optionalAccess', _14 => _14.name]) || _optionalChain([_configjs2.default, 'access', _15 => _15.bot, 'optionalAccess', _16 => _16.name]) || "Al Miku-AI";
 
     const infoText =
       `── .✦ 𝗚𝗥𝗢𝗨𝗣 𝗜𝗡𝗙𝗢 ✦. ── 𝜗ৎ\n\n` +
@@ -136,7 +136,7 @@ async function handler(m, { sock }) {
       `│  ✦ ᴊᴏɪɴ ᴍᴏᴅᴇ  : *${joinMode}*\n` +
       `│  ✦ ᴅᴇsᴋʀɪᴘsɪ  : ${descPreview}\n` +
       `╰──────────────⬣\n\n` +
-      `.☘︎ ݁˖ © ${_optionalChain([_configjs2.default, 'access', _17 => _17.bot, 'optionalAccess', _18 => _18.name]) || "Ourin-AI"}`;
+      `.☘︎ ݁˖ © ${_optionalChain([_configjs2.default, 'access', _17 => _17.bot, 'optionalAccess', _18 => _18.name]) || "Al Miku-AI"}`;
 
     const buttons = [
       {
@@ -161,7 +161,7 @@ async function handler(m, { sock }) {
         );
       } catch (e4) {}
 
-      const msg = _ourin.generateWAMessageFromContent.call(void 0, 
+      const msg = _almiku.generateWAMessageFromContent.call(void 0, 
         m.chat,
         {
           viewOnceMessage: {
@@ -170,19 +170,19 @@ async function handler(m, { sock }) {
                 deviceListMetadata: {},
                 deviceListMetadataVersion: 2,
               },
-              interactiveMessage: _ourin.proto.Message.InteractiveMessage.fromObject({
-                body: _ourin.proto.Message.InteractiveMessage.Body.fromObject({
+              interactiveMessage: _almiku.proto.Message.InteractiveMessage.fromObject({
+                body: _almiku.proto.Message.InteractiveMessage.Body.fromObject({
                   text: infoText,
                 }),
-                footer: _ourin.proto.Message.InteractiveMessage.Footer.fromObject({
-                  text: `© ${_optionalChain([_configjs2.default, 'access', _19 => _19.bot, 'optionalAccess', _20 => _20.name]) || "Ourin-AI"}`,
+                footer: _almiku.proto.Message.InteractiveMessage.Footer.fromObject({
+                  text: `© ${_optionalChain([_configjs2.default, 'access', _19 => _19.bot, 'optionalAccess', _20 => _20.name]) || "Al Miku-AI"}`,
                 }),
-                header: _ourin.proto.Message.InteractiveMessage.Header.fromObject({
+                header: _almiku.proto.Message.InteractiveMessage.Header.fromObject({
                   hasMediaAttachment: !!headerMedia,
                   ...(headerMedia || {}),
                 }),
                 nativeFlowMessage:
-                  _ourin.proto.Message.InteractiveMessage.NativeFlowMessage.fromObject(
+                  _almiku.proto.Message.InteractiveMessage.NativeFlowMessage.fromObject(
                     { buttons },
                   ),
                 contextInfo: {
@@ -204,7 +204,7 @@ async function handler(m, { sock }) {
 
       await sock.relayMessage(m.chat, msg.message, { messageId: msg.key.id });
     } else {
-      const msg = _ourin.generateWAMessageFromContent.call(void 0, 
+      const msg = _almiku.generateWAMessageFromContent.call(void 0, 
         m.chat,
         {
           viewOnceMessage: {
@@ -213,15 +213,15 @@ async function handler(m, { sock }) {
                 deviceListMetadata: {},
                 deviceListMetadataVersion: 2,
               },
-              interactiveMessage: _ourin.proto.Message.InteractiveMessage.fromObject({
-                body: _ourin.proto.Message.InteractiveMessage.Body.fromObject({
+              interactiveMessage: _almiku.proto.Message.InteractiveMessage.fromObject({
+                body: _almiku.proto.Message.InteractiveMessage.Body.fromObject({
                   text: infoText,
                 }),
-                footer: _ourin.proto.Message.InteractiveMessage.Footer.fromObject({
-                  text: `© ${_optionalChain([_configjs2.default, 'access', _21 => _21.bot, 'optionalAccess', _22 => _22.name]) || "Ourin-AI"}`,
+                footer: _almiku.proto.Message.InteractiveMessage.Footer.fromObject({
+                  text: `© ${_optionalChain([_configjs2.default, 'access', _21 => _21.bot, 'optionalAccess', _22 => _22.name]) || "Al Miku-AI"}`,
                 }),
                 nativeFlowMessage:
-                  _ourin.proto.Message.InteractiveMessage.NativeFlowMessage.fromObject(
+                  _almiku.proto.Message.InteractiveMessage.NativeFlowMessage.fromObject(
                     { buttons },
                   ),
                 contextInfo: {
@@ -248,7 +248,7 @@ async function handler(m, { sock }) {
   } catch (error) {
     console.error("[CekIdGc] Error:", error.message);
     await m.react("✘");
-    m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
+    m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
   }
 }
 

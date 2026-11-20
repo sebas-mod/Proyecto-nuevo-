@@ -1,6 +1,6 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
-var _ourindatabasejs = require('../../src/lib/ourin-database.js');
-var _ourinassetmanagerjs = require('../../src/lib/ourin-asset-manager.js');
+var _almikudatabasejs = require('../../src/lib/almiku-database.js');
+var _almikuassetmanagerjs = require('../../src/lib/almiku-asset-manager.js');
 
 const pluginConfig = {
     name: "rules",
@@ -48,8 +48,8 @@ Con estas botas puestas, se supone que debe leer y leer todas las reglas en la p
 }
 
 async function handler(m, { sock }) {
-    const db = _ourindatabasejs.getDatabase.call(void 0, )
-    const botName = _optionalChain([_configjs2.default, 'access', _ => _.bot, 'optionalAccess', _2 => _2.name]) || "Ourin-AI"
+    const db = _almikudatabasejs.getDatabase.call(void 0, )
+    const botName = _optionalChain([_configjs2.default, 'access', _ => _.bot, 'optionalAccess', _2 => _2.name]) || "Al Miku-AI"
     const customRules = db.setting("botRules")
 
     let rulesText
@@ -64,7 +64,7 @@ async function handler(m, { sock }) {
         rulesText = buildDefaultRules(botName, m.prefix)
     }
 
-    const imageBuffer = _ourinassetmanagerjs.getAssetBuffer.call(void 0, "ourin-rules")
+    const imageBuffer = _almikuassetmanagerjs.getAssetBuffer.call(void 0, "almiku-rules")
 
     if (imageBuffer) {
         await sock.sendMessage(m.chat, {

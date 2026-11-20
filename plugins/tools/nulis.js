@@ -1,12 +1,12 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { newObj[key] = obj[key]; } } } newObj.default = obj; return newObj; } } function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _canvas2 = require('@napi-rs/canvas'); var _canvas = _interopRequireWildcard(_canvas2);
 var _path = require('path'); var _path2 = _interopRequireDefault(_path);
 var _fs = require('fs'); var _fs2 = _interopRequireDefault(_fs);
-var _ourintimejs = require('../../src/lib/ourin-time.js'); var timeHelper = _interopRequireWildcard(_ourintimejs);
-var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
-var _ourincontextjs = require('../../src/lib/ourin-context.js');
+var _almikutimejs = require('../../src/lib/almiku-time.js'); var timeHelper = _interopRequireWildcard(_almikutimejs);
+var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
+var _almikucontextjs = require('../../src/lib/almiku-context.js');
 var _axios = require('axios'); var _axios2 = _interopRequireDefault(_axios);
 var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
-var _ourinassetmanagerjs = require('../../src/lib/ourin-asset-manager.js');
+var _almikuassetmanagerjs = require('../../src/lib/almiku-asset-manager.js');
 const pluginConfig = {
   name: "nulis",
   alias: ["tulis", "write"],
@@ -22,7 +22,7 @@ const pluginConfig = {
   energi: 1,
   isEnabled: true,
 };
-const fontUrl = _ourinassetmanagerjs.getAssetBuffer.call(void 0, "ourin-font");
+const fontUrl = _almikuassetmanagerjs.getAssetBuffer.call(void 0, "almiku-font");
 let _fontRegistered = false;
 function wrapText(ctx, text, maxWidth) {
   const words = text.split(" ");
@@ -54,7 +54,7 @@ async function handler(m, { sock }) {
   if (text.length > 500) {
     return m.reply(`❌*ᴛᴇᴋSᴛᴇʀʟᴀʟᴜ ᴘᴀɴᴊᴀɴɢ*\n\nPara el máximo de 500.000 caracteres`);
   }
-  const inputUrl = _ourinassetmanagerjs.getAssetBuffer.call(void 0, "ourin-kertas");
+  const inputUrl = _almikuassetmanagerjs.getAssetBuffer.call(void 0, "almiku-kertas");
   if (!inputUrl) {
     return m.reply(
       `❌*ᴛᴇᴍᴘʟᴀᴛᴇ ᴛɪᴅᴀᴋ ᴀᴅᴀ*\n\nEl documento del artículo no se encuentra en el contexto.`,
@@ -66,7 +66,7 @@ async function handler(m, { sock }) {
     const { createCanvas, loadImage, GlobalFonts } = _canvas;
     if (!_fontRegistered) {
       try {
-        const fontBuf = _ourinassetmanagerjs.getAssetBuffer.call(void 0, "ourin-font");
+        const fontBuf = _almikuassetmanagerjs.getAssetBuffer.call(void 0, "almiku-font");
         if (fontBuf) {
           GlobalFonts.register(fontBuf, "Zahraaa");
         }
@@ -75,7 +75,7 @@ async function handler(m, { sock }) {
       }
       _fontRegistered = true;
     }
-    const bgBuf = _ourinassetmanagerjs.getAssetBuffer.call(void 0, "ourin-kertas");
+    const bgBuf = _almikuassetmanagerjs.getAssetBuffer.call(void 0, "almiku-kertas");
     const bgImage = await loadImage(bgBuf);
     const canvas = createCanvas(bgImage.width, bgImage.height);
     const ctx = canvas.getContext("2d");
@@ -103,11 +103,11 @@ async function handler(m, { sock }) {
       buffer,
       `✅ *ʟᴜʟɪsᴀɴ ᴛᴀɴɢᴀɴ*\n\n> Hatihati ketahuan! 📖`,
       m,
-      { type: "image", contextInfo: _ourincontextjs.saluranCtx.call(void 0, ) },
+      { type: "image", contextInfo: _almikucontextjs.saluranCtx.call(void 0, ) },
     );
   } catch (error) {
     await m.react("☢");
-    m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
+    m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
   }
 }
 exports.config = pluginConfig; exports.handler = handler;

@@ -2,8 +2,8 @@
 var _nodefetch = require('node-fetch'); var _nodefetch2 = _interopRequireDefault(_nodefetch);
 var _mimetypes = require('mime-types'); var _mimetypes2 = _interopRequireDefault(_mimetypes);
 var _filetype = require('file-type');
-var _ourin = require('ourin');
-var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
+var _almiku = require('almiku');
+var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
 var _imgdropjs = require('../../src/scraper/imgdrop.js'); var _imgdropjs2 = _interopRequireDefault(_imgdropjs);
 var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
 
@@ -583,13 +583,13 @@ async function handler(m, { sock }) {
   let filename = "file";
 
   if (_optionalChain([m, 'access', _41 => _41.quoted, 'optionalAccess', _42 => _42.message])) {
-    const type = _ourin.getContentType.call(void 0, m.quoted.message);
+    const type = _almiku.getContentType.call(void 0, m.quoted.message);
     if (!type || type === "conversation" || type === "extendedTextMessage") {
       return m.reply("⚠Por favor, responda al archivo.");
     }
 
     try {
-      media = await _ourin.downloadMediaMessage.call(void 0, 
+      media = await _almiku.downloadMediaMessage.call(void 0, 
         { key: m.quoted.key, message: m.quoted.message },
         "buffer",
         {},
@@ -598,10 +598,10 @@ async function handler(m, { sock }) {
       mimetype = _optionalChain([content, 'optionalAccess', _43 => _43.mimetype]) || "application/octet-stream";
       filename = _optionalChain([content, 'optionalAccess', _44 => _44.fileName]) || `archivo.${getFileExtension(mimetype)}`;
     } catch (e) {
-      return m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
+      return m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
     }
   } else if (m.message) {
-    const type = _ourin.getContentType.call(void 0, m.message);
+    const type = _almiku.getContentType.call(void 0, m.message);
     if (!type || type === "conversation" || type === "extendedTextMessage") {
       let txt = `📤 *MEDIA UPLOADER* 📤\n\n`;
       txt += `¡Hola hermano!\n\n`;
@@ -612,7 +612,7 @@ async function handler(m, { sock }) {
     }
 
     try {
-      media = await _ourin.downloadMediaMessage.call(void 0, 
+      media = await _almiku.downloadMediaMessage.call(void 0, 
         { key: m.key, message: m.message },
         "buffer",
         {},
@@ -621,7 +621,7 @@ async function handler(m, { sock }) {
       mimetype = _optionalChain([content, 'optionalAccess', _45 => _45.mimetype]) || "application/octet-stream";
       filename = _optionalChain([content, 'optionalAccess', _46 => _46.fileName]) || `archivo.${getFileExtension(mimetype)}`;
     } catch (e) {
-      return m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
+      return m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
     }
   }
 
@@ -670,7 +670,7 @@ async function handler(m, { sock }) {
   try {
     let headerMedia = null;
     if (mimetype.startsWith('image') || mimetype.startsWith('video')) {
-      const preMsg = await _ourin.generateWAMessage.call(void 0, m.chat, { 
+      const preMsg = await _almiku.generateWAMessage.call(void 0, m.chat, { 
         [mimetype.startsWith('image') ? 'image' : 'video']: media 
       }, { userJid: sock.user.id });
       headerMedia = mimetype.startsWith('image') ? 
@@ -678,22 +678,22 @@ async function handler(m, { sock }) {
         { videoMessage: preMsg.message.videoMessage };
     }
 
-    const msg = _ourin.generateWAMessageFromContent.call(void 0, m.chat, {
+    const msg = _almiku.generateWAMessageFromContent.call(void 0, m.chat, {
       viewOnceMessage: {
         message: {
           messageContextInfo: {
             deviceListMetadata: {},
             deviceListMetadataVersion: 2
           },
-          interactiveMessage: _ourin.proto.Message.InteractiveMessage.create({
-            body: _ourin.proto.Message.InteractiveMessage.Body.create({ text: text }),
-            footer: _ourin.proto.Message.InteractiveMessage.Footer.create({ text: _configjs2.default.bot.name }),
-            header: _ourin.proto.Message.InteractiveMessage.Header.create({
+          interactiveMessage: _almiku.proto.Message.InteractiveMessage.create({
+            body: _almiku.proto.Message.InteractiveMessage.Body.create({ text: text }),
+            footer: _almiku.proto.Message.InteractiveMessage.Footer.create({ text: _configjs2.default.bot.name }),
+            header: _almiku.proto.Message.InteractiveMessage.Header.create({
               title: "T O U R L",
               hasMediaAttachment: !!headerMedia,
               ...headerMedia
             }),
-            nativeFlowMessage: _ourin.proto.Message.InteractiveMessage.NativeFlowMessage.create({
+            nativeFlowMessage: _almiku.proto.Message.InteractiveMessage.NativeFlowMessage.create({
               buttons: results.slice(0, 5).map((r, i) => ({
                 name: "cta_copy",
                 buttonParamsJson: JSON.stringify({

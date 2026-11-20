@@ -1,8 +1,8 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _ourindatabasejs = require('../../src/lib/ourin-database.js');
-var _ourinjpmhelperjs = require('../../src/lib/ourin-jpm-helper.js');
-var _ourincontextjs = require('../../src/lib/ourin-context.js');
+"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _almikudatabasejs = require('../../src/lib/almiku-database.js');
+var _almikujpmhelperjs = require('../../src/lib/almiku-jpm-helper.js');
+var _almikucontextjs = require('../../src/lib/almiku-context.js');
 var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
-var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
+var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
 
 const pluginConfig = {
   name: "bcgc",
@@ -56,7 +56,7 @@ function formatDelay(ms) {
 }
 
 async function handler(m, { sock }) {
-  const db = _ourindatabasejs.getDatabase.call(void 0, );
+  const db = _almikudatabasejs.getDatabase.call(void 0, );
   const command = _optionalChain([m, 'access', _ => _.command, 'optionalAccess', _2 => _2.toLowerCase, 'call', _3 => _3()]) || "";
   const input = _optionalChain([m, 'access', _4 => _4.fullArgs, 'optionalAccess', _5 => _5.trim, 'call', _6 => _6()]) || _optionalChain([m, 'access', _7 => _7.text, 'optionalAccess', _8 => _8.trim, 'call', _9 => _9()]) || "";
 
@@ -183,7 +183,7 @@ async function handler(m, { sock }) {
       );
     }
 
-    const allGroups = await _ourinjpmhelperjs.fetchGroupsSafe.call(void 0, sock);
+    const allGroups = await _almikujpmhelperjs.fetchGroupsSafe.call(void 0, sock);
     let groupIds = Object.keys(allGroups);
 
     const blacklist = db.setting("jpmBlacklist") || [];
@@ -198,7 +198,7 @@ async function handler(m, { sock }) {
     }
 
     const jeda = db.setting("jedaBcgc") || 5000;
-    const ctx = _ourincontextjs.saluranCtx.call(void 0, );
+    const ctx = _almikucontextjs.saluranCtx.call(void 0, );
 
     await m.reply(
       `📢Grup de radiodifusión cargado\n\n` +
@@ -293,7 +293,7 @@ async function handler(m, { sock }) {
   } catch (e) {
     delete global.statusBcgc;
     m.react("☢");
-    m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
+    m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
   }
 }
 

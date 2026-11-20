@@ -1,5 +1,5 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _ourindatabasejs = require('../../src/lib/ourin-database.js');
-var _ourincontextjs = require('../../src/lib/ourin-context.js');
+"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _almikudatabasejs = require('../../src/lib/almiku-database.js');
+var _almikucontextjs = require('../../src/lib/almiku-context.js');
 const pluginConfig = {
   name: "tembak",
   alias: ["nembak", "propose"],
@@ -33,7 +33,7 @@ const romanticQuotes = [
 ];
 
 async function handler(m, { sock }) {
-  const db = _ourindatabasejs.getDatabase.call(void 0, );
+  const db = _almikudatabasejs.getDatabase.call(void 0, );
   const args = m.args || [];
 
   let targetJid = null;
@@ -131,7 +131,7 @@ async function handler(m, { sock }) {
 
   await m.react("💘");
 
-  const ctx = _ourincontextjs.saluranCtx.call(void 0, );
+  const ctx = _almikucontextjs.saluranCtx.call(void 0, );
   ctx.mentionedJid = [targetJid, m.sender];
   const sentMsg = await m.reply(
     `💘* NO JUNK NIHHH*\n\n` +
@@ -153,7 +153,7 @@ async function answerHandler(m, sock) {
   if (text !== "terima" && text !== "tolak") return false;
   if (!m.quoted) return false;
 
-  const db = _ourindatabasejs.getDatabase.call(void 0, );
+  const db = _almikudatabasejs.getDatabase.call(void 0, );
 
   const allSessions = Object.entries(global.tembakSessions || {}).filter(
     ([key, val]) => val.target === m.sender && val.chat === m.chat,

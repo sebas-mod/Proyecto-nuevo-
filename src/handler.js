@@ -1,27 +1,27 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { newObj[key] = obj[key]; } } } newObj.default = obj; return newObj; } } function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; } function _nullishCoalesce(lhs, rhsFn) { if (lhs != null) { return lhs; } else { return rhsFn(); } } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _configjs = require('../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
 
-var _ourin = require('ourin');
-var _ourinserializejs = require('./lib/ourin-serialize.js');
-var _ourincontextjs = require('./lib/ourin-context.js');
+var _almiku = require('almiku');
+var _almikuserializejs = require('./lib/almiku-serialize.js');
+var _almikucontextjs = require('./lib/almiku-context.js');
 
 
 
 
 
 
-var _ourinpluginsjs = require('./lib/ourin-plugins.js');
+var _almikupluginsjs = require('./lib/almiku-plugins.js');
 
 
 
-var _ourinsimilarityjs = require('./lib/ourin-similarity.js');
-var _ourindatabasejs = require('./lib/ourin-database.js');
+var _almikusimilarityjs = require('./lib/almiku-similarity.js');
+var _almikudatabasejs = require('./lib/almiku-database.js');
 
 
 
 
-var _ourinformatterjs = require('./lib/ourin-formatter.js');
+var _almikuformatterjs = require('./lib/almiku-formatter.js');
 var _connectionjs = require('./connection.js');
-var _ourinloggerjs = require('./lib/ourin-logger.js');
+var _almikuloggerjs = require('./lib/almiku-logger.js');
 
 
 
@@ -31,47 +31,47 @@ var _ourinloggerjs = require('./lib/ourin-logger.js');
 
 
 
-var _ourinlidjs = require('./lib/ourin-lid.js');
-var _ouringamedatajs = require('./lib/ourin-game-data.js');
+var _almikulidjs = require('./lib/almiku-lid.js');
+var _almikugamedatajs = require('./lib/almiku-game-data.js');
 
 
 
 
 
-var _ourinmiddlewarejs = require('./lib/ourin-middleware.js');
-
-
-
-
-
-
+var _almikumiddlewarejs = require('./lib/almiku-middleware.js');
 
 
 
 
 
 
-var _ouringroupprotectionjs = require('./lib/ourin-group-protection.js');
 
 
 
 
 
-var _ourinperformancejs = require('./lib/ourin-performance.js');
+
+var _almikugroupprotectionjs = require('./lib/almiku-group-protection.js');
 
 
 
 
-var _ourinjadibotdatabasejs = require('./lib/ourin-jadibot-database.js');
-var _ourinjadibotmanagerjs = require('./lib/ourin-jadibot-manager.js');
-var _ourinjs = require('../case/ourin.js');
+
+var _almikuperformancejs = require('./lib/almiku-performance.js');
+
+
+
+
+var _almikujadibotdatabasejs = require('./lib/almiku-jadibot-database.js');
+var _almikujadibotmanagerjs = require('./lib/almiku-jadibot-manager.js');
+var _almikujs = require('../case/almiku.js');
 var _ratelimiterflexible = require('rate-limiter-flexible');
-var _ouringamesjs = require('./lib/ourin-games.js');
+var _almikugamesjs = require('./lib/almiku-games.js');
 var _fs = require('fs'); var _fs2 = _interopRequireDefault(_fs);
 var _path = require('path'); var _path2 = _interopRequireDefault(_path);
 var _child_process = require('child_process');
 var _axios = require('axios'); var _axios2 = _interopRequireDefault(_axios);
-var _ourintimejs = require('./lib/ourin-time.js'); var timeHelper = _interopRequireWildcard(_ourintimejs);
+var _almikutimejs = require('./lib/almiku-time.js'); var timeHelper = _interopRequireWildcard(_almikutimejs);
 var _sharp = require('sharp'); var _sharp2 = _interopRequireDefault(_sharp);
 const safe = (fn) => {
   try {
@@ -123,7 +123,7 @@ try {
   FormData = (_interopRequireWildcard(require("form-data"))).default || (_interopRequireWildcard(require("form-data")));
 } catch (e3) { }
 try {
-  levelHelper = _interopRequireWildcard(require("./lib/ourin-level.js"));
+  levelHelper = _interopRequireWildcard(require("./lib/almiku-level.js"));
 } catch (e4) { }
 try {
   handleBuyerDone = (_interopRequireWildcard(require("../plugins/store/done.js"))).handleBuyerDone;
@@ -226,18 +226,18 @@ try {
   sulapPlugin = _interopRequireWildcard(require("../plugins/fun/sulap.js"));
 } catch (e29) { }
 try {
-  handleAutoAI = (_interopRequireWildcard(require("./lib/ourin-auto-ai.js"))).handleAutoAI;
+  handleAutoAI = (_interopRequireWildcard(require("./lib/almiku-auto-ai.js"))).handleAutoAI;
 } catch (e30) { }
 try {
-  handleAutoDownload = (_interopRequireWildcard(require("./lib/ourin-auto-download.js")))
+  handleAutoDownload = (_interopRequireWildcard(require("./lib/almiku-auto-download.js")))
     .handleAutoDownload;
 } catch (e31) { }
 try {
-  checkStickerCommand = (_interopRequireWildcard(require("./lib/ourin-sticker-command.js")))
+  checkStickerCommand = (_interopRequireWildcard(require("./lib/almiku-sticker-command.js")))
     .checkStickerCommand;
 } catch (e32) { }
 try {
-  handleStickerReply = (_interopRequireWildcard(require("./lib/ourin-sticker-reply.js")))
+  handleStickerReply = (_interopRequireWildcard(require("./lib/almiku-sticker-reply.js")))
     .handleStickerReply;
 } catch (e33) { }
 try {
@@ -291,7 +291,7 @@ let _smartTriggerThumb = undefined;
 async function getSmartTriggerThumb() {
   if (_smartTriggerThumb !== undefined) return _smartTriggerThumb;
   try {
-    const url = _configjs2.default.assets["ourin2"];
+    const url = _configjs2.default.assets["almiku2"];
     if (url) {
       _smartTriggerThumb = _fs2.default.readFileSync(url)
     } else {
@@ -347,9 +347,9 @@ async function handleGameAnswer(m, sock) {
       if (await suitPlugin.answerHandler(m, sock)) return true;
     }
 
-    if (!_ouringamedatajs.hasActiveSession.call(void 0, m.chat)) return false;
+    if (!_almikugamedatajs.hasActiveSession.call(void 0, m.chat)) return false;
 
-    const session = _ouringamedatajs.getSession.call(void 0, m.chat);
+    const session = _almikugamedatajs.getSession.call(void 0, m.chat);
     if (!session) return false;
 
     const targeted = cachedGamePlugins.get(session.gameType);
@@ -396,8 +396,8 @@ async function handleSmartTriggers(m, sock, db) {
 
   try {
     const saluranId = _optionalChain([_configjs2.default, 'access', _7 => _7.saluran, 'optionalAccess', _8 => _8.id]) || "120363400911374213@newsletter";
-    const saluranName = _optionalChain([_configjs2.default, 'access', _9 => _9.saluran, 'optionalAccess', _10 => _10.name]) || _optionalChain([_configjs2.default, 'access', _11 => _11.bot, 'optionalAccess', _12 => _12.name]) || "Ourin-AI";
-    const botName = _optionalChain([_configjs2.default, 'access', _13 => _13.bot, 'optionalAccess', _14 => _14.name]) || "Ourin-AI";
+    const saluranName = _optionalChain([_configjs2.default, 'access', _9 => _9.saluran, 'optionalAccess', _10 => _10.name]) || _optionalChain([_configjs2.default, 'access', _11 => _11.bot, 'optionalAccess', _12 => _12.name]) || "Al Miku-AI";
+    const botName = _optionalChain([_configjs2.default, 'access', _13 => _13.bot, 'optionalAccess', _14 => _14.name]) || "Al Miku-AI";
 
     let isAutoreplyEnabled = globalSmartTriggers;
 
@@ -476,7 +476,7 @@ async function handleSmartTriggers(m, sock, db) {
 
     const thumbBuffer = await getSmartTriggerThumb();
 
-    const contextInfos = _ourincontextjs.saluranCtx.call(void 0, );
+    const contextInfos = _almikucontextjs.saluranCtx.call(void 0, );
 
     if (isMentioned) {
       await m.reply(
@@ -554,7 +554,7 @@ async function messageHandler(msg, sock, options = {}) {
   try {
     let m;
     try {
-      m = await _ourinserializejs.serialize.call(void 0, sock, msg);
+      m = await _almikuserializejs.serialize.call(void 0, sock, msg);
     } catch (serializeErr) {
       return;
     }
@@ -581,7 +581,7 @@ async function messageHandler(msg, sock, options = {}) {
       } catch (e) { }
     }
 
-    const db = _ourindatabasejs.getDatabase.call(void 0, );
+    const db = _almikudatabasejs.getDatabase.call(void 0, );
     if (!_optionalChain([db, 'optionalAccess', _51 => _51.ready])) {
       return;
     }
@@ -638,8 +638,8 @@ async function messageHandler(msg, sock, options = {}) {
       const botJid = _optionalChain([sock, 'access', _55 => _55.user, 'optionalAccess', _56 => _56.id, 'optionalAccess', _57 => _57.split, 'call', _58 => _58(":"), 'access', _59 => _59[0]]) + "@s.whatsapp.net";
       const senderNum = _optionalChain([m, 'access', _60 => _60.sender, 'optionalAccess', _61 => _61.replace, 'call', _62 => _62(/[^0-9]/g, "")]) || "";
       const botNum = botJid.replace(/[^0-9]/g, "");
-      m.isOwner = _ourinjadibotdatabasejs.isJadibotOwner.call(void 0, jadibotId, m.sender) || senderNum === botNum;
-      m.isPremium = _ourinjadibotdatabasejs.isJadibotPremium.call(void 0, jadibotId, m.sender) || m.isOwner;
+      m.isOwner = _almikujadibotdatabasejs.isJadibotOwner.call(void 0, jadibotId, m.sender) || senderNum === botNum;
+      m.isPremium = _almikujadibotdatabasejs.isJadibotPremium.call(void 0, jadibotId, m.sender) || m.isOwner;
     }
 
     if (_optionalChain([_configjs2.default, 'access', _63 => _63.features, 'optionalAccess', _64 => _64.logMessage])) {
@@ -666,7 +666,7 @@ async function messageHandler(msg, sock, options = {}) {
               : _optionalChain([m, 'access', _74 => _74.key, 'optionalAccess', _75 => _75.id, 'optionalAccess', _76 => _76.startsWith, 'call', _77 => _77("BAE5")])
                 ? "Web"
                 : null;
-        _ourinloggerjs.logMessage.call(void 0, {
+        _almikuloggerjs.logMessage.call(void 0, {
           chatType: m.isNewsletter
             ? "newsletter"
             : m.isGroup
@@ -696,30 +696,30 @@ async function messageHandler(msg, sock, options = {}) {
     }
 
     if (m.isGroup && !m.isNewsletter) {
-      _ouringroupprotectionjs.cacheMessageForAntiRemove.call(void 0, m, sock, db);
+      _almikugroupprotectionjs.cacheMessageForAntiRemove.call(void 0, m, sock, db);
 
-      const antiJudolTriggered = await _ouringroupprotectionjs.handleAntiJudol.call(void 0, m, sock, db);
+      const antiJudolTriggered = await _almikugroupprotectionjs.handleAntiJudol.call(void 0, m, sock, db);
       if (antiJudolTriggered) return;
 
-      const antiPhisingTriggered = await _ouringroupprotectionjs.handleAntiPhising.call(void 0, m, sock, db);
+      const antiPhisingTriggered = await _almikugroupprotectionjs.handleAntiPhising.call(void 0, m, sock, db);
       if (antiPhisingTriggered) return;
 
-      const antiCustomTriggered = await _ouringroupprotectionjs.handleAntiCustom.call(void 0, m, sock, db);
+      const antiCustomTriggered = await _almikugroupprotectionjs.handleAntiCustom.call(void 0, m, sock, db);
       if (antiCustomTriggered) return;
 
-      const antilinkTriggered = await _ouringroupprotectionjs.handleAntilink.call(void 0, m, sock, db);
+      const antilinkTriggered = await _almikugroupprotectionjs.handleAntilink.call(void 0, m, sock, db);
       if (antilinkTriggered) return;
 
-      const antilinkGcTriggered = await _ouringroupprotectionjs.handleAntilinkGc.call(void 0, m, sock, db);
+      const antilinkGcTriggered = await _almikugroupprotectionjs.handleAntilinkGc.call(void 0, m, sock, db);
       if (antilinkGcTriggered) return;
 
-      const antilinkAllTriggered = await _ouringroupprotectionjs.handleAntilinkAll.call(void 0, m, sock, db);
+      const antilinkAllTriggered = await _almikugroupprotectionjs.handleAntilinkAll.call(void 0, m, sock, db);
       if (antilinkAllTriggered) return;
 
-      const antiHidetagTriggered = await _ouringroupprotectionjs.handleAntiHidetag.call(void 0, m, sock, db);
+      const antiHidetagTriggered = await _almikugroupprotectionjs.handleAntiHidetag.call(void 0, m, sock, db);
       if (antiHidetagTriggered) return;
 
-      const antiSwGcTriggered = await _ouringroupprotectionjs.handleAntiSwGc.call(void 0, m, sock, db);
+      const antiSwGcTriggered = await _almikugroupprotectionjs.handleAntiSwGc.call(void 0, m, sock, db);
       if (antiSwGcTriggered) return;
 
       if (checkAntidocument) {
@@ -804,7 +804,7 @@ async function messageHandler(msg, sock, options = {}) {
       } catch (e) { }
     }
 
-    const modeCheck = _ourinmiddlewarejs.checkMode.call(void 0, m, _ourinjadibotmanagerjs.getActiveJadibots);
+    const modeCheck = _almikumiddlewarejs.checkMode.call(void 0, m, _almikujadibotmanagerjs.getActiveJadibots);
     if (!modeCheck.allowed) {
       if (modeCheck.isAfk && m.isCommand) {
         await m.reply(modeCheck.afkMessage);
@@ -814,7 +814,7 @@ async function messageHandler(msg, sock, options = {}) {
           {
             text: modeCheck.jadibotMessage,
             contextInfo: {
-              ..._ourincontextjs.saluranCtx.call(void 0, ),
+              ..._almikucontextjs.saluranCtx.call(void 0, ),
               mentionedJid: modeCheck.jadibotMentions,
             },
           },
@@ -835,7 +835,7 @@ async function messageHandler(msg, sock, options = {}) {
           )
           .catch(() => { });
       }
-      _ourinloggerjs.logger.warn("Banned user", m.sender);
+      _almikuloggerjs.logger.warn("Banned user", m.sender);
       return;
     }
 
@@ -849,7 +849,7 @@ async function messageHandler(msg, sock, options = {}) {
 
     const botId = _optionalChain([sock, 'access', _88 => _88.user, 'optionalAccess', _89 => _89.id, 'optionalAccess', _90 => _90.split, 'call', _91 => _91(":"), 'access', _92 => _92[0]]) || "unknown";
     const msgKey = `${botId}_${m.chat}_${m.sender}_${m.id}`;
-    if (_ourinperformancejs.debounceMessage.call(void 0, msgKey)) {
+    if (_almikuperformancejs.debounceMessage.call(void 0, msgKey)) {
       return;
     }
 
@@ -967,7 +967,7 @@ async function messageHandler(msg, sock, options = {}) {
               const rawWord = words[0];
               const prefix = _optionalChain([_configjs2.default, 'access', _107 => _107.command, 'optionalAccess', _108 => _108.prefix]) || ".";
 
-              const allPlugins = _ourinpluginsjs.getAllPlugins.call(void 0, );
+              const allPlugins = _almikupluginsjs.getAllPlugins.call(void 0, );
               const allNames = [];
               for (const p of allPlugins) {
                 if (_optionalChain([p, 'access', _109 => _109.config, 'optionalAccess', _110 => _110.name]) && typeof p.config.name === "string")
@@ -996,7 +996,7 @@ async function messageHandler(msg, sock, options = {}) {
                     bestMatch = cmd;
                   }
                 }
-                const dist = _ourinmiddlewarejs.levenshtein.call(void 0, rawWord, cmd);
+                const dist = _almikumiddlewarejs.levenshtein.call(void 0, rawWord, cmd);
                 if (dist <= 3 && dist < bestScore) {
                   bestScore = dist;
                   bestMatch = cmd;
@@ -1007,7 +1007,7 @@ async function messageHandler(msg, sock, options = {}) {
                 const commandArgs = words.slice(1).join(" ");
                 m.body = `${prefix}${bestMatch}${commandArgs ? " " + commandArgs : ""}`;
                 const { parseCommand } =
-                  _interopRequireWildcard(require("./lib/ourin-serialize.js"));
+                  _interopRequireWildcard(require("./lib/almiku-serialize.js"));
                 const parsed = parseCommand(m.body, prefix);
                 m.isCommand = parsed.isCommand;
                 m.command = parsed.command;
@@ -1085,9 +1085,9 @@ const { defoult: fs } = aghult importa ( spans )
 { defoust: path } = aghut import ( xenpath )
 { defoust: os } = aqaut important ( xenos }
           const { promisify } = await import('util')
-          const { generateWAMessage, getBuffer, generateWAMessageFromContent, proto, generateMessageID } = await import('ourin')
+          const { generateWAMessage, getBuffer, generateWAMessageFromContent, proto, generateMessageID } = await import('almiku')
           const { exec: childExec } = await import('child_process')
-          const { VERSION, Button, ButtonV2, Carousel, AIRich, } = await import('./lib/ourin-builder.js')
+          const { VERSION, Button, ButtonV2, Carousel, AIRich, } = await import('./lib/almiku-builder.js')
           const exec = promisify(childExec)
           
           ${code}
@@ -1099,7 +1099,7 @@ const { defoult: fs } = aghult importa ( spans )
           sock,
           db,
           _configjs2.default,
-          _ourindatabasejs.getDatabase,
+          _almikudatabasejs.getDatabase,
           console,
         );
 
@@ -1145,7 +1145,7 @@ const { predeterminado: ax- Espera a importar.xios dhakum )
 const { defoult: fs } = aghult importa ( spans )
 { defoust: path } = aghut import ( xenpath )
 { defoust: os } = aqaut important ( xenos }
-          const { generateWAMessage, getBuffer, generateWAMessageFromContent, proto, generateMessageID } = await import('ourin')
+          const { generateWAMessage, getBuffer, generateWAMessageFromContent, proto, generateMessageID } = await import('almiku')
 
           const result = await ${expr}
           if (result === undefined) return 'undefined'
@@ -1164,7 +1164,7 @@ const { defoult: fs } = aghult importa ( spans )
           sock,
           db,
           _configjs2.default,
-          _ourindatabasejs.getDatabase,
+          _almikudatabasejs.getDatabase,
           console,
         );
 
@@ -1202,7 +1202,7 @@ const { defoult: fs } = aghult importa ( spans )
 
     let gameEvaluated = false;
     if (
-      (_ouringamedatajs.hasActiveSession.call(void 0, m.chat) && m.quoted) ||
+      (_almikugamedatajs.hasActiveSession.call(void 0, m.chat) && m.quoted) ||
       hasSuitGame ||
       hasTTTGame ||
       hasUTGame
@@ -1321,7 +1321,7 @@ const { defoult: fs } = aghult importa ( spans )
     }
 
     if (!m.isCommand) {
-      if (_ouringamedatajs.hasActiveSession.call(void 0, m.chat) && !gameEvaluated) {
+      if (_almikugamedatajs.hasActiveSession.call(void 0, m.chat) && !gameEvaluated) {
         gameEvaluated = true;
         const gameHandled = await handleGameAnswer(m, sock);
         if (gameHandled) return;
@@ -1382,7 +1382,7 @@ const { defoult: fs } = aghult importa ( spans )
           if (stickerCmd) {
             const prefix = m.prefix || _optionalChain([_configjs2.default, 'access', _138 => _138.command, 'optionalAccess', _139 => _139.prefix]) || ".";
             m.body = `${prefix}${stickerCmd}`;
-            const { parseCommand } = _interopRequireWildcard(require("./lib/ourin-serialize.js"));
+            const { parseCommand } = _interopRequireWildcard(require("./lib/almiku-serialize.js"));
             const parsed = parseCommand(m.body, prefix);
             m.isCommand = parsed.isCommand;
             m.command = parsed.command;
@@ -1436,7 +1436,7 @@ const { defoult: fs } = aghult importa ( spans )
 
         if (storeCommand.hasImage && storeCommand.imagePath) {
           try {
-            const imageBuffer = await _ourinserializejs.getCachedThumb.call(void 0, storeCommand.imagePath);
+            const imageBuffer = await _almikuserializejs.getCachedThumb.call(void 0, storeCommand.imagePath);
             if (imageBuffer) {
               await sock.sendMessage(
                 m.chat,
@@ -1459,28 +1459,28 @@ const { defoult: fs } = aghult importa ( spans )
     }
 
     //Control de seguridad de canal de WhatsApp centralizado ( Obligatorio Seguir 2 Canales )
-    const { checkChannelSecurity } = require("./lib/ourin-channel-security.js");
+    const { checkChannelSecurity } = require("./lib/almiku-channel-security.js");
     const channelSecurityPassed = await checkChannelSecurity(m, sock, db, _configjs2.default);
     if (!channelSecurityPassed) {
       return;
     }
 
     try {
-      const caseResult = await _ourinjs.handleCommand.call(void 0, m, sock);
+      const caseResult = await _almikujs.handleCommand.call(void 0, m, sock);
       if (caseResult && caseResult.handled) {
         if (_optionalChain([_configjs2.default, 'access', _140 => _140.dev, 'optionalAccess', _141 => _141.debugLog])) {
-          _ourinloggerjs.logger.success("Case", `Handled: ${m.command}`);
+          _almikuloggerjs.logger.success("Case", `Handled: ${m.command}`);
         }
         return;
       }
     } catch (caseError) {
-      _ourinloggerjs.logger.error("Case System", caseError.message);
+      _almikuloggerjs.logger.error("Case System", caseError.message);
       if (_optionalChain([_configjs2.default, 'access', _142 => _142.dev, 'optionalAccess', _143 => _143.debugLog])) {
         console.error("[CaseSystem] Stack:", caseError.stack);
       }
     }
 
-    let plugin = _ourinpluginsjs.getPlugin.call(void 0, m.command);
+    let plugin = _almikupluginsjs.getPlugin.call(void 0, m.command);
 
     if (!plugin) {
       if (storeCommand) {
@@ -1497,7 +1497,7 @@ const { defoult: fs } = aghult importa ( spans )
 
         if (storeCommand.hasImage && storeCommand.imagePath) {
           try {
-            const imageBuffer = await _ourinserializejs.getCachedThumb.call(void 0, storeCommand.imagePath);
+            const imageBuffer = await _almikuserializejs.getCachedThumb.call(void 0, storeCommand.imagePath);
             if (imageBuffer) {
               await sock.sendMessage(
                 m.chat,
@@ -1519,12 +1519,12 @@ const { defoult: fs } = aghult importa ( spans )
       }
 
       const storeCommands = Object.keys(storeData);
-      const allCommands = [..._ourinpluginsjs.getAllCommandNames.call(void 0, ), ...storeCommands];
+      const allCommands = [..._almikupluginsjs.getAllCommandNames.call(void 0, ), ...storeCommands];
 
       const similarityEnabled = db.setting("similarity") !== false;
 
       if (similarityEnabled) {
-        const suggestions = _ourinsimilarityjs.findSimilarCommands.call(void 0, m.command, allCommands, {
+        const suggestions = _almikusimilarityjs.findSimilarCommands.call(void 0, m.command, allCommands, {
           maxResults: 1,
           minSimilarity: 0.8,
           maxDistance: 2,
@@ -1542,7 +1542,7 @@ const { defoult: fs } = aghult importa ( spans )
                 url: _configjs2.default.info.website,
                 title: "Command not found",
                 description: `Sugiere el Comando${_configjs2.default.bot.name}`,
-                jpegThumbnail: await _sharp2.default.call(void 0, _fs2.default.readFileSync(_configjs2.default.assets["ourin2"])).resize(300, 300).toBuffer(),
+                jpegThumbnail: await _sharp2.default.call(void 0, _fs2.default.readFileSync(_configjs2.default.assets["almiku2"])).resize(300, 300).toBuffer(),
                 previewType: 1,
               },
               { quoted: m }
@@ -1704,7 +1704,7 @@ const { defoult: fs } = aghult importa ( spans )
       }
     }
 
-    const permission = _ourinmiddlewarejs.checkPermission.call(void 0, m, plugin.config);
+    const permission = _almikumiddlewarejs.checkPermission.call(void 0, m, plugin.config);
     if (!permission.allowed) {
       await m.reply(permission.reason);
       return;
@@ -1797,7 +1797,7 @@ const { defoult: fs } = aghult importa ( spans )
       db,
       uptime: _connectionjs.getUptime.call(void 0, ),
       plugins: {
-        count: _ourinpluginsjs.getPluginCount.call(void 0, ),
+        count: _almikupluginsjs.getPluginCount.call(void 0, ),
       },
       jadibotId: jadibotId,
       isJadibot: isJadibot,
@@ -1830,11 +1830,11 @@ const { defoult: fs } = aghult importa ( spans )
       sock.sendPresenceUpdate("paused", m.chat).catch(() => { });
     }
   } catch (error) {
-    _ourinloggerjs.logger.error("handler", `${error.message}`);
+    _almikuloggerjs.logger.error("handler", `${error.message}`);
     console.error("[Handler Stack]", error.stack);
 
     try {
-      const db = _ourindatabasejs.getDatabase.call(void 0, );
+      const db = _almikudatabasejs.getDatabase.call(void 0, );
       if (db) {
         db.incrementStat("commandErrors");
         const errorLog = db.setting("errorLog") || [];
@@ -1849,12 +1849,12 @@ const { defoult: fs } = aghult importa ( spans )
     } catch (e48) { }
 
     try {
-      const m = await _ourinserializejs.serialize.call(void 0, sock, msg);
+      const m = await _almikuserializejs.serialize.call(void 0, sock, msg);
       if (m) {
         await m.reply(`Parece que hay un monstruo de control, que llama al dueño.`);
       }
     } catch (e49) {
-      _ourinloggerjs.logger.error("Failed to send error message");
+      _almikuloggerjs.logger.error("Failed to send error message");
     }
   }
 }
@@ -1879,7 +1879,7 @@ async function groupHandler(update, sock) {
       return;
     }
 
-    const db = _ourindatabasejs.getDatabase.call(void 0, );
+    const db = _almikudatabasejs.getDatabase.call(void 0, );
 
     let groupData = db.getGroup(groupJid);
     if (!groupData) {
@@ -1905,7 +1905,7 @@ async function groupHandler(update, sock) {
       }
 
       if (_optionalChain([groupMeta, 'optionalAccess', _190 => _190.participants])) {
-        _ourinlidjs.cacheParticipantLids.call(void 0, groupMeta.participants);
+        _almikulidjs.cacheParticipantLids.call(void 0, groupMeta.participants);
       }
     } catch (e) {
       if (
@@ -1919,7 +1919,7 @@ async function groupHandler(update, sock) {
         _optionalChain([e, 'access', _200 => _200.message, 'optionalAccess', _201 => _201.includes, 'call', _202 => _202("rate-overlimit")]) ||
         _optionalChain([e, 'optionalAccess', _203 => _203.output, 'optionalAccess', _204 => _204.statusCode]) === 429
       ) {
-        _ourinloggerjs.logger.warn("GroupHandler", "rate-limited, skipping event");
+        _almikuloggerjs.logger.warn("GroupHandler", "rate-limited, skipping event");
         return;
       }
       throw e;
@@ -1937,7 +1937,7 @@ async function groupHandler(update, sock) {
 
       if (!participantJid || typeof participantJid !== "string") continue;
 
-      if (_ourinlidjs.isLid.call(void 0, participantJid) || _ourinlidjs.isLidConverted.call(void 0, participantJid)) {
+      if (_almikulidjs.isLid.call(void 0, participantJid) || _almikulidjs.isLidConverted.call(void 0, participantJid)) {
         const found = _optionalChain([groupMeta, 'access', _205 => _205.participants, 'optionalAccess', _206 => _206.find, 'call', _207 => _207(
           (p) =>
             p.id === participantJid ||
@@ -1948,15 +1948,15 @@ async function groupHandler(update, sock) {
           participantJid =
             found.jid &&
               !found.jid.endsWith("@lid") &&
-              !_ourinlidjs.isLidConverted.call(void 0, found.jid)
+              !_almikulidjs.isLidConverted.call(void 0, found.jid)
               ? found.jid
               : found.id &&
                 !found.id.endsWith("@lid") &&
-                !_ourinlidjs.isLidConverted.call(void 0, found.id)
+                !_almikulidjs.isLidConverted.call(void 0, found.id)
                 ? found.id
-                : _ourinlidjs.lidToJid.call(void 0, participantJid);
+                : _almikulidjs.lidToJid.call(void 0, participantJid);
         } else {
-          participantJid = _ourinlidjs.lidToJid.call(void 0, participantJid);
+          participantJid = _almikulidjs.lidToJid.call(void 0, participantJid);
         }
       }
 
@@ -1972,7 +1972,7 @@ async function groupHandler(update, sock) {
 
       const saluranId = _optionalChain([_configjs2.default, 'access', _208 => _208.saluran, 'optionalAccess', _209 => _209.id]) || "120363400911374213@newsletter";
       const saluranName =
-        _optionalChain([_configjs2.default, 'access', _210 => _210.saluran, 'optionalAccess', _211 => _211.name]) || _optionalChain([_configjs2.default, 'access', _212 => _212.bot, 'optionalAccess', _213 => _213.name]) || "Ourin-AI";
+        _optionalChain([_configjs2.default, 'access', _210 => _210.saluran, 'optionalAccess', _211 => _211.name]) || _optionalChain([_configjs2.default, 'access', _212 => _212.bot, 'optionalAccess', _213 => _213.name]) || "Al Miku-AI";
 
       let groupPpUrl = null;
       try {
@@ -1983,7 +1983,7 @@ async function groupHandler(update, sock) {
         promote: {
           notifKey: "notifPromote",
           imgKey: "_promoteImg",
-          imgPath: _configjs2.default.assets["ourin-promote"],
+          imgPath: _configjs2.default.assets["almiku-promote"],
           emoji: "🎉",
           label: "PROMOTE",
           text: (p, a) =>
@@ -1992,7 +1992,7 @@ async function groupHandler(update, sock) {
         demote: {
           notifKey: "notifDemote",
           imgKey: "_demoteImg",
-          imgPath: _configjs2.default.assets["ourin-demote"],
+          imgPath: _configjs2.default.assets["almiku-demote"],
           emoji: "📉",
           label: "DEMOTE",
           text: (p, a) =>
@@ -2028,7 +2028,7 @@ async function groupHandler(update, sock) {
             }
           };
 
-          const media4 = await _ourin.prepareWAMessageMedia.call(void 0, { image: groupHandler[rankCfg.imgKey] }, { upload: sock.waUploadToServer });
+          const media4 = await _almiku.prepareWAMessageMedia.call(void 0, { image: groupHandler[rankCfg.imgKey] }, { upload: sock.waUploadToServer });
 
           const promoteButtons = [
             {
@@ -2058,13 +2058,13 @@ async function groupHandler(update, sock) {
             }
           ];
 
-          const msg4 = _ourin.generateWAMessageFromContent.call(void 0, groupJid, {
+          const msg4 = _almiku.generateWAMessageFromContent.call(void 0, groupJid, {
             viewOnceMessage: {
               message: {
                 messageContextInfo: {},
                 interactiveMessage: {
                   header: { title: "", subtitle: "", hasMediaAttachment: true, imageMessage: media4.imageMessage },
-                  footer: { text: _optionalChain([_configjs2.default, 'access', _217 => _217.bot, 'optionalAccess', _218 => _218.name]) || "Ourin-AI" },
+                  footer: { text: _optionalChain([_configjs2.default, 'access', _217 => _217.bot, 'optionalAccess', _218 => _218.name]) || "Al Miku-AI" },
                   body: { text: rankCfg.text(pNum, aNum) },
                   contextInfo: {
                     mentionedJid: mentions,
@@ -2072,7 +2072,7 @@ async function groupHandler(update, sock) {
                     forwardingScore: 9999,
                     forwardedNewsletterMessageInfo: {
                       newsletterJid: _optionalChain([_configjs2.default, 'access', _219 => _219.saluran, 'optionalAccess', _220 => _220.id]) || "120363400911374213@newsletter",
-                      newsletterName: _optionalChain([_configjs2.default, 'access', _221 => _221.saluran, 'optionalAccess', _222 => _222.name]) || _optionalChain([_configjs2.default, 'access', _223 => _223.bot, 'optionalAccess', _224 => _224.name]) || "Ourin-AI",
+                      newsletterName: _optionalChain([_configjs2.default, 'access', _221 => _221.saluran, 'optionalAccess', _222 => _222.name]) || _optionalChain([_configjs2.default, 'access', _223 => _223.bot, 'optionalAccess', _224 => _224.name]) || "Al Miku-AI",
                       serverMessageId: 127,
                     },
                   },
@@ -2103,11 +2103,11 @@ async function groupHandler(update, sock) {
 }
 
 async function messageUpdateHandler(updates, sock) {
-  const db = _ourindatabasejs.getDatabase.call(void 0, );
+  const db = _almikudatabasejs.getDatabase.call(void 0, );
 
   for (const update of updates) {
     try {
-      await _ouringroupprotectionjs.handleAntiRemove.call(void 0, update, sock, db);
+      await _almikugroupprotectionjs.handleAntiRemove.call(void 0, update, sock, db);
     } catch (error) {
       continue;
     }
@@ -2182,11 +2182,11 @@ async function groupSettingsHandler(update, sock) {
       groupPpUrl = await sock.profilePictureUrl(groupId, "image");
     } catch (e53) { }
 
-    const db = _ourindatabasejs.getDatabase.call(void 0, );
+    const db = _almikudatabasejs.getDatabase.call(void 0, );
     const groupData = db.getGroup(groupId) || {};
 
     const zannContext = {
-      contextInfo: _ourincontextjs.saluranCtx.call(void 0, ),
+      contextInfo: _almikucontextjs.saluranCtx.call(void 0, ),
     };
 
     if (update.announce !== undefined) {
@@ -2261,7 +2261,7 @@ async function groupSettingsHandler(update, sock) {
 
 
 
-exports.messageHandler = messageHandler; exports.groupHandler = groupHandler; exports.messageUpdateHandler = messageUpdateHandler; exports.groupSettingsHandler = groupSettingsHandler; exports.checkPermission = _ourinmiddlewarejs.checkPermission; exports.checkMode = _ourinmiddlewarejs.checkMode; exports.isSpamming = isSpamming; exports.handleAntiRemoveFromUpsert = _ouringroupprotectionjs.handleAntiRemoveFromUpsert;
+exports.messageHandler = messageHandler; exports.groupHandler = groupHandler; exports.messageUpdateHandler = messageUpdateHandler; exports.groupSettingsHandler = groupSettingsHandler; exports.checkPermission = _almikumiddlewarejs.checkPermission; exports.checkMode = _almikumiddlewarejs.checkMode; exports.isSpamming = isSpamming; exports.handleAntiRemoveFromUpsert = _almikugroupprotectionjs.handleAntiRemoveFromUpsert;
 
 if (exports.default !== undefined) {
   if (typeof exports.default === 'object' && exports.default !== null) {

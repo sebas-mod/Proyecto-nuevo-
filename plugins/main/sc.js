@@ -1,4 +1,4 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _ourinassetmanagerjs = require('../../src/lib/ourin-asset-manager.js');
+"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _almikuassetmanagerjs = require('../../src/lib/almiku-asset-manager.js');
 var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
 
 const pluginConfig = {
@@ -20,10 +20,10 @@ const pluginConfig = {
 
 async function handler(m, { sock }) {
     return await sock.sendMessage(m.chat, {
-        image: _ourinassetmanagerjs.getAssetBuffer.call(void 0, "ourin"),
+        image: _almikuassetmanagerjs.getAssetBuffer.call(void 0, "almiku"),
         caption: `🌾 Hola hermano *${m.pushName}*
         
-De hecho, desde estas botas, puede atravesar los enlaces y, a continuación, puede encontrar la palabra clave " OURIN MENE ".`,
+De hecho, desde estas botas, puede atravesar los enlaces y, a continuación, puede encontrar la palabra clave " AL MIKU MENE ".`,
         footer: "💬Este enlace te llevará a Youtube.",
         interactiveButtons: [
             {

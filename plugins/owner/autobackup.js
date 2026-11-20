@@ -1,7 +1,7 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { newObj[key] = obj[key]; } } } newObj.default = obj; return newObj; } } function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _ourinautobackupjs = require('../../src/lib/ourin-auto-backup.js');
-var _ourintimejs = require('../../src/lib/ourin-time.js'); var timeHelper = _interopRequireWildcard(_ourintimejs);
+"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { newObj[key] = obj[key]; } } } newObj.default = obj; return newObj; } } function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _almikuautobackupjs = require('../../src/lib/almiku-auto-backup.js');
+var _almikutimejs = require('../../src/lib/almiku-time.js'); var timeHelper = _interopRequireWildcard(_almikutimejs);
 var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
-var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
+var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
 const pluginConfig = {
   name: "autobackup",
   alias: ["backup", "ab"],
@@ -23,7 +23,7 @@ async function handler(m, { sock }) {
   const action = _optionalChain([args, 'access', _6 => _6[0], 'optionalAccess', _7 => _7.toLowerCase, 'call', _8 => _8()]);
 
   if (!action) {
-    const status = _ourinautobackupjs.getBackupStatus.call(void 0, );
+    const status = _almikuautobackupjs.getBackupStatus.call(void 0, );
     const ownerNum = _optionalChain([_configjs2.default, 'access', _9 => _9.owner, 'optionalAccess', _10 => _10.number, 'optionalAccess', _11 => _11[0]]) || "No diset";
 
     let txt = `🗂️ *ᴀᴜᴛᴏ ʙᴀᴄᴋᴜᴘ sʏsᴛᴇᴍ*\n\n`;
@@ -70,7 +70,7 @@ async function handler(m, { sock }) {
         );
       }
 
-      const result = _ourinautobackupjs.enableAutoBackup.call(void 0, interval, sock);
+      const result = _almikuautobackupjs.enableAutoBackup.call(void 0, interval, sock);
 
       if (!result.success) {
         return m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> ${result.error}`);
@@ -93,7 +93,7 @@ async function handler(m, { sock }) {
     case "off":
     case "disable":
     case "stop": {
-      _ourinautobackupjs.disableAutoBackup.call(void 0, );
+      _almikuautobackupjs.disableAutoBackup.call(void 0, );
 
       await m.react("✅");
       return m.reply(
@@ -105,7 +105,7 @@ async function handler(m, { sock }) {
 
     case "status":
     case "info": {
-      const status = _ourinautobackupjs.getBackupStatus.call(void 0, );
+      const status = _almikuautobackupjs.getBackupStatus.call(void 0, );
       const ownerNum = _optionalChain([_configjs2.default, 'access', _15 => _15.owner, 'optionalAccess', _16 => _16.number, 'optionalAccess', _17 => _17[0]]) || "No diset";
 
       let txt = `🗂️ *sᴛᴀᴛᴜs ᴀᴜᴛᴏ ʙᴀᴄᴋᴜᴘ*\n\n`;
@@ -130,14 +130,14 @@ async function handler(m, { sock }) {
       );
 
       try {
-        await _ourinautobackupjs.triggerManualBackup.call(void 0, sock);
+        await _almikuautobackupjs.triggerManualBackup.call(void 0, sock);
         await m.react("✅");
         return m.reply(
           `✅*ʙᴀᴄᴋᴜᴘSᴇʟᴇSᴀɪ*\n\n¡El respaldo ha sido enviado al dueño!`,
         );
       } catch (error) {
         await m.react('☢');
-        await m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
+        await m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
       }
     }
 

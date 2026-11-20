@@ -1,5 +1,5 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { newObj[key] = obj[key]; } } } newObj.default = obj; return newObj; } } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _ourindatabasejs = require('./src/lib/ourin-database.js');
-var _ourinpremiumdbjs = require('./src/lib/ourin-premium-db.js'); var ownerPremiumDb = _interopRequireWildcard(_ourinpremiumdbjs);
+"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { newObj[key] = obj[key]; } } } newObj.default = obj; return newObj; } } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _almikudatabasejs = require('./src/lib/almiku-database.js');
+var _almikupremiumdbjs = require('./src/lib/almiku-premium-db.js'); var ownerPremiumDb = _interopRequireWildcard(_almikupremiumdbjs);
 
 //principal lee objeto config a bawah
 const config = {
@@ -29,35 +29,35 @@ const config = {
   },
 
   bot: {
-    name: "ᴏᴜʀɪɴ ᴘʀᴇᴍɪᴇʀ", //El nombre del bot
+    name: "AL MIKU", //El nombre del bot
     version: "3.5", //Versión del bot
     developer: "ᴢᴀɴɴ", //Nombre desarrollador
   },
 
   assets: {
-    "ourin-daftar": "./assets/image/ourin-daftar.png",
-    "ourin-demote": "./assets/image/ourin-demote.png",
-    "ourin-fishit": "./assets/image/ourin-fishit.jpg",
-    "ourin-games": "./assets/image/ourin-games.jpg",
-    "ourin-landscape": "./assets/image/ourin-landscape.jpg",
-    "ourin-levelup": "./assets/image/ourin-levelup.jpg",
-    "ourin-minecraft": "./assets/image/ourin-minecraft.jpg",
-    "ourin-promote": "./assets/image/ourin-promote.png",
-    "ourin-rpg": "./assets/image/ourin-rpg.jpg",
-    "ourin-rules": "./assets/image/ourin-rules.jpg",
-    "ourin-store": "./assets/image/ourin-store.png",
-    "ourin-v8": "./assets/image/ourin-v8.jpg",
-    "ourin-winner": "./assets/image/ourin-winner.jpg",
-    "ourin": "./assets/image/ourin.png",
-    "ourin-menu-blue": "./assets/image/ourin-menu-blue.jpg",
-    "ourin-menu-header-blue": "./assets/image/ourin-menu-header-blue.jpg",
-    "ourin2": "./assets/image/ourin2.jpg",
-    "ourin3": "./assets/image/ourin3.jpg",
+    "almiku-daftar": "./assets/image/almiku-daftar.png",
+    "almiku-demote": "./assets/image/almiku-demote.png",
+    "almiku-fishit": "./assets/image/almiku-fishit.jpg",
+    "almiku-games": "./assets/image/almiku-games.jpg",
+    "almiku-landscape": "./assets/image/almiku-landscape.jpg",
+    "almiku-levelup": "./assets/image/almiku-levelup.jpg",
+    "almiku-minecraft": "./assets/image/almiku-minecraft.jpg",
+    "almiku-promote": "./assets/image/almiku-promote.png",
+    "almiku-rpg": "./assets/image/almiku-rpg.jpg",
+    "almiku-rules": "./assets/image/almiku-rules.jpg",
+    "almiku-store": "./assets/image/almiku-store.png",
+    "almiku-v8": "./assets/image/almiku-v8.jpg",
+    "almiku-winner": "./assets/image/almiku-winner.jpg",
+    "almiku": "./assets/image/almiku.png",
+    "almiku-menu-blue": "./assets/image/almiku-menu-blue.jpg",
+    "almiku-menu-header-blue": "./assets/image/almiku-menu-header-blue.jpg",
+    "almiku2": "./assets/image/almiku2.jpg",
+    "almiku3": "./assets/image/almiku3.jpg",
     "pp-kosong": "./assets/image/pp-kosong.jpg",
-    "ourin-mp4": "./assets/video/ourin-mp4.mp4",
-    "ourin-mp3": "./assets/audio/ourin-mp3.mp3",
-    "ourin-font": "./assets/ourin-font.ttf",
-    "ourin-kertas": "./assets/image/ourin-kertas.jpg",
+    "almiku-mp4": "./assets/video/almiku-mp4.mp4",
+    "almiku-mp3": "./assets/audio/almiku-mp3.mp3",
+    "almiku-font": "./assets/almiku-font.ttf",
+    "almiku-kertas": "./assets/image/almiku-kertas.jpg",
   },
 
   mode: "public",
@@ -111,13 +111,13 @@ const config = {
   },
 
   sticker: {
-    packname: "𝗢𝗨𝗥𝗜𝗡 𝗗𝗘𝗟𝗨𝗫𝗘", //El nombre de la pegatina de la mochila
+    packname: "𝗔𝗟 𝗠𝗜𝗞𝗤 𝗗𝗘𝗟𝗨𝗫𝗘", //El nombre de la pegatina de la mochila
     author: "ZANN", // Author sticker
   },
 
   saluran: {
     id: "120363400911374213@newsletter", //ID saluran (por ejemplo: 120363xxx@ newsletter ) / ID saluran (por ejemplo: 120363xxx@ newsletter )
-    name: "Join saluran resmi ourin", //Nombre saluran
+    name: "Join saluran resmi almiku", //Nombre saluran
     link: "https://whatsapp.com/channel/0029VbB37bgBfxoAmAlsgE0t", //Enlace saluran
   },
 
@@ -277,7 +277,7 @@ function isOwner(number) {
   }
 
   try {
-    const db = _ourindatabasejs.getDatabase.call(void 0, );
+    const db = _almikudatabasejs.getDatabase.call(void 0, );
 
     if (_optionalChain([config, 'access', _3 => _3.owner, 'optionalAccess', _4 => _4.number])) {
       const match = config.owner.number.some((own) => {
@@ -357,7 +357,7 @@ function isPremium(number) {
   } catch (e2) { }
 
   try {
-    const db = _ourindatabasejs.getDatabase.call(void 0, );
+    const db = _almikudatabasejs.getDatabase.call(void 0, );
     if (db && db.data && Array.isArray(db.data.premium)) {
       const now = Date.now();
       const foundIndex = db.data.premium.findIndex((p) => {
@@ -438,7 +438,7 @@ function isPartner(number) {
   } catch (e4) { }
 
   try {
-    const db = _ourindatabasejs.getDatabase.call(void 0, );
+    const db = _almikudatabasejs.getDatabase.call(void 0, );
     if (db && db.data && Array.isArray(db.data.partner)) {
       const now = Date.now();
       const foundIndex = db.data.partner.findIndex((p) => {
@@ -478,7 +478,7 @@ function isBanned(number) {
 
   let bannedList = [];
   try {
-    const db = _ourindatabasejs.getDatabase.call(void 0, );
+    const db = _almikudatabasejs.getDatabase.call(void 0, );
     if (db) {
       bannedList = db.setting("bannedUsers") || [];
       config.bannedUsers = bannedList;
@@ -513,7 +513,7 @@ function getOwnerName(number) {
   if (!number) return _optionalChain([config, 'access', _6 => _6.owner, 'optionalAccess', _7 => _7.name]) || "Propietario";
   const cleanNumber = String(number).replace(/[^0-9]/g, "");
   try {
-    const db = _ourindatabasejs.getDatabase.call(void 0, );
+    const db = _almikudatabasejs.getDatabase.call(void 0, );
     const nameMap = db.setting("ownerNames") || {};
     if (nameMap[cleanNumber]) return nameMap[cleanNumber];
   } catch (e7) { }

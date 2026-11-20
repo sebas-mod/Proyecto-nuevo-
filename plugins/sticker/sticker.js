@@ -3,7 +3,7 @@ var _path = require('path'); var _path2 = _interopRequireDefault(_path);
 var _child_process = require('child_process');
 var _util = require('util');
 var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
-var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
+var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
 const execAsync = _util.promisify.call(void 0, _child_process.exec)
 
 const pluginConfig = {
@@ -177,7 +177,7 @@ async function handler(m, { sock, config: botConfig }) {
             if (_fs2.default.existsSync(tempVideo)) _fs2.default.unlinkSync(tempVideo)
         }
         
-        const packname = options.packname || _optionalChain([botConfig, 'access', _ => _.sticker, 'optionalAccess', _2 => _2.packname]) || _optionalChain([botConfig, 'access', _3 => _3.bot, 'optionalAccess', _4 => _4.name]) || 'Ourin-AI'
+        const packname = options.packname || _optionalChain([botConfig, 'access', _ => _.sticker, 'optionalAccess', _2 => _2.packname]) || _optionalChain([botConfig, 'access', _3 => _3.bot, 'optionalAccess', _4 => _4.name]) || 'Al Miku-AI'
         const author = options.author || _optionalChain([botConfig, 'access', _5 => _5.sticker, 'optionalAccess', _6 => _6.author]) || _optionalChain([botConfig, 'access', _7 => _7.owner, 'optionalAccess', _8 => _8.name]) || 'Bot'
         
         const hasProcessing = options.crop || options.resize || options.circle || options.rounded
@@ -216,7 +216,7 @@ async function handler(m, { sock, config: botConfig }) {
         await m.react('✅')
         
     } catch (error) {
-        m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName))
+        m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName))
         await m.react('❌')
     }
 }

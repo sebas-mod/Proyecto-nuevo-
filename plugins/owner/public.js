@@ -3,8 +3,8 @@
 * @ llenar plugins / propietario / público. js
 * @ descripción Plugin para habilitar el modo público (todo puede ser actuado )
  */
-var _ourindatabasejs = require('../../src/lib/ourin-database.js');
-var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
+var _almikudatabasejs = require('../../src/lib/almiku-database.js');
+var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
 const pluginConfig = {
     name: 'public',
     alias: ['publicmode', 'open'],
@@ -35,7 +35,7 @@ async function handler(m, { sock }) {
             return await m.reply('Ya en estado de ánimo público');
         }
         _configjs2.default.mode = 'public';
-        const db = _ourindatabasejs.getDatabase.call(void 0, );
+        const db = _almikudatabasejs.getDatabase.call(void 0, );
         db.setting('botMode', 'public');
         
         const responseText = `🌐 *ᴍᴏᴅᴇ ᴘᴜʙʟɪᴄ ᴀᴋᴛɪꜰ*\n\n` +
@@ -45,7 +45,7 @@ async function handler(m, { sock }) {
         console.log(`[Mode] Changed to PUBLIC by ${m.pushName} (${m.sender})`);
     } catch (error) {
         console.error('[Public Command Error]', error);
-        await m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
+        await m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
     }
 }
 

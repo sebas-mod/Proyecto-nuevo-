@@ -1,7 +1,7 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _axios = require('axios'); var _axios2 = _interopRequireDefault(_axios);
-var _ourindatabasejs = require('../../src/lib/ourin-database.js');
-var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
-var _ourin = require('ourin');
+var _almikudatabasejs = require('../../src/lib/almiku-database.js');
+var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
+var _almiku = require('almiku');
 
 const pluginConfig = {
   name: ["gachawaifu", "waifuaction", "tinggalinwaifu", "waifuku", "istriku"],
@@ -121,7 +121,7 @@ async function sendWaifuMessage(m, sock, waifu, textContent, customButtons = nul
     imgBuffer = await getBuffer(newUrl) || Buffer.alloc(0);
   }
 
-  const media = await _ourin.prepareWAMessageMedia.call(void 0, 
+  const media = await _almiku.prepareWAMessageMedia.call(void 0, 
     { image: imgBuffer },
     { upload: sock.waUploadToServer }
   );
@@ -161,7 +161,7 @@ async function sendWaifuMessage(m, sock, waifu, textContent, customButtons = nul
   if (customButtons) footerText = "💭Espera su respuesta.";
   else if (waifu.married) footerText = "❤¡Te casaste con ella!";
 
-  const msg = _ourin.generateWAMessageFromContent.call(void 0, m.chat, {
+  const msg = _almiku.generateWAMessageFromContent.call(void 0, m.chat, {
     viewOnceMessage: {
       message: {
         messageContextInfo: {
@@ -187,7 +187,7 @@ async function sendWaifuMessage(m, sock, waifu, textContent, customButtons = nul
 }
 
 async function handler(m, { sock }) {
-  const db = _ourindatabasejs.getDatabase.call(void 0, );
+  const db = _almikudatabasejs.getDatabase.call(void 0, );
   const user = db.getUser(m.sender);
   if (!user) return;
 
@@ -264,7 +264,7 @@ async function handler(m, { sock }) {
         `4. Cásate con tu waifu y forma una familia.\n` +
         `5. ¡Disfruta del viaje!`;
 
-      const msg = _ourin.generateWAMessageFromContent.call(void 0, m.chat, {
+      const msg = _almiku.generateWAMessageFromContent.call(void 0, m.chat, {
         viewOnceMessage: {
           message: {
             messageContextInfo: { deviceListMetadata: {}, deviceListMetadataVersion: 2 },
@@ -310,7 +310,7 @@ async function handler(m, { sock }) {
     } catch (err) {
       console.error(err);
       m.react("☢");
-      return m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
+      return m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
     }
     return;
   }

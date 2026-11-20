@@ -1,7 +1,7 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _fs = require('fs'); var _fs2 = _interopRequireDefault(_fs);
 var _path = require('path'); var _path2 = _interopRequireDefault(_path);
-var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
-var _ourinuploaderjs = require('../../src/lib/ourin-uploader.js');
+var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
+var _almikuuploaderjs = require('../../src/lib/almiku-uploader.js');
 const pluginConfig = {
     name: 'ganti-pp-kosong.jpg',
     alias: ['gantippkosong', 'setppkosong'],
@@ -26,13 +26,13 @@ async function handler(m, { sock }) {
         if (!buffer) return m.reply('❌Paso de descarga de imagen')
         await m.reply(`⏳La jaula subió una foto..`)
         try {
-            const newUrl = await _ourinuploaderjs.updateAssetUrl.call(void 0, 'pp-kosong', buffer, 'pp-kosong.jpg')
+            const newUrl = await _almikuuploaderjs.updateAssetUrl.call(void 0, 'pp-kosong', buffer, 'pp-kosong.jpg')
             m.reply(`✅*ʙᴇʀʜᴀSɪʟ*\n\nJpg se ha convertido en una nueva URL:\n•${newUrl}\n" Config has been updated as a reality "!`)
         } catch (e) {
             m.reply(`❌Gagalm subió la imagen:${e.message}`)
         }
     } catch (error) {
-        await m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName))
+        await m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName))
     }
 }
 

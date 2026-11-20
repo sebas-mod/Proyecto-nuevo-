@@ -6,7 +6,7 @@
 var _img2promptjs = require('../../src/scraper/img2prompt.js'); var _img2promptjs2 = _interopRequireDefault(_img2promptjs);
 var _fs = require('fs'); var _fs2 = _interopRequireDefault(_fs);
 var _path = require('path'); var _path2 = _interopRequireDefault(_path);
-var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
+var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
 const pluginConfig = {
     name: 'imgtoprompt',
     alias: ['img2prompt', 'imagetoprompt', 'i2p'],
@@ -63,7 +63,7 @@ async function handler(m, { sock }) {
         await m.reply(responseText);
     } catch (error) {
         console.error('[ImgToPrompt Error]', error);
-        m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
+        m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
     }
 }
 

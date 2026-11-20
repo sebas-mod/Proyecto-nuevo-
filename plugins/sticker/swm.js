@@ -1,6 +1,6 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
-var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
-var _ourinexifjs = require('../../src/lib/ourin-exif.js');
+var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
+var _almikuexifjs = require('../../src/lib/almiku-exif.js');
 
 const pluginConfig = {
     name: 'swm',
@@ -27,8 +27,8 @@ async function handler(m, { sock, config: botConfig }) {
             `Responder pegatina con capción:\n` +
             `> \`${m.prefix}swm packname\`\n\n` +
             `*ᴄᴏɴᴛᴏʜ:*\n` +
-            `> \`${m.prefix}swm Ourin-AI\`\n` +
-            `> \`${m.prefix}swm Ourin-AI|LuckyArchz\` _(packname + author)_`
+            `> \`${m.prefix}swm Al Miku-AI\`\n` +
+            `> \`${m.prefix}swm Al Miku-AI|LuckyArchz\` _(packname + author)_`
         )
     }
     
@@ -43,8 +43,8 @@ async function handler(m, { sock, config: botConfig }) {
             `❌ *ɢᴀɢᴀʟ*\n\n` +
             `*Pon el nombre de la mochila*\n\n` +
             `*ᴄᴏɴᴛᴏʜ:*\n` +
-            `> \`${m.prefix}swm Ourin-AI\`\n` +
-            `> \`${m.prefix}swm Ourin-AI|LuckyArchz\` _(+ author)_`
+            `> \`${m.prefix}swm Al Miku-AI\`\n` +
+            `> \`${m.prefix}swm Al Miku-AI|LuckyArchz\` _(+ author)_`
         )
     }
     
@@ -75,7 +75,7 @@ async function handler(m, { sock, config: botConfig }) {
         const isWebp = riff === 'RIFF' && webpSig === 'WEBP'
         
         if (isWebp) {
-            const stickerBuffer = await _ourinexifjs.addExifToWebp.call(void 0, buffer, exifOpts)
+            const stickerBuffer = await _almikuexifjs.addExifToWebp.call(void 0, buffer, exifOpts)
             await sock.sendMessage(m.chat, {
                 sticker: stickerBuffer,
                 contextInfo: { isForwarded: true, forwardingScore: 1 }
@@ -96,7 +96,7 @@ async function handler(m, { sock, config: botConfig }) {
     } catch (error) {
         console.error('[SWM] Error:', error.message)
         m.react('☢')
-        m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName))
+        m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName))
     }
 }
 

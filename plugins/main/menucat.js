@@ -1,6 +1,6 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { newObj[key] = obj[key]; } } } newObj.default = obj; return newObj; } } function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _botmodejs = require('../group/botmode.js'); var botmodePlugin = _interopRequireWildcard(_botmodejs);
-var _ourinjs = require('../../case/ourin.js');
-var _ourin = require('ourin');
+var _almikujs = require('../../case/almiku.js');
+var _almiku = require('almiku');
 var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
 var _axios = require('axios'); var _axios2 = _interopRequireDefault(_axios);
 var _sharp = require('sharp'); var _sharp2 = _interopRequireDefault(_sharp);
@@ -8,9 +8,9 @@ var _sharp = require('sharp'); var _sharp2 = _interopRequireDefault(_sharp);
 
 
 
-var _ourinpluginsjs = require('../../src/lib/ourin-plugins.js');
-var _ourindatabasejs = require('../../src/lib/ourin-database.js');
-var _ourinformatterjs = require('../../src/lib/ourin-formatter.js');
+var _almikupluginsjs = require('../../src/lib/almiku-plugins.js');
+var _almikudatabasejs = require('../../src/lib/almiku-database.js');
+var _almikuformatterjs = require('../../src/lib/almiku-formatter.js');
 var _fs = require('fs'); var _fs2 = _interopRequireDefault(_fs);
 
 const pluginConfig = {
@@ -105,7 +105,7 @@ function createBracketBox(emoji, title, lines = []) {
 }
 
 function getCommandSymbols(cmdName) {
-  const plugin = _ourinpluginsjs.getPlugin.call(void 0, cmdName);
+  const plugin = _almikupluginsjs.getPlugin.call(void 0, cmdName);
   if (!plugin || !plugin.config) return "";
   const symbols = [];
   if (plugin.config.isOwner) symbols.push("Ⓞ");
@@ -121,12 +121,12 @@ async function handler(m, { sock, db }) {
   const prefix = _optionalChain([_configjs2.default, 'access', _ => _.command, 'optionalAccess', _2 => _2.prefix]) || ".";
   const args = m.args || [];
   const categoryArg = _optionalChain([args, 'access', _3 => _3[0], 'optionalAccess', _4 => _4.toLowerCase, 'call', _5 => _5()]);
-  const categories = _ourinpluginsjs.getCategories.call(void 0, );
-  const commandsByCategory = _ourinpluginsjs.getCommandsByCategory.call(void 0, );
-  const casesByCategory = _ourinjs.getCasesByCategory.call(void 0, );
+  const categories = _almikupluginsjs.getCategories.call(void 0, );
+  const commandsByCategory = _almikupluginsjs.getCommandsByCategory.call(void 0, );
+  const casesByCategory = _almikujs.getCasesByCategory.call(void 0, );
   const savedVariant = db.setting("menucatVariant");
   const menucatVariant = savedVariant || _optionalChain([_configjs2.default, 'access', _6 => _6.ui, 'optionalAccess', _7 => _7.menucatVariant]) || 2;
-  const greeting = _ourinformatterjs.getTimeGreeting.call(void 0, );
+  const greeting = _almikuformatterjs.getTimeGreeting.call(void 0, );
 
   if (!categoryArg) {
     const groupData = m.isGroup ? db.getGroup(m.chat) || {} : {};
@@ -228,9 +228,9 @@ async function handler(m, { sock, db }) {
           await m.reply(txt);
           break;
         case 2: {
-          const media = await _ourin.prepareWAMessageMedia.call(void 0, 
+          const media = await _almiku.prepareWAMessageMedia.call(void 0, 
             {
-              image: _fs2.default.readFileSync(_configjs2.default.assets["ourin2"]),
+              image: _fs2.default.readFileSync(_configjs2.default.assets["almiku2"]),
             },
             { upload: sock.waUploadToServer },
           );
@@ -317,13 +317,13 @@ async function handler(m, { sock, db }) {
             }
           }
 
-          const thumbnail = await _sharp2.default.call(void 0, _fs2.default.readFileSync(_configjs2.default.assets["ourin"])).resize(300, 300).toBuffer()
+          const thumbnail = await _sharp2.default.call(void 0, _fs2.default.readFileSync(_configjs2.default.assets["almiku"])).resize(300, 300).toBuffer()
           const qOrder = {
             key: { fromMe: false, participant: '0@s.whatsapp.net', remoteJid: m.sender },
             message: { locationMessage: { degreesLatitude: 0, degreesLongitude: 0, name: await weatherMenu(), jpegThumbnail: thumbnail } }
           }
-          const media4 = await _ourin.prepareWAMessageMedia.call(void 0, { video: _fs2.default.readFileSync(_configjs2.default.assets["ourin-mp4"]), gifPlayback: true }, { upload: sock.waUploadToServer });
-          const msg4 = _ourin.generateWAMessageFromContent.call(void 0, m.chat, {
+          const media4 = await _almiku.prepareWAMessageMedia.call(void 0, { video: _fs2.default.readFileSync(_configjs2.default.assets["almiku-mp4"]), gifPlayback: true }, { upload: sock.waUploadToServer });
+          const msg4 = _almiku.generateWAMessageFromContent.call(void 0, m.chat, {
             viewOnceMessage: {
               message: {
                 messageContextInfo: {},
@@ -337,7 +337,7 @@ async function handler(m, { sock, db }) {
                     forwardingScore: 9,
                     forwardedNewsletterMessageInfo: {
                       newsletterJid: _optionalChain([_configjs2.default, 'access', _15 => _15.saluran, 'optionalAccess', _16 => _16.id]) || "120363400911374213@newsletter",
-                      newsletterName: _optionalChain([_configjs2.default, 'access', _17 => _17.saluran, 'optionalAccess', _18 => _18.name]) || _optionalChain([_configjs2.default, 'access', _19 => _19.bot, 'optionalAccess', _20 => _20.name]) || "Ourin-AI",
+                      newsletterName: _optionalChain([_configjs2.default, 'access', _17 => _17.saluran, 'optionalAccess', _18 => _18.name]) || _optionalChain([_configjs2.default, 'access', _19 => _19.bot, 'optionalAccess', _20 => _20.name]) || "Al Miku-AI",
                       serverMessageId: 127,
                     },
                   },
@@ -418,9 +418,9 @@ async function handler(m, { sock, db }) {
         await m.reply(txt);
         break;
       case 2: {
-        const media = await _ourin.prepareWAMessageMedia.call(void 0, 
+        const media = await _almiku.prepareWAMessageMedia.call(void 0, 
           {
-            image: _fs2.default.readFileSync(_configjs2.default.assets["ourin2"]),
+            image: _fs2.default.readFileSync(_configjs2.default.assets["almiku2"]),
           },
           { upload: sock.waUploadToServer },
         );
@@ -514,13 +514,13 @@ async function handler(m, { sock, db }) {
           }
         }
 
-        const thumbnail = await _sharp2.default.call(void 0, _fs2.default.readFileSync(_configjs2.default.assets["ourin"])).resize(300, 300).toBuffer()
+        const thumbnail = await _sharp2.default.call(void 0, _fs2.default.readFileSync(_configjs2.default.assets["almiku"])).resize(300, 300).toBuffer()
         const qOrder = {
           key: { fromMe: false, participant: '0@s.whatsapp.net', remoteJid: m.sender },
           message: { locationMessage: { degreesLatitude: 0, degreesLongitude: 0, name: await weatherMenu(), jpegThumbnail: thumbnail } }
         }
-        const media4 = await _ourin.prepareWAMessageMedia.call(void 0, { video: _fs2.default.readFileSync(_configjs2.default.assets["ourin-mp4"]), gifPlayback: true }, { upload: sock.waUploadToServer });
-        const msg4 = _ourin.generateWAMessageFromContent.call(void 0, m.chat, {
+        const media4 = await _almiku.prepareWAMessageMedia.call(void 0, { video: _fs2.default.readFileSync(_configjs2.default.assets["almiku-mp4"]), gifPlayback: true }, { upload: sock.waUploadToServer });
+        const msg4 = _almiku.generateWAMessageFromContent.call(void 0, m.chat, {
           viewOnceMessage: {
             message: {
               messageContextInfo: {},
@@ -534,7 +534,7 @@ async function handler(m, { sock, db }) {
                   forwardingScore: 9,
                   forwardedNewsletterMessageInfo: {
                     newsletterJid: _optionalChain([_configjs2.default, 'access', _28 => _28.saluran, 'optionalAccess', _29 => _29.id]) || "120363400911374213@newsletter",
-                    newsletterName: _optionalChain([_configjs2.default, 'access', _30 => _30.saluran, 'optionalAccess', _31 => _31.name]) || _optionalChain([_configjs2.default, 'access', _32 => _32.bot, 'optionalAccess', _33 => _33.name]) || "Ourin-AI",
+                    newsletterName: _optionalChain([_configjs2.default, 'access', _30 => _30.saluran, 'optionalAccess', _31 => _31.name]) || _optionalChain([_configjs2.default, 'access', _32 => _32.bot, 'optionalAccess', _33 => _33.name]) || "Al Miku-AI",
                     serverMessageId: 127,
                   },
                 },
@@ -583,9 +583,9 @@ async function handler(m, { sock, db }) {
           }
         }
 
-        const thumbnail = await _sharp2.default.call(void 0, _fs2.default.readFileSync(_configjs2.default.assets["ourin"])).resize(300, 300).toBuffer()
+        const thumbnail = await _sharp2.default.call(void 0, _fs2.default.readFileSync(_configjs2.default.assets["almiku"])).resize(300, 300).toBuffer()
 
-        const msg6 = _ourin.generateWAMessageFromContent.call(void 0, m.chat, {
+        const msg6 = _almiku.generateWAMessageFromContent.call(void 0, m.chat, {
           viewOnceMessage: {
             message: {
               messageContextInfo: {},
@@ -595,7 +595,7 @@ async function handler(m, { sock, db }) {
                   locationMessage: {
                     degreesLatitude: 0,
                     degreesLongitude: 0,
-                    name: _optionalChain([_configjs2.default, 'access', _37 => _37.bot, 'optionalAccess', _38 => _38.name]) || "Ourin-AI",
+                    name: _optionalChain([_configjs2.default, 'access', _37 => _37.bot, 'optionalAccess', _38 => _38.name]) || "Al Miku-AI",
                     address: await weatherMenu(),
                     jpegThumbnail: thumbnail
                   }
@@ -609,7 +609,7 @@ async function handler(m, { sock, db }) {
                   forwardingScore: 9,
                   forwardedNewsletterMessageInfo: {
                     newsletterJid: _optionalChain([_configjs2.default, 'access', _39 => _39.saluran, 'optionalAccess', _40 => _40.id]) || "120363400911374213@newsletter",
-                    newsletterName: _optionalChain([_configjs2.default, 'access', _41 => _41.saluran, 'optionalAccess', _42 => _42.name]) || _optionalChain([_configjs2.default, 'access', _43 => _43.bot, 'optionalAccess', _44 => _44.name]) || "Ourin-AI",
+                    newsletterName: _optionalChain([_configjs2.default, 'access', _41 => _41.saluran, 'optionalAccess', _42 => _42.name]) || _optionalChain([_configjs2.default, 'access', _43 => _43.bot, 'optionalAccess', _44 => _44.name]) || "Al Miku-AI",
                     serverMessageId: 127,
                   },
                 },

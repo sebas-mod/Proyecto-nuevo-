@@ -1,4 +1,4 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true});var _ourin = require('ourin');
+"use strict";Object.defineProperty(exports, "__esModule", {value: true});var _almiku = require('almiku');
 const pluginConfig = {
     name: 'rvo',
     alias: [],
@@ -75,7 +75,7 @@ async function handler(m, { sock }) {
             return
         }
 
-        const stream = await _ourin.downloadContentFromMessage.call(void 0, content, mediaType)
+        const stream = await _almiku.downloadContentFromMessage.call(void 0, content, mediaType)
         
         let buffer = Buffer.from([])
         for await (const chunk of stream) {

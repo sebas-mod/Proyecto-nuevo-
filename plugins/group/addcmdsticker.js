@@ -1,5 +1,5 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true});var _ourinstickercommandjs = require('../../src/lib/ourin-sticker-command.js');
-var _ourinpluginsjs = require('../../src/lib/ourin-plugins.js');
+"use strict";Object.defineProperty(exports, "__esModule", {value: true});var _almikustickercommandjs = require('../../src/lib/almiku-sticker-command.js');
+var _almikupluginsjs = require('../../src/lib/almiku-plugins.js');
 const pluginConfig = {
     name: 'addcmdsticker',
     alias: ['addstickercmd', 'setsticker', 'stickeradd'],
@@ -23,7 +23,7 @@ async function handler(m, { sock }) {
     
     //Nombre de comando Validasi
     if (!commandName) {
-        const existingCmds = _ourinstickercommandjs.listStickerCommands.call(void 0, )
+        const existingCmds = _almikustickercommandjs.listStickerCommands.call(void 0, )
         
         let txt = `🖼️ *sᴛɪᴄᴋᴇʀ ᴛᴏ ᴄᴏᴍᴍᴀɴᴅ*\n\n`
         txt += `Responder sticker + comando de axila que es ser acortado.\n\n`
@@ -50,14 +50,14 @@ async function handler(m, { sock }) {
         return m.reply('⚠Responder pegatinas a ser hecho!')
     }
     
-    const stickerHash = _ourinstickercommandjs.getQuotedStickerHash.call(void 0, m)
+    const stickerHash = _almikustickercommandjs.getQuotedStickerHash.call(void 0, m)
     if (!stickerHash) {
         return m.reply('⚠¡Para ordenar la respuesta en lugar de pegatinas!')
     }
     
     //Validasi comand exists
     const cleanCmd = commandName.toLowerCase().replace(/^\./, '')
-    const plugin = _ourinpluginsjs.getPlugin.call(void 0, cleanCmd)
+    const plugin = _almikupluginsjs.getPlugin.call(void 0, cleanCmd)
     
     if (!plugin) {
         return m.reply(
@@ -67,7 +67,7 @@ async function handler(m, { sock }) {
     }
     
     //Agregar el comando sticker
-    const success = _ourinstickercommandjs.addStickerCommand.call(void 0, stickerHash, cleanCmd, m.sender)
+    const success = _almikustickercommandjs.addStickerCommand.call(void 0, stickerHash, cleanCmd, m.sender)
     
     if (success) {
         await m.react('✅')

@@ -1,5 +1,5 @@
 # Informe PENGUJIAN KOMPREHENSIF (TESTING REPORT)
-# OURIN 3.5 ULTIMATE EDITION
+# AL MIKU 3.5 ULTIMATE EDITION
 
 Fecha de prueba: 19 de noviembre 2026
 Sellos Clasificación: * * * * La protección de la Obligatorio de la pas *
@@ -22,7 +22,7 @@ Uji Compound Fecha de Aire Original el 17 de febrero de 2012
 
 Uji Compound Decryption Uji Objetivo
 | :--- | :--- | :--- | :--- | :--- |
-* * *Loader Plugin*`ourin - plugins.`771 Plugin S071
+* * *Loader Plugin*`almiku - plugins.`771 Plugin S071
 * Dual E *xport Resolver * * To Apoyo forte`{ config, handler }`Y tú.`................................................................................................................................`* Enchufe de enchufe * función norm * passsaje *
 | **Alight Motion Premium** | Ekstraksi, formato comando, regexArkoo, regexenlace, tiempo de salida 5 minutos`plugins / herramientas / amd0. js` | Logika Sesuai Spek | **PASS** |
 * Reaccionar el canal de apacalions * * acoplamientos de parser Channel, socket`newsletter ReactMessage`, Recuperar la Fuego de Coud`plugins / herramientas / exActa.` | Logika Sesuai Spek | **PASS** |
@@ -58,7 +58,7 @@ Uji Compound Fecha original del 11 de abril de 2012
 | :--- | :--- | :--- | :--- |
 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *`Nodex- Js.`La inicialización de la bandera de arranque y la prootación de la secuencia de arranque se ejecuta en la normalidad.
 * *Los manipuladores antirracácticos*`uncautxrecepción`y`sin ayuda`*Pon el nodo de proceso* *Js* *Passs*
-| **Comando Core Ourin** | Ketersediaan `.menu`.`- Allmenu.`.`Ping.`.`.propietario`.`. infobot.`*Hay docenas de antiguos comandos registrados en las tiendas* *Passs*
+| **Comando Core Al Miku** | Ketersediaan `.menu`.`- Allmenu.`.`Ping.`.`.propietario`.`. infobot.`*Hay docenas de antiguos comandos registrados en las tiendas* *Passs*
 *Sistema de permisos* *nivel de Middleware, propietario, prima y permisos de administración*
 * *De verdad quésApp Paering* *Código de paering Uji al número físico*
 
@@ -81,4 +81,4 @@ La Evasión Fecha de Aire Original el 17 de octubre de 2012
 
 ## 6. Kesimpulan Final
 
-* * OURIN 3. 5 EDICIÓN ULTIMATE * * ha completado toda la revisión de corrección de Natatactyl.
+* * AL MIKU 3. 5 EDICIÓN ULTIMATE * * ha completado toda la revisión de corrección de Natatactyl.

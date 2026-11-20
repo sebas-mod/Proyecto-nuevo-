@@ -1,4 +1,4 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
+"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
 const pluginConfig = {
     name: ['clearchat', 'cc', 'cleangc', 'deletechat', 'delchat'],
     alias: [],
@@ -48,7 +48,7 @@ async function handler(m, { sock }) {
             await m.reply(`✅*ᴄʜᴀᴛ ᴅɪʙᴇʀSɪʜᴋᴀɴ*\n\nChat grupo en wa bot ha sido flido por @${m.sender.split('@')[0]}\nPor favor, véalo en tu bot 's wa`, { mentions: [m.sender] })
         } catch (e) {
             m.react('☢')
-            m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName))
+            m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName))
         }
     }
 }

@@ -2,7 +2,7 @@
 var _formdata = require('form-data'); var _formdata2 = _interopRequireDefault(_formdata);
 var _cheerio = require('cheerio'); var cheerio = _interopRequireWildcard(_cheerio);
 var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
-var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
+var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
 const EFFECT_URLS = {
     glitchtext: 'https://en.ephoto360.com/create-digital-glitch-text-effects-online-767.html',
     writetext: 'https://en.ephoto360.com/write-text-on-wet-glass-online-589.html',
@@ -52,7 +52,7 @@ const pluginConfig = {
     category: 'ephoto',
     description: '# Crea eeck text fresco con un estilo ',
     usage: '.<effect> <text>',
-    example: '.glitchtext Ourin-AI',
+    example: '.glitchtext Al Miku-AI',
     isOwner: false,
     isPremium: false,
     isGroup: false,
@@ -120,12 +120,12 @@ async function handler(m, { sock }) {
             `🎨 *ᴇᴘʜᴏᴛᴏ ᴇꜰꜰᴇᴄᴛs*\n\n` +
             `# Beat eeck text genial!\n\n` +
             `╭┈┈⬡「 📋 *ᴅᴀꜰᴛᴀʀ ᴇꜰᴇᴋ* 」\n${effectList}\n╰┈┈┈┈┈┈┈┈⬡\n\n` +
-            `> *Ejemplo:*${m.prefix}glitchtext Ourin-AI`
+            `> *Ejemplo:*${m.prefix}glitchtext Al Miku-AI`
         )
     }
     
     if (!text) {
-        return m.reply(`❌*ᴇʀʀᴏʀ*\n\n# Ponlo en tu boca #x¡T!\n> *Ejemplo:*${m.prefix}${command} Ourin-AI`)
+        return m.reply(`❌*ᴇʀʀᴏʀ*\n\n# Ponlo en tu boca #x¡T!\n> *Ejemplo:*${m.prefix}${command} Al Miku-AI`)
     }
     
     const effectUrl = EFFECT_URLS[command]
@@ -146,7 +146,7 @@ async function handler(m, { sock }) {
         
     } catch (error) {
         await m.react('☢')
-        m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName))
+        m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName))
     }
 }
 

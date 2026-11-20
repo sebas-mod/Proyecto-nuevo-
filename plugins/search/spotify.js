@@ -1,6 +1,6 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _axios = require('axios'); var _axios2 = _interopRequireDefault(_axios);
-var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
-var _ourin = require('ourin');
+var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
+var _almiku = require('almiku');
 var _sharp = require('sharp'); var _sharp2 = _interopRequireDefault(_sharp);
 
 const pluginConfig = {
@@ -72,12 +72,12 @@ async function handler(m, { sock, text }) {
             address: `🎤 ${firstResult.artist} | ⏱️ ${firstResult.duration}`
           },
           contentText: contentText,
-          footerText: '🚀 OURIN MD - Spotify Search',
+          footerText: '🚀 AL MIKU MD - Spotify Search',
           headerType: 6,
         },
       };
 
-      const msg = _ourin.generateWAMessageFromContent.call(void 0, m.chat, content, { quoted: m });
+      const msg = _almiku.generateWAMessageFromContent.call(void 0, m.chat, content, { quoted: m });
       await sock.relayMessage(m.chat, msg.message, { messageId: msg.key.id });
     } else {
       await m.reply(contentText);

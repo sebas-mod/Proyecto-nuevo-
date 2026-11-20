@@ -1,5 +1,5 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _axios = require('axios'); var _axios2 = _interopRequireDefault(_axios);
-var _ourincontextjs = require('../../src/lib/ourin-context.js');
+var _almikucontextjs = require('../../src/lib/almiku-context.js');
 
 const pluginConfig = {
   name: "gempa",
@@ -57,10 +57,10 @@ async function handler(m, { sock }) {
           type: "image",
         });
       } catch (e2) {
-        await m.reply(text, { contextInfo: _ourincontextjs.saluranCtx.call(void 0, ) });
+        await m.reply(text, { contextInfo: _almikucontextjs.saluranCtx.call(void 0, ) });
       }
     } else {
-      await m.reply(text, { contextInfo: _ourincontextjs.saluranCtx.call(void 0, ) });
+      await m.reply(text, { contextInfo: _almikucontextjs.saluranCtx.call(void 0, ) });
     }
   } catch (e) {
     await m.react("☢");

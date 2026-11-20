@@ -2,12 +2,12 @@
 
 
 
-var _ourin = require('ourin');
+var _almiku = require('almiku');
 var _axios = require('axios'); var _axios2 = _interopRequireDefault(_axios);
 var _crypto = require('crypto'); var _crypto2 = _interopRequireDefault(_crypto);
-var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
-var _ourinhttpjs = require('../../src/lib/ourin-http.js');
-var _ourinbuilderjs = require('../../src/lib/ourin-builder.js');
+var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
+var _almikuhttpjs = require('../../src/lib/almiku-http.js');
+var _almikubuilderjs = require('../../src/lib/almiku-builder.js');
 
 const pluginConfig = {
   name: "pin",
@@ -37,7 +37,7 @@ async function handler(m, { sock }) {
   m.react("🕕");
 
   try {
-    const data = await _ourinhttpjs.f.call(void 0, 
+    const data = await _almikuhttpjs.f.call(void 0, 
       `https://api.cuki.biz.id/api/search/pinterest?apikey=cuki-x&query=${encodeURIComponent(query)}&type=image`
     );
 
@@ -74,7 +74,7 @@ async function handler(m, { sock }) {
     }
 
     try {
-      const opener = _ourin.generateWAMessageFromContent.call(void 0, 
+      const opener = _almiku.generateWAMessageFromContent.call(void 0, 
         m.chat,
         {
           messageContextInfo: { messageSecret: _crypto2.default.randomBytes(32) },
@@ -84,7 +84,7 @@ async function handler(m, { sock }) {
           },
         },
         {
-          userJid: _ourin.jidNormalizedUser.call(void 0, sock.user.id),
+          userJid: _almiku.jidNormalizedUser.call(void 0, sock.user.id),
           quoted: m,
           upload: sock.waUploadToServer,
         },
@@ -95,7 +95,7 @@ async function handler(m, { sock }) {
       });
 
       for (const content of mediaList) {
-        const msg = await _ourin.generateWAMessage.call(void 0, opener.key.remoteJid, content, {
+        const msg = await _almiku.generateWAMessage.call(void 0, opener.key.remoteJid, content, {
           upload: sock.waUploadToServer,
         });
 
@@ -118,7 +118,7 @@ async function handler(m, { sock }) {
 
       const saluranId = _optionalChain([config, 'access', _10 => _10.saluran, 'optionalAccess', _11 => _11.id]) || "120363400911374213@newsletter";
       const saluranName =
-        _optionalChain([config, 'access', _12 => _12.saluran, 'optionalAccess', _13 => _13.name]) || _optionalChain([config, 'access', _14 => _14.bot, 'optionalAccess', _15 => _15.name]) || "Ourin-AI";
+        _optionalChain([config, 'access', _12 => _12.saluran, 'optionalAccess', _13 => _13.name]) || _optionalChain([config, 'access', _14 => _14.bot, 'optionalAccess', _15 => _15.name]) || "Al Miku-AI";
 
       for (const content of mediaList) {
         await sock.sendMessage(
@@ -143,7 +143,7 @@ async function handler(m, { sock }) {
   } catch (err) {
     console.error("[Pins] Error:", err.message);
     m.react("☢");
-    m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
+    m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
   }
 }
 

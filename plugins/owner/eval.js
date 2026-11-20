@@ -2,7 +2,7 @@
 var _path = require('path'); var _path2 = _interopRequireDefault(_path);
 var _axios = require('axios'); var _axios2 = _interopRequireDefault(_axios);
 var _os = require('os'); var _os2 = _interopRequireDefault(_os);
-var _ourindatabasejs = require('../../src/lib/ourin-database.js');
+var _almikudatabasejs = require('../../src/lib/almiku-database.js');
 var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
 var _util = require('util'); var _util2 = _interopRequireDefault(_util);
 const pluginConfig = {
@@ -41,7 +41,7 @@ async function handler(m, { sock, store }) {
         )
     }
 
-    const db = _ourindatabasejs.getDatabase.call(void 0, )
+    const db = _almikudatabasejs.getDatabase.call(void 0, )
 
     let result
     let isError = false

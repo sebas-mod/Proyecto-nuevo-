@@ -5,7 +5,7 @@ var _cheerio = require('cheerio'); var cheerio = _interopRequireWildcard(_cheeri
 function getSharp() {
   return _sharp3.default;
 }
-var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
+var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
 async function nerdfonts() {
   try {
     const { data } = await _axios2.default.get(
@@ -105,7 +105,7 @@ async function handler(m, { sock }) {
       { quoted: m },
     );
   } catch (err) {
-    return m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
+    return m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
   }
 }
 exports.config = pluginConfig; exports.handler = handler;

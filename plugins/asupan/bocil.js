@@ -1,7 +1,7 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _axios = require('axios'); var _axios2 = _interopRequireDefault(_axios);
 var _fs = require('fs'); var _fs2 = _interopRequireDefault(_fs);
 var _path = require('path'); var _path2 = _interopRequireDefault(_path);
-var _ourinhttpjs = require('../../src/lib/ourin-http.js');
+var _almikuhttpjs = require('../../src/lib/almiku-http.js');
 const pluginConfig = {
     name: 'bocil',
     alias: ['bocilvid'],

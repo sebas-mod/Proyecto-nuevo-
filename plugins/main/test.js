@@ -1,5 +1,5 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
-var _ourin = require('ourin');
+var _almiku = require('almiku');
 
 const pluginConfig = {
   name: "test",
@@ -20,7 +20,7 @@ const pluginConfig = {
 async function handler(m, { sock }) {
   try {
     await m.reply("test")
-    const msg = _ourin.generateWAMessageFromContent.call(void 0, m.chat, {
+    const msg = _almiku.generateWAMessageFromContent.call(void 0, m.chat, {
       pollCreationMessageV6: {
         name: "🔥 PILIH MENU INTERAKTIF 🔥",
         options: [

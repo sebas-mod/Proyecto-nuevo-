@@ -4,7 +4,7 @@ var _fs = require('fs'); var _fs2 = _interopRequireDefault(_fs);
 var _path = require('path'); var _path2 = _interopRequireDefault(_path);
 var _child_process = require('child_process');
 var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
-var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
+var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
 const pluginConfig = {
     name: 'transkrip',
     alias: ['stt', 'speechtotext', 'transcribe'],
@@ -104,7 +104,7 @@ async function handler(m, { sock }) {
         if (_optionalChain([error, 'access', _5 => _5.response, 'optionalAccess', _6 => _6.status]) === 429) {
             return m.reply('❌Prueba el límite Groq fue expuesto.');
         }
-        m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
+        m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
     } finally {
         [inputFile, wavFile].forEach(f => { try { _fs2.default.unlinkSync(f); } catch (e) {} });
     }

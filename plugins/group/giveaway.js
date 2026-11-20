@@ -1,8 +1,8 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { newObj[key] = obj[key]; } } } newObj.default = obj; return newObj; } } function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
-var _ourintimejs = require('../../src/lib/ourin-time.js'); var timeHelper = _interopRequireWildcard(_ourintimejs);
+var _almikutimejs = require('../../src/lib/almiku-time.js'); var timeHelper = _interopRequireWildcard(_almikutimejs);
 var _cron = require('cron');
-var _ourindatabasejs = require('../../src/lib/ourin-database.js');
-var _ourinjpmhelperjs = require('../../src/lib/ourin-jpm-helper.js');
+var _almikudatabasejs = require('../../src/lib/almiku-database.js');
+var _almikujpmhelperjs = require('../../src/lib/almiku-jpm-helper.js');
 
 function generateGiveawayId() {
   const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -78,7 +78,7 @@ async function handleSession(m, sock) {
     );
 
     try {
-      const rawGroups = await _ourinjpmhelperjs.fetchGroupsSafe.call(void 0, sock);
+      const rawGroups = await _almikujpmhelperjs.fetchGroupsSafe.call(void 0, sock);
       const groups = Array.isArray(rawGroups)
         ? rawGroups
         : Object.values(rawGroups);
@@ -170,7 +170,7 @@ async function askPrizeDetails(m, sock, session) {
 }
 
 async function createGiveaway(session, sock, m) {
-  const db = _ourindatabasejs.getDatabase.call(void 0, );
+  const db = _almikudatabasejs.getDatabase.call(void 0, );
   const giveaways = db.setting("giveaways") || {};
   const giveawayId = generateGiveawayId();
 
@@ -363,7 +363,7 @@ function startGiveawayChecker(sock, db) {
     "* * * * *",
     async () => {
       try {
-        const { getDatabase } = await Promise.resolve().then(() => _interopRequireWildcard(require("../../src/lib/ourin-database.js")));
+        const { getDatabase } = await Promise.resolve().then(() => _interopRequireWildcard(require("../../src/lib/almiku-database.js")));
         const currentDb = getDatabase();
         const { getSocket } = await Promise.resolve().then(() => _interopRequireWildcard(require("../../src/connection.js")));
         const currentSock = getSocket();
@@ -398,7 +398,7 @@ const plugin = {
 };
 
 async function handler(m, { sock }) {
-  const db = _ourindatabasejs.getDatabase.call(void 0, );
+  const db = _almikudatabasejs.getDatabase.call(void 0, );
   const cmd = _optionalChain([m, 'access', _9 => _9.command, 'optionalAccess', _10 => _10.toLowerCase, 'call', _11 => _11()]) || "";
   const prefix = m.prefix || ".";
   const args = m.args || [];

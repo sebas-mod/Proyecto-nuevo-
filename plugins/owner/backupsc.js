@@ -3,7 +3,7 @@ var _fs = require('fs'); var _fs2 = _interopRequireDefault(_fs);
 var _path = require('path'); var _path2 = _interopRequireDefault(_path);
 var _archiver = require('archiver'); var _archiver2 = _interopRequireDefault(_archiver);
 var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
-var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
+var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
 const pluginConfig = {
   name: "backupsc",
   alias: ["backup", "backupscript", "backupsource"],
@@ -103,7 +103,7 @@ async function handler(m, { sock }) {
     const projectRoot = process.cwd();
     const timestamp = _momenttimezone2.default.call(void 0, ).tz("America/Argentina/Buenos_Aires").format("YYYY-MM-DD_HH-mm-ss");
     const botName =
-      _optionalChain([_configjs2.default, 'access', _ => _.bot, 'optionalAccess', _2 => _2.name, 'optionalAccess', _3 => _3.replace, 'call', _4 => _4(/[^a-zA-Z0-9]/g, "")]) || "OurinBot";
+      _optionalChain([_configjs2.default, 'access', _ => _.bot, 'optionalAccess', _2 => _2.name, 'optionalAccess', _3 => _3.replace, 'call', _4 => _4(/[^a-zA-Z0-9]/g, "")]) || "AlMikuBot";
     const zipFileName = `${botName}_backup_${timestamp}.zip`;
     const backupDir = getBackupOutputDir(projectRoot);
     const zipFilePath = _path2.default.join(backupDir, zipFileName);
@@ -184,7 +184,7 @@ async function handler(m, { sock }) {
     const stats = _fs2.default.statSync(zipFilePath);
     const fileSizeMB = (stats.size / (1024 * 1024)).toFixed(2);
     const saluranId = _optionalChain([_configjs2.default, 'access', _6 => _6.saluran, 'optionalAccess', _7 => _7.id]) || "120363400911374213@newsletter";
-    const saluranName = _optionalChain([_configjs2.default, 'access', _8 => _8.saluran, 'optionalAccess', _9 => _9.name]) || _optionalChain([_configjs2.default, 'access', _10 => _10.bot, 'optionalAccess', _11 => _11.name]) || "Ourin-AI";
+    const saluranName = _optionalChain([_configjs2.default, 'access', _8 => _8.saluran, 'optionalAccess', _9 => _9.name]) || _optionalChain([_configjs2.default, 'access', _10 => _10.bot, 'optionalAccess', _11 => _11.name]) || "Al Miku-AI";
 
     await sock.sendMessage(
       m.chat,
@@ -220,7 +220,7 @@ async function handler(m, { sock }) {
     } catch (e5) { }
   } catch (error) {
     await m.react("☢");
-    await m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
+    await m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
   }
 }
 

@@ -1,4 +1,4 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true});var _ouringamedatajs = require('../../src/lib/ourin-game-data.js');
+"use strict";Object.defineProperty(exports, "__esModule", {value: true});var _almikugamedatajs = require('../../src/lib/almiku-game-data.js');
 const pluginConfig = {
     name: 'dare',
     alias: ['dareq', 'tantang'],
@@ -16,7 +16,7 @@ const pluginConfig = {
 };
 
 async function handler(m) {
-    const challenge = _ouringamedatajs.getRandomItem.call(void 0, 'dare.json');
+    const challenge = _almikugamedatajs.getRandomItem.call(void 0, 'dare.json');
     
     if (!challenge) {
         await m.reply('❌¡Datos no disponibles!');

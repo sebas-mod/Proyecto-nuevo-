@@ -2,7 +2,7 @@
  * Putus - End relationship
  */
 
-var _ourindatabasejs = require('../../src/lib/ourin-database.js');
+var _almikudatabasejs = require('../../src/lib/almiku-database.js');
 const pluginConfig = {
     name: 'putus',
     alias: ['breakup', 'cerai'],
@@ -20,7 +20,7 @@ const pluginConfig = {
 }
 
 async function handler(m, { sock }) {
-    const db = _ourindatabasejs.getDatabase.call(void 0, )
+    const db = _almikudatabasejs.getDatabase.call(void 0, )
     let senderData = db.getUser(m.sender) || {}
     if (!senderData.fun) senderData.fun = {}
     if (!senderData.fun.pasangan) {

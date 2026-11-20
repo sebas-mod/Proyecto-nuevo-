@@ -1,7 +1,7 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _axios = require('axios'); var _axios2 = _interopRequireDefault(_axios);
 var _formdata = require('form-data'); var _formdata2 = _interopRequireDefault(_formdata);
 var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
-var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
+var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
 
 const pluginConfig = {
     name: "animeapaini",
@@ -86,7 +86,7 @@ async function handler(m, { sock }) {
     } catch (error) {
         console.error("[ANIMECHECKER Plugin Error]", error);
         await m.react("☢");
-        m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
+        m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
     }
 }
 

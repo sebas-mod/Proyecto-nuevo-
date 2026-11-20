@@ -1,6 +1,6 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { newObj[key] = obj[key]; } } } newObj.default = obj; return newObj; } } function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _tesseractjs = require('tesseract.js'); var _tesseract = _interopRequireWildcard(_tesseractjs);
-var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
-var _ourincontextjs = require('../../src/lib/ourin-context.js');
+var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
+var _almikucontextjs = require('../../src/lib/almiku-context.js');
 
 function getTesseract() {
   return _tesseract;
@@ -64,7 +64,7 @@ async function handler(m, { sock }) {
         .join("\n")}\n` +
       `╰┈┈┈┈┈┈┈┈⬡\n\n` +
       `> Total: ${extractedText.length}caracter`;
-    await _ourincontextjs.sendToolsPreview.call(void 0, 
+    await _almikucontextjs.sendToolsPreview.call(void 0, 
       sock,
       m.chat,
       responseText,
@@ -74,7 +74,7 @@ async function handler(m, { sock }) {
     );
   } catch (e) {
     await m.react("☢");
-    m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
+    m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName));
   }
 }
 exports.config = pluginConfig; exports.handler = handler;

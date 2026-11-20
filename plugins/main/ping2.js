@@ -2,8 +2,8 @@
 var _perf_hooks = require('perf_hooks');
 var _child_process = require('child_process');
 var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefault(_configjs);
-var _ourindatabasejs = require('../../src/lib/ourin-database.js');
-var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
+var _almikudatabasejs = require('../../src/lib/almiku-database.js');
+var _almikuerrorjs = require('../../src/lib/almiku-error.js'); var _almikuerrorjs2 = _interopRequireDefault(_almikuerrorjs);
 
 const pluginConfig = {
     name: 'ping2',
@@ -95,7 +95,7 @@ async function handler(m, { sock }) {
 
         let dbUsers = 0, dbGroups = 0, dbPremium = 0
         try {
-            const db = _ourindatabasejs.getDatabase.call(void 0, )
+            const db = _almikudatabasejs.getDatabase.call(void 0, )
             if (_optionalChain([db, 'optionalAccess', _ => _.data])) {
                 dbUsers = Object.keys(db.data.users || {}).length
                 dbGroups = Object.keys(db.data.groups || {}).length
@@ -133,7 +133,7 @@ async function handler(m, { sock }) {
             tableData,
             m,
             {
-                headerText: `${_optionalChain([_configjs2.default, 'access', _6 => _6.bot, 'optionalAccess', _7 => _7.name]) || 'Ourin-AI'}*Estado*\n\n-🎄Está es la estática de nuestras botas.`,
+                headerText: `${_optionalChain([_configjs2.default, 'access', _6 => _6.bot, 'optionalAccess', _7 => _7.name]) || 'Al Miku-AI'}*Estado*\n\n-🎄Está es la estática de nuestras botas.`,
                 footer: '🍃 Realtime Monitoring'
             }
         )
@@ -141,7 +141,7 @@ async function handler(m, { sock }) {
         await m.react('✅')
     } catch (error) {
         await m.react('☢')
-        m.reply(_ourinerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName))
+        m.reply(_almikuerrorjs2.default.call(void 0, m.prefix, m.command, m.pushName))
     }
 }
 
