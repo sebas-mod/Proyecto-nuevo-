@@ -29,7 +29,7 @@ async function handler(m, { sock }) {
   const sewaGroups = Object.keys(db.db.data.sewa.groups || {});
   if (!args || args === "status") {
     return m.reply(
-      `🔧> 91; SISTETS RELIEF BOT > 93;\n\n` +
+      `🔧* SISTETS RELIEF BOT *\n\n` +
         `Status: *${currentStatus ? "✅ AKTIF" : "❌ NONAKTIF"}*\n` +
         `Grupo de lista: *${sewaGroups.length}*\n\n` +
         `*Comando Disponible:*\n` +
@@ -135,7 +135,7 @@ async function handler(m, { sock }) {
       }
       await m.react("✅");
       return m.reply(
-        `✅> 91; RENT BOT ACTIVE > 93;\n\n` +
+        `✅* RENT BOT ACTIVE *\n\n` +
           `Grupo whitelist: *${sewaGroups.length}*\n` +
           `Fuera de: *${leftCount}* grup\n` +
           `Fallido: *${failedCount}* grupo`,

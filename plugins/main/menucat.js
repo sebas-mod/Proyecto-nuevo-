@@ -388,7 +388,7 @@ async function handler(m, { sock, db }) {
   }
 
   if (matchedCat === "owner" && !m.isOwner) {
-    return m.reply(`❌> 91; Cumplimiento de la ACCESO > 93;\n\nA este kagori es para el dueño.`);
+    return m.reply(`❌* Cumplimiento de la ACCESO *\n\nA este kagori es para el dueño.`);
   }
 
   const pluginCommands = commandsByCategory[matchedCat] || [];

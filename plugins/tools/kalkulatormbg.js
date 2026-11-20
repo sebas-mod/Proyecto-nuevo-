@@ -87,7 +87,7 @@ function formatRupiah(angka) {
 
 async function handler(m, { args }) {
   if (!args[0]) {
-    let txt = `🧮> 91; MBG KALKULATOR (MaAN BERGYGIC GRATIC MAKULATE > 93;🧮\n\n`;
+    let txt = `🧮* MBG KALKULATOR (MaAN BERGYGIC GRATIC MAKULATE *🧮\n\n`;
     txt += `¡Hao hermano!\n\n`;
     txt += `*Como usarlo:*\n`;
     txt += `👉 \`${m.prefix}kkmbg <nominal uang>\`\n\n`;

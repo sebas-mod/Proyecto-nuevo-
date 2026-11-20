@@ -36,7 +36,7 @@ async function handler(m, { sock, text }) {
         }
 
         const maxResults = Math.min(data.result.length, 10);
-        let listTxt = `🎨> 91; PRESIDENTE DEL ESTICKER 'S TRAINING.${text.toUpperCase()}*\n\n`;
+        let listTxt = `🎨* PRESIDENTE DEL ESTICKER 'S TRAINING.${text.toUpperCase()}*\n\n`;
         listTxt += `Encontré algunos paquetes, elija uno de ellos:\n\n`;
 
         const searchResults = [];

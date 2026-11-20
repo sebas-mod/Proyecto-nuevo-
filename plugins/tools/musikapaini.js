@@ -90,7 +90,7 @@ async function handler(m, { sock }) {
     const data = await _ourinapimanagerjs2.default.neoxr.whatMusic(
       {
         url: audioUrl,
-        apikey: _optionalChain([_configjs2.default, 'access', _5 => _5.APIkey, 'optionalAccess', _6 => _6.neoxr]) || "Millik - Eurinprobable",
+        apikey: _optionalChain([_configjs2.default, 'access', _5 => _5.APIkey, 'optionalAccess', _6 => _6.neoxr]) || "Milik-Bot-OurinMD",
       },
       {
         timeout: 60000,

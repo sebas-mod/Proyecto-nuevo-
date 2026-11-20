@@ -55,7 +55,7 @@ async function handler(m, { sock }) {
 
   await m.react("✅");
   
-  let msg = `✅> 91; SITUACIÓN DE LA HEAVILY > 93;\n\n`;
+  let msg = `✅* SITUACIÓN DE LA HEAVILY *\n\n`;
   if (successList.length > 0) {
     msg += `*Exito (FREE🆓♪\n${successList.map(f => `- ${f}`).join("\n")}\n\n`;
   }

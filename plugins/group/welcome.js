@@ -131,7 +131,7 @@ Tanoshii jikan o issho ni sugoso ne~`,
   let msg = `👋🏻* Bienvenido a enviarnos nuevos *👋🏻\n\n`;
   msg += `${header}\n`;
   msg += `${emoji} ${greeting}, *@${username}* 💫\n\n`;
-  msg += `📌> 91; GRUPO INFO &#93;\n`;
+  msg += `📌* GRUPO INFO ]\n`;
   msg += `♪🏠*Nombre*:${groupName}\n`;
   msg += `> 👥 *Member* : ${memberCount}\n`;
   msg += `♪📅 *Fecha*: ${_momenttimezone2.default.call(void 0, ).tz("Asia/Jakarta").format("DD/MM/YYYY")}\n`;

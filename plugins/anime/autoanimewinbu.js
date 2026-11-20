@@ -160,7 +160,7 @@ async function handler(m, { sock, args }) {
 
             groups.push(grupId)
             _ourinautoanimejs.saveState.call(void 0, { ...state, groups })
-            return m.reply(`✅Grupo\`${grupId}\` anadido a target\n> 91; Tital > 93;${groups.length}* grupo`)
+            return m.reply(`✅Grupo\`${grupId}\` anadido a target\n* Tital *${groups.length}* grupo`)
         }
 
         case 'delgrup':

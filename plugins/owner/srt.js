@@ -70,7 +70,7 @@ async function handler(m, { sock, args }) {
             const files = _fs2.default.readdirSync(SHUFFLE_DIR).filter(f => f.endsWith('.jpg') || f.endsWith('.png') || f.endsWith('.jpeg'));
             if (files.length === 0) return m.reply('❌El directorio * shuffle sigue vacío. Por favor, utilice el comando de captura para añadir la imagen.');
             
-            await m.reply(`📂* Registrate Imagen SHUFFLE*\n\nEl sistema encontrado *${files.length}&#91; imagen guardada. Pitch procesamiento y secuencia de disco para mostrar, por favor espere un momento.`);
+            await m.reply(`📂* Registrate Imagen SHUFFLE*\n\nEl sistema encontrado *${files.length}[ imagen guardada. Pitch procesamiento y secuencia de disco para mostrar, por favor espere un momento.`);
             
             try {
                 const opener = _ourin.generateWAMessageFromContent.call(void 0, 
@@ -145,7 +145,7 @@ async function handler(m, { sock, args }) {
                     _fs2.default.unlinkSync(filepath);
                     await m.reply(`✅* El más trabajado para ser desprendido *\n\nImagen logró ser hackeado de la base de datos.`);
                 } else {
-                    await m.reply('❌> 91; EL MEJOR NO SON TERRENO > 93;\n\nEstá imagen no está familiarizada con el contenido de la base de datos shuffle.');
+                    await m.reply('❌* EL MEJOR NO SON TERRENO *\n\nEstá imagen no está familiarizada con el contenido de la base de datos shuffle.');
                 }
             }
             await m.react('✅');

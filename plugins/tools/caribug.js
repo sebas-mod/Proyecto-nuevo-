@@ -46,7 +46,7 @@ async function handler(m, { args }) {
     const meta = info.metadata;
     const bugInfo = info.bugsFound;
     
-    let text = `🐛> 91; HAZARD ANALISA BUG > 93;\n\n`;
+    let text = `🐛* HAZARD ANALISA BUG *\n\n`;
     text += `*Bahasa:* ${meta.detectedLanguage}\n`;
     text += `*Nivel:* ${meta.severityInfo.level} ${meta.severityInfo.icon}\n`;
     text += `* Bug Discovered: *${bugInfo.total}\n\n`;

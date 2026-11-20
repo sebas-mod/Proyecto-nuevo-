@@ -3,7 +3,7 @@ var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefa
 var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
 var _ourindatabasejs = require('../../src/lib/ourin-database.js');
 
-const NEOXR_APIKEY = _optionalChain([_configjs2.default, 'access', _ => _.APIkey, 'optionalAccess', _2 => _2.neoxr]) || "Millik - Eurinprobable";
+const NEOXR_APIKEY = _optionalChain([_configjs2.default, 'access', _ => _.APIkey, 'optionalAccess', _2 => _2.neoxr]) || "Milik-Bot-OurinMD";
 
 const pluginConfig = {
     name: "character-ai",
@@ -35,7 +35,7 @@ async function handler(m, { sock, args, text }) {
 
     if (cmd === "search") {
         const query = args.slice(1).join(" ");
-        if (!query) return m.reply(`¡El tipo de nombre de personaje!\nManah: Personaje - ai search yuji.`);
+        if (!query) return m.reply(`¡El tipo de nombre de personaje!\nManah: .character-ai search yuji.`);
 
         await m.react("🕕");
         try {
@@ -95,7 +95,7 @@ async function handler(m, { sock, args, text }) {
         if (_optionalChain([db, 'access', _3 => _3.db, 'access', _4 => _4.data, 'access', _5 => _5.characterai, 'access', _6 => _6[m.chat], 'optionalAccess', _7 => _7.enabled])) {
             delete db.db.data.characterai[m.chat];
             db.save();
-            m.reply(`✅> 91; Hombre &#93; > Hombre &#93; Hombre: &#91; Hombre &#93; ¡Hey!`);
+            m.reply(`✅* Hombre ] > Hombre ] Hombre: [ Hombre ] ¡Hey!`);
         } else {
             m.reply(`❌No hay autoCaracter AI activo en èchat.`);
         }
@@ -166,7 +166,7 @@ async function caiAnswerHandler(m, sock) {
 
     await m.react("✅");
     const nsfwWarning = selected.is_nsfw ? "\n⚠️ *WARNING: Karakter ini berlabel NSFW.*" : "";
-    await m.reply(`🤖> 91; CACENTRO DE CARACTER AI > 93;\n\nCaracter *${selected.name}* Se ha seleccionado!\n\n> Escribe\`- Quítate el personaje.\`para mematikan.${nsfwWarning}`);
+    await m.reply(`🤖* CACENTRO DE CARACTER AI *\n\nCaracter *${selected.name}* Se ha seleccionado!\n\n> Escribe\`.character-ai off\`para mematikan.${nsfwWarning}`);
 
     return true;
 }

@@ -14,7 +14,7 @@ function gpMsg(key, replacements = {}) {
       "⚠Antilinks WA—@ % user % di - kick for send WA links.",
     antilinkAll: "⚠ *Antilink* — @%user% mengirim link.\nPesan dihapus.",
     antilinkAllKick: "⚠Antilinks—@ % usuario % di - patada debido al envío de enlaces.",
-    antitagsw: "⚠> 91; AntiTagd > 93;—Estado de la etiqueta de @ % usuario % dispus.",
+    antitagsw: "⚠* AntiTagd *—Estado de la etiqueta de @ % usuario % dispus.",
     antiswgc: "⚠AntiSWGC—El grupo de cama tipo % tipo * de @ % usuario % disputa.",
     antijudol:
       "⚠ *AntiJudol* — @%user% terdeteksi kirim konten judol.\nPesan dihapus.",

@@ -129,7 +129,7 @@ const config = {
       "⚠Antilinks WA—@ % user % di - kick for send WA links.",
     antilinkAll: "⚠ *Antilink* — @%user% mengirim link.\nPesan dihapus.",
     antilinkAllKick: "⚠Antilinks—@ % usuario % di - patada debido al envío de enlaces.",
-    antitagsw: "⚠> 91; AntiTagd > 93;—Estado de la etiqueta de @ % usuario % dispus.",
+    antitagsw: "⚠* AntiTagd *—Estado de la etiqueta de @ % usuario % dispus.",
     antiviewonce: "👁*Vista*—De @%user%",
     antiremove: "🗑AntiDelete—@ % usuario % memoriza mensajes:",
     antiswgc: "⚠AntiSWGC—Gak allí",
@@ -137,7 +137,7 @@ const config = {
     antitoxicWarn:
       "⚠@ % usuario % cite cashmere.\nAdvertencia al % advierte % del % max%, la siguiente brecha podría ser - % método %.",
     antitoxicAction: "🚫@ % user % di - % method % due toxic. ( % advertido % / % max% )",
-    antidocument: "⚠> 91; AntiDoment > 93;—Documento de @ % usuario % dispus.",
+    antidocument: "⚠* AntiDoment *—Documento de @ % usuario % dispus.",
     antisticker: "⚠AntiStickers—Pegatina de @ % usuario % dispus.",
     antimedia: "⚠AntiMedia—Medios de @ % usuario % dispuus.",
     antibot: "🤖*Estoy tan feliz*—@ % usuario % detectado como bot y patadas.",
@@ -288,7 +288,7 @@ const config = {
     //Puedes listar enhttps://api.lolhuman.xyz,Entonces, agarre el fuego.
     lolhuman: "AMIGEE - MYA - Uuringathered ( Zann, HAUSAAND, KEISA, Danzz )",
     //Puedes listar enhttps://api.neoxr.eu,Entonces, agarre el fuego.
-    neoxr: "Millik - Eurinprobable",
+    neoxr: "Milik-Bot-OurinMD",
     fgsi: "fgsiapi-20c1605c-6d",
     google: "AIzaSyAS-KiW0SrwiYKwexeBcGPijBVHFg2R_vo",
     groq: process.env.GROQ_API_KEY || "", //Fuego llave para la función de trancripción ( gratis en consola. groq )

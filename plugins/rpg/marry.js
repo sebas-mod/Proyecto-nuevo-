@@ -25,7 +25,7 @@ async function handler(m, { sock }) {
   const target = _optionalChain([m, 'access', _ => _.mentionedJid, 'optionalAccess', _2 => _2[0]]) || _optionalChain([m, 'access', _3 => _3.quoted, 'optionalAccess', _4 => _4.sender]);
 
   if (!target) {
-    let txt = `💒> 91; CATATES SIPIL RPG &#93;💒\n\n`;
+    let txt = `💒* CATATES SIPIL RPG ]💒\n\n`;
     txt += `¿Quieres proponerle a un hombre?\n\n`;
     txt += `*Cara Melamar:*\n`;
     txt += `👉 \`${m.prefix}marry @user\`\n\n`;
@@ -70,7 +70,7 @@ async function handler(m, { sock }) {
   txt += `👨‍💼/👰 @${m.sender.split("@")[0]}\n`;
   txt += `           💖con💖\n`;
   txt += `👨‍💼/👰 @${target.split("@")[0]}\n\n`;
-  txt += `🎉> 91; Oficial REALIZADO EN PASHAN! &#93;🎉\n\n`;
+  txt += `🎉* Oficial REALIZADO EN PASHAN! ]🎉\n\n`;
   txt += `💍Coste Reception: * Rp -${marriageCost.toLocaleString("id-ID")}*\n\n`;
   txt += `- Ejecución botánica🥺💕`;
 

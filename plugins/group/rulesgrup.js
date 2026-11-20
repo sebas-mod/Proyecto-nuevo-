@@ -36,7 +36,7 @@ No hay tolerancia para las palabras o palabras de odio.
 - Difundir los esparcimientosx* o información no verificada de su veracidad.
 - Envió documentos o archivos que eran virus potenciales de embarazo.
 
-🔹> 91; UTILIZACIÓN DE BOT > 93;
+🔹* UTILIZACIÓN DE BOT *
 
 - Use suffcientes tarjitas, don 't spam comando over and over again.
 - * Patuhi administrador instruction * grupo place.

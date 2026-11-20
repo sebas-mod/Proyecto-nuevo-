@@ -99,7 +99,7 @@ async function handler(m) {
       .map((s) => s.trim());
     if (personaArgs.length < 2 || !personaArgs[0] || !personaArgs[1])
       return m.reply(
-        `❌Formato incorrecto!\n\n*Sí. * * Auto @-@ ai add up*\n\n> 91; Hombre > 93;:x¡Te odio!xai,..`,
+        `❌Formato incorrecto!\n\n*Sí. * * Auto @-@ ai add up*\n\n* Hombre *:x¡Te odio!xai,..`,
       );
     const pName = personaArgs[0].toLowerCase().replace(/\s+/g, "_");
     const pInstruction = personaArgs.slice(1).join("|").trim();
@@ -125,7 +125,7 @@ async function handler(m) {
     const pKey = (args[1] || "").toLowerCase().trim();
     if (!pKey)
       return m.reply(
-        `❌Formato incorrecto!\n\nAutoai eliminar persona.<nama>\n\n> 91; Hombre > > 91; Hombre > 93; Deshazte de eso.xa`,
+        `❌Formato incorrecto!\n\nAutoai eliminar persona.<nama>\n\n* Hombre > * Hombre * Deshazte de eso.xa`,
       );
     if (!db.db.data.autoai_personas[pKey])
       return m.reply(
@@ -202,7 +202,7 @@ Todos los comandos (excepto el propietario ) están bloqueados cuando AutoAI est
     txt += `*Custom:*\n${custom}\n\n`;
     txt += `*Global:* ${db.db.data.autoai_global.enabled ? "✅ Aktif" : "❌ Nonaktif"}\n\n`;
     txt += `> .autoai on --ourinmode=<key>\n`;
-    txt += `> 91; Hombre > > 91; Hombre > 93; Sí.\n`;
+    txt += `* Hombre > * Hombre * Sí.\n`;
     txt += `> .autoai hapuspersona nama\n`;
     txt += `> .autoai global on/off`;
     return m.reply(txt);
@@ -316,7 +316,7 @@ Todos los comandos (excepto el propietario ) están bloqueados cuando AutoAI est
     txt += `*Uso:*\n`;
     txt += `> .autoai on --ourinmode=<karakter|custom> --type=<text|voice> --mode=<onlychat|assistant>\n`;
     txt += `> .autoai off\n`;
-    txt += `> 91; Hombre > > 91; Hombre > 93; Sí.\n`;
+    txt += `* Hombre > * Hombre * Sí.\n`;
     txt += `> .autoai hapuspersona nama\n`;
     txt += `> .autoai listpersona\n`;
     txt += `> .autoai global on/off\n`;
@@ -356,7 +356,7 @@ Todos los comandos (excepto el propietario ) están bloqueados cuando AutoAI est
       "custom",
     ].join(", ");
     return m.reply(
-      `❌¡El personaje no es válido!\n\n*El amor solitario*${charList}\n\n- &#91; Hombre &#93; &#91; Hombre &#93; &#91; Hombre &#93; Hombre:\n- Eres un ne.xA`,
+      `❌¡El personaje no es válido!\n\n*El amor solitario*${charList}\n\n- [ Hombre ] [ Hombre ] [ Hombre ] Hombre:\n- Eres un ne.xA`,
     );
   }
 

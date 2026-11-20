@@ -86,7 +86,7 @@ async function handler(m, context) {
         `  ↳Iniciar sesión usando el dispositivodnknid\n` +
         `• \`${p}viuprem --device <id>\`\n` +
         `  ↳Formato flag\n\n` +
-        `> 91; Aplausos > 93;\`${p}viuprem\`_`
+        `* Aplausos *\`${p}viuprem\`_`
     );
   }
 

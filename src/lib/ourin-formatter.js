@@ -342,7 +342,7 @@ function createBotStatus(data) {
 
   const lines = [
     `【BOT STATUS】`,
-    `${EMOJIS.bot}> 91; Gasps &#93;${botName}`,
+    `${EMOJIS.bot}* Gasps ]${botName}`,
     `${EMOJIS.uptime} Uptime   : ${uptime}`,
     `${EMOJIS.mode} Mode     : ${mode}`,
     `${EMOJIS.commands} Commands : ${totalCommands}función`,

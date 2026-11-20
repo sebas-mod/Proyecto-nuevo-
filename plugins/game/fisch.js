@@ -481,7 +481,7 @@ async function handler(m, { sock }) {
     return send(
       sock,
       m,
-      `*ENCHANT Instalado!*\n\n*${ench.name}* _(${ench.rarity})_ ke *${rod.name}*\n_${ench.desc}¿Qué?\n> 91; Aplausos > 93;${_ourinfischjs.formatMoney.call(void 0, cost)}_`,
+      `*ENCHANT Instalado!*\n\n*${ench.name}* _(${ench.rarity})_ ke *${rod.name}*\n_${ench.desc}¿Qué?\n* Aplausos *${_ourinfischjs.formatMoney.call(void 0, cost)}_`,
       "Enchant!",
       ench.name,
     );
@@ -535,8 +535,8 @@ async function handler(m, { sock }) {
       sock,
       m,
       res
-        ? `*ROD UPGRADED!*\n\n${res}\n> 91; Aplausos > 93;${_ourinfischjs.formatMoney.call(void 0, cost)}_`
-        : `*ROD EXP UP!*\n\n+${Math.floor(rod.expToNextLevel * 0.5)}EXP\n> 91; Aplausos > 93;${_ourinfischjs.formatMoney.call(void 0, cost)}_`,
+        ? `*ROD UPGRADED!*\n\n${res}\n* Aplausos *${_ourinfischjs.formatMoney.call(void 0, cost)}_`
+        : `*ROD EXP UP!*\n\n+${Math.floor(rod.expToNextLevel * 0.5)}EXP\n* Aplausos *${_ourinfischjs.formatMoney.call(void 0, cost)}_`,
       "Rod Upgrade!",
       rod.name,
     );
@@ -675,7 +675,7 @@ async function handler(m, { sock }) {
     return send(
       sock,
       m,
-      `*${upg.name} LEVEL UP!*\n\n_Level ${lv + 1}¿Qué?\n> 91; Aplausos > 93;${_ourinfischjs.formatMoney.call(void 0, cost)}_\n_${upg.desc}_`,
+      `*${upg.name} LEVEL UP!*\n\n_Level ${lv + 1}¿Qué?\n* Aplausos *${_ourinfischjs.formatMoney.call(void 0, cost)}_\n_${upg.desc}_`,
       "Upgrade!",
       `${upg.name} Lv.${lv + 1}`,
     );
@@ -798,7 +798,7 @@ async function handler(m, { sock }) {
     if (!sa[0]) {
       let txt = `(SINGING 91 ) SISTEMA DE JACKPOT\n\nEl tiempo que tuvo un gran regalo\nSocio socio de Socios de Socios de Puede ser Premium\n\n`;
       for (const pool of _ourinfischjs.JACKPOT_POOLS) {
-        txt += `*${pool.name}*\n> 91; Aplausos > 93;${_ourinfischjs.formatMoney.call(void 0, pool.cost)}_\n  _Rate: ${pool.weight}%_\n  _Rewards:_\n`;
+        txt += `*${pool.name}*\n* Aplausos *${_ourinfischjs.formatMoney.call(void 0, pool.cost)}_\n  _Rate: ${pool.weight}%_\n  _Rewards:_\n`;
         for (const rw of pool.rewards) {
           const label =
             {
@@ -847,7 +847,7 @@ async function handler(m, { sock }) {
       "unlimited_limit",
     ].includes(result.reward.type);
     if (isBig) txt += `*JACKPOT Grande!*\n\n`;
-    txt += `${applied.desc}\n\n> 91; Aplausos > 93;${_ourinfischjs.formatMoney.call(void 0, pool.cost)}_\n_Saldo: ${_ourinfischjs.formatMoney.call(void 0, f.money)}_`;
+    txt += `${applied.desc}\n\n* Aplausos *${_ourinfischjs.formatMoney.call(void 0, pool.cost)}_\n_Saldo: ${_ourinfischjs.formatMoney.call(void 0, f.money)}_`;
     return send(
       sock,
       m,

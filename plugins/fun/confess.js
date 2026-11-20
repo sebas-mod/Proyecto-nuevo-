@@ -72,7 +72,7 @@ async function handler(m, { sock }) {
     return m.reply(`Wah pesannya kepanjangan hermano! Maksimal 1000 caracter si biar bacanya no pusing. 📜`);
   }
 
-  const confessText = `💌> 91; ¡Hay un servicio secreto hecho por usted! >💌\n\n` +
+  const confessText = `💌* ¡Hay un servicio secreto hecho por usted! >💌\n\n` +
     `Alguien ha estado en silencio enviándote mensajes.\n\n` +
     `💬*Isi Mensaje:*\n` +
     `\`\`\`${message}\`\`\`\n\n` +
@@ -99,7 +99,7 @@ async function handler(m, { sock }) {
       global.confessData.delete(sentMsg.key.id);
     }, 24 * 60 * 60 * 1000);
 
-    let successTxt = `✅> 91; MESFESS SLAMS SLAPPING > 93;✅\n\n`;
+    let successTxt = `✅* MESFESS SLAMS SLAPPING *✅\n\n`;
     successTxt += `♪📱Enviado a:\`${targetNumber}\`\n`;
     successTxt += `♪🔒Su identidad es segura. ¡Sexos!\n\n`;
     successTxt += `Cocinaré mi camino aquí.😉`;
@@ -126,7 +126,7 @@ async function replyHandler(m, { sock }) {
   const saluranId = _optionalChain([_configjs2.default, 'access', _16 => _16.saluran, 'optionalAccess', _17 => _17.id]) || "120363400911374213@newsletter";
   const saluranName = _optionalChain([_configjs2.default, 'access', _18 => _18.saluran, 'optionalAccess', _19 => _19.name]) || _optionalChain([_configjs2.default, 'access', _20 => _20.bot, 'optionalAccess', _21 => _21.name]) || "Ourin-AI";
 
-  const replyText = `💌> 91; NO REFECTO FEESS Aquí Hermano! &#93;💌\n\n` +
+  const replyText = `💌* NO REFECTO FEESS Aquí Hermano! ]💌\n\n` +
     `El hombre que envió tadis hace un rato nueva votación su mensaje:\n\n` +
     `💬*Isi Respuesta:*\n` +
     `\`\`\`${replyMessage}\`\`\`\n\n` +

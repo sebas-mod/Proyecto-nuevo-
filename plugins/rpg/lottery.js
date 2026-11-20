@@ -131,7 +131,7 @@ async function handler(m, { sock }) {
   txt += `\n📈* Bono EXP: * +${totalExp} ✨\n`;
 
   if (hasLegendary) {
-    txt += `\n🌟🌟> 91; ¡WOOOYY!!! &#91; gritando > 93; > gritando > 91; gritando > 93; > 91; gritando > 93;🌟🌟`;
+    txt += `\n🌟🌟* ¡WOOOYY!!! [ gritando * > gritando * gritando * * gritando *🌟🌟`;
   } else if (hasRare) {
     txt += `\n✨* Wih mayan dapet raro hermano!`;
   } else {

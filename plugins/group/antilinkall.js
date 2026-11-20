@@ -54,7 +54,7 @@ function handler(m, { sock }) {
 
   if (option === "off") {
     db.setGroup(m.chat, { antilinkall: "off" });
-    return m.reply(`❌> 91; Antilinks All Nonactive > 93;\n\nEl enlace no será filtrado de nuevo`);
+    return m.reply(`❌* Antilinks All Nonactive *\n\nEl enlace no será filtrado de nuevo`);
   }
 
   if (option.startsWith("metode")) {
@@ -71,7 +71,7 @@ function handler(m, { sock }) {
       );
     } else {
       return m.reply(
-        `❌Método inválido\n\n*Usa una patada o un retiro*\n> 91; Gasps &#93;${m.prefix}patada antilinkal método *`
+        `❌Método inválido\n\n*Usa una patada o un retiro*\n* Gasps ]${m.prefix}patada antilinkal método *`
       );
     }
   }

@@ -24,13 +24,13 @@ async function handler(m, { sock }) {
 
     if (!query) {
       return m.reply(
-        `❌> 91; ¡Introduzca las palabras clave de búsqueda! &#93;\n\n> Ejemplo:${m.prefix}carigambar rem`,
+        `❌* ¡Introduzca las palabras clave de búsqueda! ]\n\n> Ejemplo:${m.prefix}carigambar rem`,
       );
     }
 
     await m.react("🔍");
 
-    const apikey = _optionalChain([_configjs2.default, 'access', _ => _.APIkey, 'optionalAccess', _2 => _2.neoxr]) || "Millik - Eurinprobable";
+    const apikey = _optionalChain([_configjs2.default, 'access', _ => _.APIkey, 'optionalAccess', _2 => _2.neoxr]) || "Milik-Bot-OurinMD";
     const data = await _ourinapimanagerjs2.default.apiFaa.get(
       "/faa/google-image",
       {

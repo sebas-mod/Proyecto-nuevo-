@@ -82,7 +82,7 @@ function handler(m, { sock }) {
     db.setUser(target, recipient);
     db.save();
 
-    let txt = `📦> 91; ¡Pongamos los pantalones!📦\n\n`;
+    let txt = `📦* ¡Pongamos los pantalones!📦\n\n`;
     txt += `Kurir logró entregar a los otros:\n`;
     txt += `🎁Lisi Pakeet: *${type}* (x${amount})\n`;
     txt += `👤 Penerima: @${target.split("@")[0]}\n\n`;

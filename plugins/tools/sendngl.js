@@ -25,7 +25,7 @@ async function handler(m, { sock }) {
     );
   if (!kata)
     return m.reply(
-      `> 91; The SAME Palabra MANA > 93;\n\nEjemplo:\`${_optionalChain([m, 'optionalAccess', _5 => _5.prefix])}sendnglhttps://ngl.link/xxxx| hola`,
+      `* The SAME Palabra MANA *\n\nEjemplo:\`${_optionalChain([m, 'optionalAccess', _5 => _5.prefix])}sendnglhttps://ngl.link/xxxx| hola`,
     );
   m.react("🎴");
 

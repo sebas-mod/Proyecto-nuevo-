@@ -181,7 +181,7 @@ async function handleCommand(m, sock) {
           }
 
           text += `*━━━━━━━━━━━━━━━*\n`;
-          text += `💡*ᴛɪᴘ:* Usa\`. listallplugin.\`para ver los plugins`;
+          text += `💡*ᴛɪᴘ:* Usa \`.listallplugin\` para ver los plugins`;
 
           await sock.sendMessage(
             m.chat,
@@ -233,7 +233,7 @@ async function handleCommand(m, sock) {
           }
 
           if (totalPlugins === 0) {
-            await m.reply("⚠*No hay una sola gota de enchufe que llevas*");
+            await m.reply("⚠*No hay ningún plugin cargado*");
             return { handled: true };
           }
 
@@ -269,7 +269,7 @@ async function handleCommand(m, sock) {
           }
 
           text += `*━━━━━━━━━━━━━━━*\n`;
-          text += `💡*ᴛɪᴘ:* Usa\`. listallcase.\`para ver el caso`;
+          text += `💡*ᴛɪᴘ:* Usa \`.listallcase\` para ver los casos`;
 
           await sock.sendMessage(
             m.chat,

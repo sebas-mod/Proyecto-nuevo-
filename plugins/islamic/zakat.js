@@ -41,13 +41,13 @@ async function handler(m, context) {
     `🕌 *KALKULATOR ZAKAT ISLAMI*\n\n` +
     `*Formato Uso:*\n` +
     `• \`${p}${command} penghasilan <gaji/bln> <harga_emas/gram>\`\n` +
-    `> 91; Aplausos > 93;\`${p}${command} penghasilan 8jt 1500000\`_\n\n` +
+    `* Aplausos *\`${p}${command} penghasilan 8jt 1500000\`_\n\n` +
     `• \`${p}${command} maal <total_harta> <harga_emas/gram>\`\n` +
-    `> 91; Aplausos > 93;\`${p}${command} maal 200jt 1500000\`_\n\n` +
+    `* Aplausos *\`${p}${command} maal 200jt 1500000\`_\n\n` +
     `• \`${p}${command}oro<gram_emas> <harga_emas/gram>\`\n` +
-    `> 91; Aplausos > 93;\`${p}${command}oro 100 1500000\`¿Qué?\n\n` +
+    `* Aplausos *\`${p}${command}oro 100 1500000\`¿Qué?\n\n` +
     `• \`${p}${command} fitrah <jumlah_jiwa> <harga_beras/kg>\`\n` +
-    `> 91; Aplausos > 93;\`${p}${command} fitrah 4 15000\`\n\n` +
+    `* Aplausos *\`${p}${command} fitrah 4 15000\`\n\n` +
     `La emasa Nisab es de 85 gramos con una tasa de 2, 5 % acat.`;
 
   if (!jenis) return m.reply(help);
@@ -111,7 +111,7 @@ async function handler(m, context) {
     const wajib = gram >= NISAB;
     const totalNilai = gram * emas;
     return m.reply(
-      `🕌> 91; ROCK LOGAM MULIE ( GOLD ) &#93;\n\n` +
+      `🕌* ROCK LOGAM MULIE ( GOLD ) ]\n\n` +
         `🪙*Pesado Oro:*${gram} gram\n` +
         `⚖️ *Nisab:* 85 gram emas\n` +
         `💵*Total Valor:*${rupiah(totalNilai)} (@ ${rupiah(emas)}/gram)\n\n` +

@@ -38,7 +38,7 @@ async function handler(m, { sock }) {
     db.setting("autoRead", true);
     const ctx = _ourincontextjs.saluranCtx.call(void 0, );
     return m.reply(
-      `📖> 91; Auto Read Active >\n\n` +
+      `📖* Auto Read Active >\n\n` +
         `♪ Para la automatización leer mensajes en ♪`,
       { contextInfo: ctx }
     );
@@ -47,7 +47,7 @@ async function handler(m, { sock }) {
   if (option === "off") {
     db.setting("autoRead", false);
     return m.reply(
-      `📖> 91; Auto Read Nonactive > 93;\n\n` +
+      `📖* Auto Read Nonactive *\n\n` +
         `# Nunca voy a automatizar el mensaje`
     );
   }

@@ -75,7 +75,7 @@ async function handler(m, context) {
       }
       const result = await sock.newsletterCreate(chName, 'Official Channel created via Ourin 3.5');
       return m.reply(
-        `🎉> 91; COOING EXPLOSIONS > 93;\n\n` +
+        `🎉* COOING EXPLOSIONS *\n\n` +
           `📢*Nombre:*${chName}\n` +
           `🆔 *JID:* \`${result?.id || '-'}\`\n` +
           `🔗 *Invite:* ${result?.invite ? 'https://whatsapp.com/channel/' + result.invite : '-'}`

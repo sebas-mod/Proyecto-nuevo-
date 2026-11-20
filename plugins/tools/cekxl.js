@@ -88,7 +88,7 @@ async function handler(m, { sock }) {
         }
 
         if (data.balance || data.pulsa) {
-            txt += `💰> 91; Saldo &#93;\n`
+            txt += `💰* Saldo ]\n`
             txt += `Pulso:${data.balance || data.pulsa}*\n\n`
         }
 

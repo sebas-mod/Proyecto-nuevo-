@@ -45,7 +45,7 @@ async function handler(m, { sock }) {
 
   await m.react("✅");
   return m.reply(
-    `✅> 91; SISTETS ENERED STATES PRETTY &#93;\n\n` +
+    `✅* SISTETS ENERED STATES PRETTY ]\n\n` +
     `El actual sistema energético ha logrado - *${isEnabled ? "HIDUPKAN" : "MATIKAN"}*.\n\n` +
     `*Status Terkini:*\n` +
     `- Mode: *${isEnabled ? "AKTIF 🔋" : "NONAKTIF (UNLIMITED) ♾️"}*\n\n` +

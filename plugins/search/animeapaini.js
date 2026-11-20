@@ -28,7 +28,7 @@ async function handler(m, { sock }) {
         help += `*Como usarlo:*\n`
         help += `- Imagen de Ksena adegan anime con capción *${m.prefix}animeapaini*\n`
         help += `- O una respuesta.${m.prefix}animeapaini*\n\n`
-        help += `⚠> 91; Nota: &#93; El vídeo no es compatible, sólo una imagen / captura de pantalla sólo ya!`
+        help += `⚠* Nota: ] El vídeo no es compatible, sólo una imagen / captura de pantalla sólo ya!`
         return m.reply(help);
     }
 

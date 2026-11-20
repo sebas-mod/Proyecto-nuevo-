@@ -173,7 +173,7 @@ async function handler(m, { sock, text }) {
         if (data.performance.storage) caption += `- *Storage:* ${data.performance.storage}\n`;
         caption += `\n`;
 
-        caption += `📸> 91; MACHINE CHATTER &#93;\n`;
+        caption += `📸* MACHINE CHATTER ]\n`;
         if (data.camera.total) caption += `- *Cantidad:*${data.camera.total}\n`;
         if (data.camera.configuration) caption += `- *Configuración:*${data.camera.configuration}\n`;
         if (data.camera.video) caption += `- *Video:* ${data.camera.video}\n`;
@@ -184,7 +184,7 @@ async function handler(m, { sock, text }) {
         if (data.battery.charging) caption += `- *Charging:* ${data.battery.charging}\n`;
         caption += `\n`;
 
-        caption += `📡> 91; CONETTIVITY FOR ANOTHER > 93;\n`;
+        caption += `📡* CONETTIVITY FOR ANOTHER *\n`;
         if (data.system.os) caption += `* OS Cuando Rilis: *${data.system.os}\n`;
         if (data.connectivity.nfc) caption += `- *NFC:* ${data.connectivity.nfc}\n`;
         if (data.audio.jack) caption += `- *Audio Jack:* ${data.audio.jack}\n`;

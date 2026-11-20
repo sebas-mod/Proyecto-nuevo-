@@ -283,7 +283,7 @@ async function main() {
   const bCount = Array.isArray(savedBanned) ? savedBanned.length : 0;
   _ourinloggerjs.logger.success(
     "database",
-    `El debate de datos tiene éxito${_configjs2.default.mode}* Premium:${pCount} | Banned: ${bCount}`,
+    `Base de datos cargada con éxito | Modo: ${_configjs2.default.mode} | Premium: ${pCount} | Banned: ${bCount}`,
   );
 
   const pluginsPath = _path2.default.join(process.cwd(), "plugins");

@@ -20,7 +20,7 @@ const config = {
 async function handler(m, { sock }) {
   if (m.args.length === 0) {
     return m.reply(
-      `🔍> 91; INCREATING ACCESS FUTURE > 93;\n\n` +
+      `🔍* INCREATING ACCESS FUTURE *\n\n` +
       `El sistema para conocer detalles de la información establece una función acUR o algunas características a la vez.\n\n` +
       `*Uso:*\n` +
       `- *${m.prefix}whatrolethis <nama_fitur1> <nama_fitur2> ...*\n\n` +

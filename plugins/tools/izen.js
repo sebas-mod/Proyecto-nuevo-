@@ -38,7 +38,7 @@ async function handler(m, { args, sock }) {
        return m.reply("❌Hermana, lo siento.");
     }
     
-    let txt = `✅> 91; SALVANDO EL SALVID > 93;✅\n\n`;
+    let txt = `✅* SALVANDO EL SALVID *✅\n\n`;
     txt += `*Enlace Asli:*\n`;
     txt += `🔗 ${args[0]}\n\n`;
     txt += `*Resultado Bypass:*\n`;

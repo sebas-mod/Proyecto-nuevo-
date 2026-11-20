@@ -20,7 +20,7 @@ const config = {
 async function handler(m, { sock }) {
   if (m.args.length === 0) {
     return m.reply(
-      `🔍> 91; INDIAN INVESTIGATING > 93;\n\n` +
+      `🔍* INDIAN INVESTIGATING *\n\n` +
       `El sistema para saber qué es necesario un enorme pedazo de energía para usar una o varias características a la vez.\n\n` +
       `*Uso:*\n` +
       `- *${m.prefix}howmuchenergy <nama_fitur1> <nama_fitur2> ...*\n\n` +

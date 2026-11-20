@@ -439,7 +439,7 @@ async function replyHandler(m, { sock }) {
       m.chat,
       {
         text:
-          `✅> 91; los anticuerpos tienen éxito en la elaboración del documento#93;\n\n` +
+          `✅* los anticuerpos tienen éxito en la elaboración del documento#93;\n\n` +
           `${buildSummary(session)}\n\n` +
           `* Automática de estado: * *\n` +
           `*La nueva regla total*${generatedRules.length}*\n\n` +

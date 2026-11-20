@@ -31,7 +31,7 @@ Si no ha utilizado todas las características disponibles, debe comprender y obe
 - * El respeto por el uso de las botas, no utilice la función de interferir, ser redondo o desatar otro uso.
 - No envíe un contenido de la NSFW en un grupo sin su primer acuerdo de grupo de administradores.
 
-🔹> 91; Cátedra de la UUACIÓN DE LA FUTURA > 93;
+🔹* Cátedra de la UUACIÓN DE LA FUTURA *
 
 - Cualquier uso del comando requiere energía.
 - Premium sólo puede ser manejado por un uso prolgado.${prefix}Benefitpremium para información completa.

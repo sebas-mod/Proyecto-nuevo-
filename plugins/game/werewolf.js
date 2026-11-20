@@ -516,7 +516,7 @@ async function handler(m, { sock }) {
 
       if (ww[m.chat].phase !== "day") {
         return m.reply(
-          `❌¡Ahora no es el momento de votar!\n- > 91; Gasps &#93; - &#91; Gasps &#93;${ww[m.chat].phase === "night" ? "🌙 Malam" : ww[m.chat].phase}`,
+          `❌¡Ahora no es el momento de votar!\n- * Gasps ] - [ Gasps ]${ww[m.chat].phase === "night" ? "🌙 Malam" : ww[m.chat].phase}`,
         );
       }
 
@@ -1028,7 +1028,7 @@ async function endGame(chatId, sock, db, winner) {
     .join("\n");
 
   const endText =
-    `🎉> 91; ¡Juego OVER!\n\n` +
+    `🎉* ¡Juego OVER!\n\n` +
     `${winner === "wolf" ? "🐺 *WEREWOLF MENANG!*" : "👨‍🌾 *VILLAGER MENANG!*"}\n\n` +
     `╭┈┈⬡「 👥*Todo PLAYER*」\n` +
     `${allPlayers

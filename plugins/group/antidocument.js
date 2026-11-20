@@ -20,7 +20,7 @@ const pluginConfig = {
 
 function gpMsg(key, replacements = {}) {
     const defaults = {
-        antidocument: '⚠> 91; AntiDoment > 93;—Documento de @ % usuario % dispus.',
+        antidocument: '⚠* AntiDoment *—Documento de @ % usuario % dispus.',
     }
     let text = _optionalChain([_configjs2.default, 'access', _ => _.groupProtection, 'optionalAccess', _2 => _2[key]]) || defaults[key] || ''
     for (const [k, v] of Object.entries(replacements)) {

@@ -36,7 +36,7 @@ async function handler(m, context) {
       return m.reply('✅*Estado: TERVERIFIKASI*\n\nHa cumplido los requisitos y puede utilizar toda la función Ourin 3.');
     } else {
       return m.reply(
-        `❌> 91; STATUS &#93; No todavía.\n\n` +
+        `❌* STATUS ] No todavía.\n\n` +
           `Por favor, siga nuestro canal oficial.\n` +
           `1. ${CHANNEL_1_URL}\n` +
           `2. ${CHANNEL_2_URL}\n\n` +

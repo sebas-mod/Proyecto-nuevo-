@@ -246,7 +246,7 @@ async function kyubigameAnswerHandler(m, sock) {
 
         if (user.rpg.stamina < staminaCost) {
             await m.reply(
-                `⚡> 91; CHAKRA / STAMINA > No suficiente\n\n` +
+                `⚡* CHAKRA / STAMINA > No suficiente\n\n` +
                 `Necesitas al menos${staminaCost}La resistencia.\n` +
                 `Su resistencia presente es tan buena como su presente.${user.rpg.stamina}*.\n\n` +
                 `♪💡* Consejos: * Usar el comando\`- Quítate.\`O cancelarlo primero.\`cancelar\`).`,
@@ -320,7 +320,7 @@ async function kyubigameAnswerHandler(m, sock) {
 
                 reportText += `🎉* Misiónónónónónónónónónónónónónónónón Ex¡Ito!\n\n`;
                 reportText += `Con Jutsu parado, lo ganaste${session.monster}*!\n\n`;
-                reportText += `*🎁> 91; EXPLOSIONES MIDICALES: > 93;\n`;
+                reportText += `*🎁* EXPLOSIONES MIDICALES: *\n`;
                 reportText += `> ✨ EXP: *+${Math.floor(expReward)}*\n`;
                 reportText += `♪💰Ryo ( Tela ): * +${ryoReward.toLocaleString()}*\n`;
 

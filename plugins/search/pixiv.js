@@ -23,13 +23,13 @@ async function handler(m, { sock }) {
 
     if (!query) {
       return m.reply(
-        `❌> 91; ¡Introduzca las palabras clave de búsqueda! &#93;\n\n> Ejemplo:.pixFreno de mar`,
+        `❌* ¡Introduzca las palabras clave de búsqueda! ]\n\n> Ejemplo:.pixFreno de mar`,
       );
     }
 
     await m.react("🔍");
 
-    const apikey = _optionalChain([_configjs2.default, 'access', _6 => _6.APIkey, 'optionalAccess', _7 => _7.neoxr]) || "Millik - Eurinprobable";
+    const apikey = _optionalChain([_configjs2.default, 'access', _6 => _6.APIkey, 'optionalAccess', _7 => _7.neoxr]) || "Milik-Bot-OurinMD";
     const url = `https://api.neoxr.eu/api/pixiv-search?q=${encodeURIComponent(query)}&apikey=${apikey}`;
 
     const response = await _axios2.default.get(url, { timeout: 30000 });

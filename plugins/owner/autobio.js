@@ -51,7 +51,7 @@ async function handler(m, { sock, db }) {
       const { startAutoBioChecker } = await Promise.resolve().then(() => _interopRequireWildcard(require("../../src/lib/ourin-scheduler.js")));
       startAutoBioChecker(sock);
     } catch (e) {}
-    return m.reply(`✅> 91; AUTO BIO ACCENT > 93;\n\n* WhatsApp bot ahora se actualiza en un automático cada minuto.*`);
+    return m.reply(`✅* AUTO BIO ACCENT *\n\n* WhatsApp bot ahora se actualiza en un automático cada minuto.*`);
   }
   
   if (option === "off") {

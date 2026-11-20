@@ -160,7 +160,7 @@ async function handler(m, { sock }) {
     
     if (!m.isGroup) {
         return m.reply(
-            `📱> 91; SISTTHERS AUTOOREPLY > 93;\n\n` +
+            `📱* SISTTHERS AUTOOREPLY *\n\n` +
             `Autoreply Private: *${privateAutoreply ? '✅ AKTIF' : '❌ NONAKTIF'}*\n\n` +
             `*Comando Disponible:*\n` +
             `• *${m.prefix}autoreply private on/off* — Toggle private\n` +
@@ -181,7 +181,7 @@ async function handler(m, { sock }) {
         const effectiveStatus = _nullishCoalesce(groupStatus, () => ( globalSmartTriggers))
         const customReplies = groupData.customReplies || []
         
-        let text = `🤖> 91; SISTTHERS OUTOREPLY GRUPP &#93;\n\n`
+        let text = `🤖* SISTTHERS OUTOREPLY GRUPP ]\n\n`
         text += `Status Global: *${globalSmartTriggers ? '✅ AKTIF' : '❌ NONAKTIF'}*\n`
         text += `Este estado de la quiebra: *${groupStatus === undefined ? 'DEFAULT' : (groupStatus ? '✅ AKTIF' : '❌ NONAKTIF')}*\n`
         text += `Status Private: *${privateAutoreply ? '✅ AKTIF' : '❌ NONAKTIF'}*\n`

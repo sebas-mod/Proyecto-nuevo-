@@ -70,7 +70,7 @@ async function handler(m, { sock, db }) {
     const totalPesan = groupData.autoSambut.pesanList.length;
 
     return m.reply(
-      `⚠> 91; SISTEM AUTO SAMBUT > 93;\n\n` +
+      `⚠* SISTEM AUTO SAMBUT *\n\n` +
       `El sistema de automatización da la bienvenida al propietario al grupo de una manera aleatoria cuando el propietario aparece después de un largo ocio.\n` +
       `Status: *${status}*\n` +
       `Wastu Idle Brick: *${formatTime(delayMs)}*\n` +
@@ -78,7 +78,7 @@ async function handler(m, { sock, db }) {
       `*Uso Principal:*\n` +
       `• *${m.prefix}autowelcome on / off *—Enciende la función en este grupo\n` +
       `• *${m.prefix}retraso de los autowelcome<waktu>*—Cambio de tiempo de ocio\n\n` +
-      `> 91; EXCICIÓN ACASADA > 93;:\n` +
+      `* EXCICIÓN ACASADA *:\n` +
       `• *${m.prefix}lista de autowelcome *—Mira todos los saps que han sido registrados\n` +
       `• *${m.prefix}autowelcome add<teks>*—Añádase una nueva bienvenida a la lista\n` +
       `• *${m.prefix}autowelcome del<angka>*—Borrar mensajes en el número de secuencia absoluta\n\n` +
@@ -110,7 +110,7 @@ async function handler(m, { sock, db }) {
 
     groupData.autoSambut.enabled = isEnable;
     database.setGroup(m.chat, { autoSambut: groupData.autoSambut });
-    return m.reply(isEnable ? `✅&#91; Fatur Auto Sambut Activado!` : `❌> 91; Automóvil de la Fular Sambut Disabled >`);
+    return m.reply(isEnable ? `✅[ Fatur Auto Sambut Activado!` : `❌* Automóvil de la Fular Sambut Disabled >`);
   }
 
   if (action === "delay") {

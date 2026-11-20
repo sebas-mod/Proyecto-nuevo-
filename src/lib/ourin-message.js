@@ -27,7 +27,7 @@ var _ourinutilsjs = require('./ourin-utils.js');
  * @param {Object} sock - Socket connection
  * @param {string} jid - JID tujuan
 * @ param{string}texT @-@ Text para enviar
-* @ param{MessageOptions}> 91; Echotions > 93;{}- Opsia de mensaje
+* @ param{MessageOptions}* Echotions *{}- Opsia de mensaje
  * @returns {Promise<Object>} Sent message
  * @example
  * await sendText(sock, jid, 'Hello World!', { quoted: m });
@@ -64,7 +64,7 @@ async function sendReply(sock, jid, text, quoted) {
  * @param {string} jid - JID tujuan
 * @ param { Buffer { Buffer} Takstring } image
 * @ param{string}*Capción* *Capción @-@ dibujo de la Capción*
-* @ param{MessageOptions}> 91; Echotions > 93;{}- Opsia de mensaje
+* @ param{MessageOptions}* Echotions *{}- Opsia de mensaje
  * @returns {Promise<Object>} Sent message
  * @example
  * await sendImage(sock, jid, imageBuffer, 'Caption here', { quoted: m });
@@ -105,7 +105,7 @@ async function sendImage(sock, jid, image, caption = "", options = {}) {
  * @param {string} jid - JID tujuan
 * @ param { Buffer Takenstring } video - Buffer video o URL
  * @param {string} [caption=''] - Caption video
-* @ param{MessageOptions}> 91; Echotions > 93;{}- Opsia de mensaje
+* @ param{MessageOptions}* Echotions *{}- Opsia de mensaje
  * @returns {Promise<Object>} Sent message
  */
 async function sendVideo(sock, jid, video, caption = "", options = {}) {
@@ -143,7 +143,7 @@ async function sendVideo(sock, jid, video, caption = "", options = {}) {
  * @param {string} jid - JID tujuan
 * @ param { Buffer Takenstring } audio - Buffer audio o URL
 * @ param{boolean}Es como nota de voicce
-* @ param{MessageOptions}> 91; Echotions > 93;{}- Opsia de mensaje
+* @ param{MessageOptions}* Echotions *{}- Opsia de mensaje
  * @returns {Promise<Object>} Sent message
  */
 async function sendAudio(sock, jid, audio, ptt = false, options = {}) {
@@ -179,7 +179,7 @@ async function sendAudio(sock, jid, audio, ptt = false, options = {}) {
  * @param {Object} sock - Socket connection
  * @param {string} jid - JID tujuan
 * @ param
-* @ param{MessageOptions}> 91; Echotions > 93;{}- Opsia de mensaje
+* @ param{MessageOptions}* Echotions *{}- Opsia de mensaje
  * @returns {Promise<Object>} Sent message
  */
 async function sendSticker(sock, jid, sticker, options = {}) {
@@ -215,7 +215,7 @@ async function sendSticker(sock, jid, sticker, options = {}) {
 * @ param
 * @ param{string}Nombre del archivo - Nombre del archivo
 * @ param{string}*A mimetipo* *Mimetipo archivo*
-* @ param{MessageOptions}> 91; Echotions > 93;{}- Opsia de mensaje
+* @ param{MessageOptions}* Echotions *{}- Opsia de mensaje
  * @returns {Promise<Object>} Sent message
  */
 async function sendDocument(sock, jid, file, fileName, mimetype, options = {}) {
@@ -255,7 +255,7 @@ async function sendDocument(sock, jid, file, fileName, mimetype, options = {}) {
  * @param {string} jid - JID tujuan
 * @ param{string}Número uno en
 * @ param{string}nombre - Nombre de Conn
-* @ param{MessageOptions}> 91; Echotions > 93;{}- Opsia de mensaje
+* @ param{MessageOptions}* Echotions *{}- Opsia de mensaje
  * @returns {Promise<Object>} Sent message
  */
 async function sendContact(sock, jid, number, name, options = {}) {
@@ -288,7 +288,7 @@ END:VCARD`;
  * @param {number} latitude - Latitude
  * @param {number} longitude - Longitude
 * @ param{string}- Nombre de la ubicación.
-* @ param{MessageOptions}> 91; Echotions > 93;{}- Opsia de mensaje
+* @ param{MessageOptions}* Echotions *{}- Opsia de mensaje
  * @returns {Promise<Object>} Sent message
  */
 async function sendLocation(
@@ -337,7 +337,7 @@ async function sendReact(sock, jid, emoji, key) {
  * @param {string} jid - JID tujuan
 * @ param{string}texT @-@ Text para enviar
 * @ param{number}Delay
-* @ param{MessageOptions}> 91; Echotions > 93;{}- Opsia de mensaje
+* @ param{MessageOptions}* Echotions *{}- Opsia de mensaje
  * @returns {Promise<Object>} Sent message
  */
 async function sendWithTyping(sock, jid, text, delay = 1000, options = {}) {
@@ -352,7 +352,7 @@ async function sendWithTyping(sock, jid, text, delay = 1000, options = {}) {
  * @param {Object} sock - Socket connection
  * @param {string[]} jids - Array JID tujuan
 * @ param{Object}contenido - Mensaje de contenido
-* @ param{MessageOptions}> 91; Echotions > 93;{}- Opsia de mensaje
+* @ param{MessageOptions}* Echotions *{}- Opsia de mensaje
  * @returns {Promise<Object[]>} Array sent messages
  */
 async function sendToMultiple(sock, jids, content, options = {}) {
@@ -429,7 +429,7 @@ function createQuotedDummy(jid, text, pushName = "♪") {
  * @param {string} preview.body - Body preview
 * @ param{string}texT @-@ Texmenú
 ♪ Los diarios del vampiro ♪
-* @ param{MessageOptions}> 91; Echotions > 93;{}- Opsia de mensaje
+* @ param{MessageOptions}* Echotions *{}- Opsia de mensaje
  * @returns {Promise<Object>} Sent message
  */
 async function sendWithPreview(sock, jid, text, preview, options = {}) {

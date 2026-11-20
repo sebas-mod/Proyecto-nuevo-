@@ -137,7 +137,7 @@ Los mejores deseos para ella.`,
   let msg = `👋🏻 *SAYONARA MEMBER* 👋🏻\n\n`;
   msg += `${header}\n`;
   msg += `${emoji} ${farewell}, *@${username}* 🤍\n\n`;
-  msg += `📌> 91; GRUPO INFO &#93;\n`;
+  msg += `📌* GRUPO INFO ]\n`;
   msg += `♪🏠*Nombre*:${groupName}\n`;
   msg += `♪👥* SUSA SUSA *${memberCount}\n`;
   msg += `♪📅 *Fecha*: ${now.format("DD/MM/YYYY")}\n\n`;

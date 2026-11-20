@@ -190,7 +190,7 @@ async function handler(m, { sock }) {
     m.react("🕕");
     const husbu = user.husbu;
     let statusPernikahan = husbu.married ? "Telah Menikah 💍" : "Pendekatan 💖";
-    const textContent = `📸> 91; STATUS HUSHAND YOU > 93;📸\n\n` +
+    const textContent = `📸* STATUS HUSHAND YOU *📸\n\n` +
       `💖*Nombre Lengkap:*${husbu.name}\n` +
       `🎂*Edad:*${husbu.age} tahun\n` +
       `💎 *Tier:* ${husbu.tier}\n` +

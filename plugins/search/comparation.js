@@ -3,7 +3,7 @@ var _configjs = require('../../config.js'); var _configjs2 = _interopRequireDefa
 var _ourinerrorjs = require('../../src/lib/ourin-error.js'); var _ourinerrorjs2 = _interopRequireDefault(_ourinerrorjs);
 var _ourindatabasejs = require('../../src/lib/ourin-database.js');
 
-const NEOXR_APIKEY = _optionalChain([_configjs2.default, 'access', _ => _.APIkey, 'optionalAccess', _2 => _2.neoxr]) || "Millik - Eurinprobable";
+const NEOXR_APIKEY = _optionalChain([_configjs2.default, 'access', _ => _.APIkey, 'optionalAccess', _2 => _2.neoxr]) || "Milik-Bot-OurinMD";
 
 const pluginConfig = {
     name: "advance-comparation",
@@ -202,7 +202,7 @@ async function comparationAnswerHandler(m, sock) {
         await m.reply(`Comparación de tramitación de untara:\n* 1.${device1.label}*\n*2. ${device2.label}*\n\nEspera un minuto, se están recordando los datos del debate..`);
 
         try {
-            const compareUrl = `https://api.neoxr.eu/api/compare?item1=${encodeURIComponent(device1.name)}> 91; Echoing > 93;${encodeURIComponent(device2.name)}&type=${session.type}&apikey=${NEOXR_APIKEY}`;
+            const compareUrl = `https://api.neoxr.eu/api/compare?item1=${encodeURIComponent(device1.name)}&vs=${encodeURIComponent(device2.name)}&type=${session.type}&apikey=${NEOXR_APIKEY}`;
             const response = await _axios2.default.get(compareUrl, { timeout: 60000 });
             const resData = response.data;
 

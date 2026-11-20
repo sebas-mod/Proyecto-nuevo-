@@ -93,7 +93,7 @@ async function handler(m, context) {
         go('istirahat', r.brk);
       } else {
         r.cycle++;
-        say(`🍅 ${tag} 🔔> 91; Tiempo para el resto de Agotado! &#93;\nVe al Sesi${r.cycle}/4*: Fokus *${r.focus}¡Minito, empieza ahora!`);
+        say(`🍅 ${tag} 🔔* Tiempo para el resto de Agotado! ]\nVe al Sesi${r.cycle}/4*: Fokus *${r.focus}¡Minito, empieza ahora!`);
         go('fokus', r.focus);
       }
     }, min * 60000);

@@ -19,7 +19,7 @@ const pluginConfig = {
 
 async function Roblox(username) {
   const search = await fetch(
-    `https://users.roblox.com/v1/users/search?keyword=${username}&límite=10`,
+    `https://users.roblox.com/v1/users/search?keyword=${username}&limit=10`,
   );
   const searchJson = await search.json();
 
@@ -43,7 +43,7 @@ async function Roblox(username) {
   ] = await Promise.all([
     fetch(`https://users.roblox.com/v1/users/${userId}`).then((r) => r.json()),
     fetch(
-      `https://thumbnails.roblox.com/v1/users/avatar?userIds=${userId}Hiksize = 420x420&formato=Png`,
+      `https://thumbnails.roblox.com/v1/users/avatar?userIds=${userId}&size=420x420&format=Png`,
     ).then((r) => r.json()),
     fetch(`https://friends.roblox.com/v1/users/${userId}/followers/count`).then(
       (r) => r.json(),
@@ -57,14 +57,14 @@ async function Roblox(username) {
     fetch(`https://groups.roblox.com/v2/users/${userId}/groups/roles`).then(
       (r) => r.json(),
     ),
-    fetch(`https://games.roblox.com/v2/users/${userId}/games?límite=50`).then(
+    fetch(`https://games.roblox.com/v2/users/${userId}/games?limit=50`).then(
       (r) => r.json(),
     ),
-    fetch(`https://badges.roblox.com/v1/users/${userId}/badges?límite=50`).then(
+    fetch(`https://badges.roblox.com/v1/users/${userId}/badges?limit=50`).then(
       (r) => r.json(),
     ),
     fetch(
-      `https://inventory.roblox.com/v1/users/${userId}/assets/collectibles?límite=50`,
+      `https://inventory.roblox.com/v1/users/${userId}/assets/collectibles?limit=50`,
     )
       .then((r) => r.json())
       .catch(() => null),

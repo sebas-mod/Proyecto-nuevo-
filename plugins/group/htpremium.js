@@ -116,7 +116,7 @@ async function handler(m, { sock }) {
         }
         if (!text) {
             return m.reply(
-                `📢> 91; PREMUM DE HIDETAG > 93;\n\n` +
+                `📢* PREMUM DE HIDETAG *\n\n` +
                 `•Responder mensaje y haga clic\`${m.prefix}ht\`\n` +
                 `•O escribe\`${m.prefix}ht <custom tag> | <pesan>\`\n\n` +
                 `•Ejemplo:\`${m.prefix}*Todo el mundo es tú*\`\n\n` +

@@ -31,7 +31,7 @@ async function handler(m, { sock }) {
     const hours = Math.floor(remaining / (1000 * 60 * 60));
     const minutes = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
     return m.reply(
-      `🕕*ᴄᴏᴏʟᴅᴏᴡɴ*\n\n- Sí, hoy estás a la guardia.\n> 91; Gasps &#93;${hours}hora${minutes}minuto* otra vez.`,
+      `🕕*ᴄᴏᴏʟᴅᴏᴡɴ*\n\n- Sí, hoy estás a la guardia.\n* Gasps ]${hours}hora${minutes}minuto* otra vez.`,
     );
   }
 

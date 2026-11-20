@@ -58,12 +58,12 @@ function handler(m) {
 
     if (sub === 'on') {
         if (_optionalChain([existing, 'optionalAccess', _4 => _4.enabled]) && args.length === 1) {
-            return m.reply(`⚠> 91; Hombre > > 91; ¡Apoyando a Lining Man!\n\n⏰Programado:${existing.jadwal.map(j => `*${j}*`).join(', ')}¡Vaya!\n\n> Usa \`${m.prefix}No se edita\`cambiar el habilitado`)
+            return m.reply(`⚠* Hombre > * ¡Apoyando a Lining Man!\n\n⏰Programado:${existing.jadwal.map(j => `*${j}*`).join(', ')}¡Vaya!\n\n> Usa \`${m.prefix}No se edita\`cambiar el habilitado`)
         }
 
         if (existing && args.length === 1) {
             _ourinnotifschedulerjs.toggleNotif.call(void 0, 'makan', sender, chatJid, true)
-            return m.reply(`✅>#91; ¡El recordatorio de alimentos es re @-@ activado! &#93;🔔\n\n⏰Programado:${existing.jadwal.map(j => `*${j}*`).join(', ')} WIB`)
+            return m.reply(`✅>#91; ¡El recordatorio de alimentos es re @-@ activado! ]🔔\n\n⏰Programado:${existing.jadwal.map(j => `*${j}*`).join(', ')} WIB`)
         }
 
         const timeInput = args[1]

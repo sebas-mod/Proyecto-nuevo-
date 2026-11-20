@@ -20,7 +20,7 @@ const config = {
 async function handler(m, { sock }) {
   if (m.args.length === 0) {
     return m.reply(
-      `💎> 91; PREMUM DE LA CAPITUACIÓN SISTEMA >\n\n` +
+      `💎* PREMUM DE LA CAPITUACIÓN SISTEMA >\n\n` +
       `Systemaxclusivos para cimiar el estado de las acones muchas características se subsidertieron en Premium.\n\n` +
       `*Uso:*\n` +
       `- *${m.prefix}Caphor<nama_fitur1> <nama_fitur2>...—Las semillas son muchas de ellas.\n\n` +
@@ -55,7 +55,7 @@ async function handler(m, { sock }) {
 
   await m.react("✅");
   
-  let msg = `✅> 91; SITUACIÓN DE LA HEAVILY > 93;\n\n`;
+  let msg = `✅* SITUACIÓN DE LA HEAVILY *\n\n`;
   if (successList.length > 0) {
     msg += `*Exito (Premium💎♪\n${successList.map(f => `- ${f}`).join("\n")}\n\n`;
   }

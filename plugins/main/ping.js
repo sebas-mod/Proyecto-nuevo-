@@ -289,7 +289,7 @@ async function createEpicPingCanvas(data) {
     ctx.fillStyle = '#94a3b8'; ctx.font = 'bold 20px sans-serif';
     ctx.fillText(`Servidor:`, col3X + 20, 670); ctx.fillStyle = '#ec4899'; ctx.font = 'bold 22px sans-serif'; ctx.fillText(data.upOS, col3X + 100, 670);
     ctx.fillStyle = '#94a3b8'; ctx.font = 'bold 20px sans-serif';
-    ctx.fillText(`> 91; Gasps &#93;`, col3X + 20, 715);    ctx.fillStyle = '#ec4899'; ctx.font = 'bold 22px sans-serif'; ctx.fillText(data.upBot, col3X + 100, 715);
+    ctx.fillText(`* Gasps ]`, col3X + 20, 715);    ctx.fillStyle = '#ec4899'; ctx.font = 'bold 22px sans-serif'; ctx.fillText(data.upBot, col3X + 100, 715);
 
     return canvas.toBuffer('image/png');
 }

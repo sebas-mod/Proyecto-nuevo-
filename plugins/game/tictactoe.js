@@ -312,7 +312,7 @@ async function answerHandler(m, sock) {
     await safeReact(m, "🎉");
     await safeReply(
       m,
-      `🎉> 91; ¡Juego OVER!\n\n` +
+      `🎉* ¡Juego OVER!\n\n` +
         `${board}\n\n` +
         `🏆 @${winner.split("@")[0]}¡Voy a ganar!`,
       { mentions: [winner, loser] },

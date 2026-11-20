@@ -61,7 +61,7 @@ function handler(m, { sock }) {
         const method = _optionalChain([m, 'access', _6 => _6.args, 'optionalAccess', _7 => _7[1], 'optionalAccess', _8 => _8.toLowerCase, 'call', _9 => _9()])
         if (method === 'kick') {
             db.setGroup(m.chat, { antilinkgc: 'on', antilinkgcMode: 'kick' })
-            return m.reply(`✅*ᴀɴᴛɪʟɪɴᴋ ᴡᴀ> 91; ¡Modo KICK activado!\n\nEl usuario que envió el enlace WA va a ser pateado.`)
+            return m.reply(`✅*ᴀɴᴛɪʟɪɴᴋ ᴡᴀ* ¡Modo KICK activado!\n\nEl usuario que envió el enlace WA va a ser pateado.`)
         } else if (method === 'remove' || method === 'delete') {
             db.setGroup(m.chat, { antilinkgc: 'on', antilinkgcMode: 'remove' })
             return m.reply(`✅*ᴀɴᴛɪʟɪɴᴋ ᴡᴀ- 91.¡¡Modo DELEGOT está activado!\n\n" Mensaje with WA enlace will be destroyed. "`)
@@ -72,7 +72,7 @@ function handler(m, { sock }) {
     
     if (option === 'kick') {
         db.setGroup(m.chat, { antilinkgc: 'on', antilinkgcMode: 'kick' })
-        return m.reply(`✅*ᴀɴᴛɪʟɪɴᴋ ᴡᴀ> 91; ¡Modo KICK activado!\n\nEl usuario que envió el enlace WA va a ser pateado.`)
+        return m.reply(`✅*ᴀɴᴛɪʟɪɴᴋ ᴡᴀ* ¡Modo KICK activado!\n\nEl usuario que envió el enlace WA va a ser pateado.`)
     }
     
     if (option === 'remove' || option === 'delete') {

@@ -57,7 +57,7 @@ function handler(m) {
 
     if (sub === 'on') {
         if (_optionalChain([existing, 'optionalAccess', _4 => _4.enabled]) && args.length === 1) {
-            return m.reply(`⚠- &#91; Sleeping Beauty &#93; - &#91; Sleeping Beauty Opens > - &#91; Sleeping > 93;\n\n⏰Programado:${existing.jadwal.map(j => `*${j}*`).join(', ')}¡Vaya!\n\n> Usa \`${m.prefix}Edición de la notificación del sueño\`cambiar el habilitado`)
+            return m.reply(`⚠- [ Sleeping Beauty ] - [ Sleeping Beauty Opens > - [ Sleeping *\n\n⏰Programado:${existing.jadwal.map(j => `*${j}*`).join(', ')}¡Vaya!\n\n> Usa \`${m.prefix}Edición de la notificación del sueño\`cambiar el habilitado`)
         }
 
         if (existing && args.length === 1) {
@@ -77,7 +77,7 @@ function handler(m) {
 
         _ourinnotifschedulerjs.setNotifTidur.call(void 0, sender, chatJid, jadwal)
 
-        let reply = `✅> 91; ¡El recordatorio de sueño es activo! &#93;🔔\n\n`
+        let reply = `✅* ¡El recordatorio de sueño es activo! ]🔔\n\n`
         reply += `⏰ *Jadwal:*\n`
         for (const j of jadwal) {
             reply += `> 🕐 *${j}* WIB\n`

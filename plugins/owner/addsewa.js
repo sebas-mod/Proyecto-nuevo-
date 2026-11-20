@@ -192,7 +192,7 @@ async function handler(m, { sock }) {
         );
       } catch (e4) {}
     } else {
-      text += `⚠> 91; Snarling > > 91; Gasps &#93; > 91; Gasps &#93; > 91; Gasps >${joinResult.reason}\nAñadir el bot al manual del grupo.`;
+      text += `⚠* Snarling > * Gasps ] * Gasps ] * Gasps >${joinResult.reason}\nAñadir el bot al manual del grupo.`;
     }
 
     await m.react("✅");

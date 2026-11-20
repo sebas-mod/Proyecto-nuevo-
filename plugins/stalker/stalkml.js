@@ -85,7 +85,7 @@ async function handler(m, { text }) {
             return m.reply(`❌*Formato Incorrecto*\n\nAsegúrese de poner en el ID completo y servidor.\nEjemplo:\`${m.prefix}stalkml 1264042367 | 15139\``);
         }
 
-        const res = await _nodefetch2.default.call(void 0, `https://api.isan.eu.org/nickname/ml?id=${userId}&servidor=${serverId}`, { 
+        const res = await _nodefetch2.default.call(void 0, `https://api.isan.eu.org/nickname/ml?id=${userId}&server=${serverId}`, { 
             headers: { "User-Agent": "StalkML/1.0", "Accept": "application/json" },
             timeout: 10000
         });
@@ -106,7 +106,7 @@ async function handler(m, { text }) {
             await m.react('✅');
         } else {
             await m.react('❌');
-            return m.reply(`❌> 91; No se ha encontrado en el sitio > 93;\n\nLo siento, el sistema no pudo encontrar una cuenta con id *${userId}Y Servidor${serverId}* Asegúrese de que el id y el servidor estén marcados correctamente.`);
+            return m.reply(`❌* No se ha encontrado en el sitio *\n\nLo siento, el sistema no pudo encontrar una cuenta con id *${userId}Y Servidor${serverId}* Asegúrese de que el id y el servidor estén marcados correctamente.`);
         }
     } catch (e) {
         console.error(e);

@@ -804,7 +804,7 @@ async function serialize(sock, msg, store = {}) {
   /**
 * Responder text con opciones
 * @ param{string}texT @-@ Text) Respuesta
-* @ param{Object}> 91; Echotions > 93;{}- Más operaciones
+* @ param{Object}* Echotions *{}- Más operaciones
    * @returns {Promise<Object>} Sent message
    */
   m.reply = async (text, options = {}) => {
@@ -1234,7 +1234,7 @@ async function serialize(sock, msg, store = {}) {
 * Imagen de la respuesta
 * @ param { Buffer { Buffer} Viewind - Buffer o imagen URL
    * @param {string} [caption=''] - Caption
-* @ param{Object}> 91; Echotions > 93;{}- Más operaciones
+* @ param{Object}* Echotions *{}- Más operaciones
    * @returns {Promise<Object>} Sent message
    */
   m.replyImage = async (image, caption = "", options = {}) => {
@@ -1262,7 +1262,7 @@ async function serialize(sock, msg, store = {}) {
 * Responder video
 * @ param { Buffer Takenstring } video - Buffer o URL video
    * @param {string} [caption=''] - Caption
-* @ param{Object}> 91; Echotions > 93;{}- Más operaciones
+* @ param{Object}* Echotions *{}- Más operaciones
    * @returns {Promise<Object>} Sent message
    */
   m.replyVideo = async (video, caption = "", options = {}) => {
@@ -1291,7 +1291,7 @@ async function serialize(sock, msg, store = {}) {
 * Responder audio / voise note
 * @ param { Buffer Takenstring } audio - Buffer o audio URL
 * @ param{boolean}- Nota de voz o no.
-* @ param{Object}> 91; Echotions > 93;{}- Más operaciones
+* @ param{Object}* Echotions *{}- Más operaciones
    * @returns {Promise<Object>} Sent message
    */
   m.replyAudio = async (audio, ptt = false, options = {}) => {
@@ -1317,7 +1317,7 @@ async function serialize(sock, msg, store = {}) {
   /**
 * Responder sticker
    * @param {Buffer|string} sticker - Buffer sticker
-* @ param{Object}> 91; Echotions > 93;{}- Más operaciones
+* @ param{Object}* Echotions *{}- Más operaciones
    * @returns {Promise<Object>} Sent message
    */
   m.replySticker = async (sticker, options = {}) => {
@@ -1345,7 +1345,7 @@ async function serialize(sock, msg, store = {}) {
 * @ param { Buffer Takstring } documento de amortiguación
 * @ param{string}Nombre del archivo - Nombre del archivo
    * @param {string} [mimetype] - MIME type
-* @ param{Object}> 91; Echotions > 93;{}- Más operaciones
+* @ param{Object}* Echotions *{}- Más operaciones
    * @returns {Promise<Object>} Sent message
    */
   m.replyDocument = async (
@@ -1380,7 +1380,7 @@ async function serialize(sock, msg, store = {}) {
 * Responder contacto
 * @ param{string}Número uno en
 * @ param{string}nombre - Nombre de Conn
-* @ param{Object}> 91; Echotions > 93;{}- Más operaciones
+* @ param{Object}* Echotions *{}- Más operaciones
    * @returns {Promise<Object>} Sent message
    */
   m.replyContact = async (number, name, options = {}) => {
@@ -1410,7 +1410,7 @@ END:VCARD`;
 * Responder ubicación
    * @param {number} latitude - Latitude
    * @param {number} longitude - Longitude
-* @ param{Object}> 91; Echotions > 93;{}- Más operaciones
+* @ param{Object}* Echotions *{}- Más operaciones
    * @returns {Promise<Object>} Sent message
    */
   m.replyLocation = async (latitude, longitude, options = {}) => {
@@ -1435,7 +1435,7 @@ END:VCARD`;
 * @ param{string}texT @-@ Text) Respuesta
    * @param {string} fakeJid - JID palsu
    * @param {string} fakeText - Text palsu di quote
-* @ param{Object}> 91; Echotions > 93;{}- Más operaciones
+* @ param{Object}* Echotions *{}- Más operaciones
    * @returns {Promise<Object>} Sent message
    */
   m.replyWithQuote = async (text, fakeJid, fakeText, options = {}) => {
@@ -1480,7 +1480,7 @@ END:VCARD`;
    * @param {string} [preview.body] - Body
    * @param {Buffer} [preview.thumbnail] - Thumbnail
    * @param {string} [preview.sourceUrl] - URL sumber
-* @ param{Object}> 91; Echotions > 93;{}- Más operaciones
+* @ param{Object}* Echotions *{}- Más operaciones
    * @returns {Promise<Object>} Sent message
    */
   m.replyWithPreview = async (text, preview, options = {}) => {
@@ -1573,7 +1573,7 @@ END:VCARD`;
   /**
 * Copiar un mensaje a otro JID
    * @param {string} jid - JID tujuan
-* @ param{Object}> 91; Echotions > 93;{}- Más operaciones
+* @ param{Object}* Echotions *{}- Más operaciones
    * @returns {Promise<Object>} Result
    */
   m.copy = async (jid, options = {}) => {

@@ -39,7 +39,7 @@ async function handler(m, { sock }) {
         const isBotAdmin = _optionalChain([participants, 'access', _ => _.find, 'call', _2 => _2(p => p.id === botNumber), 'optionalAccess', _3 => _3.admin]) !== null
 
         if (!isBotAdmin) {
-            return m.reply(`❌> 91; Cumplimiento de la ACCESO > 93;\n\nAsí que tiene que ser el administrador en este grupo que consigue tomar el enlace de invitación.`)
+            return m.reply(`❌* Cumplimiento de la ACCESO *\n\nAsí que tiene que ser el administrador en este grupo que consigue tomar el enlace de invitación.`)
         }
 
         const inviteCode = await sock.groupInviteCode(m.chat).catch(() => null)

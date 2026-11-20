@@ -199,7 +199,7 @@ async function handler(m, { sock }) {
     m.react("🕕");
     const waifu = user.waifu;
     let statusPernikahan = waifu.married ? "Telah Menikah 💍" : "Pendekatan 💖";
-    const textContent = `📸> 91; SU ESTADO DE WAIFU > 93;📸\n\n` +
+    const textContent = `📸* SU ESTADO DE WAIFU *📸\n\n` +
       `💖*Nombre Lengkap:*${waifu.name}\n` +
       `🎂*Edad:*${waifu.age} tahun\n` +
       `💎 *Tier:* ${waifu.tier}\n` +

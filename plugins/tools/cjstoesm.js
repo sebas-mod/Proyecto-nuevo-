@@ -119,7 +119,7 @@ async function handler(m, { sock }) {
             `> Convert CommonJS ke ES Modules\n\n` +
             `*Oh, oh, oh, oh, oh *\n` +
             `* Responder código CJS con${m.prefix}cjstoesm\n\n` +
-            `> 91; Laughter > 93;\n` +
+            `* Laughter *\n` +
             `> \`const axios = require('axios')\`\n` +
             `> \`module.exports = handler\``
         )

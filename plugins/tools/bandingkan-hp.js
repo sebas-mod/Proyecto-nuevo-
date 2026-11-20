@@ -149,7 +149,7 @@ async function handler(m, { sock, text }) {
 
         if (!phone1 || !phone2) {
             await m.react('❌');
-            let errStr = `❌> 91; HP NOTHING > 93;\n\n`;
+            let errStr = `❌* HP NOTHING *\n\n`;
             if (!phone1) errStr += `- *${query1}* no se encuentra en la base de datos.\n`;
             if (!phone2) errStr += `- *${query2}* no se encuentra en la base de datos.\n`;
             errStr += `\nPor favor, prueba una contraseña diferente.`;

@@ -70,7 +70,7 @@ async function handler(m, { sock }) {
     const finalLevel = addResult.newLevel || _ourinleveljs.calculateLevel.call(void 0, user.exp)
     
     await m.reply(
-        `✅> 91; GASPS &#93;\n\n` +
+        `✅* GASPS ]\n\n` +
         `Level milik *@${targetJid.split('@')[0]}* ha logrado tanto en la minería *${levels} Level*.\n\n` +
         `* Estadísticas de Terkini: *\n` +
         `- Nivel Ahora: *${finalLevel}*\n` +

@@ -58,7 +58,7 @@ async function claim(sock, m, email, link) {
       );
       return react(sock, m, '✅');
     }
-    await send(sock, m, `⚠> 91; Sigue llorando " #93; ' no lo entiende ".\n\nError:${data.error || data.message || 'Coba lagi nanti'}`);
+    await send(sock, m, `⚠* Sigue llorando " #93; ' no lo entiende ".\n\nError:${data.error || data.message || 'Coba lagi nanti'}`);
     return react(sock, m, '❌');
   } catch (err) {
     const errMsg = err.response?.data?.error || err.response?.data?.message || err.message || 'Coba lagi nanti';

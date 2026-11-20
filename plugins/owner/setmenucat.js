@@ -60,7 +60,7 @@ async function handler(m, { sock, db }) {
     await db.save();
 
     await m.reply(
-      `✅> 91; RESUMEN DE VARIANT > 93;\n\n` +
+      `✅* RESUMEN DE VARIANT *\n\n` +
         `${selected.emoji} *V${selected.id} — ${selected.name}*\n` +
         `${selected.desc}`,
     );

@@ -26,7 +26,7 @@ async function handler(m, { sock }) {
     m.react('💕')
     
     try {
-        const url = `https://api.siputzx.my.id/api/primbon/kecocokan_nama_pasangan?nama1=${encodeURIComponent(nama1)}Para amar nombres =${encodeURIComponent(nama2)}`
+        const url = `https://api.siputzx.my.id/api/primbon/kecocokan_nama_pasangan?nama1=${encodeURIComponent(nama1)}&nama2=${encodeURIComponent(nama2)}`
         const { data } = await _axios2.default.get(url, { timeout: 30000 })
         
         if (!_optionalChain([data, 'optionalAccess', _ => _.status]) || !_optionalChain([data, 'optionalAccess', _2 => _2.data])) {

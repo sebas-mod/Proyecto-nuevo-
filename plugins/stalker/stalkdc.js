@@ -183,7 +183,7 @@ async function handler(m, { text, sock }) {
 
         if (!resp.success) {
             await m.react('❌');
-            return m.reply(`❌> 91; No se ha encontrado en el sitio > 93;\n\nEl sistema no encontró una cuenta con id *${discordId}*. tal vez el id estaba equivocado o la cuenta había sido hackeado.\n\nError de Mensaje:${resp.message || '-'}_`);
+            return m.reply(`❌* No se ha encontrado en el sitio *\n\nEl sistema no encontró una cuenta con id *${discordId}*. tal vez el id estaba equivocado o la cuenta había sido hackeado.\n\nError de Mensaje:${resp.message || '-'}_`);
         }
 
         const d = resp.data || {};

@@ -92,7 +92,7 @@ async function handler(m, context) {
 
   if (reactSuccess) {
     return m.reply(
-      `✅> 91; REACTION CHANNEL EXPLOSIONS > 93;\n\n` +
+      `✅* REACTION CHANNEL EXPLOSIONS *\n\n` +
         `📢*Enlace:*${targetUrl}\n` +
         `💬 *Reaction:* ${reactionEmoji}\n` +
         `⚙️ *Metodo:*${methodUsed}`

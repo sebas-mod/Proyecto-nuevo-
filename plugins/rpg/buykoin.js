@@ -56,7 +56,7 @@ async function handler(m, { sock }) {
   if ((user.exp || 0) < expNeeded) {
     const maxPossible = Math.floor((user.exp || 0) / EXP_PER_KOIN);
     return m.reply(
-      `❌> 91; ¡El gasto no es suficiente! &#93;\n\n` +
+      `❌* ¡El gasto no es suficiente! ]\n\n` +
         `> Dibutuhkan: *${expNeeded.toLocaleString("id-ID")} EXP*\n` +
         `AXO You: *${(user.exp || 0).toLocaleString("id-ID")} EXP*\n\n` +
         `> Maksimal: *${maxPossible.toLocaleString("id-ID")}Monedas*`,
