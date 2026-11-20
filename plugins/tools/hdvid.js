@@ -2,7 +2,7 @@
 var _os = require('os'); var _os2 = _interopRequireDefault(_os);
 var _path = require('path'); var _path2 = _interopRequireDefault(_path);
 var _fluentffmpeg = require('fluent-ffmpeg'); var _fluentffmpeg2 = _interopRequireDefault(_fluentffmpeg);
-var _ffmpeg = require('../../src/lib/almiku-ffmpeg.js'); var _ffmpeg2 = _interopRequireDefault(_ffmpeg);
+var _ffmpeg = require('../../src/lib/almiku-ffmpeg-path.js'); var _ffmpeg2 = _interopRequireDefault(_ffmpeg);
 
 _fluentffmpeg2.default.setFfmpegPath(_ffmpeg2.default.path);
 
