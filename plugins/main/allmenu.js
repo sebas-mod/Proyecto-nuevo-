@@ -262,7 +262,7 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
       const key = (plugin && plugin.config) || cmd;
       if (shownDescriptions.has(key)) return head;
       shownDescriptions.add(key);
-      return `${head}\n${desc}`;
+      return `${head}\n> ${desc}`;
     });
     txt += createBracketBox(emoji, categoryName, commandLines);
   }
