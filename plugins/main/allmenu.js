@@ -14,6 +14,7 @@ var _fs = require('fs'); var _fs2 = _interopRequireDefault(_fs);
 
 
 var _almikupluginsjs = require('../../src/lib/almiku-plugins.js');
+var _descesjs = require('../../src/lib/almiku-desc-es.js');
 var _almikujs = require('../../case/almiku.js');
 const pluginConfig = {
   name: "allmenu",
@@ -62,10 +63,33 @@ const CATEGORY_EMOJIS = {
 function createBracketBox(emoji, title, lines = []) {
   let text = `╭➤--「${title}MINUTE」\n`;
   for (const line of lines) {
-    text += `┆ ⇝ ${line}\n`;
+    const parts = String(line).split("\n");
+    text += `┆ ⇝ ${parts.shift() || ""}\n`;
+    for (const extra of parts) text += `┆    ${extra}\n`;
   }
   text += `╰➤-------------------------------\n\n`;
   return text;
+}
+
+// Descripción corta en español de un comando (mira el nombre y sus alias).
+function getCommandDescription(cmd) {
+  let plugin = null;
+  try {
+    plugin = _almikupluginsjs.getPlugin.call(void 0, cmd);
+  } catch (e) { }
+  const cfg = plugin && plugin.config;
+  const candidates = [cmd];
+  if (cfg) {
+    if (Array.isArray(cfg.name)) candidates.push(...cfg.name);
+    else if (cfg.name) candidates.push(cfg.name);
+    if (Array.isArray(cfg.alias)) candidates.push(...cfg.alias);
+    else if (cfg.alias) candidates.push(cfg.alias);
+  }
+  for (const candidate of candidates) {
+    const desc = _descesjs.getDescription(candidate);
+    if (desc) return desc;
+  }
+  return "";
 }
 function getCommandSymbols(cmdName) {
   const plugin = _almikupluginsjs.getPlugin.call(void 0, cmdName);
@@ -225,9 +249,20 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
     if (allCmds.length === 0) continue;
     const emoji = CATEGORY_EMOJIS[category] || "📋";
     const categoryName = category.toUpperCase();
+    const shownDescriptions = new Set();
     const commandLines = allCmds.map((cmd) => {
       const symbols = getCommandSymbols(cmd);
-      return `${prefix}${cmd}${symbols}`;
+      const head = `${prefix}${cmd}${symbols}`;
+      const desc = getCommandDescription(cmd);
+      if (!desc) return head;
+      let plugin = null;
+      try {
+        plugin = _almikupluginsjs.getPlugin.call(void 0, cmd);
+      } catch (e) { }
+      const key = (plugin && plugin.config) || cmd;
+      if (shownDescriptions.has(key)) return head;
+      shownDescriptions.add(key);
+      return `${head}\n${desc}`;
     });
     txt += createBracketBox(emoji, categoryName, commandLines);
   }
